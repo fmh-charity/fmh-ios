@@ -1,0 +1,48 @@
+!!! Если есть предложения - вносим
+
+
+!!! Model-View-Presenter (MVP) <— Предлагаю использовать этот шаблон с применением Coordinators (Routers), (Builder?)
+
+
+= СТРУКТУРА ПРОЕКТА =
+
+- Application
+- DataLayer
+- DomainLayer
+- UI
+    - Elements
+    - Modules
+- Common
+- Resources
+
+
+Описание ...
+
+- Application: Хранит, все что напрямую относится к коду приложения
+
+- DataLayer: Получение данных из источника данных, будь то локальный (БД) или удаленный (API) (Repository)
+
+- DomainLayer (BusinessLogic): Извлекает данные из DataLayer (Use cases) <- Возможно без него обойдемся (Presenter'ам читать Repository)
+
+- Common: (Расширения, хелперы ...)
+    
+- UI: Это все то что видит пользователь и вспомогательный функционал (UIView, UIViewControllers, Presenter ...)
+    - Elements (Если компонент UI используется в нескольких Modules, то размещаем тут)
+    - Modules (Самостоятельный блок кода UI со своей логикой)
+    
+- Resources: (Размещаем .plist, .xcassets ...)
+
+
+--- FILEHEADER ---
+!!! Добавил в проект шаблон комментария заголовка, который Xcode автоматически помещает в начало каждого нового файла.
+
+//
+//  File Name
+//  Project name
+//
+//  Date of creation
+//
+
+IDETemplateMacros.plist
+Находится по пути: <WorkspaceName>.xcworkspace/xcshareddata/
+---
