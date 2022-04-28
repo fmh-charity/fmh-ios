@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         //TODO: - ПРОПИСАТЬ Coordinator (Router)
+        //Ok
 
     }
 
