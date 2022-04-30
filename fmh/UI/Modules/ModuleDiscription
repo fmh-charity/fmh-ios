@@ -10,6 +10,6 @@
         - Elements
         . Protocols.swift
         . Presenter.swift
-        . Router.swift (Возможно будем использовать внутри модуля, пока не реализовываем)
+        . Router.swift (Возможно будем использовать внутри модуля, пока не реализовываем !!! )
         . ViewController.swift
-        . .xib ( .storyboard )
+        . .xib ( .storyboard ) <- ВЕРСТАКА КОДОМ (По результатам голосования)

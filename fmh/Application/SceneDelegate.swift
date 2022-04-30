@@ -19,6 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         
+        let authRepo: AuthRepositoryProtocol = AuthRepository()
+        authRepo.login(login: "login1", password: "password1") { result in
+            switch result {
+            case .success(let data):
+                print("data: \(data)")
+            case .failure(let error):
+                print("error: \(error)")
+            }
+        }
+        
         //TODO: - ПРОПИСАТЬ Coordinator (Router)
 
     }
