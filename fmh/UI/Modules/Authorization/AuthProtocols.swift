@@ -15,6 +15,6 @@ protocol AuthViewControllerDelegate: AnyObject {
 // MARK: - Presenter
 protocol AuthPresenterDelegate {
     
-    func login(login: String, password: String, completion: @escaping (Error?) -> Void )
+    func login(login: String, password: String, completion: @escaping (AuthError?) -> Void )
     
 }

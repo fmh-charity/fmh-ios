@@ -27,15 +27,20 @@ class AuthPresenter {
 // MARK: - HomeViewControllerDelegate
 extension AuthPresenter: AuthPresenterDelegate {
     
-    func login(login: String, password: String, completion: @escaping (Error?) -> Void ) {
+    func login(login: String, password: String, completion: @escaping (AuthError?) -> Void ) {
         repository.login(login: login, password: password) { result in
             switch result {
             case .success(let tokenData):
                 completion(nil)
-                print("tokenData: \(tokenData)")
                 // Переброс на другой экран
             case .failure(let error):
-                completion(error)
+                // TODO: Добавить расшифровку ошибок на русском. (AuthError)
+                switch error.code {
+                    case 401 :
+                        completion(.requestError(error))
+                    default:
+                        completion(.requestError(error))
+                }
             }
         }
     }

@@ -18,7 +18,7 @@ enum AuthError: Error {
 }
 
 extension AuthError: LocalizedError {
-    
+    // TODO: Добавить расшифровку ошибок на русском. (AuthError)
     public var errorDescription: String? {
         switch self {
         case .loginFieldEmpty:

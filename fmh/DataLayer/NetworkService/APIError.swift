@@ -32,3 +32,18 @@ extension APIError: LocalizedError {
     }
     
 }
+
+extension APIError {
+    var code:Int? {
+        switch self {
+        case .invalidURL:
+            return 400
+        case .URLRequestError(let error):
+            return (error as NSError).code
+        case .JSONDecoderError(let error):
+            return (error as NSError).code
+        case .HTTPURLResponse(let code , _):
+            return code
+        }
+    }
+}

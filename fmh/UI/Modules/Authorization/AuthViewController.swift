@@ -62,8 +62,8 @@ class AuthViewController: UIViewController {
     }
     
     @objc private func hideActivityView() {
-        isProcessing = false
         // Останавливаем запрос (таск) при необходимости
+        // isProcessing = false
     }
     
     @objc private func keyboardShow(notification: NSNotification) {
@@ -96,9 +96,11 @@ class AuthViewController: UIViewController {
             presenter?.login(login: textLoginTF, password: textPasswordTF, completion: { error in
                 self.isProcessing = false
                 // Show Alert
-                let alert = UIAlertController(title: "Ошибка", message: error?.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
-                self.present(alert, animated: true, completion: nil)
+                if let error = error {
+                    let alert = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
             })
         }
     }

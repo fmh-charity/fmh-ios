@@ -17,7 +17,7 @@ class NetworkService {
     var baseURLString: String?
     var globalPath: String?
     
-    var timeoutInterval: TimeInterval = 5.0
+    var timeoutInterval: TimeInterval = 10.0
     
     init() {
         let urlString = PListParser.getValueDictionary(forResource: "NetworkService", forKey: "testBaseURLString") as? String
