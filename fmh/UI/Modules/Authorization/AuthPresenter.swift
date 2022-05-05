@@ -37,7 +37,11 @@ extension AuthPresenter: AuthPresenterDelegate {
                 // TODO: Добавить расшифровку ошибок на русском. (AuthError)
                 switch error.code {
                     case 401 :
-                        completion(.requestError(error))
+                        completion(.unauthorized)
+                    case 403 :
+                        completion(.forbidden)
+                    case -1001 :
+                        completion(.requestTimedOut)
                     default:
                         completion(.requestError(error))
                 }

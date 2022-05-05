@@ -13,8 +13,11 @@ enum AuthError: Error {
     case passwordFieldEmpty
     case loginPasswordFieldEmpty
     case loginPasswordInvalid
-    case requestError (Error)
     
+    case unauthorized
+    case requestError (Error)
+    case requestTimedOut
+    case forbidden
 }
 
 extension AuthError: LocalizedError {
@@ -29,8 +32,15 @@ extension AuthError: LocalizedError {
             return NSLocalizedString("Поля логин и пароль не должны быть пустыми.", comment: "loginPasswordFieldEmpty")
         case .loginPasswordInvalid:
             return NSLocalizedString("Не верно указан логин или пароль.", comment: "loginPasswordInvalid")
+            
+        case .unauthorized:
+            return NSLocalizedString("Не действительные учетные данные.", comment: "unauthorized")
         case .requestError(let error):
             return NSLocalizedString(error.localizedDescription, comment: "requestError")
+        case .requestTimedOut:
+            return NSLocalizedString("Время запроса истекло.", comment: "requestTimedOut")
+        case .forbidden:
+            return NSLocalizedString("Запрещенно.", comment: "forbidden")
         }
     }
     

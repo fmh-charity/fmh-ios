@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         authViewController.presenter = authPresenter
         
         let navController = UINavigationController(rootViewController: authViewController)
-        navController.view.backgroundColor = .orange
+        navController.view.backgroundColor = .init(named: "AccentColor")
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
         

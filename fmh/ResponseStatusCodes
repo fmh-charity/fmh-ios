@@ -16,9 +16,9 @@
 //         | "305"  ; Section 10.3.6: Use Proxy
 //         | "307"  ; Section 10.3.8: Temporary Redirect
 //         | "400"  ; Section 10.4.1: Bad Request
-//         | "401"  ; Section 10.4.2: Unauthorized
+//         | "401"  ; Section 10.4.2: Unauthorized <- ( ERR_INVALID_LOGIN, ERR_INVALID_REFRESH ) Нет доступа
 //         | "402"  ; Section 10.4.3: Payment Required
-//         | "403"  ; Section 10.4.4: Forbidden
+//         | "403"  ; Section 10.4.4: Forbidden <- ( ERR_NO_RIGHTS ) Запрещенно
 //         | "404"  ; Section 10.4.5: Not Found
 //         | "405"  ; Section 10.4.6: Method Not Allowed
 //         | "406"  ; Section 10.4.7: Not Acceptable
@@ -33,7 +33,7 @@
 //         | "415"  ; Section 10.4.16: Unsupported Media Type
 //         | "416"  ; Section 10.4.17: Requested range not satisfiable
 //         | "417"  ; Section 10.4.18: Expectation Failed
-//         | "500"  ; Section 10.5.1: Internal Server Error
+//         | "500"  ; Section 10.5.1: Internal Server Error <- ( ERR_UNEXPECTED )
 //         | "501"  ; Section 10.5.2: Not Implemented
 //         | "502"  ; Section 10.5.3: Bad Gateway
 //         | "503"  ; Section 10.5.4: Service Unavailable
