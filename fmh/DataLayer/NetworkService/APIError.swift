@@ -16,18 +16,18 @@ enum APIError: Error {
     
 }
 
-
-// MARK: - Discription error
-extension APIError {
+extension APIError: LocalizedError {
     
-    var description: String {
+    public var errorDescription: String? {
         switch self {
-        case .URLRequestError(let error), .JSONDecoderError(let error):
-            return error.localizedDescription
-        case .HTTPURLResponse(_ , let description):
-            return description
         case .invalidURL:
-            return "Invalid URL"
+            return NSLocalizedString("Invalid URL", comment: "Invalid URL")
+        case .URLRequestError(let error):
+            return NSLocalizedString(error.localizedDescription, comment: "URLRequestError")
+        case .JSONDecoderError(let error):
+            return NSLocalizedString(error.localizedDescription, comment: "JSONDecoderError")
+        case .HTTPURLResponse(let code , let description):
+            return NSLocalizedString("Code: \(code) - \(description)", comment: "HTTPURLResponse")
         }
     }
     
