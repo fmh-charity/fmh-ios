@@ -17,6 +17,7 @@ enum AuthError: Error {
     case unauthorized
     case requestError (Error)
     case requestTimedOut
+    case notConnectToServer
     case forbidden
 }
 
@@ -39,6 +40,8 @@ extension AuthError: LocalizedError {
             return NSLocalizedString(error.localizedDescription, comment: "requestError")
         case .requestTimedOut:
             return NSLocalizedString("Время запроса истекло.", comment: "requestTimedOut")
+        case .notConnectToServer:
+            return NSLocalizedString("Не удалось установить соединение с сервером.", comment: "notConnectToServer")
         case .forbidden:
             return NSLocalizedString("Запрещенно.", comment: "forbidden")
         }

@@ -36,6 +36,7 @@ class LoginTextfield: UITextField {
         layer.cornerRadius = 5.0
         backgroundColor = .white
         
+        textContentType = .username
         autocapitalizationType = .none
         autocorrectionType = .no
         keyboardType = .default

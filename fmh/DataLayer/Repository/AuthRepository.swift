@@ -34,9 +34,9 @@ extension AuthRepository: AuthRepositoryProtocol {
         getResurce(with: resource.login(login: login, password: password)) { result in
             switch result {
             case .success(let tokenData):
-                completion(.success(tokenData))
+                DispatchQueue.main.async { completion(.success(tokenData)) }
             case .failure(let error):
-                completion(.failure(error))
+                DispatchQueue.main.async { completion(.failure(error)) }
             }
         }
     }
@@ -45,9 +45,9 @@ extension AuthRepository: AuthRepositoryProtocol {
         getResurce(with: resource.refresh(refreshToken)) { result in
             switch result {
             case .success(let tokenData):
-                completion(.success(tokenData))
+                DispatchQueue.main.async { completion(.success(tokenData)) }
             case .failure(let error):
-                completion(.failure(error))
+                DispatchQueue.main.async { completion(.failure(error)) }
             }
         }
     }
@@ -56,9 +56,9 @@ extension AuthRepository: AuthRepositoryProtocol {
         getResurce(with: resource.userInfo()) { result in
             switch result {
             case .success(let userInfo):
-                completion(.success(userInfo))
+                DispatchQueue.main.async { completion(.success(userInfo)) }
             case .failure(let error):
-                completion(.failure(error))
+                DispatchQueue.main.async { completion(.failure(error)) }
             }
         }
     }

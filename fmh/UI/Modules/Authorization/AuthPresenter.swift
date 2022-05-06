@@ -32,18 +32,24 @@ extension AuthPresenter: AuthPresenterDelegate {
             switch result {
             case .success(let tokenData):
                 completion(nil)
+                
                 // Переброс на другой экран
+                // Записсь в кейчан
+                // Создание User / AppStatus
+                return
             case .failure(let error):
                 // TODO: Добавить расшифровку ошибок на русском. (AuthError)
                 switch error.code {
                     case 401 :
-                        completion(.unauthorized)
+                        return completion(.unauthorized)
                     case 403 :
-                        completion(.forbidden)
+                        return completion(.forbidden)
                     case -1001 :
-                        completion(.requestTimedOut)
+                        return completion(.requestTimedOut)
+                    case -1004 :
+                        return completion(.notConnectToServer)
                     default:
-                        completion(.requestError(error))
+                        return completion(.requestError(error))
                 }
             }
         }

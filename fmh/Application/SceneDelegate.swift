@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Security
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -29,17 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navController.view.backgroundColor = .init(named: "AccentColor")
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
-        
-//        let authRepo: AuthRepositoryProtocol = AuthRepository()
-//        authRepo.login(login: "login1", password: "password1") { result in
-//            switch result {
-//            case .success(let data):
-//                print("data: \(data)")
-//            case .failure(let error):
-//                print("error: \(error.description)")
-//            }
-//        }
-        
+     
         //TODO: - ПРОПИСАТЬ Coordinator (Router)
 
     }

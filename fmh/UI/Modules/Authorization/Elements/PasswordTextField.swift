@@ -36,6 +36,7 @@ class PasswordTextfield: UITextField {
         layer.cornerRadius = 5.0
         backgroundColor = .white
         
+        textContentType = .password
         autocapitalizationType = .none
         autocorrectionType = .no
         keyboardType = .default

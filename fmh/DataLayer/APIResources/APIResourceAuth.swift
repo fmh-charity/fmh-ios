@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// НЕОБХОДИМО ДЛЯ КАЖДОГО ЗАПРОСА ПЕРЕКИДЫВАТЬ ТОКЕН  ( headers: HTTPHeaders? )  ????? ( ПРОРАБАТЫВАЮ ВАРИАНТЫ  КАК УБРАТЬ ЭТО )
+// TODO: Перевести какнить в Enum
 
 protocol APIResourceAuthProtocol {
     
