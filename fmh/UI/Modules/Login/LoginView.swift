@@ -1,5 +1,5 @@
 //
-//  AuthView.swift
+//  LoginView.swift
 //  fmh
 //
 //  Created: 02.05.2022
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthView: UIView {
+class LoginView: UIView {
     
     var frameCenterYConstraint: NSLayoutConstraint?
     
@@ -147,7 +147,7 @@ import SwiftUI
 struct ViewRepresentable: UIViewRepresentable {
     
     func makeUIView(context: Context) -> some UIView {
-        return AuthView()
+        return LoginView()
     }
     
     func updateUIView(_ uiViewController: UIViewType, context: Context) {

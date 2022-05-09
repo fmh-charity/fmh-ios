@@ -1,5 +1,5 @@
 //
-//  AuthViewController.swift
+//  LoginViewController.swift
 //  fmh
 //
 //  Created: 30.04.2022
@@ -8,12 +8,12 @@
 import UIKit
 import NotificationCenter
 
-class AuthViewController: UIViewController {
+class LoginViewController: UIViewController {
     /// Root view
-    private var authView: AuthView { self.view as! AuthView  }
+    private var authView: LoginView { self.view as! LoginView  }
     
     // MARK: - External vars
-    var presenter: AuthPresenterDelegate?
+    var presenter: LoginPresenterDelegate?
 
     // MARK: - Internal vars
     private var loginTF: LoginTextfield { return authView.loginTF }
@@ -37,7 +37,7 @@ class AuthViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.view = AuthView(frame: self.view.bounds)
+        self.view = LoginView(frame: self.view.bounds)
     }
     
     override func viewDidLoad() {
@@ -95,7 +95,6 @@ class AuthViewController: UIViewController {
             
             presenter?.login(login: textLoginTF, password: textPasswordTF, completion: { error in
                 self.isProcessing = false
-                // Show Alert
                 if let error = error {
                     let alert = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
@@ -144,7 +143,7 @@ class AuthViewController: UIViewController {
 }
 
 // MARK: - UITextViewDelegate
-extension AuthViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == loginTF {
@@ -160,7 +159,7 @@ extension AuthViewController: UITextFieldDelegate {
 
 
 // MARK: - HomePresenterDelegate
-extension AuthViewController: AuthViewControllerDelegate {
+extension LoginViewController: LoginViewControllerDelegate {
 
 }
 
@@ -172,7 +171,7 @@ import SwiftUI
 struct ViewControllerRepresentable: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> some UIViewController {
-        return AuthViewController()
+        return LoginViewController()
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {

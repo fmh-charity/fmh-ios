@@ -5,7 +5,7 @@
 	<key>baseURLString</key>
 	<string>https://fmh.vhospice.org</string>
 	<key>testBaseURLString</key>
-	<string>https://test.vhospice.org:8443</string>
+	<string>https://test.vhospice.org</string>
 	<key>globalPath</key>
 	<string>/api/fmh/</string>
 </dict>

@@ -1,67 +1,65 @@
 //
-//  AuthenticationRepository.swift
+//  AuthRepository.swift
 //  fmh
 //
-//  Created: 29.04.2022
+//  Created: 07.05.2022
 //
 
 import Foundation
+import Combine
 
 protocol AuthRepositoryProtocol {
     
-    func login (login: String, password: String, completion: @escaping (Result<TokenData, APIError>) -> Void)
-    func refresh (_ refreshToken: String, completion: @escaping (Result<TokenData, APIError>) -> Void)
-    func userInfo (completion: @escaping (Result<UserInfo, APIError>) -> Void)
+    func login(login: String, password: String) -> AnyPublisher<Bool, APIError>
+    func refresh(_ refreshToken: String) -> AnyPublisher<Bool, APIError>
+    func userInfo() -> AnyPublisher<UserInfo, APIError>
 
 }
 
-
-class AuthRepository: NetworkService {
+class AuthRepository {
     
-    private let resource: APIResourceAuthProtocol
+    private let appUser: AppUser
+    private let network: NetworkProtocol
+    private let resource: APIResourceAuthProtocol = APIResourceAuth()
     
-    init(resource: APIResourceAuthProtocol = APIResourceAuth()) {
-        self.resource = resource
+    init(network: NetworkProtocol, appUser: AppUser) {
+        self.network = network
+        self.appUser = appUser
     }
     
 }
-
 
 // MARK: - AuthRepositoryProtocol
 extension AuthRepository: AuthRepositoryProtocol {
- 
-    func login(login: String, password: String, completion: @escaping (Result<TokenData, APIError>) -> Void) {
-        getResurce(with: resource.login(login: login, password: password)) { result in
-            switch result {
-            case .success(let tokenData):
-                DispatchQueue.main.async { completion(.success(tokenData)) }
-            case .failure(let error):
-                DispatchQueue.main.async { completion(.failure(error)) }
-            }
-        }
-    }
-    
-    func refresh(_ refreshToken: String, completion: @escaping (Result<TokenData, APIError>) -> Void) {
-        getResurce(with: resource.refresh(refreshToken)) { result in
-            switch result {
-            case .success(let tokenData):
-                DispatchQueue.main.async { completion(.success(tokenData)) }
-            case .failure(let error):
-                DispatchQueue.main.async { completion(.failure(error)) }
-            }
-        }
-    }
-    
-    func userInfo(completion: @escaping (Result<UserInfo, APIError>) -> Void) {
-        getResurce(with: resource.userInfo()) { result in
-            switch result {
-            case .success(let userInfo):
-                DispatchQueue.main.async { completion(.success(userInfo)) }
-            case .failure(let error):
-                DispatchQueue.main.async { completion(.failure(error)) }
-            }
-        }
+
+    func login(login: String, password: String) -> AnyPublisher<Bool, APIError> {
+        return network
+            .fetchDataPublisher(resource: resource.login(login: login, password: password))
+            .map({ [unowned self] tokenData in
+                self.appUser.login(tokenData: tokenData)
+                return true
+            })
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 
+    func refresh(_ refreshToken: String) -> AnyPublisher<Bool, APIError> {
+        return network
+            .fetchDataPublisher(resource: resource.refresh(refreshToken))
+            .map({ [unowned self] tokenData in
+                self.appUser.login(tokenData: tokenData)
+                return true
+            })
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
+    func userInfo() -> AnyPublisher<UserInfo, APIError> {
+        return network
+            .fetchDataPublisher(resource: resource.userInfo())
+            .map { $0 }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
 
 }
