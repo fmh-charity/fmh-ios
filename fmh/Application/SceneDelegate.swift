@@ -78,4 +78,5 @@ private extension SceneDelegate {
         return AppCoordinator(router: Router(rootController: rootController),
                               factory: CoordinatorFactory())
     }
+
 }
