@@ -12,29 +12,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    
+    var rootController: UINavigationController {
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.barStyle = .default
+        navigationController.navigationBar.backgroundColor = .init(named: "AccentColor")
+        navigationController.view.backgroundColor = .init(named: "AccentColor")
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        return window?.rootViewController as! UINavigationController
+    }
+
+    fileprivate lazy var coordinator: Coordinatable = self.makeCoordinator()
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        //KeyChain.standart.clear()
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        
-        // TODO: Перенести в билдер
-        let appUser = AppUser()
-        let network: NetworkProtocol = Network(appUser: appUser)
-        let authRepository: AuthRepositoryProtocol = AuthRepository(network: network, appUser: appUser)
-        let authViewController = LoginViewController()
-        let authPresenter: LoginPresenterDelegate = LoginPresenter(repository: authRepository, viewController: authViewController)
-        authViewController.presenter = authPresenter
-        
-        let navController = UINavigationController(rootViewController: authViewController)
-        navController.view.backgroundColor = .init(named: "AccentColor")
-        window?.rootViewController = navController
-        window?.makeKeyAndVisible()
-        
-        //TODO: - ПРОПИСАТЬ Coordinator (Router)
-        //appUser.accessToken = "wefwe"
+ 
+        coordinator.start()
+       
+        //KeyChain.standart.clear()
         
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.
@@ -67,4 +70,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
+}
+
+// MARK: - Private methods
+private extension SceneDelegate {
+    func makeCoordinator() -> Coordinatable {
+        return AppCoordinator(router: Router(rootController: rootController),
+                              factory: CoordinatorFactory())
+    }
 }

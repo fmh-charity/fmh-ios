@@ -1,5 +1,5 @@
 //
-//  LoginError.swift
+//  AuthorizationError.swift
 //  fmh
 //
 //  Created: 03.05.2022
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LoginError: Error {
+enum AuthorizationError: Error {
     
     case loginFieldEmpty
     case passwordFieldEmpty
@@ -21,8 +21,8 @@ enum LoginError: Error {
     case forbidden
 }
 
-extension LoginError: LocalizedError {
-    // TODO: Добавить расшифровку ошибок на русском. (AuthError)
+extension AuthorizationError: LocalizedError {
+    // TODO: Добавить расшифровку ошибок на русском. (AuthError) Возможно перенести в APIError
     public var errorDescription: String? {
         switch self {
         case .loginFieldEmpty:

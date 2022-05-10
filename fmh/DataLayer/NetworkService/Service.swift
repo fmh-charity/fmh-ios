@@ -38,8 +38,7 @@ extension Service {
                 return data
             })
             .mapError { error in
-                print("Service.fetchPublisher.error: \(error)")
-                return error as! APIError
+                error as! APIError
             }
             .eraseToAnyPublisher()
     }

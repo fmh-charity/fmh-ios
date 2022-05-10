@@ -17,11 +17,7 @@ protocol NetworkProtocol: AnyObject {
 
 class Network: Service {
     
-    var appUser: AppUser
-    
-    init(appUser: AppUser) {
-        self.appUser = appUser
-    }
+    init() { }
     
     // MARK: - Private variable
     private var anyCancellable = Set<AnyCancellable>()
@@ -60,33 +56,29 @@ extension Network: NetworkProtocol {
         
         let encodeBody = try? resource.body?.encode()
         var request = makeRequest(url: url, method: resource.method, headers: resource.headers, body: encodeBody)
-        if let accessToken = appUser.accessToken, !(resource.body.self is Credentials)  {
+        if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is Credentials)  {
             request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
         }
         
         return fetchPublisher(request: request)
             .tryCatch { [unowned self] apiError -> AnyPublisher<Data, APIError> in
-                if apiError.code == 401 && !(resource.body.self is Credentials) {
-                    print("Network_.fetchPublisher.tryCatch.appError = (401): \(apiError)")
-                   
+                if apiError.code == 401 && !(resource.body.self is Credentials) && AppSession.isAuthorized {
                     self.refreshToken().sink { _ in }
-                        receiveValue: { data in
-                            self.appUser.refresh(tokenData: data)
+                        receiveValue: { tokenData in
+                            AppSession.tokens = tokenData
                         }
                         .store(in: &anyCancellable)
                     
-                    if let accessToken = appUser.accessToken {
+                    if let accessToken =  AppSession.tokens?.accessToken {
                         request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
                     }
                     return fetchPublisher(request: request)
                 }
-                print("throw - Network_.fetchPublisher.tryCatch.appError: \(apiError)")
                 throw apiError
             }
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
-                print("Network_.fetchPublisher.mapError.error: \(error)")
-                    return error as! APIError
+                    error as! APIError
             }
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
@@ -99,7 +91,7 @@ extension Network {
     func refreshToken () -> AnyPublisher<TokenData, APIError> {
         
         // TODO:  Переделать, нужно просто вызывать APIResource
-        let refreshToken = appUser.refreshToken ?? ""
+        let refreshToken = AppSession.tokens?.refreshToken ?? ""
         let resource: APIResource<TokenData> = APIResource(path: "authentication/refresh",
                                                            method: .post,
                                                            body: RefreshToken(refreshToken: refreshToken))
