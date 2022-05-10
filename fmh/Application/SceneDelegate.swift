@@ -37,7 +37,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
  
         coordinator.start()
        
-        //KeyChain.standart.clear()
+        // KeyChain.standart.del(key: "accessToken")
+        // KeyChain.standart.del(key: "refreshToken")
         
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.

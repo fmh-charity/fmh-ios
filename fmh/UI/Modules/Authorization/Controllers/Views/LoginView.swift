@@ -29,7 +29,7 @@ class LoginView: UIView {
     
     private func setBackground () {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Background")
+        imageView.image = UIImage(named: "BackGround")
         imageView.contentMode = .scaleToFill
         self.addSubview(imageView)
         self.sendSubviewToBack(imageView)
