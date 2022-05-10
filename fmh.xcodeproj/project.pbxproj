@@ -105,7 +105,6 @@
 		193AA92D2811C890002CE474 /* ModuleDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ModuleDiscription; sourceTree = "<group>"; };
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
 		19BD1A63281D703A00ED793A /* NetworkService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NetworkService.plist; sourceTree = "<group>"; };
-		19BD1A65281D74D400ED793A /* CodeForTesting.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = CodeForTesting.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		19BD1A68281DB6F700ED793A /* ResponseStatusCodes */ = {isa = PBXFileReference; lastKnownFileType = text; path = ResponseStatusCodes; sourceTree = "<group>"; };
 		19BD1A6A281DBA0B00ED793A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		19BD1A6C281DBA1F00ED793A /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -297,7 +296,6 @@
 		19C7A50E280DECD0005000EB = {
 			isa = PBXGroup;
 			children = (
-				19BD1A65281D74D400ED793A /* CodeForTesting.playground */,
 				19C7A519280DECD0005000EB /* fmh */,
 				19C7A518280DECD0005000EB /* Products */,
 			);
