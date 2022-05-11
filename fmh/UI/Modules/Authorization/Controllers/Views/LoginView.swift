@@ -92,7 +92,6 @@ class LoginView: UIView {
         
     }
     
-    
     // MARK: - Elements
     private var stack: UIStackView = {
         let stack = UIStackView()
