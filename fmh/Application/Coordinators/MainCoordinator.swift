@@ -15,16 +15,16 @@ final class MainCoordinator: Coordinator, MainCoordinatorOutput {
     
     var finishFlow: CompletionBlock?
     
-    fileprivate let factory: MainFactoryProtocol
+    fileprivate let factory: MainModuleFactoryProtocol
     fileprivate let router : Routable
     
-    init(with factory: MainFactoryProtocol, router: Routable) {
+    init(with factory: MainModuleFactoryProtocol, router: Routable) {
         self.factory = factory
         self.router  = router
     }
 }
 
-// MARK :- Coordinatable
+// MARK: - Coordinatable
 extension MainCoordinator: Coordinatable {
     func start() {
         performFlow()
@@ -35,6 +35,7 @@ extension MainCoordinator: Coordinatable {
 private extension MainCoordinator {
     func performFlow() {
         let view = factory.makeMainView()
+        view.onCompletion = finishFlow
         router.setRootModule(view, hideBar: false)
     }
 }

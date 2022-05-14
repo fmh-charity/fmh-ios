@@ -23,6 +23,7 @@ final class AuthorizationPresenter {
     func handleSuccessSignIn() {
         output?.signInOk()
     }
+    
 }
 
 // MARK: - EnterPresenterInput
@@ -35,8 +36,6 @@ extension AuthorizationPresenter: AuthorizationPresenterInput {
                 switch anyCompletion {
                 case .failure(let error):
                     // TODO: Добавить расшифровку ошибок на русском. (AuthError)
-                    // Или весь перевод сделать в APIError
-                    // Перенести в отдельный метод обработки (перевода ошибок)
                     switch error.code {
                         case 401 :
                             return completion(.unauthorized)

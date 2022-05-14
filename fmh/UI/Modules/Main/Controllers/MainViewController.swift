@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class MainViewController: UIViewController, MainAssemblable {
 
@@ -16,8 +17,12 @@ class MainViewController: UIViewController, MainAssemblable {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Main"
-    
+        
         commonInit()
+    }
+    
+    @objc private func menuTap () {
+        print("menuTap")
     }
 
 }

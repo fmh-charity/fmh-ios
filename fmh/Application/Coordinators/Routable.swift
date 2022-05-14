@@ -1,5 +1,5 @@
 //
-//  CoordinatorProtocols.swift
+//  Routable.swift
 //  fmh
 //
 //  Created: 10.05.2022
@@ -8,20 +8,6 @@
 import Foundation
 import UIKit
 
-
-// MARK: - Coordinatable
-protocol Coordinatable: AnyObject {
-    func start()
-}
-
-
-// MARK: - Presentable
-protocol Presentable {
-    var toPresent: UIViewController? { get }
-}
-
-
-// MARK: - Routable
 protocol Routable: Presentable {
     
     func present(_ module: Presentable?)

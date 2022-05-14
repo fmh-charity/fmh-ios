@@ -78,7 +78,8 @@ extension Network: NetworkProtocol {
             }
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
-                    error as! APIError
+                print("error: \(error)")
+                 return   error as! APIError
             }
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()

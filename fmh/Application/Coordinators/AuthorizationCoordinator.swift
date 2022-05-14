@@ -15,10 +15,10 @@ final class AuthorizationCoordinator: Coordinator, AuthorizationCoordinatorOutpu
     
     var finishFlow: CompletionBlock?
     
-    fileprivate let factory: AuthorizationFactoryProtocol
+    fileprivate let factory: AuthorizationModuleFactoryProtocol
     fileprivate let router : Routable
     
-    init(with factory: AuthorizationFactoryProtocol, router: Routable) {
+    init(with factory: AuthorizationModuleFactoryProtocol, router: Routable) {
         self.factory = factory
         self.router  = router
     }
@@ -36,6 +36,7 @@ private extension AuthorizationCoordinator {
     func performFlow() {
         let view = factory.makeAuthorizationView()
         view.onCompletion = finishFlow
+        
         router.setRootModule(view, hideBar: false)
     }
 }

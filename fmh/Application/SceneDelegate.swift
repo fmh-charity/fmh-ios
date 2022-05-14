@@ -14,12 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var rootController: UINavigationController {
         let navigationController = UINavigationController()
+        navigationController.view.backgroundColor = .accentColor
         navigationController.navigationBar.barStyle = .default
-        navigationController.navigationBar.backgroundColor = .init(named: "AccentColor")
-        navigationController.view.backgroundColor = .init(named: "AccentColor")
+        navigationController.navigationBar.backgroundColor = .accentColor
         navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
+           
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return window?.rootViewController as! UINavigationController
@@ -37,8 +37,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
  
         coordinator.start()
        
-        // KeyChain.standart.del(key: "accessToken")
-        // KeyChain.standart.del(key: "refreshToken")
+//         KeyChain.standart.del(key: "accessToken")
+//         KeyChain.standart.del(key: "refreshToken")
         
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.

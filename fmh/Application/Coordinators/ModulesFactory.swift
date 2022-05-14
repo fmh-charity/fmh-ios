@@ -10,22 +10,31 @@ import UIKit
 
 final class ModulesFactory {}
 
-// MARK: - AuthorizationFactoryProtocol
-extension ModulesFactory: AuthorizationFactoryProtocol {
-    func makeAuthorizationView() -> AuthorizationViewProtocol {
-        let viewController: AuthorizationViewController = AuthorizationViewController()
+// MARK: - LoadingModuleFactoryProtocol
+extension ModulesFactory: LoadingModuleFactoryProtocol {
+    func makeLoadingView() -> LoadingViewProtocol {
+        let viewController: LoadingViewController = LoadingViewController()
         
-        let repository: AuthRepositoryProtocol = AuthRepository()
-        
-        AuthorizationAssembly.assembly(with: viewController, repository: repository)
+        LoadingAssembly.assembly(with: viewController)
         return viewController
     }
 }
 
-// MARK: - MainFactoryProtocol
-extension ModulesFactory: MainFactoryProtocol {
+// MARK: - AuthorizationModuleFactoryProtocol
+extension ModulesFactory: AuthorizationModuleFactoryProtocol {
+    func makeAuthorizationView() -> AuthorizationViewProtocol {
+        let viewController: AuthorizationViewController = AuthorizationViewController()
+        
+        AuthorizationAssembly.assembly(with: viewController)
+        return viewController
+    }
+}
+
+// MARK: - MainModuleFactoryProtocol
+extension ModulesFactory: MainModuleFactoryProtocol {
     func makeMainView() -> MainViewProtocol {
         let viewController: MainViewController = MainViewController()
+
         MainAssembly.assembly(with: viewController)
         return viewController
     }
@@ -34,13 +43,13 @@ extension ModulesFactory: MainFactoryProtocol {
 
 // MARK: - Private methods
 private extension ModulesFactory {
-    func router(_ navController: UINavigationController?) -> Routable {
-        return Router(rootController: navigationController(navController))
-    }
-    
-    func navigationController(_ navController: UINavigationController?) -> UINavigationController {
-        return navController == nil ? UINavigationController() : UINavigationController()
-    }
+//    func router(_ navController: UINavigationController?) -> Routable {
+//        return Router(rootController: navigationController(navController))
+//    }
+//    
+//    func navigationController(_ navController: UINavigationController?) -> UINavigationController {
+//        return navController == nil ? UINavigationController() : UINavigationController()
+//    }
     
 //    func router(_ navController: UINavigationController?, in storyboard: Storyboards) -> Routable {
 //        return Router(rootController: navigationController(navController, in: storyboard))

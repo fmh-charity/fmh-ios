@@ -9,6 +9,7 @@ import Foundation
 
 protocol CoordinatorFactoryProtocol {
     
+    func makeLoadingCoordinator(router: Routable) -> Coordinatable & LoadingCoordinatorOutput
     func makeAuthorizationCoordinator(router: Routable) -> Coordinatable & AuthorizationCoordinatorOutput
     func makeMainCoordinator(router: Routable)          -> Coordinatable & MainCoordinatorOutput
     
