@@ -1,0 +1,18 @@
+!!! Если есть предложения - вносим
+
+!! Model-View-Presenter (MVP) <— Предлагаю использовать этот шаблон
+
+
+= СТРУКТУРА МОДУЛЯ =
+
+- Modules
+    - Module
+        - Controllers
+            - Views
+                - Elements
+            . Protocols.swift
+            . Presenter.swfift
+            . ViewController.swift
+            . .xib ( .storyboard ) <- ВЕРСТАКА КОДОМ (По результатам голосования)
+
+        
