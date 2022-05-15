@@ -26,11 +26,9 @@ class AuthorizationViewController: UIViewController {
             if isProcessing {
                 activityIndicator.isHidden = false
                 activityIndicator.startAnimating()
-                //activityView.layer.opacity = 0.3
             } else {
                 activityIndicator.isHidden = true
                 activityIndicator.stopAnimating()
-                //activityView.layer.opacity = 0.0
             }
         }
     }
@@ -54,19 +52,11 @@ class AuthorizationViewController: UIViewController {
         loginTF.delegate = self
         passwordTF.delegate = self
         loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideActivityView))
-        activityIndicator.addGestureRecognizer(tapGesture)
     }
     
     private func setupNotificationKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc private func hideActivityView() {
-        // Останавливаем запрос (таск) при необходимости
-        // isProcessing = false
     }
     
     @objc private func keyboardShow(notification: NSNotification) {
