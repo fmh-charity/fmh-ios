@@ -19,6 +19,7 @@ class OurMissionCell: UITableViewCell {
     private let descriptionLabel = UILabel()
     var isDescriptionLabelShown = false
     private var removableConstraints = [NSLayoutConstraint()]
+    private let arrowView = UIImageView()
     
     // MARK: - Configure
     override func prepareForReuse() {
@@ -71,7 +72,6 @@ class OurMissionCell: UITableViewCell {
         leafView.clipsToBounds = true
         leafView.image = UIImage(named: "LeafIcon")
         
-        let arrowView = UIImageView()
         cellView.addSubview(arrowView)
         arrowView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -145,9 +145,11 @@ class OurMissionCell: UITableViewCell {
         if isDescriptionLabelShown {
             NSLayoutConstraint.activate(removableConstraints)
             descriptionLabel.isHidden = false
+            arrowView.image = UIImage(systemName: "chevron.up")
         } else {
             NSLayoutConstraint.deactivate(removableConstraints)
             descriptionLabel.isHidden = true
+            arrowView.image = UIImage(systemName: "chevron.down")
         }
 //        touchDelegate?.cardTouched()
     }
