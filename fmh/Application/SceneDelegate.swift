@@ -34,8 +34,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //KeyChain.standart.clear()
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
- 
-        coordinator.start()
+        
+        window?.rootViewController = OurMissionViewController()
+        window?.makeKeyAndVisible()
+        
+//        coordinator.start()
        
         //KeyChain.standart.clear()
         

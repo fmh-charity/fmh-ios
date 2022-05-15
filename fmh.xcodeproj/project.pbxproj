@@ -60,6 +60,9 @@
 		19C7A52F280DED24005000EB /* ProjectDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A52E280DED24005000EB /* ProjectDiscription */; };
 		19C7A531280DED3B005000EB /* Guidelines in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A530280DED3B005000EB /* Guidelines */; };
 		19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE65C22821BD060095C2EE /* AuthorizationError.swift */; };
+		B27B5EB62831384000B1943E /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EB52831383F00B1943E /* OurMissionViewController.swift */; };
+		B27B5EB928314B7300B1943E /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EB828314B7300B1943E /* OurMissionCell.swift */; };
+		B27B5EBB28314D2C00B1943E /* OurMissionViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EBA28314D2C00B1943E /* OurMissionViewController+DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +121,9 @@
 		19C7A52E280DED24005000EB /* ProjectDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjectDiscription; sourceTree = "<group>"; };
 		19C7A530280DED3B005000EB /* Guidelines */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guidelines; sourceTree = "<group>"; };
 		19EE65C22821BD060095C2EE /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
+		B27B5EB52831383F00B1943E /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
+		B27B5EB828314B7300B1943E /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
+		B27B5EBA28314D2C00B1943E /* OurMissionViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OurMissionViewController+DataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +387,7 @@
 				19243E242829BDD000A43CA8 /* Main */,
 				19243E182829BAC500A43CA8 /* Authorization */,
 				191EAA67281BBAC6007B1397 /* ScreenLogin */,
+				B27B5EB028312DE700B1943E /* OurMission */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -406,6 +413,16 @@
 				19BD1A63281D703A00ED793A /* NetworkService.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B27B5EB028312DE700B1943E /* OurMission */ = {
+			isa = PBXGroup;
+			children = (
+				B27B5EB52831383F00B1943E /* OurMissionViewController.swift */,
+				B27B5EBA28314D2C00B1943E /* OurMissionViewController+DataSource.swift */,
+				B27B5EB828314B7300B1943E /* OurMissionCell.swift */,
+			);
+			path = OurMission;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,10 +503,12 @@
 			files = (
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
+				B27B5EB928314B7300B1943E /* OurMissionCell.swift in Sources */,
 				19243E262829BDED00A43CA8 /* MainCoordinator.swift in Sources */,
 				19243E1D2829BB9100A43CA8 /* AuthorizationAssemblable.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				191EAA73281BD256007B1397 /* Credentials.swift in Sources */,
+				B27B5EB62831384000B1943E /* OurMissionViewController.swift in Sources */,
 				19243E1A2829BAD600A43CA8 /* AuthorizationCoordinator.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
 				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
@@ -515,6 +534,7 @@
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19243E122829B47400A43CA8 /* MainFactoryProtocol.swift in Sources */,
+				B27B5EBB28314D2C00B1943E /* OurMissionViewController+DataSource.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
 				191EAA75281BD26A007B1397 /* TokenData.swift in Sources */,
 				19BD1A6D281DBA1F00ED793A /* LoginPresenter.swift in Sources */,
