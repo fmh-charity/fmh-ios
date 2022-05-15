@@ -9,5 +9,5 @@ import Foundation
 
 // MARK: - AutorizationModuleFactoryProtocol
 protocol AutorizationModuleFactoryProtocol {
-    func makeAuthorizationView() -> AuthorizationViewProtocol
+    
 }

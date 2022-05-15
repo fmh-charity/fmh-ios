@@ -23,36 +23,20 @@
 		19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243DE1282677BA00A43CA8 /* AuthRepository.swift */; };
 		19243DEC28293F7E00A43CA8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243DEB28293F7E00A43CA8 /* Service.swift */; };
 		19243DEE282946B400A43CA8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243DED282946B400A43CA8 /* Network.swift */; };
-		19243DF72829B12100A43CA8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243DF62829B12100A43CA8 /* Coordinator.swift */; };
 		19243E012829B28D00A43CA8 /* UIAlertController+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E002829B28D00A43CA8 /* UIAlertController+helper.swift */; };
-		19243E082829B3AA00A43CA8 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E072829B3AA00A43CA8 /* CoordinatorFactory.swift */; };
-		19243E0A2829B3D400A43CA8 /* CoordinatorFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E092829B3D400A43CA8 /* CoordinatorFactoryProtocol.swift */; };
-		19243E0C2829B40A00A43CA8 /* ModulesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E0B2829B40A00A43CA8 /* ModulesFactory.swift */; };
-		19243E1A2829BAD600A43CA8 /* AuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E192829BAD600A43CA8 /* AuthorizationCoordinator.swift */; };
-		19243E1D2829BB9100A43CA8 /* AuthorizationAssemblable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E1C2829BB9100A43CA8 /* AuthorizationAssemblable.swift */; };
 		19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E1E2829BBEB00A43CA8 /* AuthorizationPresenter.swift */; };
 		19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */; };
-		19243E262829BDED00A43CA8 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E252829BDED00A43CA8 /* MainCoordinator.swift */; };
 		19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */; };
-		19243E2B2829C06100A43CA8 /* MainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E2A2829C06100A43CA8 /* MainProtocols.swift */; };
-		19243E2D2829C0CB00A43CA8 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E2C2829C0CB00A43CA8 /* MainAssembly.swift */; };
-		19243E2F2829C0F700A43CA8 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E2E2829C0F700A43CA8 /* MainPresenter.swift */; };
-		19243E312829C15300A43CA8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E302829C15300A43CA8 /* MainViewController.swift */; };
-		19243E332829C30500A43CA8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E322829C30500A43CA8 /* Router.swift */; };
-		19243E352829C70E00A43CA8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E342829C70E00A43CA8 /* AppCoordinator.swift */; };
 		19243E372829C8B400A43CA8 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E362829C8B400A43CA8 /* AppSession.swift */; };
 		19243E3B282A418700A43CA8 /* CoordinatorDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 19243E3A282A418600A43CA8 /* CoordinatorDiscription */; };
 		19243E89282A6C4400A43CA8 /* UIViewController+Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E88282A6C4400A43CA8 /* UIViewController+Presentable.swift */; };
-		19243E8B282A6C9200A43CA8 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E8A282A6C9200A43CA8 /* Routable.swift */; };
-		1933EA2A282EFBAC00C8A21B /* ModuleFactoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA29282EFBAC00C8A21B /* ModuleFactoryProtocols.swift */; };
-		1933EA2C282EFFBB00C8A21B /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA2B282EFFBB00C8A21B /* Coordinatable.swift */; };
-		1933EA2E282EFFD500C8A21B /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA2D282EFFD500C8A21B /* Presentable.swift */; };
 		1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA32282F024C00C8A21B /* LoadingProtocols.swift */; };
-		1933EA35282F025D00C8A21B /* LoadingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA34282F025D00C8A21B /* LoadingAssembly.swift */; };
 		1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA36282F026800C8A21B /* LoadingPresenter.swift */; };
 		1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA38282F027B00C8A21B /* LoadingViewController.swift */; };
-		1933EA3B282F07DA00C8A21B /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA3A282F07DA00C8A21B /* LoadingCoordinator.swift */; };
 		193AA92E2811C890002CE474 /* ModuleDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 193AA92D2811C890002CE474 /* ModuleDiscription */; };
+		194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194220B328310AAE00A42F72 /* AuthInteractor.swift */; };
+		1964839B28304E6700B3B9FD /* GeneralViewController + UIMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964839A28304E6700B3B9FD /* GeneralViewController + UIMenu.swift */; };
+		1964839D2830502100B3B9FD /* GeneralViewController + UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964839C2830502100B3B9FD /* GeneralViewController + UIAlertController.swift */; };
 		19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BD1A61281D6AC300ED793A /* PListParser.swift */; };
 		19BD1A64281D703A00ED793A /* NetworkService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A63281D703A00ED793A /* NetworkService.plist */; };
 		19BD1A69281DB6F700ED793A /* ResponseStatusCodes in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A68281DB6F700ED793A /* ResponseStatusCodes */; };
@@ -63,10 +47,17 @@
 		19C7A52F280DED24005000EB /* ProjectDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A52E280DED24005000EB /* ProjectDiscription */; };
 		19C7A531280DED3B005000EB /* Guidelines in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A530280DED3B005000EB /* Guidelines */; };
 		19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB6F7D282C3CED00686A9C /* UIColor+.swift */; };
+		19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */; };
+		19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */; };
+		19EE351128306BA600DBD2E8 /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */; };
 		19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE65C22821BD060095C2EE /* AuthorizationError.swift */; };
 		19F509DB282FF7580082FB98 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DA282FF7580082FB98 /* GeneralViewController.swift */; };
 		19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DC282FF9930082FB98 /* ModuleFactory.swift */; };
 		19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */; };
+		19F509E2283003B20082FB98 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E1283003B20082FB98 /* Coordinator.swift */; };
+		19F509E42830040E0082FB98 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E32830040E0082FB98 /* LoadingCoordinator.swift */; };
+		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
+		19F509E9283017300082FB98 /* GeneralViewController + UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E8283017300082FB98 /* GeneralViewController + UIElements.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,36 +77,20 @@
 		19243DE1282677BA00A43CA8 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		19243DEB28293F7E00A43CA8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		19243DED282946B400A43CA8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		19243DF62829B12100A43CA8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		19243E002829B28D00A43CA8 /* UIAlertController+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+helper.swift"; sourceTree = "<group>"; };
-		19243E072829B3AA00A43CA8 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
-		19243E092829B3D400A43CA8 /* CoordinatorFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryProtocol.swift; sourceTree = "<group>"; };
-		19243E0B2829B40A00A43CA8 /* ModulesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesFactory.swift; sourceTree = "<group>"; };
-		19243E192829BAD600A43CA8 /* AuthorizationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationCoordinator.swift; sourceTree = "<group>"; };
-		19243E1C2829BB9100A43CA8 /* AuthorizationAssemblable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAssemblable.swift; sourceTree = "<group>"; };
 		19243E1E2829BBEB00A43CA8 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
-		19243E252829BDED00A43CA8 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationProtocols.swift; sourceTree = "<group>"; };
-		19243E2A2829C06100A43CA8 /* MainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocols.swift; sourceTree = "<group>"; };
-		19243E2C2829C0CB00A43CA8 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
-		19243E2E2829C0F700A43CA8 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
-		19243E302829C15300A43CA8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		19243E322829C30500A43CA8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		19243E342829C70E00A43CA8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		19243E362829C8B400A43CA8 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
 		19243E3A282A418600A43CA8 /* CoordinatorDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoordinatorDiscription; sourceTree = "<group>"; };
 		19243E88282A6C4400A43CA8 /* UIViewController+Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentable.swift"; sourceTree = "<group>"; };
-		19243E8A282A6C9200A43CA8 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
-		1933EA29282EFBAC00C8A21B /* ModuleFactoryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocols.swift; sourceTree = "<group>"; };
-		1933EA2B282EFFBB00C8A21B /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
-		1933EA2D282EFFD500C8A21B /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		1933EA32282F024C00C8A21B /* LoadingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocols.swift; sourceTree = "<group>"; };
-		1933EA34282F025D00C8A21B /* LoadingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAssembly.swift; sourceTree = "<group>"; };
 		1933EA36282F026800C8A21B /* LoadingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresenter.swift; sourceTree = "<group>"; };
 		1933EA38282F027B00C8A21B /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		1933EA3A282F07DA00C8A21B /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
 		193AA92D2811C890002CE474 /* ModuleDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ModuleDiscription; sourceTree = "<group>"; };
+		194220B328310AAE00A42F72 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		1964839A28304E6700B3B9FD /* GeneralViewController + UIMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralViewController + UIMenu.swift"; sourceTree = "<group>"; };
+		1964839C2830502100B3B9FD /* GeneralViewController + UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralViewController + UIAlertController.swift"; sourceTree = "<group>"; };
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
 		19BD1A63281D703A00ED793A /* NetworkService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NetworkService.plist; sourceTree = "<group>"; };
 		19BD1A68281DB6F700ED793A /* ResponseStatusCodes */ = {isa = PBXFileReference; lastKnownFileType = text; path = ResponseStatusCodes; sourceTree = "<group>"; };
@@ -128,10 +103,17 @@
 		19C7A530280DED3B005000EB /* Guidelines */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guidelines; sourceTree = "<group>"; };
 		19DB6F7D282C3CED00686A9C /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		19DB6F7F282C3FC800686A9C /* TestPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProtocols.swift; sourceTree = "<group>"; };
+		19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPresenter.swift; sourceTree = "<group>"; };
+		19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		19EE65C22821BD060095C2EE /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
 		19F509DA282FF7580082FB98 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		19F509DC282FF9930082FB98 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
+		19F509E1283003B20082FB98 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		19F509E32830040E0082FB98 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
+		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		19F509E8283017300082FB98 /* GeneralViewController + UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralViewController + UIElements.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,39 +165,6 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		19243DF52829B10300A43CA8 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				19243E342829C70E00A43CA8 /* AppCoordinator.swift */,
-				1933EA3A282F07DA00C8A21B /* LoadingCoordinator.swift */,
-				19243E192829BAD600A43CA8 /* AuthorizationCoordinator.swift */,
-				19243E252829BDED00A43CA8 /* MainCoordinator.swift */,
-				1933EA28282EFAEB00C8A21B /* Source */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		19243E042829B37800A43CA8 /* Factories */ = {
-			isa = PBXGroup;
-			children = (
-				19243E0B2829B40A00A43CA8 /* ModulesFactory.swift */,
-				19243E072829B3AA00A43CA8 /* CoordinatorFactory.swift */,
-			);
-			name = Factories;
-			sourceTree = "<group>";
-		};
-		19243E102829B46D00A43CA8 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				19243E092829B3D400A43CA8 /* CoordinatorFactoryProtocol.swift */,
-				1933EA29282EFBAC00C8A21B /* ModuleFactoryProtocols.swift */,
-				19243E8A282A6C9200A43CA8 /* Routable.swift */,
-				1933EA2B282EFFBB00C8A21B /* Coordinatable.swift */,
-				1933EA2D282EFFD500C8A21B /* Presentable.swift */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		19243E182829BAC500A43CA8 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,29 +179,8 @@
 				19EE65C22821BD060095C2EE /* AuthorizationError.swift */,
 				19243E382829D51200A43CA8 /* Views */,
 				19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */,
-				19243E1C2829BB9100A43CA8 /* AuthorizationAssemblable.swift */,
 				19243E1E2829BBEB00A43CA8 /* AuthorizationPresenter.swift */,
 				19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		19243E242829BDD000A43CA8 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				19243E272829BE2E00A43CA8 /* Controllers */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		19243E272829BE2E00A43CA8 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				19243E392829D52400A43CA8 /* Views */,
-				19243E2A2829C06100A43CA8 /* MainProtocols.swift */,
-				19243E2C2829C0CB00A43CA8 /* MainAssembly.swift */,
-				19243E2E2829C0F700A43CA8 /* MainPresenter.swift */,
-				19243E302829C15300A43CA8 /* MainViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -264,24 +192,6 @@
 				19064D83281FC86C006D8768 /* LoginView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		19243E392829D52400A43CA8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		1933EA28282EFAEB00C8A21B /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				19243DF62829B12100A43CA8 /* Coordinator.swift */,
-				19243E322829C30500A43CA8 /* Router.swift */,
-				19243E042829B37800A43CA8 /* Factories */,
-				19243E102829B46D00A43CA8 /* Protocols */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		1933EA2F282F018100C8A21B /* Loading */ = {
@@ -297,7 +207,6 @@
 			children = (
 				1933EA31282F01A500C8A21B /* Views */,
 				1933EA32282F024C00C8A21B /* LoadingProtocols.swift */,
-				1933EA34282F025D00C8A21B /* LoadingAssembly.swift */,
 				1933EA36282F026800C8A21B /* LoadingPresenter.swift */,
 				1933EA38282F027B00C8A21B /* LoadingViewController.swift */,
 			);
@@ -380,6 +289,7 @@
 		19C7A534280DED64005000EB /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
+				194220B328310AAE00A42F72 /* AuthInteractor.swift */,
 			);
 			path = DomainLayer;
 			sourceTree = "<group>";
@@ -403,9 +313,9 @@
 		19C7A537280DED81005000EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				19F509D9282FF72A0082FB98 /* Menu */,
+				19F509E72830169E0082FB98 /* Factory */,
+				19F509D9282FF72A0082FB98 /* General */,
 				1933EA2F282F018100C8A21B /* Loading */,
-				19243E242829BDD000A43CA8 /* Main */,
 				19243E182829BAC500A43CA8 /* Authorization */,
 			);
 			path = Modules;
@@ -419,7 +329,7 @@
 				19243E362829C8B400A43CA8 /* AppSession.swift */,
 				191EAA6B281BBE4C007B1397 /* APIError.swift */,
 				19C7A525280DECD3005000EB /* LaunchScreen.storyboard */,
-				19243DF52829B10300A43CA8 /* Coordinators */,
+				19F509E02830038D0082FB98 /* Coordinator */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -443,14 +353,45 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		19F509D9282FF72A0082FB98 /* Menu */ = {
+		19EE350F2830618500DBD2E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19F509E8283017300082FB98 /* GeneralViewController + UIElements.swift */,
+				1964839A28304E6700B3B9FD /* GeneralViewController + UIMenu.swift */,
+				1964839C2830502100B3B9FD /* GeneralViewController + UIAlertController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		19F509D9282FF72A0082FB98 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				19EE350F2830618500DBD2E8 /* Views */,
+				19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */,
+				19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */,
+				19F509DA282FF7580082FB98 /* GeneralViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		19F509E02830038D0082FB98 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				19F509E1283003B20082FB98 /* Coordinator.swift */,
+				19F509E528300C110082FB98 /* AppCoordinator.swift */,
+				19F509E32830040E0082FB98 /* LoadingCoordinator.swift */,
+				19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		19F509E72830169E0082FB98 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
 				19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */,
 				19F509DC282FF9930082FB98 /* ModuleFactory.swift */,
-				19F509DA282FF7580082FB98 /* GeneralViewController.swift */,
 			);
-			path = Menu;
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -529,42 +470,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
+				19EE351128306BA600DBD2E8 /* GeneralCoordinator.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
-				19243E262829BDED00A43CA8 /* MainCoordinator.swift in Sources */,
-				19243E1D2829BB9100A43CA8 /* AuthorizationAssemblable.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				191EAA73281BD256007B1397 /* Credentials.swift in Sources */,
-				19243E1A2829BAD600A43CA8 /* AuthorizationCoordinator.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
-				1933EA2E282EFFD500C8A21B /* Presentable.swift in Sources */,
 				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
 				19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */,
-				19243E312829C15300A43CA8 /* MainViewController.swift in Sources */,
-				19243E2D2829C0CB00A43CA8 /* MainAssembly.swift in Sources */,
-				19243E0A2829B3D400A43CA8 /* CoordinatorFactoryProtocol.swift in Sources */,
 				19243E89282A6C4400A43CA8 /* UIViewController+Presentable.swift in Sources */,
+				19F509E42830040E0082FB98 /* LoadingCoordinator.swift in Sources */,
+				1964839D2830502100B3B9FD /* GeneralViewController + UIAlertController.swift in Sources */,
 				19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */,
-				19243E0C2829B40A00A43CA8 /* ModulesFactory.swift in Sources */,
 				19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
-				1933EA2C282EFFBB00C8A21B /* Coordinatable.swift in Sources */,
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
-				19243E8B282A6C9200A43CA8 /* Routable.swift in Sources */,
+				19F509E9283017300082FB98 /* GeneralViewController + UIElements.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
+				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
-				19243E082829B3AA00A43CA8 /* CoordinatorFactory.swift in Sources */,
-				19243E2B2829C06100A43CA8 /* MainProtocols.swift in Sources */,
-				1933EA2A282EFBAC00C8A21B /* ModuleFactoryProtocols.swift in Sources */,
 				19F509DB282FF7580082FB98 /* GeneralViewController.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
-				1933EA3B282F07DA00C8A21B /* LoadingCoordinator.swift in Sources */,
-				19243DF72829B12100A43CA8 /* Coordinator.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
 				1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */,
-				1933EA35282F025D00C8A21B /* LoadingAssembly.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
 				1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */,
@@ -572,15 +503,16 @@
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				191EAA82281C3B48007B1397 /* RefreshToken.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
+				1964839B28304E6700B3B9FD /* GeneralViewController + UIMenu.swift in Sources */,
+				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
+				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
-				19243E332829C30500A43CA8 /* Router.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
-				19243E2F2829C0F700A43CA8 /* MainPresenter.swift in Sources */,
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
 				19243E012829B28D00A43CA8 /* UIAlertController+helper.swift in Sources */,
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
-				19243E352829C70E00A43CA8 /* AppCoordinator.swift in Sources */,
+				19F509E2283003B20082FB98 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

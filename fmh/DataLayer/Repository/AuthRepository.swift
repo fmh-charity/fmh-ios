@@ -10,8 +10,8 @@ import Combine
 
 protocol AuthRepositoryProtocol {
     
-    func login(login: String, password: String) -> AnyPublisher<Bool, APIError>
-    func refresh(_ refreshToken: String) -> AnyPublisher<Bool, APIError>
+    func login(login: String, password: String) -> AnyPublisher<TokenData, APIError>
+    func refresh(_ refreshToken: String) -> AnyPublisher<TokenData, APIError>
     func userInfo() -> AnyPublisher<UserInfo, APIError>
     
 }
@@ -29,22 +29,16 @@ class AuthRepository: Network {
 // MARK: - AuthRepositoryProtocol
 extension AuthRepository: AuthRepositoryProtocol {
     
-    func login(login: String, password: String) -> AnyPublisher<Bool, APIError> {
+    func login(login: String, password: String) -> AnyPublisher<TokenData, APIError> {
         return fetchDataPublisher(resource: resource.login(login: login, password: password))
-            .map({ tokenData in
-                AppSession.tokens = tokenData
-                return true
-            })
+            .map { $0 }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
     
-    func refresh(_ refreshToken: String) -> AnyPublisher<Bool, APIError> {
+    func refresh(_ refreshToken: String) -> AnyPublisher<TokenData, APIError> {
         return fetchDataPublisher(resource: resource.refresh(refreshToken))
-            .map({ tokenData in
-                AppSession.tokens = tokenData
-                return true
-            })
+            .map { $0 }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

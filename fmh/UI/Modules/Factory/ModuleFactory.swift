@@ -10,13 +10,9 @@ import Foundation
 final class ModuleFactory { }
 
 
-// MARK: -
+// MARK: - AutorizationModuleFactoryProtocol
 extension ModuleFactory: AutorizationModuleFactoryProtocol {
-    func makeAuthorizationView() -> AuthorizationViewProtocol {
-        let viewController: AuthorizationViewController = AuthorizationViewController()
-        
-        return viewController
-    }
+    
 }
 
 

@@ -17,7 +17,7 @@ final class LoadingPresenter {
 extension LoadingPresenter: LoadingPresenterInput {
     
     func isDisplayed() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.output?.hide()
         }
     }

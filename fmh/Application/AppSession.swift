@@ -6,7 +6,10 @@
 //
 
 import Foundation
-// TODO: Записхать в Network
+
+// TODO: Необходим Class и передавать его (т.к. на данный момент не сохраняется userInfo)
+// TODO: Передавать в Network ?
+
 struct AppSession {
     
     static var isAuthorized: Bool {
@@ -27,5 +30,13 @@ struct AppSession {
             KeyChain.standart.set(value: tokenData.refreshToken, forKey: "refreshToken")
         }
     }
+    
+    static var userInfo: UserInfo?
+    
+    static func logOut () {
+        KeyChain.standart.del(key: "accessToken")
+        KeyChain.standart.del(key: "refreshToken")
+    }
+    
     
 }

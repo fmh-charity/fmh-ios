@@ -10,49 +10,69 @@ import UIKit
 
 class GeneralViewController: UIViewController {
     
-    // var moduleFactory: MainModuleFactory?
+    var presenter: GeneralPresenterInput?
     
+    var moduleFactory = ModuleFactory()
+
+    weak var delegate: GeneralViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setNavigationBar()
         
         /// Default viewController
-        //showViewController(viewController: ViewController())
+        showViewController(viewController: UIViewController())
+    
     }
     
 }
 
 // MARK: - setNavigationBar
-fileprivate extension GeneralViewController {
+private extension GeneralViewController {
     
     func setNavigationBar() {
+
+        let menuButton = createBattonItem(
+            image: UIImage(systemName: "line.3.horizontal"),
+            selector: nil)
         
-        let menuButton = createBattonItem(imageName: "phone", selector: #selector(menuButtonTap))
+        let ourMissionButton = createBattonItem(
+            image: UIImage(named: "Butterfly.white"),
+            selector: #selector(ourMissionButtonTap))
+        
+        let userButton = createBattonItem(
+            image: UIImage(systemName: "person"),
+            selector: #selector(userButtonTap))
+
         navigationItem.setLeftBarButton(menuButton, animated: true)
-        
-        let userButton = createBattonItem(imageName: "phone", selector: #selector(userButtonTap))
-        let ourMissionButton = createBattonItem(imageName: "phone", selector: #selector(ourMissionButtonTap))
         navigationItem.rightBarButtonItems = [userButton, ourMissionButton]
-        
+
         let titleView = createTitleview()
         navigationItem.titleView = titleView
+        
+        menuButton.action = #selector(menuButtonTap)
+        if #available(iOS 14.0, *) {
+            //menuButton.menu = uiMenu()
+        } else {
+            menuButton.action = #selector(menuButtonTap)
+        }
         
     }
     
 }
 
 // MARK: - Selectors methods
-extension GeneralViewController {
+private extension GeneralViewController {
 
-    @objc func menuButtonTap () {}//{ showViewController(viewController: ViewController()) }
-    @objc func userButtonTap () {}//{ showViewController(viewController: ViewController()) }
-    @objc func ourMissionButtonTap () {}//{ showViewController(viewController: UIViewController()) }
+    @objc func menuButtonTap () { self.present(alertActionMenu(), animated: true) }
+    @objc func ourMissionButtonTap () { showViewController(viewController: UIViewController()) }
+    @objc func userButtonTap () { self.present(alertActionUser(), animated: true) }
     
 }
 
 // MARK: - Genaric method ShowViewController
-fileprivate extension GeneralViewController {
+extension GeneralViewController {
     
     func showViewController<T>(viewController: T) where T: UIViewController {
         /// Update current viewController
@@ -78,39 +98,9 @@ fileprivate extension GeneralViewController {
 
 }
 
-// MARK: - UI elements
-fileprivate extension GeneralViewController {
-    
-    func createTitleview() -> UIView {
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 150, height: 44)
-        
-        let imageLogo = UIImageView()
-        imageLogo.image = UIImage(named: "logo")
-        imageLogo.frame = .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 2) //view.frame.insetBy(dx: 0, dy: 2)
-        imageLogo.contentMode = .scaleAspectFit
-        
-        view.addSubview(imageLogo)
-       
-        return view
-    }
-    
-    func createBattonItem(imageName: String, selector: Selector) -> UIBarButtonItem {
-        
-        let button = UIButton(type: .system)
-        button.setImage(
-            UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate),
-            for: .normal)
-        button.tintColor = .white
-        button.imageView?.contentMode = .scaleAspectFit
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.addTarget(self, action: selector, for: .touchUpInside)
-        
-        let barBattonItem = UIBarButtonItem(customView: button)
-        return barBattonItem
-    }
-    
+// MARK: - Child operations
+extension GeneralViewController: GeneralPresenterOutput {
+
 }
 
 // MARK: - Child operations

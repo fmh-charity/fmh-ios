@@ -7,13 +7,12 @@
 
 import Foundation
 
-// MARK: - LoadingAssemblable
-protocol LoadingAssemblable: LoadingViewProtocol, LoadingPresenterOutput {}
 
 // MARK: - LoadingPresenterInput
 protocol LoadingPresenterInput: AnyObject {
     func isDisplayed()
 }
+
 
 // MARK: - LoadingPresenterOutput
 protocol LoadingPresenterOutput: AnyObject {
@@ -22,7 +21,7 @@ protocol LoadingPresenterOutput: AnyObject {
     func hide()
 }
 
-// MARK: - LoadingViewProtocol
-protocol LoadingViewProtocol: NSObjectProtocol, Presentable {
-    var onCompletion: CompletionBlock? { get set }
+// MARK: - LoadingViewControllerDelegate
+protocol LoadingViewControllerDelegate: AnyObject {
+    func onCompletion()
 }

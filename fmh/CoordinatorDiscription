@@ -3,16 +3,3 @@ Coordinator - Статья с описанием
 https://habr.com/ru/company/umbrellaitcom/blog/426507/
 https://codelabs.kmp.icerock.dev/codelabs/kmm-icerock-onboarding-2-ru/index.html?index=..%2F..index#5
 
-. AppCoordinator.swift
-- Coordinator
-    . CoordinatorProtocols.swift
-    . Coordinator.swift
-    . Router.swift
-    - Factories
-        . ModuleFactory.swift                       <-- Добавляем фабричные методы модулей
-        . CoordinatorFactory.swift                  <-- Добавляем фабричные методы координаторов
-        - Protocols                                 <-- Добавляем протоколы для модулей и координаторов
-            - Coordinator
-                . CoordinatorFactoryProtocol.sfift
-            - Modules
-                ModuleProtocol.swift

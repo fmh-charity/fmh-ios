@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-class LoadingViewController: UIViewController, LoadingAssemblable {
+class LoadingViewController: UIViewController {
 
     var presenter: LoadingPresenterInput?
     
-    var onCompletion: CompletionBlock?
+    weak var delegate: LoadingViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +35,8 @@ extension LoadingViewController {
 }
 
 // MARK: - EnterPresenterOutput
-extension LoadingViewController {
+extension LoadingViewController: LoadingPresenterOutput {
     func hide() {
-        onCompletion?()
+        delegate?.onCompletion()
     }
 }
