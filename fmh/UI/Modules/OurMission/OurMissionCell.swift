@@ -9,13 +9,15 @@ import UIKit
 
 class OurMissionCell: UITableViewCell {
 
+    // MARK: - Parameters
     static let identifier = "OurMissionReusableIdentifier"
+    var touchDelegate: OurMissionViewController?
     
-    private let cellView = UIView()
+    let cellView = UIView()
     private let taglineView = UIView()
     private let taglineLabel = UILabel()
     private let descriptionLabel = UILabel()
-    private var isDescriptionLabelShown = false
+    var isDescriptionLabelShown = false
     private var removableConstraints = [NSLayoutConstraint()]
     
     // MARK: - Configure
@@ -27,11 +29,11 @@ class OurMissionCell: UITableViewCell {
         descriptionLabel.text = nil
     }
     
-    func configure() {
-        taglineView.backgroundColor = UIColor(red: 1, green: 0.941, blue: 0.904, alpha: 1)
-        taglineLabel.text = "Хоспис для меня - \nэто то, каким должен быть мир."
-        taglineLabel.backgroundColor = UIColor(red: 1, green: 0.941, blue: 0.904, alpha: 1)
-        descriptionLabel.text = "\"Ну, идеальное устройство мира в моих глазах. Где никто не оценивает, никто не осудит, где говоришь, и тебя слышат, где, если страшно, тебя обнимут и возьмут за руку, а если холодно тебя согреют.” Юля Капис, волонтер"
+    func configure(cellData: ourMissionStruct) {
+        taglineView.backgroundColor = cellData.color
+        taglineLabel.text = cellData.tagline
+        taglineLabel.backgroundColor = cellData.color
+        descriptionLabel.text = cellData.more
         setupUI()
     }
     
@@ -125,8 +127,20 @@ class OurMissionCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+//
+//    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        isDescriptionLabelShown.toggle()
+//        if isDescriptionLabelShown {
+//            NSLayoutConstraint.activate(removableConstraints)
+//            descriptionLabel.isHidden = false
+//        } else {
+//            NSLayoutConstraint.deactivate(removableConstraints)
+//            descriptionLabel.isHidden = true
+//        }
+//    }
     
-    func cellTouched() {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isDescriptionLabelShown.toggle()
         if isDescriptionLabelShown {
             NSLayoutConstraint.activate(removableConstraints)
@@ -135,5 +149,6 @@ class OurMissionCell: UITableViewCell {
             NSLayoutConstraint.deactivate(removableConstraints)
             descriptionLabel.isHidden = true
         }
+//        touchDelegate?.cardTouched()
     }
 }

@@ -62,7 +62,6 @@
 		19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE65C22821BD060095C2EE /* AuthorizationError.swift */; };
 		B27B5EB62831384000B1943E /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EB52831383F00B1943E /* OurMissionViewController.swift */; };
 		B27B5EB928314B7300B1943E /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EB828314B7300B1943E /* OurMissionCell.swift */; };
-		B27B5EBB28314D2C00B1943E /* OurMissionViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EBA28314D2C00B1943E /* OurMissionViewController+DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,7 +122,6 @@
 		19EE65C22821BD060095C2EE /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
 		B27B5EB52831383F00B1943E /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
 		B27B5EB828314B7300B1943E /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
-		B27B5EBA28314D2C00B1943E /* OurMissionViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OurMissionViewController+DataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,7 +417,6 @@
 			isa = PBXGroup;
 			children = (
 				B27B5EB52831383F00B1943E /* OurMissionViewController.swift */,
-				B27B5EBA28314D2C00B1943E /* OurMissionViewController+DataSource.swift */,
 				B27B5EB828314B7300B1943E /* OurMissionCell.swift */,
 			);
 			path = OurMission;
@@ -534,7 +531,6 @@
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19243E122829B47400A43CA8 /* MainFactoryProtocol.swift in Sources */,
-				B27B5EBB28314D2C00B1943E /* OurMissionViewController+DataSource.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
 				191EAA75281BD26A007B1397 /* TokenData.swift in Sources */,
 				19BD1A6D281DBA1F00ED793A /* LoginPresenter.swift in Sources */,
