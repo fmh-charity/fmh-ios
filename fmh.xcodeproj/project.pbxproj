@@ -102,7 +102,6 @@
 		19C7A52E280DED24005000EB /* ProjectDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjectDiscription; sourceTree = "<group>"; };
 		19C7A530280DED3B005000EB /* Guidelines */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guidelines; sourceTree = "<group>"; };
 		19DB6F7D282C3CED00686A9C /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		19DB6F7F282C3FC800686A9C /* TestPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProtocols.swift; sourceTree = "<group>"; };
 		19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPresenter.swift; sourceTree = "<group>"; };
 		19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
@@ -232,7 +231,6 @@
 		19C7A50E280DECD0005000EB = {
 			isa = PBXGroup;
 			children = (
-				19DB6F7F282C3FC800686A9C /* TestPlayground.playground */,
 				19C7A519280DECD0005000EB /* fmh */,
 				19C7A518280DECD0005000EB /* Products */,
 			);
