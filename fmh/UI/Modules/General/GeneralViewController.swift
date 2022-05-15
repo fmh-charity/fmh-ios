@@ -33,8 +33,13 @@ private extension GeneralViewController {
     
     func setNavigationBar() {
 
+        var menuImageString = "line.horizontal.3"
+        if #available(iOS 15.0, *) {
+            menuImageString = "line.3.horizontal"
+        }
+        
         let menuButton = createBattonItem(
-            image: UIImage(systemName: "line.3.horizontal"),
+            image: UIImage(systemName: menuImageString),
             selector: nil)
         
         let ourMissionButton = createBattonItem(
@@ -51,9 +56,8 @@ private extension GeneralViewController {
         let titleView = createTitleview()
         navigationItem.titleView = titleView
         
-        menuButton.action = #selector(menuButtonTap)
         if #available(iOS 14.0, *) {
-            //menuButton.menu = uiMenu()
+            menuButton.menu = uiMenu()
         } else {
             menuButton.action = #selector(menuButtonTap)
         }

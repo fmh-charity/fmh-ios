@@ -13,12 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     var rootController: UINavigationController {
-        let navigationController = UINavigationController()
-        navigationController.view.backgroundColor = .accentColor
-        navigationController.navigationBar.barStyle = .default
-        navigationController.navigationBar.backgroundColor = .accentColor
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        let navigationController = self.getNavigationController()
            
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
@@ -70,5 +65,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
     }
+    
+}
+
+// MARK: - getNavigationController
+fileprivate extension SceneDelegate {
+
+        private func getNavigationController() -> UINavigationController {
+            
+            let navigationController = UINavigationController()
+            
+            let app = UINavigationBarAppearance()
+            app.titleTextAttributes = [.foregroundColor: UIColor.white]
+            app.backgroundColor = .accentColor
+            navigationController.navigationBar.compactAppearance = app
+            navigationController.navigationBar.standardAppearance = app
+            navigationController.navigationBar.scrollEdgeAppearance = app
+            navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            
+            return navigationController
+        }
     
 }

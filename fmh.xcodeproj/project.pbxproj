@@ -167,21 +167,13 @@
 		19243E182829BAC500A43CA8 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				19243E1B2829BB3B00A43CA8 /* Controllers */,
-			);
-			path = Authorization;
-			sourceTree = "<group>";
-		};
-		19243E1B2829BB3B00A43CA8 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				19EE65C22821BD060095C2EE /* AuthorizationError.swift */,
 				19243E382829D51200A43CA8 /* Views */,
+				19EE65C22821BD060095C2EE /* AuthorizationError.swift */,
 				19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */,
 				19243E1E2829BBEB00A43CA8 /* AuthorizationPresenter.swift */,
 				19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */,
 			);
-			path = Controllers;
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		19243E382829D51200A43CA8 /* Views */ = {
@@ -253,6 +245,7 @@
 				19243E3A282A418600A43CA8 /* CoordinatorDiscription */,
 				193AA92D2811C890002CE474 /* ModuleDiscription */,
 				19C7A538280DED98005000EB /* Application */,
+				19F509E02830038D0082FB98 /* Coordinator */,
 				19C7A533280DED59005000EB /* DataLayer */,
 				19C7A534280DED64005000EB /* DomainLayer */,
 				19C7A535280DED75005000EB /* UI */,
@@ -327,7 +320,6 @@
 				19243E362829C8B400A43CA8 /* AppSession.swift */,
 				191EAA6B281BBE4C007B1397 /* APIError.swift */,
 				19C7A525280DECD3005000EB /* LaunchScreen.storyboard */,
-				19F509E02830038D0082FB98 /* Coordinator */,
 			);
 			path = Application;
 			sourceTree = "<group>";
