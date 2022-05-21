@@ -8,6 +8,6 @@
 import Foundation
 
 // MARK: - AutorizationModuleFactoryProtocol
-protocol AutorizationModuleFactoryProtocol {
-    
+protocol ModuleFactoryProtocol {
+   
 }

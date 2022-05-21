@@ -9,21 +9,33 @@ import Foundation
 
 final class GeneralPresenter {
 
-    weak var output: GeneralPresenterOutput?
+    weak private var output: GeneralPresenterOutput?
     
-    var repository: AuthRepositoryProtocol?
+    var interactor: AuthInteractorProtocol?
+    
+    var isCompletion: (() -> ())?
+    
+    init(output: GeneralPresenterOutput) {
+        self.output = output
+    }
     
 }
 
 // MARK: - GeneralPresenterInput
 extension GeneralPresenter: GeneralPresenterInput {
     
-    func getUserInfo() {
-        
+    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void) {
+        interactor?.getUserInfo(completion: { userInfo, apiError in
+            if let userInfo = userInfo {
+                return completion(userInfo, nil)
+            }
+            return completion(nil, apiError)
+        })
     }
     
     func logOut() {
-        AppSession.logOut()
+        self.interactor?.logOut()
+        self.isCompletion?()
     }
     
 }

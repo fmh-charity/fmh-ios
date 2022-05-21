@@ -2,7 +2,7 @@
 //  GeneralViewController.swift
 //  fmh
 //
-//  Created: 14.05.2022
+//  Created: 21.05.2022
 //
 
 import Foundation
@@ -12,86 +12,111 @@ class GeneralViewController: UIViewController {
     
     var presenter: GeneralPresenterInput?
     
-    var moduleFactory = ModuleFactory()
-
-    weak var delegate: GeneralViewControllerDelegate?
-
+    private var isActiveMenu: Bool = false
+    private var contextNavigationController: UINavigationController?
+    
+    private lazy var menuViewController: GeneralMenuViewController = {
+        let menuViewController = GeneralMenuViewController()
+        
+        return menuViewController
+    }()
+    
+    private lazy var contextViewController: GeneralContextViewController = {
+        let viewController = GeneralContextViewController()
+        
+        return viewController
+    }()
+    
+    let testVC: UIViewController = {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .orange
+        vc.title = "TEST"
+        
+        return vc
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .lightGray
         
-        setNavigationBar()
-        
-        /// Default viewController
-        showViewController(viewController: UIViewController())
+        addChildViewControllers ()
+    }
     
+    private func addChildViewControllers () {
+        menuViewController.delegate = self
+        addChildViewController(menuViewController)
+        
+        //TODO: Нужно убрать navController? или этот рутовать просто виев этот
+        contextViewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: contextViewController)
+        addChildViewController(navigationController)
+        contextNavigationController = navigationController
     }
     
 }
 
-// MARK: - setNavigationBar
-private extension GeneralViewController {
+//MARK: - GeneralContextViewControllerDelegate
+extension GeneralViewController: GeneralContextViewControllerDelegate {
+    func didTapMenuButton() {
+        toggleMenu(completion: nil)
+    }
     
-    func setNavigationBar() {
-
-        var menuImageString = "line.horizontal.3"
-        if #available(iOS 15.0, *) {
-            menuImageString = "line.3.horizontal"
+    private func toggleMenu (completion: (() -> Void)?) {
+        switch isActiveMenu {
+        case false:
+            /// open
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) { [weak self] in
+                guard let context = self?.contextNavigationController else { return }
+                context.view.frame.origin.x = context.view.frame.size.width - 100
+            } completion: { [unowned self] done in
+                if done {
+                    self.isActiveMenu = true
+                }
+            }
+        case true:
+            /// close
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) { [weak self] in
+                guard let context = self?.contextNavigationController else { return }
+                context.view.frame.origin.x = 0
+            } completion: { [unowned self] done in
+                if done {
+                    self.isActiveMenu = false
+                    DispatchQueue.main.async {
+                        completion?()
+                    }
+                }
+            }
         }
-        
-        let menuButton = createBattonItem(
-            image: UIImage(systemName: menuImageString),
-            selector: nil)
-        
-        let ourMissionButton = createBattonItem(
-            image: UIImage(named: "Butterfly.white"),
-            selector: #selector(ourMissionButtonTap))
-        
-        let userButton = createBattonItem(
-            image: UIImage(systemName: "person"),
-            selector: #selector(userButtonTap))
-
-        navigationItem.setLeftBarButton(menuButton, animated: true)
-        navigationItem.rightBarButtonItems = [userButton, ourMissionButton]
-
-        let titleView = createTitleview()
-        navigationItem.titleView = titleView
-        
-        if #available(iOS 14.0, *) {
-            menuButton.menu = uiMenu()
-        } else {
-            menuButton.action = #selector(menuButtonTap)
-        }
-        
     }
     
 }
 
-// MARK: - Selectors methods
-private extension GeneralViewController {
-
-    @objc func menuButtonTap () { self.present(alertActionMenu(), animated: true) }
-    @objc func ourMissionButtonTap () { showViewController(viewController: UIViewController()) }
-    @objc func userButtonTap () { self.present(alertActionUser(), animated: true) }
-    
-}
-
-// MARK: - Genaric method ShowViewController
-extension GeneralViewController {
-    
-    func showViewController<T>(viewController: T) where T: UIViewController {
-        /// Update current viewController
-        guard !self.children.contains(viewController) else {
-            return
+//MARK: - GeneralMenuViewControllerDelegate
+extension GeneralViewController: GeneralMenuViewControllerDelegate {
+    func didSelect(_ menuItem: GeneralMenuViewController.MenuOptions) {
+        toggleMenu(completion: nil)
+        switch menuItem {
+        case .home:
+            setContextViewController(viewController: testVC)
+        case .other:
+            break
         }
-        /// Deleted all children viewControllers
-        for child in children {
-            child.removeChildFromParent()
+    }
+    
+    func setContextViewController<T>(viewController: T, removeOtherViewControllers: Bool = false) where T: UIViewController {
+        
+        guard !contextViewController.children.contains(viewController) else { return }
+        
+        if removeOtherViewControllers {
+            for child in contextViewController.children {
+                child.removeChildFromParent()
+            }
         }
-        /// Add viewController in self viewController
-        self.addChildViewController(viewController)
-        /// Constraints child viewController in parent viewController
+        
+        contextViewController.addChildViewController(viewController)
+        
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
-        let margins = self.view.layoutMarginsGuide
+        let margins = contextViewController.view.layoutMarginsGuide
         NSLayoutConstraint.activate([
             viewController.view.topAnchor.constraint(equalTo: margins.topAnchor),
             viewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -99,18 +124,23 @@ extension GeneralViewController {
             viewController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
-
+    
 }
 
-// MARK: - Child operations
+// MARK: - GeneralPresenterOutput
 extension GeneralViewController: GeneralPresenterOutput {
-
+    
 }
 
-// MARK: - Child operations
+// MARK: - UIViewController + add/remove childs viewControllers
 fileprivate extension UIViewController {
     
     func addChildViewController(_ child: UIViewController) {
+        navigationItem.title  = child.navigationItem.title
+        navigationItem.prompt = child.navigationItem.prompt
+        navigationItem.titleView = child.navigationItem.titleView
+        navigationItem.rightBarButtonItems = child.navigationItem.rightBarButtonItems
+        
         addChild(child)
         view.addSubview(child.view)
         child.didMove(toParent: self)
@@ -122,5 +152,4 @@ fileprivate extension UIViewController {
         view.removeFromSuperview()
         removeFromParent()
     }
-    
 }

@@ -1,36 +1,42 @@
 //
-//  GeneralCoordinator.swift
+//  AutorozationCoordinatror.swift
 //  fmh
 //
-//  Created: 15.05.2022
+//  Created: 20.05.2022
 //
+
+///                       AutorozationCoordinatror
+///                                |
+///         ----------------------------------------------
+///         |                                                  |                                                  |
+///  LoginViewController                                  ?                                                 ?
 
 import Foundation
 import UIKit
 
-final class GeneralCoordinator: BaseCoordinator {
+final class AutorozationCoordinatror: BaseCoordinator {
     
     fileprivate unowned let navigationController: UINavigationController
-     
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         super.init()
     }
     
     override func start() {
-        mainFlow()
+        loginFlow()
     }
-
+    
 }
 
 // MARK: - Navigation flows
-extension GeneralCoordinator {
+extension AutorozationCoordinatror {
     
-    func mainFlow() {
+    func loginFlow() {
         let repository: AuthRepositoryProtocol = AuthRepository()
         let interactor: AuthInteractorProtocol = AuthInteractor(repository: repository)
-        let viewController = GeneralViewController()
-        let presenter  = GeneralPresenter(output: viewController)
+        let viewController = AuthorizationViewController()
+        let presenter  = AuthorizationPresenter(output: viewController)
         
         presenter.interactor = interactor
         viewController.presenter = presenter
@@ -44,4 +50,3 @@ extension GeneralCoordinator {
     }
     
 }
-

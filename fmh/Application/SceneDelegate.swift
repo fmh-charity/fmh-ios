@@ -20,7 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return window?.rootViewController as! UINavigationController
     }
 
-    fileprivate lazy var coordinator = AppCoordinator(navigationController: rootController)
+    fileprivate lazy var coordinator: AppCoordinator = {
+       
+        return AppCoordinator(navigationController: rootController)
+    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -29,8 +32,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //KeyChain.standart.clear()
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
- 
-        coordinator.start()
+        //AppSession.logOut()
+        //coordinator.start()
+        let nVC = UINavigationController(rootViewController: GeneralViewController())
+        window?.rootViewController = GeneralViewController()
+        window?.makeKeyAndVisible()
         
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.

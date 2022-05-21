@@ -10,14 +10,16 @@ import Combine
 
 final class AuthorizationPresenter {
     
-    weak var output: AuthorizationPresenterOutput?
+    weak private var output: AuthorizationPresenterOutput?
     
-    // MARK: - Private vars
-    private var interactor: AuthInteractorProtocol
+    var interactor: AuthInteractorProtocol?
+    
     private var anyCancellable = Set<AnyCancellable>()
     
-    init(interactor: AuthInteractorProtocol) {
-        self.interactor = interactor
+    var isCompletion: (() -> ())?
+    
+    init(output: AuthorizationPresenterOutput) {
+        self.output = output
     }
     
 }
@@ -27,7 +29,7 @@ extension AuthorizationPresenter: AuthorizationPresenterInput {
     
     func login(login: String, password: String, completion: @escaping (UserInfo?, AuthorizationError?) -> Void ) {
         
-        interactor.login(login: login, password:  password) { userInfo, apiError in
+        interactor?.login(login: login, password:  password) { userInfo, apiError in
             
             if let apiError = apiError {
                 // TODO: Добавить расшифровку ошибок на русском. (AuthError)
@@ -47,6 +49,7 @@ extension AuthorizationPresenter: AuthorizationPresenterInput {
             
             if let userInfo = userInfo {
                 completion(userInfo, nil)
+                self.isCompletion?()
             }
         }
 

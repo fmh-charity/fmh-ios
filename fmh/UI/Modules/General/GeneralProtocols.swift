@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - GeneralPresenterInput
 protocol GeneralPresenterInput: AnyObject {
-    func getUserInfo ()
+    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void)
     func logOut ()
 }
 
@@ -17,6 +17,7 @@ protocol GeneralPresenterInput: AnyObject {
 // MARK: - GeneralPresenterOutput
 protocol GeneralPresenterOutput: AnyObject {
     var presenter: GeneralPresenterInput? { get set }
+
 }
 
 // MARK: - GeneralViewControllerDelegate

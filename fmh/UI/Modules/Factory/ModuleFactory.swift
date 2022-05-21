@@ -10,8 +10,9 @@ import Foundation
 final class ModuleFactory { }
 
 
-// MARK: - AutorizationModuleFactoryProtocol
-extension ModuleFactory: AutorizationModuleFactoryProtocol {
+// MARK: - ModuleFactoryProtocol
+extension ModuleFactory: ModuleFactoryProtocol {
+    
     
 }
 
