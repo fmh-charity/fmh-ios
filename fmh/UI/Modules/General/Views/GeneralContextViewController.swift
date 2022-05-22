@@ -19,7 +19,7 @@ class GeneralContextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Home"
+        //title = "Context view controller"
         
         var menuImageString = "line.horizontal.3"
         if #available(iOS 15.0, *) {
@@ -28,7 +28,7 @@ class GeneralContextViewController: UIViewController {
         
         let menuButton = UIBarButtonItem(image: UIImage(systemName: menuImageString),
                                          style: .done, target: self, action: #selector(menuTap))
-        //menuButton.tintColor = .white
+        menuButton.tintColor = .white
         navigationItem.leftBarButtonItem = menuButton
     }
     

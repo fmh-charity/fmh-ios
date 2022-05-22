@@ -344,10 +344,10 @@
 		19EE350F2830618500DBD2E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */,
-				1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */,
 				1968410D2839240E008F294F /* GeneralMenuViewController.swift */,
 				1968411128395223008F294F /* GeneralContextViewController.swift */,
+				1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */,
+				1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

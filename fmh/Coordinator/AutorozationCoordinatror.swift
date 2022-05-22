@@ -16,7 +16,7 @@ import UIKit
 
 final class AutorozationCoordinatror: BaseCoordinator {
     
-    fileprivate unowned let navigationController: UINavigationController
+    private let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

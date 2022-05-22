@@ -11,30 +11,15 @@ import UIKit
 class GeneralViewController: UIViewController {
     
     var presenter: GeneralPresenterInput?
+    var contextNavigationController: UINavigationController?
     
     private var isActiveMenu: Bool = false
-    private var contextNavigationController: UINavigationController?
+    private var menuViewController = GeneralMenuViewController()
+    private var contextViewController = GeneralContextViewController()
     
-    private lazy var menuViewController: GeneralMenuViewController = {
-        let menuViewController = GeneralMenuViewController()
-        
-        return menuViewController
-    }()
-    
-    private lazy var contextViewController: GeneralContextViewController = {
-        let viewController = GeneralContextViewController()
-        
-        return viewController
-    }()
-    
-    let testVC: UIViewController = {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .orange
-        vc.title = "TEST"
-        
-        return vc
-    }()
-    
+    /// Тут добавляем дочернии ViewController
+    // var mainViewController = MainViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .lightGray
@@ -43,14 +28,21 @@ class GeneralViewController: UIViewController {
     }
     
     private func addChildViewControllers () {
+        guard let contextNavigation = contextNavigationController else {
+            // TODO: Выводить экран заглушку
+            return
+        }
+        /// Добавляем меню
         menuViewController.delegate = self
         addChildViewController(menuViewController)
         
-        //TODO: Нужно убрать navController? или этот рутовать просто виев этот
+        /// Добавляем основно контейнер (где отображаются ViewControllers)
         contextViewController.delegate = self
-        let navigationController = UINavigationController(rootViewController: contextViewController)
-        addChildViewController(navigationController)
-        contextNavigationController = navigationController
+        contextNavigation.setViewControllers([contextViewController], animated: false)
+        addChildViewController(contextNavigation)
+        
+        /// По умолчанию ViewController
+        //setContextViewController(viewController: vc)
     }
     
 }
@@ -68,6 +60,8 @@ extension GeneralViewController: GeneralContextViewControllerDelegate {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) { [weak self] in
                 guard let context = self?.contextNavigationController else { return }
                 context.view.frame.origin.x = context.view.frame.size.width - 100
+                //TODO: Добавить обработчик нажатия и притемнять
+                
             } completion: { [unowned self] done in
                 if done {
                     self.isActiveMenu = true
@@ -93,17 +87,21 @@ extension GeneralViewController: GeneralContextViewControllerDelegate {
 
 //MARK: - GeneralMenuViewControllerDelegate
 extension GeneralViewController: GeneralMenuViewControllerDelegate {
+    
     func didSelect(_ menuItem: GeneralMenuViewController.MenuOptions) {
         toggleMenu(completion: nil)
         switch menuItem {
-        case .home:
-            setContextViewController(viewController: testVC)
-        case .other:
-            break
+        case .home: break
+            //setContextViewController(viewController: vc)
+        default: break
         }
     }
-    
-    func setContextViewController<T>(viewController: T, removeOtherViewControllers: Bool = false) where T: UIViewController {
+
+}
+
+//MARK: - setContextViewController
+extension GeneralViewController {
+    private func setContextViewController<T>(viewController: T, removeOtherViewControllers: Bool = false) where T: UIViewController {
         
         guard !contextViewController.children.contains(viewController) else { return }
         
@@ -114,17 +112,16 @@ extension GeneralViewController: GeneralMenuViewControllerDelegate {
         }
         
         contextViewController.addChildViewController(viewController)
-        
-        viewController.view.translatesAutoresizingMaskIntoConstraints = false
-        let margins = contextViewController.view.layoutMarginsGuide
-        NSLayoutConstraint.activate([
-            viewController.view.topAnchor.constraint(equalTo: margins.topAnchor),
-            viewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            viewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            viewController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
+        viewController.view.frame = contextViewController.view.bounds
+        //viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        //let margins = contextViewController.view.layoutMarginsGuide
+//        NSLayoutConstraint.activate([
+//            viewController.view.topAnchor.constraint(equalTo: margins.topAnchor),
+//            viewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+//            viewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+//            viewController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+//        ])
     }
-    
 }
 
 // MARK: - GeneralPresenterOutput

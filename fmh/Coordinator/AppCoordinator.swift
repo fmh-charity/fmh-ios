@@ -16,11 +16,12 @@ import UIKit
 
 final class AppCoordinator: BaseCoordinator {
     
-    fileprivate unowned let navigationController: UINavigationController
+    private let window: UIWindow
+    private let rootNavigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-        super.init()
+    init(navigationController: UINavigationController, window: UIWindow) {
+        self.rootNavigationController = navigationController
+        self.window = window
     }
     
     override func start() {
@@ -52,29 +53,30 @@ extension AppCoordinator {
             self.selectFlow()
         }
         
-        navigationController.viewControllers = [viewController]
-        navigationController.isNavigationBarHidden = true
+        window.rootViewController = viewController
     }
     
     /// Show autorization coordinator
     func autorizationFlow() {
-        let coordinator = AutorozationCoordinatror(navigationController: navigationController)
-        
+        let coordinator = AutorozationCoordinatror(navigationController: rootNavigationController)
+
         childAppend(coordinator)
         coordinator.start()
-        
+
         coordinator.isCompletion = { [unowned self, unowned coordinator] in
             self.childRemove(coordinator)
             self.selectFlow()
         }
+        
+        window.rootViewController = rootNavigationController
     }
     /// Show general coordinator
     func generalFlow() {
-        let coordinator = GeneralCoordinator(navigationController: navigationController)
-        
+        let coordinator = GeneralCoordinator(window: window, navigationController: rootNavigationController)
+
         childAppend(coordinator)
         coordinator.start()
-        
+
         coordinator.isCompletion = { [unowned self, unowned coordinator] in
             self.childRemove(coordinator)
             self.selectFlow()

@@ -10,9 +10,11 @@ import UIKit
 
 final class GeneralCoordinator: BaseCoordinator {
     
-    fileprivate unowned let navigationController: UINavigationController
+    private let window: UIWindow
+    private let navigationController: UINavigationController
      
-    init(navigationController: UINavigationController) {
+    init(window: UIWindow, navigationController: UINavigationController) {
+        self.window = window
         self.navigationController = navigationController
         super.init()
     }
@@ -34,13 +36,13 @@ extension GeneralCoordinator {
         
         presenter.interactor = interactor
         viewController.presenter = presenter
+        viewController.contextNavigationController = navigationController
         
         presenter.isCompletion = { [unowned self] in
             self.isCompletion?()
         }
         
-        navigationController.setViewControllers([viewController], animated: false)
-        navigationController.isNavigationBarHidden = false
+        window.rootViewController = viewController
     }
     
 }
