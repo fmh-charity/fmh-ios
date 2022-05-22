@@ -118,6 +118,10 @@ extension OurMissionViewController: UITableViewDataSource {
         dataArray.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OurMissionCell.identifier, for: indexPath) as! OurMissionCell
         
@@ -129,13 +133,18 @@ extension OurMissionViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = customTableView.cellForRow(at: indexPath) as! OurMissionCell
+        customTableView.beginUpdates()
         if cell.isDescriptionLabelShown {
-            
+            cell.descriptionLabel.isHidden = false
         } else {
 //            cell.touchedkj()
+            cell.descriptionLabel.isHidden = true
         }
 //        customTableView.insertRows(at: [indexPath], with: .none)
         cell.isDescriptionLabelShown.toggle()
+        customTableView.endUpdates()
+        
+//        tableView(customTableView, heightForRowAt: UITableView.automaticDimension)
     }
 }
 
