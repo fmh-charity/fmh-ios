@@ -35,12 +35,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         
-        window?.rootViewController = OurMissionViewController()
-        window?.makeKeyAndVisible()
+//        window?.rootViewController = OurMissionViewController()
+//        window?.makeKeyAndVisible()
         
-//        coordinator.start()
+        coordinator.start()
        
-        //KeyChain.standart.clear()
+        KeyChain.standart.clear()
         
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.

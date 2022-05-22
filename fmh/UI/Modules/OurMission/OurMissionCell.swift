@@ -11,16 +11,28 @@ class OurMissionCell: UITableViewCell {
 
     // MARK: - Parameters
     static let identifier = "OurMissionReusableIdentifier"
-    var touchDelegate: OurMissionViewController?
     
-    let cellView = UIView()
+    private let cellView = UIView()
+    
     private let stackView = UIStackView()
+    
     private let taglineView = UIView()
     private let taglineLabel = UILabel()
-     let descriptionLabel = UILabel()
-    var isDescriptionLabelShown = false
-    private var removableConstraints = [NSLayoutConstraint()]
+    
+    private let descriptionLabel = UILabel()
     private let arrowView = UIImageView()
+    
+    var isDescriptionHidden = true {
+        willSet {
+            if newValue == false {
+                descriptionLabel.isHidden = false
+                arrowView.image = UIImage(systemName: "chevron.up")
+            } else {
+                descriptionLabel.isHidden = true
+                arrowView.image = UIImage(systemName: "chevron.down")
+            }
+        }
+    }
     
     // MARK: - Configure
     override func prepareForReuse() {
@@ -36,6 +48,7 @@ class OurMissionCell: UITableViewCell {
         taglineLabel.text = cellData.tagline
         taglineLabel.backgroundColor = cellData.color
         descriptionLabel.text = cellData.more
+        isDescriptionHidden = cellData.isHidden
         setupUI()
     }
     
@@ -94,21 +107,10 @@ class OurMissionCell: UITableViewCell {
         stackView.clipsToBounds = true
         stackView.layer.cornerRadius = 5
         stackView.axis = .vertical
-//        stackView.distribution = .fill
-//        stackView.alignment = .center
+        stackView.distribution = .fill
         stackView.spacing = 9
         
         stackView.addArrangedSubview(taglineView)
-//        stackView.addSubview(taglineView)
-//        taglineView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            taglineView.centerXAnchor.constraint(equalTo: cellView.centerXAnchor),
-//            taglineView.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 9),
-//            taglineView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 33),
-//            taglineView.bottomAnchor.constraint(lessThanOrEqualTo: cellView.bottomAnchor, constant: -9)
-//        ])
-//        taglineView.clipsToBounds = true
-//        taglineView.layer.cornerRadius = 5
         
         taglineView.addSubview(taglineLabel)
         taglineLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -123,53 +125,15 @@ class OurMissionCell: UITableViewCell {
         taglineLabel.lineBreakMode = .byWordWrapping
         
         stackView.addArrangedSubview(descriptionLabel)
-//        cellView.addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.clipsToBounds = true
         descriptionLabel.font = UIFont.systemFont(ofSize: 13)
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
-        descriptionLabel.isHidden = true
-        
-//        removableConstraints = [
-//            descriptionLabel.centerXAnchor.constraint(equalTo: cellView.centerXAnchor),
-//            descriptionLabel.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 9),
-//            descriptionLabel.topAnchor.constraint(equalTo: taglineView.bottomAnchor, constant: 9),
-//            descriptionLabel.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -9)
-//        ]
-//
-//        NSLayoutConstraint.deactivate(removableConstraints)
-//        descriptionLabel.isHidden = true
     }
 
     // MARK: - Actions
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        isDescriptionLabelShown.toggle()
-//        if isDescriptionLabelShown {
-////            NSLayoutConstraint.activate(removableConstraints)
-//            descriptionLabel.isHidden = false
-//        } else {
-////            NSLayoutConstraint.deactivate(removableConstraints)
-//            descriptionLabel.isHidden = true
-//        }
-//    }
-    
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        isDescriptionLabelShown.toggle()
-//        if isDescriptionLabelShown {
-////            NSLayoutConstraint.activate(removableConstraints)
-//            descriptionLabel.isHidden = false
-//            arrowView.image = UIImage(systemName: "chevron.up")
-//        } else {
-////            NSLayoutConstraint.deactivate(removableConstraints)
-//            descriptionLabel.isHidden = true
-//            arrowView.image = UIImage(systemName: "chevron.down")
-//        }
-////        touchDelegate?.cardTouched()
-//    }
 }
