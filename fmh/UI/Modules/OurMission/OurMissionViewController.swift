@@ -74,7 +74,7 @@ class OurMissionViewController: UIViewController {
         view.addSubview(taglineView)
         taglineView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            taglineView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60), //fix
+            taglineView.topAnchor.constraint(equalTo: view.topAnchor),
             taglineView.leftAnchor.constraint(equalTo: view.leftAnchor),
             taglineView.rightAnchor.constraint(equalTo: view.rightAnchor),
             taglineView.heightAnchor.constraint(equalToConstant: 68)
