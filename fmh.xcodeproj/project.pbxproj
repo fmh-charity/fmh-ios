@@ -58,7 +58,8 @@
 		19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */; };
 		19F509E2283003B20082FB98 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E1283003B20082FB98 /* Coordinator.swift */; };
 		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
-
+		19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */; };
+		19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,7 +115,8 @@
 		19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
 		19F509E1283003B20082FB98 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-
+		19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
+		19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 		19C7A537280DED81005000EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				19F91BC5283D483A00AB6C6B /* OurMission */,
 				19F509E72830169E0082FB98 /* Factory */,
 				1933EA2F282F018100C8A21B /* Loading */,
 				19243E182829BAC500A43CA8 /* Autorization */,
@@ -384,6 +387,15 @@
 				19F509DC282FF9930082FB98 /* ModuleFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		19F91BC5283D483A00AB6C6B /* OurMission */ = {
+			isa = PBXGroup;
+			children = (
+				19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */,
+				19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */,
+			);
+			path = OurMission;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,12 +510,14 @@
 				1968410E2839240E008F294F /* GeneralMenuViewController.swift in Sources */,
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
 				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
+				19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
 				196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */,
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
+				19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */,
 				19F509E2283003B20082FB98 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
