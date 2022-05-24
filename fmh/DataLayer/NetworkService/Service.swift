@@ -24,7 +24,9 @@ extension Service {
     func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, APIError> {
         return fetchPublisher (request: request)
             .decode(type: T.self, decoder: JSONDecoder())
-            .mapError { error in error as! APIError }
+            .mapError { error in
+                return error as? APIError ?? .JSONDecoderError(error)
+            }
             .eraseToAnyPublisher()
     }
     
@@ -38,7 +40,7 @@ extension Service {
                 return data
             })
             .mapError { error in
-                error as! APIError
+                return error as? APIError ?? .URLRequestError(error)
             }
             .eraseToAnyPublisher()
     }

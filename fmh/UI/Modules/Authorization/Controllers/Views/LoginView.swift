@@ -29,7 +29,7 @@ class LoginView: UIView {
     
     private func setBackground () {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Background")
+        imageView.image = UIImage(named: "BackGround")
         imageView.contentMode = .scaleToFill
         self.addSubview(imageView)
         self.sendSubviewToBack(imageView)
@@ -93,7 +93,7 @@ class LoginView: UIView {
     }
     
     // MARK: - Elements
-    private var stack: UIStackView = {
+    lazy private var stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .fill
@@ -104,34 +104,34 @@ class LoginView: UIView {
         return stack
     }()
     
-    var loginTF: LoginTextfield = {
+    lazy var loginTF: LoginTextfield = {
         let textField = LoginTextfield()
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
     }()
     
-    var passwordTF: PasswordTextfield = {
+    lazy var passwordTF: PasswordTextfield = {
         let textField = PasswordTextfield()
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
     }()
     
-    var loginButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .init(named: "AccentColor")
+        button.backgroundColor = .accentColor
         button.layer.cornerRadius = 5.0
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
-    var activityIndicator : UIActivityIndicatorView = {
+    lazy var activityIndicator : UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = .init(named: "AccentColor")
+        activityIndicator.color = .accentColor
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         return activityIndicator

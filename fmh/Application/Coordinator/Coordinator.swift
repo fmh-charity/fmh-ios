@@ -2,34 +2,17 @@
 //  Coordinator.swift
 //  fmh
 //
-//  Created: 09.05.2022
+//  Created: 14.05.2022
 //
 
 import Foundation
+import UIKit
 
-class Coordinator {
+protocol Coordinator : AnyObject {
+
+    var childCoordinators: [Coordinator] { get set }
     
-    var childCoordinators: [Coordinatable] = []
-        
-    func addDependency(_ coordinator: Coordinatable) {
-        for element in childCoordinators {
-            if element === coordinator { return }
-        }
-        childCoordinators.append(coordinator)
-    }
-    
-    func removeDependency(_ coordinator: Coordinatable?) {
-        guard
-            childCoordinators.isEmpty == false,
-            let coordinator = coordinator
-            else { return }
-        
-        for (index, element) in childCoordinators.enumerated() {
-            if element === coordinator {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
-    }
-    
+    init(navigationController:UINavigationController)
+
+    func start()
 }

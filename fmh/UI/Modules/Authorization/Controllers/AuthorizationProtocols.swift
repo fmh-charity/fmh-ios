@@ -7,22 +7,20 @@
 
 import Foundation
 
-// MARK: - AuthorizationAssemblable
-protocol AuthorizationAssemblable: AuthorizationViewProtocol, AuthorizationPresenterOutput {}
 
 // MARK: - AuthorizationPresenterInput
 protocol AuthorizationPresenterInput: AnyObject {
-    func login(login: String, password: String, completion: @escaping (AuthorizationError?) -> Void )
+    func login(login: String, password: String, completion: @escaping (UserInfo?, AuthorizationError?) -> Void )
 }
+
 
 // MARK: - AuthorizationPresenterOutput
 protocol AuthorizationPresenterOutput: AnyObject {
     var presenter: AuthorizationPresenterInput? { get set }
-    
-    func signInOk()
 }
 
-// MARK: - AuthorizationViewProtocol
-protocol AuthorizationViewProtocol: NSObjectProtocol, Presentable {
-    var onCompletion: CompletionBlock? { get set }
+
+// MARK: - AuthorizationViewControllerDelegate
+protocol AuthorizationViewControllerDelegate: AnyObject {
+    func signInOk()
 }

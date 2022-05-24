@@ -41,7 +41,7 @@ class LoginTextfield: UITextField {
         autocorrectionType = .no
         keyboardType = .default
         returnKeyType = .next
-        placeholder = "Логин"
+        placeholder = "userName@mail.ru"
         
         leftView = leftImageView
         leftViewMode = .always
@@ -49,7 +49,7 @@ class LoginTextfield: UITextField {
     }
     
     // MARK: - Elements
-    private var leftImageView: UIImageView = {
+    lazy private var leftImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = .lightGray
         imageView.image = UIImage(systemName: "person")

@@ -70,7 +70,7 @@ class PasswordTextfield: UITextField {
     }
     
     // MARK: - Elements
-    private var leftImageView: UIImageView = {
+    lazy private var leftImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = .lightGray
         imageView.image = UIImage(systemName: "lock")
@@ -79,7 +79,7 @@ class PasswordTextfield: UITextField {
         return imageView
     }()
 
-    private var rightButtonView: UIButton = {
+    lazy private var rightButtonView: UIButton = {
         let button = UIButton(type: .custom)
         button.tintColor = .lightGray
         let image = UIImage(systemName: "eye.slash")

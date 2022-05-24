@@ -14,18 +14,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var rootController: UINavigationController {
         let navigationController = UINavigationController()
+        navigationController.view.backgroundColor = .accentColor
         navigationController.navigationBar.barStyle = .default
-        navigationController.navigationBar.backgroundColor = .init(named: "AccentColor")
-        navigationController.view.backgroundColor = .init(named: "AccentColor")
+        navigationController.navigationBar.backgroundColor = .accentColor
         navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
+           
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return window?.rootViewController as! UINavigationController
     }
 
-    fileprivate lazy var coordinator: Coordinatable = self.makeCoordinator()
+    fileprivate lazy var coordinator = AppCoordinator(navigationController: rootController)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -39,8 +39,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.makeKeyAndVisible()
         
         coordinator.start()
-       
-//        KeyChain.standart.clear()
         
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.
@@ -73,13 +71,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-}
-
-// MARK: - Private methods
-private extension SceneDelegate {
-    func makeCoordinator() -> Coordinatable {
-        return AppCoordinator(router: Router(rootController: rootController),
-                              factory: CoordinatorFactory())
-    }
-
 }

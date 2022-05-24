@@ -7,12 +7,13 @@
 
 import UIKit
 
-class AuthorizationViewController: UIViewController, AuthorizationAssemblable {
+class AuthorizationViewController: UIViewController {
     /// Root view
     private var authView: LoginView { self.view as! LoginView  }
     
     var presenter: AuthorizationPresenterInput?
-    var onCompletion: CompletionBlock?
+    
+    weak var delegate: AuthorizationViewControllerDelegate?
 
     // MARK: - Internal vars
     private var loginTF: LoginTextfield { return authView.loginTF }
@@ -95,13 +96,22 @@ class AuthorizationViewController: UIViewController, AuthorizationAssemblable {
             guard let textLoginTF = loginTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
             guard let textPasswordTF = passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
             
-            presenter?.login(login: textLoginTF, password: textPasswordTF, completion: { error in
+            presenter?.login(login: textLoginTF, password: textPasswordTF, completion: { userInfo, authError in
+                
                 self.isProcessing = false
-                if let error = error {
-                    let alert = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
+                
+                if let authError = authError {
+                    let alert = UIAlertController(title: "Ошибка", message: authError.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
                     self.present(alert, animated: true, completion: nil)
                 }
+                
+                if let userInfo = userInfo {
+                    // TODO: Оповешение кто авторизовался
+                    self.delegate?.signInOk()
+                    print("\(userInfo)")
+                }
+                
             })
         }
     }
@@ -161,10 +171,8 @@ extension AuthorizationViewController: UITextFieldDelegate {
 
 
 // MARK: - AuthorizationPresenterOutput
-extension AuthorizationViewController {
-    func signInOk() {
-        onCompletion?()
-    }
+extension AuthorizationViewController: AuthorizationPresenterOutput {
+
 }
 
 // MARK: - SwiftUI Representable
