@@ -11,6 +11,52 @@ class LoginView: UIView {
     
     var frameCenterYConstraint: NSLayoutConstraint?
     
+    // MARK: - Elements
+    lazy private var stack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .equalSpacing
+        stack.spacing = 15.0
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stack
+    }()
+    
+    lazy var loginTF: LoginTextfield = {
+        let textField = LoginTextfield()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    
+    lazy var passwordTF: PasswordTextfield = {
+        let textField = PasswordTextfield()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    
+    lazy var loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Войти", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .accentColor
+        button.layer.cornerRadius = 5.0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
+    lazy var activityIndicator : UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .accentColor
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return activityIndicator
+    }()
+    
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -91,6 +137,7 @@ class LoginView: UIView {
         ])
         
     }
+<<<<<<< HEAD:fmh/UI/Modules/Authorization/Controllers/Views/LoginView.swift
     
     // MARK: - Elements
     lazy private var stack: UIStackView = {
@@ -137,6 +184,9 @@ class LoginView: UIView {
         return activityIndicator
     }()
     
+=======
+
+>>>>>>> develop:fmh/UI/Modules/Autorization/Views/LoginView.swift
 }
 
 

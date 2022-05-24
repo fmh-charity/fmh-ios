@@ -23,20 +23,37 @@
 		19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243DE1282677BA00A43CA8 /* AuthRepository.swift */; };
 		19243DEC28293F7E00A43CA8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243DEB28293F7E00A43CA8 /* Service.swift */; };
 		19243DEE282946B400A43CA8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243DED282946B400A43CA8 /* Network.swift */; };
+<<<<<<< HEAD
 		19243E012829B28D00A43CA8 /* UIAlertController+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E002829B28D00A43CA8 /* UIAlertController+helper.swift */; };
+=======
+>>>>>>> develop
 		19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E1E2829BBEB00A43CA8 /* AuthorizationPresenter.swift */; };
 		19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */; };
 		19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */; };
 		19243E372829C8B400A43CA8 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E362829C8B400A43CA8 /* AppSession.swift */; };
 		19243E3B282A418700A43CA8 /* CoordinatorDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 19243E3A282A418600A43CA8 /* CoordinatorDiscription */; };
+<<<<<<< HEAD
 		19243E89282A6C4400A43CA8 /* UIViewController+Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E88282A6C4400A43CA8 /* UIViewController+Presentable.swift */; };
+=======
+>>>>>>> develop
 		1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA32282F024C00C8A21B /* LoadingProtocols.swift */; };
 		1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA36282F026800C8A21B /* LoadingPresenter.swift */; };
 		1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA38282F027B00C8A21B /* LoadingViewController.swift */; };
 		193AA92E2811C890002CE474 /* ModuleDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 193AA92D2811C890002CE474 /* ModuleDiscription */; };
 		194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194220B328310AAE00A42F72 /* AuthInteractor.swift */; };
+<<<<<<< HEAD
 		1964839B28304E6700B3B9FD /* GeneralViewController + UIMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964839A28304E6700B3B9FD /* GeneralViewController + UIMenu.swift */; };
 		1964839D2830502100B3B9FD /* GeneralViewController + UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964839C2830502100B3B9FD /* GeneralViewController + UIAlertController.swift */; };
+=======
+		1942B7DE2835758C005C3732 /* GeneralMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */; };
+		196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841072837DC00008F294F /* GeneralCoordinator.swift */; };
+		1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841092837F735008F294F /* AutorozationCoordinatror.swift */; };
+		1968410C28380BD1008F294F /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410B28380BD1008F294F /* BaseCoordinator.swift */; };
+		1968410E2839240E008F294F /* GeneralMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* GeneralMenuViewController.swift */; };
+		1968411028392AA7008F294F /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410F28392AA7008F294F /* GeneralViewController.swift */; };
+		1968411228395224008F294F /* GeneralContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968411128395223008F294F /* GeneralContextViewController.swift */; };
+		1968411428397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */; };
+>>>>>>> develop
 		19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BD1A61281D6AC300ED793A /* PListParser.swift */; };
 		19BD1A64281D703A00ED793A /* NetworkService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A63281D703A00ED793A /* NetworkService.plist */; };
 		19BD1A69281DB6F700ED793A /* ResponseStatusCodes in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A68281DB6F700ED793A /* ResponseStatusCodes */; };
@@ -49,11 +66,19 @@
 		19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB6F7D282C3CED00686A9C /* UIColor+.swift */; };
 		19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */; };
 		19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */; };
+<<<<<<< HEAD
 		19EE351128306BA600DBD2E8 /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */; };
 		19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE65C22821BD060095C2EE /* AuthorizationError.swift */; };
 		B27B5EB62831384000B1943E /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EB52831383F00B1943E /* OurMissionViewController.swift */; };
 		B27B5EB928314B7300B1943E /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EB828314B7300B1943E /* OurMissionCell.swift */; };
 
+=======
+		19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE65C22821BD060095C2EE /* AuthorizationError.swift */; };
+		19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DC282FF9930082FB98 /* ModuleFactory.swift */; };
+		19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */; };
+		19F509E2283003B20082FB98 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E1283003B20082FB98 /* Coordinator.swift */; };
+		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
+>>>>>>> develop
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,20 +98,37 @@
 		19243DE1282677BA00A43CA8 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		19243DEB28293F7E00A43CA8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		19243DED282946B400A43CA8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		19243E002829B28D00A43CA8 /* UIAlertController+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+helper.swift"; sourceTree = "<group>"; };
+=======
+>>>>>>> develop
 		19243E1E2829BBEB00A43CA8 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationProtocols.swift; sourceTree = "<group>"; };
 		19243E362829C8B400A43CA8 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
 		19243E3A282A418600A43CA8 /* CoordinatorDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoordinatorDiscription; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		19243E88282A6C4400A43CA8 /* UIViewController+Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentable.swift"; sourceTree = "<group>"; };
+=======
+>>>>>>> develop
 		1933EA32282F024C00C8A21B /* LoadingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocols.swift; sourceTree = "<group>"; };
 		1933EA36282F026800C8A21B /* LoadingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresenter.swift; sourceTree = "<group>"; };
 		1933EA38282F027B00C8A21B /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		193AA92D2811C890002CE474 /* ModuleDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ModuleDiscription; sourceTree = "<group>"; };
 		194220B328310AAE00A42F72 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		1964839A28304E6700B3B9FD /* GeneralViewController + UIMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralViewController + UIMenu.swift"; sourceTree = "<group>"; };
 		1964839C2830502100B3B9FD /* GeneralViewController + UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralViewController + UIAlertController.swift"; sourceTree = "<group>"; };
+=======
+		1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralMenuItemCell.swift; sourceTree = "<group>"; };
+		196841072837DC00008F294F /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
+		196841092837F735008F294F /* AutorozationCoordinatror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorozationCoordinatror.swift; sourceTree = "<group>"; };
+		1968410B28380BD1008F294F /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		1968410D2839240E008F294F /* GeneralMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralMenuViewController.swift; sourceTree = "<group>"; };
+		1968410F28392AA7008F294F /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		1968411128395223008F294F /* GeneralContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralContextViewController.swift; sourceTree = "<group>"; };
+		1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralMenuViewController + MenuOptions.swift"; sourceTree = "<group>"; };
+>>>>>>> develop
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
 		19BD1A63281D703A00ED793A /* NetworkService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NetworkService.plist; sourceTree = "<group>"; };
 		19BD1A68281DB6F700ED793A /* ResponseStatusCodes */ = {isa = PBXFileReference; lastKnownFileType = text; path = ResponseStatusCodes; sourceTree = "<group>"; };
@@ -100,11 +142,19 @@
 		19DB6F7D282C3CED00686A9C /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProtocols.swift; sourceTree = "<group>"; };
 		19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPresenter.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		19EE65C22821BD060095C2EE /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
 		B27B5EB52831383F00B1943E /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
 		B27B5EB828314B7300B1943E /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
 
+=======
+		19EE65C22821BD060095C2EE /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
+		19F509DC282FF9930082FB98 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
+		19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
+		19F509E1283003B20082FB98 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+>>>>>>> develop
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +206,7 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		19243E182829BAC500A43CA8 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,12 +219,18 @@
 			isa = PBXGroup;
 			children = (
 				19EE65C22821BD060095C2EE /* AuthorizationError.swift */,
+=======
+		19243E182829BAC500A43CA8 /* Autorization */ = {
+			isa = PBXGroup;
+			children = (
+>>>>>>> develop
 				19243E382829D51200A43CA8 /* Views */,
+				19EE65C22821BD060095C2EE /* AuthorizationError.swift */,
 				19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */,
 				19243E1E2829BBEB00A43CA8 /* AuthorizationPresenter.swift */,
 				19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */,
 			);
-			path = Controllers;
+			path = Autorization;
 			sourceTree = "<group>";
 		};
 		19243E382829D51200A43CA8 /* Views */ = {
@@ -245,6 +302,7 @@
 				19243E3A282A418600A43CA8 /* CoordinatorDiscription */,
 				193AA92D2811C890002CE474 /* ModuleDiscription */,
 				19C7A538280DED98005000EB /* Application */,
+				19F509E02830038D0082FB98 /* Coordinator */,
 				19C7A533280DED59005000EB /* DataLayer */,
 				19C7A534280DED64005000EB /* DomainLayer */,
 				19C7A535280DED75005000EB /* UI */,
@@ -304,11 +362,17 @@
 			isa = PBXGroup;
 			children = (
 				19F509E72830169E0082FB98 /* Factory */,
+<<<<<<< HEAD
 				19F509D9282FF72A0082FB98 /* General */,
 				1933EA2F282F018100C8A21B /* Loading */,
 				19243E182829BAC500A43CA8 /* Authorization */,
 				191EAA67281BBAC6007B1397 /* ScreenLogin */,
 				B27B5EB028312DE700B1943E /* OurMission */,
+=======
+				1933EA2F282F018100C8A21B /* Loading */,
+				19243E182829BAC500A43CA8 /* Autorization */,
+				19F509D9282FF72A0082FB98 /* General */,
+>>>>>>> develop
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -321,7 +385,10 @@
 				19243E362829C8B400A43CA8 /* AppSession.swift */,
 				191EAA6B281BBE4C007B1397 /* APIError.swift */,
 				19C7A525280DECD3005000EB /* LaunchScreen.storyboard */,
+<<<<<<< HEAD
 				19F509E02830038D0082FB98 /* Coordinator */,
+=======
+>>>>>>> develop
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -335,6 +402,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
     
 		B27B5EB028312DE700B1943E /* OurMission */ = {
 			isa = PBXGroup;
@@ -343,6 +411,57 @@
 				B27B5EB828314B7300B1943E /* OurMissionCell.swift */,
 			);
 			path = OurMission;
+=======
+		19DB6F80282C40FF00686A9C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				19DB6F7D282C3CED00686A9C /* UIColor+.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		19EE350F2830618500DBD2E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1968410D2839240E008F294F /* GeneralMenuViewController.swift */,
+				1968411128395223008F294F /* GeneralContextViewController.swift */,
+				1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */,
+				1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		19F509D9282FF72A0082FB98 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				19EE350F2830618500DBD2E8 /* Views */,
+				19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */,
+				19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */,
+				1968410F28392AA7008F294F /* GeneralViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		19F509E02830038D0082FB98 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				19F509E1283003B20082FB98 /* Coordinator.swift */,
+				1968410B28380BD1008F294F /* BaseCoordinator.swift */,
+				19F509E528300C110082FB98 /* AppCoordinator.swift */,
+				196841092837F735008F294F /* AutorozationCoordinatror.swift */,
+				196841072837DC00008F294F /* GeneralCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		19F509E72830169E0082FB98 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */,
+				19F509DC282FF9930082FB98 /* ModuleFactory.swift */,
+			);
+			path = Factory;
+>>>>>>> develop
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
+<<<<<<< HEAD
 				19EE351128306BA600DBD2E8 /* GeneralCoordinator.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
@@ -440,33 +560,66 @@
 				1964839D2830502100B3B9FD /* GeneralViewController + UIAlertController.swift in Sources */,
 				19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */,
 				19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */,
+=======
+				1968411028392AA7008F294F /* GeneralViewController.swift in Sources */,
+				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
+				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
+				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
+				191EAA73281BD256007B1397 /* Credentials.swift in Sources */,
+				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
+				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
+				1968411428397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift in Sources */,
+				19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */,
+				19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */,
+				1968410C28380BD1008F294F /* BaseCoordinator.swift in Sources */,
+				19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */,
+				1942B7DE2835758C005C3732 /* GeneralMenuItemCell.swift in Sources */,
+>>>>>>> develop
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
+<<<<<<< HEAD
 				19F509E9283017300082FB98 /* GeneralViewController + UIElements.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
 				19F509DB282FF7580082FB98 /* GeneralViewController.swift in Sources */,
+=======
+				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
+				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
+				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
+				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
+>>>>>>> develop
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
 				1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
+<<<<<<< HEAD
+=======
+				1968411228395224008F294F /* GeneralContextViewController.swift in Sources */,
+>>>>>>> develop
 				1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */,
 				191EAA75281BD26A007B1397 /* TokenData.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				191EAA82281C3B48007B1397 /* RefreshToken.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
+<<<<<<< HEAD
 				1964839B28304E6700B3B9FD /* GeneralViewController + UIMenu.swift in Sources */,
+=======
+				1968410E2839240E008F294F /* GeneralMenuViewController.swift in Sources */,
+>>>>>>> develop
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
 				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
+<<<<<<< HEAD
+=======
+				196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */,
+>>>>>>> develop
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
-				19243E012829B28D00A43CA8 /* UIAlertController+helper.swift in Sources */,
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
 				19F509E2283003B20082FB98 /* Coordinator.swift in Sources */,
 			);
@@ -620,7 +773,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.iteco.fmh;
+				PRODUCT_BUNDLE_IDENTIFIER = org.vhospice.fmh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -648,7 +801,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.iteco.fmh;
+				PRODUCT_BUNDLE_IDENTIFIER = org.vhospice.fmh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

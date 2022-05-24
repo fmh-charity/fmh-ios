@@ -11,6 +11,7 @@ import Combine
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+<<<<<<< HEAD
     
     var rootController: UINavigationController {
         let navigationController = UINavigationController()
@@ -26,11 +27,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     fileprivate lazy var coordinator = AppCoordinator(navigationController: rootController)
+=======
+    var appCoordinator: AppCoordinator?
+>>>>>>> develop
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+<<<<<<< HEAD
         //KeyChain.standart.clear()
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
@@ -39,7 +44,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.makeKeyAndVisible()
         
         coordinator.start()
+=======
+>>>>>>> develop
         
+        AppSession.logOut()
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            let navigationController = makeNavigationControlle()
+            appCoordinator = AppCoordinator(window: window)
+            appCoordinator?.start()
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.
             // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -68,7 +85,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // to restore the scene back to its current state.
         }
         
-        
     }
     
 }
+<<<<<<< HEAD
+=======
+
+// MARK: - UINavigationController
+extension SceneDelegate {
+   fileprivate func makeNavigationControlle() -> UINavigationController {
+        let navigationController = UINavigationController()
+        
+        let app = UINavigationBarAppearance()
+        app.titleTextAttributes = [.foregroundColor: UIColor.white]
+        app.backgroundColor = .accentColor
+        navigationController.navigationBar.compactAppearance = app
+        navigationController.navigationBar.standardAppearance = app
+        navigationController.navigationBar.scrollEdgeAppearance = app
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        return navigationController
+    }
+}
+>>>>>>> develop

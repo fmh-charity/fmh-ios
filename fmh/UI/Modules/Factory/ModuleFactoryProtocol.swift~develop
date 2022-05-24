@@ -8,11 +8,6 @@
 import Foundation
 
 // MARK: - AutorizationModuleFactoryProtocol
-<<<<<<< HEAD
-protocol AutorizationModuleFactoryProtocol {
-    
-=======
 protocol ModuleFactoryProtocol {
    
->>>>>>> develop
 }
