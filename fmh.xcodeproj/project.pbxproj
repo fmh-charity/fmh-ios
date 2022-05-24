@@ -51,13 +51,9 @@
 		19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */; };
 		19EE351128306BA600DBD2E8 /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */; };
 		19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EE65C22821BD060095C2EE /* AuthorizationError.swift */; };
-		19F509DB282FF7580082FB98 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DA282FF7580082FB98 /* GeneralViewController.swift */; };
-		19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DC282FF9930082FB98 /* ModuleFactory.swift */; };
-		19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */; };
-		19F509E2283003B20082FB98 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E1283003B20082FB98 /* Coordinator.swift */; };
-		19F509E42830040E0082FB98 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E32830040E0082FB98 /* LoadingCoordinator.swift */; };
-		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
-		19F509E9283017300082FB98 /* GeneralViewController + UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E8283017300082FB98 /* GeneralViewController + UIElements.swift */; };
+		B27B5EB62831384000B1943E /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EB52831383F00B1943E /* OurMissionViewController.swift */; };
+		B27B5EB928314B7300B1943E /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B5EB828314B7300B1943E /* OurMissionCell.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,13 +102,9 @@
 		19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPresenter.swift; sourceTree = "<group>"; };
 		19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		19EE65C22821BD060095C2EE /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
-		19F509DA282FF7580082FB98 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
-		19F509DC282FF9930082FB98 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
-		19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
-		19F509E1283003B20082FB98 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		19F509E32830040E0082FB98 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
-		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		19F509E8283017300082FB98 /* GeneralViewController + UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralViewController + UIElements.swift"; sourceTree = "<group>"; };
+		B27B5EB52831383F00B1943E /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
+		B27B5EB828314B7300B1943E /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +307,8 @@
 				19F509D9282FF72A0082FB98 /* General */,
 				1933EA2F282F018100C8A21B /* Loading */,
 				19243E182829BAC500A43CA8 /* Authorization */,
+				191EAA67281BBAC6007B1397 /* ScreenLogin */,
+				B27B5EB028312DE700B1943E /* OurMission */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -341,55 +335,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		19DB6F80282C40FF00686A9C /* UI */ = {
+    
+		B27B5EB028312DE700B1943E /* OurMission */ = {
 			isa = PBXGroup;
 			children = (
-				19243E002829B28D00A43CA8 /* UIAlertController+helper.swift */,
-				19243E88282A6C4400A43CA8 /* UIViewController+Presentable.swift */,
-				19DB6F7D282C3CED00686A9C /* UIColor+.swift */,
+				B27B5EB52831383F00B1943E /* OurMissionViewController.swift */,
+				B27B5EB828314B7300B1943E /* OurMissionCell.swift */,
 			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		19EE350F2830618500DBD2E8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				19F509E8283017300082FB98 /* GeneralViewController + UIElements.swift */,
-				1964839A28304E6700B3B9FD /* GeneralViewController + UIMenu.swift */,
-				1964839C2830502100B3B9FD /* GeneralViewController + UIAlertController.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		19F509D9282FF72A0082FB98 /* General */ = {
-			isa = PBXGroup;
-			children = (
-				19EE350F2830618500DBD2E8 /* Views */,
-				19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */,
-				19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */,
-				19F509DA282FF7580082FB98 /* GeneralViewController.swift */,
-			);
-			path = General;
-			sourceTree = "<group>";
-		};
-		19F509E02830038D0082FB98 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				19F509E1283003B20082FB98 /* Coordinator.swift */,
-				19F509E528300C110082FB98 /* AppCoordinator.swift */,
-				19F509E32830040E0082FB98 /* LoadingCoordinator.swift */,
-				19EE351028306BA600DBD2E8 /* GeneralCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		19F509E72830169E0082FB98 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */,
-				19F509DC282FF9930082FB98 /* ModuleFactory.swift */,
-			);
-			path = Factory;
+			path = OurMission;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,8 +425,13 @@
 				19EE351128306BA600DBD2E8 /* GeneralCoordinator.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
+				B27B5EB928314B7300B1943E /* OurMissionCell.swift in Sources */,
+				19243E262829BDED00A43CA8 /* MainCoordinator.swift in Sources */,
+				19243E1D2829BB9100A43CA8 /* AuthorizationAssemblable.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				191EAA73281BD256007B1397 /* Credentials.swift in Sources */,
+				B27B5EB62831384000B1943E /* OurMissionViewController.swift in Sources */,
+				19243E1A2829BAD600A43CA8 /* AuthorizationCoordinator.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
 				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
 				19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */,
