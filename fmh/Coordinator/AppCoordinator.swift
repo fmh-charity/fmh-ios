@@ -17,10 +17,22 @@ import UIKit
 final class AppCoordinator: BaseCoordinator {
     
     private let window: UIWindow
-    private let rootNavigationController: UINavigationController
     
-    init(navigationController: UINavigationController, window: UIWindow) {
-        self.rootNavigationController = navigationController
+    private let rootNavigationController: UINavigationController = {
+        let navigationController = UINavigationController()
+        
+        let app = UINavigationBarAppearance()
+        app.titleTextAttributes = [.foregroundColor: UIColor.white]
+        app.backgroundColor = .accentColor
+        navigationController.navigationBar.compactAppearance = app
+        navigationController.navigationBar.standardAppearance = app
+        navigationController.navigationBar.scrollEdgeAppearance = app
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        return navigationController
+    }()
+    
+    init(window: UIWindow) {
         self.window = window
     }
     
@@ -67,7 +79,7 @@ extension AppCoordinator {
             self.childRemove(coordinator)
             self.selectFlow()
         }
-        
+        print("============= \(rootNavigationController.children)")
         window.rootViewController = rootNavigationController
     }
     /// Show general coordinator

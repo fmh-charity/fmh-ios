@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             let navigationController = makeNavigationControlle()
-            appCoordinator = AppCoordinator(navigationController: navigationController, window: window)
+            appCoordinator = AppCoordinator(window: window)
             appCoordinator?.start()
             self.window = window
             window.makeKeyAndVisible()

@@ -11,7 +11,7 @@ import UIKit
 class GeneralViewController: UIViewController {
     
     var presenter: GeneralPresenterInput?
-    var contextNavigationController: UINavigationController?
+    weak var contextNavigationController: UINavigationController?
     
     private var isActiveMenu: Bool = false
     private var menuViewController = GeneralMenuViewController()
