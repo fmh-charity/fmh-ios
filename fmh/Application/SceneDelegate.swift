@@ -11,46 +11,16 @@ import Combine
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-<<<<<<< HEAD
-    
-    var rootController: UINavigationController {
-        let navigationController = UINavigationController()
-        navigationController.view.backgroundColor = .accentColor
-        navigationController.navigationBar.barStyle = .default
-        navigationController.navigationBar.backgroundColor = .accentColor
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-           
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-        return window?.rootViewController as! UINavigationController
-    }
-
-    fileprivate lazy var coordinator = AppCoordinator(navigationController: rootController)
-=======
     var appCoordinator: AppCoordinator?
->>>>>>> develop
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-<<<<<<< HEAD
-        //KeyChain.standart.clear()
-        guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
-        
-//        window?.rootViewController = OurMissionViewController()
-//        window?.makeKeyAndVisible()
-        
-        coordinator.start()
-=======
->>>>>>> develop
         
         AppSession.logOut()
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let navigationController = makeNavigationControlle()
             appCoordinator = AppCoordinator(window: window)
             appCoordinator?.start()
             self.window = window
@@ -88,23 +58,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
 }
-<<<<<<< HEAD
-=======
 
-// MARK: - UINavigationController
-extension SceneDelegate {
-   fileprivate func makeNavigationControlle() -> UINavigationController {
-        let navigationController = UINavigationController()
-        
-        let app = UINavigationBarAppearance()
-        app.titleTextAttributes = [.foregroundColor: UIColor.white]
-        app.backgroundColor = .accentColor
-        navigationController.navigationBar.compactAppearance = app
-        navigationController.navigationBar.standardAppearance = app
-        navigationController.navigationBar.scrollEdgeAppearance = app
-        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        return navigationController
-    }
-}
->>>>>>> develop
