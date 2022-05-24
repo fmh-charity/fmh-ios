@@ -104,7 +104,7 @@ extension GeneralViewController: GeneralMenuViewControllerDelegate {
             let itemMenu = GeneralMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
             switch itemMenu {
             case .settings: break
-            case .logOut: presenter?.logOut()
+            case .logOut: break //presenter?.logOut()
             }
         }
         toggleMenu(completion: nil)
