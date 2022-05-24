@@ -37,28 +37,35 @@ class GeneralMenuItemCell: UITableViewCell {
         
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        
-        addSubview(iconImageView)
-        addSubview(titleLabel)
-        
-        NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: 22),
-            iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 10),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(image: UIImage?, title: String) {
+        self.iconImageView.image = image
+        self.titleLabel.text = title
+        
+        if image != nil {
+            addSubview(iconImageView)
+            NSLayoutConstraint.activate([
+                iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+                iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+                iconImageView.widthAnchor.constraint(equalToConstant: 22),
+                iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor)
+            ])
+        }
+        
+        addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.leadingAnchor.constraint(
+                equalTo: (image != nil) ? iconImageView.trailingAnchor : leadingAnchor,
+                constant: 10)
+        ])
     }
     
 }

@@ -33,6 +33,7 @@ class AuthorizationViewController: UIViewController {
         }
     }
     
+    // MARK: - loadView
     override func loadView() {
         super.loadView()
         self.view = LoginView(frame: self.view.bounds)

@@ -36,4 +36,19 @@ extension GeneralMenuViewController {
         }
     }
     
+    /// Additional menu
+    enum AdditionalMenuOptions: String, CaseIterable {
+        case settings = "Настройки"
+        case logOut = "Выйти"
+        
+        var image: UIImage? {
+            switch self {
+            case .settings:
+                return UIImage(systemName: "gear")
+            case .logOut:
+                return UIImage(systemName: "arrowshape.turn.up.right")
+            }
+        }
+    }
+    
 }

@@ -57,11 +57,15 @@ extension GeneralViewController: GeneralContextViewControllerDelegate {
         switch isActiveMenu {
         case false:
             /// open
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) { [weak self] in
-                guard let context = self?.contextNavigationController else { return }
+            guard let context = self.contextNavigationController else { return }
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) {
                 context.view.frame.origin.x = context.view.frame.size.width - 100
                 //TODO: Добавить обработчик нажатия и притемнять
-                
+                context.view.layer.shadowColor = UIColor.white.cgColor
+                context.view.layer.shadowOffset = CGSize(width: 0.0, height: -2.0)
+                context.view.layer.shadowRadius = 5.0
+                context.view.layer.shadowOpacity = 0.3
+                context.view.layer.masksToBounds = false
             } completion: { [unowned self] done in
                 if done {
                     self.isActiveMenu = true
@@ -69,8 +73,8 @@ extension GeneralViewController: GeneralContextViewControllerDelegate {
             }
         case true:
             /// close
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) { [weak self] in
-                guard let context = self?.contextNavigationController else { return }
+            guard let context = self.contextNavigationController else { return }
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) {
                 context.view.frame.origin.x = 0
             } completion: { [unowned self] done in
                 if done {
@@ -87,16 +91,24 @@ extension GeneralViewController: GeneralContextViewControllerDelegate {
 
 //MARK: - GeneralMenuViewControllerDelegate
 extension GeneralViewController: GeneralMenuViewControllerDelegate {
-    
-    func didSelect(_ menuItem: GeneralMenuViewController.MenuOptions) {
-        toggleMenu(completion: nil)
-        switch menuItem {
-        case .home: break
-            //setContextViewController(viewController: vc)
-        default: break
+    func didSelect(indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let itemMenu = GeneralMenuViewController.MenuOptions.allCases[indexPath.row]
+            switch itemMenu {
+            case .home: break
+                //setContextViewController(viewController: vc)
+            default: break
+            }
         }
+        if indexPath.section == 1 {
+            let itemMenu = GeneralMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
+            switch itemMenu {
+            case .settings: break
+            case .logOut: presenter?.logOut()
+            }
+        }
+        toggleMenu(completion: nil)
     }
-
 }
 
 //MARK: - setContextViewController
@@ -113,14 +125,6 @@ extension GeneralViewController {
         
         contextViewController.addChildViewController(viewController)
         viewController.view.frame = contextViewController.view.bounds
-        //viewController.view.translatesAutoresizingMaskIntoConstraints = false
-        //let margins = contextViewController.view.layoutMarginsGuide
-//        NSLayoutConstraint.activate([
-//            viewController.view.topAnchor.constraint(equalTo: margins.topAnchor),
-//            viewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-//            viewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-//            viewController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-//        ])
     }
 }
 
