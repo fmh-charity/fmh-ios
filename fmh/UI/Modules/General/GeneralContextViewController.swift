@@ -18,8 +18,8 @@ class GeneralContextViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        //title = "Context view controller"
+        view.backgroundColor = .blue
+        title = "Context view controller"
         
         var menuImageString = "line.horizontal.3"
         if #available(iOS 15.0, *) {

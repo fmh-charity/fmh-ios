@@ -2,156 +2,297 @@
 //  GeneralViewController.swift
 //  fmh
 //
-//  Created: 21.05.2022
+//  Created: 25.05.2022
 //
+//  https://github.com/johncodeos-blog/CustomSideMenuiOSExample/tree/main/CustomSideMenuiOSExample
 
 import Foundation
 import UIKit
 
 class GeneralViewController: UIViewController {
     
-    var presenter: GeneralPresenterInput?
-    weak var contextNavigationController: UINavigationController?
+    private var sideMenuViewController: SideMenuViewController = {
+        let viewController = SideMenuViewController()
+        
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        return viewController
+    }()
     
-    private var isActiveMenu: Bool = false
-    private var menuViewController = GeneralMenuViewController()
-    private var contextViewController = GeneralContextViewController()
+    private var sideMenuShadowView: UIView!
     
-    /// Тут добавляем дочернии ViewController
-    // var mainViewController = MainViewController()
+    private var sideMenuRevealWidth: CGFloat = 260
+    private let paddingForRotation: CGFloat = 150
+    private var isExpanded: Bool = false
+    private var draggingIsEnabled: Bool = false
+    private var panBaseLocation: CGFloat = 0.0
+    
+    private var sideMenuTrailingConstraint: NSLayoutConstraint!
+
+    private var revealSideMenuOnTop: Bool = true
+    
+    var gestureEnabled: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .lightGray
-        
-        addChildViewControllers ()
-    }
-    
-    private func addChildViewControllers () {
-        guard let contextNavigation = contextNavigationController else {
-            // TODO: Выводить экран заглушку
-            return
-        }
-        /// Добавляем меню
-        menuViewController.delegate = self
-        addChildViewController(menuViewController)
-        
-        /// Добавляем основно контейнер (где отображаются ViewControllers)
-        contextViewController.delegate = self
-        contextNavigation.setViewControllers([contextViewController], animated: false)
-        addChildViewController(contextNavigation)
-        
-        /// По умолчанию ViewController
-        //setContextViewController(viewController: vc)
-    }
-    
-}
+        self.view.backgroundColor = .systemBackground
 
-//MARK: - GeneralContextViewControllerDelegate
-extension GeneralViewController: GeneralContextViewControllerDelegate {
-    func didTapMenuButton() {
-        toggleMenu(completion: nil)
+        /// Shadow Background View
+        self.sideMenuShadowView = UIView(frame: self.view.bounds)
+        self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.sideMenuShadowView.backgroundColor = .black
+        self.sideMenuShadowView.alpha = 0.0
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizer))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        tapGestureRecognizer.delegate = self
+        view.addGestureRecognizer(tapGestureRecognizer)
+        if self.revealSideMenuOnTop {
+            view.insertSubview(self.sideMenuShadowView, at: 1)
+        }
+
+        /// Add sideMenuViewController
+        self.sideMenuViewController.delegate = self
+        view.insertSubview(self.sideMenuViewController.view, at: self.revealSideMenuOnTop ? 2 : 0)
+        addChild(self.sideMenuViewController)
+        self.sideMenuViewController.didMove(toParent: self)
+
+        /// sideMenuViewController AutoLayout
+        if self.revealSideMenuOnTop {
+            self.sideMenuTrailingConstraint = self.sideMenuViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -self.sideMenuRevealWidth - self.paddingForRotation)
+            self.sideMenuTrailingConstraint.isActive = true
+        }
+        NSLayoutConstraint.activate([
+            self.sideMenuViewController.view.widthAnchor.constraint(equalToConstant: self.sideMenuRevealWidth),
+            self.sideMenuViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            self.sideMenuViewController.view.topAnchor.constraint(equalTo: view.topAnchor)
+        ])
+
+        /// sideMenuViewController Gestures
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+        panGestureRecognizer.delegate = self
+        view.addGestureRecognizer(panGestureRecognizer)
+
+        /// Default  View Controller
+        showViewController(viewController: TemplateViewController())
+    }
+
+    ///  Show menu in other (chlds) viewControllers
+    @objc open func revealSideMenu() {
+        self.sideMenuState(expanded: self.isExpanded ? false : true)
     }
     
-    private func toggleMenu (completion: (() -> Void)?) {
-        switch isActiveMenu {
-        case false:
-            /// open
-            guard let context = self.contextNavigationController else { return }
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) {
-                context.view.frame.origin.x = context.view.frame.size.width - 100
-                //TODO: Добавить обработчик нажатия и притемнять
-                context.view.layer.shadowColor = UIColor.white.cgColor
-                context.view.layer.shadowOffset = CGSize(width: 0.0, height: -2.0)
-                context.view.layer.shadowRadius = 5.0
-                context.view.layer.shadowOpacity = 0.3
-                context.view.layer.masksToBounds = false
-            } completion: { [unowned self] done in
-                if done {
-                    self.isActiveMenu = true
-                }
-            }
-        case true:
-            /// close
-            guard let context = self.contextNavigationController else { return }
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseOut) {
-                context.view.frame.origin.x = 0
-            } completion: { [unowned self] done in
-                if done {
-                    self.isActiveMenu = false
-                    DispatchQueue.main.async {
-                        completion?()
-                    }
-                }
-            }
+    func animateShadow(targetPosition: CGFloat) {
+        UIView.animate(withDuration: 0.5) {
+            // When targetPosition is 0, which means side menu is expanded, the shadow opacity is 0.6
+            self.sideMenuShadowView.alpha = (targetPosition == 0) ? 0.6 : 0.0
         }
     }
+
+    func sideMenuState(expanded: Bool) {
+        if expanded {
+            self.animateSideMenu(targetPosition: self.revealSideMenuOnTop ? 0 : self.sideMenuRevealWidth) { _ in
+                self.isExpanded = true
+            }
+            // Animate Shadow (Fade In)
+            UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0.6 }
+        }
+        else {
+            self.animateSideMenu(targetPosition: self.revealSideMenuOnTop ? (-self.sideMenuRevealWidth - self.paddingForRotation) : 0) { _ in
+                self.isExpanded = false
+            }
+            // Animate Shadow (Fade Out)
+            UIView.animate(withDuration: 0.5) { self.sideMenuShadowView.alpha = 0.0 }
+        }
+    }
     
+    func animateSideMenu(targetPosition: CGFloat, completion: @escaping (Bool) -> ()) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .layoutSubviews, animations: {
+            if self.revealSideMenuOnTop {
+                self.sideMenuTrailingConstraint.constant = targetPosition
+                self.view.layoutIfNeeded()
+            }
+            else {
+                self.view.subviews[1].frame.origin.x = targetPosition
+            }
+        }, completion: completion)
+    }
+
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
 }
 
-//MARK: - GeneralMenuViewControllerDelegate
-extension GeneralViewController: GeneralMenuViewControllerDelegate {
+//MARK: - SideMenuViewControllerDelegate
+extension GeneralViewController: SideMenuViewControllerDelegate {
+    
     func didSelect(indexPath: IndexPath) {
         if indexPath.section == 0 {
-            let itemMenu = GeneralMenuViewController.MenuOptions.allCases[indexPath.row]
+            let itemMenu = SideMenuViewController.MenuOptions.allCases[indexPath.row]
             switch itemMenu {
-            case .home: break
-                //setContextViewController(viewController: vc)
+            case .home: showViewController(viewController: GeneralContextViewController())
+                //  showViewController(viewController: GeneralContextViewController())
             default: break
             }
         }
         if indexPath.section == 1 {
-            let itemMenu = GeneralMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
+            let itemMenu = SideMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
             switch itemMenu {
             case .settings: break
             case .logOut: break //presenter?.logOut()
             }
         }
-        toggleMenu(completion: nil)
+        DispatchQueue.main.async { self.sideMenuState(expanded: false) }
     }
-}
 
-//MARK: - setContextViewController
-extension GeneralViewController {
-    private func setContextViewController<T>(viewController: T, removeOtherViewControllers: Bool = false) where T: UIViewController {
-        
-        guard !contextViewController.children.contains(viewController) else { return }
-        
-        if removeOtherViewControllers {
-            for child in contextViewController.children {
-                child.removeChildFromParent()
+    func showViewController<T: UIViewController>(viewController: T) -> () {
+        // Remove the previous View
+        for subview in view.subviews {
+            if subview.tag == 99 {
+                subview.removeFromSuperview()
             }
         }
         
-        contextViewController.addChildViewController(viewController)
-        viewController.view.frame = contextViewController.view.bounds
+        viewController.view.tag = 99
+        view.insertSubview(viewController.view, at: self.revealSideMenuOnTop ? 0 : 1)
+        addChild(viewController)
+        viewController.view.frame = self.view.bounds
+
+        if !self.revealSideMenuOnTop {
+            if isExpanded {
+                viewController.view.frame.origin.x = self.sideMenuRevealWidth
+            }
+            if self.sideMenuShadowView != nil {
+                viewController.view.addSubview(self.sideMenuShadowView)
+            }
+        }
+        viewController.didMove(toParent: self)
     }
 }
 
-// MARK: - GeneralPresenterOutput
-extension GeneralViewController: GeneralPresenterOutput {
+//MARK: - UIGestureRecognizerDelegate
+extension GeneralViewController: UIGestureRecognizerDelegate {
     
-}
+    @objc func tapGestureRecognizer(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            if self.isExpanded {
+                self.sideMenuState(expanded: false)
+            }
+        }
+    }
 
-// MARK: - UIViewController + add/remove childs viewControllers
-fileprivate extension UIViewController {
+    // Close side menu when you tap on the shadow background view
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: self.sideMenuViewController.view))! {
+            return false
+        }
+        return true
+    }
     
-    func addChildViewController(_ child: UIViewController) {
-        navigationItem.title  = child.navigationItem.title
-        navigationItem.prompt = child.navigationItem.prompt
-        navigationItem.titleView = child.navigationItem.titleView
-        navigationItem.rightBarButtonItems = child.navigationItem.rightBarButtonItems
+    // Dragging Side Menu
+    @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
         
-        addChild(child)
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-    }
-    
-    func removeChildFromParent() {
-        guard parent != nil else { return }
-        willMove(toParent: nil)
-        view.removeFromSuperview()
-        removeFromParent()
-    }
+        guard gestureEnabled == true else { return }
 
+        let position: CGFloat = sender.translation(in: self.view).x
+        let velocity: CGFloat = sender.velocity(in: self.view).x
+
+        switch sender.state {
+        case .began:
+
+            // If the user tries to expand the menu more than the reveal width, then cancel the pan gesture
+            if velocity > 0, self.isExpanded {
+                sender.state = .cancelled
+            }
+
+            // If the user swipes right but the side menu hasn't expanded yet, enable dragging
+            if velocity > 0, !self.isExpanded {
+                self.draggingIsEnabled = true
+            }
+            // If user swipes left and the side menu is already expanded, enable dragging
+            else if velocity < 0, self.isExpanded {
+                self.draggingIsEnabled = true
+            }
+
+            if self.draggingIsEnabled {
+                // If swipe is fast, Expand/Collapse the side menu with animation instead of dragging
+                let velocityThreshold: CGFloat = 550
+                if abs(velocity) > velocityThreshold {
+                    self.sideMenuState(expanded: self.isExpanded ? false : true)
+                    self.draggingIsEnabled = false
+                    return
+                }
+
+                if self.revealSideMenuOnTop {
+                    self.panBaseLocation = 0.0
+                    if self.isExpanded {
+                        self.panBaseLocation = self.sideMenuRevealWidth
+                    }
+                }
+            }
+
+        case .changed:
+            if self.draggingIsEnabled {
+                if self.revealSideMenuOnTop {
+                    // Show/Hide shadow background view while dragging
+                    let xLocation: CGFloat = self.panBaseLocation + position
+                    let percentage = (xLocation * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
+
+                    let alpha = percentage >= 0.6 ? 0.6 : percentage
+                    self.sideMenuShadowView.alpha = alpha
+
+                    // Move side menu while dragging
+                    if xLocation <= self.sideMenuRevealWidth {
+                        self.sideMenuTrailingConstraint.constant = xLocation - self.sideMenuRevealWidth
+                    }
+                }
+                else {
+                    if let recogView = sender.view?.subviews[1] {
+                        // Show/Hide shadow background view while dragging
+                        let percentage = (recogView.frame.origin.x * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
+
+                        let alpha = percentage >= 0.6 ? 0.6 : percentage
+                        self.sideMenuShadowView.alpha = alpha
+
+                        // Move side menu while dragging
+                        if recogView.frame.origin.x <= self.sideMenuRevealWidth, recogView.frame.origin.x >= 0 {
+                            recogView.frame.origin.x = recogView.frame.origin.x + position
+                            sender.setTranslation(CGPoint.zero, in: view)
+                        }
+                    }
+                }
+            }
+        case .ended:
+            self.draggingIsEnabled = false
+            // If the side menu is half Open/Close, then Expand/Collapse with animation
+            if self.revealSideMenuOnTop {
+                let movedMoreThanHalf = self.sideMenuTrailingConstraint.constant > -(self.sideMenuRevealWidth * 0.5)
+                self.sideMenuState(expanded: movedMoreThanHalf)
+            }
+            else {
+                if let recogView = sender.view?.subviews[1] {
+                    let movedMoreThanHalf = recogView.frame.origin.x > self.sideMenuRevealWidth * 0.5
+                    self.sideMenuState(expanded: movedMoreThanHalf)
+                }
+            }
+        default:
+            break
+        }
+    }
+}
+
+//MARK: - revealViewController
+extension UIViewController {
+    func revealViewController() -> GeneralViewController? {
+        var viewController: UIViewController? = self
+        
+        if viewController != nil && viewController is GeneralViewController {
+            return viewController! as? GeneralViewController
+        }
+        while (!(viewController is GeneralViewController) && viewController?.parent != nil) {
+            viewController = viewController?.parent
+        }
+        if viewController is GeneralViewController {
+            return viewController as? GeneralViewController
+        }
+        return nil
+    }
 }

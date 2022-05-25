@@ -20,7 +20,7 @@ final class GeneralCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        mainFlow()
+        generalMenuFlow()
     }
 
 }
@@ -28,22 +28,30 @@ final class GeneralCoordinator: BaseCoordinator {
 // MARK: - Navigation flows
 extension GeneralCoordinator {
     
-    func mainFlow() {
+    func generalMenuFlow() {
         let repository: AuthRepositoryProtocol = AuthRepository()
         let interactor: AuthInteractorProtocol = AuthInteractor(repository: repository)
         let viewController = GeneralViewController()
-        let presenter  = GeneralPresenter(output: viewController)
-        
-        presenter.interactor = interactor
-        viewController.presenter = presenter
-        viewController.contextNavigationController = navigationController
-        
-        presenter.isCompletion = { [unowned self] in
-            self.isCompletion?()
-        }
-        
+
         window.rootViewController = viewController
     }
+    
+//    func mainFlow() {
+//        let repository: AuthRepositoryProtocol = AuthRepository()
+//        let interactor: AuthInteractorProtocol = AuthInteractor(repository: repository)
+//        let viewController = GeneralViewController()
+//        let presenter  = GeneralPresenter(output: viewController)
+//
+//        presenter.interactor = interactor
+//        viewController.presenter = presenter
+//        viewController.contextNavigationController = navigationController
+//
+//        presenter.isCompletion = { [unowned self] in
+//            self.isCompletion?()
+//        }
+//
+//        window.rootViewController = viewController
+//    }
     
 }
 

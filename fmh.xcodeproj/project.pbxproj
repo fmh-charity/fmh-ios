@@ -34,11 +34,15 @@
 		193AA92E2811C890002CE474 /* ModuleDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 193AA92D2811C890002CE474 /* ModuleDiscription */; };
 		194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194220B328310AAE00A42F72 /* AuthInteractor.swift */; };
 		1942B7DE2835758C005C3732 /* GeneralMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */; };
+		19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CDC283EAE58001506B8 /* GeneralViewController.swift */; };
+		19450CE0283EBC7D001506B8 /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CDF283EBC7D001506B8 /* TemplateViewController.swift */; };
+		19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CE1283EBC8B001506B8 /* TemplatePresenter.swift */; };
+		19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CE3283EBC9C001506B8 /* TemplateProtocols.swift */; };
 		196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841072837DC00008F294F /* GeneralCoordinator.swift */; };
 		1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841092837F735008F294F /* AutorozationCoordinatror.swift */; };
 		1968410C28380BD1008F294F /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410B28380BD1008F294F /* BaseCoordinator.swift */; };
-		1968410E2839240E008F294F /* GeneralMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* GeneralMenuViewController.swift */; };
-		1968411028392AA7008F294F /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410F28392AA7008F294F /* GeneralViewController.swift */; };
+		1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* SideMenuViewController.swift */; };
+		1968411028392AA7008F294F /* GeneralViewController_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410F28392AA7008F294F /* GeneralViewController_.swift */; };
 		1968411228395224008F294F /* GeneralContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968411128395223008F294F /* GeneralContextViewController.swift */; };
 		1968411428397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */; };
 		19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BD1A61281D6AC300ED793A /* PListParser.swift */; };
@@ -90,11 +94,15 @@
 		193AA92D2811C890002CE474 /* ModuleDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ModuleDiscription; sourceTree = "<group>"; };
 		194220B328310AAE00A42F72 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
 		1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralMenuItemCell.swift; sourceTree = "<group>"; };
+		19450CDC283EAE58001506B8 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		19450CDF283EBC7D001506B8 /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
+		19450CE1283EBC8B001506B8 /* TemplatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatePresenter.swift; sourceTree = "<group>"; };
+		19450CE3283EBC9C001506B8 /* TemplateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateProtocols.swift; sourceTree = "<group>"; };
 		196841072837DC00008F294F /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		196841092837F735008F294F /* AutorozationCoordinatror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorozationCoordinatror.swift; sourceTree = "<group>"; };
 		1968410B28380BD1008F294F /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		1968410D2839240E008F294F /* GeneralMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralMenuViewController.swift; sourceTree = "<group>"; };
-		1968410F28392AA7008F294F /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		1968410D2839240E008F294F /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		1968410F28392AA7008F294F /* GeneralViewController_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController_.swift; sourceTree = "<group>"; };
 		1968411128395223008F294F /* GeneralContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralContextViewController.swift; sourceTree = "<group>"; };
 		1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralMenuViewController + MenuOptions.swift"; sourceTree = "<group>"; };
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
@@ -215,6 +223,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		19450CDE283EBC51001506B8 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				19450CE3283EBC9C001506B8 /* TemplateProtocols.swift */,
+				19450CE1283EBC8B001506B8 /* TemplatePresenter.swift */,
+				19450CDF283EBC7D001506B8 /* TemplateViewController.swift */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
 		19BD1A70281DC93B00ED793A /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +326,7 @@
 		19C7A537280DED81005000EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				19450CDE283EBC51001506B8 /* Template */,
 				19F91BC5283D483A00AB6C6B /* OurMission */,
 				19F509E72830169E0082FB98 /* Factory */,
 				1933EA2F282F018100C8A21B /* Loading */,
@@ -346,24 +365,25 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		19EE350F2830618500DBD2E8 /* Views */ = {
+		19EE350F2830618500DBD2E8 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				1968410D2839240E008F294F /* GeneralMenuViewController.swift */,
-				1968411128395223008F294F /* GeneralContextViewController.swift */,
+				1968410D2839240E008F294F /* SideMenuViewController.swift */,
 				1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */,
 				1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */,
 			);
-			path = Views;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		19F509D9282FF72A0082FB98 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				19EE350F2830618500DBD2E8 /* Views */,
 				19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */,
 				19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */,
-				1968410F28392AA7008F294F /* GeneralViewController.swift */,
+				19450CDC283EAE58001506B8 /* GeneralViewController.swift */,
+				19EE350F2830618500DBD2E8 /* Menu */,
+				1968411128395223008F294F /* GeneralContextViewController.swift */,
+				1968410F28392AA7008F294F /* GeneralViewController_.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -475,7 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
-				1968411028392AA7008F294F /* GeneralViewController.swift in Sources */,
+				1968411028392AA7008F294F /* GeneralViewController_.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
@@ -491,13 +511,16 @@
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
+				19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
+				19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
+				19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */,
 				1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
@@ -507,13 +530,14 @@
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				191EAA82281C3B48007B1397 /* RefreshToken.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
-				1968410E2839240E008F294F /* GeneralMenuViewController.swift in Sources */,
+				1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */,
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
 				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
 				19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
+				19450CE0283EBC7D001506B8 /* TemplateViewController.swift in Sources */,
 				196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */,
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,

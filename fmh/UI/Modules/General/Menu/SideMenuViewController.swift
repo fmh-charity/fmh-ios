@@ -1,5 +1,5 @@
 //
-//  GeneralMenuViewController.swift
+//  SideMenuViewController.swift
 //  fmh
 //
 //  Created: 21.05.2022
@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol GeneralMenuViewControllerDelegate {
-    func didSelect( indexPath: IndexPath )
+protocol SideMenuViewControllerDelegate {
+    func didSelect(indexPath: IndexPath)
 }
 
-class GeneralMenuViewController: UIViewController {
+class SideMenuViewController: UIViewController {
     
-    var delegate: GeneralMenuViewControllerDelegate?
+    var delegate: SideMenuViewControllerDelegate?
     
     private var logoView: UIView = {
         let view = UIView()
@@ -74,9 +74,9 @@ class GeneralMenuViewController: UIViewController {
         menuTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             menuTableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0),
-            menuTableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0),
+            menuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             menuTableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 0),
-            menuTableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -100)
+            menuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
         ])
         
     }
@@ -84,14 +84,14 @@ class GeneralMenuViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate
-extension GeneralMenuViewController: UITableViewDelegate {
+extension SideMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
 }
 
 // MARK: - UITableViewDataSource
-extension GeneralMenuViewController: UITableViewDataSource {
+extension SideMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         section == 0 ? 80 : 0

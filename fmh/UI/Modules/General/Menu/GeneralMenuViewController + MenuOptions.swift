@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension GeneralMenuViewController {
+extension SideMenuViewController {
     
     enum MenuOptions: String, CaseIterable {
         case home = "Главная"
