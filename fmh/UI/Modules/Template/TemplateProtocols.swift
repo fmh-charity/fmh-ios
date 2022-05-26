@@ -17,7 +17,3 @@ protocol TemplatePresenterOutput: AnyObject {
     var presenter: TemplatePresenterInput? { get set }
 }
 
-// MARK: - GeneralViewControllerDelegate
-protocol TemplateViewControllerDelegate: AnyObject {
-    
-}

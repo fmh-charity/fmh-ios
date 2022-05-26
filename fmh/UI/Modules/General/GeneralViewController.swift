@@ -12,6 +12,8 @@ import UIKit
 class GeneralViewController: UIViewController {
     
     var presenter: GeneralPresenterInput?
+    var onCompletion: (() -> ())?
+    
     weak var contextViewController: UIViewController?
     
     private var sideMenuViewController: SideMenuViewController = {
@@ -155,7 +157,9 @@ extension GeneralViewController: SideMenuViewControllerDelegate {
             let itemMenu = SideMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
             switch itemMenu {
             case .settings: break
-            case .logOut: presenter?.logOut()
+            case .logOut:
+                self.presenter?.logOut()
+                self.onCompletion?()
             }
         }
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }

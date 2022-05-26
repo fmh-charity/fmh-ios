@@ -12,9 +12,7 @@ final class GeneralPresenter {
     weak private var output: GeneralPresenterOutput?
     
     var interactor: AuthInteractorProtocol?
-    
-    var isCompletion: (() -> ())?
-    
+
     init(output: GeneralPresenterOutput) {
         self.output = output
     }
@@ -35,7 +33,6 @@ extension GeneralPresenter: GeneralPresenterInput {
     
     func logOut() {
         self.interactor?.logOut()
-        self.isCompletion?()
     }
     
 }

@@ -8,6 +8,20 @@
 import Foundation
 
 // MARK: - AutorizationModuleFactoryProtocol
-protocol ModuleFactoryProtocol {
-
+protocol AutorizationModuleFactoryProtocol {
+    func makeAuthorizationViewController() -> AuthorizationViewController
 }
+
+// MARK: - LoadingModuleFactoryProtocol
+protocol LoadingModuleFactoryProtocol {
+    func makeLoadingViewController() -> LoadingViewController
+}
+
+// MARK: - GeneralModuleFactoryProtocol
+protocol GeneralModuleFactoryProtocol {
+    func makeGeneralViewController() -> GeneralViewController
+    
+    func makeTemplateViewController() -> TemplateViewController
+}
+
+

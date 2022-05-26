@@ -11,10 +11,12 @@ import UIKit
 final class GeneralCoordinator: BaseCoordinator {
     
     private let window: UIWindow
+    private let moduleFactory: GeneralModuleFactoryProtocol
     private var navigationController: UINavigationController
      
-    init(window: UIWindow, navigationController: UINavigationController) {
+    init(window: UIWindow, moduleFactory: GeneralModuleFactoryProtocol, navigationController: UINavigationController) {
         self.window = window
+        self.moduleFactory = moduleFactory
         self.navigationController = navigationController
         super.init()
     }
@@ -29,27 +31,22 @@ final class GeneralCoordinator: BaseCoordinator {
 extension GeneralCoordinator {
     
     func generalMenuFlow() {
-        let repository: AuthRepositoryProtocol = AuthRepository()
-        let interactor: AuthInteractorProtocol = AuthInteractor(repository: repository)
-        let viewController = GeneralViewController()
-        let presenter = GeneralPresenter(output: viewController)
-        
-        presenter.interactor = interactor
-        viewController.presenter = presenter
-        
-        navigationController.viewControllers = [TemplateViewController()]
-        
+        let viewController = moduleFactory.makeGeneralViewController()
+
+        // TODO: Организавоть обработку меню и перекидывать viewControllers в self.navigationController
+        /// Default viewController
+        let defaultViewController = makeTemplateViewController()
+        navigationController.viewControllers = [defaultViewController]
         viewController.contextViewController = navigationController
-        
-        presenter.isCompletion = { [unowned self] in
-            self.isCompletion?()
+        viewController.onCompletion = { [unowned self] in
+            self.onCompletion?()
         }
         
         window.rootViewController = viewController
     }
     
     func makeTemplateViewController() -> UIViewController {
-        let viewController = TemplateViewController()
+        let viewController = moduleFactory.makeTemplateViewController()
         
         return viewController
     }

@@ -17,9 +17,11 @@ import UIKit
 final class AppCoordinator: BaseCoordinator {
     
     private let window: UIWindow
-
+    private let moduleFactory = ModuleFactory()
+    
     init(window: UIWindow) {
         self.window = window
+        super.init()
     }
     
     override func start() {
@@ -43,46 +45,38 @@ extension AppCoordinator {
     
     /// Show loading controllerView
     func loadFlow() {
-        let viewController: LoadingViewController = LoadingViewController()
-        let presenter  = LoadingPresenter(output: viewController)
-        
-        viewController.presenter = presenter
-        
-        presenter.isCompletion = { [unowned self] in
+        let viewController: LoadingViewController = moduleFactory.makeLoadingViewController()
+        viewController.onCompletion = { [unowned self] in
             self.selectFlow()
         }
-        
         window.rootViewController = viewController
     }
     
     /// Show autorization coordinator
     func autorizationFlow() {
         let navigationController = makeNavigationController()
-        let coordinator = AutorozationCoordinatror(navigationController: navigationController)
+        let coordinator = AutorozationCoordinatror(navigationController: navigationController, moduleFactory: moduleFactory)
 
         childAppend(coordinator)
-        coordinator.start()
-
-        coordinator.isCompletion = { [unowned self, unowned coordinator] in
+        coordinator.onCompletion = { [unowned self, unowned coordinator] in
             self.childRemove(coordinator)
             self.selectFlow()
         }
-
+        coordinator.start()
         window.rootViewController = navigationController
     }
     
     /// Show general coordinator
     func generalFlow() {
         let navigationController = makeNavigationController()
-        let coordinator = GeneralCoordinator(window: window, navigationController: navigationController)
+        let coordinator = GeneralCoordinator(window: window, moduleFactory: moduleFactory, navigationController: navigationController)
 
         childAppend(coordinator)
-        coordinator.start()
-
-        coordinator.isCompletion = { [unowned self, unowned coordinator] in
+        coordinator.onCompletion = { [unowned self, unowned coordinator] in
             self.childRemove(coordinator)
             self.selectFlow()
         }
+        coordinator.start()
     }
     
 }

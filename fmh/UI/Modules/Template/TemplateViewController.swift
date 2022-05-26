@@ -11,9 +11,8 @@ import UIKit
 class TemplateViewController: UIViewController {
     
     var presenter: TemplatePresenterInput?
+    var onCompletion: (() -> ())?
     
-    weak var delegate: TemplateViewControllerDelegate?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
@@ -45,4 +44,9 @@ class TemplateViewController: UIViewController {
 //        self.revealViewController()?.gestureEnabled = true
 //    }
      
+}
+
+// MARK: - TemplatePresenterOutput
+extension TemplateViewController: TemplatePresenterOutput {
+
 }

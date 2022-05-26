@@ -10,7 +10,7 @@ import Foundation
 class BaseCoordinator : Coordinator {
     
     var childCoordinators = [Coordinator]()
-    var isCompletion: (() -> ())?
+    var onCompletion: (() -> ())?
 
     func start() {
         fatalError("Children should implement `start`.")

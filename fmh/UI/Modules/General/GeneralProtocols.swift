@@ -18,8 +18,3 @@ protocol GeneralPresenterInput: AnyObject {
 protocol GeneralPresenterOutput: AnyObject {
     var presenter: GeneralPresenterInput? { get set }
 }
-
-// MARK: - GeneralViewControllerDelegate
-protocol GeneralViewControllerDelegate: AnyObject {
-    func logOut ()
-}

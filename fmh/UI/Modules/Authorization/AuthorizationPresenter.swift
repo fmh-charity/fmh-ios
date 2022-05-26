@@ -15,9 +15,7 @@ final class AuthorizationPresenter {
     var interactor: AuthInteractorProtocol?
     
     private var anyCancellable = Set<AnyCancellable>()
-    
-    var isCompletion: (() -> ())?
-    
+
     init(output: AuthorizationPresenterOutput) {
         self.output = output
     }
@@ -49,7 +47,6 @@ extension AuthorizationPresenter: AuthorizationPresenterInput {
             
             if let userInfo = userInfo {
                 completion(userInfo, nil)
-                self.isCompletion?()
             }
         }
 

@@ -19,8 +19,3 @@ protocol AuthorizationPresenterOutput: AnyObject {
     var presenter: AuthorizationPresenterInput? { get set }
 }
 
-
-// MARK: - AuthorizationViewControllerDelegate
-protocol AuthorizationViewControllerDelegate: AnyObject {
-    func signInOk()
-}

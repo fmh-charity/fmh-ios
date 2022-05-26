@@ -17,9 +17,11 @@ import UIKit
 final class AutorozationCoordinatror: BaseCoordinator {
     
     private let navigationController: UINavigationController
+    private let moduleFactory: AutorizationModuleFactoryProtocol
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, moduleFactory: AutorizationModuleFactoryProtocol) {
         self.navigationController = navigationController
+        self.moduleFactory = moduleFactory
         super.init()
     }
     
@@ -33,16 +35,9 @@ final class AutorozationCoordinatror: BaseCoordinator {
 extension AutorozationCoordinatror {
     
     func loginFlow() {
-        let repository: AuthRepositoryProtocol = AuthRepository()
-        let interactor: AuthInteractorProtocol = AuthInteractor(repository: repository)
-        let viewController = AuthorizationViewController()
-        let presenter  = AuthorizationPresenter(output: viewController)
-        
-        presenter.interactor = interactor
-        viewController.presenter = presenter
-        
-        presenter.isCompletion = { [unowned self] in
-            self.isCompletion?()
+        let viewController = moduleFactory.makeAuthorizationViewController()
+        viewController.onCompletion = { [unowned self] in
+            self.onCompletion?()
         }
         
         navigationController.setViewControllers([viewController], animated: false)
