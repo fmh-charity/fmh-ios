@@ -17,21 +17,7 @@ import UIKit
 final class AppCoordinator: BaseCoordinator {
     
     private let window: UIWindow
-    
-    private let rootNavigationController: UINavigationController = {
-        let navigationController = UINavigationController()
-        
-        let app = UINavigationBarAppearance()
-        app.titleTextAttributes = [.foregroundColor: UIColor.white]
-        app.backgroundColor = .accentColor
-        navigationController.navigationBar.compactAppearance = app
-        navigationController.navigationBar.standardAppearance = app
-        navigationController.navigationBar.scrollEdgeAppearance = app
-        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        return navigationController
-    }()
-    
+
     init(window: UIWindow) {
         self.window = window
     }
@@ -54,6 +40,7 @@ final class AppCoordinator: BaseCoordinator {
 
 // MARK: - Navigation flows
 extension AppCoordinator {
+    
     /// Show loading controllerView
     func loadFlow() {
         let viewController: LoadingViewController = LoadingViewController()
@@ -70,7 +57,8 @@ extension AppCoordinator {
     
     /// Show autorization coordinator
     func autorizationFlow() {
-        let coordinator = AutorozationCoordinatror(navigationController: rootNavigationController)
+        let navigationController = makeNavigationController()
+        let coordinator = AutorozationCoordinatror(navigationController: navigationController)
 
         childAppend(coordinator)
         coordinator.start()
@@ -79,12 +67,14 @@ extension AppCoordinator {
             self.childRemove(coordinator)
             self.selectFlow()
         }
-        print("============= \(rootNavigationController.children)")
-        window.rootViewController = rootNavigationController
+
+        window.rootViewController = navigationController
     }
+    
     /// Show general coordinator
     func generalFlow() {
-        let coordinator = GeneralCoordinator(window: window, navigationController: rootNavigationController)
+        let navigationController = makeNavigationController()
+        let coordinator = GeneralCoordinator(window: window, navigationController: navigationController)
 
         childAppend(coordinator)
         coordinator.start()
@@ -93,6 +83,25 @@ extension AppCoordinator {
             self.childRemove(coordinator)
             self.selectFlow()
         }
+    }
+    
+}
+
+// MARK: - makeNavigationController
+extension AppCoordinator {
+    
+    private func makeNavigationController() -> UINavigationController {
+        let navigationController = UINavigationController()
+        
+        let app = UINavigationBarAppearance()
+        app.titleTextAttributes = [.foregroundColor: UIColor.white]
+        app.backgroundColor = .accentColor
+        navigationController.navigationBar.compactAppearance = app
+        navigationController.navigationBar.standardAppearance = app
+        navigationController.navigationBar.scrollEdgeAppearance = app
+        navigationController.navigationBar.tintColor = .white
+        
+        return navigationController
     }
     
 }

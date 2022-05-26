@@ -27,10 +27,7 @@ class AuthInteractor {
 
 // MARK: - AuthInteractorProtocol
 extension AuthInteractor: AuthInteractorProtocol {
-    func logOut() {
-        
-    }
-    
+   
     func login(login: String, password: String, completion: @escaping (UserInfo?, APIError?) -> Void ) {
         
         repository?.login(login: login, password: password)
@@ -68,6 +65,10 @@ extension AuthInteractor: AuthInteractorProtocol {
                 return completion(userInfo, nil)
             }
             .store(in: &anyCancellable)
+    }
+    
+    func logOut() {
+        AppSession.logOut()
     }
     
 }

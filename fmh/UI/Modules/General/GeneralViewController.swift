@@ -11,6 +11,9 @@ import UIKit
 
 class GeneralViewController: UIViewController {
     
+    var presenter: GeneralPresenterInput?
+    weak var contextViewController: UIViewController?
+    
     private var sideMenuViewController: SideMenuViewController = {
         let viewController = SideMenuViewController()
         
@@ -50,6 +53,7 @@ class GeneralViewController: UIViewController {
         }
 
         /// Add sideMenuViewController
+        self.sideMenuViewController.defaultHighlightedCell = 0 
         self.sideMenuViewController.delegate = self
         view.insertSubview(self.sideMenuViewController.view, at: self.revealSideMenuOnTop ? 2 : 0)
         addChild(self.sideMenuViewController)
@@ -72,7 +76,16 @@ class GeneralViewController: UIViewController {
         view.addGestureRecognizer(panGestureRecognizer)
 
         /// Default  View Controller
-        showViewController(viewController: TemplateViewController())
+        if let viewController = contextViewController {
+            showViewController(viewController: viewController)
+        } else {
+            // TODO: Экран заглушка нужен
+            let viewController = UIViewController()
+            viewController.view.backgroundColor = .green
+            
+            showViewController(viewController: viewController)
+        }
+        
     }
 
     ///  Show menu in other (chlds) viewControllers
@@ -121,6 +134,11 @@ class GeneralViewController: UIViewController {
 //    }
 }
 
+// MARK: - GeneralPresenterOutput
+extension GeneralViewController: GeneralPresenterOutput {
+
+}
+
 //MARK: - SideMenuViewControllerDelegate
 extension GeneralViewController: SideMenuViewControllerDelegate {
     
@@ -128,7 +146,7 @@ extension GeneralViewController: SideMenuViewControllerDelegate {
         if indexPath.section == 0 {
             let itemMenu = SideMenuViewController.MenuOptions.allCases[indexPath.row]
             switch itemMenu {
-            case .home: showViewController(viewController: GeneralContextViewController())
+            case .home: showViewController(viewController: TemplateViewController())
                 //  showViewController(viewController: GeneralContextViewController())
             default: break
             }
@@ -137,7 +155,7 @@ extension GeneralViewController: SideMenuViewControllerDelegate {
             let itemMenu = SideMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
             switch itemMenu {
             case .settings: break
-            case .logOut: break //presenter?.logOut()
+            case .logOut: presenter?.logOut()
             }
         }
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }

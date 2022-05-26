@@ -43,7 +43,6 @@
 		1968410C28380BD1008F294F /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410B28380BD1008F294F /* BaseCoordinator.swift */; };
 		1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* SideMenuViewController.swift */; };
 		1968411028392AA7008F294F /* GeneralViewController_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410F28392AA7008F294F /* GeneralViewController_.swift */; };
-		1968411228395224008F294F /* GeneralContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968411128395223008F294F /* GeneralContextViewController.swift */; };
 		1968411428397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */; };
 		19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BD1A61281D6AC300ED793A /* PListParser.swift */; };
 		19BD1A64281D703A00ED793A /* NetworkService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A63281D703A00ED793A /* NetworkService.plist */; };
@@ -103,7 +102,6 @@
 		1968410B28380BD1008F294F /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		1968410D2839240E008F294F /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		1968410F28392AA7008F294F /* GeneralViewController_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController_.swift; sourceTree = "<group>"; };
-		1968411128395223008F294F /* GeneralContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralContextViewController.swift; sourceTree = "<group>"; };
 		1968411328397C4A008F294F /* GeneralMenuViewController + MenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralMenuViewController + MenuOptions.swift"; sourceTree = "<group>"; };
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
 		19BD1A63281D703A00ED793A /* NetworkService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NetworkService.plist; sourceTree = "<group>"; };
@@ -381,9 +379,8 @@
 				19EE350B2830616D00DBD2E8 /* GeneralProtocols.swift */,
 				19EE350D2830617D00DBD2E8 /* GeneralPresenter.swift */,
 				19450CDC283EAE58001506B8 /* GeneralViewController.swift */,
-				19EE350F2830618500DBD2E8 /* Menu */,
-				1968411128395223008F294F /* GeneralContextViewController.swift */,
 				1968410F28392AA7008F294F /* GeneralViewController_.swift */,
+				19EE350F2830618500DBD2E8 /* Menu */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -524,7 +521,6 @@
 				1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
-				1968411228395224008F294F /* GeneralContextViewController.swift in Sources */,
 				1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */,
 				191EAA75281BD26A007B1397 /* TokenData.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,

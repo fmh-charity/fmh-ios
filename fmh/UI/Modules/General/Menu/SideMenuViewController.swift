@@ -16,6 +16,8 @@ class SideMenuViewController: UIViewController {
     
     var delegate: SideMenuViewControllerDelegate?
     
+    var defaultHighlightedCell: Int = 0
+    
     private var logoView: UIView = {
         let view = UIView()
         let imageLogo = UIImageView()
@@ -61,6 +63,12 @@ class SideMenuViewController: UIViewController {
         self.menuTableView.delegate = self
         self.menuTableView.dataSource = self
         setupLayouts()
+        
+        // Set Highlighted Cell
+       DispatchQueue.main.async {
+           let defaultRow = IndexPath(row: self.defaultHighlightedCell, section: 0)
+           self.menuTableView.selectRow(at: defaultRow, animated: false, scrollPosition: .none)
+       }
         
         self.menuTableView.reloadData()
     }
