@@ -174,7 +174,7 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		19243E182829BAC500A43CA8 /* Autorization */ = {
+		19243E182829BAC500A43CA8 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
 				19243E382829D51200A43CA8 /* Views */,
@@ -183,7 +183,7 @@
 				19243E1E2829BBEB00A43CA8 /* AuthorizationPresenter.swift */,
 				19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */,
 			);
-			path = Autorization;
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		19243E382829D51200A43CA8 /* Views */ = {
@@ -328,7 +328,7 @@
 				19F91BC5283D483A00AB6C6B /* OurMission */,
 				19F509E72830169E0082FB98 /* Factory */,
 				1933EA2F282F018100C8A21B /* Loading */,
-				19243E182829BAC500A43CA8 /* Autorization */,
+				19243E182829BAC500A43CA8 /* Authorization */,
 				19F509D9282FF72A0082FB98 /* General */,
 			);
 			path = Modules;
