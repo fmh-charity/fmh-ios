@@ -12,7 +12,7 @@ class GeneralMenuItemCell: UITableViewCell {
     
     class var identifier: String { return String(describing: self) }
     
-    var iconImageView: UIImageView = {
+    private var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
@@ -21,7 +21,7 @@ class GeneralMenuItemCell: UITableViewCell {
         return imageView
     }()
     
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16)
@@ -32,11 +32,20 @@ class GeneralMenuItemCell: UITableViewCell {
         return label
     }()
     
+    private var selectedBackgroundViewCell: UIView = {
+        let selectionColorView = UIView()
+        selectionColorView.backgroundColor = .init(red: 1/255, green: 151/255, blue: 149/255, alpha: 1.0)
+        
+        return selectionColorView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
         contentView.backgroundColor = .clear
+        
+        self.selectedBackgroundView = selectedBackgroundViewCell
     }
     
     required init?(coder: NSCoder) {

@@ -17,7 +17,7 @@ class TemplateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-        title = "Template View Controller"
+        title = "Template View Controller \(String(describing: (1...100).randomElement()))"
 
         // TODO: Перенести в отдельный класс или добавить в GeneralMenuViewController и от туда тянуть дочерними
         var menuImageString = "line.horizontal.3"

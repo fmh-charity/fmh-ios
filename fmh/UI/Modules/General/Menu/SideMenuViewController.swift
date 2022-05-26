@@ -123,14 +123,18 @@ extension SideMenuViewController: UITableViewDataSource {
                 title: AdditionalMenuOptions.allCases[indexPath.row].rawValue
             )
         }
-        cell.selectionStyle = .none
-
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         self.delegate?.didSelect(indexPath: indexPath)
+        
+        if indexPath.section == 1 {
+            let itemMenu = SideMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
+            if itemMenu == .logOut {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
     }
     
 }
