@@ -319,6 +319,7 @@ extension GeneralViewController: UIGestureRecognizerDelegate {
 
 //MARK: - revealViewController
 extension UIViewController {
+    
     func revealViewController() -> GeneralViewController? {
         var viewController: UIViewController? = self
         
@@ -333,4 +334,24 @@ extension UIViewController {
         }
         return nil
     }
+    
+}
+
+// MARK: - setMenuButton
+extension UIViewController {
+    
+    func setMenuButton() {
+        var menuImageString = "line.horizontal.3"
+        if #available(iOS 15.0, *) {
+            menuImageString = "line.3.horizontal"
+        }
+        
+        let menuButton = UIBarButtonItem(image: UIImage(systemName: menuImageString),
+                                         style: .done,
+                                         target: self.revealViewController(),
+                                         action: #selector(self.revealViewController()?.revealSideMenu))
+
+         navigationItem.leftBarButtonItem = menuButton
+    }
+    
 }

@@ -20,9 +20,12 @@ class SideMenuViewController: UIViewController {
     var delegate: SideMenuViewControllerDelegate?
     var defaultHighlightedCell: Int = 0
     
-    var shortUserName: String = "" {
+    var shortUserName: String? = nil {
         didSet {
             self.menuTableView.reloadData()
+            // Set Highlighted Cell
+            let defaultRow = IndexPath(row: self.defaultHighlightedCell, section: 0)
+            self.menuTableView.selectRow(at: defaultRow, animated: false, scrollPosition: .none)
         }
     }
 
@@ -55,7 +58,7 @@ class SideMenuViewController: UIViewController {
     }()
     
     private var menuTableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         
@@ -68,17 +71,13 @@ class SideMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .accentColor
+        
         self.menuTableView.delegate = self
         self.menuTableView.dataSource = self
         setupLayouts()
         
-        // Set Highlighted Cell
-       DispatchQueue.main.async {
-           let defaultRow = IndexPath(row: self.defaultHighlightedCell, section: 0)
-           self.menuTableView.selectRow(at: defaultRow, animated: false, scrollPosition: .none)
-       }
-        
         self.menuTableView.reloadData()
+
     }
     
     // MARK: - Private methods
@@ -153,7 +152,7 @@ extension SideMenuViewController: UITableViewDataSource {
             if itemMenu == .user {
                 cell.configure(
                     image: itemMenu.image,
-                    title: shortUserName
+                    title: shortUserName ?? itemMenu.rawValue
                 )
             } else {
                 cell.configure(
@@ -162,6 +161,7 @@ extension SideMenuViewController: UITableViewDataSource {
                 )
             }
         }
+        
         return cell
     }
     

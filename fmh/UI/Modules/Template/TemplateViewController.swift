@@ -18,19 +18,7 @@ class TemplateViewController: UIViewController, TemplateViewControllerProtocol {
         view.backgroundColor = .lightGray
         title = "Template View Controller \(String(describing: (1...100).randomElement()))"
 
-        // TODO: Перенести в отдельный класс или добавить в GeneralMenuViewController и от туда тянуть дочерними
-        var menuImageString = "line.horizontal.3"
-        if #available(iOS 15.0, *) {
-            menuImageString = "line.3.horizontal"
-        }
-        
-        let menuButton = UIBarButtonItem(image: UIImage(systemName: menuImageString),
-                                         style: .done,
-                                         target: revealViewController(),
-                                         action: #selector(self.revealViewController()?.revealSideMenu))
-
-        navigationItem.leftBarButtonItem = menuButton
-
+        setMenuButton()
     }
     
     /// Нужны для отключения свайпа (Открытия меню)
