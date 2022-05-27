@@ -8,7 +8,10 @@
 import Foundation
 import UIKit
 
-final class GeneralCoordinator: BaseCoordinator {
+final class GeneralCoordinator: CoordinatorProtocol {
+    
+    var childCoordinators = [CoordinatorProtocol]()
+    var onCompletion: (() -> ())?
     
     private let window: UIWindow
     private let moduleFactory: GeneralModuleFactoryProtocol
@@ -18,10 +21,9 @@ final class GeneralCoordinator: BaseCoordinator {
         self.window = window
         self.moduleFactory = moduleFactory
         self.navigationController = navigationController
-        super.init()
     }
     
-    override func start() {
+    func start() {
         generalMenuFlow()
     }
 
@@ -30,26 +32,47 @@ final class GeneralCoordinator: BaseCoordinator {
 // MARK: - Navigation flows
 extension GeneralCoordinator {
     
-    func generalMenuFlow() {
+    private func generalMenuFlow() {
         let viewController = moduleFactory.makeGeneralViewController()
-
-        // TODO: Организавоть обработку меню и перекидывать viewControllers в self.navigationController
-        /// Default viewController
-        let defaultViewController = makeTemplateViewController()
-        navigationController.viewControllers = [defaultViewController]
-        viewController.contextViewController = navigationController
         viewController.onCompletion = { [unowned self] in
             self.onCompletion?()
         }
         
-        window.rootViewController = viewController
-    }
-    
-    func makeTemplateViewController() -> UIViewController {
-        let viewController = moduleFactory.makeTemplateViewController()
+        /// Set efault ViewController in GeneralViewController.contextViewController
+        let defaultViewController = self.moduleFactory.makeTemplateViewController()
+        navigationController.viewControllers = [defaultViewController.toPresent]
         
-        return viewController
+        viewController.didSelectMenu = { [unowned self] menu in
+            switch menu {
+                case .home:
+                    let viewController = self.moduleFactory.makeTemplateViewController()
+                    navigationController.viewControllers = [viewController.toPresent]
+                case .urMission:
+                    break
+                case .news:
+                    break
+                case .claim:
+                    break
+                case .patients:
+                    break
+                case .chambers:
+                    break
+            }
+        }
+        
+        viewController.didSelectAdditionalMenu = { [unowned self] additionalMenu in
+            switch additionalMenu {
+                case .user:
+                    break
+                case .logOut:
+                    self.onCompletion?()
+            }
+        }
+        
+        /// Set  select ViewController in GeneralViewController.contextViewController
+        viewController.contextViewController = navigationController
+        window.rootViewController = viewController.toPresent
     }
-    
+
 }
 

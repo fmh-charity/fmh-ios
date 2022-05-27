@@ -14,17 +14,19 @@
 import Foundation
 import UIKit
 
-final class AppCoordinator: BaseCoordinator {
+final class AppCoordinator: CoordinatorProtocol {
+    
+    var childCoordinators = [CoordinatorProtocol]()
+    var onCompletion: (() -> ())?
     
     private let window: UIWindow
     private let moduleFactory = ModuleFactory()
     
     init(window: UIWindow) {
         self.window = window
-        super.init()
     }
     
-    override func start() {
+    func start() {
         loadFlow()
     }
     
@@ -44,16 +46,16 @@ final class AppCoordinator: BaseCoordinator {
 extension AppCoordinator {
     
     /// Show loading controllerView
-    func loadFlow() {
-        let viewController: LoadingViewController = moduleFactory.makeLoadingViewController()
+    private func loadFlow() {
+        let viewController = moduleFactory.makeLoadingViewController()
         viewController.onCompletion = { [unowned self] in
             self.selectFlow()
         }
-        window.rootViewController = viewController
+        window.rootViewController = viewController.toPresent
     }
     
     /// Show autorization coordinator
-    func autorizationFlow() {
+    private func autorizationFlow() {
         let navigationController = makeNavigationController()
         let coordinator = AutorozationCoordinatror(navigationController: navigationController, moduleFactory: moduleFactory)
 
@@ -67,12 +69,13 @@ extension AppCoordinator {
     }
     
     /// Show general coordinator
-    func generalFlow() {
+    private func generalFlow() {
         let navigationController = makeNavigationController()
         let coordinator = GeneralCoordinator(window: window, moduleFactory: moduleFactory, navigationController: navigationController)
 
         childAppend(coordinator)
         coordinator.onCompletion = { [unowned self, unowned coordinator] in
+            AppSession.logOut() /// <- При завершении GeneralCoordinator всегда разлогиниваемся
             self.childRemove(coordinator)
             self.selectFlow()
         }

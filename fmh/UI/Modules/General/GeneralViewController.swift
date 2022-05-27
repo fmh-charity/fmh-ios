@@ -9,19 +9,30 @@
 import Foundation
 import UIKit
 
-class GeneralViewController: UIViewController {
+class GeneralViewController: UIViewController, GeneralViewControllerProtocol {
     
     var presenter: GeneralPresenterInput?
     var onCompletion: (() -> ())?
+    var didSelectMenu: ((_ menuOptions: GeneralMenu) -> ())?
+    var didSelectAdditionalMenu: ((_ menuOptions: GeneralMenu.AdditionalMenu) -> ())?
     
     weak var contextViewController: UIViewController?
     
     private var sideMenuViewController: SideMenuViewController = {
         let viewController = SideMenuViewController()
-        
+
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         return viewController
     }()
+    
+    private var userInfo: UserInfo? = nil {
+        didSet {
+            guard let f = userInfo?.lastName,
+                  let i = userInfo?.firstName.first?.uppercased(),
+                  let o = userInfo?.middleName.first?.uppercased() else { return }
+            sideMenuViewController.shortUserName = f + " " + i + "." + o + "."
+        }
+    }
     
     private var sideMenuShadowView: UIView!
     
@@ -41,6 +52,16 @@ class GeneralViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
 
+        /// Get userInfo
+        presenter?.getUserInfo(completion: { [weak self] userInfo, error in
+            if let _ = error {
+                self?.onCompletion?()
+            }
+            if let userInfo = userInfo {
+                DispatchQueue.main.async { self?.userInfo = userInfo }
+            }
+        })
+        
         /// Shadow Background View
         self.sideMenuShadowView = UIView(frame: self.view.bounds)
         self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -95,14 +116,14 @@ class GeneralViewController: UIViewController {
         self.sideMenuState(expanded: self.isExpanded ? false : true)
     }
     
-    func animateShadow(targetPosition: CGFloat) {
+    private func animateShadow(targetPosition: CGFloat) {
         UIView.animate(withDuration: 0.5) {
             // When targetPosition is 0, which means side menu is expanded, the shadow opacity is 0.6
             self.sideMenuShadowView.alpha = (targetPosition == 0) ? 0.6 : 0.0
         }
     }
 
-    func sideMenuState(expanded: Bool) {
+    private func sideMenuState(expanded: Bool) {
         if expanded {
             self.animateSideMenu(targetPosition: self.revealSideMenuOnTop ? 0 : self.sideMenuRevealWidth) { _ in
                 self.isExpanded = true
@@ -119,7 +140,7 @@ class GeneralViewController: UIViewController {
         }
     }
     
-    func animateSideMenu(targetPosition: CGFloat, completion: @escaping (Bool) -> ()) {
+    private func animateSideMenu(targetPosition: CGFloat, completion: @escaping (Bool) -> ()) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .layoutSubviews, animations: {
             if self.revealSideMenuOnTop {
                 self.sideMenuTrailingConstraint.constant = targetPosition
@@ -145,27 +166,22 @@ extension GeneralViewController: GeneralPresenterOutput {
 extension GeneralViewController: SideMenuViewControllerDelegate {
     
     func didSelect(indexPath: IndexPath) {
+        
         if indexPath.section == 0 {
-            let itemMenu = SideMenuViewController.MenuOptions.allCases[indexPath.row]
-            switch itemMenu {
-            case .home: showViewController(viewController: TemplateViewController())
-                //  showViewController(viewController: GeneralContextViewController())
-            default: break
-            }
+            let itemMenu = GeneralMenu.allCases[indexPath.row]
+            self.didSelectMenu?(itemMenu)
         }
+        
         if indexPath.section == 1 {
-            let itemMenu = SideMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
-            switch itemMenu {
-            case .settings: break
-            case .logOut:
-                self.presenter?.logOut()
-                self.onCompletion?()
-            }
+            let itemMenu = GeneralMenu.AdditionalMenu.allCases[indexPath.row]
+            self.didSelectAdditionalMenu?(itemMenu)
         }
+
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }
     }
 
-    func showViewController<T: UIViewController>(viewController: T) -> () {
+    private func showViewController<T: UIViewController>(viewController: T) -> () {
+
         // Remove the previous View
         for subview in view.subviews {
             if subview.tag == 99 {

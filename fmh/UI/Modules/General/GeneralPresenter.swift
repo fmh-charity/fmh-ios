@@ -30,9 +30,5 @@ extension GeneralPresenter: GeneralPresenterInput {
             return completion(nil, apiError)
         })
     }
-    
-    func logOut() {
-        self.interactor?.logOut()
-    }
-    
+
 }

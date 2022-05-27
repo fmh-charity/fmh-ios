@@ -17,3 +17,7 @@ protocol TemplatePresenterOutput: AnyObject {
     var presenter: TemplatePresenterInput? { get set }
 }
 
+// MARK: - TemplateViewControllerProtocol
+protocol TemplateViewControllerProtocol: BaseViewProtocol {
+    
+}

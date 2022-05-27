@@ -19,3 +19,7 @@ protocol AuthorizationPresenterOutput: AnyObject {
     var presenter: AuthorizationPresenterInput? { get set }
 }
 
+// MARK: - AuthorizationViewControllerProtocol
+protocol AuthorizationViewControllerProtocol: BaseViewProtocol {
+    
+}

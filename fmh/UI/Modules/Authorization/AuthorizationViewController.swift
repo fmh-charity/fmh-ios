@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthorizationViewController: UIViewController {
+class AuthorizationViewController: UIViewController, AuthorizationViewControllerProtocol {
     /// Root view
     private var authView: LoginView { self.view as! LoginView  }
     
@@ -96,11 +96,8 @@ class AuthorizationViewController: UIViewController {
                     self?.present(alert, animated: true, completion: nil)
                 }
                 
-                if let userInfo = userInfo {
-                    // TODO: Оповешение кто авторизовался
-                    print("\(userInfo)")
+                if let _ = userInfo {
                     self?.onCompletion?()
-                    
                 }
                 
             })

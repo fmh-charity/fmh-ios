@@ -12,9 +12,9 @@ final class ModuleFactory { }
 // MARK: - AutorizationModuleFactoryProtocol
 extension ModuleFactory: AutorizationModuleFactoryProtocol {
     
-    func makeAuthorizationViewController() -> AuthorizationViewController {
-        let repository: AuthRepositoryProtocol = AuthRepository()
-        let interactor: AuthInteractorProtocol = AuthInteractor(repository: repository)
+    func makeAuthorizationViewController() -> AuthorizationViewControllerProtocol {
+        let repository = AuthRepository()
+        let interactor = AuthInteractor(repository: repository)
         let viewController = AuthorizationViewController()
         let presenter  = AuthorizationPresenter(output: viewController)
         
@@ -29,7 +29,7 @@ extension ModuleFactory: AutorizationModuleFactoryProtocol {
 // MARK: - LoadingModuleFactoryProtocol
 extension ModuleFactory: LoadingModuleFactoryProtocol {
     
-    func makeLoadingViewController() -> LoadingViewController {
+    func makeLoadingViewController() -> LoadingViewControllerProtocol {
         let viewController = LoadingViewController()
         let presenter  = LoadingPresenter(output: viewController)
         
@@ -43,9 +43,9 @@ extension ModuleFactory: LoadingModuleFactoryProtocol {
 // MARK: - LoadingModuleFactoryProtocol
 extension ModuleFactory: GeneralModuleFactoryProtocol {
     
-    func makeGeneralViewController() -> GeneralViewController {
-        let repository: AuthRepositoryProtocol = AuthRepository()
-        let interactor: AuthInteractorProtocol = AuthInteractor(repository: repository)
+    func makeGeneralViewController() -> GeneralViewControllerProtocol {
+        let repository = AuthRepository()
+        let interactor = AuthInteractor(repository: repository)
         let viewController = GeneralViewController()
         let presenter = GeneralPresenter(output: viewController)
         
@@ -55,7 +55,7 @@ extension ModuleFactory: GeneralModuleFactoryProtocol {
         return viewController
     }
     
-    func makeTemplateViewController() -> TemplateViewController {
+    func makeTemplateViewController() -> TemplateViewControllerProtocol {
         let viewController = TemplateViewController()
         let presenter  = TemplatePresenter(output: viewController)
         

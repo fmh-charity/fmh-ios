@@ -14,10 +14,18 @@ protocol SideMenuViewControllerDelegate {
 
 class SideMenuViewController: UIViewController {
     
-    var delegate: SideMenuViewControllerDelegate?
+    private typealias Menu = GeneralMenu
+    private typealias AdditionalMenu = GeneralMenu.AdditionalMenu
     
+    var delegate: SideMenuViewControllerDelegate?
     var defaultHighlightedCell: Int = 0
     
+    var shortUserName: String = "" {
+        didSet {
+            self.menuTableView.reloadData()
+        }
+    }
+
     private var logoView: UIView = {
         let view = UIView()
         let imageLogo = UIImageView()
@@ -102,11 +110,25 @@ extension SideMenuViewController: UITableViewDelegate {
 extension SideMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        section == 0 ? 80 : 0
+        switch section {
+            case 0:
+                return 80
+            case 1:
+                return 0
+            default:
+                return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        section == 0 ? logoView : nil
+        switch section {
+            case 0:
+                return logoView
+            case 1:
+                return nil
+            default:
+                return nil
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,22 +136,31 @@ extension SideMenuViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? MenuOptions.allCases.count : AdditionalMenuOptions.allCases.count
+        section == 0 ? Menu.allCases.count : AdditionalMenu.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GeneralMenuItemCell.identifier, for: indexPath) as? GeneralMenuItemCell else { fatalError("Cell doesn't exist") }
         if indexPath.section == 0 {
+            let itemMenu = Menu.allCases[indexPath.row]
             cell.configure(
-                image: MenuOptions.allCases[indexPath.row].image,
-                title: MenuOptions.allCases[indexPath.row].rawValue
+                image: itemMenu.image,
+                title: itemMenu.rawValue
             )
         }
         if indexPath.section == 1 {
-            cell.configure(
-                image: AdditionalMenuOptions.allCases[indexPath.row].image,
-                title: AdditionalMenuOptions.allCases[indexPath.row].rawValue
-            )
+            let itemMenu = AdditionalMenu.allCases[indexPath.row]
+            if itemMenu == .user {
+                cell.configure(
+                    image: itemMenu.image,
+                    title: shortUserName
+                )
+            } else {
+                cell.configure(
+                    image: itemMenu.image,
+                    title: itemMenu.rawValue
+                )
+            }
         }
         return cell
     }
@@ -138,7 +169,7 @@ extension SideMenuViewController: UITableViewDataSource {
         self.delegate?.didSelect(indexPath: indexPath)
         
         if indexPath.section == 1 {
-            let itemMenu = SideMenuViewController.AdditionalMenuOptions.allCases[indexPath.row]
+            let itemMenu = AdditionalMenu.allCases[indexPath.row]
             if itemMenu == .logOut {
                 tableView.deselectRow(at: indexPath, animated: true)
             }

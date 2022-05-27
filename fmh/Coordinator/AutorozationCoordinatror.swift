@@ -14,7 +14,10 @@
 import Foundation
 import UIKit
 
-final class AutorozationCoordinatror: BaseCoordinator {
+final class AutorozationCoordinatror: CoordinatorProtocol {
+    
+    var childCoordinators = [CoordinatorProtocol]()
+    var onCompletion: (() -> ())?
     
     private let navigationController: UINavigationController
     private let moduleFactory: AutorizationModuleFactoryProtocol
@@ -22,10 +25,9 @@ final class AutorozationCoordinatror: BaseCoordinator {
     init(navigationController: UINavigationController, moduleFactory: AutorizationModuleFactoryProtocol) {
         self.navigationController = navigationController
         self.moduleFactory = moduleFactory
-        super.init()
     }
     
-    override func start() {
+    func start() {
         loginFlow()
     }
     
@@ -34,13 +36,13 @@ final class AutorozationCoordinatror: BaseCoordinator {
 // MARK: - Navigation flows
 extension AutorozationCoordinatror {
     
-    func loginFlow() {
+    private func loginFlow() {
         let viewController = moduleFactory.makeAuthorizationViewController()
         viewController.onCompletion = { [unowned self] in
             self.onCompletion?()
         }
         
-        navigationController.setViewControllers([viewController], animated: false)
+        navigationController.setViewControllers([viewController.toPresent], animated: false)
         navigationController.isNavigationBarHidden = false
     }
     

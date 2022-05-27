@@ -5,16 +5,22 @@
 //  Created: 15.05.2022
 //
 
-import Foundation
+import UIKit
 
 // MARK: - GeneralPresenterInput
 protocol GeneralPresenterInput: AnyObject {
     func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void)
-    func logOut ()
 }
 
 
 // MARK: - GeneralPresenterOutput
 protocol GeneralPresenterOutput: AnyObject {
     var presenter: GeneralPresenterInput? { get set }
+}
+
+// MARK: - GeneralViewControllerProtocol
+protocol GeneralViewControllerProtocol: BaseViewProtocol {
+    var contextViewController: UIViewController? { get set }
+    var didSelectMenu: ((_ menuOptions: GeneralMenu) -> ())? { get set }
+    var didSelectAdditionalMenu: ((_ menuOptions: GeneralMenu.AdditionalMenu) -> ())? { get set }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LoadingViewController: UIViewController {
+class LoadingViewController: UIViewController, LoadingViewControllerProtocol {
 
     var presenter: LoadingPresenterInput?
     var onCompletion: (() -> ())?

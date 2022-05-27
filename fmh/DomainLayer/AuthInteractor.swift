@@ -11,7 +11,6 @@ import Combine
 protocol AuthInteractorProtocol {
     func login(login: String, password: String, completion: @escaping (UserInfo?, APIError?) -> Void )
     func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void )
-    func logOut()
 }
 
 class AuthInteractor {
@@ -66,9 +65,5 @@ extension AuthInteractor: AuthInteractorProtocol {
             }
             .store(in: &anyCancellable)
     }
-    
-    func logOut() {
-        AppSession.logOut()
-    }
-    
+
 }

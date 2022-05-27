@@ -20,3 +20,8 @@ protocol LoadingPresenterOutput: AnyObject {
     
     func hide()
 }
+
+// MARK: - LoadingViewControllerProtocol
+protocol LoadingViewControllerProtocol: BaseViewProtocol {
+    
+}

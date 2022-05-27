@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class TemplateViewController: UIViewController {
+class TemplateViewController: UIViewController, TemplateViewControllerProtocol {
     
     var presenter: TemplatePresenterInput?
     var onCompletion: (() -> ())?
