@@ -1,17 +1,19 @@
 !!! Если есть предложения - вносим
 
 
-!!! Model-View-Presenter (MVP) <— Предлагаю использовать этот шаблон с применением Coordinators (Routers), (Builder?)
+!!! Model-View-Presenter (MVP) <— Предлагаю использовать этот шаблон с применением Coordinators, Factory
 
 
 = СТРУКТУРА ПРОЕКТА =
 
 - Application
+- Coordinator
 - DataLayer
 - DomainLayer
 - UI
     - Elements
     - Modules
+        - Factory
 - Common
 - Resources
 
@@ -19,16 +21,24 @@
 
 - Application: Хранит, все что напрямую относится к коду приложения
 
+- Coordinator: Координирует переходы по экранам
+
 - DataLayer: Получение данных из источника данных, будь то локальный (БД) или удаленный (API) (Repository)
 
-- DomainLayer (BusinessLogic): Извлекает данные из DataLayer (Use cases) <- Возможно без него обойдемся (Presenter'ам читать Repository)
-
-- Common: (Расширения, хелперы ...)
+- DomainLayer (BusinessLogic): Извлекает данные из DataLayer (Interactor)
     
 - UI: Это все то что видит пользователь и вспомогательный функционал (UIView, UIViewControllers, Presenter ...)
     - Elements (Если компонент UI используется в нескольких Modules, то размещаем тут)
-    - Modules (Самостоятельный блок кода UI со своей логикой)
-    
+    - Modules
+        - Factory (Фабрика модулей)
+        - Module (Самостоятельный блок кода UI со своей логикой)
+            . Protocols.swift
+            . Presenter.swfift
+            . ViewController.swift
+            . .xib ( .storyboard ) <- ВЕРСТАКА КОДОМ (По результатам голосования)
+
+- Common: (Расширения, хелперы ...)
+
 - Resources: (Размещаем .plist, .xcassets ...)
 
 

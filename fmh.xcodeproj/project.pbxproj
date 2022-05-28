@@ -31,13 +31,13 @@
 		1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA32282F024C00C8A21B /* LoadingProtocols.swift */; };
 		1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA36282F026800C8A21B /* LoadingPresenter.swift */; };
 		1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA38282F027B00C8A21B /* LoadingViewController.swift */; };
-		193AA92E2811C890002CE474 /* ModuleDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 193AA92D2811C890002CE474 /* ModuleDiscription */; };
 		194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194220B328310AAE00A42F72 /* AuthInteractor.swift */; };
 		1942B7DE2835758C005C3732 /* GeneralMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */; };
 		19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CDC283EAE58001506B8 /* GeneralViewController.swift */; };
 		19450CE0283EBC7D001506B8 /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CDF283EBC7D001506B8 /* TemplateViewController.swift */; };
 		19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CE1283EBC8B001506B8 /* TemplatePresenter.swift */; };
 		19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CE3283EBC9C001506B8 /* TemplateProtocols.swift */; };
+		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841072837DC00008F294F /* GeneralCoordinator.swift */; };
 		1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841092837F735008F294F /* AutorozationCoordinatror.swift */; };
 		1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* SideMenuViewController.swift */; };
@@ -91,13 +91,13 @@
 		1933EA32282F024C00C8A21B /* LoadingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocols.swift; sourceTree = "<group>"; };
 		1933EA36282F026800C8A21B /* LoadingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresenter.swift; sourceTree = "<group>"; };
 		1933EA38282F027B00C8A21B /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		193AA92D2811C890002CE474 /* ModuleDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ModuleDiscription; sourceTree = "<group>"; };
 		194220B328310AAE00A42F72 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
 		1942B7DD2835758C005C3732 /* GeneralMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralMenuItemCell.swift; sourceTree = "<group>"; };
 		19450CDC283EAE58001506B8 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		19450CDF283EBC7D001506B8 /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		19450CE1283EBC8B001506B8 /* TemplatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatePresenter.swift; sourceTree = "<group>"; };
 		19450CE3283EBC9C001506B8 /* TemplateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateProtocols.swift; sourceTree = "<group>"; };
+		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		196841072837DC00008F294F /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		196841092837F735008F294F /* AutorozationCoordinatror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorozationCoordinatror.swift; sourceTree = "<group>"; };
 		1968410D2839240E008F294F /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -277,11 +277,11 @@
 		19C7A519280DECD0005000EB /* fmh */ = {
 			isa = PBXGroup;
 			children = (
+				195629A02842A63C00C8A704 /* Contributors */,
 				19C7A530280DED3B005000EB /* Guidelines */,
 				19C7A52E280DED24005000EB /* ProjectDiscription */,
 				19BD1A68281DB6F700ED793A /* ResponseStatusCodes */,
 				19243E3A282A418600A43CA8 /* CoordinatorDiscription */,
-				193AA92D2811C890002CE474 /* ModuleDiscription */,
 				19C7A538280DED98005000EB /* Application */,
 				19F509E02830038D0082FB98 /* Coordinator */,
 				19C7A533280DED59005000EB /* DataLayer */,
@@ -494,12 +494,12 @@
 			files = (
 				19243E3B282A418700A43CA8 /* CoordinatorDiscription in Resources */,
 				19C7A527280DECD3005000EB /* LaunchScreen.storyboard in Resources */,
+				195629A12842A63C00C8A704 /* Contributors in Resources */,
 				19C7A524280DECD3005000EB /* Assets.xcassets in Resources */,
 				19C7A52F280DED24005000EB /* ProjectDiscription in Resources */,
 				19BD1A69281DB6F700ED793A /* ResponseStatusCodes in Resources */,
 				19BD1A64281D703A00ED793A /* NetworkService.plist in Resources */,
 				19C7A531280DED3B005000EB /* Guidelines in Resources */,
-				193AA92E2811C890002CE474 /* ModuleDiscription in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
