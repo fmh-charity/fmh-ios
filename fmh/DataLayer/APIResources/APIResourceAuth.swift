@@ -7,35 +7,25 @@
 
 import Foundation
 
-// TODO: Перевести какнить в Enum
+enum APIResourceAuth {
+    
+    case login(login: String, password: String)
+    case refresh(refreshToken: String)
+    case userInfo
 
-protocol APIResourceAuthProtocol {
-    
-    func login(login: String, password: String) -> APIResource<TokenData>
-    func refresh(_ refreshToken: String) -> APIResource<TokenData>
-    func userInfo() -> APIResource<UserInfo>
-    
+    func resource<T: Decodable>() -> APIResource<T> {
+        switch self {
+            case .login(let login, let password):
+                return APIResource(path: "authentication/login",
+                            method: .post,
+                            body: Credentials(login: login, password: password))
+            case .refresh(let refreshToken):
+                return APIResource(path: "authentication/refresh",
+                            method: .post,
+                            body: RefreshToken(refreshToken: refreshToken))
+            case .userInfo:
+                return APIResource(path: "authentication/userInfo",
+                            method: .get)
+        }
+    }
 }
-
-
-struct APIResourceAuth: APIResourceAuthProtocol {
-    
-    func login(login: String, password: String) -> APIResource<TokenData> {
-        APIResource(path: "authentication/login",
-                    method: .post,
-                    body: Credentials(login: login, password: password))
-    }
-    
-    func refresh(_ refreshToken: String) -> APIResource<TokenData> {
-        APIResource(path: "authentication/refresh",
-                    method: .post,
-                    body: RefreshToken(refreshToken: refreshToken))
-    }
-    
-    func userInfo() -> APIResource<UserInfo> {
-        APIResource(path: "authentication/userInfo",
-                    method: .get)
-    }
-    
-}
-

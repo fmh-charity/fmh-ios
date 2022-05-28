@@ -80,7 +80,6 @@ extension Network: NetworkProtocol {
             .mapError { error in
                 return error as? APIError ?? .JSONDecoderError(error)
             }
-            //.receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }
     
@@ -88,13 +87,11 @@ extension Network: NetworkProtocol {
 
 extension Network {
 
-    func refreshToken () -> AnyPublisher<TokenData, APIError> {
+    private func refreshToken () -> AnyPublisher<TokenData, APIError> {
         
-        // TODO:  Переделать, нужно просто вызывать APIResource
         let refreshToken = AppSession.tokens?.refreshToken ?? ""
-        let resource: APIResource<TokenData> = APIResource(path: "authentication/refresh",
-                                                           method: .post,
-                                                           body: RefreshToken(refreshToken: refreshToken))
+        let resource: APIResource<TokenData> = APIResourceAuth.refresh(refreshToken: refreshToken).resource()
+
         let url = makeURL(path: resource.path)!
         let encodeBody = try? resource.body?.encode()
         let request = makeRequest(url: url, method: resource.method, body: encodeBody)
