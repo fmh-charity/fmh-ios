@@ -28,7 +28,7 @@ enum GeneralMenu: String, CaseIterable {
         case .patients:
             return UIImage(systemName: "person.2")
         case .chambers:
-            return UIImage(systemName: "bed.double")
+            return UIImage(systemName: "bed.double") // UIImage(named: "chamber")
         }
     }
 }

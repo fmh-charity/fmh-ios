@@ -39,13 +39,17 @@ class GeneralMenuItemCell: UITableViewCell {
         return selectionColorView
     }()
     
+    override func prepareForReuse() {
+        iconImageView.image = nil
+        titleLabel.text = nil
+        selectionStyle = .default
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        
-        self.selectedBackgroundView = selectedBackgroundViewCell
     }
     
     required init?(coder: NSCoder) {
@@ -53,6 +57,9 @@ class GeneralMenuItemCell: UITableViewCell {
     }
     
     func configure(image: UIImage?, title: String) {
+        
+        self.selectedBackgroundView = selectedBackgroundViewCell
+        
         self.iconImageView.image = image
         self.titleLabel.text = title
         

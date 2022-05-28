@@ -135,13 +135,23 @@ extension SideMenuViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? Menu.allCases.count : AdditionalMenu.allCases.count
+        switch section {
+            case 0:
+                return Menu.allCases.count
+            case 1:
+                return AdditionalMenu.allCases.count
+            default:
+                return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GeneralMenuItemCell.identifier, for: indexPath) as? GeneralMenuItemCell else { fatalError("Cell doesn't exist") }
         if indexPath.section == 0 {
             let itemMenu = Menu.allCases[indexPath.row]
+            /// Без выделения ячейки
+            //let nonSelects: [Menu] = [.urMission, .news, .chambers, .patients, .claim]
+            //if nonSelects.contains(itemMenu) { cell.selectionStyle = .none }
             cell.configure(
                 image: itemMenu.image,
                 title: itemMenu.rawValue
@@ -149,6 +159,9 @@ extension SideMenuViewController: UITableViewDataSource {
         }
         if indexPath.section == 1 {
             let itemMenu = AdditionalMenu.allCases[indexPath.row]
+            /// Без выделения ячейки
+            let nonSelects: [AdditionalMenu] = [.logOut]
+            if nonSelects.contains(itemMenu) { cell.selectionStyle = .none }
             if itemMenu == .user {
                 cell.configure(
                     image: itemMenu.image,
@@ -166,14 +179,20 @@ extension SideMenuViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.didSelect(indexPath: indexPath)
+        /// Отключенные ячейки
+        let nonSelectsMenu: [Menu] = [.urMission, .news, .chambers, .patients, .claim]
+        let nonSelectsAdditionalMenu: [AdditionalMenu] = [.user]
         
+        if indexPath.section == 0 {
+            let itemMenu = Menu.allCases[indexPath.row]
+            guard !nonSelectsMenu.contains(itemMenu) else { return }
+        }
         if indexPath.section == 1 {
             let itemMenu = AdditionalMenu.allCases[indexPath.row]
-            if itemMenu == .logOut {
-                tableView.deselectRow(at: indexPath, animated: true)
-            }
+            guard !nonSelectsAdditionalMenu.contains(itemMenu) else { return }
         }
+        
+        self.delegate?.didSelect(indexPath: indexPath)
     }
     
 }
