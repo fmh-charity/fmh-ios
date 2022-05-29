@@ -63,8 +63,7 @@ class LoginView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        super .init(coder: coder)
-        commonInit()
+        fatalError("init(coder:) has not been implemented, LoginView")
     }
     
     // MARK: - Private functions
@@ -91,17 +90,12 @@ class LoginView: UIView {
     
     private func setLayout() {
         
+        let marginsView = self.layoutMarginsGuide
+        
         let frame = UIView()
         frame.translatesAutoresizingMaskIntoConstraints = false
 
-        [loginTF, passwordTF].forEach{ stack.addArrangedSubview($0) }
-        
-        frame.addSubview(stack)
-        frame.addSubview(loginButton)
-        
         self.addSubview(frame)
-        
-        let marginsView = self.layoutMarginsGuide
         NSLayoutConstraint.activate([
             frame.widthAnchor.constraint(equalTo: marginsView.widthAnchor, multiplier: 0.8),
             frame.centerXAnchor.constraint(equalTo: marginsView.centerXAnchor)
@@ -109,17 +103,20 @@ class LoginView: UIView {
         frameCenterYConstraint = frame.centerYAnchor.constraint(equalTo: marginsView.centerYAnchor)
         frameCenterYConstraint?.isActive = true
         
+        [loginTF, passwordTF].forEach{ stack.addArrangedSubview($0) }
         NSLayoutConstraint.activate([
             loginTF.heightAnchor.constraint(equalToConstant: 40.0),
             passwordTF.heightAnchor.constraint(equalTo: loginTF.heightAnchor)
         ])
         
+        frame.addSubview(stack)
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: frame.topAnchor),
             stack.leadingAnchor.constraint(equalTo: frame.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: frame.trailingAnchor)
         ])
         
+        frame.addSubview(loginButton)
         NSLayoutConstraint.activate([
             loginButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 30.0),
             loginButton.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.7),

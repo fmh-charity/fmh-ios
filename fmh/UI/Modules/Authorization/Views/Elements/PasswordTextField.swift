@@ -25,8 +25,7 @@ class PasswordTextfield: UITextField {
     }
  
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit ()
+        fatalError("init(coder:) has not been implemented, PasswordTextfield")
     }
     
     // MARK: - Private functions
