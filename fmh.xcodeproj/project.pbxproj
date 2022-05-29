@@ -103,8 +103,8 @@
 		1968410D2839240E008F294F /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		199C09D5284108AF00ADFE3A /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		199C09D72841120900ADFE3A /* PresentableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableProtocol.swift; sourceTree = "<group>"; };
-		199C09D928411B8000ADFE3A /* GeneralMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralMenu.swift; path = fmh/Coordinator/GeneralMenu.swift; sourceTree = SOURCE_ROOT; };
-		199E14B328416A4A0075B5BE /* UIViewController + setMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController + setMenuButton.swift"; path = "fmh/UI/Modules/General/Views/Menu/UIViewController + setMenuButton.swift"; sourceTree = SOURCE_ROOT; };
+		199C09D928411B8000ADFE3A /* GeneralMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralMenu.swift; path = "fmh/UI/Elements-/GeneralMenu.swift"; sourceTree = SOURCE_ROOT; };
+		199E14B328416A4A0075B5BE /* UIViewController + setMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController + setMenuButton.swift"; path = "fmh/UI/Elements-/UIViewController + setMenuButton.swift"; sourceTree = SOURCE_ROOT; };
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
 		19BD1A63281D703A00ED793A /* NetworkService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NetworkService.plist; sourceTree = "<group>"; };
 		19BD1A68281DB6F700ED793A /* ResponseStatusCodes */ = {isa = PBXFileReference; lastKnownFileType = text; path = ResponseStatusCodes; sourceTree = "<group>"; };
@@ -234,6 +234,13 @@
 			path = Template;
 			sourceTree = "<group>";
 		};
+		195629A42843DA6400C8A704 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		199C09D3284009BA00ADFE3A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,19 +333,12 @@
 		19C7A535280DED75005000EB /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				19C7A536280DED7B005000EB /* Elements */,
+				199C09D928411B8000ADFE3A /* GeneralMenu.swift */,
+				199E14B328416A4A0075B5BE /* UIViewController + setMenuButton.swift */,
+				195629A42843DA6400C8A704 /* Elements */,
 				19C7A537280DED81005000EB /* Modules */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		19C7A536280DED7B005000EB /* Elements */ = {
-			isa = PBXGroup;
-			children = (
-				199C09D928411B8000ADFE3A /* GeneralMenu.swift */,
-				199E14B328416A4A0075B5BE /* UIViewController + setMenuButton.swift */,
-			);
-			path = Elements;
 			sourceTree = "<group>";
 		};
 		19C7A537280DED81005000EB /* Modules */ = {
