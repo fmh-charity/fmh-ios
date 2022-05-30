@@ -64,17 +64,16 @@ final class TaskFullScreenViewController: UIViewController {
             creatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             creatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
             creatorView.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: -2),
-            tableView.topAnchor.constraint(equalTo: creatorView.bottomAnchor, constant: 2),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 2),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -2),
+            tableView.topAnchor.constraint(equalTo: creatorView.bottomAnchor, constant: 16),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             
-//            commentView.topAnchor.constraint(equalTo: creatorView.bottomAnchor, constant: 2),
-//            commentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 2),
-//            commentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -2),
-//            commentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
-            
         ]
+        tableView.layer.shadowOffset = CGSize(width: 1, height: 4)
+        tableView.layer.shadowRadius = 4
+        tableView.layer.shadowOpacity = 0.25
+        taskView.backgroundColor = .white
         NSLayoutConstraint.activate(constraints)
         descriptionView.descriptionLabel.text = "Нужно собрать коллектив в переговорной. Будем обсуждать подготовку к новогодним праздникам."
     }

@@ -3,7 +3,8 @@ import UIKit
 final class TaskViewController: UIViewController {
     
     private var collectionView: UICollectionView?
-    
+    private var toolbarView = TopToolbarView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionViewLayout()
@@ -25,12 +26,16 @@ final class TaskViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+        view.addSubview(toolbarView)
+        collectionView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor, constant: 14).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 45).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        toolbarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        toolbarView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        toolbarView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        toolbarView.heightAnchor.constraint(equalToConstant: 55).isActive = true
     }
-    
 }
 
 extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

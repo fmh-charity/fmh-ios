@@ -24,10 +24,14 @@ class TableViewScreen: UIView {
     
     private func tableViewLayout() {
         if let tableView = tableView {
+            tableView.separatorStyle = .none
             tableView.dataSource = self
             tableView.delegate = self
             tableView.translatesAutoresizingMaskIntoConstraints = false
-            tableView.register(CommentTableCell.self, forCellReuseIdentifier: CommentTableCell.reuseId)
+            tableView.register(CommentTableCell.self,
+                               forCellReuseIdentifier: CommentTableCell.reuseId)
+            tableView.register(AddCommentTableViewCell.self,
+                               forCellReuseIdentifier: AddCommentTableViewCell.reuseId)
             addSubview(tableView)
             tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
@@ -39,11 +43,25 @@ class TableViewScreen: UIView {
 }
 
 extension TableViewScreen: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
     }
-    
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 2
+        }
+        return 1
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AddCommentTableViewCell.reuseId, for: indexPath) as? AddCommentTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableCell.reuseId, for: indexPath) as? CommentTableCell else {
             return UITableViewCell()
         }
@@ -53,9 +71,13 @@ extension TableViewScreen: UITableViewDelegate, UITableViewDataSource {
         cell.timeLabel.text = "15:55"
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        if indexPath.section == 0 {
+            return tableView.bounds.height * 0.35
+        }
+        return 38
     }
-    
+
 }
+
