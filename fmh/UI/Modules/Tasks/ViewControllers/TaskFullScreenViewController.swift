@@ -8,12 +8,15 @@
 import UIKit
 
 final class TaskFullScreenViewController: UIViewController {
-    let taskView = MainTaskTitle()
+    let orangeView = OrangeView()
+    let taskView = AllElementsView()
     let descriptionView = DescriptionView()
     let creatorView = CreatorView()
     let commentView = CommentsView()
     let tableView = TableViewScreen()
     let statusLabel = UILabel(text: "В работе", font: UIFont(name: "SF UI Display", size: 16), tintColor: .black, textAlignment: .center)
+    private let themeLabel = UILabel(text: "Тема", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
+    let nameofThemeLabel = UILabel(text: "Тема1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -21,6 +24,9 @@ final class TaskFullScreenViewController: UIViewController {
     }
     
     func setupConstraint() {
+        view.addSubview(orangeView)
+        orangeView.addSubview(themeLabel)
+        orangeView.addSubview(nameofThemeLabel)
         view.addSubview(taskView)
         view.addSubview(statusLabel)
         view.addSubview(descriptionView)
@@ -29,7 +35,19 @@ final class TaskFullScreenViewController: UIViewController {
         taskView.backgroundColor = .white
         statusLabel.backgroundColor = UIColor(named: "Status.active") ?? .systemGray6
         let constraints = [
-            taskView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            orangeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            orangeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            orangeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            orangeView.bottomAnchor.constraint(equalTo: nameofThemeLabel.bottomAnchor),
+            themeLabel.leadingAnchor.constraint(equalTo: orangeView.leadingAnchor, constant: 10),
+            themeLabel.trailingAnchor.constraint(equalTo: nameofThemeLabel.leadingAnchor, constant: -30),
+            themeLabel.topAnchor.constraint(equalTo: orangeView.topAnchor, constant: 10),
+            themeLabel.bottomAnchor.constraint(equalTo: orangeView.bottomAnchor, constant: -10),
+            nameofThemeLabel.leadingAnchor.constraint(equalTo: themeLabel.trailingAnchor, constant: 30),
+            nameofThemeLabel.trailingAnchor.constraint(equalTo: orangeView.trailingAnchor, constant: -10),
+            nameofThemeLabel.topAnchor.constraint(equalTo: orangeView.topAnchor),
+            nameofThemeLabel.bottomAnchor.constraint(equalTo: orangeView.bottomAnchor),
+            taskView.topAnchor.constraint(equalTo: orangeView.bottomAnchor),
             taskView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             taskView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             taskView.bottomAnchor.constraint(equalTo: statusLabel.topAnchor, constant: -9),
