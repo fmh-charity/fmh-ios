@@ -38,13 +38,13 @@
 		19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CE1283EBC8B001506B8 /* TemplatePresenter.swift */; };
 		19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19450CE3283EBC9C001506B8 /* TemplateProtocols.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
+		195629B62845007600C8A704 /* GeneralMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629B42845007600C8A704 /* GeneralMenu.swift */; };
+		195629B72845007600C8A704 /* UIViewController + setMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629B52845007600C8A704 /* UIViewController + setMenuButton.swift */; };
 		196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841072837DC00008F294F /* GeneralCoordinator.swift */; };
 		1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841092837F735008F294F /* AutorozationCoordinatror.swift */; };
 		1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* SideMenuViewController.swift */; };
 		199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199C09D5284108AF00ADFE3A /* BaseViewProtocol.swift */; };
 		199C09D82841120900ADFE3A /* PresentableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199C09D72841120900ADFE3A /* PresentableProtocol.swift */; };
-		199C09DA28411B8000ADFE3A /* GeneralMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199C09D928411B8000ADFE3A /* GeneralMenu.swift */; };
-		199E14B428416A4A0075B5BE /* UIViewController + setMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199E14B328416A4A0075B5BE /* UIViewController + setMenuButton.swift */; };
 		19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BD1A61281D6AC300ED793A /* PListParser.swift */; };
 		19BD1A64281D703A00ED793A /* NetworkService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A63281D703A00ED793A /* NetworkService.plist */; };
 		19BD1A69281DB6F700ED793A /* ResponseStatusCodes in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A68281DB6F700ED793A /* ResponseStatusCodes */; };
@@ -98,13 +98,13 @@
 		19450CE1283EBC8B001506B8 /* TemplatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatePresenter.swift; sourceTree = "<group>"; };
 		19450CE3283EBC9C001506B8 /* TemplateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateProtocols.swift; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
+		195629B42845007600C8A704 /* GeneralMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralMenu.swift; sourceTree = "<group>"; };
+		195629B52845007600C8A704 /* UIViewController + setMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + setMenuButton.swift"; sourceTree = "<group>"; };
 		196841072837DC00008F294F /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		196841092837F735008F294F /* AutorozationCoordinatror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorozationCoordinatror.swift; sourceTree = "<group>"; };
 		1968410D2839240E008F294F /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		199C09D5284108AF00ADFE3A /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		199C09D72841120900ADFE3A /* PresentableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableProtocol.swift; sourceTree = "<group>"; };
-		199C09D928411B8000ADFE3A /* GeneralMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralMenu.swift; path = "fmh/UI/Elements-/GeneralMenu.swift"; sourceTree = SOURCE_ROOT; };
-		199E14B328416A4A0075B5BE /* UIViewController + setMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController + setMenuButton.swift"; path = "fmh/UI/Elements-/UIViewController + setMenuButton.swift"; sourceTree = SOURCE_ROOT; };
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
 		19BD1A63281D703A00ED793A /* NetworkService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NetworkService.plist; sourceTree = "<group>"; };
 		19BD1A68281DB6F700ED793A /* ResponseStatusCodes */ = {isa = PBXFileReference; lastKnownFileType = text; path = ResponseStatusCodes; sourceTree = "<group>"; };
@@ -237,6 +237,8 @@
 		195629A42843DA6400C8A704 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				195629B42845007600C8A704 /* GeneralMenu.swift */,
+				195629B52845007600C8A704 /* UIViewController + setMenuButton.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -333,8 +335,6 @@
 		19C7A535280DED75005000EB /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				199C09D928411B8000ADFE3A /* GeneralMenu.swift */,
-				199E14B328416A4A0075B5BE /* UIViewController + setMenuButton.swift */,
 				195629A42843DA6400C8A704 /* Elements */,
 				19C7A537280DED81005000EB /* Modules */,
 			);
@@ -513,6 +513,8 @@
 				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
+				195629B72845007600C8A704 /* UIViewController + setMenuButton.swift in Sources */,
+				195629B62845007600C8A704 /* GeneralMenu.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				191EAA73281BD256007B1397 /* Credentials.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
@@ -527,7 +529,6 @@
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
 				19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */,
-				199E14B428416A4A0075B5BE /* UIViewController + setMenuButton.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
@@ -554,7 +555,6 @@
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
 				19450CE0283EBC7D001506B8 /* TemplateViewController.swift in Sources */,
 				196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */,
-				199C09DA28411B8000ADFE3A /* GeneralMenu.swift in Sources */,
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
 				19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */,
