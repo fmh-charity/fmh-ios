@@ -47,7 +47,7 @@ extension GeneralCoordinator {
                 case .home:
                     let viewController = self.moduleFactory.makeTemplateViewController()
                     navigationController.viewControllers = [viewController.toPresent]
-                case .urMission:
+                case .ourMission:
                     break
                 case .news:
                     break

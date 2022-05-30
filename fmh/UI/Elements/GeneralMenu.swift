@@ -9,7 +9,7 @@ import UIKit
 
 enum GeneralMenu: String, CaseIterable {
     case home = "Главная"
-    case urMission = "Наша миссия"
+    case ourMission = "Наша миссия"
     case news = "Новости"
     case claim = "Заявки"
     case patients = "Пациенты"
@@ -19,7 +19,7 @@ enum GeneralMenu: String, CaseIterable {
         switch self {
         case .home:
             return UIImage(systemName: "house")
-        case .urMission:
+        case .ourMission:
             return UIImage(systemName: "exclamationmark.circle")
         case .news:
             return UIImage(systemName: "exclamationmark.bubble")

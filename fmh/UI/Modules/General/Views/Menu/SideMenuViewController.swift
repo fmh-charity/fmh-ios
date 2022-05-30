@@ -32,7 +32,7 @@ class SideMenuViewController: UIViewController {
     private var logoView: UIView = {
         let view = UIView()
         let imageLogo = UIImageView()
-        imageLogo.image = UIImage(named: "logo")
+        imageLogo.image = UIImage(named: "Logo")
         imageLogo.contentMode = .scaleAspectFit
         
         view.addSubview(imageLogo)
@@ -180,7 +180,7 @@ extension SideMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /// Отключенные ячейки
-        let nonSelectsMenu: [Menu] = [.urMission, .news, .chambers, .patients, .claim]
+        let nonSelectsMenu: [Menu] = [.ourMission, .news, .chambers, .patients, .claim]
         let nonSelectsAdditionalMenu: [AdditionalMenu] = [.user]
         
         if indexPath.section == 0 {

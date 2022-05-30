@@ -18,7 +18,9 @@ class TemplateViewController: UIViewController, TemplateViewControllerProtocol {
         view.backgroundColor = .lightGray
         title = "Template View Controller \(String(describing: (1...100).randomElement()))"
 
-        setMenuButton()
+        setNavigationBarMenuButton()
+        setNavigationBarLogo()
+        setNavigationBarRightButtons()
     }
     
     /// Нужны для отключения свайпа (Открытия меню)

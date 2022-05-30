@@ -157,6 +157,16 @@ class GeneralViewController: UIViewController, GeneralViewControllerProtocol {
 //    }
 }
 
+// MARK: -
+extension GeneralViewController {
+    @objc open func tapOurMissionButton() {
+        self.didSelectMenu?(.ourMission)
+    }
+    @objc open func tapUserButton() {
+        self.didSelectAdditionalMenu?(.user)
+    }
+}
+
 // MARK: - GeneralPresenterOutput
 extension GeneralViewController: GeneralPresenterOutput {
 
