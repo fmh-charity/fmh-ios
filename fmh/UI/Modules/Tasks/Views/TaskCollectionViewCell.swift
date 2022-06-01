@@ -83,6 +83,13 @@ class TaskCollectionViewCell: UICollectionViewCell {
         backgroundColor = UIColor(named: "BackgroundTaskCell")
 //        bottomArrowButton.backgroundColor = .white
     }
+    
+    // <- Тут
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        return layoutAttributes
+    }
+    
 }
 
 
