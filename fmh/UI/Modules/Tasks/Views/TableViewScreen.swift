@@ -49,7 +49,7 @@ extension TableViewScreen: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
+            return commentCellModels.count
         }
         return 1
     }
@@ -65,10 +65,10 @@ extension TableViewScreen: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableCell.reuseId, for: indexPath) as? CommentTableCell else {
             return UITableViewCell()
         }
-        cell.commentNumLabel.text = "Комментарий \(indexPath.row + 1)"
-        cell.fioLabel.text = "М.М.Максимка"
-        cell.dateLabel.text = "12.12.2021"
-        cell.timeLabel.text = "15:55"
+        cell.commentNumLabel.text = commentCellModels[indexPath.row].comment
+        cell.fioLabel.text = commentCellModels[indexPath.row].creatorName
+        cell.dateLabel.text = commentCellModels[indexPath.row].date
+        cell.timeLabel.text = commentCellModels[indexPath.row].time
         return cell
     }
 
