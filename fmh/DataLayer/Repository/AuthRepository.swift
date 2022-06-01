@@ -18,8 +18,6 @@ protocol AuthRepositoryProtocol {
 
 class AuthRepository: Network {
     
-    private let resource: APIResourceAuthProtocol = APIResourceAuth()
-    
     override init() {
         super.init()
     }
@@ -30,21 +28,24 @@ class AuthRepository: Network {
 extension AuthRepository: AuthRepositoryProtocol {
     
     func login(login: String, password: String) -> AnyPublisher<TokenData, APIError> {
-        return fetchDataPublisher(resource: resource.login(login: login, password: password))
+        let resource = APIResourceAuth.login(login: login, password: password)
+        return fetchDataPublisher(resource: resource.resource())
             .map { $0 }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
     
     func refresh(_ refreshToken: String) -> AnyPublisher<TokenData, APIError> {
-        return fetchDataPublisher(resource: resource.refresh(refreshToken))
+        let resource = APIResourceAuth.refresh(refreshToken: refreshToken)
+        return fetchDataPublisher(resource: resource.resource())
             .map { $0 }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
     
     func userInfo() -> AnyPublisher<UserInfo, APIError> {
-        return fetchDataPublisher(resource: resource.userInfo())
+        let resource = APIResourceAuth.userInfo
+        return fetchDataPublisher(resource: resource.resource())
             .map { $0 }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

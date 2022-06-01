@@ -68,8 +68,8 @@ final class TaskFullScreenViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
-            
         ]
+        
         tableView.layer.shadowOffset = CGSize(width: 1, height: 4)
         tableView.layer.shadowRadius = 4
         tableView.layer.shadowOpacity = 0.25

@@ -14,14 +14,14 @@ typealias HTTPHeaders = Dictionary<String, String>
 
 struct APIResource<Value> where Value: Decodable {
 
-    public typealias ResponseType = Value
+    typealias ResponseType = Value
 
-    public var path: String
-    public var parametrs: URLParameters?
+    var path: String
+    var parametrs: URLParameters?
     
-    public var method: HTTPMethod
-    public var body: Encodable?
-    public var headers: HTTPHeaders?
+    var method: HTTPMethod
+    var body: Encodable?
+    var headers: HTTPHeaders?
     
     init(path: String, parametrs: URLParameters? = nil, method: HTTPMethod = .get, body: Encodable? = nil, headers: HTTPHeaders? = nil) {
         self.path = path

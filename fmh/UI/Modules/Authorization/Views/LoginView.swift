@@ -11,87 +11,6 @@ class LoginView: UIView {
     
     var frameCenterYConstraint: NSLayoutConstraint?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    required init?(coder: NSCoder) {
-        super .init(coder: coder)
-        commonInit()
-    }
-    
-    // MARK: - Private functions
-    private func commonInit () {
-        setBackground()
-        setLayout()
-    }
-    
-    private func setBackground () {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "BackGround")
-        imageView.contentMode = .scaleToFill
-        self.addSubview(imageView)
-        self.sendSubviewToBack(imageView)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
-    
-    private func setLayout() {
-        
-        let frame = UIView()
-        frame.translatesAutoresizingMaskIntoConstraints = false
-
-        [loginTF, passwordTF].forEach{ stack.addArrangedSubview($0) }
-        
-        frame.addSubview(stack)
-        frame.addSubview(loginButton)
-        
-        self.addSubview(frame)
-        
-        let marginsView = self.layoutMarginsGuide
-        NSLayoutConstraint.activate([
-            frame.widthAnchor.constraint(equalTo: marginsView.widthAnchor, multiplier: 0.8),
-            frame.centerXAnchor.constraint(equalTo: marginsView.centerXAnchor)
-        ])
-        frameCenterYConstraint = frame.centerYAnchor.constraint(equalTo: marginsView.centerYAnchor)
-        frameCenterYConstraint?.isActive = true
-        
-        NSLayoutConstraint.activate([
-            loginTF.heightAnchor.constraint(equalToConstant: 40.0),
-            passwordTF.heightAnchor.constraint(equalTo: loginTF.heightAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: frame.topAnchor),
-            stack.leadingAnchor.constraint(equalTo: frame.leadingAnchor),
-            stack.trailingAnchor.constraint(equalTo: frame.trailingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 30.0),
-            loginButton.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.7),
-            loginButton.heightAnchor.constraint(equalTo: loginTF.heightAnchor),
-            loginButton.centerXAnchor.constraint(equalTo: stack.centerXAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: frame.bottomAnchor)
-        ])
- 
-        self.addSubview(activityIndicator)
-        NSLayoutConstraint.activate([
-            activityIndicator.topAnchor.constraint(equalTo: marginsView.topAnchor),
-            activityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor),
-            activityIndicator.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            activityIndicator.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
-    }
-    
     // MARK: - Elements
     lazy private var stack: UIStackView = {
         let stack = UIStackView()
@@ -137,6 +56,85 @@ class LoginView: UIView {
         return activityIndicator
     }()
     
+    // MARK: - Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented, LoginView")
+    }
+    
+    // MARK: - Private functions
+    private func commonInit () {
+        setBackground()
+        setLayout()
+    }
+    
+    private func setBackground () {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "BackGround")
+        imageView.contentMode = .scaleToFill
+        self.addSubview(imageView)
+        self.sendSubviewToBack(imageView)
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+    
+    private func setLayout() {
+        
+        let marginsView = self.layoutMarginsGuide
+        
+        let frame = UIView()
+        frame.translatesAutoresizingMaskIntoConstraints = false
+
+        self.addSubview(frame)
+        NSLayoutConstraint.activate([
+            frame.widthAnchor.constraint(equalTo: marginsView.widthAnchor, multiplier: 0.8),
+            frame.centerXAnchor.constraint(equalTo: marginsView.centerXAnchor)
+        ])
+        frameCenterYConstraint = frame.centerYAnchor.constraint(equalTo: marginsView.centerYAnchor)
+        frameCenterYConstraint?.isActive = true
+        
+        [loginTF, passwordTF].forEach{ stack.addArrangedSubview($0) }
+        NSLayoutConstraint.activate([
+            loginTF.heightAnchor.constraint(equalToConstant: 40.0),
+            passwordTF.heightAnchor.constraint(equalTo: loginTF.heightAnchor)
+        ])
+        
+        frame.addSubview(stack)
+        NSLayoutConstraint.activate([
+            stack.topAnchor.constraint(equalTo: frame.topAnchor),
+            stack.leadingAnchor.constraint(equalTo: frame.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: frame.trailingAnchor)
+        ])
+        
+        frame.addSubview(loginButton)
+        NSLayoutConstraint.activate([
+            loginButton.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 30.0),
+            loginButton.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.7),
+            loginButton.heightAnchor.constraint(equalTo: loginTF.heightAnchor),
+            loginButton.centerXAnchor.constraint(equalTo: stack.centerXAnchor),
+            loginButton.bottomAnchor.constraint(equalTo: frame.bottomAnchor)
+        ])
+ 
+        self.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.topAnchor.constraint(equalTo: marginsView.topAnchor),
+            activityIndicator.leadingAnchor.constraint(equalTo: leadingAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            activityIndicator.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+        
+    }
+
 }
 
 

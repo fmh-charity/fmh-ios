@@ -7,13 +7,12 @@
 
 import UIKit
 
-class AuthorizationViewController: UIViewController {
+class AuthorizationViewController: UIViewController, AuthorizationViewControllerProtocol {
     /// Root view
     private var authView: LoginView { self.view as! LoginView  }
     
     var presenter: AuthorizationPresenterInput?
-    
-    weak var delegate: AuthorizationViewControllerDelegate?
+    var onCompletion: (() -> ())?
 
     // MARK: - Internal vars
     private var loginTF: LoginTextfield { return authView.loginTF }
@@ -33,6 +32,7 @@ class AuthorizationViewController: UIViewController {
         }
     }
     
+    // MARK: - loadView
     override func loadView() {
         super.loadView()
         self.view = LoginView(frame: self.view.bounds)
@@ -86,20 +86,18 @@ class AuthorizationViewController: UIViewController {
             guard let textLoginTF = loginTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
             guard let textPasswordTF = passwordTF.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
             
-            presenter?.login(login: textLoginTF, password: textPasswordTF, completion: { userInfo, authError in
+            presenter?.login(login: textLoginTF, password: textPasswordTF, completion: { [weak self] userInfo, authError in
                 
-                self.isProcessing = false
+                self?.isProcessing = false
                 
                 if let authError = authError {
                     let alert = UIAlertController(title: "Ошибка", message: authError.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
-                    self.present(alert, animated: true, completion: nil)
+                    self?.present(alert, animated: true, completion: nil)
                 }
                 
-                if let userInfo = userInfo {
-                    // TODO: Оповешение кто авторизовался
-                    self.delegate?.signInOk()
-                    print("\(userInfo)")
+                if let _ = userInfo {
+                    self?.onCompletion?()
                 }
                 
             })

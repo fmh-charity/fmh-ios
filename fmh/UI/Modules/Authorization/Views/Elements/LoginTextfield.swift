@@ -23,12 +23,11 @@ class LoginTextfield: UITextField {
         super.init(frame: frame)
         commonInit ()
     }
- 
+    
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit ()
+        fatalError("init(coder:) has not been implemented, LoginTextfield")
     }
-
+    
     // MARK: - Private functions
     private func commonInit () {
         layer.borderColor = UIColor.lightGray.cgColor

@@ -21,7 +21,7 @@ protocol LoadingPresenterOutput: AnyObject {
     func hide()
 }
 
-// MARK: - LoadingViewControllerDelegate
-protocol LoadingViewControllerDelegate: AnyObject {
-    func onCompletion()
+// MARK: - LoadingViewControllerProtocol
+protocol LoadingViewControllerProtocol: BaseViewProtocol {
+    
 }

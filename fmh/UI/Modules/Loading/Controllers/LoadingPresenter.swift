@@ -5,11 +5,15 @@
 //  Created: 14.05.2022
 //
 
-import Foundation
+import UIKit
 
 final class LoadingPresenter {
 
-    weak var output: LoadingPresenterOutput?
+    weak private var output: LoadingPresenterOutput?
+
+    init(output: LoadingPresenterOutput) {
+        self.output = output
+    }
     
 }
 
@@ -17,8 +21,8 @@ final class LoadingPresenter {
 extension LoadingPresenter: LoadingPresenterInput {
     
     func isDisplayed() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.output?.hide()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.output?.hide()
         }
     }
     

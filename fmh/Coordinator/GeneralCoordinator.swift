@@ -8,75 +8,71 @@
 import Foundation
 import UIKit
 
-class GeneralCoordinator: Coordinator {
+final class GeneralCoordinator: CoordinatorProtocol {
     
-    var childCoordinators: [Coordinator] = []
+    var childCoordinators = [CoordinatorProtocol]()
+    var onCompletion: (() -> ())?
     
-    unowned let navigationController: UINavigationController
+    private let window: UIWindow
+    private let moduleFactory: GeneralModuleFactoryProtocol
+    private var navigationController: UINavigationController
      
-    required init(navigationController: UINavigationController) {
+    init(window: UIWindow, moduleFactory: GeneralModuleFactoryProtocol, navigationController: UINavigationController) {
+        self.window = window
+        self.moduleFactory = moduleFactory
         self.navigationController = navigationController
     }
     
     func start() {
-        if AppSession.isAuthorized {
-            generalFlow()
-        } else {
-            autorizationFlow()
-        }
+        generalMenuFlow()
     }
+
 }
 
-// MARK: -
+// MARK: - Navigation flows
 extension GeneralCoordinator {
-    func autorizationFlow() {
-        let repository: AuthRepositoryProtocol = AuthRepository()
-        let interactor: AuthInteractorProtocol = AuthInteractor(repository: repository)
-        let presenter  = AuthorizationPresenter(interactor: interactor)
-        let viewController = AuthorizationViewController()
-        
-        presenter.output = viewController
-        viewController.presenter = presenter
-        viewController.delegate = self
-        
-        navigationController.viewControllers = [viewController]
-        //navigationController.setViewControllers([viewController], animated: false)
-        navigationController.isNavigationBarHidden = false
-    }
     
-    func generalFlow() {
-        let viewController: GeneralViewController = GeneralViewController()
-        let moduleFactory = ModuleFactory()
-        let presenter  = GeneralPresenter()
+    private func generalMenuFlow() {
+        let viewController = moduleFactory.makeGeneralViewController()
+        viewController.onCompletion = { [unowned self] in
+            self.onCompletion?()
+        }
         
-        presenter.output = viewController
-        viewController.presenter = presenter
-        viewController.moduleFactory = moduleFactory
-        viewController.delegate = self
+        /// Set efault ViewController in GeneralViewController.contextViewController
+        let defaultViewController = self.moduleFactory.makeTemplateViewController()
+        navigationController.viewControllers = [defaultViewController.toPresent]
         
-        navigationController.viewControllers = [viewController]
-        //navigationController.setViewControllers([viewController], animated: false)
-        navigationController.isNavigationBarHidden = false
+        viewController.didSelectMenu = { [unowned self] menu in
+            switch menu {
+                case .home:
+                    let viewController = self.moduleFactory.makeTemplateViewController()
+                    navigationController.viewControllers = [viewController.toPresent]
+                case .ourMission:
+                    break
+                case .news:
+                    break
+                case .claim:
+                    break
+                case .patients:
+                    break
+                case .chambers:
+                    break
+            }
+        }
+        
+        viewController.didSelectAdditionalMenu = { [unowned self] additionalMenu in
+            switch additionalMenu {
+                case .user:
+                    break
+                case .logOut:
+                    self.onCompletion?()
+            }
+        }
+        
+        /// Set  select ViewController in GeneralViewController.contextViewController
+        viewController.contextViewController = navigationController
+        window.rootViewController = viewController.toPresent
     }
+
 }
 
-// MARK: - AuthorizationViewControllerDelegate
-extension GeneralCoordinator: AuthorizationViewControllerDelegate {
-    func signInOk() {
-        generalFlow()
-    }
-}
-
-// MARK: - LoadingViewControllerDelegate
-extension GeneralCoordinator: LoadingViewControllerDelegate {
-    func onCompletion() {
-
-    }
-}
-
-// MARK: - AuthorizationViewControllerDelegate
-extension GeneralCoordinator: GeneralViewControllerDelegate {
-    func logOut() {
-        autorizationFlow()
-    }
-}
