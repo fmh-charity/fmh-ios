@@ -48,6 +48,22 @@
 		195629C8284524BA00C8A704 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629C7284524BA00C8A704 /* ExampleCell.swift */; };
 		195629CA2845257500C8A704 /* ExampleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629C92845257500C8A704 /* ExampleHeader.swift */; };
 		195629CC284525AA00C8A704 /* ExampleFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629CB284525AA00C8A704 /* ExampleFooter.swift */; };
+		19562A0E2847EDEA00C8A704 /* TaskModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629FA2847EDE900C8A704 /* TaskModelData.swift */; };
+		19562A0F2847EDEA00C8A704 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629FC2847EDE900C8A704 /* CustomStackView.swift */; };
+		19562A102847EDEA00C8A704 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629FD2847EDE900C8A704 /* TextLabel.swift */; };
+		19562A112847EDEA00C8A704 /* CollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629FE2847EDE900C8A704 /* CollectionLayout.swift */; };
+		19562A122847EDEA00C8A704 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A002847EDE900C8A704 /* TaskViewController.swift */; };
+		19562A132847EDEA00C8A704 /* TaskFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A012847EDE900C8A704 /* TaskFullScreenViewController.swift */; };
+		19562A142847EDEA00C8A704 /* CommentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A032847EDE900C8A704 /* CommentTableCell.swift */; };
+		19562A152847EDEA00C8A704 /* MainTaskTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A042847EDE900C8A704 /* MainTaskTitle.swift */; };
+		19562A162847EDEA00C8A704 /* TableViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A052847EDE900C8A704 /* TableViewScreen.swift */; };
+		19562A172847EDEA00C8A704 /* AddCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A062847EDE900C8A704 /* AddCommentTableViewCell.swift */; };
+		19562A182847EDEA00C8A704 /* TopToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A072847EDE900C8A704 /* TopToolbarView.swift */; };
+		19562A192847EDEA00C8A704 /* TaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A082847EDE900C8A704 /* TaskCollectionViewCell.swift */; };
+		19562A1A2847EDEA00C8A704 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A092847EDE900C8A704 /* CommentsView.swift */; };
+		19562A1B2847EDEA00C8A704 /* CreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A0A2847EDE900C8A704 /* CreatorView.swift */; };
+		19562A1C2847EDEA00C8A704 /* OrangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A0B2847EDE900C8A704 /* OrangeView.swift */; };
+		19562A1D2847EDEA00C8A704 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A0C2847EDE900C8A704 /* DescriptionView.swift */; };
 		196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841072837DC00008F294F /* GeneralCoordinator.swift */; };
 		1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841092837F735008F294F /* AutorozationCoordinatror.swift */; };
 		1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* SideMenuViewController.swift */; };
@@ -116,6 +132,22 @@
 		195629C7284524BA00C8A704 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
 		195629C92845257500C8A704 /* ExampleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHeader.swift; sourceTree = "<group>"; };
 		195629CB284525AA00C8A704 /* ExampleFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFooter.swift; sourceTree = "<group>"; };
+		195629FA2847EDE900C8A704 /* TaskModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModelData.swift; sourceTree = "<group>"; };
+		195629FC2847EDE900C8A704 /* CustomStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
+		195629FD2847EDE900C8A704 /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		195629FE2847EDE900C8A704 /* CollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionLayout.swift; sourceTree = "<group>"; };
+		19562A002847EDE900C8A704 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		19562A012847EDE900C8A704 /* TaskFullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFullScreenViewController.swift; sourceTree = "<group>"; };
+		19562A032847EDE900C8A704 /* CommentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableCell.swift; sourceTree = "<group>"; };
+		19562A042847EDE900C8A704 /* MainTaskTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTaskTitle.swift; sourceTree = "<group>"; };
+		19562A052847EDE900C8A704 /* TableViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewScreen.swift; sourceTree = "<group>"; };
+		19562A062847EDE900C8A704 /* AddCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentTableViewCell.swift; sourceTree = "<group>"; };
+		19562A072847EDE900C8A704 /* TopToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopToolbarView.swift; sourceTree = "<group>"; };
+		19562A082847EDE900C8A704 /* TaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCollectionViewCell.swift; sourceTree = "<group>"; };
+		19562A092847EDE900C8A704 /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		19562A0A2847EDE900C8A704 /* CreatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatorView.swift; sourceTree = "<group>"; };
+		19562A0B2847EDE900C8A704 /* OrangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrangeView.swift; sourceTree = "<group>"; };
+		19562A0C2847EDE900C8A704 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		196841072837DC00008F294F /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		196841092837F735008F294F /* AutorozationCoordinatror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorozationCoordinatror.swift; sourceTree = "<group>"; };
 		1968410D2839240E008F294F /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +323,61 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		195629F62847EDE900C8A704 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				195629F92847EDE900C8A704 /* Models */,
+				195629FB2847EDE900C8A704 /* CustomItems */,
+				195629FF2847EDE900C8A704 /* ViewControllers */,
+				19562A022847EDE900C8A704 /* Views */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		195629F92847EDE900C8A704 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				195629FA2847EDE900C8A704 /* TaskModelData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		195629FB2847EDE900C8A704 /* CustomItems */ = {
+			isa = PBXGroup;
+			children = (
+				195629FC2847EDE900C8A704 /* CustomStackView.swift */,
+				195629FD2847EDE900C8A704 /* TextLabel.swift */,
+				195629FE2847EDE900C8A704 /* CollectionLayout.swift */,
+			);
+			path = CustomItems;
+			sourceTree = "<group>";
+		};
+		195629FF2847EDE900C8A704 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				19562A002847EDE900C8A704 /* TaskViewController.swift */,
+				19562A012847EDE900C8A704 /* TaskFullScreenViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		19562A022847EDE900C8A704 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19562A032847EDE900C8A704 /* CommentTableCell.swift */,
+				19562A042847EDE900C8A704 /* MainTaskTitle.swift */,
+				19562A052847EDE900C8A704 /* TableViewScreen.swift */,
+				19562A062847EDE900C8A704 /* AddCommentTableViewCell.swift */,
+				19562A072847EDE900C8A704 /* TopToolbarView.swift */,
+				19562A082847EDE900C8A704 /* TaskCollectionViewCell.swift */,
+				19562A092847EDE900C8A704 /* CommentsView.swift */,
+				19562A0A2847EDE900C8A704 /* CreatorView.swift */,
+				19562A0B2847EDE900C8A704 /* OrangeView.swift */,
+				19562A0C2847EDE900C8A704 /* DescriptionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		199C09D3284009BA00ADFE3A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +478,7 @@
 		19C7A537280DED81005000EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				195629F62847EDE900C8A704 /* Tasks */,
 				195629B828450AD000C8A704 /* CollectionViewAdapter */,
 				19F509E72830169E0082FB98 /* Factory */,
 				1933EA2F282F018100C8A21B /* Loading */,
@@ -558,15 +646,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
+				19562A152847EDEA00C8A704 /* MainTaskTitle.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
 				195629B72845007600C8A704 /* UIViewController + setMenuButton.swift in Sources */,
 				195629CA2845257500C8A704 /* ExampleHeader.swift in Sources */,
+				19562A122847EDEA00C8A704 /* TaskViewController.swift in Sources */,
+				19562A162847EDEA00C8A704 /* TableViewScreen.swift in Sources */,
 				195629B62845007600C8A704 /* GeneralMenu.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				191EAA73281BD256007B1397 /* Credentials.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
 				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
+				19562A172847EDEA00C8A704 /* AddCommentTableViewCell.swift in Sources */,
 				19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */,
 				19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */,
 				19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */,
@@ -577,16 +669,26 @@
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
+				19562A0E2847EDEA00C8A704 /* TaskModelData.swift in Sources */,
 				19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				195629C528451D0200C8A704 /* ExampleProtocols.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
+				19562A112847EDEA00C8A704 /* CollectionLayout.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
 				195629C128451CE300C8A704 /* ExampleViewController.swift in Sources */,
+				19562A102847EDEA00C8A704 /* TextLabel.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
+				19562A182847EDEA00C8A704 /* TopToolbarView.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
+				19562A0F2847EDEA00C8A704 /* CustomStackView.swift in Sources */,
+				19562A192847EDEA00C8A704 /* TaskCollectionViewCell.swift in Sources */,
+				19562A1A2847EDEA00C8A704 /* CommentsView.swift in Sources */,
+				19562A1D2847EDEA00C8A704 /* DescriptionView.swift in Sources */,
 				19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */,
+				19562A1C2847EDEA00C8A704 /* OrangeView.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
+				19562A1B2847EDEA00C8A704 /* CreatorView.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
 				19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */,
 				195629BA28450AFE00C8A704 /* CollectionViewAdapter.swift in Sources */,
@@ -601,6 +703,7 @@
 				191EAA82281C3B48007B1397 /* RefreshToken.swift in Sources */,
 				195629BC28450BDF00C8A704 /* CollectionViewSection.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
+				19562A132847EDEA00C8A704 /* TaskFullScreenViewController.swift in Sources */,
 				1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */,
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
 				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
@@ -614,6 +717,7 @@
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
 				19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */,
 				19F509E2283003B20082FB98 /* CoordinatorProtocol.swift in Sources */,
+				19562A142847EDEA00C8A704 /* CommentTableCell.swift in Sources */,
 				195629CC284525AA00C8A704 /* ExampleFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
