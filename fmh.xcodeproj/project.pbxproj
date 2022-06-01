@@ -35,6 +35,22 @@
 		1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA38282F027B00C8A21B /* LoadingViewController.swift */; };
 		193AA92E2811C890002CE474 /* ModuleDiscription in Resources */ = {isa = PBXBuildFile; fileRef = 193AA92D2811C890002CE474 /* ModuleDiscription */; };
 		194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194220B328310AAE00A42F72 /* AuthInteractor.swift */; };
+		19562A602847F35F00C8A704 /* TaskModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A4C2847F35F00C8A704 /* TaskModelData.swift */; };
+		19562A612847F35F00C8A704 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A4E2847F35F00C8A704 /* CustomStackView.swift */; };
+		19562A622847F35F00C8A704 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A4F2847F35F00C8A704 /* TextLabel.swift */; };
+		19562A632847F35F00C8A704 /* CollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A502847F35F00C8A704 /* CollectionLayout.swift */; };
+		19562A642847F35F00C8A704 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A522847F35F00C8A704 /* TaskViewController.swift */; };
+		19562A652847F35F00C8A704 /* TaskFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A532847F35F00C8A704 /* TaskFullScreenViewController.swift */; };
+		19562A662847F35F00C8A704 /* CommentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A552847F35F00C8A704 /* CommentTableCell.swift */; };
+		19562A672847F35F00C8A704 /* MainTaskTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A562847F35F00C8A704 /* MainTaskTitle.swift */; };
+		19562A682847F35F00C8A704 /* TableViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A572847F35F00C8A704 /* TableViewScreen.swift */; };
+		19562A692847F35F00C8A704 /* AddCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A582847F35F00C8A704 /* AddCommentTableViewCell.swift */; };
+		19562A6A2847F35F00C8A704 /* TopToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A592847F35F00C8A704 /* TopToolbarView.swift */; };
+		19562A6B2847F35F00C8A704 /* TaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A5A2847F35F00C8A704 /* TaskCollectionViewCell.swift */; };
+		19562A6C2847F35F00C8A704 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A5B2847F35F00C8A704 /* CommentsView.swift */; };
+		19562A6D2847F35F00C8A704 /* CreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A5C2847F35F00C8A704 /* CreatorView.swift */; };
+		19562A6E2847F35F00C8A704 /* OrangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A5D2847F35F00C8A704 /* OrangeView.swift */; };
+		19562A6F2847F35F00C8A704 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A5E2847F35F00C8A704 /* DescriptionView.swift */; };
 		1964839B28304E6700B3B9FD /* GeneralViewController + UIMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964839A28304E6700B3B9FD /* GeneralViewController + UIMenu.swift */; };
 		1964839D2830502100B3B9FD /* GeneralViewController + UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964839C2830502100B3B9FD /* GeneralViewController + UIAlertController.swift */; };
 		19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BD1A61281D6AC300ED793A /* PListParser.swift */; };
@@ -89,6 +105,22 @@
 		1933EA38282F027B00C8A21B /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		193AA92D2811C890002CE474 /* ModuleDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ModuleDiscription; sourceTree = "<group>"; };
 		194220B328310AAE00A42F72 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		19562A4C2847F35F00C8A704 /* TaskModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModelData.swift; sourceTree = "<group>"; };
+		19562A4E2847F35F00C8A704 /* CustomStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
+		19562A4F2847F35F00C8A704 /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		19562A502847F35F00C8A704 /* CollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionLayout.swift; sourceTree = "<group>"; };
+		19562A522847F35F00C8A704 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		19562A532847F35F00C8A704 /* TaskFullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFullScreenViewController.swift; sourceTree = "<group>"; };
+		19562A552847F35F00C8A704 /* CommentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableCell.swift; sourceTree = "<group>"; };
+		19562A562847F35F00C8A704 /* MainTaskTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTaskTitle.swift; sourceTree = "<group>"; };
+		19562A572847F35F00C8A704 /* TableViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewScreen.swift; sourceTree = "<group>"; };
+		19562A582847F35F00C8A704 /* AddCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentTableViewCell.swift; sourceTree = "<group>"; };
+		19562A592847F35F00C8A704 /* TopToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopToolbarView.swift; sourceTree = "<group>"; };
+		19562A5A2847F35F00C8A704 /* TaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCollectionViewCell.swift; sourceTree = "<group>"; };
+		19562A5B2847F35F00C8A704 /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		19562A5C2847F35F00C8A704 /* CreatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatorView.swift; sourceTree = "<group>"; };
+		19562A5D2847F35F00C8A704 /* OrangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrangeView.swift; sourceTree = "<group>"; };
+		19562A5E2847F35F00C8A704 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		1964839A28304E6700B3B9FD /* GeneralViewController + UIMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralViewController + UIMenu.swift"; sourceTree = "<group>"; };
 		1964839C2830502100B3B9FD /* GeneralViewController + UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralViewController + UIAlertController.swift"; sourceTree = "<group>"; };
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
@@ -211,6 +243,61 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		19562A482847F35F00C8A704 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				19562A4B2847F35F00C8A704 /* Models */,
+				19562A4D2847F35F00C8A704 /* CustomItems */,
+				19562A512847F35F00C8A704 /* ViewControllers */,
+				19562A542847F35F00C8A704 /* Views */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		19562A4B2847F35F00C8A704 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19562A4C2847F35F00C8A704 /* TaskModelData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		19562A4D2847F35F00C8A704 /* CustomItems */ = {
+			isa = PBXGroup;
+			children = (
+				19562A4E2847F35F00C8A704 /* CustomStackView.swift */,
+				19562A4F2847F35F00C8A704 /* TextLabel.swift */,
+				19562A502847F35F00C8A704 /* CollectionLayout.swift */,
+			);
+			path = CustomItems;
+			sourceTree = "<group>";
+		};
+		19562A512847F35F00C8A704 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				19562A522847F35F00C8A704 /* TaskViewController.swift */,
+				19562A532847F35F00C8A704 /* TaskFullScreenViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		19562A542847F35F00C8A704 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19562A552847F35F00C8A704 /* CommentTableCell.swift */,
+				19562A562847F35F00C8A704 /* MainTaskTitle.swift */,
+				19562A572847F35F00C8A704 /* TableViewScreen.swift */,
+				19562A582847F35F00C8A704 /* AddCommentTableViewCell.swift */,
+				19562A592847F35F00C8A704 /* TopToolbarView.swift */,
+				19562A5A2847F35F00C8A704 /* TaskCollectionViewCell.swift */,
+				19562A5B2847F35F00C8A704 /* CommentsView.swift */,
+				19562A5C2847F35F00C8A704 /* CreatorView.swift */,
+				19562A5D2847F35F00C8A704 /* OrangeView.swift */,
+				19562A5E2847F35F00C8A704 /* DescriptionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		19BD1A70281DC93B00ED793A /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +391,7 @@
 		19C7A537280DED81005000EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				19562A482847F35F00C8A704 /* Tasks */,
 				19F509E72830169E0082FB98 /* Factory */,
 				19F509D9282FF72A0082FB98 /* General */,
 				1933EA2F282F018100C8A21B /* Loading */,
@@ -464,16 +552,24 @@
 				19EE351128306BA600DBD2E8 /* GeneralCoordinator.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
+				19562A652847F35F00C8A704 /* TaskFullScreenViewController.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				191EAA73281BD256007B1397 /* Credentials.swift in Sources */,
+				19562A692847F35F00C8A704 /* AddCommentTableViewCell.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
 				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
+				19562A642847F35F00C8A704 /* TaskViewController.swift in Sources */,
 				19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */,
+				19562A622847F35F00C8A704 /* TextLabel.swift in Sources */,
 				19243E89282A6C4400A43CA8 /* UIViewController+Presentable.swift in Sources */,
+				19562A6E2847F35F00C8A704 /* OrangeView.swift in Sources */,
 				19F509E42830040E0082FB98 /* LoadingCoordinator.swift in Sources */,
 				1964839D2830502100B3B9FD /* GeneralViewController + UIAlertController.swift in Sources */,
 				19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */,
+				19562A672847F35F00C8A704 /* MainTaskTitle.swift in Sources */,
 				19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */,
+				19562A6A2847F35F00C8A704 /* TopToolbarView.swift in Sources */,
+				19562A6C2847F35F00C8A704 /* CommentsView.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
@@ -484,9 +580,15 @@
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
 				19F509DB282FF7580082FB98 /* GeneralViewController.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
+				19562A612847F35F00C8A704 /* CustomStackView.swift in Sources */,
+				19562A662847F35F00C8A704 /* CommentTableCell.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
+				19562A6B2847F35F00C8A704 /* TaskCollectionViewCell.swift in Sources */,
 				1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
+				19562A6D2847F35F00C8A704 /* CreatorView.swift in Sources */,
+				19562A6F2847F35F00C8A704 /* DescriptionView.swift in Sources */,
+				19562A682847F35F00C8A704 /* TableViewScreen.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
 				1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */,
 				191EAA75281BD26A007B1397 /* TokenData.swift in Sources */,
@@ -494,11 +596,13 @@
 				191EAA82281C3B48007B1397 /* RefreshToken.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
 				1964839B28304E6700B3B9FD /* GeneralViewController + UIMenu.swift in Sources */,
+				19562A602847F35F00C8A704 /* TaskModelData.swift in Sources */,
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
 				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
+				19562A632847F35F00C8A704 /* CollectionLayout.swift in Sources */,
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
 				19243E012829B28D00A43CA8 /* UIAlertController+helper.swift in Sources */,
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
