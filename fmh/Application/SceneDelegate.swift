@@ -27,9 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
 
-        let viewController = ExampleViewController()
-        let presenter = ExamplePresenter(output: viewController)
-        viewController.presenter = presenter
+        let viewController = TaskFullScreenViewController()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         
