@@ -31,7 +31,7 @@ struct AppSession {
         }
     }
     
-    static var userInfo: UserInfo?
+    static var userInfo: UserInfo? // <- Записывать во время загрузочной страницы (далее пересмотрим)
     
     static func logOut () {
         KeyChain.standart.del(key: "accessToken")

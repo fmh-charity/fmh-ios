@@ -14,7 +14,28 @@ final class ExamplePresenter {
     //var interactor: AuthInteractorProtocol?
     
     enum Section { case section1, section2 }
-    var sections = Dictionary<Section, CollectionViewSection>()
+    var sections = Dictionary<Section, CollectionViewSection>() {
+        didSet {
+            let sections = sections.map { $1 }
+            output?.updateCollectionView(sections: sections)
+        }
+    }
+    
+    /// Section name
+    var section1: CollectionViewSection = {
+        let headerModel: ExampleHeader.Model = .init()
+        let footerModel: ExampleFooter.Model = .init()
+
+        let items: [CollectionViewSection.Item] = []
+
+        let section = CollectionViewSection (
+            header: CollectionViewSection.Header(model: headerModel, viewType: ExampleHeader.self),
+            items: items,
+            footer: CollectionViewSection.Footer(model: footerModel, viewType: ExampleFooter.self)
+        )
+        
+        return section
+    }()
     
     init(output: ExamplePresenterOutput) {
         self.output = output
@@ -23,26 +44,12 @@ final class ExamplePresenter {
     }
     
     private func reloadSections() {
-        self.sections[.section1] = getSections1()
-        self.sections[.section2] = getSections1()
+        self.sections[.section1] = section1
+        self.sections[.section2] = section1
     }
     
-    private func getSections1() -> CollectionViewSection {
-        let headerModel: ExampleHeader.Model = .init()
-        let footerModel: ExampleFooter.Model = .init()
+    private func loadSections1() {
         
-        //let itemModel: ExampleCell.Model = .init(titleLabel: "", descriptionLabel: "")
-        let items: [CollectionViewSection.Item] = []
-        
-        /// Считываем interactorom items
-        
-        let section = CollectionViewSection (
-            header: CollectionViewSection.Header(model: headerModel, viewType: ExampleHeader.self),
-            items: items,
-            footer: CollectionViewSection.Footer(model: footerModel, viewType: ExampleFooter.self)
-        )
-        
-        return section
     }
     
 }
@@ -53,10 +60,10 @@ extension ExamplePresenter: ExamplePresenterInput {
     func updateSections(_ section: Section? = nil) {
         switch section {
             case .section1:
-                self.sections.updateValue(getSections1(), forKey: .section1)
+                self.sections.updateValue(section1, forKey: .section1)
             // updateSection in collectionView
             case .section2:
-                self.sections.updateValue(getSections1(), forKey: .section2)
+                self.sections.updateValue(section1, forKey: .section2)
             // updateSection in collectionView
         case .none:
             reloadSections()
