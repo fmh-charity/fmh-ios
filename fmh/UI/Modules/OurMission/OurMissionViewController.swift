@@ -15,11 +15,14 @@ struct ourMissionStruct {
     var isHidden: Bool
 }
 
-class OurMissionViewController: UIViewController {
+class OurMissionViewController: UIViewController, OurMissioniewControllerProtocol {
     
     // MARK: - Parameters
-    private let taglineView = UIView()
-    private let customTableView = UITableView()
+    var presenter: OurMissionPresenterInput?
+    var onCompletion: (() -> ())?
+    
+    var taglineView = UIView()
+    var customTableView = UITableView()
     
     override func loadView() {
         super.loadView()
@@ -44,7 +47,7 @@ class OurMissionViewController: UIViewController {
                          more: "\"Нет шаблона и стандарта, есть только дух, который живет в разных домах по разному. Но всегда он добрый, любящий и помогающий.”",
                          color: UIColor(red: 0.98, green: 0.941, blue: 0.839, alpha: 1),
                          isHidden: true),
-        ourMissionStruct(tagline: "\"В хосписе не работают плохие люди”\nВ.В.       Миллионщикова",
+        ourMissionStruct(tagline: "\"В хосписе не работают плохие люди”\nВ.В. Миллионщикова",
                          more: "Все сотрудники хосписа - это адвокаты пациента, его прав и потребностей. Поиск путей решения различных задач - это и есть хосписный индивидуальный подход к паллиативной помощи.",
                          color: UIColor(red: 0.858, green: 1, blue: 0.997, alpha: 1),
                          isHidden: true),
@@ -69,7 +72,7 @@ class OurMissionViewController: UIViewController {
                          color: UIColor(red: 0.904, green: 0.942, blue: 1, alpha: 1),
                          isHidden: true)]
     
-    // MARK: - Setup UI
+    // MARK: - Constraints
     private func setupUI() {
         view.addSubview(taglineView)
         taglineView.translatesAutoresizingMaskIntoConstraints = false
@@ -138,4 +141,7 @@ extension OurMissionViewController: UITableViewDataSource, UITableViewDelegate {
         
         customTableView.endUpdates()
     }
+}
+
+extension OurMissionViewController: OurMissionPresenterInput, OurMissionPresenterOutput {
 }
