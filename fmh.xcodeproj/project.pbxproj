@@ -72,8 +72,6 @@
 		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
 		19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */; };
 		19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */; };
-		B28EC79628492CFC004700A4 /* OurMissionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28EC79528492CFC004700A4 /* OurMissionProtocols.swift */; };
-		B28EC79828492D14004700A4 /* OurMissionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28EC79728492D14004700A4 /* OurMissionPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,8 +141,6 @@
 		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
 		19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
-		B28EC79528492CFC004700A4 /* OurMissionProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionProtocols.swift; sourceTree = "<group>"; };
-		B28EC79728492D14004700A4 /* OurMissionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,8 +476,6 @@
 		19F91BC5283D483A00AB6C6B /* OurMission */ = {
 			isa = PBXGroup;
 			children = (
-				B28EC79528492CFC004700A4 /* OurMissionProtocols.swift */,
-				B28EC79728492D14004700A4 /* OurMissionPresenter.swift */,
 				19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */,
 				19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */,
 			);
@@ -594,7 +588,6 @@
 				19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
-				B28EC79628492CFC004700A4 /* OurMissionProtocols.swift in Sources */,
 				19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */,
 				195629BA28450AFE00C8A704 /* CollectionViewAdapter.swift in Sources */,
 				195629C8284524BA00C8A704 /* ExampleCell.swift in Sources */,
@@ -615,7 +608,6 @@
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
-				B28EC79828492D14004700A4 /* OurMissionPresenter.swift in Sources */,
 				19450CE0283EBC7D001506B8 /* TemplateViewController.swift in Sources */,
 				196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */,
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,

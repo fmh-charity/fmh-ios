@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = ExampleViewController()
         let presenter = ExamplePresenter(output: viewController)
         viewController.presenter = presenter
-        window?.rootViewController = OurMissionViewController()
+        window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         
         func sceneDidDisconnect(_ scene: UIScene) {
