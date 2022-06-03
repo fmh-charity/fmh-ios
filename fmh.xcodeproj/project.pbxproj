@@ -89,6 +89,11 @@
 		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
 		19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */; };
 		19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */; };
+		2048AAE528494E6E00E9AB57 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048AAE428494E6E00E9AB57 /* CreateTaskView.swift */; };
+		2048AAE728494F6400E9AB57 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048AAE628494F6400E9AB57 /* CustomTextField.swift */; };
+		2048AAE92849547800E9AB57 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048AAE82849547800E9AB57 /* CreateTaskViewController.swift */; };
+		205377B12849658900D04BE3 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205377B02849658900D04BE3 /* EditTaskView.swift */; };
+		205377B32849668000D04BE3 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205377B22849668000D04BE3 /* EditTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,6 +180,11 @@
 		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
 		19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
+		2048AAE428494E6E00E9AB57 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
+		2048AAE628494F6400E9AB57 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		2048AAE82849547800E9AB57 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
+		205377B02849658900D04BE3 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
+		205377B22849668000D04BE3 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				19562A252847EF8E00C8A704 /* CustomStackView.swift */,
+				2048AAE628494F6400E9AB57 /* CustomTextField.swift */,
 				19562A262847EF8E00C8A704 /* TextLabel.swift */,
 				19562A272847EF8E00C8A704 /* CollectionLayout.swift */,
 			);
@@ -360,6 +371,8 @@
 			children = (
 				19562A292847EF8E00C8A704 /* TaskViewController.swift */,
 				19562A2A2847EF8E00C8A704 /* TaskFullScreenViewController.swift */,
+				205377B22849668000D04BE3 /* EditTaskViewController.swift */,
+				2048AAE82849547800E9AB57 /* CreateTaskViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -368,6 +381,8 @@
 			isa = PBXGroup;
 			children = (
 				19562A2C2847EF8E00C8A704 /* CommentTableCell.swift */,
+				2048AAE428494E6E00E9AB57 /* CreateTaskView.swift */,
+				205377B02849658900D04BE3 /* EditTaskView.swift */,
 				19562A2D2847EF8E00C8A704 /* MainTaskTitle.swift */,
 				19562A2E2847EF8E00C8A704 /* TableViewScreen.swift */,
 				19562A2F2847EF8E00C8A704 /* AddCommentTableViewCell.swift */,
@@ -392,16 +407,6 @@
 		199C09D4284009DD00ADFE3A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				19562A552847F35F00C8A704 /* CommentTableCell.swift */,
-				19562A562847F35F00C8A704 /* MainTaskTitle.swift */,
-				19562A572847F35F00C8A704 /* TableViewScreen.swift */,
-				19562A582847F35F00C8A704 /* AddCommentTableViewCell.swift */,
-				19562A592847F35F00C8A704 /* TopToolbarView.swift */,
-				19562A5A2847F35F00C8A704 /* TaskCollectionViewCell.swift */,
-				19562A5B2847F35F00C8A704 /* CommentsView.swift */,
-				19562A5C2847F35F00C8A704 /* CreatorView.swift */,
-				19562A5D2847F35F00C8A704 /* OrangeView.swift */,
-				19562A5E2847F35F00C8A704 /* DescriptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 				19C7A513280DECD0005000EB /* Sources */,
 				19C7A514280DECD0005000EB /* Frameworks */,
 				19C7A515280DECD0005000EB /* Resources */,
+				208AB69E284AB42500CBA657 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -627,6 +633,8 @@
 				Base,
 			);
 			mainGroup = 19C7A50E280DECD0005000EB;
+			packageReferences = (
+			);
 			productRefGroup = 19C7A518280DECD0005000EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -653,12 +661,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		208AB69E284AB42500CBA657 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		19C7A513280DECD0005000EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
+				2048AAE528494E6E00E9AB57 /* CreateTaskView.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
 				195629B72845007600C8A704 /* UIViewController + setMenuButton.swift in Sources */,
@@ -667,19 +696,11 @@
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				19562A472847EF8E00C8A704 /* DescriptionView.swift in Sources */,
 				191EAA73281BD256007B1397 /* Credentials.swift in Sources */,
-				19562A692847F35F00C8A704 /* AddCommentTableViewCell.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
 				19562A452847EF8E00C8A704 /* CreatorView.swift in Sources */,
 				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
-				19562A642847F35F00C8A704 /* TaskViewController.swift in Sources */,
 				19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */,
-				19562A622847F35F00C8A704 /* TextLabel.swift in Sources */,
-				19243E89282A6C4400A43CA8 /* UIViewController+Presentable.swift in Sources */,
-				19562A6E2847F35F00C8A704 /* OrangeView.swift in Sources */,
-				19F509E42830040E0082FB98 /* LoadingCoordinator.swift in Sources */,
-				1964839D2830502100B3B9FD /* GeneralViewController + UIAlertController.swift in Sources */,
 				19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */,
-				19562A672847F35F00C8A704 /* MainTaskTitle.swift in Sources */,
 				19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */,
 				199C09D82841120900ADFE3A /* PresentableProtocol.swift in Sources */,
 				195629C328451CF100C8A704 /* ExamplePresenter.swift in Sources */,
@@ -705,8 +726,6 @@
 				19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */,
 				19562A432847EF8E00C8A704 /* TaskCollectionViewCell.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
-				19562A612847F35F00C8A704 /* CustomStackView.swift in Sources */,
-				19562A662847F35F00C8A704 /* CommentTableCell.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
 				19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */,
 				195629BA28450AFE00C8A704 /* CollectionViewAdapter.swift in Sources */,
@@ -714,10 +733,10 @@
 				1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */,
 				195629BE2845181E00C8A704 /* UICollectionReusableView+identifier.swift in Sources */,
 				19562A3C2847EF8E00C8A704 /* TaskViewController.swift in Sources */,
+				205377B32849668000D04BE3 /* EditTaskViewController.swift in Sources */,
+				2048AAE92849547800E9AB57 /* CreateTaskViewController.swift in Sources */,
+				205377B12849658900D04BE3 /* EditTaskView.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
-				19562A6D2847F35F00C8A704 /* CreatorView.swift in Sources */,
-				19562A6F2847F35F00C8A704 /* DescriptionView.swift in Sources */,
-				19562A682847F35F00C8A704 /* TableViewScreen.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
 				1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */,
 				19562A382847EF8E00C8A704 /* CommentModelData.swift in Sources */,
@@ -726,6 +745,7 @@
 				19562A3A2847EF8E00C8A704 /* TextLabel.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				191EAA82281C3B48007B1397 /* RefreshToken.swift in Sources */,
+				2048AAE728494F6400E9AB57 /* CustomTextField.swift in Sources */,
 				19562A392847EF8E00C8A704 /* CustomStackView.swift in Sources */,
 				195629BC28450BDF00C8A704 /* CollectionViewSection.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
