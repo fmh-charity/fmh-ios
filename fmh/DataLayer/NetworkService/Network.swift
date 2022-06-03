@@ -59,32 +59,28 @@ extension Network: NetworkProtocol {
         if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is Credentials)  {
             request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
         }
-        print("AppSession: \(AppSession.tokens)")
+        
         return fetchPublisher(request: request)
             .tryCatch { apiError -> AnyPublisher<Data, APIError> in // TODO: Разобраться со сылками self
+
                 if apiError.code == 401 && !(resource.body.self is Credentials) && AppSession.isAuthorized {
                     self.refreshToken().sink { _ in }
                         receiveValue: { tokenData in
                             AppSession.tokens = tokenData
-                            print("tokenData: \(tokenData)")
                         }
                         .store(in: &self.anyCancellable)
                     
                     if let accessToken =  AppSession.tokens?.accessToken {
                         request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
-                        print("request.setValue")
                     }
-                    print("refreshToken1")
                     return self.fetchPublisher(request: request)
-                    
                 }
-                print("refreshToken2")
                 throw apiError
-                print("AppSession: \(AppSession.tokens)")
+                
             }
+            .retry(1) //TODO: т.к. токен обновился позже, повторяем запрос при ошибке (временно - нужно поправить очередь потоков)
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
-                print("error----")
                 return error as? APIError ?? .JSONDecoderError(error)
             }
             .eraseToAnyPublisher()
@@ -102,7 +98,7 @@ extension Network {
         let url = makeURL(path: resource.path)!
         let encodeBody = try? resource.body?.encode()
         let request = makeRequest(url: url, method: resource.method, body: encodeBody)
-
+        
         return fetchPublisher(request: request)
             .map { $0 }
             .decode(type: TokenData.self, decoder: JSONDecoder())
