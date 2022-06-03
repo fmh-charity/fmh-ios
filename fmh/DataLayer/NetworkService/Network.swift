@@ -59,25 +59,32 @@ extension Network: NetworkProtocol {
         if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is Credentials)  {
             request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
         }
-        
+        print("AppSession: \(AppSession.tokens)")
         return fetchPublisher(request: request)
-            .tryCatch { [unowned self] apiError -> AnyPublisher<Data, APIError> in
+            .tryCatch { apiError -> AnyPublisher<Data, APIError> in // TODO: Разобраться со сылками self
                 if apiError.code == 401 && !(resource.body.self is Credentials) && AppSession.isAuthorized {
                     self.refreshToken().sink { _ in }
                         receiveValue: { tokenData in
                             AppSession.tokens = tokenData
+                            print("tokenData: \(tokenData)")
                         }
-                        .store(in: &anyCancellable)
+                        .store(in: &self.anyCancellable)
                     
                     if let accessToken =  AppSession.tokens?.accessToken {
                         request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
+                        print("request.setValue")
                     }
-                    return fetchPublisher(request: request)
+                    print("refreshToken1")
+                    return self.fetchPublisher(request: request)
+                    
                 }
+                print("refreshToken2")
                 throw apiError
+                print("AppSession: \(AppSession.tokens)")
             }
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
+                print("error----")
                 return error as? APIError ?? .JSONDecoderError(error)
             }
             .eraseToAnyPublisher()

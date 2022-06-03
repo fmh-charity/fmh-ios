@@ -48,6 +48,9 @@
 		195629C8284524BA00C8A704 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629C7284524BA00C8A704 /* ExampleCell.swift */; };
 		195629CA2845257500C8A704 /* ExampleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629C92845257500C8A704 /* ExampleHeader.swift */; };
 		195629CC284525AA00C8A704 /* ExampleFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629CB284525AA00C8A704 /* ExampleFooter.swift */; };
+		19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A72284A677C00C8A704 /* NewsRepository.swift */; };
+		19562A75284A67DB00C8A704 /* APIResourceNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A74284A67DB00C8A704 /* APIResourceNews.swift */; };
+		19562A77284A6A8900C8A704 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A76284A6A8900C8A704 /* News.swift */; };
 		196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841072837DC00008F294F /* GeneralCoordinator.swift */; };
 		1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841092837F735008F294F /* AutorozationCoordinatror.swift */; };
 		1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* SideMenuViewController.swift */; };
@@ -116,6 +119,9 @@
 		195629C7284524BA00C8A704 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
 		195629C92845257500C8A704 /* ExampleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHeader.swift; sourceTree = "<group>"; };
 		195629CB284525AA00C8A704 /* ExampleFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFooter.swift; sourceTree = "<group>"; };
+		19562A72284A677C00C8A704 /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
+		19562A74284A67DB00C8A704 /* APIResourceNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResourceNews.swift; sourceTree = "<group>"; };
+		19562A76284A6A8900C8A704 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		196841072837DC00008F294F /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		196841092837F735008F294F /* AutorozationCoordinatror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorozationCoordinatror.swift; sourceTree = "<group>"; };
 		1968410D2839240E008F294F /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 				191EAA74281BD26A007B1397 /* TokenData.swift */,
 				191EAA76281BD281007B1397 /* UserInfo.swift */,
 				191EAA81281C3B48007B1397 /* RefreshToken.swift */,
+				19562A76284A6A8900C8A704 /* News.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -180,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				191EAA7F281C3518007B1397 /* APIResourceAuth.swift */,
+				19562A74284A67DB00C8A704 /* APIResourceNews.swift */,
 			);
 			path = APIResources;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				19243DE1282677BA00A43CA8 /* AuthRepository.swift */,
+				19562A72284A677C00C8A704 /* NewsRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -575,9 +584,11 @@
 				1942B7DE2835758C005C3732 /* GeneralMenuItemCell.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
+				19562A77284A6A8900C8A704 /* News.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
 				19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */,
+				19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				195629C528451D0200C8A704 /* ExampleProtocols.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
@@ -607,6 +618,7 @@
 				19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
+				19562A75284A67DB00C8A704 /* APIResourceNews.swift in Sources */,
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
 				19450CE0283EBC7D001506B8 /* TemplateViewController.swift in Sources */,
 				196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */,

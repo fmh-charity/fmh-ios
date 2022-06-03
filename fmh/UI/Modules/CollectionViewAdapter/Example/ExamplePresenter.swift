@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 final class ExamplePresenter {
 
     weak private var output: ExamplePresenterOutput?
+    private var anyCancellable = Set<AnyCancellable>()
     
     //var interactor: AuthInteractorProtocol?
     
@@ -40,7 +42,8 @@ final class ExamplePresenter {
     init(output: ExamplePresenterOutput) {
         self.output = output
         
-        reloadSections()
+        //reloadSections()
+        loadSections1()
     }
     
     private func reloadSections() {
@@ -49,7 +52,22 @@ final class ExamplePresenter {
     }
     
     private func loadSections1() {
-        
+ 
+        let repository = NewsRepository()
+        repository.getAllNews()
+            .sink { anyCompletion in
+                switch anyCompletion {
+                case .failure(let error):
+                    print("error: \(error)")
+                case .finished:
+                    print("finished")
+                    break
+                }
+            }
+            receiveValue: { news in
+                print("news: \(news)")
+            }
+            .store(in: &anyCancellable)
     }
     
 }
