@@ -51,6 +51,7 @@
 		19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A72284A677C00C8A704 /* NewsRepository.swift */; };
 		19562A75284A67DB00C8A704 /* APIResourceNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A74284A67DB00C8A704 /* APIResourceNews.swift */; };
 		19562A77284A6A8900C8A704 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A76284A6A8900C8A704 /* News.swift */; };
+		19562A79284B33F200C8A704 /* NewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A78284B33F200C8A704 /* NewsInteractor.swift */; };
 		196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841072837DC00008F294F /* GeneralCoordinator.swift */; };
 		1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196841092837F735008F294F /* AutorozationCoordinatror.swift */; };
 		1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1968410D2839240E008F294F /* SideMenuViewController.swift */; };
@@ -122,6 +123,7 @@
 		19562A72284A677C00C8A704 /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
 		19562A74284A67DB00C8A704 /* APIResourceNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResourceNews.swift; sourceTree = "<group>"; };
 		19562A76284A6A8900C8A704 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		19562A78284B33F200C8A704 /* NewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInteractor.swift; sourceTree = "<group>"; };
 		196841072837DC00008F294F /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
 		196841092837F735008F294F /* AutorozationCoordinatror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorozationCoordinatror.swift; sourceTree = "<group>"; };
 		1968410D2839240E008F294F /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				194220B328310AAE00A42F72 /* AuthInteractor.swift */,
+				19562A78284B33F200C8A704 /* NewsInteractor.swift */,
 			);
 			path = DomainLayer;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
 				1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */,
+				19562A79284B33F200C8A704 /* NewsInteractor.swift in Sources */,
 				191EAA75281BD26A007B1397 /* TokenData.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				191EAA82281C3B48007B1397 /* RefreshToken.swift in Sources */,

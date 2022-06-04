@@ -9,10 +9,8 @@ import Foundation
 import Combine
 
 protocol NewsRepositoryProtocol {
-    
-//    func login(login: String, password: String) -> AnyPublisher<TokenData, APIError>
-//    func refresh(_ refreshToken: String) -> AnyPublisher<TokenData, APIError>
-//    func userInfo() -> AnyPublisher<UserInfo, APIError>
+
+    func getAllNews() -> AnyPublisher<[News], APIError>
     
 }
 

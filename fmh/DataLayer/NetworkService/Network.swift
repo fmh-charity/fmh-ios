@@ -19,9 +19,6 @@ class Network: Service {
     
     init() { }
     
-    // MARK: - Private variable
-    private var anyCancellable = Set<AnyCancellable>()
-    
     private(set) var session: URLSession = {
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
@@ -47,7 +44,7 @@ class Network: Service {
 
 // MARK: - Network_Protocol
 extension Network: NetworkProtocol {
-    
+ 
     func fetchDataPublisher <T> (resource: APIResource<T>) -> AnyPublisher<T, APIError> where T: Decodable {
         guard let url = makeURL(path: resource.path, parametrs: resource.parametrs) else {
             return Fail(error: APIError.invalidURL)
@@ -61,24 +58,22 @@ extension Network: NetworkProtocol {
         }
         
         return fetchPublisher(request: request)
-            .tryCatch { apiError -> AnyPublisher<Data, APIError> in // TODO: Разобраться со сылками self
+            .tryCatch { apiError -> AnyPublisher<Data, APIError> in
 
                 if apiError.code == 401 && !(resource.body.self is Credentials) && AppSession.isAuthorized {
-                    self.refreshToken().sink { _ in }
-                        receiveValue: { tokenData in
+                    return self.refreshToken()
+                        .flatMap { tokenData -> AnyPublisher<Data, APIError> in
                             AppSession.tokens = tokenData
+                            if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is Credentials)  {
+                                request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
+                            }
+                            return self.fetchPublisher(request: request)
                         }
-                        .store(in: &self.anyCancellable)
-                    
-                    if let accessToken =  AppSession.tokens?.accessToken {
-                        request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
-                    }
-                    return self.fetchPublisher(request: request)
+                        .eraseToAnyPublisher()
                 }
                 throw apiError
                 
             }
-            .retry(1) //TODO: т.к. токен обновился позже, повторяем запрос при ошибке (временно - нужно поправить очередь потоков)
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
                 return error as? APIError ?? .JSONDecoderError(error)
@@ -88,6 +83,7 @@ extension Network: NetworkProtocol {
     
 }
 
+// MARK: - refreshToken
 extension Network {
 
     private func refreshToken () -> AnyPublisher<TokenData, APIError> {
@@ -98,7 +94,7 @@ extension Network {
         let url = makeURL(path: resource.path)!
         let encodeBody = try? resource.body?.encode()
         let request = makeRequest(url: url, method: resource.method, body: encodeBody)
-        
+
         return fetchPublisher(request: request)
             .map { $0 }
             .decode(type: TokenData.self, decoder: JSONDecoder())

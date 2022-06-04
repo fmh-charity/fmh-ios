@@ -25,7 +25,7 @@ struct CollectionViewSection {
     }
     
     let header: Header?
-    let items: [Item]
+    var items: [Item]
     let footer: Footer?
     
     init(header: Header? = nil, items: [Item], footer: Footer? = nil) {

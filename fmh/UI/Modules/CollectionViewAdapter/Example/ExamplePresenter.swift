@@ -11,9 +11,8 @@ import Combine
 final class ExamplePresenter {
 
     weak private var output: ExamplePresenterOutput?
-    private var anyCancellable = Set<AnyCancellable>()
     
-    //var interactor: AuthInteractorProtocol?
+    var interactor: NewsInteractorProtocol
     
     enum Section { case section1, section2 }
     var sections = Dictionary<Section, CollectionViewSection>() {
@@ -39,11 +38,12 @@ final class ExamplePresenter {
         return section
     }()
     
-    init(output: ExamplePresenterOutput) {
+    init(interactor: NewsInteractorProtocol, output: ExamplePresenterOutput) {
+        self.interactor = interactor
         self.output = output
         
-        //reloadSections()
-        loadSections1()
+        loadItemsNews()
+        
     }
     
     private func reloadSections() {
@@ -51,23 +51,18 @@ final class ExamplePresenter {
         self.sections[.section2] = section1
     }
     
-    private func loadSections1() {
- 
-        let repository = NewsRepository()
-        repository.getAllNews()
-            .sink { anyCompletion in
-                switch anyCompletion {
-                case .failure(let error):
-                    print("error: \(error)")
-                case .finished:
-                    print("finished")
-                    break
-                }
-            }
-            receiveValue: { news in
-                print("news: \(news)")
-            }
-            .store(in: &anyCancellable)
+    private func loadItemsNews() {
+        interactor.getAllNews(completion: { news, apiError in
+            guard apiError == nil else { return }
+            print("itemsCount: \(news?.count)")
+            news?.forEach({ news in
+                let model = ExampleCell.Model(titleLabel: news.title, descriptionLabel: news.description)
+                let item = CollectionViewSection.Item(model: model, viewType: ExampleCell.self)
+                self.section1.items.append(item)
+                
+            })
+        })
+        
     }
     
 }

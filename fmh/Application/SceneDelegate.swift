@@ -28,8 +28,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
 
+        let repository = NewsRepository()
+        let interactor = NewsInteractor(repository: repository)
         let viewController = ExampleViewController()
-        let presenter = ExamplePresenter(output: viewController)
+        let presenter = ExamplePresenter(interactor: interactor, output: viewController)
         viewController.presenter = presenter
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()

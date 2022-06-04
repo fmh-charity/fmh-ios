@@ -9,13 +9,13 @@ import Foundation
 
 struct News: Codable {
     
-    let createDate: String
+    let createDate: Date
     let creatorId: Int
     let creatorName: String
     let description: String
     let id: Int
     let newsCategoryId: Int
-    let publishDate: String
+    let publishDate: Date
     let publishEnabled: Bool
     let title: String
     
