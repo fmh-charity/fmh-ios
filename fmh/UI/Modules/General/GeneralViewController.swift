@@ -25,7 +25,7 @@ class GeneralViewController: UIViewController, GeneralViewControllerProtocol {
         return viewController
     }()
     
-    private var userInfo: DTOUserInfo? = nil {
+    private var userInfo: UserInfo? = nil {
         didSet {
             guard let f = userInfo?.lastName,
                   let i = userInfo?.firstName.first?.uppercased(),

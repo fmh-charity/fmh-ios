@@ -19,4 +19,16 @@ struct DTONews: Codable {
     let publishEnabled: Bool
     let title: String
     
+    enum CodingKeys: String, CodingKey {
+        case createDate = "createDate"
+        case creatorId = "creatorId"
+        case creatorName = "creatorName"
+        case description = "description"
+        case id = "id"
+        case newsCategoryId = "newsCategoryId"
+        case publishDate = "publishDate"
+        case publishEnabled = "publishEnabled"
+        case title = "title"
+    }
+    
 }
