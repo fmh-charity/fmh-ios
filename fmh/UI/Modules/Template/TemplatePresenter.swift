@@ -9,12 +9,24 @@ import Foundation
 
 final class TemplatePresenter {
 
+    var interactor: NewsInteractorProtocol
+    
     weak private var output: TemplatePresenterOutput?
     
     var isCompletion: (() -> ())?
     
-    init(output: TemplatePresenterOutput) {
+    init(interactor: NewsInteractorProtocol, output: TemplatePresenterOutput) {
+        self.interactor = interactor
         self.output = output
+        
+        loadTest()
+    }
+    
+    private func loadTest() {
+        interactor.getAllNews(completion: { news, apiError in
+            guard apiError == nil else { return }
+            print("itemsCount: \(news?.count)")
+        })
     }
     
 }
