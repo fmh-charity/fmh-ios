@@ -56,9 +56,10 @@ extension ModuleFactory: GeneralModuleFactoryProtocol {
     }
     
     func makeTemplateViewController() -> TemplateViewControllerProtocol {
+        let repository = NewsRepository()
+        let interactor = NewsInteractor(repository: repository)
         let viewController = TemplateViewController()
-        let presenter  = TemplatePresenter(output: viewController)
-        
+        let presenter = TemplatePresenter(interactor: interactor, output: viewController)
         viewController.presenter = presenter
         
         return viewController
