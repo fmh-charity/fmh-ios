@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol NewsInteractorProtocol {
-    func getAllNews(completion: @escaping ([DTONews]?, APIError?) -> Void )
+    func getAllNews(completion: @escaping ([News]?, APIError?) -> Void )
 }
 
 
@@ -27,7 +27,7 @@ class NewsInteractor {
 // MARK: - AuthInteractorProtocol
 extension NewsInteractor: NewsInteractorProtocol {
    
-    func getAllNews(completion: @escaping ([DTONews]?, APIError?) -> Void) {
+    func getAllNews(completion: @escaping ([News]?, APIError?) -> Void) {
         self.repository?.getAllNews()
             .sink { anyCompletion in
                 switch anyCompletion {
@@ -37,7 +37,18 @@ extension NewsInteractor: NewsInteractorProtocol {
                     break
                 }
             }
-            receiveValue: { news in
+            receiveValue: { dtoNews in
+                let news = dtoNews.map {
+                    News(createDate: $0.createDate,
+                         creatorId: $0.creatorId,
+                         creatorName: $0.creatorName,
+                         description: $0.description,
+                         id: $0.id,
+                         newsCategoryId: $0.newsCategoryId,
+                         publishDate: $0.publishDate,
+                         publishEnabled: $0.publishEnabled,
+                         title: $0.title)
+                }
                 return completion(news, nil)
             }
             .store(in: &anyCancellable)

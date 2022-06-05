@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - GeneralPresenterInput
 protocol GeneralPresenterInput: AnyObject {
-    func getUserInfo(completion: @escaping (DTOUserInfo?, APIError?) -> Void)
+    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void)
 }
 
 

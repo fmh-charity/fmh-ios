@@ -15,4 +15,12 @@ struct DTOUserInfo: Codable {
     let lastName: String
     let middleName: String
     
+    enum CodingKeys: String, CodingKey {
+        case admin = "admin"
+        case firstName = "firstName"
+        case id = "id"
+        case lastName = "lastName"
+        case middleName = "middleName"
+    }
+    
 }

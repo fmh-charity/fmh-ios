@@ -22,7 +22,7 @@ final class GeneralPresenter {
 // MARK: - GeneralPresenterInput
 extension GeneralPresenter: GeneralPresenterInput {
     
-    func getUserInfo(completion: @escaping (DTOUserInfo?, APIError?) -> Void) {
+    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void) {
         interactor?.getUserInfo(completion: { userInfo, apiError in
             if let userInfo = userInfo {
                 return completion(userInfo, nil)
