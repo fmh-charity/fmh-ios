@@ -40,11 +40,6 @@ class ExampleViewController: UIViewController, ExampleViewControllerProtocol {
         return collectionViewAdapter
     }()
     
-    struct TestModel {
-        let title: String
-        let text: String
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
@@ -56,35 +51,7 @@ class ExampleViewController: UIViewController, ExampleViewControllerProtocol {
         
         collectionView.delegate = collectionViewAdapter
         collectionView.dataSource = collectionViewAdapter
-        
-        // model
-        
-        
-        let models:[TestModel] = [
-        TestModel(title: "Test-0", text: "jbjekrjg ekjgkejg ekjg ekj gekrjg kerjg ekjrg kejr gkejr gker kejg"),
-        TestModel(title: "Test-0", text: "jbjekrjg ekjg kejr gkejr gker kejg"),
-        TestModel(title: "Test-0", text: """
-                    jbjekrjg ekjgkejg ekjg ekj gekrjg wefw f ef w
-                    wefwef wef we fw f we f we f we f w ef we f we fw ef w ef
-                    wefwef w ef we f we f wef we f wefwefwefwef we f wef
-                    w efwefwef we f we f we fw ef wefwekerjg ekjrg kejr gkejr gker kejg
-                    """)
-        ]
-        
-        // Sections
-        let sections: [Section] = [
-          Section(
-            header: Section.Header(model: String("HEADER"), viewType: ExampleHeader.self),
-            items: [
-                Section.Item(model: models[0], viewType: ExampleCell.self),
-                Section.Item(model: models[1], viewType: ExampleCell.self),
-                Section.Item(model: models[2], viewType: ExampleCell.self)
-            ]
-          )
-        ]
-
-        collectionViewAdapter.sections = sections
-        
+          
     }
     
     /// Нужны для отключения свайпа (Открытия меню)
@@ -116,7 +83,11 @@ class ExampleViewController: UIViewController, ExampleViewControllerProtocol {
 
 // MARK: - TemplatePresenterOutput
 extension ExampleViewController: ExamplePresenterOutput {
-
+    
+    func updateCollectionView(sections: [Section]) {
+        collectionViewAdapter.sections = sections
+    }
+    
 }
 
 // MARK: - TemplatePresenterOutput
@@ -124,11 +95,11 @@ extension ExampleViewController: CollectionViewAdapterDelegate {
     
     func configure(model: Any, view: UICollectionReusableView, indexPath: IndexPath) {
         
-        guard let model = model as? ExampleViewController.TestModel else { return }
-        
-        if let cell = view as? ExampleCell {
-            cell.configure(model: .init(titleLabel: model.title, descriptionLabel: model.text))
-        }
+//        guard let model = model as? ExampleViewController.TestModel else { return }
+//
+//        if let cell = view as? ExampleCell {
+//            cell.configure(model: .init(titleLabel: model.title, descriptionLabel: model.text))
+//        }
 
     }
     

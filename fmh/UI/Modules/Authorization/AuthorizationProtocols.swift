@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - AuthorizationPresenterInput
 protocol AuthorizationPresenterInput: AnyObject {
-    func login(login: String, password: String, completion: @escaping (UserInfo?, AuthorizationError?) -> Void )
+    func login(login: String, password: String, completion: @escaping (DTOUserInfo?, AuthorizationError?) -> Void )
 }
 
 

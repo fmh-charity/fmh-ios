@@ -15,6 +15,8 @@ protocol ExamplePresenterInput: AnyObject {
 // MARK: - ExamplePresenterOutput
 protocol ExamplePresenterOutput: AnyObject {
     var presenter: ExamplePresenterInput? { get set }
+    
+    func updateCollectionView(sections: [CollectionViewSection])
 }
 
 // MARK: - ExampleViewControllerProtocol

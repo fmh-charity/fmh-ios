@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         //AppSession.logOut()
+        //AppSession.tokens = TokenData(accessToken: "", refreshToken: AppSession.tokens!.refreshToken)
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             appCoordinator = AppCoordinator(window: window)
@@ -27,12 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
 
+        let repository = NewsRepository()
+        let interactor = NewsInteractor(repository: repository)
         let viewController = ExampleViewController()
-        let presenter = ExamplePresenter(output: viewController)
+        let presenter = ExamplePresenter(interactor: interactor, output: viewController)
         viewController.presenter = presenter
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
-        
+
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.
             // This occurs shortly after the scene enters the background, or when its session is discarded.
