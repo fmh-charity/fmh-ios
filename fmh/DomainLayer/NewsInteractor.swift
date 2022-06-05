@@ -10,6 +10,7 @@ import Combine
 
 protocol NewsInteractorProtocol {
     func getAllNews(completion: @escaping ([News]?, APIError?) -> Void )
+    func getNews(id: Int, completion: @escaping (News?, APIError?) -> Void)
 }
 
 
@@ -54,5 +55,30 @@ extension NewsInteractor: NewsInteractorProtocol {
             .store(in: &anyCancellable)
     }
 
+    func getNews(id: Int, completion: @escaping (News?, APIError?) -> Void) {
+        self.repository?.getNews(id: id)
+            .sink { anyCompletion in
+                switch anyCompletion {
+                case .failure(let error):
+                    return completion(nil, error)
+                case .finished:
+                    break
+                }
+            }
+            receiveValue: { dtoNews in
+                let news = News(createDate: dtoNews.createDate,
+                                creatorId: dtoNews.creatorId,
+                                creatorName: dtoNews.creatorName,
+                                description: dtoNews.description,
+                                id: dtoNews.id,
+                                newsCategoryId: dtoNews.newsCategoryId,
+                                publishDate: dtoNews.publishDate,
+                                publishEnabled: dtoNews.publishEnabled,
+                                title: dtoNews.title)
+                return completion(news, nil)
+            }
+            .store(in: &anyCancellable)
+    }
+    
 }
 
