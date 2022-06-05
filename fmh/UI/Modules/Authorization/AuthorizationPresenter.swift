@@ -25,7 +25,7 @@ final class AuthorizationPresenter {
 // MARK: - EnterPresenterInput
 extension AuthorizationPresenter: AuthorizationPresenterInput {
     
-    func login(login: String, password: String, completion: @escaping (UserInfo?, AuthorizationError?) -> Void ) {
+    func login(login: String, password: String, completion: @escaping (DTOUserInfo?, AuthorizationError?) -> Void ) {
         
         interactor?.login(login: login, password:  password) { userInfo, apiError in
             

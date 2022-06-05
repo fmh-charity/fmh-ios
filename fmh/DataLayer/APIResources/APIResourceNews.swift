@@ -10,8 +10,8 @@ import Foundation
 enum APIResourceNews {
     
     case getAllNews                     // <- Реестр всех новостей
-    case createNews (news: News)        // <- Создание новой новости
-    case refreshNews (news: News)       // <- Обновляет информацию по новости
+    case createNews (news: DTONews)        // <- Создание новой новости
+    case refreshNews (news: DTONews)       // <- Обновляет информацию по новости
     case getNews  (id: Int)             // <- Возвращает полную информацию по новости
     case removeNews (id: Int)           // <- Удаление новости
 

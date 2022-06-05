@@ -53,18 +53,18 @@ extension Network: NetworkProtocol {
         
         let encodeBody = try? resource.body?.encode()
         var request = makeRequest(url: url, method: resource.method, headers: resource.headers, body: encodeBody)
-        if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is Credentials)  {
+        if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is DTOCredentials)  {
             request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
         }
         
         return fetchPublisher(request: request)
             .tryCatch { apiError -> AnyPublisher<Data, APIError> in
 
-                if apiError.code == 401 && !(resource.body.self is Credentials) && AppSession.isAuthorized {
+                if apiError.code == 401 && !(resource.body.self is DTOCredentials) && AppSession.isAuthorized {
                     return self.refreshToken()
                         .flatMap { tokenData -> AnyPublisher<Data, APIError> in
                             AppSession.tokens = tokenData
-                            if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is Credentials)  {
+                            if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is DTOCredentials)  {
                                 request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
                             }
                             return self.fetchPublisher(request: request)
@@ -86,10 +86,10 @@ extension Network: NetworkProtocol {
 // MARK: - refreshToken
 extension Network {
 
-    private func refreshToken () -> AnyPublisher<TokenData, APIError> {
+    private func refreshToken () -> AnyPublisher<DTOTokenData, APIError> {
         
         let refreshToken = AppSession.tokens?.refreshToken ?? ""
-        let resource: APIResource<TokenData> = APIResourceAuth.refresh(refreshToken: refreshToken).resource()
+        let resource: APIResource<DTOTokenData> = APIResourceAuth.refresh(refreshToken: refreshToken).resource()
 
         let url = makeURL(path: resource.path)!
         let encodeBody = try? resource.body?.encode()
@@ -97,7 +97,7 @@ extension Network {
 
         return fetchPublisher(request: request)
             .map { $0 }
-            .decode(type: TokenData.self, decoder: JSONDecoder())
+            .decode(type: DTOTokenData.self, decoder: JSONDecoder())
             .mapError { error in error as! APIError }
             .eraseToAnyPublisher()
     }

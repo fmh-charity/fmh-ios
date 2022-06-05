@@ -10,7 +10,7 @@ import Combine
 
 protocol NewsRepositoryProtocol {
 
-    func getAllNews() -> AnyPublisher<[News], APIError>
+    func getAllNews() -> AnyPublisher<[DTONews], APIError>
     
 }
 
@@ -25,7 +25,7 @@ class NewsRepository: Network {
 // MARK: - AuthRepositoryProtocol
 extension NewsRepository: NewsRepositoryProtocol {
     
-    func getAllNews() -> AnyPublisher<[News], APIError> {
+    func getAllNews() -> AnyPublisher<[DTONews], APIError> {
         let resource = APIResourceNews.getAllNews
         return fetchDataPublisher(resource: resource.resource())
             .map { $0 }

@@ -1,5 +1,5 @@
 //
-//  News.swift
+//  DTONews.swift
 //  fmh
 //
 //  Created: 03.06.2022
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct News: Codable {
+struct DTONews: Codable {
     
     let createDate: Date
     let creatorId: Int

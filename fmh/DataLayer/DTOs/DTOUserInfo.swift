@@ -1,5 +1,5 @@
 //
-//  UserInfo.swift
+//  DTOUserInfo.swift
 //  fmh
 //
 //  Created: 29.04.2022
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserInfo: Codable {
+struct DTOUserInfo: Codable {
     
     let admin: Bool
     let firstName: String
