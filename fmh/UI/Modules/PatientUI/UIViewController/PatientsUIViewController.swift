@@ -21,7 +21,7 @@ final class PatientsUIViewController: UIViewController {
     private let buttonPanel = PatientsUIView()
     
     private let stackView: UIStackView = {
-        let stack = UIStackView()
+        let stack = UIStackView(frame: .zero)
         stack.axis = .vertical
         stack.spacing = 17
         stack.alignment = .fill
@@ -31,17 +31,18 @@ final class PatientsUIViewController: UIViewController {
     }()
     
     private lazy var generalInfoTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(PatientTableViewCell.self, forCellReuseIdentifier: PatientTableViewCell.identifier)
+        tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
     override func viewDidLoad() {
         setUpConstraints()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "BackGround") ?? UIImage())
     }
     
     func setUpConstraints() {
@@ -54,7 +55,7 @@ final class PatientsUIViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -500),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -675),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
         
@@ -65,8 +66,8 @@ final class PatientsUIViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             generalInfoTableView.topAnchor.constraint(equalTo: stackView.bottomAnchor),
-            generalInfoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            generalInfoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            generalInfoTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            generalInfoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             generalInfoTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
@@ -97,6 +98,14 @@ extension PatientsUIViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             break
         }
+        if (indexPath.row == 0)
+            {
+            cell.backgroundColor = UIColor(named: "peach")
+            } else {
+                cell.backgroundColor = .white
+            }
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = CGColor(gray: 0.75, alpha: 1)
         return cell
     }
 }

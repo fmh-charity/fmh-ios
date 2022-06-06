@@ -10,27 +10,27 @@ import UIKit
 class PatientTableViewCell: UITableViewCell {
     static let identifier = "PatientTableViewCell"
     
-    private let fioLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .systemGray2
-        label.font = UIFont(name: "SFNS Display", size: 13)
-        return label
-    }()
-    
-    private let fioDescriptionLabel: UILabel = {
+    private let trailingCell: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = UIFont(name: "SF UI Display", size: 16)
         return label
     }()
+    
+    private let leadingCell: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .gray
+        label.font = UIFont(name: "SFNS Display", size: 13)
+        return label
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         setUpConstraints()
     }
-    
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -42,28 +42,27 @@ class PatientTableViewCell: UITableViewCell {
 
     private func setUpConstraints() {
         
-        contentView.addSubview(fioLabel)
-        contentView.addSubview(fioDescriptionLabel)
-        let offset: CGFloat = 5
+        contentView.addSubview(trailingCell)
+        contentView.addSubview(leadingCell)
+        let offset: CGFloat = 7
     
         NSLayoutConstraint.activate([
-            fioDescriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: offset),
-            fioDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: offset),
-            fioDescriptionLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 / 2),
-            fioDescriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -offset)
+            leadingCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: offset),
+            leadingCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: offset),
+            leadingCell.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 / 2),
+            leadingCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -offset)
         ])
         
         NSLayoutConstraint.activate([
-            fioLabel.topAnchor.constraint(equalTo: fioDescriptionLabel.topAnchor),
-            fioLabel.leadingAnchor.constraint(equalTo: fioDescriptionLabel.trailingAnchor),
-            fioLabel.bottomAnchor.constraint(equalTo: fioDescriptionLabel.bottomAnchor),
-            fioLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -offset)
+            trailingCell.topAnchor.constraint(equalTo: leadingCell.topAnchor),
+            trailingCell.bottomAnchor.constraint(equalTo: leadingCell.bottomAnchor),
+            trailingCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -offset)
         ])
     }
     
     func configure(descriptionTypes: DescriptionTypes, patientInfo: String) {
-        fioDescriptionLabel.text = descriptionTypes.title
-        fioLabel.text = patientInfo
+        leadingCell.text = descriptionTypes.title
+        trailingCell.text = patientInfo
     }
 }
 
