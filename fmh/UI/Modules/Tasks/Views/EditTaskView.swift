@@ -10,8 +10,8 @@ import UIKit
 final class EditTaskView: UIView {
     private var themeTextField = UITextField(placeholder: "Тема*")
     var executorTextField = UITextField(placeholder: "Исполнитель*")
-    private var dateTextField = UITextField(placeholder: "Дата*")
-    private var timeTextField = UITextField(placeholder: "Время")
+    var dateTextField = UITextField(placeholder: "Дата*")
+    var timeTextField = UITextField(placeholder: "Время")
     private var descriptionTextField = UITextField(placeholder: "Описание")
 
     private let themeLabel: UILabel = {
