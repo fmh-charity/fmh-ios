@@ -13,16 +13,16 @@ class EditTaskViewController: UIViewController {
 
     let pickerView = UIPickerView()
 
-    let names = ["asdsad", "asd21312sad","виталик","хуй","asdsad","asdsad",]
+    let names = ["asdsad", "asd21312sad","виталик","qweqw","asdsad","asdsad",]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(customView)
-//        view.addSubview(pickerView)
         pickerView.isHidden = true
-        customView.executorTextField.inputView = pickerView
+        customView.executorTextField.delegate = self
         pickerView.dataSource = self
         pickerView.delegate = self
+        customView.executorTextField.inputView = pickerView
         view.backgroundColor = .white
         setupElements()
     }
@@ -36,7 +36,12 @@ class EditTaskViewController: UIViewController {
     }
 }
 
-extension EditTaskViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension EditTaskViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        pickerView.isHidden = false
+    }
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -48,5 +53,8 @@ extension EditTaskViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        return names[row]
     }
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        customView.executorTextField.text = names[row]
+        customView.executorTextField.endEditing(true)
+    }
 }

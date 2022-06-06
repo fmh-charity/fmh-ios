@@ -27,7 +27,7 @@ extension AuthorizationPresenter: AuthorizationPresenterInput {
     
     func login(login: String, password: String, completion: @escaping (UserInfo?, AuthorizationError?) -> Void ) {
         
-        interactor?.login(login: login, password:  password) { userInfo, apiError in
+        interactor?.login(login: login, password:  password) { [weak self] userInfo, apiError in
             
             if let apiError = apiError {
                 // TODO: Добавить расшифровку ошибок на русском. (AuthError)
