@@ -23,10 +23,18 @@ final class TemplatePresenter {
     }
     
     private func loadTest() {
+        
         interactor.getAllNews(completion: { news, apiError in
             guard apiError == nil else { return }
             print("itemsCount: \(news?.count)")
         })
+        
+        interactor.getNews(id: 1) { news, apiError in
+            guard apiError == nil else { return }
+            print("news: \(news)")
+        }
+        
+        
     }
     
 }

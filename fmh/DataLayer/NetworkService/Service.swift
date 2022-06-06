@@ -12,23 +12,23 @@ protocol Service: AnyObject {
     
     var session: URLSession { get }
     
-    func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, APIError>
+//    func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, APIError>
     func fetchPublisher (request: URLRequest) -> AnyPublisher<Data, APIError>
-    func fetchData <T: Decodable> (request: URLRequest, completion: @escaping (Result<T?, APIError>) -> Void )
-    func fetch (request: URLRequest, completion: @escaping (Result<Data?, APIError>) -> Void )
+//    func fetchData <T: Decodable> (request: URLRequest, completion: @escaping (Result<T?, APIError>) -> Void )
+//    func fetch (request: URLRequest, completion: @escaping (Result<Data?, APIError>) -> Void )
     
 }
 
 extension Service {
     
-    func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, APIError> {
-        return fetchPublisher (request: request)
-            .decode(type: T.self, decoder: JSONDecoder())
-            .mapError { error in
-                return error as? APIError ?? .JSONDecoderError(error)
-            }
-            .eraseToAnyPublisher()
-    }
+//    func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, APIError> {
+//        return fetchPublisher (request: request)
+//            .decode(type: T.self, decoder: JSONDecoder())
+//            .mapError { error in
+//                return error as? APIError ?? .JSONDecoderError(error)
+//            }
+//            .eraseToAnyPublisher()
+//    }
     
     func fetchPublisher (request: URLRequest) -> AnyPublisher<Data, APIError> {
         return session.dataTaskPublisher(for: request)
@@ -45,38 +45,38 @@ extension Service {
             .eraseToAnyPublisher()
     }
     
-    func fetchData <T: Decodable> (request: URLRequest, completion: @escaping (Result<T?, APIError>) -> Void ) {
-        fetch(request: request) { result in
-            switch result {
-                case .success(let data):
-                    if let data = data {
-                        do {
-                            let decodeData = try JSONDecoder().decode(T.self, from: data)
-                            return completion(.success(decodeData))
-                        } catch {
-                            return completion(.failure(.JSONDecoderError(error)))
-                        }
-                    }
-                case .failure(let error):
-                    return completion(.failure(error))
-            }
-        }
-    }
+//    func fetchData <T: Decodable> (request: URLRequest, completion: @escaping (Result<T?, APIError>) -> Void ) {
+//        fetch(request: request) { result in
+//            switch result {
+//                case .success(let data):
+//                    if let data = data {
+//                        do {
+//                            let decodeData = try JSONDecoder().decode(T.self, from: data)
+//                            return completion(.success(decodeData))
+//                        } catch {
+//                            return completion(.failure(.JSONDecoderError(error)))
+//                        }
+//                    }
+//                case .failure(let error):
+//                    return completion(.failure(error))
+//            }
+//        }
+//    }
     
-    func fetch (request: URLRequest, completion: @escaping (Result<Data?, APIError>) -> Void ) {
-        let task = session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                return completion(.failure(.URLRequestError(error)))
-            }
-            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-                let discriptionCode = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
-                return completion(.failure(.HTTPURLResponse(statusCode: response.statusCode, description: discriptionCode)))
-            }
-            if let data = data {
-                return completion(.success(data))
-            }
-        }
-        task.resume()
-    }
+//    func fetch (request: URLRequest, completion: @escaping (Result<Data?, APIError>) -> Void ) {
+//        let task = session.dataTask(with: request) { data, response, error in
+//            if let error = error {
+//                return completion(.failure(.URLRequestError(error)))
+//            }
+//            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+//                let discriptionCode = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
+//                return completion(.failure(.HTTPURLResponse(statusCode: response.statusCode, description: discriptionCode)))
+//            }
+//            if let data = data {
+//                return completion(.success(data))
+//            }
+//        }
+//        task.resume()
+//    }
     
 }
