@@ -14,15 +14,12 @@ class EditTaskViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        view.addSubview(customView)
-       
         view.backgroundColor = .white
         setupElements()
-       
     }
 
     func setupElements() {
+        view.addSubview(customView)
         customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         customView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         customView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true

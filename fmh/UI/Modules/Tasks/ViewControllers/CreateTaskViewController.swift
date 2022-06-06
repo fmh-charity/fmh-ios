@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class CreateTaskViewController: UIViewController {
+ class CreateTaskViewController: UIViewController {
 
-    let customView = CreateTaskView()
+    let customView = EditTaskView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +17,7 @@ final class CreateTaskViewController: UIViewController {
         view.backgroundColor = .white
     }
     
-    private func setupConstraints() {
+     func setupConstraints() {
         view.addSubview(customView)
         customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         customView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
