@@ -1,10 +1,3 @@
-//
-//  TaskCollectionViewCell.swift
-//  fmh
-//
-//  Created: 24.05.2022
-//
-
 import UIKit
 
 class TaskCollectionViewCell: UICollectionViewCell {
@@ -15,16 +8,7 @@ class TaskCollectionViewCell: UICollectionViewCell {
     private let themeLabel = UILabel(text: "Тема", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let nameofThemeLabel = UILabel(text: "Тема1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
     let executorLabel = UILabel(text: "Исполнитель", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
-//    private let bottomArrowButton: UIButton = {
-//        let button = UIButton()
-//        button.setImage(UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
-//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 2, right: 2)
-//        button.tintColor = UIColor(named: "TaskCollectionTextColor") ?? .black
-//        button.contentMode = .scaleAspectFit
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-//
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -57,36 +41,20 @@ class TaskCollectionViewCell: UICollectionViewCell {
             nameofThemeLabel.trailingAnchor.constraint(equalTo: orangeView.trailingAnchor, constant: -10),
             nameofThemeLabel.topAnchor.constraint(equalTo: orangeView.topAnchor),
             nameofThemeLabel.bottomAnchor.constraint(equalTo: orangeView.bottomAnchor),
+            nameofThemeLabel.widthAnchor.constraint(equalTo: orangeView.widthAnchor, multiplier: 0.7),
             
-//            executorLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-//            executorLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-//            
-//            executorLabel.topAnchor.constraint(equalTo: orangeView.bottomAnchor, constant: 10),
-//            executorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-//            executorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
-//            executorLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-//
-//
             taskView.topAnchor.constraint(equalTo: orangeView.bottomAnchor),
             taskView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2),
             taskView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2),
             taskView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2),
-
-//
-//            bottomArrowButton.topAnchor.constraint(equalTo: taskView.bottomAnchor),
-//            bottomArrowButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-//            bottomArrowButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4),
-//            bottomArrowButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
-         
+            taskView.heightAnchor.constraint(equalToConstant: 98)
         ]
         NSLayoutConstraint.activate(constraints)
         backgroundColor = UIColor(named: "BackgroundTaskCell")
-//        bottomArrowButton.backgroundColor = .white
     }
     
-    // <- Тут
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingExpandedSize).height
         return layoutAttributes
     }
     

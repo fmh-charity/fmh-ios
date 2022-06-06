@@ -8,7 +8,7 @@
 import UIKit
 
 class CommentTableCell: UITableViewCell {
-
+    
     
     static let reuseId = "CommentTableCell"
     let commentNumLabel = UILabel(text: "Комментарий 1",
@@ -27,7 +27,7 @@ class CommentTableCell: UITableViewCell {
                             font: UIFont(name: "Roboto", size: 12),
                             tintColor: #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1),
                             textAlignment: .left)
-
+    
     let bottomSeparator: UILabel = {
         let separator = UILabel()
         separator.layer.borderColor = #colorLiteral(red: 0.8537765145, green: 0.8537764549, blue: 0.8537764549, alpha: 1)
@@ -36,7 +36,7 @@ class CommentTableCell: UITableViewCell {
         separator.translatesAutoresizingMaskIntoConstraints = false
         return separator
     }()
-
+    
     let editCommentButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
@@ -45,18 +45,18 @@ class CommentTableCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
         contentView.translatesAutoresizingMaskIntoConstraints = false
         setupConstraint()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func setupConstraint() {
         commentNumLabel.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         let topStackView = UIStackView(views: [commentNumLabel, editCommentButton],

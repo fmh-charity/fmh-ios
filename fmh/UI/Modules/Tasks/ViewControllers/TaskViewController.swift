@@ -15,9 +15,7 @@ final class TaskViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 40
-        
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize // <- Тут
-        
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         guard let collectionView = collectionView else {
             return
@@ -45,7 +43,6 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         taskModelCells.count
     }
-    
    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCollectionViewCell.reuseID,
@@ -60,7 +57,7 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     // MARK: РАЗМЕР
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width * 0.75, height: 265)
+        CGSize(width: UIScreen.main.bounds.width * 0.75, height: 200)
     }
 
    
