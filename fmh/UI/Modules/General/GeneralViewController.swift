@@ -6,7 +6,6 @@
 //
 //  https://github.com/johncodeos-blog/CustomSideMenuiOSExample/tree/main/CustomSideMenuiOSExample
 
-import Foundation
 import UIKit
 
 class GeneralViewController: UIViewController, GeneralViewControllerProtocol {

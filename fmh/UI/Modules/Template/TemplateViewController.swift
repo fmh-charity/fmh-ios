@@ -5,7 +5,6 @@
 //  Created: 25.05.2022
 //
 
-import Foundation
 import UIKit
 
 class TemplateViewController: UIViewController, TemplateViewControllerProtocol {

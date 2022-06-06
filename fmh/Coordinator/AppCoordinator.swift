@@ -11,7 +11,6 @@
 ///         |                                                  |                                                  |
 /// LoadingViewController            AuthorizationCoordinator                GeneralCoordinator
 
-import Foundation
 import UIKit
 
 final class AppCoordinator: CoordinatorProtocol {

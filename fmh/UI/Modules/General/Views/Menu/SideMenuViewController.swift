@@ -5,7 +5,6 @@
 //  Created: 21.05.2022
 //
 
-import Foundation
 import UIKit
 
 protocol SideMenuViewControllerDelegate {

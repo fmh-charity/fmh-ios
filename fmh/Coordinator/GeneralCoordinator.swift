@@ -5,7 +5,6 @@
 //  Created: 15.05.2022
 //
 
-import Foundation
 import UIKit
 
 final class GeneralCoordinator: CoordinatorProtocol {
