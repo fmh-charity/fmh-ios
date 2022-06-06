@@ -11,31 +11,37 @@ import Combine
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    var appCoordinator: AppCoordinator?
+    
+    //    var rootController: UINavigationController {
+
+
+    //        let navigationController = self.getNavigationController()
+    //
+    //        window?.rootViewController = navigationController
+    //        window?.makeKeyAndVisible()
+    //        return window?.rootViewController as! UINavigationController
+    //    }
+
+    //    fileprivate lazy var coordinator = AppCoordinator(navigationController: rootController)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+
+
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        //KeyChain.standart.clear()
+        guard let scene = (scene as? UIWindowScene) else { return }
         
-        //AppSession.logOut()
-        //AppSession.tokens = TokenData(accessToken: "", refreshToken: AppSession.tokens!.refreshToken)
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            appCoordinator = AppCoordinator(window: window)
-            //appCoordinator?.start()
-            self.window = window
-            window.makeKeyAndVisible()
-        }
+        window = UIWindow(windowScene: scene)
 
-        let repository = NewsRepository()
-        let interactor = NewsInteractor(repository: repository)
-        let viewController = TemplateViewController()
-        let presenter = TemplatePresenter(interactor: interactor, output: viewController)
-        viewController.presenter = presenter
-        window?.rootViewController = viewController
+        //        coordinator.start()
         window?.makeKeyAndVisible()
 
+        let patientController = PatientsUIViewController()
+
+        window?.rootViewController = patientController
+        
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.
             // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -64,6 +70,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // to restore the scene back to its current state.
         }
         
+        
+    }
+    
+}
+
+// MARK: - getNavigationController
+fileprivate extension SceneDelegate {
+
+    private func getPatientController() -> PatientsUIViewController {
+
+        let patientController = PatientsUIViewController()
+        return patientController
     }
     
 }

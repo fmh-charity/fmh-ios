@@ -34,14 +34,3 @@ extension UILabel {
         self.numberOfLines = 0
     }
 }
-
-//extension UIStackView {
-//    convenience init(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0.0, alignment: UIStackView.Alignment = .fill) {
-//        self.axis = axis
-//        self.spacing = spacing
-//        self.alignment = alignment
-//        self.distribution = distribution
-//        self.translatesAutoresizingMaskIntoConstraints = false
-//    }
-//}
-//
