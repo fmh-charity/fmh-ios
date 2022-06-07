@@ -10,7 +10,6 @@ import UIKit
 class EditTaskViewController: UIViewController {
 
     let customView = EditTaskView()
-
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +20,7 @@ class EditTaskViewController: UIViewController {
     func setupElements() {
         view.addSubview(customView)
         customView.saveButton.addTarget(self, action: #selector(saveTask(_:)), for: .touchUpInside)
+        customView.cancelButton.addTarget(self, action: #selector(cancelEditTask(_:)), for: .touchUpInside)
         customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         customView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         customView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
@@ -31,9 +31,11 @@ class EditTaskViewController: UIViewController {
         taskModelCells.append(TaskModel(nameOfTheme: customView.themeTextField.text ?? "",
                                         nameOfExecutor: customView.executorTextField.text ?? "",
                                         date: customView.dateTextField.text ?? "",
-                                        time: customView.timeTextField.text ?? ""))
+                                        time: customView.timeTextField.text ?? "", description: customView.descriptionTextField.text ?? ""))
         self.dismiss(animated: true)
-        print("maksim lox")
+    }
+    @objc func cancelEditTask(_ sender: UIButton) {
+        self.dismiss(animated: true)
     }
 }
 

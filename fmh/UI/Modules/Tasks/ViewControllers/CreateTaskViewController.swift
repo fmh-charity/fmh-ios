@@ -31,7 +31,7 @@ import UIKit
          taskModelCells.append(TaskModel(nameOfTheme: customView.themeTextField.text ?? "",
                                          nameOfExecutor: customView.executorTextField.text ?? "",
                                          date: customView.dateTextField.text ?? "",
-                                         time: customView.timeTextField.text ?? ""))
+                                         time: customView.timeTextField.text ?? "", description: customView.descriptionTextField.text ?? ""))
          self.dismiss(animated: true)
      }
      
