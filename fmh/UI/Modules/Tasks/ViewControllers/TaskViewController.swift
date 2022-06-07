@@ -11,6 +11,11 @@ final class TaskViewController: UIViewController {
         view.backgroundColor = .white
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+    }
+    
     private func collectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -36,6 +41,13 @@ final class TaskViewController: UIViewController {
         toolbarView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         toolbarView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         toolbarView.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        toolbarView.addButton.addTarget(self, action: #selector(addTask(_:)), for: .touchUpInside)
+    }
+    
+    @objc func addTask(_ sender: UIButton) {
+        let vc = CreateTaskViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
 }
 
@@ -59,7 +71,11 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width * 0.75, height: 200)
     }
-
-   
+    // MARK: КАК БУДЕТ ОТКРЫВАТЬСЯ ОКНО ПОЛНОЙ ИНФОРМАЦИИ О ЗАЯВКАХ?
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = TaskFullScreenViewController()
+        vc.modalPresentationStyle = .formSheet
+        self.present(vc, animated: true)
+    }
 }
 

@@ -9,11 +9,11 @@ import UIKit
 
 final class EditTaskView: UIView {
     
-    private var themeTextField = UITextField(placeholder: "Тема*")
+    var themeTextField = UITextField(placeholder: "Тема*")
     var executorTextField = UITextField(placeholder: "Исполнитель*")
     var dateTextField = UITextField(placeholder: "Дата*")
     var timeTextField = UITextField(placeholder: "Время")
-    private var descriptionTextField = UITextField(placeholder: "Описание")
+    var descriptionTextField = UITextField(placeholder: "Описание")
     let pickerView = UIPickerView()
     let datePicker = UIDatePicker()
     let timePicker = UIDatePicker()
@@ -59,7 +59,7 @@ final class EditTaskView: UIView {
         return label
     }()
     
-    private var saveButton: UIButton = {
+     var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Сохранить", for: .normal)
         button.layer.cornerRadius = 7
@@ -68,7 +68,7 @@ final class EditTaskView: UIView {
         return button
     }()
     
-    private var cancelButton: UIButton = {
+    var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Отмена", for: .normal)
         button.setTitleColor( UIColor.gray, for: .normal)
