@@ -8,13 +8,14 @@
 import UIKit
 
 final class TaskFullScreenViewController: UIViewController {
-    let orangeView = OrangeView()
-    let taskView = AllElementsView()
-    let descriptionView = DescriptionView()
-    let creatorView = CreatorView()
-    let commentView = CommentsView()
-    let tableView = TableViewScreen()
-    let statusLabel = UILabel(text: "В работе", font: UIFont(name: "SF UI Display", size: 16), tintColor: .black, textAlignment: .center)
+    private let orangeView = OrangeView()
+    private  let bottomButtons = BottomButtonsView()
+    private  let taskView = AllElementsView()
+    private  let descriptionView = DescriptionView()
+    private  let creatorView = CreatorView()
+    private  let commentView = CommentsView()
+    private  let tableView = TableViewScreen()
+    private  let statusLabel = UILabel(text: "В работе", font: UIFont(name: "SF UI Display", size: 16), tintColor: .black, textAlignment: .center)
     private let themeLabel = UILabel(text: "Тема", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let nameofThemeLabel = UILabel(text: "Тема1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ final class TaskFullScreenViewController: UIViewController {
         view.addSubview(descriptionView)
         view.addSubview(creatorView)
         view.addSubview(tableView)
+        view.addSubview(bottomButtons)
         taskView.backgroundColor = .white
         statusLabel.backgroundColor = UIColor(named: "Status.active") ?? .systemGray6
         let constraints = [
@@ -67,9 +69,12 @@ final class TaskFullScreenViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: creatorView.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            tableView.bottomAnchor.constraint(equalTo: bottomButtons.topAnchor, constant: -10),
+            bottomButtons.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 25),
+            bottomButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            bottomButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            bottomButtons.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ]
-        
         tableView.layer.shadowOffset = CGSize(width: 1, height: 4)
         tableView.layer.shadowRadius = 4
         tableView.layer.shadowOpacity = 0.25
