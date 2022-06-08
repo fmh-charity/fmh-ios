@@ -10,7 +10,7 @@ import UIKit
 class FilterVIew: UIView {
 
     private let mainLabel = UILabel(text: "Фильтровать",
-                                    font: UIFont.systemFont(ofSize: 15),
+                                    font: UIFont.systemFont(ofSize: 25),
                                     tintColor: UIColor(named: "AccentColor") ?? .black,
                                     textAlignment: .left)
 
@@ -62,8 +62,32 @@ class FilterVIew: UIView {
         return button
     }()
 
+    let cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Отмена", for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 3
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    let okButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("ОК", for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 3
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
+        layer.borderWidth = 1
         setupElements()
     }
 
@@ -73,9 +97,9 @@ class FilterVIew: UIView {
 
     func setupElements() {
         addSubview(mainLabel)
-        let labelStackView = UIStackView(views: [isOpenLabel, inWorkLabel, isCompletedLabel, isCanceledLabel], axis: .vertical, spacing: 15, alignment: .fill, distribution: .fillEqually)
-        let buttonsStackView = UIStackView(views: [isOpenCheckButton, inWorkCheckButton, isCanceledCheckButton, isCanceledCheckButton], axis: .vertical, spacing: 15, alignment: .fill, distribution: .fillEqually)
-        let ownStack = UIStackView(views: [labelStackView, buttonsStackView], axis: .vertical, spacing: 15, alignment: .fill, distribution: .fillEqually)
+        let labelStackView = UIStackView(views: [isOpenLabel, inWorkLabel, isCompletedLabel, isCanceledLabel, cancelButton], axis: .vertical, spacing: 15, alignment: .fill, distribution: .fillEqually)
+        let buttonsStackView = UIStackView(views: [isOpenCheckButton, inWorkCheckButton, isCompletedCheckButton, isCanceledCheckButton, isCanceledCheckButton, okButton], axis: .vertical, spacing: 15, alignment: .fill, distribution: .fillEqually)
+        let ownStack = UIStackView(views: [labelStackView, buttonsStackView], axis: .horizontal, spacing: 35, alignment: .fill, distribution: .fillEqually)
         addSubview(ownStack)
 
         NSLayoutConstraint.activate([
@@ -84,9 +108,9 @@ class FilterVIew: UIView {
             mainLabel.bottomAnchor.constraint(equalTo: ownStack.topAnchor, constant: -50),
 
             ownStack.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 50),
-            ownStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            ownStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-            ownStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100)
+            ownStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
+            ownStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            ownStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50)
         ])
     }
 }

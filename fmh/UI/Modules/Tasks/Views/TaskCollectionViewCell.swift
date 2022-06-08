@@ -57,7 +57,6 @@ class TaskCollectionViewCell: UICollectionViewCell {
         layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingExpandedSize).height
         return layoutAttributes
     }
-    
 }
 
 
