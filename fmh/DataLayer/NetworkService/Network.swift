@@ -11,7 +11,6 @@ import Combine
 protocol NetworkProtocol: AnyObject {
     
     func fetchDataPublisher <T> (resource: APIResource<T>) -> AnyPublisher<T, APIError> where T: Decodable
-    
 }
 
 
@@ -82,7 +81,6 @@ extension Network: NetworkProtocol {
             }
             .eraseToAnyPublisher()
     }
-    
 }
 
 extension Network {
@@ -102,7 +100,6 @@ extension Network {
             .mapError { error in error as! APIError }
             .eraseToAnyPublisher()
     }
-
 }
 
 // MARK: - Factory methods (Private)
@@ -126,5 +123,5 @@ extension Network {
         headers?.forEach{ request.addValue($0, forHTTPHeaderField: $1) }
         return request
     }
-    
+
 }

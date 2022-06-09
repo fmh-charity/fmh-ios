@@ -21,28 +21,28 @@ class AuthInteractor {
     init(repository: AuthRepositoryProtocol?) {
         self.repository = repository
     }
- 
+
 }
 
 // MARK: - AuthInteractorProtocol
 extension AuthInteractor: AuthInteractorProtocol {
-   
+
     func login(login: String, password: String, completion: @escaping (UserInfo?, APIError?) -> Void ) {
         
         repository?.login(login: login, password: password)
             .sink { [unowned self] anyCompletion in
                 switch anyCompletion {
-                    case .failure(let error):
-                        return completion(nil, error)
-                    case .finished:
-                        /// Get userInfo
-                        self.repository?.userInfo()
-                            .sink { _ in }
-                                receiveValue: { userInfo in
-                                    AppSession.userInfo = userInfo
-                                    return completion(userInfo, nil)
-                                }
-                            .store(in: &anyCancellable)
+                case .failure(let error):
+                    return completion(nil, error)
+                case .finished:
+                    /// Get userInfo
+                    self.repository?.userInfo()
+                        .sink { _ in }
+                receiveValue: { userInfo in
+                    AppSession.userInfo = userInfo
+                    return completion(userInfo, nil)
+                }
+                .store(in: &anyCancellable)
                 }
             } receiveValue: { tokenData in
                 AppSession.tokens = tokenData
@@ -56,14 +56,14 @@ extension AuthInteractor: AuthInteractorProtocol {
                 switch anyCompletion {
                 case .failure(let error):
                     return completion(nil, error)
+
                 case .finished:
                     break
                 }
             }
-            receiveValue: { userInfo in
-                return completion(userInfo, nil)
-            }
-            .store(in: &anyCancellable)
+    receiveValue: { userInfo in
+        return completion(userInfo, nil)
     }
-
+    .store(in: &anyCancellable)
+    }
 }

@@ -76,7 +76,7 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCollectionViewCell.reuseID,
-                                                            for: indexPath) as? TaskCollectionViewCell else { return UICollectionViewCell()}
+                                                            for: indexPath) as? TaskCollectionViewCell else { return UICollectionViewCell() }
         let currentCell = taskModelCells[indexPath.row]
         cell.nameofThemeLabel.text = currentCell.nameOfTheme.russianHyphenated()
         cell.taskView.elementsView.nameOfExecutorLabel.text = currentCell.nameOfExecutor.russianHyphenated()

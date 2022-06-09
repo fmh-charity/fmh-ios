@@ -16,7 +16,6 @@ final class TemplatePresenter {
     init(output: TemplatePresenterOutput) {
         self.output = output
     }
-    
 }
 
 // MARK: - GeneralPresenterInput
