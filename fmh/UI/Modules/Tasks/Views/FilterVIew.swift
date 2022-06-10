@@ -15,22 +15,22 @@ class FilterVIew: UIView {
                                     textAlignment: .left)
 
     private let isOpenLabel = UILabel(text: "Открыта",
-                                      font: UIFont.systemFont(ofSize: 13),
+                                      font: UIFont.systemFont(ofSize: 15),
                                       tintColor: .black,
                                       textAlignment: .left)
 
     private let inWorkLabel = UILabel(text: "В работе",
-                                      font: UIFont.systemFont(ofSize: 13),
+                                      font: UIFont.systemFont(ofSize: 15),
                                       tintColor: .black,
                                       textAlignment: .left)
 
     private let isCompletedLabel = UILabel(text: "Выполнена",
-                                           font: UIFont.systemFont(ofSize: 13),
+                                           font: UIFont.systemFont(ofSize: 15),
                                            tintColor: .black,
                                            textAlignment: .left)
 
     private let isCanceledLabel = UILabel(text: "Отменена",
-                                          font: UIFont.systemFont(ofSize: 13),
+                                          font: UIFont.systemFont(ofSize: 15),
                                           tintColor: .black,
                                           textAlignment: .left)
 
@@ -105,9 +105,9 @@ class FilterVIew: UIView {
         NSLayoutConstraint.activate([
             mainLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             mainLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            mainLabel.bottomAnchor.constraint(equalTo: ownStack.topAnchor, constant: -50),
+            mainLabel.bottomAnchor.constraint(equalTo: ownStack.topAnchor, constant: -30),
 
-            ownStack.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 50),
+            ownStack.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 30),
             ownStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
             ownStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             ownStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50)
