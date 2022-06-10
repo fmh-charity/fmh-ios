@@ -69,6 +69,11 @@
 		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
 		19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */; };
 		19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */; };
+		59EDEA882852566E00A3E21E /* ChambersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA872852566E00A3E21E /* ChambersPresenter.swift */; };
+		59EDEA8A2852568B00A3E21E /* ChambersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA892852568B00A3E21E /* ChambersViewController.swift */; };
+		59EDEA8C2853412400A3E21E /* ChambersHeaderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA8B2853412400A3E21E /* ChambersHeaderListView.swift */; };
+		59EDEA9128537C0400A3E21E /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA9028537C0400A3E21E /* UIButton + Extension.swift */; };
+		59EDEA9328539E7000A3E21E /* ChambersProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA9228539E7000A3E21E /* ChambersProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +140,11 @@
 		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
 		19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
+		59EDEA872852566E00A3E21E /* ChambersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersPresenter.swift; sourceTree = "<group>"; };
+		59EDEA892852568B00A3E21E /* ChambersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersViewController.swift; sourceTree = "<group>"; };
+		59EDEA8B2853412400A3E21E /* ChambersHeaderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersHeaderListView.swift; sourceTree = "<group>"; };
+		59EDEA9028537C0400A3E21E /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
+		59EDEA9228539E7000A3E21E /* ChambersProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +368,7 @@
 		19C7A537280DED81005000EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				59EDEA832852562C00A3E21E /* Chambers */,
 				19F509E72830169E0082FB98 /* Factory */,
 				1933EA2F282F018100C8A21B /* Loading */,
 				19243E182829BAC500A43CA8 /* Authorization */,
@@ -457,6 +468,34 @@
 			path = OurMission;
 			sourceTree = "<group>";
 		};
+		59EDEA832852562C00A3E21E /* Chambers */ = {
+			isa = PBXGroup;
+			children = (
+				59EDEA8F28537BF200A3E21E /* Extensions */,
+				59EDEA842852563500A3E21E /* Views */,
+				59EDEA9228539E7000A3E21E /* ChambersProtocols.swift */,
+				59EDEA872852566E00A3E21E /* ChambersPresenter.swift */,
+				59EDEA892852568B00A3E21E /* ChambersViewController.swift */,
+			);
+			path = Chambers;
+			sourceTree = "<group>";
+		};
+		59EDEA842852563500A3E21E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				59EDEA8B2853412400A3E21E /* ChambersHeaderListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		59EDEA8F28537BF200A3E21E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				59EDEA9028537C0400A3E21E /* UIButton + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -533,8 +572,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
+				59EDEA882852566E00A3E21E /* ChambersPresenter.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
+				59EDEA8C2853412400A3E21E /* ChambersHeaderListView.swift in Sources */,
 				195629B72845007600C8A704 /* UIViewController + setMenuButton.swift in Sources */,
 				195629B62845007600C8A704 /* GeneralMenu.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
@@ -553,16 +594,19 @@
 				19ECC0B1284CA4B000DD695C /* UserInfo.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
 				19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */,
+				59EDEA9328539E7000A3E21E /* ChambersProtocols.swift in Sources */,
 				19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
+				59EDEA8A2852568B00A3E21E /* ChambersViewController.swift in Sources */,
 				19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
 				19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */,
+				59EDEA9128537C0400A3E21E /* UIButton + Extension.swift in Sources */,
 				1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19ECC0AF284C9FE900DD695C /* News.swift in Sources */,
