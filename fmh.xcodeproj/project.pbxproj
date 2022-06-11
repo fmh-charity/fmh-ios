@@ -11,7 +11,7 @@
 		19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D87282049AE006D8768 /* LoginTextfield.swift */; };
 		19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D89282066E3006D8768 /* PasswordTextField.swift */; };
 		1913255B28253B69003499BA /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1913255A28253B69003499BA /* KeyChain.swift */; };
-		191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EAA6B281BBE4C007B1397 /* APIError.swift */; };
+		191EAA6C281BBE4C007B1397 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EAA6B281BBE4C007B1397 /* NetworkError.swift */; };
 		191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EAA6F281BC69B007B1397 /* HTTPMethod.swift */; };
 		191EAA73281BD256007B1397 /* DTOCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EAA72281BD256007B1397 /* DTOCredentials.swift */; };
 		191EAA75281BD26A007B1397 /* DTOTokenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191EAA74281BD26A007B1397 /* DTOTokenData.swift */; };
@@ -27,6 +27,7 @@
 		19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */; };
 		19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */; };
 		19243E372829C8B400A43CA8 /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19243E362829C8B400A43CA8 /* AppSession.swift */; };
+		193260F0285488B50043136F /* UIViewController+revealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193260EF285488B50043136F /* UIViewController+revealViewController.swift */; };
 		1933EA33282F024C00C8A21B /* LoadingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA32282F024C00C8A21B /* LoadingProtocols.swift */; };
 		1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA36282F026800C8A21B /* LoadingPresenter.swift */; };
 		1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933EA38282F027B00C8A21B /* LoadingViewController.swift */; };
@@ -76,7 +77,7 @@
 		19064D87282049AE006D8768 /* LoginTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextfield.swift; sourceTree = "<group>"; };
 		19064D89282066E3006D8768 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		1913255A28253B69003499BA /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
-		191EAA6B281BBE4C007B1397 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		191EAA6B281BBE4C007B1397 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		191EAA6F281BC69B007B1397 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		191EAA72281BD256007B1397 /* DTOCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOCredentials.swift; sourceTree = "<group>"; };
 		191EAA74281BD26A007B1397 /* DTOTokenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOTokenData.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		19243E222829BC8D00A43CA8 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		19243E282829BEB400A43CA8 /* AuthorizationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationProtocols.swift; sourceTree = "<group>"; };
 		19243E362829C8B400A43CA8 /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
+		193260EF285488B50043136F /* UIViewController+revealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+revealViewController.swift"; sourceTree = "<group>"; };
 		1933EA32282F024C00C8A21B /* LoadingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocols.swift; sourceTree = "<group>"; };
 		1933EA36282F026800C8A21B /* LoadingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresenter.swift; sourceTree = "<group>"; };
 		1933EA38282F027B00C8A21B /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		191EAA6A281BBC50007B1397 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				191EAA6B281BBE4C007B1397 /* NetworkError.swift */,
 				191EAA6F281BC69B007B1397 /* HTTPMethod.swift */,
 				191EAA78281C01A9007B1397 /* APIResource.swift */,
 				19243DEB28293F7E00A43CA8 /* Service.swift */,
@@ -247,13 +250,14 @@
 			path = Template;
 			sourceTree = "<group>";
 		};
-		195629A42843DA6400C8A704 /* Elements */ = {
+		195629A42843DA6400C8A704 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				195629B42845007600C8A704 /* GeneralMenu.swift */,
 				195629B52845007600C8A704 /* UIViewController + setMenuButton.swift */,
+				193260EF285488B50043136F /* UIViewController+revealViewController.swift */,
 			);
-			path = Elements;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		199C09D3284009BA00ADFE3A /* Views */ = {
@@ -349,7 +353,8 @@
 		19C7A535280DED75005000EB /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				195629A42843DA6400C8A704 /* Elements */,
+				195629A42843DA6400C8A704 /* Common */,
+				19F509E72830169E0082FB98 /* ModuleFactory */,
 				19C7A537280DED81005000EB /* Modules */,
 			);
 			path = UI;
@@ -358,7 +363,6 @@
 		19C7A537280DED81005000EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				19F509E72830169E0082FB98 /* Factory */,
 				1933EA2F282F018100C8A21B /* Loading */,
 				19243E182829BAC500A43CA8 /* Authorization */,
 				19F509D9282FF72A0082FB98 /* General */,
@@ -374,7 +378,6 @@
 				19C7A51A280DECD0005000EB /* AppDelegate.swift */,
 				19C7A51C280DECD0005000EB /* SceneDelegate.swift */,
 				19243E362829C8B400A43CA8 /* AppSession.swift */,
-				191EAA6B281BBE4C007B1397 /* APIError.swift */,
 				19C7A525280DECD3005000EB /* LaunchScreen.storyboard */,
 			);
 			path = Application;
@@ -439,13 +442,13 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		19F509E72830169E0082FB98 /* Factory */ = {
+		19F509E72830169E0082FB98 /* ModuleFactory */ = {
 			isa = PBXGroup;
 			children = (
 				19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */,
 				19F509DC282FF9930082FB98 /* ModuleFactory.swift */,
 			);
-			path = Factory;
+			path = ModuleFactory;
 			sourceTree = "<group>";
 		};
 		19F91BC5283D483A00AB6C6B /* OurMission */ = {
@@ -533,7 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
-				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
+				191EAA6C281BBE4C007B1397 /* NetworkError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
 				195629B72845007600C8A704 /* UIViewController + setMenuButton.swift in Sources */,
 				195629B62845007600C8A704 /* GeneralMenu.swift in Sources */,
@@ -575,6 +578,7 @@
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
 				1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */,
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
+				193260F0285488B50043136F /* UIViewController+revealViewController.swift in Sources */,
 				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
 				19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,

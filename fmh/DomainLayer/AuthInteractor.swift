@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol AuthInteractorProtocol {
-    func login(login: String, password: String, completion: @escaping (UserInfo?, APIError?) -> Void )
-    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void )
+    func login(login: String, password: String, completion: @escaping (UserInfo?, NetworkError?) -> Void )
+    func getUserInfo(completion: @escaping (UserInfo?, NetworkError?) -> Void )
 }
 
 class AuthInteractor {
@@ -27,7 +27,7 @@ class AuthInteractor {
 // MARK: - AuthInteractorProtocol
 extension AuthInteractor: AuthInteractorProtocol {
    
-    func login(login: String, password: String, completion: @escaping (UserInfo?, APIError?) -> Void ) {
+    func login(login: String, password: String, completion: @escaping (UserInfo?, NetworkError?) -> Void ) {
         
         repository?.login(login: login, password: password)
             .sink { [unowned self] anyCompletion in
@@ -55,7 +55,7 @@ extension AuthInteractor: AuthInteractorProtocol {
             .store(in: &anyCancellable)
     }
     
-    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void) {
+    func getUserInfo(completion: @escaping (UserInfo?, NetworkError?) -> Void) {
         self.repository?.userInfo()
             .sink { anyCompletion in
                 switch anyCompletion {
