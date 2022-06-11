@@ -1,5 +1,5 @@
 //
-//  APIError.swift
+//  NetworkError.swift
 //  fmh
 //
 //  Created: 29.04.2022
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIError: Error {
+enum NetworkError: Error {
     
     case invalidURL
     case URLRequestError(Error)
@@ -16,7 +16,7 @@ enum APIError: Error {
     case missingResponseData
 }
 
-extension APIError: LocalizedError {
+extension NetworkError: LocalizedError {
     
     public var errorDescription: String? {
         switch self {
@@ -35,7 +35,7 @@ extension APIError: LocalizedError {
     
 }
 
-extension APIError {
+extension NetworkError {
     var code: Int? {
         switch self {
         case .invalidURL:

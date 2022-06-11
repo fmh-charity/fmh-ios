@@ -23,18 +23,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             appCoordinator = AppCoordinator(window: window)
-            //appCoordinator?.start()
+            appCoordinator?.start()
             self.window = window
             window.makeKeyAndVisible()
         }
 
-        let repository = NewsRepository()
-        let interactor = NewsInteractor(repository: repository)
-        let viewController = TemplateViewController()
-        let presenter = TemplatePresenter(interactor: interactor, output: viewController)
-        viewController.presenter = presenter
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
+//        let repository = NewsRepository()
+//        let interactor = NewsInteractor(repository: repository)
+//        let viewController = TemplateViewController()
+//        let presenter = TemplatePresenter(interactor: interactor, output: viewController)
+//        viewController.presenter = presenter
+//        window?.rootViewController = viewController
+//        window?.makeKeyAndVisible()
 
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.

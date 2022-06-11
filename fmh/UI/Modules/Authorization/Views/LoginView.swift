@@ -136,27 +136,3 @@ class LoginView: UIView {
     }
 
 }
-
-
-// MARK: - SwiftUI Representable
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct ViewRepresentable: UIViewRepresentable {
-    
-    func makeUIView(context: Context) -> some UIView {
-        return LoginView()
-    }
-    
-    func updateUIView(_ uiViewController: UIViewType, context: Context) {
-        
-    }
-}
-
-struct View_Preview: PreviewProvider {
-    static var previews: some View {
-        ViewRepresentable()
-            //.frame(width: 290, height: 170, alignment: .center)
-    }
-}
-#endif

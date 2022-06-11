@@ -10,7 +10,7 @@ import Combine
 
 protocol NetworkProtocol: AnyObject {
     
-    func fetchDataPublisher <T> (resource: APIResource<T>) -> AnyPublisher<T, APIError> where T: Decodable
+    func fetchDataPublisher <T> (resource: APIResource<T>) -> AnyPublisher<T, NetworkError> where T: Decodable
     
 }
 
@@ -45,9 +45,9 @@ class Network: Service {
 // MARK: - Network_Protocol
 extension Network: NetworkProtocol {
  
-    func fetchDataPublisher <T> (resource: APIResource<T>) -> AnyPublisher<T, APIError> where T: Decodable {
+    func fetchDataPublisher <T> (resource: APIResource<T>) -> AnyPublisher<T, NetworkError> where T: Decodable {
         guard let url = makeURL(path: resource.path, parametrs: resource.parametrs) else {
-            return Fail(error: APIError.invalidURL)
+            return Fail(error: NetworkError.invalidURL)
                 .eraseToAnyPublisher()
         }
         
@@ -58,11 +58,11 @@ extension Network: NetworkProtocol {
         }
         
         return fetchPublisher(request: request)
-            .tryCatch { apiError -> AnyPublisher<Data, APIError> in
+            .tryCatch { networkError -> AnyPublisher<Data, NetworkError> in
 
-                if apiError.code == 401 && !(resource.body.self is DTOCredentials) && AppSession.isAuthorized {
+                if networkError.code == 401 && !(resource.body.self is DTOCredentials) && AppSession.isAuthorized {
                     return self.refreshToken()
-                        .flatMap { tokenData -> AnyPublisher<Data, APIError> in
+                        .flatMap { tokenData -> AnyPublisher<Data, NetworkError> in
                             AppSession.tokens = tokenData
                             if let accessToken = AppSession.tokens?.accessToken, !(resource.body.self is DTOCredentials)  {
                                 request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
@@ -71,12 +71,12 @@ extension Network: NetworkProtocol {
                         }
                         .eraseToAnyPublisher()
                 }
-                throw apiError
+                throw networkError
                 
             }
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
-                return error as? APIError ?? .JSONDecoderError(error)
+                return error as? NetworkError ?? .JSONDecoderError(error)
             }
             .eraseToAnyPublisher()
     }
@@ -86,7 +86,7 @@ extension Network: NetworkProtocol {
 // MARK: - refreshToken
 extension Network {
 
-    private func refreshToken () -> AnyPublisher<DTOTokenData, APIError> {
+    private func refreshToken () -> AnyPublisher<DTOTokenData, NetworkError> {
         
         let refreshToken = AppSession.tokens?.refreshToken ?? ""
         let resource: APIResource<DTOTokenData> = APIResourceAuth.refresh(refreshToken: refreshToken).resource()
@@ -98,7 +98,7 @@ extension Network {
         return fetchPublisher(request: request)
             .map { $0 }
             .decode(type: DTOTokenData.self, decoder: JSONDecoder())
-            .mapError { error in error as! APIError }
+            .mapError { error in error as! NetworkError }
             .eraseToAnyPublisher()
     }
 

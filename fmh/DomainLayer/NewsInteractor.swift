@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol NewsInteractorProtocol {
-    func getAllNews(completion: @escaping ([News]?, APIError?) -> Void )
-    func getNews(id: Int, completion: @escaping (News?, APIError?) -> Void)
+    func getAllNews(completion: @escaping ([News]?, NetworkError?) -> Void )
+    func getNews(id: Int, completion: @escaping (News?, NetworkError?) -> Void)
 }
 
 
@@ -28,7 +28,7 @@ class NewsInteractor {
 // MARK: - AuthInteractorProtocol
 extension NewsInteractor: NewsInteractorProtocol {
    
-    func getAllNews(completion: @escaping ([News]?, APIError?) -> Void) {
+    func getAllNews(completion: @escaping ([News]?, NetworkError?) -> Void) {
         self.repository?.getAllNews()
             .sink { anyCompletion in
                 switch anyCompletion {
@@ -55,7 +55,7 @@ extension NewsInteractor: NewsInteractorProtocol {
             .store(in: &anyCancellable)
     }
 
-    func getNews(id: Int, completion: @escaping (News?, APIError?) -> Void) {
+    func getNews(id: Int, completion: @escaping (News?, NetworkError?) -> Void) {
         self.repository?.getNews(id: id)
             .sink { anyCompletion in
                 switch anyCompletion {
