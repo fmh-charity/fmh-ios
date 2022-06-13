@@ -10,6 +10,8 @@ import UIKit
 class PatientTableViewCell: UITableViewCell {
     static let identifier = "PatientTableViewCell"
     
+    //MARK: - Properties
+    
     private let trailingCell: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +27,8 @@ class PatientTableViewCell: UITableViewCell {
         label.font = UIFont(name: "SFNS Display", size: 13)
         return label
     }()
+    
+    //MARK: - Initializators
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -36,10 +40,12 @@ class PatientTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    //MARK: - Methods
+    
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-
+    
     private func setUpConstraints() {
         
         contentView.addSubview(trailingCell)
@@ -65,6 +71,8 @@ class PatientTableViewCell: UITableViewCell {
         trailingCell.text = patientInfo
     }
 }
+
+//MARK: - Enum
 
 enum DescriptionTypes {
     case fio

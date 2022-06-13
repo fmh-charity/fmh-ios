@@ -9,6 +9,8 @@ import UIKit
 
 class PatientsUIView: UIView {
     
+    // MARK: - Public Properties
+    
     let listLable: UILabel = {
         let label = UILabel()
         label.text = "Список пациентов"
@@ -29,20 +31,22 @@ class PatientsUIView: UIView {
         stack.distribution = .fillEqually
         stack.spacing = 29
         stack.alignment = .fill
-        stack.backgroundColor = UIColor.systemGray5
+        stack.backgroundColor = .clear
         return stack
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpConstraints()
-        self.backgroundColor = UIColor.systemGray5
+        self.backgroundColor = .clear
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Methods
     
     func setUpConstraints() {
         addSubview(listLable)
