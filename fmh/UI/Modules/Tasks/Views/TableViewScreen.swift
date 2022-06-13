@@ -8,10 +8,11 @@
 import UIKit
 
 final class TableViewScreen: UIView {
-    private var tableView: UITableView?
-    
+    var tableView: UITableView?
+    var complition: (() -> ())?
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .white
         tableView = UITableView()
@@ -77,6 +78,12 @@ extension TableViewScreen: UITableViewDelegate, UITableViewDataSource {
             return tableView.bounds.height * 0.35
         }
         return 38
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            self.complition?()
+        }
     }
 
 }

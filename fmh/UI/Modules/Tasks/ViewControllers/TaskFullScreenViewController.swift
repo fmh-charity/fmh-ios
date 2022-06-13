@@ -9,19 +9,20 @@ import UIKit
 
 final class TaskFullScreenViewController: UIViewController {
     private let orangeView = OrangeView()
-    private  let bottomButtons = BottomButtonsView()
-    private  let taskView = AllElementsView()
-    private  let descriptionView = DescriptionView()
-    private  let creatorView = CreatorView()
-    private  let commentView = CommentsView()
-    private  let tableView = TableViewScreen()
-    private  let statusLabel = UILabel(text: "В работе", font: UIFont(name: "SF UI Display", size: 16), tintColor: .black, textAlignment: .center)
+    private let bottomButtons = BottomButtonsView()
+    private let taskView = AllElementsView()
+    private let descriptionView = DescriptionView()
+    private let creatorView = CreatorView()
+    private let commentView = CommentsView()
+    private let tableView = TableViewScreen()
+    private let statusLabel = UILabel(text: "В работе", font: UIFont(name: "SF UI Display", size: 16), tintColor: .black, textAlignment: .center)
     private let themeLabel = UILabel(text: "Тема", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let nameofThemeLabel = UILabel(text: "Тема1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupConstraint()
+        newComment()
     }
     
     private func setupConstraint() {
@@ -86,5 +87,24 @@ final class TaskFullScreenViewController: UIViewController {
     
     @objc private func closeWindow() {
         dismiss(animated: true)
+    }
+    
+    private func newComment() {
+        tableView.complition = {[weak self] in
+            let alertController = UIAlertController(title: "Новый комментарий", message: "", preferredStyle: UIAlertController.Style.alert)
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = "Введите текст комментария"
+            }
+            let saveAction = UIAlertAction(title: "Сохранить", style: UIAlertAction.Style.default, handler: {
+                (action: UIAlertAction!) -> Void in
+                commentCellModels.append(CommenModelData(comment: alertController.textFields?.first?.text ?? "", creatorName: "Максим В.В.", date: "31.05.2022", time: "14:44"))
+                self?.tableView.tableView?.reloadData()
+            })
+            let cancelAction = UIAlertAction(title: "Отмена", style: UIAlertAction.Style.default, handler: {
+                (action : UIAlertAction!) -> Void in })
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            self?.present(alertController, animated: true, completion: nil)
+        }
     }
 }

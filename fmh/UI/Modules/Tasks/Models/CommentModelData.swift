@@ -14,7 +14,7 @@ struct CommenModelData {
     var time: String
 }
 
-let commentCellModels = [
+var commentCellModels = [
     CommenModelData(comment: "Комментарий 1", creatorName: "М.М Максим1", date: "31.05.2022", time: "23:19"),
     CommenModelData(comment: "Комментарий 2", creatorName: "М.М Максим2", date: "31.05.2022", time: "23:19"),
     CommenModelData(comment: "Комментарий 3", creatorName: "М.М Максим3", date: "31.05.2022", time: "23:19"),
