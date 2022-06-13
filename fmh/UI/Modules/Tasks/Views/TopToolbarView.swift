@@ -7,9 +7,9 @@
 
 import UIKit
 
-class TopToolbarView: UIView {
+final class TopToolbarView: UIView {
 
-    let taskLabel: UILabel = {
+    private let taskLabel: UILabel = {
         let label = UILabel()
         label.text = "Заявки"
         label.font = UIFont(name: "Roboto", size: 19)
@@ -18,7 +18,7 @@ class TopToolbarView: UIView {
         return label
     }()
 
-    let infoButton: UIButton = {
+    private let infoButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "info.circle"), for: .normal)
         button.tintColor = #colorLiteral(red: 0.5141947269, green: 0.5141947269, blue: 0.5141947269, alpha: 1)

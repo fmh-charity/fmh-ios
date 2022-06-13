@@ -1,14 +1,13 @@
 import UIKit
 
-class TaskCollectionViewCell: UICollectionViewCell {
+final class TaskCollectionViewCell: UICollectionViewCell {
+    private let executorLabel = UILabel(text: "Исполнитель", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
+    private let themeLabel = UILabel(text: "Тема", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     static let reuseID = "TaskCollectionViewCell"
     let taskView = MainTaskTitle()
     let orangeView = OrangeView()
-    
-    private let themeLabel = UILabel(text: "Тема", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let nameofThemeLabel = UILabel(text: "Тема1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
-    let executorLabel = UILabel(text: "Исполнитель", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
-
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +18,7 @@ class TaskCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupConstraints() {
+   private func setupConstraints() {
         contentView.clipsToBounds = true
         contentView.addSubview(taskView)
         orangeView.addSubview(themeLabel)

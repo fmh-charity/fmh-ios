@@ -76,23 +76,23 @@ final class TaskViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    @objc func showFilters() {
+    @objc private func showFilters() {
         filerView.isHidden = false
         filterBlurEffect.isHidden = false
     }
     
-    @objc func addTask(_ sender: UIButton) {
+    @objc private func addTask(_ sender: UIButton) {
         let vc = CreateTaskViewController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
     
-    @objc func okFilter(_ sender: UIButton){
+    @objc private func okFilter(_ sender: UIButton){
         filerView.isHidden = true
         filterBlurEffect.isHidden = true
     }
     
-    @objc func cancelFilter(_ sender: UIButton){
+    @objc private func cancelFilter(_ sender: UIButton){
         filerView.isHidden = true
         filterBlurEffect.isHidden = true
     }
@@ -114,14 +114,14 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    // MARK: РАЗМЕР
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width * 0.75, height: 200)
     }
-    // MARK: КАК БУДЕТ ОТКРЫВАТЬСЯ ОКНО ПОЛНОЙ ИНФОРМАЦИИ О ЗАЯВКАХ?
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = TaskFullScreenViewController()
-        vc.modalPresentationStyle = .formSheet
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BottomButtonsView: UIView {
+final class BottomButtonsView: UIView {
 
     let backButton: UIButton = {
         let button = UIButton()

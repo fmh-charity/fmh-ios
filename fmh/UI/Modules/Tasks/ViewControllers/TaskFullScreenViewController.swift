@@ -24,7 +24,7 @@ final class TaskFullScreenViewController: UIViewController {
         setupConstraint()
     }
     
-    func setupConstraint() {
+    private func setupConstraint() {
         view.addSubview(orangeView)
         orangeView.addSubview(themeLabel)
         orangeView.addSubview(nameofThemeLabel)
@@ -35,6 +35,7 @@ final class TaskFullScreenViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(bottomButtons)
         taskView.backgroundColor = .white
+        bottomButtons.backButton.addTarget(self, action: #selector(closeWindow), for: .touchUpInside)
         statusLabel.backgroundColor = UIColor(named: "Status.active") ?? .systemGray6
         let constraints = [
             orangeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -81,5 +82,9 @@ final class TaskFullScreenViewController: UIViewController {
         taskView.backgroundColor = .white
         NSLayoutConstraint.activate(constraints)
         descriptionView.descriptionLabel.text = "Нужно собрать коллектив в переговорной. Будем обсуждать подготовку к новогодним праздникам."
+    }
+    
+    @objc private func closeWindow() {
+        dismiss(animated: true)
     }
 }

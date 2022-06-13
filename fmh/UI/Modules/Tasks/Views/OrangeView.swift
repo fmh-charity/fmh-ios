@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrangeView: UIView {
+final class OrangeView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterVIew: UIView {
+final class FilterVIew: UIView {
 
     private let mainLabel = UILabel(text: "Фильтровать",
                                     font: UIFont.systemFont(ofSize: 25),

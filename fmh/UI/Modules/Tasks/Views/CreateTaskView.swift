@@ -8,13 +8,13 @@
 import UIKit
 
 final class CreateTaskView: UIView {
-    private var themeTextField = UITextField(placeholder: "Тема*")
-    private var executorTextField = UITextField(placeholder: "Исполнитель*")
-    private var dateTextField = UITextField(placeholder: "Дата*")
-    private var timeTextField = UITextField(placeholder: "Время")
-    private var descriptionTextField = UITextField(placeholder: "Описание")
+    private let themeTextField = UITextField(placeholder: "Тема*")
+    private let executorTextField = UITextField(placeholder: "Исполнитель*")
+    private let dateTextField = UITextField(placeholder: "Дата*")
+    private let timeTextField = UITextField(placeholder: "Время")
+    private let descriptionTextField = UITextField(placeholder: "Описание")
 
-    private var saveButton: UIButton = {
+   private let saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Сохранить", for: .normal)
         button.layer.cornerRadius = 7
@@ -23,7 +23,7 @@ final class CreateTaskView: UIView {
         return button
     }()
 
-    private var cancelButton: UIButton = {
+    private let cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Отмена", for: .normal)
         button.setTitleColor( UIColor.gray, for: .normal)
@@ -46,6 +46,9 @@ final class CreateTaskView: UIView {
     }
     
     private func setupConstraints() {
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 15
+        self.layer.borderColor = UIColor.lightGray.cgColor
         let dateAndTimeStack = UIStackView(views: [dateTextField, timeTextField], axis: .horizontal, spacing: 10, alignment: .fill, distribution: .fillEqually)
         let buttonsStack = UIStackView(views: [saveButton, cancelButton], axis: .vertical, spacing: 10, alignment: .fill, distribution: .fillEqually)
         let ownStack = UIStackView(views: [themeTextField, executorTextField, dateAndTimeStack, descriptionTextField], axis: .vertical, spacing: 30, alignment: .fill, distribution: .fillEqually)
@@ -65,9 +68,5 @@ final class CreateTaskView: UIView {
             buttonsStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
             buttonsStack.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
         ])
-
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 15
-        self.layer.borderColor = UIColor.lightGray.cgColor
     }
 }

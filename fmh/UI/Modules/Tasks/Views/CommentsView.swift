@@ -7,14 +7,14 @@
 
 import UIKit
 
-class CommentsView: UIView {
+final class CommentsView: UIView {
 
     let commentNumLabel = UILabel(text: "Комментарий 1", font: UIFont(name: "SF UI Display", size: 15), tintColor: .black, textAlignment: .left)
     let fioLabel = UILabel(text: "В.В.Виталий", font: UIFont(name: "SFNS Display", size: 13), tintColor: .black, textAlignment: .left)
     let dateLabel = UILabel(text: "24.05.2022", font: UIFont(name: "Roboto", size: 15) , tintColor: .black, textAlignment: .left)
     let timeLabel = UILabel(text: "17:00", font: UIFont(name: "Roboto", size: 12) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     
-    let editCommentButton:UIButton = {
+   private let editCommentButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class CommentsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupConstraint() {
+    private func setupConstraint() {
         let topStackView = UIStackView(views: [commentNumLabel,editCommentButton], axis: .horizontal, spacing: 5, alignment: .fill, distribution: .fillEqually)
         addSubview(topStackView)
         addSubview(fioLabel)

@@ -7,19 +7,20 @@
 
 import UIKit
 
-class AllElementsView: UIView {
-    let executorLabel = UILabel(text: "Исполнитель", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
-    let nameOfExecutorLabel = UILabel(text: "Исполнитель1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
-    let planeDateLabel = UILabel(text: "Плановая дата", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
-    let dateLabel = UILabel(text: "24.05.2022", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
-    let timeLabel = UILabel(text: "17:00", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
-    let topSeparator: UILabel = {
+final class AllElementsView: UIView {
+    private let executorLabel = UILabel(text: "Исполнитель", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
+    private  let planeDateLabel = UILabel(text: "Плановая дата", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
+    private let topSeparator: UILabel = {
         let separator = UILabel()
         separator.layer.borderWidth = 1
         separator.layer.backgroundColor = UIColor.gray.cgColor
         separator.translatesAutoresizingMaskIntoConstraints = false
         return separator
     }()
+    
+    let nameOfExecutorLabel = UILabel(text: "Исполнитель1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
+    let dateLabel = UILabel(text: "24.05.2022", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
+    let timeLabel = UILabel(text: "17:00", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +33,7 @@ class AllElementsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         addSubview(executorLabel)
         addSubview(nameOfExecutorLabel)
         addSubview(planeDateLabel)
@@ -78,7 +79,7 @@ class AllElementsView: UIView {
     }
 }
 
-class MainTaskTitle: UIView {
+final class MainTaskTitle: UIView {
     let elementsView = AllElementsView()
     private let bottomArrowButton: UIButton = {
         let button = UIButton()
@@ -91,7 +92,7 @@ class MainTaskTitle: UIView {
         return button
     }()
     
-    let bottomSeparator: UILabel = {
+    private let bottomSeparator: UILabel = {
         let separator = UILabel()
         separator.layer.borderWidth = 1
         separator.layer.backgroundColor = UIColor.gray.cgColor
@@ -110,7 +111,7 @@ class MainTaskTitle: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
 
         addSubview(elementsView)
         addSubview(bottomArrowButton)
@@ -135,7 +136,5 @@ class MainTaskTitle: UIView {
            
         ]
         NSLayoutConstraint.activate(constraints)
-        
     }
-    
 }

@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CreatorView: UIView {
-    let executorLabel = UILabel(text: "Автор", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
+final class CreatorView: UIView {
+    private let executorLabel = UILabel(text: "Автор", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
+    private  let planeDateLabel = UILabel(text: "Создано", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let nameOfExecutorLabel = UILabel(text: "Исполнитель1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
-    let planeDateLabel = UILabel(text: "Создано", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let dateLabel = UILabel(text: "24.05.2022", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
     let timeLabel = UILabel(text: "17:00", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let topSeparator: UILabel = {
@@ -20,19 +20,19 @@ class CreatorView: UIView {
         separator.translatesAutoresizingMaskIntoConstraints = false
         return separator
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
         self.backgroundColor = .white
         self.translatesAutoresizingMaskIntoConstraints = false
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func setupConstraints() {
+    
+    private func setupConstraints() {
         addSubview(executorLabel)
         addSubview(nameOfExecutorLabel)
         addSubview(planeDateLabel)

@@ -9,11 +9,11 @@ import UIKit
 
 final class EditTaskView: UIView {
     
-    var themeTextField = UITextField(placeholder: "Тема*")
-    var executorTextField = UITextField(placeholder: "Исполнитель*")
-    var dateTextField = UITextField(placeholder: "Дата*")
-    var timeTextField = UITextField(placeholder: "Время")
-    var descriptionTextField = UITextField(placeholder: "Описание")
+    let themeTextField = UITextField(placeholder: "Тема*")
+    let executorTextField = UITextField(placeholder: "Исполнитель*")
+    let dateTextField = UITextField(placeholder: "Дата*")
+    let timeTextField = UITextField(placeholder: "Время")
+    let descriptionTextField = UITextField(placeholder: "Описание")
     let pickerView = UIPickerView()
     let datePicker = UIDatePicker()
     let timePicker = UIDatePicker()
@@ -59,7 +59,7 @@ final class EditTaskView: UIView {
         return label
     }()
     
-     var saveButton: UIButton = {
+    let saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Сохранить", for: .normal)
         button.layer.cornerRadius = 7
@@ -68,7 +68,7 @@ final class EditTaskView: UIView {
         return button
     }()
     
-    var cancelButton: UIButton = {
+    let cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Отмена", for: .normal)
         button.setTitleColor( UIColor.gray, for: .normal)
@@ -79,8 +79,6 @@ final class EditTaskView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -106,7 +104,9 @@ final class EditTaskView: UIView {
     }
     
     private func setupConstraints() {
-        
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 15
+        self.layer.borderColor = UIColor.lightGray.cgColor
         let dateAndTimeStack = UIStackView(views: [dateTextField, timeTextField], axis: .horizontal, spacing: 10, alignment: .fill, distribution: .fillEqually)
         let buttonsStack = UIStackView(views: [saveButton, cancelButton], axis: .vertical, spacing: 10, alignment: .fill, distribution: .fillEqually)
         let ownStack = UIStackView(views: [themeTextField, executorTextField, dateAndTimeStack, descriptionTextField], axis: .vertical, spacing: 30, alignment: .fill, distribution: .fillEqually)
@@ -150,13 +150,8 @@ final class EditTaskView: UIView {
             timeLabel.widthAnchor.constraint(equalToConstant: 50),
             timeLabel.heightAnchor.constraint(equalToConstant: 15),
         ])
-        
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 15
-        self.layer.borderColor = UIColor.lightGray.cgColor
     }
 }
-
 
 extension EditTaskView: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     

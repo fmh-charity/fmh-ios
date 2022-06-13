@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C059F0A2857D27C002D497A /* BackgroundBlurFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */; };
+		0C059F0C2857D294002D497A /* FilterVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F0B2857D294002D497A /* FilterVIew.swift */; };
+		0C059F0E2857D2A2002D497A /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */; };
 		19064D84281FC86C006D8768 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D83281FC86C006D8768 /* LoginView.swift */; };
 		19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D87282049AE006D8768 /* LoginTextfield.swift */; };
 		19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D89282066E3006D8768 /* PasswordTextField.swift */; };
@@ -97,6 +100,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundBlurFilterView.swift; sourceTree = "<group>"; };
+		0C059F0B2857D294002D497A /* FilterVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVIew.swift; sourceTree = "<group>"; };
+		0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
 		19064D83281FC86C006D8768 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		19064D87282049AE006D8768 /* LoginTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextfield.swift; sourceTree = "<group>"; };
 		19064D89282066E3006D8768 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -383,8 +389,11 @@
 				19562A2C2847EF8E00C8A704 /* CommentTableCell.swift */,
 				2048AAE428494E6E00E9AB57 /* CreateTaskView.swift */,
 				205377B02849658900D04BE3 /* EditTaskView.swift */,
+				0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */,
+				0C059F0B2857D294002D497A /* FilterVIew.swift */,
 				19562A2D2847EF8E00C8A704 /* MainTaskTitle.swift */,
 				19562A2E2847EF8E00C8A704 /* TableViewScreen.swift */,
+				0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */,
 				19562A2F2847EF8E00C8A704 /* AddCommentTableViewCell.swift */,
 				19562A302847EF8E00C8A704 /* TopToolbarView.swift */,
 				19562A312847EF8E00C8A704 /* TaskCollectionViewCell.swift */,
@@ -705,6 +714,7 @@
 				199C09D82841120900ADFE3A /* PresentableProtocol.swift in Sources */,
 				195629C328451CF100C8A704 /* ExamplePresenter.swift in Sources */,
 				1942B7DE2835758C005C3732 /* GeneralMenuItemCell.swift in Sources */,
+				0C059F0E2857D2A2002D497A /* BottomButtonsView.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
@@ -714,6 +724,7 @@
 				19562A422847EF8E00C8A704 /* TopToolbarView.swift in Sources */,
 				19562A442847EF8E00C8A704 /* CommentsView.swift in Sources */,
 				19562A462847EF8E00C8A704 /* OrangeView.swift in Sources */,
+				0C059F0C2857D294002D497A /* FilterVIew.swift in Sources */,
 				19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				195629C528451D0200C8A704 /* ExampleProtocols.swift in Sources */,
@@ -740,6 +751,7 @@
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
 				1933EA39282F027B00C8A21B /* LoadingViewController.swift in Sources */,
 				19562A382847EF8E00C8A704 /* CommentModelData.swift in Sources */,
+				0C059F0A2857D27C002D497A /* BackgroundBlurFilterView.swift in Sources */,
 				191EAA75281BD26A007B1397 /* TokenData.swift in Sources */,
 				19562A3E2847EF8E00C8A704 /* CommentTableCell.swift in Sources */,
 				19562A3A2847EF8E00C8A704 /* TextLabel.swift in Sources */,

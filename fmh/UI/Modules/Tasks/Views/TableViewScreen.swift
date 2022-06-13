@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewScreen: UIView {
+final class TableViewScreen: UIView {
     private var tableView: UITableView?
     
     override init(frame: CGRect) {

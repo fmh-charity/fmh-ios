@@ -7,9 +7,9 @@
 
 import UIKit
 
- class CreateTaskViewController: UIViewController {
+final class CreateTaskViewController: UIViewController {
 
-    let customView = EditTaskView()
+    private let customView = EditTaskView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +17,7 @@ import UIKit
         view.backgroundColor = .white
     }
     
-     func setupConstraints() {
+    private func setupConstraints() {
         view.addSubview(customView)
         customView.saveButton.addTarget(self, action: #selector(saveTask(_:)), for: .touchUpInside)
         customView.cancelButton.addTarget(self, action: #selector(cancelEditTask(_:)), for: .touchUpInside)
@@ -27,7 +27,7 @@ import UIKit
         customView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150).isActive = true
         customView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
     }
-     @objc func saveTask(_ sender: UIButton) {
+     @objc private func saveTask(_ sender: UIButton) {
          taskModelCells.append(TaskModel(nameOfTheme: customView.themeTextField.text ?? "",
                                          nameOfExecutor: customView.executorTextField.text ?? "",
                                          date: customView.dateTextField.text ?? "",
@@ -35,7 +35,7 @@ import UIKit
          self.dismiss(animated: true)
      }
      
-     @objc func cancelEditTask(_ sender: UIButton) {
+     @objc private func cancelEditTask(_ sender: UIButton) {
          self.dismiss(animated: true)
      }
 }

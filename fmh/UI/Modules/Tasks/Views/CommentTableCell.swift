@@ -7,8 +7,7 @@
 
 import UIKit
 
-class CommentTableCell: UITableViewCell {
-    
+final class CommentTableCell: UITableViewCell {
     
     static let reuseId = "CommentTableCell"
     let commentNumLabel = UILabel(text: "Комментарий 1",
@@ -28,7 +27,7 @@ class CommentTableCell: UITableViewCell {
                             tintColor: #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1),
                             textAlignment: .left)
     
-    let bottomSeparator: UILabel = {
+    private let bottomSeparator: UILabel = {
         let separator = UILabel()
         separator.layer.borderColor = #colorLiteral(red: 0.8537765145, green: 0.8537764549, blue: 0.8537764549, alpha: 1)
         separator.layer.borderWidth = 1
@@ -37,7 +36,7 @@ class CommentTableCell: UITableViewCell {
         return separator
     }()
     
-    let editCommentButton:UIButton = {
+    private let editCommentButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         button.tintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
@@ -57,7 +56,7 @@ class CommentTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupConstraint() {
+   private func setupConstraint() {
         commentNumLabel.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         let topStackView = UIStackView(views: [commentNumLabel, editCommentButton],
                                        axis: .horizontal, spacing: 5,

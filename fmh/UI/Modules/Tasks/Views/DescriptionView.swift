@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DescriptionView: UIView {
+final class DescriptionView: UIView {
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
