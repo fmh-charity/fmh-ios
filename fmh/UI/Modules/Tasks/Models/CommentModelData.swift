@@ -8,7 +8,7 @@
 import Foundation
 
 struct CommenModelData {
-    let comment: String
+    var comment: String
     var creatorName: String
     var date: String
     var time: String

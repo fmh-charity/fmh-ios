@@ -22,7 +22,7 @@ final class TaskFullScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupConstraint()
-        newComment()
+        workWithComments()
     }
     
     private func setupConstraint() {
@@ -89,8 +89,8 @@ final class TaskFullScreenViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    private func newComment() {
-        tableView.complition = {[weak self] in
+    private func workWithComments() {
+        tableView.newCommentComplition = {[weak self] in
             let alertController = UIAlertController(title: "Новый комментарий", message: "", preferredStyle: UIAlertController.Style.alert)
             alertController.addTextField { (textField : UITextField!) -> Void in
                 textField.placeholder = "Введите текст комментария"
@@ -98,6 +98,23 @@ final class TaskFullScreenViewController: UIViewController {
             let saveAction = UIAlertAction(title: "Сохранить", style: UIAlertAction.Style.default, handler: {
                 (action: UIAlertAction!) -> Void in
                 commentCellModels.append(CommenModelData(comment: alertController.textFields?.first?.text ?? "", creatorName: "Максим В.В.", date: "31.05.2022", time: "14:44"))
+                self?.tableView.tableView?.reloadData()
+            })
+            let cancelAction = UIAlertAction(title: "Отмена", style: UIAlertAction.Style.default, handler: {
+                (action : UIAlertAction!) -> Void in })
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            self?.present(alertController, animated: true, completion: nil)
+        }
+        
+        tableView.editCommentComplition = {[weak self] index in
+            let alertController = UIAlertController(title: "Новый комментарий", message: "", preferredStyle: UIAlertController.Style.alert)
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.text = commentCellModels[index].comment
+            }
+            let saveAction = UIAlertAction(title: "Сохранить", style: UIAlertAction.Style.default, handler: {
+                (action: UIAlertAction!) -> Void in
+                commentCellModels[index].comment = alertController.textFields?.first?.text ?? ""
                 self?.tableView.tableView?.reloadData()
             })
             let cancelAction = UIAlertAction(title: "Отмена", style: UIAlertAction.Style.default, handler: {

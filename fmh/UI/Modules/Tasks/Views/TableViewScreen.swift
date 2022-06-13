@@ -9,7 +9,8 @@ import UIKit
 
 final class TableViewScreen: UIView {
     var tableView: UITableView?
-    var complition: (() -> ())?
+    var newCommentComplition: (() -> ())?
+    var editCommentComplition: ((Int) -> ())?
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -82,7 +83,11 @@ extension TableViewScreen: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            self.complition?()
+            self.newCommentComplition?()
+        }
+        if indexPath.section == 0 {
+            print(indexPath.row)
+            self.editCommentComplition?(indexPath.row)
         }
     }
 
