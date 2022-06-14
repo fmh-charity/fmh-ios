@@ -12,7 +12,7 @@ class ChambersHeaderListView: UIView {
     private lazy var listLabel: UILabel = {
         let label = UILabel()
         label.text = "Список палат"
-        label.font = .systemFont(ofSize: 19, weight: .medium)
+        label.font = UIFont(name: "SF UI Display", size: 19)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         return label
