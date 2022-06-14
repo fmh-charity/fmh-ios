@@ -1,9 +1,17 @@
 import UIKit
 
+enum FilterClaim: String {
+    case isOpened
+    case isWorked
+    case isCompleted
+    case isClosed
+}
+
 final class TaskViewController: UIViewController {
     
     private var collectionView: UICollectionView?
     private var toolbarView = TopToolbarView()
+    private lazy var filterVC = FilterViewController()
     private lazy var filterBlurEffect: BackgroundBlurFilterView = {
         let blurEffect = BackgroundBlurFilterView()
         blurEffect.isHidden = true
@@ -15,6 +23,7 @@ final class TaskViewController: UIViewController {
         super.viewDidLoad()
         collectionViewLayout()
         view.backgroundColor = .white
+        takeActionFromFilter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +111,12 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let vc = TaskFullScreenViewController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
+    }
+    //MARK: доделать филтрацию
+    func takeActionFromFilter() {
+        filterVC.filterComplition = {[weak self] result in
+          
+        }
     }
 }
 
