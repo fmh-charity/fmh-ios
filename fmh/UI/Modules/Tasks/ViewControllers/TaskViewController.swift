@@ -114,7 +114,6 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width * 0.75, height: 200)
     }

@@ -76,7 +76,7 @@ extension TableViewScreen: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return tableView.bounds.height * 0.35
+            return UITableView.automaticDimension
         }
         return 38
     }
