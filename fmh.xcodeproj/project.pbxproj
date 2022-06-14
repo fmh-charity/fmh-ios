@@ -10,6 +10,7 @@
 		0C059F0A2857D27C002D497A /* BackgroundBlurFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */; };
 		0C059F0C2857D294002D497A /* FilterVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F0B2857D294002D497A /* FilterVIew.swift */; };
 		0C059F0E2857D2A2002D497A /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */; };
+		0CA72B2C28590FF1002F2EDC /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA72B2B28590FF1002F2EDC /* FilterViewController.swift */; };
 		19064D84281FC86C006D8768 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D83281FC86C006D8768 /* LoginView.swift */; };
 		19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D87282049AE006D8768 /* LoginTextfield.swift */; };
 		19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D89282066E3006D8768 /* PasswordTextField.swift */; };
@@ -103,6 +104,7 @@
 		0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundBlurFilterView.swift; sourceTree = "<group>"; };
 		0C059F0B2857D294002D497A /* FilterVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVIew.swift; sourceTree = "<group>"; };
 		0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
+		0CA72B2B28590FF1002F2EDC /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		19064D83281FC86C006D8768 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		19064D87282049AE006D8768 /* LoginTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextfield.swift; sourceTree = "<group>"; };
 		19064D89282066E3006D8768 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				19562A2A2847EF8E00C8A704 /* TaskFullScreenViewController.swift */,
 				205377B22849668000D04BE3 /* EditTaskViewController.swift */,
 				2048AAE82849547800E9AB57 /* CreateTaskViewController.swift */,
+				0CA72B2B28590FF1002F2EDC /* FilterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */,
 				19562A432847EF8E00C8A704 /* TaskCollectionViewCell.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
+				0CA72B2C28590FF1002F2EDC /* FilterViewController.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
 				19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */,
 				195629BA28450AFE00C8A704 /* CollectionViewAdapter.swift in Sources */,
