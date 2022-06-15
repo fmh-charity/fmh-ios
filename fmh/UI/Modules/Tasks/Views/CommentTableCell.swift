@@ -82,20 +82,20 @@ final class CommentTableCell: UITableViewCell {
         fioLabel.textAlignment = .left
         commentNumLabel.numberOfLines = 0
         timeLabel.textAlignment = .center
-        editCommentButton.contentMode = .scaleAspectFit
-        editCommentButton.layer.borderWidth = 1
-        commentNumLabel.layer.borderWidth = 1
+        editCommentButton.contentMode = .scaleToFill
         let constraints = [
             commentNumLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 8),
             commentNumLabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 5),
-            commentNumLabel.trailingAnchor.constraint(lessThanOrEqualTo: editCommentButton.leadingAnchor, constant: -5),
-            commentNumLabel.bottomAnchor.constraint(greaterThanOrEqualTo: topView.bottomAnchor, constant: -10),
+            commentNumLabel.trailingAnchor.constraint(greaterThanOrEqualTo: editCommentButton.leadingAnchor, constant: -130),
+            commentNumLabel.trailingAnchor.constraint(lessThanOrEqualTo: editCommentButton.leadingAnchor, constant: -10),
+            commentNumLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -10),
 
             editCommentButton.topAnchor.constraint(equalTo: topView.topAnchor, constant: 11),
-            editCommentButton.leadingAnchor.constraint(lessThanOrEqualTo: commentNumLabel.trailingAnchor, constant: 140),
-            editCommentButton.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -19),
-            editCommentButton.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -40),
-            editCommentButton.widthAnchor.constraint(equalTo: editCommentButton.heightAnchor),
+            editCommentButton.leadingAnchor.constraint(greaterThanOrEqualTo: commentNumLabel.trailingAnchor, constant: 10),
+            editCommentButton.leadingAnchor.constraint(lessThanOrEqualTo: commentNumLabel.trailingAnchor, constant: 130),
+            editCommentButton.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -20),
+            editCommentButton.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -10),
+            editCommentButton.widthAnchor.constraint(equalToConstant: 25),
 
             topView.topAnchor.constraint(equalTo: topAnchor),
             topView.leadingAnchor.constraint(equalTo: leadingAnchor,

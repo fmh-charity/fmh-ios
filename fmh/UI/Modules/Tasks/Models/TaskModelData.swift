@@ -1,9 +1,3 @@
-//
-//  TaskModelData.swift
-//  fmh
-//
-//  Created: 24.05.2022
-//
 
 import UIKit
 

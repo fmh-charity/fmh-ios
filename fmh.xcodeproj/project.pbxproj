@@ -10,6 +10,7 @@
 		0C059F0A2857D27C002D497A /* BackgroundBlurFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */; };
 		0C059F0E2857D2A2002D497A /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */; };
 		0CA72B2C28590FF1002F2EDC /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA72B2B28590FF1002F2EDC /* FilterViewController.swift */; };
+		0CC8BCF1285A549B0007CE65 /* DTOTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8BCF0285A549B0007CE65 /* DTOTask.swift */; };
 		19064D84281FC86C006D8768 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D83281FC86C006D8768 /* LoginView.swift */; };
 		19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D87282049AE006D8768 /* LoginTextfield.swift */; };
 		19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D89282066E3006D8768 /* PasswordTextField.swift */; };
@@ -103,6 +104,7 @@
 		0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundBlurFilterView.swift; sourceTree = "<group>"; };
 		0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
 		0CA72B2B28590FF1002F2EDC /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		0CC8BCF0285A549B0007CE65 /* DTOTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTask.swift; sourceTree = "<group>"; };
 		19064D83281FC86C006D8768 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		19064D87282049AE006D8768 /* LoginTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextfield.swift; sourceTree = "<group>"; };
 		19064D89282066E3006D8768 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				191EAA72281BD256007B1397 /* Credentials.swift */,
+				0CC8BCF0285A549B0007CE65 /* DTOTask.swift */,
 				191EAA74281BD26A007B1397 /* TokenData.swift */,
 				191EAA76281BD281007B1397 /* UserInfo.swift */,
 				191EAA81281C3B48007B1397 /* RefreshToken.swift */,
@@ -387,20 +390,20 @@
 		19562A2B2847EF8E00C8A704 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				19562A2F2847EF8E00C8A704 /* AddCommentTableViewCell.swift */,
+				0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */,
+				0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */,
+				19562A322847EF8E00C8A704 /* CommentsView.swift */,
 				19562A2C2847EF8E00C8A704 /* CommentTableCell.swift */,
 				2048AAE428494E6E00E9AB57 /* CreateTaskView.swift */,
-				205377B02849658900D04BE3 /* EditTaskView.swift */,
-				0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */,
-				19562A2D2847EF8E00C8A704 /* MainTaskTitle.swift */,
-				19562A2E2847EF8E00C8A704 /* TableViewScreen.swift */,
-				0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */,
-				19562A2F2847EF8E00C8A704 /* AddCommentTableViewCell.swift */,
-				19562A302847EF8E00C8A704 /* TopToolbarView.swift */,
-				19562A312847EF8E00C8A704 /* TaskCollectionViewCell.swift */,
-				19562A322847EF8E00C8A704 /* CommentsView.swift */,
 				19562A332847EF8E00C8A704 /* CreatorView.swift */,
-				19562A342847EF8E00C8A704 /* OrangeView.swift */,
 				19562A352847EF8E00C8A704 /* DescriptionView.swift */,
+				205377B02849658900D04BE3 /* EditTaskView.swift */,
+				19562A2D2847EF8E00C8A704 /* MainTaskTitle.swift */,
+				19562A342847EF8E00C8A704 /* OrangeView.swift */,
+				19562A2E2847EF8E00C8A704 /* TableViewScreen.swift */,
+				19562A312847EF8E00C8A704 /* TaskCollectionViewCell.swift */,
+				19562A302847EF8E00C8A704 /* TopToolbarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				19562A3D2847EF8E00C8A704 /* TaskFullScreenViewController.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
 				191EAA77281BD281007B1397 /* UserInfo.swift in Sources */,
+				0CC8BCF1285A549B0007CE65 /* DTOTask.swift in Sources */,
 				19450CE0283EBC7D001506B8 /* TemplateViewController.swift in Sources */,
 				196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */,
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
