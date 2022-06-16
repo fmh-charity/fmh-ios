@@ -7,36 +7,34 @@
 
 import UIKit
 
-
-
 final class FilterViewController: UIViewController {
-    var filterComplition: ((Dictionary<String,Bool>) -> ())?
+    var filterDelegate: FilterDelegate?
     private var buttonCases: Dictionary<String,Bool> = ["Open":false, "Work":false, "Completed":false, "Canceled":false]
     private let mainLabel = UILabel(text: "Фильтровать",
                                     font: UIFont.systemFont(ofSize: 25),
                                     tintColor: UIColor(named: "AccentColor") ?? .black,
                                     textAlignment: .left)
-    
+
     private let isOpenLabel = UILabel(text: "Открыта",
                                       font: UIFont.systemFont(ofSize: 15),
                                       tintColor: .black,
                                       textAlignment: .left)
-    
+
     private let inWorkLabel = UILabel(text: "В работе",
                                       font: UIFont.systemFont(ofSize: 15),
                                       tintColor: .black,
                                       textAlignment: .left)
-    
+
     private let isCompletedLabel = UILabel(text: "Выполнена",
                                            font: UIFont.systemFont(ofSize: 15),
                                            tintColor: .black,
                                            textAlignment: .left)
-    
+
     private let isCanceledLabel = UILabel(text: "Отменена",
                                           font: UIFont.systemFont(ofSize: 15),
                                           tintColor: .black,
                                           textAlignment: .left)
-    
+
     private let isOpenCheckButton: UIButton = {
         let button = UIButton()
         button.tag = 0
@@ -44,7 +42,7 @@ final class FilterViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     private let inWorkCheckButton: UIButton = {
         let button = UIButton()
         button.tag = 1
@@ -52,7 +50,7 @@ final class FilterViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     private let isCompletedCheckButton: UIButton = {
         let button = UIButton()
         button.tag = 2
@@ -60,7 +58,7 @@ final class FilterViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     private let isCanceledCheckButton: UIButton = {
         let button = UIButton()
         button.tag = 3
@@ -68,7 +66,7 @@ final class FilterViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     let cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Отмена", for: .normal)
@@ -79,7 +77,7 @@ final class FilterViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     let okButton: UIButton = {
         let button = UIButton()
         button.setTitle("ОК", for: .normal)
@@ -90,13 +88,13 @@ final class FilterViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
         view.backgroundColor = .white
     }
-    
+
     func setupElements() {
         view.addSubview(mainLabel)
         let labelStackView = UIStackView(views: [isOpenLabel, inWorkLabel, isCompletedLabel, isCanceledLabel, cancelButton], axis: .vertical, spacing: 15, alignment: .fill, distribution: .fillEqually)
@@ -108,19 +106,19 @@ final class FilterViewController: UIViewController {
         isCanceledCheckButton.addTarget(self, action: #selector(checkedButtons(_:)), for: .touchUpInside)
         okButton.addTarget(self, action: #selector(okButtonTapped(_:)), for: .touchUpInside)
         view.addSubview(ownStack)
-        
+
         NSLayoutConstraint.activate([
             mainLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             mainLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainLabel.bottomAnchor.constraint(equalTo: ownStack.topAnchor, constant: -20),
-            
+
             ownStack.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
             ownStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             ownStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             ownStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
         ])
     }
-    
+
     @objc func checkedButtons(_ sender:UIButton){
         switch sender.tag
         {
@@ -131,14 +129,18 @@ final class FilterViewController: UIViewController {
         case 2: buttonCases["Completed"] = buttonCases["Completed"] == false ? true : false
             break
         case 3: buttonCases["Canceled"] = buttonCases["Canceled"] == false ? true : false
-            
+
         default: print("Other...")
         }
         sender.setImage(UIImage(systemName: sender.currentImage == UIImage(systemName: "square") ? "checkmark.square" : "square"), for: .normal)
     }
-    
-    @objc func okButtonTapped(_ sender:UIButton){
-        self.filterComplition?(buttonCases)
+
+    @objc func okButtonTapped(_ sender:UIButton) {
+        filterDelegate?.passData(dict: buttonCases)
         dismiss(animated: true)
     }
+}
+
+protocol FilterDelegate {
+    func passData(dict: Dictionary<String,Bool>)
 }

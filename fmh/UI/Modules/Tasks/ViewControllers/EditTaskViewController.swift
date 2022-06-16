@@ -28,10 +28,10 @@ final class EditTaskViewController: UIViewController {
         customView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
     }
     @objc private func saveTask(_ sender: UIButton) {
-        taskModelCells.append(TaskModel(nameOfTheme: customView.themeTextField.text ?? "",
-                                        nameOfExecutor: customView.executorTextField.text ?? "",
-                                        date: customView.dateTextField.text ?? "",
-                                        time: customView.timeTextField.text ?? "", description: customView.descriptionTextField.text ?? ""))
+//        taskModelCells.append(DTOTask(title: customView.themeTextField.text ?? "",
+//                                        nameOfExecutor: customView.executorTextField.text ?? "",
+//                                        date: customView.dateTextField.text ?? "",
+//                                        time: customView.timeTextField.text ?? "", description: customView.descriptionTextField.text ?? "", status: "Open"),)
         self.dismiss(animated: true)
     }
     @objc private func cancelEditTask(_ sender: UIButton) {

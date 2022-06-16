@@ -8,6 +8,7 @@
 import UIKit
 
 final class TaskFullScreenViewController: UIViewController {
+    var model: DTOTask?
     private let orangeView = OrangeView()
     private let bottomButtons = BottomButtonsView()
     private let taskView = AllElementsView()
@@ -18,6 +19,7 @@ final class TaskFullScreenViewController: UIViewController {
     private let statusLabel = UILabel(text: "В работе", font: UIFont(name: "SF UI Display", size: 16), tintColor: .black, textAlignment: .center)
     private let themeLabel = UILabel(text: "Тема", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let nameofThemeLabel = UILabel(text: "Тема1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -77,6 +79,14 @@ final class TaskFullScreenViewController: UIViewController {
             bottomButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             bottomButtons.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ]
+        nameofThemeLabel.text = model?.title
+        statusLabel.text = model?.status
+        taskView.dateLabel.text = (formatDateFromIntToString(model?.planExecuteDate ?? 0)).0
+        taskView.timeLabel.text = (formatDateFromIntToString(model?.planExecuteDate ?? 0)).1
+        taskView.nameOfExecutorLabel.text = model?.executorName
+        descriptionView.descriptionLabel.text = model?.description
+        creatorView.dateLabel.text = (formatDateFromIntToString(model?.createDate ?? 0)).0
+        creatorView.timeLabel.text = (formatDateFromIntToString(model?.createDate ?? 0)).1    
         tableView.layer.shadowOffset = CGSize(width: 1, height: 4)
         tableView.layer.shadowRadius = 4
         tableView.layer.shadowOpacity = 0.25
@@ -90,7 +100,7 @@ final class TaskFullScreenViewController: UIViewController {
     }
     
     private func workWithComments() {
-        tableView.newCommentComplition = {[weak self] in
+        tableView.newCommentComplition = { [weak self] in
             let alertController = UIAlertController(title: "Новый комментарий", message: "", preferredStyle: UIAlertController.Style.alert)
             alertController.addTextField { (textField : UITextField!) -> Void in
                 textField.placeholder = "Введите текст комментария"

@@ -28,10 +28,18 @@ final class CreateTaskViewController: UIViewController {
         customView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
     }
      @objc private func saveTask(_ sender: UIButton) {
-         taskModelCells.append(TaskModel(nameOfTheme: customView.themeTextField.text ?? "",
-                                         nameOfExecutor: customView.executorTextField.text ?? "",
-                                         date: customView.dateTextField.text ?? "",
-                                         time: customView.timeTextField.text ?? "", description: customView.descriptionTextField.text ?? ""))
+         taskModelCells.append(DTOTask(createDate: getCurrentDate(),
+                 creatorId: 2,
+                 creatorName: "Max",
+                 description: customView.descriptionTextField.text ?? "",
+                 executorId: 2,
+                 executorName: customView.executorTextField.text ?? "",
+                 factExecuteDate: 0,
+                 id: 2,
+                 planExecuteDate: formatDateFromStringToInt(date: customView.dateTextField.text ?? "27.04.1998",
+                                                            time: customView.timeTextField.text ?? "08:30"),
+                 status: "Open",
+                 title: customView.themeTextField.text ?? ""))
          self.dismiss(animated: true)
      }
      

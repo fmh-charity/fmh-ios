@@ -52,7 +52,6 @@
 		195629C8284524BA00C8A704 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629C7284524BA00C8A704 /* ExampleCell.swift */; };
 		195629CA2845257500C8A704 /* ExampleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629C92845257500C8A704 /* ExampleHeader.swift */; };
 		195629CC284525AA00C8A704 /* ExampleFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195629CB284525AA00C8A704 /* ExampleFooter.swift */; };
-		19562A372847EF8E00C8A704 /* TaskModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A222847EF8E00C8A704 /* TaskModelData.swift */; };
 		19562A382847EF8E00C8A704 /* CommentModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A232847EF8E00C8A704 /* CommentModelData.swift */; };
 		19562A392847EF8E00C8A704 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A252847EF8E00C8A704 /* CustomStackView.swift */; };
 		19562A3A2847EF8E00C8A704 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19562A262847EF8E00C8A704 /* TextLabel.swift */; };
@@ -93,6 +92,7 @@
 		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
 		19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */; };
 		19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */; };
+		2038EC63285BC66200183588 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2038EC62285BC66200183588 /* DateHelper.swift */; };
 		2048AAE528494E6E00E9AB57 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048AAE428494E6E00E9AB57 /* CreateTaskView.swift */; };
 		2048AAE728494F6400E9AB57 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048AAE628494F6400E9AB57 /* CustomTextField.swift */; };
 		2048AAE92849547800E9AB57 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048AAE82849547800E9AB57 /* CreateTaskViewController.swift */; };
@@ -146,7 +146,6 @@
 		195629C7284524BA00C8A704 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
 		195629C92845257500C8A704 /* ExampleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleHeader.swift; sourceTree = "<group>"; };
 		195629CB284525AA00C8A704 /* ExampleFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFooter.swift; sourceTree = "<group>"; };
-		19562A222847EF8E00C8A704 /* TaskModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModelData.swift; sourceTree = "<group>"; };
 		19562A232847EF8E00C8A704 /* CommentModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModelData.swift; sourceTree = "<group>"; };
 		19562A252847EF8E00C8A704 /* CustomStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		19562A262847EF8E00C8A704 /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
@@ -188,6 +187,7 @@
 		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
 		19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
+		2038EC62285BC66200183588 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		2048AAE428494E6E00E9AB57 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
 		2048AAE628494F6400E9AB57 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2048AAE82849547800E9AB57 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
@@ -358,8 +358,8 @@
 		19562A212847EF8E00C8A704 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				19562A222847EF8E00C8A704 /* TaskModelData.swift */,
 				19562A232847EF8E00C8A704 /* CommentModelData.swift */,
+				2038EC62285BC66200183588 /* DateHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -723,7 +723,6 @@
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
 				19562A402847EF8E00C8A704 /* TableViewScreen.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
-				19562A372847EF8E00C8A704 /* TaskModelData.swift in Sources */,
 				19562A422847EF8E00C8A704 /* TopToolbarView.swift in Sources */,
 				19562A442847EF8E00C8A704 /* CommentsView.swift in Sources */,
 				19562A462847EF8E00C8A704 /* OrangeView.swift in Sources */,
@@ -732,6 +731,7 @@
 				195629C528451D0200C8A704 /* ExampleProtocols.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
+				2038EC63285BC66200183588 /* DateHelper.swift in Sources */,
 				195629C128451CE300C8A704 /* ExampleViewController.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
 				19562A3F2847EF8E00C8A704 /* MainTaskTitle.swift in Sources */,

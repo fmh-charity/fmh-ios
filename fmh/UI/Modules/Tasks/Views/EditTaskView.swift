@@ -197,8 +197,7 @@ extension EditTaskView {
     
     @objc func donePressed() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd.MM.yyyy"
         self.dateTextField.text = dateFormatter.string(from: datePicker.date)
         self.dateTextField.endEditing(true)
     }

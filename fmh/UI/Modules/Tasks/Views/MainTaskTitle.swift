@@ -8,8 +8,8 @@
 import UIKit
 
 final class AllElementsView: UIView {
-    private let executorLabel = UILabel(text: "Исполнитель", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
-    private  let planeDateLabel = UILabel(text: "Плановая дата", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
+    var executorLabel = UILabel(text: "Исполнитель", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
+    var planeDateLabel = UILabel(text: "Плановая дата", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     private let topSeparator: UILabel = {
         let separator = UILabel()
         separator.layer.borderWidth = 1

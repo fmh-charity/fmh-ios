@@ -34,3 +34,10 @@ struct DTOTask: Codable {
         case title = "title"
     }
 }
+
+var taskModelCells = [
+    DTOTask(createDate: 10, creatorId: 1, creatorName: "Vitaliy", description: "Pidor", executorId: 228, executorName: "Maxim", factExecuteDate: 10, id: 1, planExecuteDate: 23, status: "Work", title: "Heeeey"),
+    DTOTask(createDate: 10, creatorId: 1, creatorName: "Vitaliy", description: "Pidor", executorId: 228, executorName: "Maxim", factExecuteDate: 10, id: 1, planExecuteDate: 23, status: "Work", title: "Heeeey"),
+    DTOTask(createDate: 10, creatorId: 1, creatorName: "Vitaliy", description: "Pidor", executorId: 228, executorName: "Maxim", factExecuteDate: 10, id: 1, planExecuteDate: 23, status: "Work", title: "Heeeey"),
+    DTOTask(createDate: 10, creatorId: 1, creatorName: "Vitaliy", description: "Pidor", executorId: 228, executorName: "Maxim", factExecuteDate: 10, id: 1, planExecuteDate: 23, status: "Work", title: "Heeeey")
+]
