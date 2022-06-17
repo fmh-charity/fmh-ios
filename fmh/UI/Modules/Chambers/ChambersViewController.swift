@@ -11,7 +11,7 @@ class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
     
     var onCompletion: (() -> ())?
     
-    let headerPanel = ChambersHeaderListView()
+    let headerPanel = HeaderMenuView(labelText: "Список палат", leftButtonImage: UIImage(systemName: "info.circle"), rightButtonImage: UIImage(systemName: "plus.circle"))
     let chambers = ChamberModel.chambers
     
     private lazy var tableView: UITableView = {
@@ -46,7 +46,8 @@ class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
         NSLayoutConstraint.activate([
             headerPanel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerPanel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerPanel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            headerPanel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerPanel.heightAnchor.constraint(equalToConstant: 56)
         ])
         
         NSLayoutConstraint.activate([

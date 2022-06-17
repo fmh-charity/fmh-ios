@@ -73,7 +73,7 @@
 		594742692858CCA200FA66AD /* ChamberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594742682858CCA200FA66AD /* ChamberTableViewCell.swift */; };
 		59EDEA882852566E00A3E21E /* ChambersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA872852566E00A3E21E /* ChambersPresenter.swift */; };
 		59EDEA8A2852568B00A3E21E /* ChambersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA892852568B00A3E21E /* ChambersViewController.swift */; };
-		59EDEA8C2853412400A3E21E /* ChambersHeaderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA8B2853412400A3E21E /* ChambersHeaderListView.swift */; };
+		59EDEA8C2853412400A3E21E /* HeaderMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA8B2853412400A3E21E /* HeaderMenuView.swift */; };
 		59EDEA9128537C0400A3E21E /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA9028537C0400A3E21E /* UIButton + Extension.swift */; };
 		59EDEA9328539E7000A3E21E /* ChambersProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA9228539E7000A3E21E /* ChambersProtocols.swift */; };
 /* End PBXBuildFile section */
@@ -146,7 +146,7 @@
 		594742682858CCA200FA66AD /* ChamberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamberTableViewCell.swift; sourceTree = "<group>"; };
 		59EDEA872852566E00A3E21E /* ChambersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersPresenter.swift; sourceTree = "<group>"; };
 		59EDEA892852568B00A3E21E /* ChambersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersViewController.swift; sourceTree = "<group>"; };
-		59EDEA8B2853412400A3E21E /* ChambersHeaderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersHeaderListView.swift; sourceTree = "<group>"; };
+		59EDEA8B2853412400A3E21E /* HeaderMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMenuView.swift; sourceTree = "<group>"; };
 		59EDEA9028537C0400A3E21E /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
 		59EDEA9228539E7000A3E21E /* ChambersProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -496,7 +496,7 @@
 		59EDEA842852563500A3E21E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				59EDEA8B2853412400A3E21E /* ChambersHeaderListView.swift */,
+				59EDEA8B2853412400A3E21E /* HeaderMenuView.swift */,
 				594742682858CCA200FA66AD /* ChamberTableViewCell.swift */,
 			);
 			path = Views;
@@ -590,7 +590,7 @@
 				191EAA6C281BBE4C007B1397 /* APIError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
 				594742692858CCA200FA66AD /* ChamberTableViewCell.swift in Sources */,
-				59EDEA8C2853412400A3E21E /* ChambersHeaderListView.swift in Sources */,
+				59EDEA8C2853412400A3E21E /* HeaderMenuView.swift in Sources */,
 				195629B72845007600C8A704 /* UIViewController + setMenuButton.swift in Sources */,
 				195629B62845007600C8A704 /* GeneralMenu.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
