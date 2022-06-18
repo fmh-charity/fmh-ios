@@ -9,6 +9,8 @@ import UIKit
 
 // MARK: - OurMissionPresenterInput
 protocol OurMissionPresenterInput: AnyObject {
+    func toggleIsHidden(of index: Int)
+    func getDataArray() -> [OurMissionStruct] 
 }
 
 
@@ -19,12 +21,9 @@ protocol OurMissionPresenterOutput: AnyObject {
 
 // MARK: - OurMissioniewControllerProtocol
 protocol OurMissioniewControllerProtocol: BaseViewProtocol {
-    var taglineView: UIView { get }
-    var customTableView: UITableView { get }
     
 }
 
 // MARK: - OurMissionCellProtocol
 protocol OurMissionCellProtocol {
-    var isDescriptionHidden: Bool { get set}
 }

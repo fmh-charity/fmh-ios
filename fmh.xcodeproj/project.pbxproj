@@ -480,12 +480,20 @@
 		19F91BC5283D483A00AB6C6B /* OurMission */ = {
 			isa = PBXGroup;
 			children = (
+				B21213FF285E62BA00F1086B /* Views */,
 				B28EC79928493469004700A4 /* OurMissionProtocols.swift */,
 				B28EC79B28493475004700A4 /* OurMissionPresenter.swift */,
 				19F91BC6283D485D00AB6C6B /* OurMissionViewController.swift */,
-				19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */,
 			);
 			path = OurMission;
+			sourceTree = "<group>";
+		};
+		B21213FF285E62BA00F1086B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

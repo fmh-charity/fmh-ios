@@ -27,12 +27,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
 
-        let viewController = ExampleViewController()
-        let presenter = ExamplePresenter(output: viewController)
+//        let viewController = ExampleViewController()
+//        let presenter = ExamplePresenter(output: viewController)
+        let viewController = OurMissionViewController()
+        let presenter = OurMissionPresenter(output: viewController)
         viewController.presenter = presenter
-//        window?.rootViewController = viewController
-        window?.rootViewController = OurMissionViewController()
-        window?.makeKeyAndVisible()
+        window?.rootViewController = viewController
         
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.

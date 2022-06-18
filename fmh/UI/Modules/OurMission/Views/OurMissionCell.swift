@@ -45,7 +45,8 @@ class OurMissionCell: UITableViewCell, OurMissionCellProtocol {
         descriptionLabel.text = nil
     }
     
-    func configure(cellData: ourMissionStruct) {
+    func configure(cellData: OurMissionStruct?) {
+        guard let cellData = cellData else { return }
         taglineView.backgroundColor = cellData.color
         taglineLabel.text = cellData.tagline
         taglineLabel.backgroundColor = cellData.color
