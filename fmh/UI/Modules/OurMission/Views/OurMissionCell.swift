@@ -158,11 +158,11 @@ class OurMissionCell: UITableViewCell, OurMissionCellProtocol {
     
     private func animateCell(isHidden: Bool) {
         let upDown = CGAffineTransform(rotationAngle: .pi * -0.999)
-        descriptionLabel.isHidden = isHidden ? true : false
-        layoutIfNeeded()
         UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.descriptionLabel.alpha = isHidden ? 0 : 1
+            self?.descriptionLabel.isHidden = isHidden ? true : false
             self?.arrowView.transform = isHidden ? .identity : upDown
+        } completion: { [weak self] _ in
+            self?.descriptionLabel.alpha = isHidden ? 0 : 1
         }
     }
 }
