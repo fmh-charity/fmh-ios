@@ -27,13 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
-
-
-        let viewController = ExampleViewController()
-        let presenter = ExamplePresenter(output: viewController)
-        viewController.presenter = presenter
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
         
 //        let viewController = OurMissionViewController()
 //        let presenter = OurMissionPresenter(output: viewController)
