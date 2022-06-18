@@ -27,11 +27,11 @@ extension AuthorizationPresenter: AuthorizationPresenterInput {
     
     func login(login: String, password: String, completion: @escaping (UserInfo?, AuthorizationError?) -> Void ) {
         
-        interactor?.login(login: login, password:  password) { userInfo, apiError in
+        interactor?.login(login: login, password:  password) { userInfo, networkError in
             
-            if let apiError = apiError {
+            if let networkError = networkError {
                 // TODO: Добавить расшифровку ошибок на русском. (AuthError)
-                switch apiError.code {
+                switch networkError.code {
                     case 401 :
                         return completion(nil, .unauthorized)
                     case 403 :
@@ -41,7 +41,7 @@ extension AuthorizationPresenter: AuthorizationPresenterInput {
                     case -1004 :
                         return completion(nil, .notConnectToServer)
                     default:
-                        return completion(nil, .requestError(apiError))
+                        return completion(nil, .requestError(networkError))
                 }
             }
             

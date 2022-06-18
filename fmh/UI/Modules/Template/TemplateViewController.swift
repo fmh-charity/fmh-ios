@@ -5,7 +5,6 @@
 //  Created: 25.05.2022
 //
 
-import Foundation
 import UIKit
 
 class TemplateViewController: UIViewController, TemplateViewControllerProtocol {
@@ -23,17 +22,6 @@ class TemplateViewController: UIViewController, TemplateViewControllerProtocol {
         setNavigationBarRightButtons()
     }
     
-    /// Нужны для отключения свайпа (Открытия меню)
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.revealViewController()?.gestureEnabled = false
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.revealViewController()?.gestureEnabled = true
-//    }
-     
 }
 
 // MARK: - TemplatePresenterOutput

@@ -2,17 +2,17 @@
 //  UserInfo.swift
 //  fmh
 //
-//  Created: 29.04.2022
+//  Created: 05.06.2022
 //
 
 import Foundation
 
-struct UserInfo: Codable {
+struct UserInfo {
     
     let admin: Bool
     let firstName: String
     let id: Int
     let lastName: String
     let middleName: String
-    
+
 }

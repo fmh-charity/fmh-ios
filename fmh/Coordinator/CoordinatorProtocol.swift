@@ -5,7 +5,6 @@
 //  Created: 14.05.2022
 //
 
-import Foundation
 import UIKit
 
 protocol CoordinatorProtocol : AnyObject {

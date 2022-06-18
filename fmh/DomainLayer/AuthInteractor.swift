@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol AuthInteractorProtocol {
-    func login(login: String, password: String, completion: @escaping (UserInfo?, APIError?) -> Void )
-    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void )
+    func login(login: String, password: String, completion: @escaping (UserInfo?, NetworkError?) -> Void )
+    func getUserInfo(completion: @escaping (UserInfo?, NetworkError?) -> Void )
 }
 
 class AuthInteractor {
@@ -27,7 +27,7 @@ class AuthInteractor {
 // MARK: - AuthInteractorProtocol
 extension AuthInteractor: AuthInteractorProtocol {
    
-    func login(login: String, password: String, completion: @escaping (UserInfo?, APIError?) -> Void ) {
+    func login(login: String, password: String, completion: @escaping (UserInfo?, NetworkError?) -> Void ) {
         
         repository?.login(login: login, password: password)
             .sink { [unowned self] anyCompletion in
@@ -38,8 +38,13 @@ extension AuthInteractor: AuthInteractorProtocol {
                         /// Get userInfo
                         self.repository?.userInfo()
                             .sink { _ in }
-                                receiveValue: { userInfo in
-                                    AppSession.userInfo = userInfo
+                                receiveValue: { dtoUserInfo in
+                                    AppSession.userInfo = dtoUserInfo
+                                    let userInfo = UserInfo(admin: dtoUserInfo.admin,
+                                                            firstName: dtoUserInfo.firstName,
+                                                            id: dtoUserInfo.id,
+                                                            lastName: dtoUserInfo.lastName,
+                                                            middleName: dtoUserInfo.middleName)
                                     return completion(userInfo, nil)
                                 }
                             .store(in: &anyCancellable)
@@ -50,7 +55,7 @@ extension AuthInteractor: AuthInteractorProtocol {
             .store(in: &anyCancellable)
     }
     
-    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void) {
+    func getUserInfo(completion: @escaping (UserInfo?, NetworkError?) -> Void) {
         self.repository?.userInfo()
             .sink { anyCompletion in
                 switch anyCompletion {
@@ -60,7 +65,12 @@ extension AuthInteractor: AuthInteractorProtocol {
                     break
                 }
             }
-            receiveValue: { userInfo in
+            receiveValue: { dtoUserInfo in
+                let userInfo = UserInfo(admin: dtoUserInfo.admin,
+                                        firstName: dtoUserInfo.firstName,
+                                        id: dtoUserInfo.id,
+                                        lastName: dtoUserInfo.lastName,
+                                        middleName: dtoUserInfo.middleName)
                 return completion(userInfo, nil)
             }
             .store(in: &anyCancellable)

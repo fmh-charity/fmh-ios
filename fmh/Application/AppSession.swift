@@ -16,11 +16,11 @@ struct AppSession {
         return self.tokens != nil
     }
     
-    static var tokens: TokenData? {
+    static var tokens: DTOTokenData? {
         get {
             if let accessToken = KeyChain.standart.get(forKey: "accessToken"),
                let refreshToken = KeyChain.standart.get(forKey: "refreshToken") {
-                return TokenData(accessToken: accessToken, refreshToken: refreshToken)
+                return DTOTokenData(accessToken: accessToken, refreshToken: refreshToken)
             }
             return nil
         }
@@ -31,7 +31,7 @@ struct AppSession {
         }
     }
     
-    static var userInfo: UserInfo?
+    static var userInfo: DTOUserInfo? // <- Записывать во время загрузочной страницы (далее пересмотрим)
     
     static func logOut () {
         KeyChain.standart.del(key: "accessToken")

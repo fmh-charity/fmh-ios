@@ -22,12 +22,12 @@ final class GeneralPresenter {
 // MARK: - GeneralPresenterInput
 extension GeneralPresenter: GeneralPresenterInput {
     
-    func getUserInfo(completion: @escaping (UserInfo?, APIError?) -> Void) {
-        interactor?.getUserInfo(completion: { userInfo, apiError in
+    func getUserInfo(completion: @escaping (UserInfo?, NetworkError?) -> Void) {
+        interactor?.getUserInfo(completion: { userInfo, networkError in
             if let userInfo = userInfo {
                 return completion(userInfo, nil)
             }
-            return completion(nil, apiError)
+            return completion(nil, networkError)
         })
     }
 

@@ -12,40 +12,40 @@ protocol Service: AnyObject {
     
     var session: URLSession { get }
     
-    func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, APIError>
-    func fetchPublisher (request: URLRequest) -> AnyPublisher<Data, APIError>
-    func fetchData <T: Decodable> (request: URLRequest, completion: @escaping (Result<T?, APIError>) -> Void )
-    func fetch (request: URLRequest, completion: @escaping (Result<Data?, APIError>) -> Void )
+    func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, NetworkError>
+    func fetchPublisher (request: URLRequest) -> AnyPublisher<Data, NetworkError>
+    func fetchData <T: Decodable> (request: URLRequest, completion: @escaping (Result<T?, NetworkError>) -> Void )
+    func fetch (request: URLRequest, completion: @escaping (Result<Data?, NetworkError>) -> Void )
     
 }
 
 extension Service {
     
-    func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, APIError> {
+    func fetchDataPublisher <T: Decodable> (request: URLRequest) -> AnyPublisher<T, NetworkError> {
         return fetchPublisher (request: request)
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
-                return error as? APIError ?? .JSONDecoderError(error)
+                return error as? NetworkError ?? .JSONDecoderError(error)
             }
             .eraseToAnyPublisher()
     }
     
-    func fetchPublisher (request: URLRequest) -> AnyPublisher<Data, APIError> {
+    func fetchPublisher (request: URLRequest) -> AnyPublisher<Data, NetworkError> {
         return session.dataTaskPublisher(for: request)
             .tryMap({ data, response -> JSONDecoder.Input in
                 if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
                     let discriptionCode = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
-                    throw APIError.HTTPURLResponse(statusCode: response.statusCode, description: discriptionCode)
+                    throw NetworkError.HTTPURLResponse(statusCode: response.statusCode, description: discriptionCode)
                 }
                 return data
             })
             .mapError { error in
-                return error as? APIError ?? .URLRequestError(error)
+                return error as? NetworkError ?? .URLRequestError(error)
             }
             .eraseToAnyPublisher()
     }
     
-    func fetchData <T: Decodable> (request: URLRequest, completion: @escaping (Result<T?, APIError>) -> Void ) {
+    func fetchData <T: Decodable> (request: URLRequest, completion: @escaping (Result<T?, NetworkError>) -> Void ) {
         fetch(request: request) { result in
             switch result {
                 case .success(let data):
@@ -63,7 +63,7 @@ extension Service {
         }
     }
     
-    func fetch (request: URLRequest, completion: @escaping (Result<Data?, APIError>) -> Void ) {
+    func fetch (request: URLRequest, completion: @escaping (Result<Data?, NetworkError>) -> Void ) {
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 return completion(.failure(.URLRequestError(error)))
