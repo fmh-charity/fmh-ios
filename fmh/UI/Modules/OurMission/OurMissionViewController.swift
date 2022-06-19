@@ -89,12 +89,12 @@ final class OurMissionViewController: UIViewController, OurMissioniewControllerP
 // MARK: - DataSource
 extension OurMissionViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter?.getDataArray().count ?? 0
+        presenter?.dataArray.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OurMissionCell.identifier, for: indexPath) as! OurMissionCell
-        cell.configure(cellData: (presenter?.getDataArray()[indexPath.row]))
+        cell.configure(cellData: (presenter?.dataArray[indexPath.row]))
         return cell
     }
     
@@ -104,7 +104,7 @@ extension OurMissionViewController: UITableViewDataSource, UITableViewDelegate {
         customTableView.beginUpdates()
        
         cell.isDescriptionHidden.toggle()
-        presenter?.toggleIsHidden(of: indexPath.row)
+        presenter?.dataArray[indexPath.row].isHidden.toggle()
         
         customTableView.endUpdates()
     }

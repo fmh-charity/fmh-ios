@@ -9,8 +9,7 @@ import UIKit
 
 // MARK: - OurMissionPresenterInput
 protocol OurMissionPresenterInput: AnyObject {
-    func toggleIsHidden(of index: Int)
-    func getDataArray() -> [OurMissionStruct] 
+    var dataArray: [OurMissionStruct] { get set }
 }
 
 
@@ -21,9 +20,4 @@ protocol OurMissionPresenterOutput: AnyObject {
 
 // MARK: - OurMissioniewControllerProtocol
 protocol OurMissioniewControllerProtocol: BaseViewProtocol {
-    
-}
-
-// MARK: - OurMissionCellProtocol
-protocol OurMissionCellProtocol {
 }

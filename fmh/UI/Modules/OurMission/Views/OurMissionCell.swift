@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OurMissionCell: UITableViewCell, OurMissionCellProtocol {
+class OurMissionCell: UITableViewCell {
 
     // MARK: - Parameters
     static let identifier = "OurMissionReusableIdentifier"
