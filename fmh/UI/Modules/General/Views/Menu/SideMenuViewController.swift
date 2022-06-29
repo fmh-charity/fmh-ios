@@ -179,7 +179,7 @@ extension SideMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /// Отключенные ячейки
-        let nonSelectsMenu: [Menu] = [.ourMission, .news, .chambers, .patients, .claim]
+        let nonSelectsMenu: [Menu] = [.ourMission, .chambers, .patients, .claim]
         let nonSelectsAdditionalMenu: [AdditionalMenu] = [.user]
         
         if indexPath.section == 0 {

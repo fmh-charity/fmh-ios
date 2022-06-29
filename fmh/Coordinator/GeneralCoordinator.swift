@@ -49,7 +49,8 @@ extension GeneralCoordinator {
                 case .ourMission:
                     break
                 case .news:
-                    break
+                    let viewController = self.moduleFactory.makeNewsListViewController()
+                    navigationController.viewControllers = [viewController.toPresent]
                 case .claim:
                     break
                 case .patients:

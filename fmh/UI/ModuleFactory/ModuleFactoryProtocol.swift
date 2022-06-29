@@ -22,6 +22,7 @@ protocol GeneralModuleFactoryProtocol {
     func makeGeneralViewController() -> GeneralViewControllerProtocol
     
     func makeTemplateViewController() -> TemplateViewControllerProtocol
+    func makeNewsListViewController() -> NewsListViewControllerProtocol
 }
 
 

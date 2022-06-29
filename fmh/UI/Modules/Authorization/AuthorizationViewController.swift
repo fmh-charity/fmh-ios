@@ -36,13 +36,11 @@ class AuthorizationViewController: UIViewController, AuthorizationViewController
     override func loadView() {
         super.loadView()
         self.view = LoginView(frame: self.view.bounds)
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Авторизация"
-
         commonInit()
         setupNotificationKeyboard()
     }

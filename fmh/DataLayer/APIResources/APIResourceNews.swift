@@ -9,11 +9,11 @@ import Foundation
 
 enum APIResourceNews {
     
-    case getAllNews                     // <- Реестр всех новостей
-    case createNews (news: DTONews)        // <- Создание новой новости
-    case refreshNews (news: DTONews)       // <- Обновляет информацию по новости
-    case getNews  (id: Int)             // <- Возвращает полную информацию по новости
-    case removeNews (id: Int)           // <- Удаление новости
+    case getAllNews                         // <- Реестр всех новостей
+    case createNews (news: DTONews)         // <- Создание новой новости
+    case refreshNews (news: DTONews)        // <- Обновляет информацию по новости
+    case getNews  (id: Int)                 // <- Возвращает полную информацию по новости
+    case removeNews (id: Int)               // <- Удаление новости
 
     func resource<T: Decodable>() -> APIResource<T> {
         switch self {
