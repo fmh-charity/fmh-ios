@@ -21,8 +21,9 @@ protocol LoadingModuleFactoryProtocol {
 protocol GeneralModuleFactoryProtocol {
     func makeGeneralViewController() -> GeneralViewControllerProtocol
     
-    func makeTemplateViewController() -> TemplateViewControllerProtocol
     func makeNewsListViewController() -> NewsListViewControllerProtocol
+    
+    func makeOurMissionViewController() -> OurMissionViewControllerProtocol
 }
 
 

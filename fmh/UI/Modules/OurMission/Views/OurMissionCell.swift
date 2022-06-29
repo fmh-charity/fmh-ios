@@ -12,25 +12,71 @@ class OurMissionCell: UITableViewCell {
     // MARK: - Parameters
     static let identifier = "OurMissionReusableIdentifier"
     
-    private let cellView = UIView()
+    private let cellView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 8
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor(red: 0.846, green: 0.846, blue: 0.846, alpha: 1).cgColor
+        return view
+    }()
     
-    private let stackView = UIStackView()
+    private let stackView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.axis = .vertical
+        view.distribution = .fill
+        view.spacing = 9
+        return view
+    }()
     
-    private let taglineView = UIView()
-    private let taglineLabel = UILabel()
+    private let taglineView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 5
+        return view
+    }()
+    private let taglineLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
     
-    private let descriptionLabel = UILabel()
-    private let arrowView = UIImageView()
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
+    private let arrowView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.image = UIImage(systemName: "chevron.down")
+        view.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.54)
+        return view
+    }()
+    private let leafView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.image = UIImage(named: "LeafIcon")
+        return view
+    }()
     
     var isDescriptionHidden = true {
         willSet {
-            if newValue == false {
-                descriptionLabel.isHidden = false
-                arrowView.image = UIImage(systemName: "chevron.up")
-            } else {
-                descriptionLabel.isHidden = true
-                arrowView.image = UIImage(systemName: "chevron.down")
-            }
+            animateCell(isHidden: newValue)
         }
     }
     
@@ -43,7 +89,8 @@ class OurMissionCell: UITableViewCell {
         descriptionLabel.text = nil
     }
     
-    func configure(cellData: ourMissionStruct) {
+    func configure(cellData: OurMissionStruct?) {
+        guard let cellData = cellData else { return }
         taglineView.backgroundColor = cellData.color
         taglineLabel.text = cellData.tagline
         taglineLabel.backgroundColor = cellData.color
@@ -60,80 +107,62 @@ class OurMissionCell: UITableViewCell {
     private func setupUI() {
         self.backgroundColor = UIColor.clear
         self.selectionStyle = .none
+        
         self.addSubview(cellView)
-        cellView.translatesAutoresizingMaskIntoConstraints = false
+        cellView.addSubview(leafView)
+        cellView.addSubview(arrowView)
+        cellView.addSubview(stackView)
+        
+        stackView.addArrangedSubview(taglineView)
+        taglineView.addSubview(taglineLabel)
+        stackView.addArrangedSubview(descriptionLabel)
+        
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 29),
             cellView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             cellView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
             cellView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-        cellView.clipsToBounds = true
-        cellView.backgroundColor = .white
-        cellView.layer.cornerRadius = 8
-        cellView.layer.borderWidth = 1
-        cellView.layer.borderColor = UIColor(red: 0.846, green: 0.846, blue: 0.846, alpha: 1).cgColor
         
-        let leafView = UIImageView()
-        cellView.addSubview(leafView)
-        leafView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             leafView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 3),
             leafView.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 10),
             leafView.widthAnchor.constraint(equalToConstant: 31),
             leafView.heightAnchor.constraint(equalToConstant: 28)
         ])
-        leafView.clipsToBounds = true
-        leafView.image = UIImage(named: "LeafIcon")
         
-        cellView.addSubview(arrowView)
-        arrowView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             arrowView.centerYAnchor.constraint(equalTo: leafView.centerYAnchor),
             arrowView.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -17)
         ])
-        arrowView.clipsToBounds = true
-        arrowView.image = UIImage(systemName: "chevron.down")
-        arrowView.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.54)
         
-        cellView.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: cellView.centerXAnchor),
             stackView.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 9),
             stackView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 33),
             stackView.bottomAnchor.constraint(lessThanOrEqualTo: cellView.bottomAnchor, constant: -9)
         ])
-        stackView.clipsToBounds = true
-        stackView.layer.cornerRadius = 5
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 9
         
-        stackView.addArrangedSubview(taglineView)
-        
-        taglineView.addSubview(taglineLabel)
-        taglineLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             taglineLabel.centerYAnchor.constraint(equalTo: taglineView.centerYAnchor),
             taglineLabel.centerXAnchor.constraint(equalTo: taglineView.centerXAnchor),
             taglineLabel.leftAnchor.constraint(equalTo: taglineView.leftAnchor, constant: 8),
             taglineLabel.topAnchor.constraint(equalTo: taglineView.topAnchor, constant: 6)
         ])
-        taglineLabel.clipsToBounds = true
-        taglineLabel.numberOfLines = 0
-        taglineLabel.lineBreakMode = .byWordWrapping
-        
-        stackView.addArrangedSubview(descriptionLabel)
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.clipsToBounds = true
-        descriptionLabel.font = UIFont.systemFont(ofSize: 13)
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.lineBreakMode = .byWordWrapping
     }
 
     // MARK: - Actions
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    private func animateCell(isHidden: Bool) {
+        let upDown = CGAffineTransform(rotationAngle: .pi * -0.999)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.descriptionLabel.isHidden = isHidden ? true : false
+            self?.arrowView.transform = isHidden ? .identity : upDown
+        } completion: { [weak self] _ in
+            self?.descriptionLabel.alpha = isHidden ? 0 : 1
+        }
     }
 }
