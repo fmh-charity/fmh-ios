@@ -71,6 +71,9 @@
 		19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */; };
 		594742672858C22100FA66AD /* ChamberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594742662858C22100FA66AD /* ChamberModel.swift */; };
 		594742692858CCA200FA66AD /* ChamberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594742682858CCA200FA66AD /* ChamberTableViewCell.swift */; };
+		5999B819286DAB9200D477E4 /* ChambersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5999B818286DAB9200D477E4 /* ChambersTableViewCell.swift */; };
+		5999B81B286DAD7000D477E4 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5999B81A286DAD7000D477E4 /* UILabel + Extension.swift */; };
+		5999B81D286DB65300D477E4 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5999B81C286DB65300D477E4 /* UIStackView + Extension.swift */; };
 		59EDEA882852566E00A3E21E /* ChambersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA872852566E00A3E21E /* ChambersPresenter.swift */; };
 		59EDEA8A2852568B00A3E21E /* ChambersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA892852568B00A3E21E /* ChambersViewController.swift */; };
 		59EDEA8C2853412400A3E21E /* HeaderMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EDEA8B2853412400A3E21E /* HeaderMenuView.swift */; };
@@ -144,6 +147,9 @@
 		19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
 		594742662858C22100FA66AD /* ChamberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamberModel.swift; sourceTree = "<group>"; };
 		594742682858CCA200FA66AD /* ChamberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamberTableViewCell.swift; sourceTree = "<group>"; };
+		5999B818286DAB9200D477E4 /* ChambersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersTableViewCell.swift; sourceTree = "<group>"; };
+		5999B81A286DAD7000D477E4 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		5999B81C286DB65300D477E4 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		59EDEA872852566E00A3E21E /* ChambersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersPresenter.swift; sourceTree = "<group>"; };
 		59EDEA892852568B00A3E21E /* ChambersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersViewController.swift; sourceTree = "<group>"; };
 		59EDEA8B2853412400A3E21E /* HeaderMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMenuView.swift; sourceTree = "<group>"; };
@@ -498,6 +504,7 @@
 			children = (
 				59EDEA8B2853412400A3E21E /* HeaderMenuView.swift */,
 				594742682858CCA200FA66AD /* ChamberTableViewCell.swift */,
+				5999B818286DAB9200D477E4 /* ChambersTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -506,6 +513,8 @@
 			isa = PBXGroup;
 			children = (
 				59EDEA9028537C0400A3E21E /* UIButton + Extension.swift */,
+				5999B81A286DAD7000D477E4 /* UILabel + Extension.swift */,
+				5999B81C286DB65300D477E4 /* UIStackView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -600,6 +609,7 @@
 				19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */,
 				19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */,
 				19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */,
+				5999B819286DAB9200D477E4 /* ChambersTableViewCell.swift in Sources */,
 				199C09D82841120900ADFE3A /* PresentableProtocol.swift in Sources */,
 				1942B7DE2835758C005C3732 /* GeneralMenuItemCell.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
@@ -610,7 +620,9 @@
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
 				19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */,
 				59EDEA9328539E7000A3E21E /* ChambersProtocols.swift in Sources */,
+				5999B81B286DAD7000D477E4 /* UILabel + Extension.swift in Sources */,
 				19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */,
+				5999B81D286DB65300D477E4 /* UIStackView + Extension.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
 				594742672858C22100FA66AD /* ChamberModel.swift in Sources */,

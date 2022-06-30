@@ -18,7 +18,7 @@ class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ChamberTableViewCell.self, forCellReuseIdentifier: ChamberTableViewCell.identifier)
+        tableView.register(ChambersTableViewCell.self, forCellReuseIdentifier: ChambersTableViewCell.identifier)
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.showsVerticalScrollIndicator = false
@@ -66,34 +66,51 @@ extension ChambersViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
         chambers.count
     }
+    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        chambers.count
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        300
+//    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ChamberTableViewCell.identifier, for: indexPath) as? ChamberTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ChambersTableViewCell.identifier, for: indexPath) as? ChambersTableViewCell else { return UITableViewCell() }
         
-        let chamber = chambers[indexPath.section]
+//        let chamber = chambers[indexPath.section]
         
-        switch indexPath.row {
-        case 0:
-            cell.configure(with: .numberOfChamber, and: chamber.numberOfChamber, backgroundColor: UIColor(named: "peach"))
-        case 1:
-            cell.configure(with: .post, and: chamber.post, backgroundColor: .white)
-        case 2:
-            cell.configure(with: .block, and: chamber.block, backgroundColor: .white)
-        case 3:
-            cell.configure(with: .freePlaces, and: chamber.freePlaces, backgroundColor: .white)
-        default:
-            cell.configure(with: .comment, and: chamber.comment, backgroundColor: .white)
-        }
+        let chamber = chambers[indexPath.row]
+        
+        cell.configure(numberOfChamber: chamber.numberOfChamber,
+                       chamber: chamber.chamber,
+                       numberOfPost: chamber.numberOfPost,
+                       post: chamber.post,
+                       numberOfBlock: chamber.numberOfBlock,
+                       block: chamber.block,
+                       numberOfFreePlaces: chamber.numberOfFreePlaces,
+                       freePlaces: chamber.freePlaces,
+                       comment: chamber.comment,
+                       nameOfComment: chamber.nameOfComment)
+        
+//        switch indexPath.row {
+//        case 0:
+//            cell.configure(with: .numberOfChamber, and: chamber.numberOfChamber, backgroundColor: UIColor(named: "peach"))
+//        case 1:
+//            cell.configure(with: .post, and: chamber.post, backgroundColor: .white)
+//        case 2:
+//            cell.configure(with: .block, and: chamber.block, backgroundColor: .white)
+//        case 3:
+//            cell.configure(with: .freePlaces, and: chamber.freePlaces, backgroundColor: .white)
+//        default:
+//            cell.configure(with: .comment, and: chamber.comment, backgroundColor: .white)
+//        }
         
         return cell
     }
