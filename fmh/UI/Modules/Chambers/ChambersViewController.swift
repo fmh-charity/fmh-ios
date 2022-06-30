@@ -84,25 +84,16 @@ extension ChambersViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            cell.configure(with: .numberOfChamber, and: chamber.numberOfChamber)
+            cell.configure(with: .numberOfChamber, and: chamber.numberOfChamber, backgroundColor: UIColor(named: "peach"))
         case 1:
-            cell.configure(with: .post, and: chamber.post)
+            cell.configure(with: .post, and: chamber.post, backgroundColor: .white)
         case 2:
-            cell.configure(with: .block, and: chamber.block)
+            cell.configure(with: .block, and: chamber.block, backgroundColor: .white)
         case 3:
-            cell.configure(with: .freePlaces, and: chamber.freePlaces)
+            cell.configure(with: .freePlaces, and: chamber.freePlaces, backgroundColor: .white)
         default:
-            cell.configure(with: .comment, and: chamber.comment)
+            cell.configure(with: .comment, and: chamber.comment, backgroundColor: .white)
         }
-        
-        if indexPath.row == 0
-            {
-            cell.backgroundColor = UIColor(named: "peach")
-            } else {
-                cell.backgroundColor = .white
-            }
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = CGColor(gray: 0.75, alpha: 1)
         
         return cell
     }

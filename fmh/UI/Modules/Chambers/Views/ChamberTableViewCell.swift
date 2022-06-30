@@ -54,6 +54,8 @@ class ChamberTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstaints()
+        layer.borderWidth = 0.5
+        layer.borderColor = CGColor(gray: 0.75, alpha: 1)
     }
     
     required init?(coder: NSCoder) {
@@ -80,9 +82,10 @@ class ChamberTableViewCell: UITableViewCell {
         ])
     }
     
-    func configure(with description: DecriptionChamber, and chamberInfo: String) {
+    func configure(with description: DecriptionChamber, and chamberInfo: String, backgroundColor: UIColor?) {
         leadingLabel.text = description.title
         trailingLabel.text = chamberInfo
+        self.backgroundColor = backgroundColor
     }
     
 }
