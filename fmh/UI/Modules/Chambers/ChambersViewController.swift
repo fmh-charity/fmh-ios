@@ -9,10 +9,14 @@ import UIKit
 
 class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
     
+    // MARK: - Public properties
+    
     var onCompletion: (() -> ())?
     
     let headerMenu = HeaderMenuView(labelText: "Список палат", leftButtonImage: UIImage(systemName: "info.circle"), rightButtonImage: UIImage(systemName: "plus.circle"))
     let chambers = ChamberModel.chambers
+    
+    // MARK: - Private properties
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -25,12 +29,16 @@ class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
         return tableView
     }()
     
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         setupBackground()
         setupConstrains()
     }
+    
+    // MARK: - Private methods
     
     private func setupBackground() {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "BackGround") ?? UIImage())
@@ -40,6 +48,12 @@ class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
         view.addSubview(headerMenu)
         view.addSubview(tableView)
     }
+    
+}
+
+// MARK: - Setup constraints
+
+extension ChambersViewController {
     
     private func setupConstrains() {
         

@@ -11,91 +11,187 @@ class ChambersTableViewCell: UITableViewCell {
     
     static let identifier = "ChambersTableViewCell"
     
-    let numberOfChamber = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
-    let chamber = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+    // MARK: - Private properties
     
-    let numberOfPost = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
-    let post = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+    private lazy var numberOfChamber: UILabel = {
+       let label = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
+        return label
+    }()
     
-    let numberOfBlock = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
-    let block = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+    private lazy var chamber: UILabel = {
+        let label = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+        label.textAlignment = .right
+        return label
+    }()
     
-    let numberOfFreePlaces = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
-    let freePlaces = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+    private lazy var numberOfPost: UILabel = {
+       let label = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
+        return label
+    }()
     
-    let comment = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
-    let nameOfComment = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+    private lazy var post: UILabel = {
+        let label = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+        label.textAlignment = .right
+        return label
+    }()
     
+    private lazy var numberOfBlock: UILabel = {
+       let label = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
+        return label
+    }()
+    
+    private lazy var block: UILabel = {
+        let label = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+        label.textAlignment = .right
+        return label
+    }()
+    
+    private lazy var numberOfFreePlaces: UILabel = {
+       let label = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
+        return label
+    }()
+    
+    private lazy var freePlaces: UILabel = {
+        let label = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+        label.textAlignment = .right
+        return label
+    }()
+    
+    private lazy var comment: UILabel = {
+       let label = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
+        return label
+    }()
+    
+    private lazy var nameOfComment: UILabel = {
+        let label = UILabel(textColor: .black, font: UIFont(name: "SF UI Display", size: 16))
+        return label
+    }()
+    
+    private lazy var orangeView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "peach")
+        return view
+    }()
+    
+    private lazy var firstSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
+        return view
+    }()
+    
+    private lazy var secondSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
+        return view
+    }()
+    
+    private lazy var thirdSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
+        return view
+    }()
+    
+    private lazy var fourthSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
+        return view
+    }()
+    
+    private lazy var chamberStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [numberOfChamber, chamber], axis: .horizontal, spacing: 0)
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private lazy var postStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [numberOfPost, post], axis: .horizontal, spacing: 0)
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private lazy var blockStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [numberOfBlock, block], axis: .horizontal, spacing: 0)
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private lazy var freePlacesStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [numberOfFreePlaces, freePlaces], axis: .horizontal, spacing: 0)
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private lazy var commentStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [comment, nameOfComment], axis: .vertical, spacing: 0)
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
+    private lazy var mainStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [chamberStackView, postStackView, blockStackView, freePlacesStackView, commentStackView], axis: .vertical, spacing: 15)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        addSubviews()
         setupConstrains()
         backgroundColor = .white
         layer.borderWidth = 0.5
         layer.borderColor = CGColor(gray: 0.75, alpha: 1)
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
+    
+    func configure(numberOfChamber: String, chamber: String, numberOfPost: String, post: String, numberOfBlock: String, block: String, numberOfFreePlaces: String, freePlaces: String, comment: String, nameOfComment: String) {
+
+        self.numberOfChamber.text = numberOfChamber
+        self.chamber.text = chamber
+        self.numberOfPost.text = numberOfPost
+        self.post.text = post
+        self.numberOfBlock.text = numberOfBlock
+        self.block.text = block
+        self.numberOfFreePlaces.text = numberOfFreePlaces
+        self.freePlaces.text = freePlaces
+        self.comment.text = comment
+        self.nameOfComment.text = nameOfComment
+    }
+    
+}
+
+// MARK: - AddSubviews
+
+extension ChambersTableViewCell {
+    
+    private func addSubviews() {
+        contentView.addSubview(orangeView)
+        contentView.addSubview(firstSeparatorView)
+        contentView.addSubview(secondSeparatorView)
+        contentView.addSubview(thirdSeparatorView)
+        contentView.addSubview(fourthSeparatorView)
+        contentView.addSubview(mainStackView)
+    }
+    
+}
+
+// MARK: - Setup constraints
+
+extension ChambersTableViewCell {
     
     private func setupConstrains() {
-        
-        chamber.textAlignment = .right
-        post.textAlignment = .right
-        block.textAlignment = .right
-        freePlaces.textAlignment = .right
-        
-        let orangeView = UIView()
-        orangeView.translatesAutoresizingMaskIntoConstraints = false
-        orangeView.backgroundColor = UIColor(named: "peach")
-        
-        contentView.addSubview(orangeView)
-        
-        let firstSeparatorView = UIView()
-        firstSeparatorView.translatesAutoresizingMaskIntoConstraints = false
-        firstSeparatorView.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
-        
-        contentView.addSubview(firstSeparatorView)
-        
-        let secondSeparatorView = UIView()
-        secondSeparatorView.translatesAutoresizingMaskIntoConstraints = false
-        secondSeparatorView.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
-        
-        contentView.addSubview(secondSeparatorView)
-        
-        let thirdSeparatorView = UIView()
-        thirdSeparatorView.translatesAutoresizingMaskIntoConstraints = false
-        thirdSeparatorView.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
-        
-        contentView.addSubview(thirdSeparatorView)
-        
-        let fourthSeparatorView = UIView()
-        fourthSeparatorView.translatesAutoresizingMaskIntoConstraints = false
-        fourthSeparatorView.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
-        
-        contentView.addSubview(fourthSeparatorView)
-        
-        let chamberStackView = UIStackView(arrangedSubviews: [numberOfChamber, chamber], axis: .horizontal, spacing: 0)
-        let postStackView = UIStackView(arrangedSubviews: [numberOfPost, post], axis: .horizontal, spacing: 0)
-        let blockStackView = UIStackView(arrangedSubviews: [numberOfBlock, block], axis: .horizontal, spacing: 0)
-        let freePlacesStackView = UIStackView(arrangedSubviews: [numberOfFreePlaces, freePlaces], axis: .horizontal, spacing: 0)
-        let commentStackView = UIStackView(arrangedSubviews: [comment, nameOfComment], axis: .vertical, spacing: 0)
-        
-        chamberStackView.distribution = .fillEqually
-        postStackView.distribution = .fillEqually
-        blockStackView.distribution = .fillEqually
-        freePlacesStackView.distribution = .fillEqually
-        commentStackView.distribution = .fill
-        
-        let mainStackView = UIStackView(arrangedSubviews: [chamberStackView, postStackView, blockStackView, freePlacesStackView, commentStackView], axis: .vertical, spacing: 15)
-        
-        mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        mainStackView.distribution = .fill
-        
-        contentView.addSubview(mainStackView)
         
         NSLayoutConstraint.activate([
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -138,20 +234,6 @@ class ChambersTableViewCell: UITableViewCell {
             fourthSeparatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -7.5),
             fourthSeparatorView.heightAnchor.constraint(equalToConstant: 2)
         ])
-    }
-    
-    func configure(numberOfChamber: String, chamber: String, numberOfPost: String, post: String, numberOfBlock: String, block: String, numberOfFreePlaces: String, freePlaces: String, comment: String, nameOfComment: String) {
-
-        self.numberOfChamber.text = numberOfChamber
-        self.chamber.text = chamber
-        self.numberOfPost.text = numberOfPost
-        self.post.text = post
-        self.numberOfBlock.text = numberOfBlock
-        self.block.text = block
-        self.numberOfFreePlaces.text = numberOfFreePlaces
-        self.freePlaces.text = freePlaces
-        self.comment.text = comment
-        self.nameOfComment.text = nameOfComment
     }
     
 }

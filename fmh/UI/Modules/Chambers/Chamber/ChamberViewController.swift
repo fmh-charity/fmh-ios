@@ -9,9 +9,12 @@ import UIKit
 
 class ChamberViewController: UIViewController {
     
+    // MARK: - Public properties
+    var chamber: ChamberModel!
+    
     let headerMenu = HeaderMenuView(labelText: "Палата", leftButtonImage: UIImage(systemName: "trash"), rightButtonImage: UIImage(systemName: "square.and.pencil"))
     
-    var chamber: ChamberModel!
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,8 @@ class ChamberViewController: UIViewController {
         setupBackground()
         print(chamber!)
     }
+    
+    // MARK: - Private methods
     
     private func setupBackground() {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "BackGround") ?? UIImage())

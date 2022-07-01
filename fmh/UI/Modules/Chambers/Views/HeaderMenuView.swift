@@ -58,8 +58,11 @@ class HeaderMenuView: UIView {
         rightButton.setImage(rightButtonImage, for: .normal)
     }
     
-    
-    // MARK: - Private methods
+}
+
+// MARK: - Setup constraints
+
+extension HeaderMenuView {
     
     private func setupConstrains() {
         
@@ -76,4 +79,5 @@ class HeaderMenuView: UIView {
         ])
         
     }
+    
 }
