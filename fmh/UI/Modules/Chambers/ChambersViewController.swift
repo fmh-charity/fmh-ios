@@ -11,7 +11,7 @@ class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
     
     var onCompletion: (() -> ())?
     
-    let headerPanel = HeaderMenuView(labelText: "Список палат", leftButtonImage: UIImage(systemName: "info.circle"), rightButtonImage: UIImage(systemName: "plus.circle"))
+    let headerMenu = HeaderMenuView(labelText: "Список палат", leftButtonImage: UIImage(systemName: "info.circle"), rightButtonImage: UIImage(systemName: "plus.circle"))
     let chambers = ChamberModel.chambers
     
     private lazy var tableView: UITableView = {
@@ -37,21 +37,21 @@ class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
     }
     
     private func addSubviews() {
-        view.addSubview(headerPanel)
+        view.addSubview(headerMenu)
         view.addSubview(tableView)
     }
     
     private func setupConstrains() {
         
         NSLayoutConstraint.activate([
-            headerPanel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerPanel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerPanel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerPanel.heightAnchor.constraint(equalToConstant: 56)
+            headerMenu.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerMenu.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerMenu.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerMenu.heightAnchor.constraint(equalToConstant: 56)
         ])
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: headerPanel.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: headerMenu.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -65,28 +65,33 @@ class ChambersViewController: UIViewController, ChambersViewControllerProtocol {
 extension ChambersViewController: UITableViewDelegate, UITableViewDataSource {
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // сделано через секции, чтобы было расстояние между ячейками с помощью heightForHeaderInSection
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         chambers.count
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        chambers.count
-//    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        20
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = ChamberViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .coverVertical
+        vc.chamber = chambers[indexPath.section]
+        present(vc, animated: true, completion: nil)
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        300
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChambersTableViewCell.identifier, for: indexPath) as? ChambersTableViewCell else { return UITableViewCell() }
-        
-//        let chamber = chambers[indexPath.section]
-        
-        let chamber = chambers[indexPath.row]
+                
+        let chamber = chambers[indexPath.section]
         
         cell.configure(numberOfChamber: chamber.numberOfChamber,
                        chamber: chamber.chamber,
@@ -98,19 +103,6 @@ extension ChambersViewController: UITableViewDelegate, UITableViewDataSource {
                        freePlaces: chamber.freePlaces,
                        comment: chamber.comment,
                        nameOfComment: chamber.nameOfComment)
-        
-//        switch indexPath.row {
-//        case 0:
-//            cell.configure(with: .numberOfChamber, and: chamber.numberOfChamber, backgroundColor: UIColor(named: "peach"))
-//        case 1:
-//            cell.configure(with: .post, and: chamber.post, backgroundColor: .white)
-//        case 2:
-//            cell.configure(with: .block, and: chamber.block, backgroundColor: .white)
-//        case 3:
-//            cell.configure(with: .freePlaces, and: chamber.freePlaces, backgroundColor: .white)
-//        default:
-//            cell.configure(with: .comment, and: chamber.comment, backgroundColor: .white)
-//        }
         
         return cell
     }
