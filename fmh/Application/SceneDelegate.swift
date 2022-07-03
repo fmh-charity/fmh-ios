@@ -28,14 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
 
-//        let repository = NewsRepository()
-//        let interactor = NewsInteractor(repository: repository)
-//        let viewController = TemplateViewController()
-//        let presenter = TemplatePresenter(interactor: interactor, output: viewController)
-//        viewController.presenter = presenter
-//        window?.rootViewController = viewController
-//        window?.makeKeyAndVisible()
-
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.
             // This occurs shortly after the scene enters the background, or when its session is discarded.

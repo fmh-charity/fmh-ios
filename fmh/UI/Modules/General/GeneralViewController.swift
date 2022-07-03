@@ -55,14 +55,12 @@ class GeneralViewController: UIViewController, GeneralViewControllerProtocol {
         })
 
         /// Default  View Controller
-        if let viewController = contextViewController {
-            showViewController(viewController: viewController)
+        if let navigationViewController = contextViewController as? UINavigationController, !navigationViewController.viewControllers.isEmpty {
+            showViewController(viewController: navigationViewController)
         } else {
-            // TODO: Экран заглушка нужен
-            let viewController = UIViewController()
-            viewController.view.backgroundColor = .green
-            
-            showViewController(viewController: viewController)
+            // TODO: Экран заглушка нужен, если всетаки прилетел не контроллер
+            print("Необходимо в GeneralCoordinator установить viewController в navigationController.viewControllers = [?]")
+            self.onCompletion?()
         }
     
     }

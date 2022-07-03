@@ -68,24 +68,10 @@ class LoginView: UIView {
     
     // MARK: - Private functions
     private func commonInit () {
-        setBackground()
+        if let image = UIImage(named: "BackGround") {
+            self.backgroundColor  = UIColor(patternImage: image)
+        }
         setLayout()
-    }
-    
-    private func setBackground () {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "BackGround")
-        imageView.contentMode = .scaleToFill
-        self.addSubview(imageView)
-        self.sendSubviewToBack(imageView)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
     }
     
     private func setLayout() {
