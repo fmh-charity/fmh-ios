@@ -1,25 +1,27 @@
 //
-//  NewsListProtocols.swift
+//  NewsProtocols.swift
 //  fmh
 //
-//  Created: 14.06.2022
+//  Created: 06.06.2022
 //
 
 import Foundation
 
-// MARK: - NewsListPresenterInput
+// MARK: - GeneralPresenterInput
 protocol NewsListPresenterInput: AnyObject {
-    func getNews(_ completion: @escaping ([News]?) -> ())
+    var news: [News] { get }
+    
+    func getAllNews()
 }
 
-
-// MARK: - NewsListPresenterOutput
+// MARK: - GeneralPresenterOutput
 protocol NewsListPresenterOutput: AnyObject {
     var presenter: NewsListPresenterInput? { get set }
     
+    func updatedNews()
 }
 
-// MARK: - NewsListViewControllerProtocol
+// MARK: - GeneralViewControllerProtocol
 protocol NewsListViewControllerProtocol: BaseViewProtocol {
     
 }
