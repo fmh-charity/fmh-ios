@@ -31,10 +31,7 @@ extension ModuleFactory: LoadingModuleFactoryProtocol {
     
     func makeLoadingViewController() -> LoadingViewControllerProtocol {
         let viewController = LoadingViewController()
-        let presenter  = LoadingPresenter(output: viewController)
-        
-        viewController.presenter = presenter
-        
+
         return viewController
     }
     
@@ -56,15 +53,15 @@ extension ModuleFactory: GeneralModuleFactoryProtocol {
     }
 
     ///  Экраны которые выводятся в GeneralViewController
-    func makeNewsListViewController() -> NewsListViewControllerProtocol {
-        let repository = NewsRepository()
-        let interactor = NewsInteractor(repository: repository)
-        let viewController = NewsListViewController()
-        let presenter = NewsListPresenter(interactor: interactor, output: viewController)
-        viewController.presenter = presenter
-        
-        return viewController
-    }
+//    func makeNewsListViewController() -> NewsListViewControllerProtocol {
+//        let repository = NewsRepository()
+//        let interactor = NewsInteractor(repository: repository)
+//        let viewController = NewsListViewController()
+//        let presenter = NewsListPresenter(interactor: interactor, output: viewController)
+//        viewController.presenter = presenter
+//        
+//        return viewController
+//    }
     
     func makeOurMissionViewController() -> OurMissionViewControllerProtocol {
         let viewController = OurMissionViewController()
