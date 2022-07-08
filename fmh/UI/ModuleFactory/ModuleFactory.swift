@@ -31,10 +31,7 @@ extension ModuleFactory: LoadingModuleFactoryProtocol {
     
     func makeLoadingViewController() -> LoadingViewControllerProtocol {
         let viewController = LoadingViewController()
-        let presenter  = LoadingPresenter(output: viewController)
-        
-        viewController.presenter = presenter
-        
+
         return viewController
     }
     

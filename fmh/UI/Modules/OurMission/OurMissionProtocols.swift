@@ -20,4 +20,5 @@ protocol OurMissionPresenterOutput: AnyObject {
 
 // MARK: - OurMissioniewControllerProtocol
 protocol OurMissionViewControllerProtocol: BaseViewProtocol {
+    
 }
