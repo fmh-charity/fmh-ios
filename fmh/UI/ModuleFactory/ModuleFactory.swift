@@ -40,6 +40,16 @@ extension ModuleFactory: LoadingModuleFactoryProtocol {
 // MARK: - LoadingModuleFactoryProtocol
 extension ModuleFactory: GeneralModuleFactoryProtocol {
     
+    func makeMainScreenViewController() -> MainScreenViewControllerProtocol {
+        let repository = NewsRepository()
+        let interactor = NewsInteractor(repository: repository)
+        let viewController = MainScreenViewController()
+        let presenter = MainScreenPresenter(interactor: interactor, output: viewController)
+        viewController.presenter = presenter
+
+        return viewController
+    }
+    
     func makeGeneralViewController() -> GeneralViewControllerProtocol {
         let repository = AuthRepository()
         let interactor = AuthInteractor(repository: repository)

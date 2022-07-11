@@ -48,7 +48,8 @@ extension GeneralCoordinator {
         viewController.didSelectMenu = { [unowned self] menu in
             switch menu {
                 case .home:
-                    break
+                    let viewController = self.moduleFactory.makeMainScreenViewController()
+                    navigationController.viewControllers = [viewController.toPresent]
                 case .ourMission:
                     let viewController = self.moduleFactory.makeOurMissionViewController()
                     navigationController.viewControllers = [viewController.toPresent]

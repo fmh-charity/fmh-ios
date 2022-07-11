@@ -20,7 +20,7 @@ protocol LoadingModuleFactoryProtocol {
 // MARK: - GeneralModuleFactoryProtocol
 protocol GeneralModuleFactoryProtocol {
     func makeGeneralViewController() -> GeneralViewControllerProtocol
-    
+    func makeMainScreenViewController() -> MainScreenViewControllerProtocol
 //    func makeNewsListViewController() -> NewsListViewControllerProtocol
     
     func makeOurMissionViewController() -> OurMissionViewControllerProtocol

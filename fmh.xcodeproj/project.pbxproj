@@ -51,6 +51,18 @@
 		199B4AD7287879F2005AE1CD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4ACF287879F2005AE1CD /* LoadingViewController.swift */; };
 		199B4AD8287879F2005AE1CD /* SpinningCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AD1287879F2005AE1CD /* SpinningCircleView.swift */; };
 		199B4AD9287879F2005AE1CD /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AD2287879F2005AE1CD /* Layer.swift */; };
+		199B4AEE287C9FCB005AE1CD /* WishesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4ADF287C9FCB005AE1CD /* WishesViewModel.swift */; };
+		199B4AEF287C9FCB005AE1CD /* WishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AE0287C9FCB005AE1CD /* WishesCell.swift */; };
+		199B4AF0287C9FCB005AE1CD /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AE1287C9FCB005AE1CD /* NewsCell.swift */; };
+		199B4AF1287C9FCB005AE1CD /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AE2287C9FCB005AE1CD /* NewsViewModel.swift */; };
+		199B4AF2287C9FCB005AE1CD /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AE3287C9FCB005AE1CD /* MainScreenViewController.swift */; };
+		199B4AF4287C9FCB005AE1CD /* MainScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AE5287C9FCB005AE1CD /* MainScreenModel.swift */; };
+		199B4AF5287C9FCB005AE1CD /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AE6287C9FCB005AE1CD /* MainScreenPresenter.swift */; };
+		199B4AF6287C9FCB005AE1CD /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AE8287C9FCB005AE1CD /* UIStackView.swift */; };
+		199B4AF7287C9FCB005AE1CD /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AE9287C9FCB005AE1CD /* UIFont.swift */; };
+		199B4AF8287C9FCB005AE1CD /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AEA287C9FCB005AE1CD /* UILabel.swift */; };
+		199B4AF9287C9FCB005AE1CD /* MainScreenViewController+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AEB287C9FCB005AE1CD /* MainScreenViewController+View.swift */; };
+		199B4AFB287C9FCB005AE1CD /* MainScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B4AED287C9FCB005AE1CD /* MainScreenProtocol.swift */; };
 		199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199C09D5284108AF00ADFE3A /* BaseViewProtocol.swift */; };
 		199C09D82841120900ADFE3A /* PresentableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199C09D72841120900ADFE3A /* PresentableProtocol.swift */; };
 		19A7001A286C9D4E00A97C78 /* OurMissionDataArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A70014286C9D4D00A97C78 /* OurMissionDataArray.swift */; };
@@ -124,6 +136,18 @@
 		199B4ACF287879F2005AE1CD /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		199B4AD1287879F2005AE1CD /* SpinningCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinningCircleView.swift; sourceTree = "<group>"; };
 		199B4AD2287879F2005AE1CD /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		199B4ADF287C9FCB005AE1CD /* WishesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishesViewModel.swift; sourceTree = "<group>"; };
+		199B4AE0287C9FCB005AE1CD /* WishesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishesCell.swift; sourceTree = "<group>"; };
+		199B4AE1287C9FCB005AE1CD /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		199B4AE2287C9FCB005AE1CD /* NewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		199B4AE3287C9FCB005AE1CD /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		199B4AE5287C9FCB005AE1CD /* MainScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenModel.swift; sourceTree = "<group>"; };
+		199B4AE6287C9FCB005AE1CD /* MainScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
+		199B4AE8287C9FCB005AE1CD /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		199B4AE9287C9FCB005AE1CD /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		199B4AEA287C9FCB005AE1CD /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		199B4AEB287C9FCB005AE1CD /* MainScreenViewController+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainScreenViewController+View.swift"; sourceTree = "<group>"; };
+		199B4AED287C9FCB005AE1CD /* MainScreenProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenProtocol.swift; sourceTree = "<group>"; };
 		199C09D5284108AF00ADFE3A /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		199C09D72841120900ADFE3A /* PresentableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableProtocol.swift; sourceTree = "<group>"; };
 		19A70014286C9D4D00A97C78 /* OurMissionDataArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurMissionDataArray.swift; sourceTree = "<group>"; };
@@ -286,6 +310,65 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		199B4ADA287C9FCB005AE1CD /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				199B4ADB287C9FCB005AE1CD /* MainScreenViewController */,
+				199B4AE5287C9FCB005AE1CD /* MainScreenModel.swift */,
+				199B4AED287C9FCB005AE1CD /* MainScreenProtocol.swift */,
+				199B4AE6287C9FCB005AE1CD /* MainScreenPresenter.swift */,
+				199B4AE3287C9FCB005AE1CD /* MainScreenViewController.swift */,
+				199B4AE7287C9FCB005AE1CD /* Extentions */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		199B4ADB287C9FCB005AE1CD /* MainScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				199B4ADC287C9FCB005AE1CD /* Cell */,
+			);
+			path = MainScreenViewController;
+			sourceTree = "<group>";
+		};
+		199B4ADC287C9FCB005AE1CD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				199B4ADD287C9FCB005AE1CD /* NewsCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		199B4ADD287C9FCB005AE1CD /* NewsCell */ = {
+			isa = PBXGroup;
+			children = (
+				199B4ADE287C9FCB005AE1CD /* WishesCell */,
+				199B4AE1287C9FCB005AE1CD /* NewsCell.swift */,
+				199B4AE2287C9FCB005AE1CD /* NewsViewModel.swift */,
+			);
+			path = NewsCell;
+			sourceTree = "<group>";
+		};
+		199B4ADE287C9FCB005AE1CD /* WishesCell */ = {
+			isa = PBXGroup;
+			children = (
+				199B4ADF287C9FCB005AE1CD /* WishesViewModel.swift */,
+				199B4AE0287C9FCB005AE1CD /* WishesCell.swift */,
+			);
+			path = WishesCell;
+			sourceTree = "<group>";
+		};
+		199B4AE7287C9FCB005AE1CD /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				199B4AE8287C9FCB005AE1CD /* UIStackView.swift */,
+				199B4AE9287C9FCB005AE1CD /* UIFont.swift */,
+				199B4AEA287C9FCB005AE1CD /* UILabel.swift */,
+				199B4AEB287C9FCB005AE1CD /* MainScreenViewController+View.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		199C09D3284009BA00ADFE3A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +481,7 @@
 		19C7A537280DED81005000EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				199B4ADA287C9FCB005AE1CD /* MainScreen */,
 				199B4AC7287879F2005AE1CD /* LoadingScreen */,
 				19243E182829BAC500A43CA8 /* Authorization */,
 				19F509D9282FF72A0082FB98 /* General */,
@@ -574,6 +658,7 @@
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				191EAA73281BD256007B1397 /* DTOCredentials.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
+				199B4AF5287C9FCB005AE1CD /* MainScreenPresenter.swift in Sources */,
 				19A7001B286C9D4E00A97C78 /* OurMissionViewController.swift in Sources */,
 				193CF87D285A5DB30061A69E /* Date+toString.swift in Sources */,
 				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
@@ -589,12 +674,16 @@
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
 				19A7001C286C9D4E00A97C78 /* OurMissionCell.swift in Sources */,
+				199B4AF0287C9FCB005AE1CD /* NewsCell.swift in Sources */,
+				199B4AF9287C9FCB005AE1CD /* MainScreenViewController+View.swift in Sources */,
 				19562A77284A6A8900C8A704 /* DTONews.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
+				199B4AFB287C9FCB005AE1CD /* MainScreenProtocol.swift in Sources */,
 				199B4AD5287879F2005AE1CD /* ViewOutputDelegate.swift in Sources */,
 				19ECC0B1284CA4B000DD695C /* UserInfo.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
 				19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */,
+				199B4AEF287C9FCB005AE1CD /* WishesCell.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
@@ -605,13 +694,18 @@
 				199B4AD8287879F2005AE1CD /* SpinningCircleView.swift in Sources */,
 				19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */,
 				199B4AD3287879F2005AE1CD /* LoadingScreenPresenter.swift in Sources */,
+				199B4AF7287C9FCB005AE1CD /* UIFont.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19ECC0AF284C9FE900DD695C /* News.swift in Sources */,
+				199B4AF6287C9FCB005AE1CD /* UIStackView.swift in Sources */,
+				199B4AEE287C9FCB005AE1CD /* WishesViewModel.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
+				199B4AF2287C9FCB005AE1CD /* MainScreenViewController.swift in Sources */,
 				19562A79284B33F200C8A704 /* NewsInteractor.swift in Sources */,
 				191EAA75281BD26A007B1397 /* DTOTokenData.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				191EAA82281C3B48007B1397 /* DTORefreshToken.swift in Sources */,
+				199B4AF8287C9FCB005AE1CD /* UILabel.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
 				1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */,
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
@@ -622,7 +716,9 @@
 				19562A75284A67DB00C8A704 /* APIResourceNews.swift in Sources */,
 				191EAA77281BD281007B1397 /* DTOUserInfo.swift in Sources */,
 				196841082837DC00008F294F /* GeneralCoordinator.swift in Sources */,
+				199B4AF4287C9FCB005AE1CD /* MainScreenModel.swift in Sources */,
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
+				199B4AF1287C9FCB005AE1CD /* NewsViewModel.swift in Sources */,
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
 				199B4AD9287879F2005AE1CD /* Layer.swift in Sources */,
 				19A7001D286C9D4E00A97C78 /* OurMissionPresenter.swift in Sources */,
