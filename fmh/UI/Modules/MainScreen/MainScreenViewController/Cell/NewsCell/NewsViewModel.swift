@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 class NewsViewModel {
     
-    private(set) var imageName: String = ""
+    private(set) var imageName = UIImage()
     private(set) var title: String = ""
     private(set) var date: String = ""
     private(set) var text: String = ""
@@ -19,22 +20,19 @@ class NewsViewModel {
     
     
     init(news: News) {
-//        imageName = newsCategory[news.newsCategoryID]
-//        title = news.title
-//        date = createDate(string: news.publishDate)
-//        text = news.description
-//        estimatedHours = convertDateFormater(date: news.publishDate)
+        if let image = news.categoryImg{ imageName = image }
+        title = news.title
+        date = createDate(date: news.publishDate)
+        text = news.description
+        estimatedHours = convertDateFormater(date: news.publishDate)
     }
 
-    private func createDate(string: String) -> String {
+    private func createDate(date: Date) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = .none
-        guard let date = dateFormatter.date(from: string) else {
-            assert(false, "no date from string")
-            return ""
-        }
+
         
         dateFormatter.dateFormat = "dd MM yyyy"
         dateFormatter.timeZone = NSTimeZone.system
@@ -42,7 +40,7 @@ class NewsViewModel {
         return calcDate
     }
     
-    private func convertDateFormater(date: String) -> Int {
+    private func convertDateFormater(date: Date) -> Int {
         var year = 0
         var month = 0
         var day = 0
@@ -51,11 +49,7 @@ class NewsViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = .init(secondsFromGMT: WishesViewModel.gmt)
-        guard let date = dateFormatter.date(from: date) else {
-            assert(false, "no date from string")
-            return 0
-        }
-    
+
         var result = 0
         dateFormatter.dateFormat = "yyyy"
         if let temp = Int(dateFormatter.string(from: date)) { year = temp } else { year = 0 }

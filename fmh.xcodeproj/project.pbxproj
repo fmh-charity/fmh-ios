@@ -89,6 +89,11 @@
 		19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */; };
 		19F509E2283003B20082FB98 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E1283003B20082FB98 /* CoordinatorProtocol.swift */; };
 		19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F509E528300C110082FB98 /* AppCoordinator.swift */; };
+		84B8B065287DC89F0081B2BD /* Wishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B064287DC89F0081B2BD /* Wishes.swift */; };
+		84B8B067287DC9DF0081B2BD /* DTOWishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B066287DC9DF0081B2BD /* DTOWishes.swift */; };
+		84B8B069287DF5620081B2BD /* WishesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B068287DF5620081B2BD /* WishesInteractor.swift */; };
+		84B8B06B287DF8D70081B2BD /* WishesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B06A287DF8D70081B2BD /* WishesRepository.swift */; };
+		84B8B06D287DFA0E0081B2BD /* APIResourceWishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8B06C287DFA0E0081B2BD /* APIResourceWishes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,6 +180,11 @@
 		19F509DE282FFA160082FB98 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
 		19F509E1283003B20082FB98 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		19F509E528300C110082FB98 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		84B8B064287DC89F0081B2BD /* Wishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wishes.swift; sourceTree = "<group>"; };
+		84B8B066287DC9DF0081B2BD /* DTOWishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOWishes.swift; sourceTree = "<group>"; };
+		84B8B068287DF5620081B2BD /* WishesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishesInteractor.swift; sourceTree = "<group>"; };
+		84B8B06A287DF8D70081B2BD /* WishesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishesRepository.swift; sourceTree = "<group>"; };
+		84B8B06C287DFA0E0081B2BD /* APIResourceWishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResourceWishes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +218,7 @@
 				191EAA76281BD281007B1397 /* DTOUserInfo.swift */,
 				191EAA81281C3B48007B1397 /* DTORefreshToken.swift */,
 				19562A76284A6A8900C8A704 /* DTONews.swift */,
+				84B8B066287DC9DF0081B2BD /* DTOWishes.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -217,6 +228,7 @@
 			children = (
 				191EAA7F281C3518007B1397 /* APIResourceAuth.swift */,
 				19562A74284A67DB00C8A704 /* APIResourceNews.swift */,
+				84B8B06C287DFA0E0081B2BD /* APIResourceWishes.swift */,
 			);
 			path = APIResources;
 			sourceTree = "<group>";
@@ -226,6 +238,7 @@
 			children = (
 				19243DE1282677BA00A43CA8 /* AuthRepository.swift */,
 				19562A72284A677C00C8A704 /* NewsRepository.swift */,
+				84B8B06A287DF8D70081B2BD /* WishesRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -342,9 +355,9 @@
 		199B4ADD287C9FCB005AE1CD /* NewsCell */ = {
 			isa = PBXGroup;
 			children = (
-				199B4ADE287C9FCB005AE1CD /* WishesCell */,
 				199B4AE1287C9FCB005AE1CD /* NewsCell.swift */,
 				199B4AE2287C9FCB005AE1CD /* NewsViewModel.swift */,
+				199B4ADE287C9FCB005AE1CD /* WishesCell */,
 			);
 			path = NewsCell;
 			sourceTree = "<group>";
@@ -352,8 +365,8 @@
 		199B4ADE287C9FCB005AE1CD /* WishesCell */ = {
 			isa = PBXGroup;
 			children = (
-				199B4ADF287C9FCB005AE1CD /* WishesViewModel.swift */,
 				199B4AE0287C9FCB005AE1CD /* WishesCell.swift */,
+				199B4ADF287C9FCB005AE1CD /* WishesViewModel.swift */,
 			);
 			path = WishesCell;
 			sourceTree = "<group>";
@@ -463,6 +476,7 @@
 			children = (
 				194220B328310AAE00A42F72 /* AuthInteractor.swift */,
 				19562A78284B33F200C8A704 /* NewsInteractor.swift */,
+				84B8B068287DF5620081B2BD /* WishesInteractor.swift */,
 				19ECC0AD284C9FCE00DD695C /* Models */,
 			);
 			path = DomainLayer;
@@ -514,6 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				19ECC0AE284C9FE900DD695C /* News.swift */,
+				84B8B064287DC89F0081B2BD /* Wishes.swift */,
 				19ECC0B0284CA4B000DD695C /* UserInfo.swift */,
 			);
 			path = Models;
@@ -679,12 +694,14 @@
 				19562A77284A6A8900C8A704 /* DTONews.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
 				199B4AFB287C9FCB005AE1CD /* MainScreenProtocol.swift in Sources */,
+				84B8B069287DF5620081B2BD /* WishesInteractor.swift in Sources */,
 				199B4AD5287879F2005AE1CD /* ViewOutputDelegate.swift in Sources */,
 				19ECC0B1284CA4B000DD695C /* UserInfo.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
 				19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */,
 				199B4AEF287C9FCB005AE1CD /* WishesCell.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
+				84B8B067287DC9DF0081B2BD /* DTOWishes.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
@@ -702,12 +719,14 @@
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
 				199B4AF2287C9FCB005AE1CD /* MainScreenViewController.swift in Sources */,
 				19562A79284B33F200C8A704 /* NewsInteractor.swift in Sources */,
+				84B8B06D287DFA0E0081B2BD /* APIResourceWishes.swift in Sources */,
 				191EAA75281BD26A007B1397 /* DTOTokenData.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				191EAA82281C3B48007B1397 /* DTORefreshToken.swift in Sources */,
 				199B4AF8287C9FCB005AE1CD /* UILabel.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
 				1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */,
+				84B8B065287DC89F0081B2BD /* Wishes.swift in Sources */,
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
 				193260F0285488B50043136F /* UIViewController+revealViewController.swift in Sources */,
 				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
@@ -720,6 +739,7 @@
 				19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */,
 				199B4AF1287C9FCB005AE1CD /* NewsViewModel.swift in Sources */,
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
+				84B8B06B287DF8D70081B2BD /* WishesRepository.swift in Sources */,
 				199B4AD9287879F2005AE1CD /* Layer.swift in Sources */,
 				19A7001D286C9D4E00A97C78 /* OurMissionPresenter.swift in Sources */,
 				19F509E2283003B20082FB98 /* CoordinatorProtocol.swift in Sources */,

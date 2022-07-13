@@ -33,13 +33,16 @@ class WishesViewModel {
         executorName = executors[wishes.executorID].1
         plannedDate = convertDateFormater(date: wishes.planExecuteDate).0
         plannedTime = convertDateFormater(date: wishes.planExecuteDate).1
-        data = wishes.planExecuteDate
+        data = createDate(date: wishes.planExecuteDate)
         color = calcColor().0
         nameButton = calcColor().1
     }
     
     func calcColor() -> (CGColor, String) {
-        self.indexOfColor = convertDateFormater(date: data).2
+        let dateFormatter = DateFormatter()
+        let date = dateFormatter.date(from: data)
+        
+        self.indexOfColor = convertDateFormater(date: date ?? Date()).2
         switch indexOfColor {
         case  0...2:
             return (wishesColor[0], "VectorR")
@@ -53,23 +56,19 @@ class WishesViewModel {
         return (wishesColor[2], "VectorB")
     }
     
-    private func createDate(string: String) -> String {
+    private func createDate(date: Date) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = .none
-        guard let date = dateFormatter.date(from: string) else {
-            assert(false, "no date from string")
-            return ""
-        }
-        
+ 
         dateFormatter.dateFormat = "dd MM yyyy"
         dateFormatter.timeZone = NSTimeZone.system
         let calcDate = dateFormatter.string(from: date)
         return calcDate
     }
     
-    private func convertDateFormater(date: String) -> (String, String, Int) {
+    private func convertDateFormater(date: Date) -> (String, String, Int) {
         var year = 0
         var month = 0
         var day = 0
@@ -78,10 +77,10 @@ class WishesViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = .init(secondsFromGMT: WishesViewModel.gmt)
-        guard let date = dateFormatter.date(from: date) else {
-            assert(false, "no date from string")
-            return ("", "", 0)
-        }
+//        guard let date = dateFormatter.date(from: date) else {
+//            assert(false, "no date from string")
+//            return ("", "", 0)
+//        }
     
         var result = ("", "", 0)
         dateFormatter.dateFormat = "yyyy"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ViewOutputDelegate: class {
+protocol ViewOutputDelegate: AnyObject {
     func getData()
     func saveData()
 //    func getRandomCount()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ViewInputDelegate: class {
+protocol ViewInputDelegate: AnyObject {
     func setupInitialState()
     func setupData(with testData: ([LoadingScreenModel]))
     func displayData(i: Int)

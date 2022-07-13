@@ -75,7 +75,7 @@ class NewsCell: UITableViewCell {
     }
     
     func setViewModel(_ viewModel: NewsViewModel) {
-        self.newsIcon.image = .init(named: viewModel.imageName)
+        self.newsIcon.image = viewModel.imageName
         self.newsLabel.text = viewModel.title
         self.newsDate.text = viewModel.date
         self.openNewsImageView.image = .init(named: viewModel.image)
