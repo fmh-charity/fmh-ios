@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-struct MainScreenModel {
-    var news: News
-    var wishes: Wishes
-    
-}
+//struct MainScreenModel {
+//    var news: News
+//    var wishes: Wishes
+//
+//}
 
 
 //var test = MainScreenModel(news: News(), applications: Application())
@@ -30,11 +30,11 @@ let news = [(0, "С Днем Рождения Тюрина П.Е.С Днем Р�
 let newsCategory = ["HappyBirthday", "TradeUnion", "Salary", "TradeUnion"]
 let newsEvent = ["С Днем Рождения Тюрина П.Е.", "Встреча с волонтерами", "Выдача аванса", "Профсоюзное собрание"]
 
-var newsData: [News] = [
-    .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth"), .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth")
-, .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth"), .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth"), .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth")
-    , .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth")
-]
+//var newsData: [News] = [
+//    .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth"), .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth")
+//, .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth"), .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth"), .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth")
+//    , .init(createDate: Date(), creatorId: 0, creatorName: "thr", description: "rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb rthhbfb fgvhfg fghb", id: 0, newsCategoryId: 1, publishDate: Date(), publishEnabled: true, title: "rth")
+//]
 
 // Test wishes
 

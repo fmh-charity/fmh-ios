@@ -41,10 +41,14 @@ extension ModuleFactory: LoadingModuleFactoryProtocol {
 extension ModuleFactory: GeneralModuleFactoryProtocol {
     
     func makeMainScreenViewController() -> MainScreenViewControllerProtocol {
-        let repository = NewsRepository()
-        let interactor = NewsInteractor(repository: repository)
+        let repositoryNews = NewsRepository()
+        let repositoryWishes = WishesRepository()
+        let interactorNews = NewsInteractor(repository: repositoryNews)
+        let interactorWishes = WishesInteractor(repository: repositoryWishes)
         let viewController = MainScreenViewController()
-        let presenter = MainScreenPresenter(interactor: interactor, output: viewController)
+        let presenter = MainScreenPresenter(output: viewController)
+        presenter.interactorNews = interactorNews
+        presenter.interactorWishes = interactorWishes
         viewController.presenter = presenter
 
         return viewController

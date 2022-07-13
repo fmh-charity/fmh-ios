@@ -23,15 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             appCoordinator = AppCoordinator(window: window)
-            //appCoordinator?.start()
+            appCoordinator?.start()
             self.window = window
             window.makeKeyAndVisible()
         }
 
-        let factory = ModuleFactory()
-        let vc = factory.makeMainScreenViewController()
-        window?.rootViewController = vc.toPresent
-        window?.makeKeyAndVisible()
+//        let factory = ModuleFactory()
+//        let vc = factory.makeMainScreenViewController()
+//        window?.rootViewController = vc.toPresent
+//        window?.makeKeyAndVisible()
         
         func sceneDidDisconnect(_ scene: UIScene) {
             // Called as the scene is being released by the system.

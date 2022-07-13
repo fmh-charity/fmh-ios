@@ -43,9 +43,27 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
            }
        }
 
+    var newsData: [News] = [] {
+        didSet {
+            
+            tableview.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        presenter?.getNewsAll(completion: { news, networkError in
+            guard  networkError == nil else {
+                return
+            }
+            if let news = news {
+                print("News count all: \(news.count)")
+                self.newsData = news
+                self.tableview.reloadData() // <- времнно
+            }
+        })
+        
         configureMain()
         
     }
@@ -194,10 +212,10 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let footerType = FooterView.FooterType(rawValue: section) else { return nil }
         let footer = FooterView(type: footerType)
-        footer.pressDownButton = { type in
+        footer.pressDownButton = { [unowned self] type in
             switch type {
             case .news:
-                let difference = newsData.count - self.countNews
+                let difference = self.newsData.count - self.countNews
                 switch difference {
                 case 0...3:
                     self.countNews += difference

@@ -7,14 +7,16 @@
 
 import UIKit
 
-final class MainScreenPresenter {
 
+
+final class MainScreenPresenter {
+    
     weak private var output: MainScreenPresenterOutput?
     
-    var interactor: NewsInteractorProtocol?
+    var interactorNews: NewsInteractorProtocol?
+    var interactorWishes: WishesInteractorProtocol?
 
-    init(interactor: NewsInteractorProtocol, output: MainScreenPresenterOutput) {
-        self.interactor = interactor
+    init(output: MainScreenPresenterOutput) {
         self.output = output
     }
     
@@ -23,8 +25,18 @@ final class MainScreenPresenter {
 // MARK: - GeneralPresenterInput
 extension MainScreenPresenter: MainScreenPresenterInput {
     
-//    func getUserInfo(completion: @escaping (UserInfo?, NetworkError?) -> Void) {
-//
-//    }
+    func getNewsAll(completion: @escaping ([News]?, NetworkError?) -> Void) {
+        interactorNews?.getAllNews(completion: { news, networkError in
+            guard networkError == nil else {
+                //TODO: Обработка ошибка
+                completion(nil, networkError)
+                return
+            }
+            if let news = news {
+                completion(news, nil)
+            }
+        })
+    }
+    
 
 }
