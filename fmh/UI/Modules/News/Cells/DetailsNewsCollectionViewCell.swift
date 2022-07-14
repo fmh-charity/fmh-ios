@@ -120,21 +120,21 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
     
     var buttonTrash: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "иконка корзина"), for: .normal)
+        button.setImage(UIImage(named: "controlPanel.trash"), for: .normal)
         button.addTarget(self, action: #selector(deleteCellAction), for: .touchUpInside)
         return button
     }()
     
     var buttonEdit: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "иконка редактировать"), for: .normal)
+        button.setImage(UIImage(named: "controlPanel.edit"), for: .normal)
         button.addTarget(self, action: #selector(editNewsAction), for: .touchUpInside)
         return button
     }()
     
     var arrowUpDownButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(systemName: ConstantNews.Images.chevronDown)?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(systemName: ConstantNews.Images.chevronUp)?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.tintColor = ConstantNews.Collor.chevron
         button.contentMode = .scaleAspectFit

@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - GeneralPresenterInput
 protocol NewsListPresenterInput: AnyObject {
-    var news: [News] { get }
+    var news: [News] { get set }
     
     func getAllNews()
 }

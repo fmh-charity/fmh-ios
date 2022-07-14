@@ -36,7 +36,7 @@ extension News {
         case 5:
             return UIImage(named: "news.holiday")
         case 6:
-            return UIImage(named: "иnews.massage")
+            return UIImage(named: "news.massage")
         case 7:
             return UIImage(named: "news.gratitude")
         case 8:

@@ -1,5 +1,5 @@
 //
-//  SettingNewsViewController.swift
+//  DetailsNewsViewController.swift
 //  fmh
 //
 //  Created: 14.05.2022
@@ -31,7 +31,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
         view.backgroundColor = .clear
         view.register(DetailsNewsCollectionViewCell.self, forCellWithReuseIdentifier: "DetailsNewsCell")
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.showsVerticalScrollIndicator = false
+        view.showsVerticalScrollIndicator = true
         view.allowsMultipleSelection = true
         view.alwaysBounceVertical = true
         view.delegate = self
@@ -64,7 +64,6 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
         stack.distribution = .fillEqually
         stack.axis = .horizontal
         stack.spacing = 10
-        
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -75,7 +74,6 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
         if let selector = selector {
             button.addTarget(self, action: selector, for: .touchUpInside)
         }
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }

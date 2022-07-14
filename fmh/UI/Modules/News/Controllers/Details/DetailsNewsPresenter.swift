@@ -11,7 +11,7 @@ final class DetailsNewsPresenter {
 
     weak private var output: DetailsNewsPresenterOutput?
     
-    var interactor: NewsInteractor
+    var interactor: NewsInteractorProtocol
 
     var news: [News] = [] {
         didSet {
@@ -19,7 +19,7 @@ final class DetailsNewsPresenter {
         }
     }
     
-    init(interactor: NewsInteractor, output: DetailsNewsPresenterOutput) {
+    init(interactor: NewsInteractorProtocol, output: DetailsNewsPresenterOutput) {
         self.interactor = interactor
         self.output = output
     }

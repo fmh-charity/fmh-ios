@@ -66,6 +66,16 @@ extension ModuleFactory: GeneralModuleFactoryProtocol {
         return viewController
     }
     
+    func makeDetailsNewsListViewController() -> DetailsNewsViewControllerProtocol {
+        let repository = NewsRepository()
+        let interactor = NewsInteractor(repository: repository)
+        let viewController = DetailsNewsViewController()
+        let presenter = DetailsNewsPresenter(interactor: interactor, output: viewController)
+        viewController.presenter = presenter
+        
+        return viewController
+    }
+    
     
     func makeOurMissionViewController() -> OurMissionViewControllerProtocol {
         let viewController = OurMissionViewController()

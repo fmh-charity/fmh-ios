@@ -226,8 +226,8 @@
 		0C3E5B952873724800FF119C /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				0C3E5B962873724800FF119C /* DetailsNewsPresenter.swift */,
 				0C3E5B972873724800FF119C /* DetailsNewsProtocols.swift */,
+				0C3E5B962873724800FF119C /* DetailsNewsPresenter.swift */,
 				0C3E5B982873724800FF119C /* DetailsNewsViewController.swift */,
 			);
 			path = Details;

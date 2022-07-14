@@ -122,10 +122,10 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
     fileprivate func setLayouts() {
         
         /// Create buttons
-        let buttonEdit = makeButton(image: UIImage(named: "иконка редактировать"), selector: #selector(buttonDetailsAction))
-        let buttonFilter = makeButton(image: UIImage(named: "иконка Фильтры"), selector: nil)
-        let buttonSort = makeButton(image: UIImage(named: "иконка сортировка"), selector: nil)
-        let buttonInfo = makeButton(image: UIImage(named: "Иконка Информация"), selector: #selector(buttonInfoAction))
+        let buttonEdit = makeButton(image: UIImage(named: "controlPanel.edit"), selector: #selector(buttonDetailsAction))
+        let buttonFilter = makeButton(image: UIImage(named: "controlPanel.filter"), selector: nil)
+        let buttonSort = makeButton(image: UIImage(named: "controlPanel.sorting"), selector: #selector(buttonSortAction))
+        let buttonInfo = makeButton(image: UIImage(named: "controlPanel.info"), selector: #selector(buttonInfoAction))
         /// Add buttons in stackButtons
         stack.addArrangedSubview(buttonInfo)
         stack.addArrangedSubview(buttonSort)
@@ -179,9 +179,13 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
     }
     
     @objc func buttonDetailsAction() {
-        let detailsNewsVC = DetailsNewsViewController() as DetailsNewsViewController
-        navigationController?.pushViewController(detailsNewsVC, animated: true)
-        
+        let detailsNewsVC = moduleFactory.makeDetailsNewsListViewController()
+        navigationController?.pushViewController(detailsNewsVC as! UIViewController, animated: true)
+    }
+    
+    @objc func buttonSortAction() {
+        presenter?.news.reverse()
+        newsCollectionView.reloadData()
     }
     
 }

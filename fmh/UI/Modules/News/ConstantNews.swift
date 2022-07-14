@@ -35,13 +35,4 @@ struct ConstantNews {
         static let chevronDown = "chevron.down"
     }
     
-    struct Test {
-        static let testArray = [
-            News(createDate: Date(), creatorId: 1, creatorName: "dsf", description: "sgagreregergrergerger rg erg erg eg erg erg erg ", id: 3, newsCategoryId: 3, publishDate: Date(), publishEnabled: true, title: "cnsdjvsdj sdff"),
-            News(createDate: Date(), creatorId: 1, creatorName: "dsf", description: "sgagreregergrergerger rg erg erg eg erg erg erg ", id: 3, newsCategoryId: 3, publishDate: Date(), publishEnabled: true, title: "cnsdjvsdj sdff"),
-            News(createDate: Date(), creatorId: 1, creatorName: "dsf", description: "sgagreregergrergerger rg erg erg eg erg erg erg ", id: 3, newsCategoryId: 3, publishDate: Date(), publishEnabled: true, title: "cnsdjvsdj sdff"),
-            News(createDate: Date(), creatorId: 1, creatorName: "dsf", description: "sgagreregergrergerger rg erg erg eg erg erg erg ", id: 3, newsCategoryId: 3, publishDate: Date(), publishEnabled: true, title: "cnsdjvsdj sdff"),
-            News(createDate: Date(), creatorId: 1, creatorName: "dsf", description: "sgagreregergrergerger rg erg erg eg erg erg erg ", id: 3, newsCategoryId: 3, publishDate: Date(), publishEnabled: true, title: "cnsdjvsdj sdff"),
-            News(createDate: Date(), creatorId: 1, creatorName: "dsf", description: "sgagreregergrergerger rg erg erg eg erg erg erg ", id: 3, newsCategoryId: 3, publishDate: Date(), publishEnabled: true, title: "cnsdjvsdj sdff") ]
-    }
 }
