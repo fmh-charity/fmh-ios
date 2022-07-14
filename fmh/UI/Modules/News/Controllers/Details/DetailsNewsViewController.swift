@@ -122,7 +122,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
         
         /// Create buttons
         let buttonFilter = makeButton(image: UIImage(named: "controlPanel.filter"), selector: #selector(buttonFilterNewsAction))
-        let buttonSort = makeButton(image: UIImage(named: "controlPanel.sorting"), selector: nil)
+        let buttonSort = makeButton(image: UIImage(named: "controlPanel.sorting"), selector: #selector(buttonSotredNewsAction))
         let buttonAdd = makeButton(image: UIImage(named: "controlPanel.edit"), selector: #selector(buttonAddNewsAction))
         /// Add buttons in stackButtons
         
@@ -180,6 +180,11 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     @objc func buttonFilterNewsAction() {
         let addController = FilterNewsViewController()
         navigationController?.pushViewController(addController, animated: true)
+    }
+    
+    @objc func buttonSotredNewsAction() {
+        presenter?.news.reverse()
+        detailsNewsCollectionView.reloadData()
     }
     
 }
