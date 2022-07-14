@@ -9,12 +9,12 @@ import Foundation
 
 struct Wishes {
     var createDate: Date
-    var creatorID: Int
+    var creatorId: Int
     var description: String
-    var executorID: Int
+    var executorId: Int
     var factExecuteDate: Date
     var id: Int
-    var patientID: Int
+    var patientId: Int
     var planExecuteDate: Date
     var status: String
     var title: String

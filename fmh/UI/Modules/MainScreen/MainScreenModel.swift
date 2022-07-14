@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+//import UIKit
 
 //struct MainScreenModel {
 //    var news: News
@@ -38,9 +38,9 @@ let newsEvent = ["С Днем Рождения Тюрина П.Е.", "Встре
 
 // Test wishes
 
-var wishesData: [Wishes] = [
-    .init(createDate: Date(), creatorID: 1, description: "rcgr", executorID: 1, factExecuteDate: Date(), id: 1, patientID: 1, planExecuteDate: Date(), status: "OPEN", title: "Fghj")
-//    Wishes(createDate: "2022-07-25T15:00:00.511Z", creatorID: creators[0].0, description: "сломана ножка", executorID: executors[0].0, factExecuteDate: "2022-07-25T12:00:00.511Z", id: 0, patientID: patiences[0].0, planExecuteDate: "2022-07-23T01:00:00.511Z", status: "OPEN", title: "починить кровать"),
+//var wishesData: [Wishes] = [
+//    .init(createDate: Date(), creatorId: 1, description: "rcgr", executorId: 1, factExecuteDate: Date(), id: 1, patientId: 1, planExecuteDate: Date(), status: "OPEN", title: "Fghj")
+////    Wishes(createDate: "2022-07-25T15:00:00.511Z", creatorID: creators[0].0, description: "сломана ножка", executorID: executors[0].0, factExecuteDate: "2022-07-25T12:00:00.511Z", id: 0, patientID: patiences[0].0, planExecuteDate: "2022-07-23T01:00:00.511Z", status: "OPEN", title: "починить кровать"),
 //    Wishes(createDate: "2022-07-25T12:00:00.511Z", creatorID: creators[0].0, description: "изношен", executorID: executors[0].0, factExecuteDate: "2022-07-26T18:00:00.511Z", id: 0, patientID: patiences[1].0, planExecuteDate: "2022-07-26T12:00:00.511Z", status: "OPEN", title: "заменить матрац"),
 //    Wishes(createDate: "2022-07-27T12:00:00.511Z", creatorID: creators[0].0, description: "падает полка", executorID: executors[0].0, factExecuteDate: "2022-07-27T12:00:00.511Z", id: 0, patientID: patiences[2].0, planExecuteDate: "2022-07-11T18:00:00.511Z", status: "OPEN", title: "починить шкаф"),
 //    Wishes(createDate: "2022-06-27T12:00:00.511Z", creatorID: creators[0].0, description: "сильный сквозняк", executorID: executors[0].0, factExecuteDate: "2022-07-28T12:00:00.511Z", id: 0, patientID: patiences[3].0, planExecuteDate: "2022-07-30T12:00:00.511Z", status: "OPEN", title: "утеплить окно"),
@@ -51,4 +51,4 @@ var wishesData: [Wishes] = [
 //    Wishes(createDate: "2022-07-27T12:00:00.511Z", creatorID: creators[0].0, description: "починить светофор", executorID: executors[0].0, factExecuteDate: "2022-07-28T12:00:00.511Z", id: 0, patientID: patiences[3].0, planExecuteDate: "2022-07-15T12:00:00.511Z", status: "CLOSED", title: "проблема с светофором"),
 //    Wishes(createDate: "2022-07-27T12:00:00.511Z", creatorID: creators[0].0, description: "починить ручку", executorID: executors[0].0, factExecuteDate: "2022-07-28T12:00:00.511Z", id: 0, patientID: patiences[3].0, planExecuteDate: "2022-07-18T12:00:00.511Z", status: "OPEN", title: "проблема с дверной ручкой"),
 //    Wishes(createDate: "2022-07-27T12:00:00.511Z", creatorID: creators[0].0, description: "починить ручку", executorID: executors[0].0, factExecuteDate: "2022-07-28T12:00:00.511Z", id: 0, patientID: patiences[3].0, planExecuteDate: "2022-07-4T12:00:00.511Z", status: "CLOSED", title: "проблема с дверной ручкой")
-]
+//]

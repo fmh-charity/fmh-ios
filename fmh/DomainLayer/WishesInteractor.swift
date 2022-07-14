@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol WishesInteractorProtocol {
-    func getAllWishes(completion: @escaping ([Wishes]?, NetworkError?) -> Void )
+    func getAllwishes(completion: @escaping ([Wishes]?, NetworkError?) -> Void )
     func getWishes(id: Int, completion: @escaping (Wishes?, NetworkError?) -> Void)
 }
 
@@ -28,7 +28,7 @@ class WishesInteractor {
 // MARK: - AuthInteractorProtocol
 extension WishesInteractor: WishesInteractorProtocol {
    
-    func getAllWishes(completion: @escaping ([Wishes]?, NetworkError?) -> Void) {
+    func getAllwishes(completion: @escaping ([Wishes]?, NetworkError?) -> Void) {
         self.repository?.getAllWishes()
             .sink { anyCompletion in
                 switch anyCompletion {
@@ -41,12 +41,12 @@ extension WishesInteractor: WishesInteractorProtocol {
             receiveValue: { dtoWishes in
                 let wishes = dtoWishes.map {
                     Wishes(createDate: $0.createDate,
-                           creatorID: $0.creatorID,
+                           creatorId: $0.creatorId,
                            description: $0.description,
-                           executorID: $0.executorID,
+                           executorId: $0.executorId,
                            factExecuteDate: $0.factExecuteDate,
                            id: $0.id,
-                           patientID: $0.patientID,
+                           patientId: $0.patientId,
                            planExecuteDate: $0.planExecuteDate,
                            status: $0.status,
                            title: $0.title)
@@ -68,12 +68,12 @@ extension WishesInteractor: WishesInteractorProtocol {
             }
     receiveValue: { dtoWishes in
         let wishes = Wishes(createDate: dtoWishes.createDate,
-                            creatorID: dtoWishes.creatorID,
+                            creatorId: dtoWishes.creatorId,
                             description: dtoWishes.description,
-                            executorID: dtoWishes.executorID,
+                            executorId: dtoWishes.executorId,
                             factExecuteDate: dtoWishes.factExecuteDate,
                             id: dtoWishes.id,
-                            patientID: dtoWishes.patientID,
+                            patientId: dtoWishes.patientId,
                             planExecuteDate: dtoWishes.planExecuteDate,
                             status: dtoWishes.status,
                             title: dtoWishes.title)

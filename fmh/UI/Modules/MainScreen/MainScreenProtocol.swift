@@ -9,7 +9,8 @@ import UIKit
 
 // MARK: - GeneralPresenterInput
 protocol MainScreenPresenterInput: AnyObject {
-    func getNewsAll(completion: @escaping ([News]?, NetworkError?) -> Void)
+    func getAllNews(completion: @escaping ([News]?, NetworkError?) -> Void)
+    func getAllWishes(completion: @escaping ([Wishes]?, NetworkError?) -> Void)
 }
 
 // MARK: - GeneralPresenterOutput

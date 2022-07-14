@@ -10,25 +10,26 @@ import Foundation
 struct DTOWishes: Codable {
     
     let createDate: Date
-    let creatorID: Int
+    let creatorId: Int
     let description: String
-    let executorID: Int
+    let executorId: Int
     let factExecuteDate: Date
     let id: Int
-    let patientID: Int
+    let patientId: Int
     let planExecuteDate: Date
-    let status, title: String
+    let status: String
+    let title: String
 
     enum CodingKeys: String, CodingKey {
         case createDate = "createDate"
-        case creatorID = "creatorId"
+        case creatorId = "creatorId"
         case description = "description"
-        case executorID = "executorId"
+        case executorId = "executorId"
         case factExecuteDate = "factExecuteDate"
         case id = "id"
-        case patientID = "patientId"
+        case patientId = "patientId"
         case planExecuteDate = "planExecuteDate"
-        case status = "status"
+        case status = "CANCELLED"
         case title = "title"
     }
 }

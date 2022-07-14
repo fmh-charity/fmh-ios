@@ -24,19 +24,34 @@ final class MainScreenPresenter {
 
 // MARK: - GeneralPresenterInput
 extension MainScreenPresenter: MainScreenPresenterInput {
-    
-    func getNewsAll(completion: @escaping ([News]?, NetworkError?) -> Void) {
+   
+    func getAllNews(completion: @escaping ([News]?, NetworkError?) -> Void) {
         interactorNews?.getAllNews(completion: { news, networkError in
             guard networkError == nil else {
-                //TODO: Обработка ошибка
+                //TODO: Обработка ошибки
                 completion(nil, networkError)
                 return
             }
             if let news = news {
                 completion(news, nil)
+                print(news.description)
             }
         })
     }
     
-
+    func getAllWishes(completion: @escaping ([Wishes]?, NetworkError?) -> Void) {
+        interactorWishes?.getAllwishes(completion: { wishes, networkError in
+            guard networkError == nil else {
+                //TODO: Обработка ошибки
+                completion(nil, networkError)
+                return
+            }
+            if let wishes = wishes {
+                completion(wishes, nil)
+                print(wishes.description)
+            }
+        })
+    }
 }
+
+

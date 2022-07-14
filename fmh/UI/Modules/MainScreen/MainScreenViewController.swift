@@ -29,6 +29,20 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
     private var newsItems: [NewsViewModel] = []
     private var wishesItems: [WishesViewModel] = []
     
+    var newsData: [News] = [] {
+           didSet {
+               
+             //  tableview.reloadData()
+           }
+       }
+    
+    var wishesData: [Wishes] = [] {
+           didSet {
+               
+             //  tableview.reloadData()
+           }
+       }
+    
     private var countNews: Int = 3 {
         didSet {
             configureNewsItems()
@@ -41,37 +55,44 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
                configureWishesItems()
                self.tableview.reloadData()
            }
-       }
-
-    var newsData: [News] = [] {
-        didSet {
-            
-            tableview.reloadData()
-        }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        presenter?.getNewsAll(completion: { news, networkError in
-            guard  networkError == nil else {
-                return
-            }
-            if let news = news {
-                print("News count all: \(news.count)")
-                self.newsData = news
-                self.tableview.reloadData() // <- времнно
-            }
-        })
-        
-        configureMain()
-        
+        let queue = DispatchQueue.global(qos: .userInteractive)
+        queue.sync{
+            presenter?.getAllNews(completion: { news, networkError in
+                guard  networkError == nil else {
+                    return
+                }
+                if let news = news {
+                    print("News count all: \(news.count)")
+                    self.newsData = news
+                    //self.tableview.reloadData() // <- временно
+                    print("news -- ", self.newsData.count)
+                    self.configureNewsItems()
+                }
+            })
+            
+            presenter?.getAllWishes(completion: { wishes, NetworkError in
+                guard NetworkError == nil else {
+                    return
+                }
+                if let wishes = wishes {
+                    self.wishesData = wishes
+                    self.configureWishesItems()
+                    self.configureMain()
+                }
+            })
+        }
     }
     
     private func configureNewsItems() {
         var mapArray: [NewsViewModel] = []
         var resultArray: [NewsViewModel] = []
-        newsData.forEach { if $0.publishEnabled == true {mapArray.append(.init(news: $0))}}
+        self.newsData.forEach { if $0.publishEnabled == true {mapArray.append(.init(news: $0))}}
         let sortedArray = mapArray.sorted{ $0.estimatedHours < $1.estimatedHours }
         for index in 0..<sortedArray.count where index < self.countNews {
             resultArray.append(sortedArray[index])
@@ -94,9 +115,6 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
         self.view.addSubview(UIImageView(image: UIImage(named: "MainBackground")))
         self.tableview.backgroundColor = UIColor(white: 0.0, alpha: 0.0)
 
-        configureNewsItems()
-        configureWishesItems()
-        
         self.tableview.register(NewsCell.self, forCellReuseIdentifier: cellNewsId)
         self.tableview.register(WishesCell.self, forCellReuseIdentifier: cellWishesId)
         
@@ -220,7 +238,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
                 case 0...3:
                     self.countNews += difference
                 default:
-                    self.countNews = difference
+                    self.countNews += 3
                 }
             case .requests:
                 let difference = wishesData.count - self.countWishes
@@ -228,7 +246,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
                 case 0...6:
                     self.countWishes += difference
                 default:
-                    self.countWishes = difference
+                    self.countWishes += 6
                 }
             }
         }
