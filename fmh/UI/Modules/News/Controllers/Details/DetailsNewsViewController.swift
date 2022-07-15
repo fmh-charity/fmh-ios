@@ -205,7 +205,7 @@ extension DetailsNewsViewController: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsNewsCell", for: indexPath) as! DetailsNewsCollectionViewCell
         cell.delegate = self
         cell.index = indexPath.row
-        cell.isTapArrow = false
+        //cell.isTapArrow = false
         if let item = presenter?.news[indexPath.row] {
             cell.configure(model: item)
         }
@@ -217,22 +217,27 @@ extension DetailsNewsViewController: UICollectionViewDataSource{
 //MARK: - Расчет динамической ячейки
 extension DetailsNewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //let isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
+        let isSelected = sizingCell.isTapArrow ?? false
         /// Тут надо модельку прокидывать как и в cellForItemAt один в один
-        //        sizingCell.labelDescription.text = "dssafsdgsdgsd waergerg wefwefwe wefe weewr ew erger h ewrgq wq wqg gqg dgs g qgqwgqergr rg regerqg qrg qrg qrg erg reg erg erg erg erg "
-        //        sizingCell.frame = CGRect(
-        //            origin: .zero,
-        //            size: CGSize(
-        //                width: collectionView.bounds.width - 32,
-        //                height: 500))
-        //        //sizingCell.isSelected = isSelected
-        //        sizingCell.setNeedsLayout()
-        //        sizingCell.layoutIfNeeded()
-        //        let size = sizingCell.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width - 32, height: .greatestFiniteMagnitude), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
-        //
+//        sizingCell.delegate = self
+//        sizingCell.index = indexPath.row
+//        if let item = presenter?.news[indexPath.row] {
+//            sizingCell.configure(model: item)
+//        }
+//        sizingCell.frame = CGRect(
+//            origin: .zero,
+//            size: CGSize(
+//                width: collectionView.bounds.width,
+//                height: 500))
+//        sizingCell.isTapArrow = isSelected
+//        sizingCell.setNeedsLayout()
+//        sizingCell.layoutIfNeeded()
+//        let size = sizingCell.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
+//        print("size \(size)")
+//        return size
         
-        
-        return CGSize(width: collectionView.bounds.width, height: 159)
+        print("for size dynamic \(isSelected)")
+        return CGSize(width: collectionView.bounds.width, height: isSelected ? 200 : 210)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -257,9 +262,11 @@ extension DetailsNewsViewController: DetailsNewsCollectionViewCellDelegate {
     
     func arrowDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickArrowButton index: Int) {
         let cell = detailsCell as! DetailsNewsCollectionViewCell
-        cell.isTapArrow = !cell.isTapArrow!
+        print(cell.isTapArrow)
+        cell.isTapArrow = !cell.isTapArrow
+        print(cell.isTapArrow)
+        //detailsNewsCollectionView.reloadData()
         
-        print("taped arrow")
     }
     
 }
@@ -275,19 +282,21 @@ extension DetailsNewsViewController: DetailsNewsPresenterOutput {
     
 }
 
-//extension DetailsNewsViewController: UICollectionViewDelegate {
-//    //MARK: - Переопределение анимации сворачивания ячейки
-//    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-//        collectionView.deselectItem(at: indexPath, animated: true)
-//        collectionView.performBatchUpdates(nil)
-//        return true
-//    }
-//    //MARK: - Переопределение анимации разворачивания ячейки
-//    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-//        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
-//        collectionView.performBatchUpdates(nil)
-//        return true
-//    }
-//}
+extension DetailsNewsViewController: UICollectionViewDelegate {
+    //MARK: - Переопределение анимации сворачивания ячейки
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        collectionView.performBatchUpdates(nil)
+        return true
+    }
+    //MARK: - Переопределение анимации разворачивания ячейки
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
+        collectionView.performBatchUpdates(nil)
+        return true
+    }
+}
+
+
 
 

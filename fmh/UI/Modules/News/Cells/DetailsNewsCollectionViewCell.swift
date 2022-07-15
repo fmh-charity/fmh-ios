@@ -18,7 +18,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
     var index = 0
     weak var delegate: DetailsNewsCollectionViewCellDelegate?
     
-    var isTapArrow: Bool? {
+    var isTapArrow = false {
         didSet {
             updateAppearance()
         }
@@ -34,6 +34,12 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         configureCell()
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - констрейнт для сжатого состояния
+    private var collapsedConstraint: NSLayoutConstraint!
+    
+    //MARK: - констрейнт для расширенного состояния
+    private var expandedConstraint: NSLayoutConstraint!
     
     private lazy var mainContainer = UIView()
     private lazy var topContainer = UIView()
@@ -164,9 +170,9 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func arrowNewsAction(button: UIButton) {
-        
-        print("tap button arrow ")
         delegate?.arrowDetailsNewsCollectionViewCellDelegate(self, didClickArrowButton: index)
+        //isTapArrow = false
+        print(isTapArrow)
     }
     
     
@@ -230,6 +236,15 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         bottomContainer.topAnchor.constraint(equalTo: middleContainerAuthor.bottomAnchor).isActive = true
         bottomContainer.heightAnchor.constraint(equalToConstant: 55).isActive = true
         
+        mainContainer.addSubview(footerContainer)
+        footerContainer.translatesAutoresizingMaskIntoConstraints = false
+        footerContainer.leftAnchor.constraint(equalTo: mainContainer.leftAnchor).isActive = true
+        footerContainer.rightAnchor.constraint(equalTo: mainContainer.rightAnchor).isActive = true
+        footerContainer.topAnchor.constraint(equalTo: bottomContainer.bottomAnchor).isActive = true
+        
+        footerContainer.topAnchor.constraint(equalTo: bottomContainer.bottomAnchor).priority = .defaultLow
+        //footerContainer.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        
         // добавить контейнер footer с описанием новости!!!
         
         //MARK: - Констрейнты для визуальных элементов ячейки
@@ -259,7 +274,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelPublic.rightAnchor.constraint(equalTo: middleContainerPublic.rightAnchor).isActive = true
         labelPublic.centerYAnchor.constraint(equalTo: middleContainerPublic.centerYAnchor).isActive = true
         labelPublic.heightAnchor.constraint(equalToConstant: 18).isActive = true
-        labelPublic.widthAnchor.constraint(equalTo: middleContainerPublic.widthAnchor, multiplier: 0.3).isActive = true
+        labelPublic.widthAnchor.constraint(equalTo: middleContainerPublic.widthAnchor, multiplier: 0.4).isActive = true
         
         middleContainerCreate.addSubview(labelPleaceHolderCreate)
         labelPleaceHolderCreate.translatesAutoresizingMaskIntoConstraints = false
@@ -272,7 +287,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelCreate.rightAnchor.constraint(equalTo: middleContainerCreate.rightAnchor).isActive = true
         labelCreate.centerYAnchor.constraint(equalTo: middleContainerCreate.centerYAnchor).isActive = true
         labelCreate.heightAnchor.constraint(equalToConstant: 18).isActive = true
-        labelCreate.widthAnchor.constraint(equalTo: middleContainerCreate.widthAnchor, multiplier: 0.3).isActive = true
+        labelCreate.widthAnchor.constraint(equalTo: middleContainerCreate.widthAnchor, multiplier: 0.4).isActive = true
         
         middleContainerAuthor.addSubview(labelPleaceHolderAuthor)
         labelPleaceHolderAuthor.translatesAutoresizingMaskIntoConstraints = false
@@ -285,7 +300,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelAuthor.rightAnchor.constraint(equalTo: middleContainerAuthor.rightAnchor).isActive = true
         labelAuthor.centerYAnchor.constraint(equalTo: middleContainerAuthor.centerYAnchor).isActive = true
         labelAuthor.heightAnchor.constraint(equalToConstant: 18).isActive = true
-        labelAuthor.widthAnchor.constraint(equalTo: middleContainerAuthor.widthAnchor, multiplier: 0.3).isActive = true
+        labelAuthor.widthAnchor.constraint(equalTo: middleContainerAuthor.widthAnchor, multiplier: 0.4).isActive = true
         
         
         bottomContainer.addSubview(labelisActive)
@@ -315,6 +330,22 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         buttonTrash.widthAnchor.constraint(equalToConstant: 20).isActive = true
         buttonTrash.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
+        footerContainer.addSubview(labelDescription)
+        labelDescription.translatesAutoresizingMaskIntoConstraints = false
+        labelDescription.rightAnchor.constraint(equalTo: footerContainer.rightAnchor, constant: -16).isActive = true
+        labelDescription.leftAnchor.constraint(equalTo: footerContainer.leftAnchor, constant: 16).isActive = true
+        labelDescription.topAnchor.constraint(equalTo: footerContainer.topAnchor, constant: 8).isActive = true
+        labelDescription.bottomAnchor.constraint(equalTo: footerContainer.bottomAnchor, constant: -8).isActive = true
+        
+        
+        //MARK: - Констрейнт для сжатого состояния
+        collapsedConstraint = footerContainer.bottomAnchor.constraint(equalTo: bottomContainer.bottomAnchor)
+        collapsedConstraint.priority = .defaultLow
+        //MARK: - Констрейнт для расширенного состояния
+        expandedConstraint = footerContainer.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor)
+        expandedConstraint.priority = .defaultLow
+        
+        
     }
     func borderForView (viewForBorder: UIView) {
         viewForBorder.layer.borderColor = ConstantNews.Collor.borderCell.cgColor
@@ -322,12 +353,13 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
     }
     
     func updateAppearance() {
-        //collapsedConstraint.isActive = !isSelected
-        //expandedConstraint.isActive = isSelected
+        collapsedConstraint.isActive = !isTapArrow
+        expandedConstraint.isActive = isTapArrow
         
         UIView.animate(withDuration: 0.3) {
             let upDown = CGAffineTransform(rotationAngle: .pi * -0.999)
-            self.arrowUpDownButton.transform = true ? upDown : .identity
+            self.arrowUpDownButton.transform = self.isTapArrow ? upDown : .identity
+            print("animation chevron")
         }
     }
     
@@ -343,6 +375,8 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelPublic.text = formate.string(from: model.publishDate)
         labelisActive.text = model.publishEnabled ? "✓ АКТИВНА" : "× НЕ АКТИВНА"
     }
+    
+   
     
     
 }
