@@ -11,7 +11,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     
     var onCompletion: (() -> ())?
     var presenter: DetailsNewsPresenterInput?
-    var moduleFactory = ModuleFactory() // для инициализации detailsViewController
+    var moduleFactory = ModuleFactory() // для инициализации editVC
     // pull refresh
     private lazy var newsPullRefresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -237,7 +237,7 @@ extension DetailsNewsViewController: UICollectionViewDelegateFlowLayout {
         sizingCell.setNeedsLayout()
         sizingCell.layoutIfNeeded()
         let size = sizingCell.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
-        print(size)
+        //print(size)
         return size
     }
     
@@ -252,7 +252,7 @@ extension DetailsNewsViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - action for ButtonCell
 extension DetailsNewsViewController: DetailsNewsCollectionViewCellDelegate {
     func editDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickEditButton index: Int) {
-        let editNewsVC = EditNewsViewController()
+        let editNewsVC = moduleFactory.makeEditNewsViewController()
         editNewsVC.destinationName = "editNews"
         let id = presenter?.news[index].id
         print(id)

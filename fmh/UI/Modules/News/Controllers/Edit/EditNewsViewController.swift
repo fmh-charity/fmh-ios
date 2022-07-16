@@ -161,6 +161,12 @@ class EditNewsViewController: UIViewController {
         self.view.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
+    
+    override func loadView() {
+        super.loadView()
+        guard let id = idNews else { return }
+        presenter?.getNews(id: id)
+    }
 //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,19 +175,19 @@ class EditNewsViewController: UIViewController {
             guard let id = idNews else { return }
             print(id)
             presenter?.getNews(id: id)
+            setEditNewsTextField()
         } else {
             titleNavigation = "Создание новости"
         }
         title = titleNavigation
         setBackGround(name: "BackGround")
-        
-        switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
         setTextView()
         setCategoryPicker()
         setView()
-        setEditNewsTextField()
         setActionForTF()
         setEnabelButtonSave()
+        print("switcher: \(switcher.isOn)")
+        
         
     }
     
@@ -202,22 +208,19 @@ class EditNewsViewController: UIViewController {
     }
     
     private func setEditNewsTextField() {
+        categoryTextField.text = presenter?.news?.categoryName
         titleTextField.text = presenter?.news?.title
-        print(titleTextField.text)
-        isActiveNews = presenter?.news?.publishEnabled ?? false
+        dateTextField.text = presenter?.news?.publishDate.toString()
+        descriptionTextView.text = presenter?.news?.description
+        switcher.isOn = presenter?.news?.publishEnabled ?? false
     }
     
     private func setEnabelButtonSave() {
         let category = categoryTextField.text ?? ""
-        print(category)
         let title = titleTextField.text ?? ""
-        print(title)
         let datePub = dateTextField.text ?? ""
-        print(datePub)
         let time = timeTextField.text ?? ""
-        print(time)
         let description = descriptionTextView.text ?? ""
-        print(description)
        
         saveButton.isEnabled = !category.isEmpty && !title.isEmpty && !datePub.isEmpty && !time.isEmpty && !description.isEmpty
         saveButton.backgroundColor = saveButton.isEnabled ? .accentColor : .gray
@@ -336,5 +339,6 @@ extension EditNewsViewController: UITextViewDelegate {
 extension EditNewsViewController: EditNewsPresenterOutput {
     func updatedNews() {
         setEditNewsTextField()
+        switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
     }
 }

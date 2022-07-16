@@ -220,7 +220,6 @@ extension NewsListViewController: UICollectionViewDelegate {
     
     //MARK: - Переопределение анимации сворачивания ячейки
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-        print("sddfsdfs")
         collectionView.deselectItem(at: indexPath, animated: true)
         collectionView.performBatchUpdates(nil)
         return true
@@ -253,7 +252,7 @@ extension NewsListViewController: UICollectionViewDelegateFlowLayout {
         sizingCell.setNeedsLayout()
         sizingCell.layoutIfNeeded()
         let size = sizingCell.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
-        print(size)
+        //print(size)
         return size
     }
     

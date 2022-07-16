@@ -36,9 +36,9 @@ extension EditNewsPresenter: EditNewsPresenterInput {
             
             if let news = news {
                 print("news: \(news)")
-                DispatchQueue.main.async {
+               // DispatchQueue.main.async {
                     self.news = news
-                }
+              //  }
             }
             
         }
