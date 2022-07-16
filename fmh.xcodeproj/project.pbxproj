@@ -19,6 +19,8 @@
 		0C3E5BA92873724800FF119C /* EditNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E5B9C2873724800FF119C /* EditNewsViewController.swift */; };
 		0C3E5BAA2873724800FF119C /* FilterNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3E5B9E2873724800FF119C /* FilterNewsViewController.swift */; };
 		0C6C037A2882E633007840E6 /* NewsExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C03792882E633007840E6 /* NewsExtentions.swift */; };
+		0C6C037C288317DE007840E6 /* EditNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C037B288317DE007840E6 /* EditNewsPresenter.swift */; };
+		0C6C037E288318F8007840E6 /* EditNewsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6C037D288318F8007840E6 /* EditNewsProtocol.swift */; };
 		19064D84281FC86C006D8768 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D83281FC86C006D8768 /* LoginView.swift */; };
 		19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D87282049AE006D8768 /* LoginTextfield.swift */; };
 		19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D89282066E3006D8768 /* PasswordTextField.swift */; };
@@ -101,6 +103,8 @@
 		0C3E5B9C2873724800FF119C /* EditNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNewsViewController.swift; sourceTree = "<group>"; };
 		0C3E5B9E2873724800FF119C /* FilterNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterNewsViewController.swift; sourceTree = "<group>"; };
 		0C6C03792882E633007840E6 /* NewsExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsExtentions.swift; sourceTree = "<group>"; };
+		0C6C037B288317DE007840E6 /* EditNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNewsPresenter.swift; sourceTree = "<group>"; };
+		0C6C037D288318F8007840E6 /* EditNewsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNewsProtocol.swift; sourceTree = "<group>"; };
 		19064D83281FC86C006D8768 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		19064D87282049AE006D8768 /* LoginTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextfield.swift; sourceTree = "<group>"; };
 		19064D89282066E3006D8768 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 		0C3E5B9B2873724800FF119C /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				0C6C037D288318F8007840E6 /* EditNewsProtocol.swift */,
+				0C6C037B288317DE007840E6 /* EditNewsPresenter.swift */,
 				0C3E5B9C2873724800FF119C /* EditNewsViewController.swift */,
 			);
 			path = Edit;
@@ -659,6 +665,7 @@
 				19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
+				0C6C037C288317DE007840E6 /* EditNewsPresenter.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
@@ -677,6 +684,7 @@
 				0C3E5BA62873724800FF119C /* DetailsNewsViewController.swift in Sources */,
 				0C3E5BA02873724800FF119C /* NewsCollectionViewCell.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
+				0C6C037E288318F8007840E6 /* EditNewsProtocol.swift in Sources */,
 				191EAA82281C3B48007B1397 /* DTORefreshToken.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
 				1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */,

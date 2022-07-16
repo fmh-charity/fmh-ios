@@ -37,13 +37,14 @@ extension NewsRepository: NewsRepositoryProtocol {
     func getNews(id: Int) -> AnyPublisher<DTONews, NetworkError> {
         let resource = APIResourceNews.getNews(id: id)
         return fetchDataPublisher(resource: resource.resource())
-            .map { $0 }
+            //.map { $0 }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
     
     func deleteNews(id: Int) {
         let resource = APIResourceNews.removeNews(id: id)
+        resource
     }
     
 }

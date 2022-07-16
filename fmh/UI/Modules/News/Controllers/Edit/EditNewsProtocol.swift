@@ -1,0 +1,27 @@
+//
+//  EditNewsProtocol.swift
+//  fmh
+//
+//  Created: 16.07.2022
+//
+
+import Foundation
+
+// MARK: - EditNewsPresenterInput
+protocol EditNewsPresenterInput: AnyObject {
+    var news: News? { get set }
+    
+    func getNews(id: Int)
+}
+
+// MARK: - EditNewsPresenterOutput
+protocol EditNewsPresenterOutput: AnyObject {
+    var presenter: EditNewsPresenterInput? { get set }
+    
+    func updatedNews()
+}
+
+// MARK: - EditNewsViewControllerProtocol
+protocol EditNewsViewControllerProtocol: BaseViewProtocol {
+    
+}

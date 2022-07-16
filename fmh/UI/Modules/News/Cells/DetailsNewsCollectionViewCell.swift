@@ -377,7 +377,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         UIView.animate(withDuration: 0.3) {
             let upDown = CGAffineTransform(rotationAngle: .pi * -0.999)
             self.arrowUpDown.transform = self.isSelected ? upDown : .identity
-            print("animation chevron")
+            //print("animation chevron")
         }
     }
     

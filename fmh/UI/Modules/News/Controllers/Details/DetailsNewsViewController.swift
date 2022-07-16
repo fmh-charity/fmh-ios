@@ -220,12 +220,12 @@ extension DetailsNewsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
-        print("Расчет динамической ячейки \(isSelected)")
+        //print("Расчет динамической ячейки \(isSelected)")
         /// Тут надо модельку прокидывать как и в cellForItemAt один в один
         //sizingCell.delegate = self
         //sizingCell.index = indexPath.row
         if let item = presenter?.news[indexPath.row] {
-            print("configure sizingCell")
+            //print("configure sizingCell")
             sizingCell.configure(model: item)
         }
         sizingCell.frame = CGRect(
@@ -249,10 +249,14 @@ extension DetailsNewsViewController: UICollectionViewDelegateFlowLayout {
         return 6
     }
 }
-
+//MARK: - action for ButtonCell
 extension DetailsNewsViewController: DetailsNewsCollectionViewCellDelegate {
     func editDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickEditButton index: Int) {
         let editNewsVC = EditNewsViewController()
+        editNewsVC.destinationName = "editNews"
+        let id = presenter?.news[index].id
+        print(id)
+        editNewsVC.idNews = id
         navigationController?.pushViewController(editNewsVC, animated: true)
         print(index)
     }
@@ -265,18 +269,6 @@ extension DetailsNewsViewController: DetailsNewsCollectionViewCellDelegate {
         presenter?.deleteNews(id: id)
         detailsNewsCollectionView.reloadData()
     }
-    
-//    func arrowDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickArrowButton index: Int) {
-//        let cell = detailsCell as! DetailsNewsCollectionViewCell
-//        //print(cell.isTapArrow)
-//        //presenter?.news[index].isExpanded = !(presenter?.news[index].isExpanded)! // GUARD!!!
-//        cell.isSelected = !detailsCell.isSelected
-//        //cell.isTapArrow = !cell.isTapArrow
-//        print("in detVC \(cell.isSelected)")
-//        //detailsNewsCollectionView.reloadData()
-//        
-//    }
-    
 }
 
 //MARK: - DetailsNewsPresenterOutput

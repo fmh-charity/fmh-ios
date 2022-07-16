@@ -8,7 +8,10 @@
 import UIKit
 
 class EditNewsViewController: UIViewController {
-    
+    var idNews: Int?
+    var destinationName: String?
+    var onCompletion: (() -> ())?
+    var presenter: EditNewsPresenterInput?
     private var categoryValues = ["Объявление", "День рождения", "Зарплата", "Профсоюз", "Праздник", "Массаж", "Благодарность", "Нужна помощь"]
     private var pickerCategory = UIPickerView()
     var isActiveNews = false
@@ -158,18 +161,28 @@ class EditNewsViewController: UIViewController {
         self.view.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
-    
+//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleNavigation = "Редактирование новости"
+        if destinationName == "editNews" {
+            titleNavigation = "Редактирование новости"
+            guard let id = idNews else { return }
+            print(id)
+            presenter?.getNews(id: id)
+        } else {
+            titleNavigation = "Создание новости"
+        }
         title = titleNavigation
         setBackGround(name: "BackGround")
+        
         switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
         setTextView()
         setCategoryPicker()
         setView()
+        setEditNewsTextField()
         setActionForTF()
         setEnabelButtonSave()
+        
     }
     
     @objc func setActiveNews (newSwitch: UISwitch) {
@@ -186,6 +199,12 @@ class EditNewsViewController: UIViewController {
     
     @objc func eptyEditingValid() {
         setEnabelButtonSave()
+    }
+    
+    private func setEditNewsTextField() {
+        titleTextField.text = presenter?.news?.title
+        print(titleTextField.text)
+        isActiveNews = presenter?.news?.publishEnabled ?? false
     }
     
     private func setEnabelButtonSave() {
@@ -314,26 +333,8 @@ extension EditNewsViewController: UITextViewDelegate {
 
 }
 
-
-//MARK: - TextFieldDelegate
-
-//extension EditNewsViewController: UITextFieldDelegate {
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        if textField == titleTextField {
-//            print("textFieldShouldBeginEditing")
-//            setEnabelButtonSave()
-//            return true
-//        }
-//        return false
-//    }
-//
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if textField == titleTextField {
-//            print("textFieldDidChangeSelection\(string)")
-//            setEnabelButtonSave()
-//            return true
-//        }
-//        return false
-//    }
-//
-//}
+extension EditNewsViewController: EditNewsPresenterOutput {
+    func updatedNews() {
+        setEditNewsTextField()
+    }
+}
