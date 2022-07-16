@@ -30,15 +30,12 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
         layout.scrollDirection = .vertical
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .clear
-        //collection.showsVerticalScrollIndicator = false
+        collection.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCell")
+        collection.translatesAutoresizingMaskIntoConstraints = false
         collection.allowsMultipleSelection = true
         collection.alwaysBounceVertical = true
-        
-        collection.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCell")
         collection.delegate = self
         collection.dataSource = self
-        
-        collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
     
@@ -71,6 +68,7 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
         return stack
     }()
     
+    /// pull refresh func
     @objc private func refresh(sender: UIRefreshControl) {
         presenter?.getAllNews()
         newsCollectionView.reloadData()
@@ -123,7 +121,7 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
         
         /// Create buttons
         let buttonEdit = makeButton(image: UIImage(named: "controlPanel.edit"), selector: #selector(buttonDetailsAction))
-        let buttonFilter = makeButton(image: UIImage(named: "controlPanel.filter"), selector: nil)
+        let buttonFilter = makeButton(image: UIImage(named: "controlPanel.filter"), selector: #selector(buttonFilterAction))
         let buttonSort = makeButton(image: UIImage(named: "controlPanel.sorting"), selector: #selector(buttonSortAction))
         let buttonInfo = makeButton(image: UIImage(named: "controlPanel.info"), selector: #selector(buttonInfoAction))
         /// Add buttons in stackButtons
@@ -186,6 +184,10 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
     @objc func buttonSortAction() {
         presenter?.news.reverse()
         newsCollectionView.reloadData()
+    }
+    
+    @objc func buttonFilterAction() {
+        // add filter action
     }
     
 }
@@ -251,7 +253,7 @@ extension NewsListViewController: UICollectionViewDelegateFlowLayout {
         sizingCell.setNeedsLayout()
         sizingCell.layoutIfNeeded()
         let size = sizingCell.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
-        
+        print(size)
         return size
     }
     

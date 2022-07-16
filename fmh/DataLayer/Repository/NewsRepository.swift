@@ -12,6 +12,7 @@ protocol NewsRepositoryProtocol {
 
     func getAllNews() -> AnyPublisher<[DTONews], NetworkError>
     func getNews(id: Int) -> AnyPublisher<DTONews, NetworkError>
+    func deleteNews(id: Int)
 }
 
 class NewsRepository: Network {
@@ -39,6 +40,10 @@ extension NewsRepository: NewsRepositoryProtocol {
             .map { $0 }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+    
+    func deleteNews(id: Int) {
+        let resource = APIResourceNews.removeNews(id: id)
     }
     
 }

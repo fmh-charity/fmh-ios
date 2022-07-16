@@ -18,7 +18,6 @@ struct News {
     let publishDate: Date
     let publishEnabled: Bool
     let title: String
-    
 }
 
 extension News {

@@ -11,14 +11,13 @@ protocol DetailsNewsCollectionViewCellDelegate: AnyObject {
     
     func editDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickEditButton index: Int)
     func deleteDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickDeleteButton index: Int)
-    func arrowDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickArrowButton index: Int)
+    //func arrowDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickArrowButton index: Int)
 }
 
 class DetailsNewsCollectionViewCell: UICollectionViewCell {
     var index = 0
     weak var delegate: DetailsNewsCollectionViewCellDelegate?
-    
-    var isTapArrow = false {
+    override var isSelected: Bool {
         didSet {
             updateAppearance()
         }
@@ -137,15 +136,22 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(editNewsAction), for: .touchUpInside)
         return button
     }()
+    /// replace for imageView!!!
+//    var arrowUpDownButton: UIButton = {
+//        let button = UIButton()
+//        let image = UIImage(systemName: ConstantNews.Images.chevronDown)?.withRenderingMode(.alwaysTemplate)
+//        button.setImage(image, for: .normal)
+//        button.tintColor = ConstantNews.Collor.chevron
+//        button.contentMode = .scaleAspectFit
+//        //button.addTarget(self, action: #selector(arrowNewsAction), for: .touchUpInside)
+//        return button
+//    }()
     
-    var arrowUpDownButton: UIButton = {
-        let button = UIButton()
-        let image = UIImage(systemName: ConstantNews.Images.chevronUp)?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image, for: .normal)
-        button.tintColor = ConstantNews.Collor.chevron
-        button.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(arrowNewsAction), for: .touchUpInside)
-        return button
+    private lazy var arrowUpDown: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: ConstantNews.Images.chevronDown)?.withRenderingMode(.alwaysTemplate))
+        imageView.tintColor = ConstantNews.Collor.chevron
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     var labelDescription: UILabel = {
@@ -169,11 +175,11 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         delegate?.editDetailsNewsCollectionViewCellDelegate(self, didClickEditButton: index)
     }
     
-    @objc func arrowNewsAction(button: UIButton) {
-        delegate?.arrowDetailsNewsCollectionViewCellDelegate(self, didClickArrowButton: index)
-        //isTapArrow = false
-        print(isTapArrow)
-    }
+//    @objc func arrowNewsAction(button: UIButton) {
+//        delegate?.arrowDetailsNewsCollectionViewCellDelegate(self, didClickArrowButton: index)
+//        //isTapArrow = false
+//        print("in tapArrowDelegate \(self.isSelected)")
+//    }
     
     
     //MARK: - configure cell
@@ -190,7 +196,24 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         bottomContainer.backgroundColor = .white
         footerContainer.backgroundColor = .white
         
+    // MARK: Ограничиваем область нажатия для расширения ячейки через костыли(
+        let tapGesture = UITapGestureRecognizer()
+        topContainer.addGestureRecognizer(tapGesture)
+        
+        let tapGesture1 = UITapGestureRecognizer()
+        middleContainerPublic.addGestureRecognizer(tapGesture1)
+        
+        let tapGesture2 = UITapGestureRecognizer()
+        middleContainerAuthor.addGestureRecognizer(tapGesture2)
+       
+        let tapGesture3 = UITapGestureRecognizer()
+        middleContainerCreate.addGestureRecognizer(tapGesture3)
+        
+        let tapGesture4 = UITapGestureRecognizer()
+        footerContainer.addGestureRecognizer(tapGesture4)
+        
         makeConstraint()
+        updateAppearance()
     }
     
     func makeConstraint() {
@@ -241,11 +264,6 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         footerContainer.leftAnchor.constraint(equalTo: mainContainer.leftAnchor).isActive = true
         footerContainer.rightAnchor.constraint(equalTo: mainContainer.rightAnchor).isActive = true
         footerContainer.topAnchor.constraint(equalTo: bottomContainer.bottomAnchor).isActive = true
-        
-        footerContainer.topAnchor.constraint(equalTo: bottomContainer.bottomAnchor).priority = .defaultLow
-        //footerContainer.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        
-        // добавить контейнер footer с описанием новости!!!
         
         //MARK: - Констрейнты для визуальных элементов ячейки
         
@@ -309,16 +327,16 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelisActive.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
         labelisActive.widthAnchor.constraint(equalToConstant: 120).isActive = true
         
-        bottomContainer.addSubview(arrowUpDownButton)
-        arrowUpDownButton.translatesAutoresizingMaskIntoConstraints = false
-        arrowUpDownButton.rightAnchor.constraint(equalTo: bottomContainer.rightAnchor, constant: -20).isActive = true
-        arrowUpDownButton.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
-        arrowUpDownButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowUpDownButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        bottomContainer.addSubview(arrowUpDown)
+        arrowUpDown.translatesAutoresizingMaskIntoConstraints = false
+        arrowUpDown.rightAnchor.constraint(equalTo: bottomContainer.rightAnchor, constant: -20).isActive = true
+        arrowUpDown.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
+        arrowUpDown.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        arrowUpDown.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         bottomContainer.addSubview(buttonEdit)
         buttonEdit.translatesAutoresizingMaskIntoConstraints = false
-        buttonEdit.rightAnchor.constraint(equalTo: arrowUpDownButton.leftAnchor, constant: -25).isActive = true
+        buttonEdit.rightAnchor.constraint(equalTo: arrowUpDown.leftAnchor, constant: -25).isActive = true
         buttonEdit.centerYAnchor.constraint(equalTo: bottomContainer.centerYAnchor).isActive = true
         buttonEdit.widthAnchor.constraint(equalToConstant: 20).isActive = true
         buttonEdit.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -339,7 +357,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         
         
         //MARK: - Констрейнт для сжатого состояния
-        collapsedConstraint = footerContainer.bottomAnchor.constraint(equalTo: bottomContainer.bottomAnchor)
+        collapsedConstraint = bottomContainer.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor)
         collapsedConstraint.priority = .defaultLow
         //MARK: - Констрейнт для расширенного состояния
         expandedConstraint = footerContainer.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor)
@@ -353,12 +371,12 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
     }
     
     func updateAppearance() {
-        collapsedConstraint.isActive = !isTapArrow
-        expandedConstraint.isActive = isTapArrow
+        collapsedConstraint.isActive = !isSelected
+        expandedConstraint.isActive = isSelected
         
         UIView.animate(withDuration: 0.3) {
             let upDown = CGAffineTransform(rotationAngle: .pi * -0.999)
-            self.arrowUpDownButton.transform = self.isTapArrow ? upDown : .identity
+            self.arrowUpDown.transform = self.isSelected ? upDown : .identity
             print("animation chevron")
         }
     }
@@ -374,6 +392,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelCreate.text = formate.string(from: model.createDate)
         labelPublic.text = formate.string(from: model.publishDate)
         labelisActive.text = model.publishEnabled ? "✓ АКТИВНА" : "× НЕ АКТИВНА"
+        
     }
     
    

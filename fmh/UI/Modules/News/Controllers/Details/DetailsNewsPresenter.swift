@@ -41,5 +41,9 @@ extension DetailsNewsPresenter: DetailsNewsPresenterInput {
             
         }
     }
+    
+    func deleteNews(id: Int) {
+        interactor.deleteNews(id: id)
+    }
 
 }

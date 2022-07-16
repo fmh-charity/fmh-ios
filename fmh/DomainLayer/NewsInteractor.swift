@@ -11,6 +11,8 @@ import Combine
 protocol NewsInteractorProtocol {
     func getAllNews(completion: @escaping ([News]?, NetworkError?) -> Void )
     func getNews(id: Int, completion: @escaping (News?, NetworkError?) -> Void)
+    func deleteNews(id: Int)
+    
 }
 
 
@@ -78,6 +80,10 @@ extension NewsInteractor: NewsInteractorProtocol {
                 return completion(news, nil)
             }
             .store(in: &anyCancellable)
+    }
+    
+    func deleteNews(id: Int) {
+        self.repository?.deleteNews(id: id)
     }
     
 }

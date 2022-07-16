@@ -12,6 +12,7 @@ protocol DetailsNewsPresenterInput: AnyObject {
     var news: [News] { get set }
     
     func getAllNews()
+    func deleteNews(id: Int)
 }
 
 // MARK: - DetailsNewsPresenterOutput
