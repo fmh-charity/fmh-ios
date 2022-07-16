@@ -39,7 +39,7 @@ class EditNewsViewController: UIViewController {
     
     private var titleTextField: UITextField = {
         let textField = UITextField()
-        textField.textAlignment = .left
+        textField.textAlignment = .center
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.placeholder = "Заголовок"
         textField.layer.borderWidth = 1
@@ -168,11 +168,41 @@ class EditNewsViewController: UIViewController {
         setTextView()
         setCategoryPicker()
         setView()
-        
+        setActionForTF()
+        setEnabelButtonSave()
     }
     
     @objc func setActiveNews (newSwitch: UISwitch) {
         switchLabel.text = newSwitch.isOn ? "Активна" : "Не активна"
+    }
+    
+    
+    private func setActionForTF() {
+        categoryTextField.addTarget(self, action: #selector(eptyEditingValid), for: .allEvents)
+        titleTextField.addTarget(self, action: #selector(eptyEditingValid), for: .editingChanged)
+        dateTextField.addTarget(self, action: #selector(eptyEditingValid), for: .allEvents)
+        timeTextField.addTarget(self, action: #selector(eptyEditingValid), for: .allEvents)
+    }
+    
+    @objc func eptyEditingValid() {
+        setEnabelButtonSave()
+    }
+    
+    private func setEnabelButtonSave() {
+        let category = categoryTextField.text ?? ""
+        print(category)
+        let title = titleTextField.text ?? ""
+        print(title)
+        let datePub = dateTextField.text ?? ""
+        print(datePub)
+        let time = timeTextField.text ?? ""
+        print(time)
+        let description = descriptionTextView.text ?? ""
+        print(description)
+       
+        saveButton.isEnabled = !category.isEmpty && !title.isEmpty && !datePub.isEmpty && !time.isEmpty && !description.isEmpty
+        saveButton.backgroundColor = saveButton.isEnabled ? .accentColor : .gray
+        
     }
     
     private func setTextView () {
@@ -260,16 +290,6 @@ extension EditNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-//MARK: - shadow for view
-extension UIView {
-    func makeShadow() {
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.7
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 5
-    }
-}
-
 //MARK: - extension for textView
 extension EditNewsViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView)
@@ -291,19 +311,29 @@ extension EditNewsViewController: UITextViewDelegate {
         }
         textView.resignFirstResponder()
     }
+
 }
 
 
-//MARK: - extension viewController top bar height
+//MARK: - TextFieldDelegate
 
-extension UIViewController {
-    var topBarHeight: CGFloat {
-        var top = self.navigationController?.navigationBar.frame.height ?? 0.0
-        if #available(iOS 13.0, *) {
-            top += UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        } else {
-            top += UIApplication.shared.statusBarFrame.height
-        }
-        return top
-    }
-}
+//extension EditNewsViewController: UITextFieldDelegate {
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        if textField == titleTextField {
+//            print("textFieldShouldBeginEditing")
+//            setEnabelButtonSave()
+//            return true
+//        }
+//        return false
+//    }
+//
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if textField == titleTextField {
+//            print("textFieldDidChangeSelection\(string)")
+//            setEnabelButtonSave()
+//            return true
+//        }
+//        return false
+//    }
+//
+//}
