@@ -162,11 +162,6 @@ class EditNewsViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    override func loadView() {
-        super.loadView()
-        guard let id = idNews else { return }
-        presenter?.getNews(id: id)
-    }
 //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,15 +181,12 @@ class EditNewsViewController: UIViewController {
         setView()
         setActionForTF()
         setEnabelButtonSave()
-        print("switcher: \(switcher.isOn)")
-        
         
     }
     
     @objc func setActiveNews (newSwitch: UISwitch) {
         switchLabel.text = newSwitch.isOn ? "Активна" : "Не активна"
     }
-    
     
     private func setActionForTF() {
         categoryTextField.addTarget(self, action: #selector(eptyEditingValid), for: .allEvents)
