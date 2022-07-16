@@ -84,6 +84,19 @@ extension NewsInteractor: NewsInteractorProtocol {
     
     func deleteNews(id: Int) {
         self.repository?.deleteNews(id: id)
+            .sink { anyCompletion in
+                switch anyCompletion {
+                case .failure(let error):
+                    print("==========: \(error)")
+                case .finished:
+                    print("finish")
+                    break
+                }
+            }
+            receiveValue: { dtoNews in
+               print(dtoNews)
+            }
+            .store(in: &anyCancellable)
     }
     
 }
