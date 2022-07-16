@@ -11,7 +11,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     
     var onCompletion: (() -> ())?
     var presenter: DetailsNewsPresenterInput?
-    
+    var moduleFactory = ModuleFactory() // для инициализации detailsViewController
     // pull refresh
     private lazy var newsPullRefresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
