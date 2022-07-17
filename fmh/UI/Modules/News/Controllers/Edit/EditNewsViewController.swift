@@ -15,9 +15,9 @@ class EditNewsViewController: UIViewController {
     private var categoryValues = ["Объявление", "День рождения", "Зарплата", "Профсоюз", "Праздник", "Массаж", "Благодарность", "Нужна помощь"]
     private var categoryNewsId: Int?
     private var pickerCategory = UIPickerView()
-    var isActiveNews = false
+    private var isActiveNews = false
     
-    var titleNavigation: String?
+    private var titleNavigation: String?
     private var mainStackView = UIStackView()
     private var dateStackView = UIStackView()
     private var switchStackView = UIStackView()
@@ -170,11 +170,10 @@ class EditNewsViewController: UIViewController {
         if destinationName == "editNews" {
             titleNavigation = "Редактирование новости"
             guard let id = idNews else { return }
-            print(id)
             presenter?.getNews(id: id)
-            //setEditNewsTextField()
         } else {
             titleNavigation = "Создание новости"
+            idNews = 100
         }
         title = titleNavigation
         setBackGround(name: "BackGround")
@@ -203,7 +202,7 @@ class EditNewsViewController: UIViewController {
         let createDate = Date()
         let date = "\(dateTextField.text!)T\(timeTextField.text!):00"
         let publishDate = getDate(stringDate: date)
-        let dtoNews = DTONews(createDate: createDate, creatorId: 2, creatorName: "Alexey", description: descriptionTextView.text, id: 100, newsCategoryId: categoryNewsId ?? 1, publishDate: publishDate ?? createDate, publishEnabled: switcher.isOn, title: titleTextField.text ?? "пусто")
+        let dtoNews = DTONews(createDate: createDate, creatorId: 2, creatorName: "Alexey", description: descriptionTextView.text, id: idNews ?? 100, newsCategoryId: categoryNewsId ?? 1, publishDate: publishDate ?? createDate, publishEnabled: switcher.isOn, title: titleTextField.text ?? "пусто")
         return dtoNews
     }
     
@@ -222,6 +221,13 @@ class EditNewsViewController: UIViewController {
         categoryTextField.text = presenter?.news?.categoryName
         titleTextField.text = presenter?.news?.title
         dateTextField.text = presenter?.news?.publishDate.toString()
+        if let timeDate = presenter?.news?.publishDate {
+            let dateFormate = DateFormatter()
+            dateFormate.dateStyle = .none
+            dateFormate.timeStyle = .short
+            dateFormate.dateFormat = "HH:mm"
+            timeTextField.text = dateFormate.string(from: timeDate)
+        }
         descriptionTextView.text = presenter?.news?.description
         switcher.isOn = presenter?.news?.publishEnabled ?? false
     }
@@ -357,7 +363,9 @@ extension EditNewsViewController: EditNewsPresenterOutput {
     }
     
     func updatedNews() {
-            setEditNewsTextField()
-            switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
+        setEditNewsTextField()
+        switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
+        setEnabelButtonSave()
+            
     }
 }
