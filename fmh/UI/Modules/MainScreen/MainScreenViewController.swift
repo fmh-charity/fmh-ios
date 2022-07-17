@@ -22,71 +22,100 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
     private let cellNewsId = "cellNews"
     private let cellWishesId = "cellWishes"
 
-    let tableview = UITableView()
+    private let tableview = UITableView()
     
     private var refreshControl = UIRefreshControl()
     
     private var newsItems: [NewsViewModel] = []
     private var wishesItems: [WishesViewModel] = []
     
-    var newsData: [News] = [] {
-           didSet {
-               
-             //  tableview.reloadData()
-           }
-       }
-    
-    var wishesData: [Wishes] = [] {
-           didSet {
-               
-             //  tableview.reloadData()
-           }
-       }
-    
-    private var countNews: Int = 3 {
+    private var newsData: [News] = [] {
         didSet {
-            configureNewsItems()
+            self.countNews = 3
+            self.isProcessing = false
+        }
+    }
+    
+    private var wishesData: [Wishes] = [] {
+        didSet {
+            self.countWishes = 6
+            self.isProcessing = false
+        }
+    }
+    
+    private var countNews: Int = 0 {
+        didSet {
+            self.configureNewsItems()
             self.tableview.reloadData()
         }
     }
     
-    private var countWishes: Int = 6 {
-           didSet {
-               configureWishesItems()
-               self.tableview.reloadData()
-           }
+    private var countWishes: Int = 0 {
+        didSet {
+            self.configureWishesItems()
+            self.tableview.reloadData()
+        }
     }
     
+    private var activityIndicator : UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .accentColor
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
     
+    private var timerErrorLoad: Timer?
+    
+    private var isProcessing: Bool = false {
+        didSet {
+            if isProcessing {
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+                self.timerErrorLoad = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(errorLoadData), userInfo: nil, repeats: false)                                          // алерт при ошибке загрузки
+            } else {
+                self.timerErrorLoad?.invalidate()
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let queue = DispatchQueue.global(qos: .userInteractive)
-        queue.sync{
-            presenter?.getAllNews(completion: { news, networkError in
-                guard  networkError == nil else {
-                    return
-                }
-                if let news = news {
-                    print("News count all: \(news.count)")
-                    self.newsData = news
-                    //self.tableview.reloadData() // <- временно
-                    print("news -- ", self.newsData.count)
-                    self.configureNewsItems()
-                }
-            })
-            
-            presenter?.getAllWishes(completion: { wishes, NetworkError in
-                guard NetworkError == nil else {
-                    return
-                }
-                if let wishes = wishes {
-                    self.wishesData = wishes
-                    self.configureWishesItems()
-                    self.configureMain()
-                }
-            })
-        }
+        self.isProcessing = true
+        self.uploadData()
+        self.configureMain()
+    }
+    
+    private func uploadData() {
+        presenter?.getAllNews(completion: { news, networkError in
+            guard  networkError == nil else {
+                return
+            }
+            if let news = news {
+                print("News count all: \(news.count)")
+                self.newsData = news
+                print("news -- ", self.newsData.count)
+                self.configureNewsItems()
+            }
+        })
+        
+        presenter?.getAllWishes(completion: { wishes, NetworkError in
+            guard NetworkError == nil else {
+                return
+            }
+            if let wishes = wishes {
+                print("Wishes count all: \(wishes.count)")
+                self.wishesData = wishes
+                print("wishes -- ", self.wishesData.count)
+                self.configureWishesItems()
+            }
+        })
+    }
+    
+    @objc private func errorLoadData() {
+        let alert = UIAlertController(title: "Error", message: "Can't load data, try again..", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func configureNewsItems() {
@@ -122,20 +151,19 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
         self.tableview.dataSource = self
         
         self.tableview.separatorStyle = .none
-        setConstraints()
         
         self.tableview.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: #selector(swipeGesture), for: .valueChanged)
 //
         self.tableview.rowHeight = UITableView.automaticDimension
-        
+        setConstraints()
         self.title = "NAV_BAR"  //Временнный тайтл
     }
     
     @objc private func swipeGesture() {                              // обновление даннных страницы
         self.countNews = 3
         self.countWishes = 6
-        self.tableview.reloadData()
+        uploadData()
         self.refreshControl.endRefreshing()
     }
     
@@ -266,7 +294,16 @@ extension MainScreenViewController {
             self.tableview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             self.tableview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
         ])
+        
+        self.tableview.addSubview(self.activityIndicator)
+        NSLayoutConstraint.activate([
+            self.activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.activityIndicator.heightAnchor.constraint(equalToConstant: 50),
+            self.activityIndicator.widthAnchor.constraint(equalToConstant: 50)
+        ])
     }
+    
 }
 
 //MARK: -
