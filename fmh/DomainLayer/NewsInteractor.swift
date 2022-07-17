@@ -11,7 +11,7 @@ import Combine
 protocol NewsInteractorProtocol {
     func getAllNews(completion: @escaping ([News]?, NetworkError?) -> Void )
     func getNews(id: Int, completion: @escaping (News?, NetworkError?) -> Void)
-    func deleteNews(id: Int)
+    func deleteNews(id: Int, completion: @escaping (Bool, NetworkError?) -> Void)
     
 }
 
@@ -82,7 +82,7 @@ extension NewsInteractor: NewsInteractorProtocol {
             .store(in: &anyCancellable)
     }
     
-    func deleteNews(id: Int) {
+    func deleteNews(id: Int, completion: @escaping (Bool, NetworkError?) -> Void) {
         self.repository?.deleteNews(id: id)
             .sink { anyCompletion in
                 switch anyCompletion {
@@ -93,8 +93,9 @@ extension NewsInteractor: NewsInteractorProtocol {
                     break
                 }
             }
-            receiveValue: { dtoNews in
-               print(dtoNews)
+            receiveValue: { isSuccess in
+               print("interactor message \(isSuccess)")
+                return completion(isSuccess, nil)
             }
             .store(in: &anyCancellable)
     }

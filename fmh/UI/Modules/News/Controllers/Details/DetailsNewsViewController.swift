@@ -206,13 +206,11 @@ extension DetailsNewsViewController: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsNewsCell", for: indexPath) as! DetailsNewsCollectionViewCell
         cell.delegate = self
         cell.index = indexPath.row
-        //cell.isTapArrow = false
         if let item = presenter?.news[indexPath.row] {
             cell.configure(model: item)
         }
         return cell
     }
-    
 }
 
 //MARK: - Расчет динамической ячейки
@@ -220,12 +218,8 @@ extension DetailsNewsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
-        //print("Расчет динамической ячейки \(isSelected)")
         /// Тут надо модельку прокидывать как и в cellForItemAt один в один
-        //sizingCell.delegate = self
-        //sizingCell.index = indexPath.row
         if let item = presenter?.news[indexPath.row] {
-            //print("configure sizingCell")
             sizingCell.configure(model: item)
         }
         sizingCell.frame = CGRect(
@@ -237,7 +231,6 @@ extension DetailsNewsViewController: UICollectionViewDelegateFlowLayout {
         sizingCell.setNeedsLayout()
         sizingCell.layoutIfNeeded()
         let size = sizingCell.systemLayoutSizeFitting(CGSize(width: collectionView.bounds.width, height: .greatestFiniteMagnitude), withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
-        //print(size)
         return size
     }
     
@@ -248,38 +241,6 @@ extension DetailsNewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 6
     }
-}
-//MARK: - action for ButtonCell
-extension DetailsNewsViewController: DetailsNewsCollectionViewCellDelegate {
-    func editDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickEditButton index: Int) {
-        let editNewsVC = moduleFactory.makeEditNewsViewController()
-        editNewsVC.destinationName = "editNews"
-        let id = presenter?.news[index].id
-        print(id)
-        editNewsVC.idNews = id
-        navigationController?.pushViewController(editNewsVC, animated: true)
-        print(index)
-    }
-    
-    func deleteDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickDeleteButton index: Int) {
-        print("механизм удаление ячейки и данных из бека по индексу \(index)")
-        guard let id = presenter?.news[index].id else { return }
-        print("id for delete \(id)")
-        presenter?.news.remove(at: index)
-        presenter?.deleteNews(id: id)
-        detailsNewsCollectionView.reloadData()
-    }
-}
-
-//MARK: - DetailsNewsPresenterOutput
-
-extension DetailsNewsViewController: DetailsNewsPresenterOutput {
-    
-    func updatedNews() {
-        detailsNewsCollectionView.reloadData()
-    }
-    
-    
 }
 
 extension DetailsNewsViewController: UICollectionViewDelegate {
@@ -296,6 +257,35 @@ extension DetailsNewsViewController: UICollectionViewDelegate {
         return true
     }
 }
+
+//MARK: - action for ButtonCell
+extension DetailsNewsViewController: DetailsNewsCollectionViewCellDelegate {
+    func editDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickEditButton index: Int) {
+        let editNewsVC = moduleFactory.makeEditNewsViewController()
+        editNewsVC.destinationName = "editNews"
+        let id = presenter?.news[index].id
+        editNewsVC.idNews = id
+        navigationController?.pushViewController(editNewsVC, animated: true)
+    }
+    
+    func deleteDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickDeleteButton index: Int) {
+        
+        guard let id = presenter?.news[index].id else { return }
+        print("механизм удаление ячейки и данных из бека по индексу \(id)")
+        presenter?.deleteNews(id: id, index: index)
+    }
+}
+
+//MARK: - DetailsNewsPresenterOutput
+
+extension DetailsNewsViewController: DetailsNewsPresenterOutput {
+    
+    func updatedNews() {
+        detailsNewsCollectionView.reloadData()
+        
+    }
+}
+
 
 
 

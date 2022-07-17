@@ -45,14 +45,21 @@ extension NewsRepository: NewsRepositoryProtocol {
     }
     
     func deleteNews(id: Int) -> AnyPublisher<Bool, NetworkError> {
-        let resource = APIResourceNews.removeNews(id: id)
-        return fetchDataPublisher(resource: resource.resource())
-//            .tryCatch{ networkError -> AnyPublisher<Bool, NetworkError> in
-//
-//            }
-//            .receive(on: DispatchQueue.main)
-            //.eraseToAnyPublisher()
-    }
-    
-    
+            let resource = APIResourceNews.removeNews(id: id)
+            return fetchDataPublisher(resource: resource.resource())
+                .map { $0 }
+                .catch({ networkError -> AnyPublisher<Bool, NetworkError> in
+                    switch networkError {
+                        case .JSONDecoderError(_):
+                            return Just(true)   // <- Если дошло до декодирования значит норм все - выдаем "TRUE"
+                                .setFailureType(to: NetworkError.self)
+                                .eraseToAnyPublisher()
+                    default:
+                        return Fail<Bool, NetworkError>(error: networkError)   // <- Во всех остальных случаях- выдаем "FALSE"
+                            .eraseToAnyPublisher()
+                    }
+                })
+                .receive(on: DispatchQueue.main)
+                .eraseToAnyPublisher()
+        }
 }

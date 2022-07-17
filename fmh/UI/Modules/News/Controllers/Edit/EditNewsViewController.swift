@@ -181,6 +181,7 @@ class EditNewsViewController: UIViewController {
         setView()
         setActionForTF()
         setEnabelButtonSave()
+        switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
         
     }
     

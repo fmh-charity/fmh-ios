@@ -42,8 +42,13 @@ extension DetailsNewsPresenter: DetailsNewsPresenterInput {
         }
     }
     
-    func deleteNews(id: Int) {
-        interactor.deleteNews(id: id)
+    func deleteNews(id: Int, index: Int) {
+        interactor.deleteNews(id: id) { success, apiError in
+            guard apiError == nil else {  return }
+            if success {
+                print("success delete news id \(id)")
+                self.news.remove(at: index)
+            }
+        }
     }
-
 }
