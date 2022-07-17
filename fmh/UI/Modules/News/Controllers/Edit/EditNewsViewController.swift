@@ -13,6 +13,7 @@ class EditNewsViewController: UIViewController {
     var onCompletion: (() -> ())?
     var presenter: EditNewsPresenterInput?
     private var categoryValues = ["Объявление", "День рождения", "Зарплата", "Профсоюз", "Праздник", "Массаж", "Благодарность", "Нужна помощь"]
+    private var categoryNewsId: Int?
     private var pickerCategory = UIPickerView()
     var isActiveNews = false
     
@@ -154,7 +155,7 @@ class EditNewsViewController: UIViewController {
         print("Save Action news")
         self.view.endEditing(true)
         presenter?.createNews(news: createDTONews())
-        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
     }
     
     @objc func cancelAction () {
@@ -171,7 +172,7 @@ class EditNewsViewController: UIViewController {
             guard let id = idNews else { return }
             print(id)
             presenter?.getNews(id: id)
-            setEditNewsTextField()
+            //setEditNewsTextField()
         } else {
             titleNavigation = "Создание новости"
         }
@@ -190,20 +191,30 @@ class EditNewsViewController: UIViewController {
         switchLabel.text = newSwitch.isOn ? "Активна" : "Не активна"
     }
     
+    private func getDate(stringDate: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy'T'HH:mm:ss"
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        return dateFormatter.date(from: stringDate) // replace Date String
+    }
+    
     private func createDTONews() -> DTONews{
-        let date = Date()
-        let dtoNews = DTONews(createDate: date, creatorId: 2, creatorName: "Alexey", description: "test description", id: 100, newsCategoryId: 7, publishDate: date, publishEnabled: true, title: "Test Title")
+        let createDate = Date()
+        let date = "\(dateTextField.text!)T\(timeTextField.text!):00"
+        let publishDate = getDate(stringDate: date)
+        let dtoNews = DTONews(createDate: createDate, creatorId: 2, creatorName: "Alexey", description: descriptionTextView.text, id: 100, newsCategoryId: categoryNewsId ?? 1, publishDate: publishDate ?? createDate, publishEnabled: switcher.isOn, title: titleTextField.text ?? "пусто")
         return dtoNews
     }
     
     private func setActionForTF() {
-        categoryTextField.addTarget(self, action: #selector(eptyEditingValid), for: .allEvents)
-        titleTextField.addTarget(self, action: #selector(eptyEditingValid), for: .editingChanged)
-        dateTextField.addTarget(self, action: #selector(eptyEditingValid), for: .allEvents)
-        timeTextField.addTarget(self, action: #selector(eptyEditingValid), for: .allEvents)
+        categoryTextField.addTarget(self, action: #selector(emptyEditingValid), for: .allEvents)
+        titleTextField.addTarget(self, action: #selector(emptyEditingValid), for: .editingChanged)
+        dateTextField.addTarget(self, action: #selector(emptyEditingValid), for: .allEvents)
+        timeTextField.addTarget(self, action: #selector(emptyEditingValid), for: .allEvents)
     }
     
-    @objc func eptyEditingValid() {
+    @objc func emptyEditingValid() {
         setEnabelButtonSave()
     }
     
@@ -299,6 +310,7 @@ extension EditNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        print("numberOfRowsInComponent \(categoryValues.count)")
         return categoryValues.count
     }
     
@@ -308,6 +320,8 @@ extension EditNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryTextField.text = categoryValues[row]
+        categoryNewsId = row + 1
+        print("categoryNewsId \(categoryNewsId)")
         self.view.endEditing(true)
     }
 }
@@ -337,8 +351,13 @@ extension EditNewsViewController: UITextViewDelegate {
 }
 
 extension EditNewsViewController: EditNewsPresenterOutput {
+    
+    func createdNews() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func updatedNews() {
-        setEditNewsTextField()
-        switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
+            setEditNewsTextField()
+            switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
     }
 }

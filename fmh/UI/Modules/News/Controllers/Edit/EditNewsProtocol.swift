@@ -20,6 +20,7 @@ protocol EditNewsPresenterOutput: AnyObject {
     var presenter: EditNewsPresenterInput? { get set }
     
     func updatedNews()
+    func createdNews()
 }
 
 // MARK: - EditNewsViewControllerProtocol

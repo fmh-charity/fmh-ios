@@ -19,6 +19,12 @@ final class EditNewsPresenter {
         }
     }
     
+    var createNews: News? {
+        didSet {
+            output?.createdNews()
+        }
+    }
+    
     init(interactor: NewsInteractorProtocol, output: EditNewsPresenterOutput) {
         self.interactor = interactor
         self.output = output
@@ -36,7 +42,7 @@ extension EditNewsPresenter: EditNewsPresenterInput {
             
             if let news = news {
                 print("Create news: \(news)")
-                    self.news = news
+                    self.createNews = news
             }
         }
     }
