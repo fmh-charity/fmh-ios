@@ -24,7 +24,7 @@ enum APIResourceNews {
             case .createNews(news: let news):
                 return APIResource(path: "news",
                                    method: .post,
-                                   body: news)
+                                   body: DTONews(createDate: news.createDate, creatorId: news.creatorId, creatorName: news.creatorName, description: news.description, id: news.id, newsCategoryId: news.creatorId, publishDate: news.publishDate, publishEnabled: news.publishEnabled, title: news.title))
             
             case .refreshNews(news: let news):
                 return APIResource(path: "news",

@@ -12,6 +12,7 @@ protocol NewsInteractorProtocol {
     func getAllNews(completion: @escaping ([News]?, NetworkError?) -> Void )
     func getNews(id: Int, completion: @escaping (News?, NetworkError?) -> Void)
     func deleteNews(id: Int, completion: @escaping (Bool, NetworkError?) -> Void)
+    func createNews(news: DTONews, completion: @escaping (News?, NetworkError?) -> Void)
     
 }
 
@@ -96,6 +97,31 @@ extension NewsInteractor: NewsInteractorProtocol {
             receiveValue: { isSuccess in
                print("interactor message \(isSuccess)")
                 return completion(isSuccess, nil)
+            }
+            .store(in: &anyCancellable)
+    }
+    
+    func createNews(news: DTONews, completion: @escaping (News?, NetworkError?) -> Void) {
+        self.repository?.createNews(news: news)
+            .sink { anyCompletion in
+                switch anyCompletion {
+                case .failure(let error):
+                    return completion(nil, error)
+                case .finished:
+                    break
+                }
+            }
+            receiveValue: { dtoNews in
+                let news = News(createDate: dtoNews.createDate,
+                                creatorId: dtoNews.creatorId,
+                                creatorName: dtoNews.creatorName,
+                                description: dtoNews.description,
+                                id: dtoNews.id,
+                                newsCategoryId: dtoNews.newsCategoryId,
+                                publishDate: dtoNews.publishDate,
+                                publishEnabled: dtoNews.publishEnabled,
+                                title: dtoNews.title)
+                return completion(news, nil)
             }
             .store(in: &anyCancellable)
     }

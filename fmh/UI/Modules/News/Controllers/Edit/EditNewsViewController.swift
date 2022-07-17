@@ -153,6 +153,7 @@ class EditNewsViewController: UIViewController {
     @objc func saveAction () {
         print("Save Action news")
         self.view.endEditing(true)
+        presenter?.createNews(news: createDTONews())
         navigationController?.popViewController(animated: true)
     }
     
@@ -187,6 +188,12 @@ class EditNewsViewController: UIViewController {
     
     @objc func setActiveNews (newSwitch: UISwitch) {
         switchLabel.text = newSwitch.isOn ? "Активна" : "Не активна"
+    }
+    
+    private func createDTONews() -> DTONews{
+        let date = Date()
+        let dtoNews = DTONews(createDate: date, creatorId: 2, creatorName: "Alexey", description: "test description", id: 100, newsCategoryId: 7, publishDate: date, publishEnabled: true, title: "Test Title")
+        return dtoNews
     }
     
     private func setActionForTF() {

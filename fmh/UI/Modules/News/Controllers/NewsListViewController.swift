@@ -71,7 +71,7 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
     /// pull refresh func
     @objc private func refresh(sender: UIRefreshControl) {
         presenter?.getAllNews()
-        newsCollectionView.reloadData()
+        //newsCollectionView.reloadData()
         sender.endRefreshing()
     }
     
@@ -98,7 +98,7 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter?.getAllNews()
-        newsCollectionView.reloadData()
+        //newsCollectionView.reloadData()
     }
     
     // set background

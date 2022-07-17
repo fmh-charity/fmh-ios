@@ -12,6 +12,7 @@ protocol EditNewsPresenterInput: AnyObject {
     var news: News? { get set }
     
     func getNews(id: Int)
+    func createNews(news: DTONews)
 }
 
 // MARK: - EditNewsPresenterOutput

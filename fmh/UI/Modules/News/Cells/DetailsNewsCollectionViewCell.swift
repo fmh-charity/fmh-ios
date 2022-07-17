@@ -285,7 +285,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelPleaceHolderPublic.translatesAutoresizingMaskIntoConstraints = false
         labelPleaceHolderPublic.leftAnchor.constraint(equalTo: middleContainerPublic.leftAnchor, constant: 16).isActive = true
         labelPleaceHolderPublic.centerYAnchor.constraint(equalTo: middleContainerPublic.centerYAnchor).isActive = true
-        labelPleaceHolderPublic.widthAnchor.constraint(equalTo: middleContainerPublic.widthAnchor, multiplier: 0.7).isActive = true
+        labelPleaceHolderPublic.widthAnchor.constraint(equalTo: middleContainerPublic.widthAnchor, multiplier: 0.6).isActive = true
         
         middleContainerPublic.addSubview(labelPublic)
         labelPublic.translatesAutoresizingMaskIntoConstraints = false
@@ -298,7 +298,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelPleaceHolderCreate.translatesAutoresizingMaskIntoConstraints = false
         labelPleaceHolderCreate.leftAnchor.constraint(equalTo: middleContainerCreate.leftAnchor, constant: 16).isActive = true
         labelPleaceHolderCreate.centerYAnchor.constraint(equalTo: middleContainerCreate.centerYAnchor).isActive = true
-        labelPleaceHolderCreate.widthAnchor.constraint(equalTo: middleContainerCreate.widthAnchor, multiplier: 0.7).isActive = true
+        labelPleaceHolderCreate.widthAnchor.constraint(equalTo: middleContainerCreate.widthAnchor, multiplier: 0.6).isActive = true
         
         middleContainerCreate.addSubview(labelCreate)
         labelCreate.translatesAutoresizingMaskIntoConstraints = false
@@ -311,7 +311,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelPleaceHolderAuthor.translatesAutoresizingMaskIntoConstraints = false
         labelPleaceHolderAuthor.leftAnchor.constraint(equalTo: middleContainerAuthor.leftAnchor, constant: 16).isActive = true
         labelPleaceHolderAuthor.centerYAnchor.constraint(equalTo: middleContainerAuthor.centerYAnchor).isActive = true
-        labelPleaceHolderAuthor.widthAnchor.constraint(equalTo: middleContainerAuthor.widthAnchor, multiplier: 0.7).isActive = true
+        labelPleaceHolderAuthor.widthAnchor.constraint(equalTo: middleContainerAuthor.widthAnchor, multiplier: 0.6).isActive = true
         
         middleContainerAuthor.addSubview(labelAuthor)
         labelAuthor.translatesAutoresizingMaskIntoConstraints = false

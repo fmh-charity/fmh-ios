@@ -81,7 +81,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     
     @objc private func refresh(sender: UIRefreshControl) {
         presenter?.getAllNews()
-        detailsNewsCollectionView.reloadData()
+        //detailsNewsCollectionView.reloadData()
         sender.endRefreshing()
     }
     
@@ -98,7 +98,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter?.getAllNews()
-        detailsNewsCollectionView.reloadData()
+        //detailsNewsCollectionView.reloadData()
         
     }
     
@@ -124,7 +124,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
         /// Create buttons
         let buttonFilter = makeButton(image: UIImage(named: "controlPanel.filter"), selector: #selector(buttonFilterNewsAction))
         let buttonSort = makeButton(image: UIImage(named: "controlPanel.sorting"), selector: #selector(buttonSotredNewsAction))
-        let buttonAdd = makeButton(image: UIImage(named: "controlPanel.edit"), selector: #selector(buttonAddNewsAction))
+        let buttonAdd = makeButton(image: UIImage(named: "controlPanel.add"), selector: #selector(buttonAddNewsAction))
         /// Add buttons in stackButtons
         
         stack.addArrangedSubview(buttonFilter)
@@ -174,7 +174,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     
     //MARK: -  Action button
     @objc func buttonAddNewsAction() {
-        let addController = EditNewsViewController()
+        let addController = moduleFactory.makeEditNewsViewController()
         navigationController?.pushViewController(addController, animated: true)
     }
     

@@ -29,13 +29,25 @@ final class EditNewsPresenter {
 
 // MARK: - EditNewsPresenterInput
 extension EditNewsPresenter: EditNewsPresenterInput {
+    
+    func createNews(news: DTONews) {
+        interactor.createNews(news: news) { news, apiError in
+            guard apiError == nil else {  return }
+            
+            if let news = news {
+                print("Create news: \(news)")
+                    self.news = news
+            }
+        }
+    }
+    
 
     func getNews(id: Int) {
         interactor.getNews(id: id) { news, apiError in
             guard apiError == nil else {  return }
             
             if let news = news {
-                print("news: \(news)")
+                print("Get news: \(news.id)")
                // DispatchQueue.main.async {
                     self.news = news
               //  }
@@ -43,5 +55,7 @@ extension EditNewsPresenter: EditNewsPresenterInput {
             
         }
     }
+    
+    
 
 }
