@@ -7,6 +7,29 @@
 
 import Foundation
 
+enum DecriptionChamber {
+    case numberOfChamber
+    case post
+    case block
+    case freePlaces
+    case comment
+    
+    var title: String {
+        switch self {
+        case .numberOfChamber:
+            return "№ палаты"
+        case .post:
+            return "Пост"
+        case .block:
+            return "Блок"
+        case .freePlaces:
+            return "Свободных мест"
+        case .comment:
+            return "Комментарий"
+        }
+    }
+}
+
 struct ChamberModel: Identifiable {
     
     let id = UUID()

@@ -95,10 +95,9 @@ extension ChambersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = ChamberViewController()
+        let vc = ChamberViewController(chamber: chambers[indexPath.section])
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
-        vc.chamber = chambers[indexPath.section]
         present(vc, animated: true, completion: nil)
     }
     

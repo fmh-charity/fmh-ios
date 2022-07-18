@@ -71,6 +71,8 @@
 		19F91BC9283D486B00AB6C6B /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */; };
 		594742672858C22100FA66AD /* ChamberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594742662858C22100FA66AD /* ChamberModel.swift */; };
 		594742692858CCA200FA66AD /* ChamberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594742682858CCA200FA66AD /* ChamberTableViewCell.swift */; };
+		596A05AD288562AD00561574 /* PatientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596A05AC288562AD00561574 /* PatientsView.swift */; };
+		596A05AF28856ABB00561574 /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596A05AE28856ABB00561574 /* PatientModel.swift */; };
 		598BF5D2286F05EF008B971F /* ChamberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598BF5D1286F05EF008B971F /* ChamberViewController.swift */; };
 		5999B819286DAB9200D477E4 /* ChambersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5999B818286DAB9200D477E4 /* ChambersTableViewCell.swift */; };
 		5999B81B286DAD7000D477E4 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5999B81A286DAD7000D477E4 /* UILabel + Extension.swift */; };
@@ -148,6 +150,8 @@
 		19F91BC8283D486B00AB6C6B /* OurMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
 		594742662858C22100FA66AD /* ChamberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamberModel.swift; sourceTree = "<group>"; };
 		594742682858CCA200FA66AD /* ChamberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamberTableViewCell.swift; sourceTree = "<group>"; };
+		596A05AC288562AD00561574 /* PatientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsView.swift; sourceTree = "<group>"; };
+		596A05AE28856ABB00561574 /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		598BF5D1286F05EF008B971F /* ChamberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamberViewController.swift; sourceTree = "<group>"; };
 		5999B818286DAB9200D477E4 /* ChambersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChambersTableViewCell.swift; sourceTree = "<group>"; };
 		5999B81A286DAD7000D477E4 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
@@ -484,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				594742662858C22100FA66AD /* ChamberModel.swift */,
+				596A05AE28856ABB00561574 /* PatientModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				59EDEA8B2853412400A3E21E /* HeaderMenuView.swift */,
 				594742682858CCA200FA66AD /* ChamberTableViewCell.swift */,
 				5999B818286DAB9200D477E4 /* ChambersTableViewCell.swift */,
+				596A05AC288562AD00561574 /* PatientsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -635,6 +641,7 @@
 				19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */,
 				5999B81D286DB65300D477E4 /* UIStackView + Extension.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
+				596A05AD288562AD00561574 /* PatientsView.swift in Sources */,
 				1933EA37282F026800C8A21B /* LoadingPresenter.swift in Sources */,
 				594742672858C22100FA66AD /* ChamberModel.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
@@ -663,6 +670,7 @@
 				19F91BC7283D485D00AB6C6B /* OurMissionViewController.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
+				596A05AF28856ABB00561574 /* PatientModel.swift in Sources */,
 				19562A75284A67DB00C8A704 /* APIResourceNews.swift in Sources */,
 				191EAA77281BD281007B1397 /* DTOUserInfo.swift in Sources */,
 				19450CE0283EBC7D001506B8 /* TemplateViewController.swift in Sources */,
