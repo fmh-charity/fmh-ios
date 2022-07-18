@@ -25,6 +25,7 @@ class HeaderMenuView: UIView {
         button.backgroundColor = .clear
         button.tintColor = .gray
         button.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -33,6 +34,7 @@ class HeaderMenuView: UIView {
         button.backgroundColor = .clear
         button.tintColor = .gray
         button.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -56,6 +58,16 @@ class HeaderMenuView: UIView {
         menuNameLabel.text = labelText
         leftButton.setImage(leftButtonImage, for: .normal)
         rightButton.setImage(rightButtonImage, for: .normal)
+    }
+    
+    // MARK: - Private methods
+    
+    @objc private func leftButtonTapped() {
+        print(#function)
+    }
+    
+    @objc private func rightButtonTapped() {
+        print(#function)
     }
     
 }

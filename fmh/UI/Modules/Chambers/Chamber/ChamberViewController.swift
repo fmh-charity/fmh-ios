@@ -27,6 +27,8 @@ class ChamberViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - Initializers
+    
     init(chamber: ChamberModel) {
         self.chamber = chamber
         super.init(nibName: nil, bundle: nil)
@@ -82,15 +84,13 @@ extension ChamberViewController {
     
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension ChamberViewController: UITableViewDelegate, UITableViewDataSource {
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
-    
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChamberTableViewCell.identifier, for: indexPath) as? ChamberTableViewCell else { return UITableViewCell() }
@@ -112,6 +112,4 @@ extension ChamberViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
 }

@@ -9,7 +9,11 @@ import UIKit
 
 class ChamberTableViewCell: UITableViewCell {
     
+    // MARK: - Public properties
+    
     static let identifier = "ChamberTableViewCell"
+    
+    // MARK: - Private properties
     
     private lazy var numberOfChamber: UILabel = {
        let label = UILabel(textColor: .gray, font: UIFont(name: "SFNS Display", size: 13), numberOfLines: 1)
@@ -92,17 +96,9 @@ class ChamberTableViewCell: UITableViewCell {
         view.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
         return view
     }()
-    
-//    private lazy var patientsView: UIView = {
-//        let view = PatientsView()
-//        return view
-//
-//    }()
-    
-    private lazy var fourthSeparatorView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(cgColor: CGColor(gray: 0.9, alpha: 1))
+
+    private lazy var patientsView: UIView = {
+        let view = PatientsView(labelText: "Пациенты палаты", patientText: "Фурсова М.Г. Нургалеева Е.М. Иванов А.Б. Лукашкин Т.В.", plusButtonImage: UIImage(systemName: "plus.circle"))
         return view
     }()
     
@@ -132,17 +128,19 @@ class ChamberTableViewCell: UITableViewCell {
     
     private lazy var commentStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [comment, nameOfComment], axis: .vertical, spacing: 0)
-        stackView.distribution = .fill
-        return stackView
-    }()
-    
-    private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [chamberStackView, postStackView, blockStackView, freePlacesStackView, commentStackView], axis: .vertical, spacing: 15)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fill
         return stackView
     }()
     
+    private lazy var mainStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [chamberStackView, postStackView, blockStackView, freePlacesStackView], axis: .vertical, spacing: 15)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -157,23 +155,49 @@ class ChamberTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
+    
+    func configure(numberOfChamber: String, chamber: String, numberOfPost: String, post: String, numberOfBlock: String, block: String, numberOfFreePlaces: String, freePlaces: String, comment: String, nameOfComment: String) {
+
+        self.numberOfChamber.text = numberOfChamber
+        self.chamber.text = chamber
+        self.numberOfPost.text = numberOfPost
+        self.post.text = post
+        self.numberOfBlock.text = numberOfBlock
+        self.block.text = block
+        self.numberOfFreePlaces.text = numberOfFreePlaces
+        self.freePlaces.text = freePlaces
+        self.comment.text = comment
+        self.nameOfComment.text = nameOfComment
+    }
+    
+}
+
+// MARK: - Add subviews
+
+extension ChamberTableViewCell {
     private func addSubviews() {
         contentView.addSubview(grayView)
         contentView.addSubview(firstSeparatorView)
         contentView.addSubview(secondSeparatorView)
         contentView.addSubview(thirdSeparatorView)
-//        contentView.addSubview(patientsView)
-        contentView.addSubview(fourthSeparatorView)
+        contentView.addSubview(patientsView)
         contentView.addSubview(mainStackView)
+        contentView.addSubview(commentStackView)
     }
-    
+}
+
+// MARK: - Setup constraints
+
+extension ChamberTableViewCell {
+
     private func setupConstrains() {
         
         NSLayoutConstraint.activate([
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            mainStackView.bottomAnchor.constraint(equalTo: patientsView.topAnchor, constant: -7.5)
         ])
         
         NSLayoutConstraint.activate([
@@ -204,34 +228,18 @@ class ChamberTableViewCell: UITableViewCell {
             thirdSeparatorView.heightAnchor.constraint(equalToConstant: 2)
         ])
         
-//        NSLayoutConstraint.activate([
-//            patientsView.topAnchor.constraint(equalTo: freePlacesStackView.bottomAnchor, constant: 7.5),
-//            patientsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 7.5),
-//            patientsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -7.5),
-//            patientsView.bottomAnchor.constraint(equalTo: commentStackView.topAnchor, constant: -7.5)
-//        ])
+        NSLayoutConstraint.activate([
+            patientsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 7.5),
+            patientsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -7.5)
+        ])
         
         NSLayoutConstraint.activate([
-            fourthSeparatorView.topAnchor.constraint(equalTo: freePlacesStackView.bottomAnchor, constant: 7.5),
-            fourthSeparatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 7.5),
-            fourthSeparatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -7.5),
-            fourthSeparatorView.heightAnchor.constraint(equalToConstant: 2)
+            commentStackView.topAnchor.constraint(equalTo: patientsView.bottomAnchor, constant: 7.5),
+            commentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            commentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            commentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
 
-    }
-    
-    func configure(numberOfChamber: String, chamber: String, numberOfPost: String, post: String, numberOfBlock: String, block: String, numberOfFreePlaces: String, freePlaces: String, comment: String, nameOfComment: String) {
-
-        self.numberOfChamber.text = numberOfChamber
-        self.chamber.text = chamber
-        self.numberOfPost.text = numberOfPost
-        self.post.text = post
-        self.numberOfBlock.text = numberOfBlock
-        self.block.text = block
-        self.numberOfFreePlaces.text = numberOfFreePlaces
-        self.freePlaces.text = freePlaces
-        self.comment.text = comment
-        self.nameOfComment.text = nameOfComment
     }
     
 }

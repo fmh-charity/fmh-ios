@@ -74,7 +74,7 @@ extension ChambersViewController {
     
 }
 
-// MARK: - TableViewDelegate and TableViewDataSource
+// MARK: - TableViewDelegate, TableViewDataSource
 
 extension ChambersViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -121,25 +121,3 @@ extension ChambersViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: - SwiftUI Canvas
-
-import SwiftUI
-
-struct ViewControllerProvider: PreviewProvider {
-    
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        let viewController = ChambersViewController()
-        
-        func makeUIViewController(context: Context) -> some UIViewController {
-            viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-    }
-}
