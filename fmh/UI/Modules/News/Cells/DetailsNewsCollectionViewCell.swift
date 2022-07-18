@@ -391,7 +391,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         formate.dateFormat = "dd.MM.yyyy"
         labelCreate.text = formate.string(from: model.createDate)
         labelPublic.text = formate.string(from: model.publishDate)
-        labelisActive.text = model.publishEnabled ? "✓ АКТИВНА" : "× НЕ АКТИВНА"
+        labelisActive.text = model.publishEnabled ? "✓ АКТИВНА" : "╳ НЕ АКТИВНА"
         
     }
     
