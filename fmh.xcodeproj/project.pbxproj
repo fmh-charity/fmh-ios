@@ -493,6 +493,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		596A05B02886AD3100561574 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				594742682858CCA200FA66AD /* ChamberTableViewCell.swift */,
+				5999B818286DAB9200D477E4 /* ChambersTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		598BF5D0286F05D7008B971F /* Chamber */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,9 +514,10 @@
 			isa = PBXGroup;
 			children = (
 				598BF5D0286F05D7008B971F /* Chamber */,
+				596A05B02886AD3100561574 /* Cell */,
+				59EDEA842852563500A3E21E /* Views */,
 				594742652858C1EE00FA66AD /* Model */,
 				59EDEA8F28537BF200A3E21E /* Extensions */,
-				59EDEA842852563500A3E21E /* Views */,
 				59EDEA9228539E7000A3E21E /* ChambersProtocols.swift */,
 				59EDEA872852566E00A3E21E /* ChambersPresenter.swift */,
 				59EDEA892852568B00A3E21E /* ChambersViewController.swift */,
@@ -519,8 +529,6 @@
 			isa = PBXGroup;
 			children = (
 				59EDEA8B2853412400A3E21E /* HeaderMenuView.swift */,
-				594742682858CCA200FA66AD /* ChamberTableViewCell.swift */,
-				5999B818286DAB9200D477E4 /* ChambersTableViewCell.swift */,
 				596A05AC288562AD00561574 /* PatientsView.swift */,
 			);
 			path = Views;

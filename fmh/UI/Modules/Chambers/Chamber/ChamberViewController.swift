@@ -27,6 +27,17 @@ class ChamberViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var doneButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .clear
+        button.tintColor = .gray
+        button.contentMode = .scaleAspectFit
+        button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Initializers
     
     init(chamber: ChamberModel) {
@@ -53,6 +64,10 @@ class ChamberViewController: UIViewController {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "BackGround") ?? UIImage())
     }
     
+    @objc private func doneButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - Setup constraints
@@ -62,6 +77,7 @@ extension ChamberViewController {
     private func addSubviews() {
         view.addSubview(headerMenu)
         view.addSubview(tableView)
+        view.addSubview(doneButton)
     }
     
     private func setupConstraints() {
@@ -78,6 +94,12 @@ extension ChamberViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            doneButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            doneButton.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+            doneButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1)
         ])
         
     }
