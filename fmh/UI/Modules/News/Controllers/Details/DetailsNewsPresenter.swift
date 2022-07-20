@@ -15,6 +15,9 @@ final class DetailsNewsPresenter {
 
     var news: [News] = [] {
         didSet {
+//            news = news.filter({ news in
+//                news.publishEnabled
+//            })
             output?.updatedNews()
         }
     }
@@ -29,16 +32,20 @@ final class DetailsNewsPresenter {
 // MARK: - DetailsNewsPresenterInput
 extension DetailsNewsPresenter: DetailsNewsPresenterInput {
 
-    func getAllNews() {
+    func getAllNews(categoryId: Int?) {
         interactor.getAllNews { news, apiError in
             guard apiError == nil else {  return }
             if let news = news {
                 print("news count details: \(news.count)")
-                DispatchQueue.main.async {
+                //DispatchQueue.main.async {
+                if let id = categoryId {
+                    self.news = news.filter({ item in
+                        item.newsCategoryId == id
+                    })
+                } else {
                     self.news = news
                 }
             }
-            
         }
     }
     

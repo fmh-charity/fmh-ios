@@ -11,7 +11,9 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     
     var onCompletion: (() -> ())?
     var presenter: DetailsNewsPresenterInput?
-    var moduleFactory = ModuleFactory() // для инициализации editVC
+    private var moduleFactory = ModuleFactory() // для инициализации editVC
+    private var categoryId: Int?
+    
     // pull refresh
     private lazy var newsPullRefresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -42,7 +44,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     
     private lazy var viewHeader: UIView  = {
         let view = UIView()
-        view.backgroundColor = .orange //ConstantNews.Collor.headerNews
+        view.backgroundColor = ConstantNews.Collor.headerSettingNews
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -80,26 +82,23 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
-        presenter?.getAllNews()
-        //detailsNewsCollectionView.reloadData()
+        presenter?.getAllNews(categoryId: categoryId)
         sender.endRefreshing()
     }
-    
+//MARK: - VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setBackGround(name: "BackGround")
         setLayouts()
-        presenter?.getAllNews()
+        presenter?.getAllNews(categoryId: categoryId)
         detailsNewsCollectionView.refreshControl = newsPullRefresh
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.getAllNews()
-        //detailsNewsCollectionView.reloadData()
-        
+        presenter?.getAllNews(categoryId: categoryId)
     }
     
     // set background
@@ -127,8 +126,8 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
         let buttonAdd = makeButton(image: UIImage(named: "controlPanel.add"), selector: #selector(buttonAddNewsAction))
         /// Add buttons in stackButtons
         
-        stack.addArrangedSubview(buttonFilter)
         stack.addArrangedSubview(buttonSort)
+        stack.addArrangedSubview(buttonFilter)
         stack.addArrangedSubview(buttonAdd)
         
         /// Safe area margins
@@ -180,6 +179,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     
     @objc func buttonFilterNewsAction() {
         let addController = FilterNewsViewController()
+        addController.delegate = self
         navigationController?.pushViewController(addController, animated: true)
     }
     
@@ -284,6 +284,16 @@ extension DetailsNewsViewController: DetailsNewsPresenterOutput {
         detailsNewsCollectionView.reloadData()
         
     }
+}
+//MARK: - DetailsNewsViewControllerDelegate
+
+extension DetailsNewsViewController: DetailsNewsViewControllerDelegate {
+    func filtering(categoryId: Int?, datePub: String) {
+        self.categoryId = categoryId
+        print("category \(categoryId) and date \(datePub)")
+    }
+    
+    
 }
 
 

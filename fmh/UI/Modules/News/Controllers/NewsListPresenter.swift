@@ -30,17 +30,20 @@ final class NewsListPresenter {
 // MARK: - GeneralPresenterInput
 extension NewsListPresenter: NewsListPresenterInput {
 
-    func getAllNews() {
+    func getAllNews(categoryId: Int?) {
         interactor.getAllNews { news, apiError in
             guard apiError == nil else {  return }
-            
             if let news = news {
-                print("news count: \(news.count)")
-                DispatchQueue.main.async {
+                print("news count details: \(news.count)")
+                //DispatchQueue.main.async {
+                if let id = categoryId {
+                    self.news = news.filter({ item in
+                        item.newsCategoryId == id
+                    })
+                } else {
                     self.news = news
                 }
             }
-            
         }
     }
 

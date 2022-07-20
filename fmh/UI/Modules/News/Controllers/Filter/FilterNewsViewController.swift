@@ -8,6 +8,8 @@
 import UIKit
 
 class FilterNewsViewController: UIViewController {
+    weak var delegate: NewsListViewControllerDelegate?
+    private var categoryId: Int?
     private var titleView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
@@ -17,7 +19,7 @@ class FilterNewsViewController: UIViewController {
         return label
     }()
     
-    private var categoryValues = ["Объявление", "День рождения", "Зарплата", "Профсоюз", "Праздник", "Массаж", "Благодарность", "Нужна помощь"]
+    private var categoryValues = ["Все", "Объявление", "День рождения", "Зарплата", "Профсоюз", "Праздник", "Массаж", "Благодарность", "Нужна помощь"]
     
     private var pickerCategory = UIPickerView()
     private var mainStackView = UIStackView()
@@ -123,6 +125,7 @@ class FilterNewsViewController: UIViewController {
     
     @objc func saveAction () {
         print("Save filter news")
+        delegate?.filtering(categoryId: categoryId, datePub: dateTextField.text!)
         self.view.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
@@ -137,6 +140,7 @@ class FilterNewsViewController: UIViewController {
         super.viewDidLoad()
         
         setBackGround(name: "BackGround")
+        
         setCategoryPicker()
         setView()
         
@@ -145,6 +149,7 @@ class FilterNewsViewController: UIViewController {
     private func setCategoryPicker() {
         pickerCategory.delegate = self
         pickerCategory.dataSource = self
+        pickerCategory.selectRow(4, inComponent: 0, animated: true)
         categoryTextField.inputView = pickerCategory
     }
     
@@ -206,31 +211,36 @@ extension FilterNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryTextField.text = categoryValues[row]
+        if row != 0 {
+            categoryId = row
+        }
+        
         self.view.endEditing(true)
     }
+    
 }
 
 //MARK: - extension for textView placeholder
-extension FilterNewsViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView)
-    {
-        if (textView.text == "Описание" && textView.textColor == .lightGray)
-        {
-            textView.text = ""
-            textView.textColor = .black
-        }
-        textView.becomeFirstResponder() //Optional
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView)
-    {
-        if (textView.text == "")
-        {
-            textView.text = "Описание"
-            textView.textColor = .lightGray
-        }
-        textView.resignFirstResponder()
-    }
-}
+//extension FilterNewsViewController: UITextViewDelegate {
+//    func textViewDidBeginEditing(_ textView: UITextView)
+//    {
+//        if (textView.text == "Описание" && textView.textColor == .lightGray)
+//        {
+//            textView.text = ""
+//            textView.textColor = .black
+//        }
+//        textView.becomeFirstResponder() //Optional
+//    }
+//    
+//    func textViewDidEndEditing(_ textView: UITextView)
+//    {
+//        if (textView.text == "")
+//        {
+//            textView.text = "Описание"
+//            textView.textColor = .lightGray
+//        }
+//        textView.resignFirstResponder()
+//    }
+//}
 
 

@@ -278,7 +278,7 @@ class DetailsNewsCollectionViewCell: UICollectionViewCell {
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
         labelTitle.leftAnchor.constraint(equalTo: imageCategory.rightAnchor, constant: 16).isActive = true
         labelTitle.centerYAnchor.constraint(equalTo: topContainer.centerYAnchor).isActive = true
-        labelTitle.rightAnchor.constraint(equalTo: topContainer.rightAnchor, constant: 50).isActive = true
+        labelTitle.rightAnchor.constraint(equalTo: topContainer.rightAnchor, constant: -50).isActive = true
         labelTitle.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         middleContainerPublic.addSubview(labelPleaceHolderPublic)
