@@ -7,8 +7,13 @@
 
 import UIKit
 
+enum StatusOfClaim {
+    case opened
+    case inwork
+    case closed
+}
+
 final class TaskFullScreenViewController: UIViewController {
-    var model: DTOTask?
     private let orangeView = OrangeView()
     private let bottomButtons = BottomButtonsView()
     private let taskView = AllElementsView()
@@ -16,10 +21,11 @@ final class TaskFullScreenViewController: UIViewController {
     private let creatorView = CreatorView()
     private let commentView = CommentsView()
     private let tableView = TableViewScreen()
+    private let dropDownButtins = DropDownButtonsView()
     private let statusLabel = UILabel(text: "В работе", font: UIFont(name: "SF UI Display", size: 16), tintColor: .black, textAlignment: .center)
     private let themeLabel = UILabel(text: "Тема", font: UIFont.systemFont(ofSize: 13) , tintColor: UIColor(named: "TaskCollectionTextColor") ?? .black, textAlignment: .left)
     let nameofThemeLabel = UILabel(text: "Тема1", font: UIFont.systemFont(ofSize: 16) , tintColor: .black, textAlignment: .right)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -37,8 +43,12 @@ final class TaskFullScreenViewController: UIViewController {
         view.addSubview(creatorView)
         view.addSubview(tableView)
         view.addSubview(bottomButtons)
+        view.addSubview(dropDownButtins)
         taskView.backgroundColor = .white
+        dropDownButtins.isHidden = true
+        bottomButtons.workButton.addTarget(self, action: #selector(changeShowingStatusButtons), for: .touchUpInside)
         bottomButtons.backButton.addTarget(self, action: #selector(closeWindow), for: .touchUpInside)
+        dropDownButtins.changeStatusButton.addTarget(self, action: #selector(changedButtonTapped), for: .touchUpInside)
         statusLabel.backgroundColor = UIColor(named: "Status.active") ?? .systemGray6
         let constraints = [
             orangeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -74,19 +84,14 @@ final class TaskFullScreenViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -14),
             tableView.bottomAnchor.constraint(equalTo: bottomButtons.topAnchor, constant: -10),
+            dropDownButtins.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 180),
+            dropDownButtins.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
+            dropDownButtins.bottomAnchor.constraint(equalTo: bottomButtons.topAnchor),
             bottomButtons.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 25),
             bottomButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             bottomButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             bottomButtons.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ]
-        nameofThemeLabel.text = model?.title
-        statusLabel.text = model?.status
-        taskView.dateLabel.text = (formatDateFromIntToString(model?.planExecuteDate ?? 0)).0
-        taskView.timeLabel.text = (formatDateFromIntToString(model?.planExecuteDate ?? 0)).1
-        taskView.nameOfExecutorLabel.text = model?.executorName
-        descriptionView.descriptionLabel.text = model?.description
-        creatorView.dateLabel.text = (formatDateFromIntToString(model?.createDate ?? 0)).0
-        creatorView.timeLabel.text = (formatDateFromIntToString(model?.createDate ?? 0)).1    
         tableView.layer.shadowOffset = CGSize(width: 1, height: 4)
         tableView.layer.shadowRadius = 4
         tableView.layer.shadowOpacity = 0.25
@@ -99,8 +104,42 @@ final class TaskFullScreenViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @objc private func changeShowingStatusButtons() {
+        dropDownButtins.isHidden = dropDownButtins.isHidden ? false : true
+        switch statusLabel.text {
+        case "Открыта":
+            dropDownButtins.changeStatusButton.setTitle("Взять в работу", for: .normal)
+            break
+        case "В работе":
+            dropDownButtins.changeStatusButton.setTitle("Завершить", for: .normal)
+            break
+        default: dropDownButtins.changeStatusButton.setTitle("Открыть", for: .normal)
+            break
+        }
+    }
+    
+    @objc private func changedButtonTapped() {
+        switch statusLabel.text {
+        case "Открыта":
+            statusLabel.backgroundColor = UIColor(named: "Status.active") ?? .systemGray6
+            statusLabel.text = "В работе"
+            dropDownButtins.isHidden = true
+            break
+        case "В работе":
+            statusLabel.backgroundColor = UIColor.lightGray
+            statusLabel.text = "Закрыта"
+            dropDownButtins.isHidden = true
+            break
+        default:
+            statusLabel.backgroundColor = UIColor.lightGray
+            statusLabel.text = "Открыта"
+            dropDownButtins.isHidden = true
+            break
+        }
+    }
+    
     private func workWithComments() {
-        tableView.newCommentComplition = { [weak self] in
+        tableView.newCommentComplition = {[weak self] in
             let alertController = UIAlertController(title: "Новый комментарий", message: "", preferredStyle: UIAlertController.Style.alert)
             alertController.addTextField { (textField : UITextField!) -> Void in
                 textField.placeholder = "Введите текст комментария"

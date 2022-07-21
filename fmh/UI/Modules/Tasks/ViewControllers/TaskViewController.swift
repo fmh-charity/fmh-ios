@@ -7,61 +7,34 @@ enum FilterClaim: String {
     case isClosed
 }
 
-final class TaskViewController: UIViewController, FilterDelegate {
-
+final class TaskViewController: UIViewController {
+    
     private var collectionView: UICollectionView?
-    private var toolbarView = TopToolbarView()
+    private var toolbarView =  TopToolbarView()
+    private var buttonCases: Dictionary<String,Bool> = ["Open":true, "Work":false, "Completed":true, "Canceled":false]
     private lazy var filterVC = FilterViewController()
-    var isFiltering = false
-    var filteredArray = [DTOTask]()
+    private var filteredArray = [TaskModel]()
+    private var isFiltering = true
     private lazy var filterBlurEffect: BackgroundBlurFilterView = {
         let blurEffect = BackgroundBlurFilterView()
         blurEffect.isHidden = true
         blurEffect.translatesAutoresizingMaskIntoConstraints = false
         return blurEffect
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionViewLayout()
         view.backgroundColor = .white
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        takeActionFromFilter()
         collectionView?.reloadData()
     }
-
-    func passData(dict: Dictionary<String, Bool>) {
-        var array = [DTOTask]()
-        for (key, value) in dict {
-            if value {
-                isFiltering = true
-                switch key {
-                case "Open":
-                    array += taskModelCells.filter({ (cellModel:DTOTask) -> Bool in
-                        return cellModel.status.contains("Open")})
-                    print("Open")
-                case "Work":
-                     array += taskModelCells.filter({ (cellModel:DTOTask) -> Bool in
-                        return cellModel.status.contains("Work")})
-                    print("Work")
-                case "Completed":
-                    array += taskModelCells.filter { $0.status == "Completed" }
-                    print("Completed")
-                case "Canceled":
-                    array += taskModelCells.filter { $0.status == "Canceled" }
-                default: return
-                }
-            }
-            collectionView?.reloadData()
-        }
-        print(filteredArray)
-        filteredArray = []
-        filteredArray = array
-        print(filteredArray)
-    }
-
+    
     private func collectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -78,10 +51,10 @@ final class TaskViewController: UIViewController, FilterDelegate {
         view.addSubview(collectionView)
         view.addSubview(toolbarView)
         view.addSubview(filterBlurEffect)
-
+        
         toolbarView.settingsButton.addTarget(self, action: #selector(showFilters(_:)), for: .touchUpInside)
         toolbarView.addButton.addTarget(self, action: #selector(addTask(_:)), for: .touchUpInside)
-
+        
         let constraints = [
             filterBlurEffect.topAnchor.constraint(equalTo: view.topAnchor),
             filterBlurEffect.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -91,7 +64,7 @@ final class TaskViewController: UIViewController, FilterDelegate {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 45),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
+            
             toolbarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             toolbarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             toolbarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -107,25 +80,16 @@ final class TaskViewController: UIViewController, FilterDelegate {
         popoverVC.popoverPresentationController?.sourceView = sender
         popoverVC.popoverPresentationController?.permittedArrowDirections = .up
         popoverVC.popoverPresentationController?.delegate = self
-        popoverVC.filterDelegate = self
         self.present(popoverVC, animated: true, completion: nil)
     }
     @objc private func showFilters() {
         filterBlurEffect.isHidden = false
     }
-
+    
     @objc private func addTask(_ sender: UIButton) {
         let vc = CreateTaskViewController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
-    }
-
-    @objc private func okFilter(_ sender: UIButton){
-        filterBlurEffect.isHidden = true
-    }
-
-    @objc private func cancelFilter(_ sender: UIButton){
-        filterBlurEffect.isHidden = true
     }
 }
 
@@ -136,31 +100,53 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         return taskModelCells.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCollectionViewCell.reuseID,for: indexPath) as? TaskCollectionViewCell else { return UICollectionViewCell() }
-        var currentCell: DTOTask
+        var currentCell: TaskModel
         if isFiltering {
             currentCell = filteredArray[indexPath.row]
         } else {
             currentCell = taskModelCells[indexPath.row]
         }
-        cell.nameofThemeLabel.text = currentCell.title.russianHyphenated()
-        cell.taskView.elementsView.nameOfExecutorLabel.text = currentCell.creatorName.russianHyphenated()
-        cell.taskView.elementsView.dateLabel.text = (formatDateFromIntToString(currentCell.planExecuteDate)).0
-        cell.taskView.elementsView.timeLabel.text = (formatDateFromIntToString(currentCell.planExecuteDate)).1
+        cell.nameofThemeLabel.text = currentCell.nameOfTheme.russianHyphenated()
+        cell.taskView.elementsView.nameOfExecutorLabel.text = currentCell.nameOfExecutor.russianHyphenated()
+        cell.taskView.elementsView.dateLabel.text = currentCell.date
+        cell.taskView.elementsView.timeLabel.text = currentCell.time
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: UIScreen.main.bounds.width * 0.75, height: 200)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = TaskFullScreenViewController()
-        vc.model = taskModelCells[indexPath.row]
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
+    }
+    //MARK: доделать филтрацию
+    func takeActionFromFilter() {
+            for (key, value) in buttonCases {
+                if value {
+                    switch key {
+                    case "Open":
+                        filteredArray = taskModelCells.filter { $0.status == "Open" }
+                        print("Open")
+                    case "Work":
+                        filteredArray = taskModelCells.filter { $0.status == "Work" }
+                        print("Work")
+                    case "Completed":
+                        filteredArray = taskModelCells.filter { $0.status == "Completed" }
+                        print("Completed")
+                    case "Canceled":
+                        filteredArray = taskModelCells.filter { $0.status == "Canceled" }
+                    default: return
+                    }
+                }
+                collectionView?.reloadData()
+            }
+        
     }
 }
 
