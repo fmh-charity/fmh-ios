@@ -11,7 +11,7 @@ import Foundation
 protocol NewsListPresenterInput: AnyObject {
     var news: [News] { get set }
     
-    func getAllNews(categoryId: Int?)
+    func getAllNews(filters: [FilterNews?])
 }
 
 // MARK: - GeneralPresenterOutput
@@ -27,5 +27,5 @@ protocol NewsListViewControllerProtocol: BaseViewProtocol {
 }
 
 protocol NewsListViewControllerDelegate: AnyObject {
-    func filtering(categoryId: Int?, datePub: String)
+    func filtering(filters: [FilterNews?])
 }

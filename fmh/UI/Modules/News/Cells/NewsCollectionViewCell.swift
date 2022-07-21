@@ -201,7 +201,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
         let formate = DateFormatter()
         formate.timeStyle = .none
         formate.dateFormat = "dd.MM.yyyy"
-        labelDate.text = formate.string(from: model.createDate)
+        labelDate.text = formate.string(from: model.publishDate)
     }
     
 }

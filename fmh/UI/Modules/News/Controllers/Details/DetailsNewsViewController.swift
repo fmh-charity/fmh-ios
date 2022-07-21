@@ -13,6 +13,8 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     var presenter: DetailsNewsPresenterInput?
     private var moduleFactory = ModuleFactory() // для инициализации editVC
     private var categoryId: Int?
+    private var datePublic: String?
+    private var filters = [FilterNews?]()
     
     // pull refresh
     private lazy var newsPullRefresh: UIRefreshControl = {
@@ -82,7 +84,7 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
-        presenter?.getAllNews(categoryId: categoryId)
+        presenter?.getAllNews(filters: filters)
         sender.endRefreshing()
     }
 //MARK: - VC LifeCycle
@@ -91,14 +93,14 @@ class DetailsNewsViewController: UIViewController, DetailsNewsViewControllerProt
         
         setBackGround(name: "BackGround")
         setLayouts()
-        presenter?.getAllNews(categoryId: categoryId)
+        presenter?.getAllNews(filters: filters)
         detailsNewsCollectionView.refreshControl = newsPullRefresh
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.getAllNews(categoryId: categoryId)
+        presenter?.getAllNews(filters: filters)
     }
     
     // set background
@@ -288,9 +290,9 @@ extension DetailsNewsViewController: DetailsNewsPresenterOutput {
 //MARK: - DetailsNewsViewControllerDelegate
 
 extension DetailsNewsViewController: DetailsNewsViewControllerDelegate {
-    func filtering(categoryId: Int?, datePub: String) {
-        self.categoryId = categoryId
-        print("category \(categoryId) and date \(datePub)")
+    func filtering(filters: [FilterNews?]) {
+        self.filters = filters
+        print("filters = \(self.filters)")
     }
     
     

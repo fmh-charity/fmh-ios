@@ -10,6 +10,9 @@ import UIKit
 class FilterNewsViewController: UIViewController {
     weak var delegate: NewsListViewControllerDelegate?
     private var categoryId: Int?
+    private var datePublish: String? = nil
+    //let filters = [FilterNews]()
+    
     private var titleView: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
@@ -125,7 +128,9 @@ class FilterNewsViewController: UIViewController {
     
     @objc func saveAction () {
         print("Save filter news")
-        delegate?.filtering(categoryId: categoryId, datePub: dateTextField.text!)
+        datePublish = dateTextField.text != "" ? dateTextField.text : nil
+        let filters = createFilters(categoryId: categoryId, datePublish: datePublish)
+        delegate?.filtering(filters: filters)
         self.view.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
@@ -140,10 +145,15 @@ class FilterNewsViewController: UIViewController {
         super.viewDidLoad()
         
         setBackGround(name: "BackGround")
-        
         setCategoryPicker()
         setView()
         
+    }
+    
+    private func createFilters(categoryId: Int?, datePublish: String?) -> [FilterNews?] {
+        let filtersCategory = FilterNews.category(categoryId: categoryId)
+        let filterDatePublish = FilterNews.datePublish(datePublish: datePublish)
+        return [filtersCategory, filterDatePublish]
     }
     
     private func setCategoryPicker() {
@@ -214,7 +224,6 @@ extension FilterNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource
         if row != 0 {
             categoryId = row
         }
-        
         self.view.endEditing(true)
     }
     

@@ -14,6 +14,8 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
     var presenter: NewsListPresenterInput?
     var moduleFactory = ModuleFactory() // для инициализации detailsViewController
     private var categoryId: Int?
+    private var datePublic: String?
+    private var filters = [FilterNews?]()
     
     // pull refresh
     private lazy var newsPullRefresh: UIRefreshControl = {
@@ -72,7 +74,7 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
     
     /// pull refresh func
     @objc private func refresh(sender: UIRefreshControl) {
-        presenter?.getAllNews(categoryId: categoryId)
+        presenter?.getAllNews(filters: filters)
         //newsCollectionView.reloadData()
         sender.endRefreshing()
     }
@@ -93,13 +95,13 @@ class NewsListViewController: UIViewController, NewsListViewControllerProtocol {
         
         setBackGround(name: "BackGround")
         setLayouts()
-        presenter?.getAllNews(categoryId: categoryId)
+        presenter?.getAllNews(filters: filters)
         newsCollectionView.refreshControl = newsPullRefresh
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.getAllNews(categoryId: categoryId)
+        presenter?.getAllNews(filters: filters)
         //newsCollectionView.reloadData()
     }
     
@@ -281,9 +283,9 @@ extension NewsListViewController: NewsListPresenterOutput {
 
 //MARK: - NewsListViewControllerDelegate
 extension NewsListViewController: NewsListViewControllerDelegate {
-    func filtering(categoryId: Int?, datePub: String) {
-        self.categoryId = categoryId
-        print("category \(categoryId) and date \(datePub)")
+    func filtering(filters: [FilterNews?]) {
+        self.filters = filters
+        print("category \(categoryId) and date \(datePublic)")
     }
     
     

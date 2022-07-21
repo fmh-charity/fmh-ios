@@ -11,7 +11,7 @@ import Foundation
 protocol DetailsNewsPresenterInput: AnyObject {
     var news: [News] { get set }
     
-    func getAllNews(categoryId: Int?)
+    func getAllNews(filters: [FilterNews?])
     func deleteNews(id: Int, index: Int)
 }
 
