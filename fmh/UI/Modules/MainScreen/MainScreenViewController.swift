@@ -22,7 +22,7 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
     private let cellNewsId = "cellNews"
     private let cellWishesId = "cellWishes"
 
-    private let tableview = UITableView()
+    private let tableview = UITableView(frame: .zero, style: .grouped)
     
     private var refreshControl = UIRefreshControl()
     
@@ -213,16 +213,18 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
         newsItems[indexPath.row].isExpanded.toggle()
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        100
+        120
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        40
+        60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

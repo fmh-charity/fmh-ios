@@ -49,6 +49,7 @@ extension MainScreenViewController {
         
         private let type: HeaderType
         
+        private let backgroundHeaderView = UIView()
         private let resultHeaderView = UIView()
         private let topHeaderView = UIView()
         private let resultFooterView = UIView()
@@ -104,8 +105,9 @@ extension MainScreenViewController {
         }
         
         private func configureUI() {
-            self.addSubview(self.frameTopHeaderView)
-            
+            self.addSubview(self.backgroundHeaderView)
+            self.backgroundHeaderView.backgroundColor = .clear
+            self.backgroundHeaderView.addSubview(frameTopHeaderView)
             self.frameTopHeaderView.addSubview(self.resultHeaderView)
             self.resultHeaderView.backgroundColor =   #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.topHeaderView.addSubview(self.middleSeparator)
@@ -152,16 +154,17 @@ extension MainScreenViewController {
 
         override func layoutSubviews() {
             super.layoutSubviews()
-            self.frameTopHeaderView.frame = CGRect(x: 20, y: 0, width: self.frame.width - 40, height: self.frame.height)
-            self.resultHeaderView.frame = CGRect(x: 1, y: 1, width: self.bounds.width - 42, height: self.bounds.height + 1)
+            self.backgroundHeaderView.frame = CGRect(x: 20, y: 0, width: self.frame.width - 40, height: self.frame.height)
+            self.frameTopHeaderView.frame = CGRect(x: 0, y: 20, width: self.bounds.width - 40, height: self.bounds.height - 20)
+            self.resultHeaderView.frame = CGRect(x: 1, y: 1, width: self.bounds.width - 42, height: self.bounds.height - 19)
             
-            self.middleSeparator.frame = CGRect(x: 0, y: self.bounds.height / 2, width: self.bounds.width - 42, height: 1)
+            self.middleSeparator.frame = CGRect(x: 0, y: self.bounds.height / 2 - 10, width: self.bounds.width - 42, height: 1)
 
             self.bottomSeparator.frame = CGRect(x: 0, y: self.resultHeaderView.bounds.height - 1, width: self.resultHeaderView.bounds.width, height: 1)
            
-            self.topHeaderView.frame = CGRect(x: 0, y: 0, width: self.bounds.width - 42, height: self.bounds.height / 2)
-            self.headerLabel.frame = CGRect(x: 15, y: 2, width: self.bounds.width / 2, height: self.bounds.height / 2 - 4)
-            self.showAllButton.frame = CGRect(x: self.bounds.width / 1.8, y: self.bounds.height / 2 + 10, width: self.bounds.width / 3, height: self.bounds.height / 3)
+            self.topHeaderView.frame = CGRect(x: 0, y: 0, width: self.bounds.width - 42, height: self.bounds.height / 2 - 10)
+            self.headerLabel.frame = CGRect(x: 15, y: 2, width: self.bounds.width / 2, height: self.bounds.height / 2 - 14)
+            self.showAllButton.frame = CGRect(x: self.bounds.width / 1.8, y: self.bounds.height / 2 - 5, width: self.bounds.width / 3, height: self.bounds.height / 3)
             
             self.buttonsStack.frame = CGRect(x: self.bounds.width - Double(self.buttonsStack.arrangedSubviews.count) * 44 - 40, y: 2, width: Double(self.buttonsStack.arrangedSubviews.count) * 44, height: 44)
         }
@@ -248,7 +251,7 @@ extension MainScreenViewController {
             self.leftSeparator.frame = CGRect(x: 0, y: 0, width: 1, height: self.frame.height)
             self.rightSeparator.frame = CGRect(x: self.footer.bounds.width - 1, y: 0, width: 1, height: self.frame.height)
             self.bottomSeparator.frame = CGRect(x: 0, y: self.footer.bounds.height, width: self.footer.bounds.width, height: 1)
-            self.footerButton.frame = CGRect(x: frame.width / 5, y: 15, width: frame.width / 2, height: frame.height / 3)
+            self.footerButton.frame = CGRect(x: frame.width / 5, y: 20, width: frame.width / 2, height: frame.height / 3)
         }
         
         @objc private func buttonAction(_ button: UIButton) {

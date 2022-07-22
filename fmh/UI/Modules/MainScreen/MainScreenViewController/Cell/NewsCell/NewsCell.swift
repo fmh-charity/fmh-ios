@@ -122,7 +122,7 @@ class NewsCell: UITableViewCell {
             self.newsTextLabel.topAnchor.constraint(equalTo: self.newsLabel.bottomAnchor, constant: 5),
             self.newsTextLabel.leadingAnchor.constraint(equalTo: self.resultView.leadingAnchor, constant: 20),
             self.newsTextLabel.trailingAnchor.constraint(equalTo: self.resultView.trailingAnchor, constant: -10),
-            self.newsTextLabel.bottomAnchor.constraint(equalTo: self.newsDate.topAnchor, constant: -5)
+            self.newsTextLabel.bottomAnchor.constraint(equalTo: self.resultView.bottomAnchor, constant: -17)
         ])
         
     }

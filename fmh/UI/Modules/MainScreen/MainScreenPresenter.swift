@@ -34,7 +34,6 @@ extension MainScreenPresenter: MainScreenPresenterInput {
             }
             if let news = news {
                 completion(news, nil)
-                print(news.description)
             }
         })
     }
@@ -48,7 +47,6 @@ extension MainScreenPresenter: MainScreenPresenterInput {
             }
             if let wishes = wishes {
                 completion(wishes, nil)
-                print(wishes.description)
             }
         })
     }

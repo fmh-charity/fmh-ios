@@ -29,7 +29,7 @@ struct DTOWishes: Codable {
         case id = "id"
         case patientId = "patientId"
         case planExecuteDate = "planExecuteDate"
-        case status = "CANCELLED"
+        case status = "status"
         case title = "title"
     }
 }
