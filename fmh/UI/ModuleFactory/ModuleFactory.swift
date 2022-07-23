@@ -46,7 +46,7 @@ extension ModuleFactory: GeneralModuleFactoryProtocol {
         let interactorNews = NewsInteractor(repository: repositoryNews)
         let interactorWishes = WishesInteractor(repository: repositoryWishes)
         let viewController = MainScreenViewController()
-        let presenter = MainScreenPresenter(output: viewController)
+        let presenter = MainScreenPresenter( interactorNews: interactorNews, interactorWishes: interactorWishes,  output: viewController, viewController: viewController)
         presenter.interactorNews = interactorNews
         presenter.interactorWishes = interactorWishes
         viewController.presenter = presenter

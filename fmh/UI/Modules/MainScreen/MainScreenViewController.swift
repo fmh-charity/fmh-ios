@@ -26,34 +26,34 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
     
     private var refreshControl = UIRefreshControl()
     
-    private var newsItems: [NewsViewModel] = []
-    private var wishesItems: [WishesViewModel] = []
-    
-    private var newsData: [News] = [] {
+    var newsItems: [NewsViewModel] = [] {
         didSet {
-            self.countNews = 3
+            self.tableview.reloadSections(IndexSet(integer: 0), with: .automatic)
             self.isProcessing = false
         }
     }
     
-    private var wishesData: [Wishes] = [] {
+    var wishesItems: [WishesViewModel] = [] {
         didSet {
-            self.countWishes = 6
+            self.tableview.reloadSections(IndexSet(integer: 1), with: .automatic)
             self.isProcessing = false
         }
     }
     
-    private var countNews: Int = 0 {
+    var newsData: [News] = []
+    var wishesData: [Wishes] = []
+    
+    var countNews: Int = 3 {
         didSet {
-            self.configureNewsItems()
-            self.tableview.reloadData()
+            self.presenter?.getAllNews()
+            self.isProcessing = false
         }
     }
     
-    private var countWishes: Int = 0 {
+    var countWishes: Int = 6 {
         didSet {
-            self.configureWishesItems()
-            self.tableview.reloadData()
+            self.presenter?.getAllWishes()
+            self.isProcessing = false
         }
     }
     
@@ -82,62 +82,18 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        self.presenter?.getAllNews()
+        self.presenter?.getAllWishes()
         self.isProcessing = true
-        self.uploadData()
         self.configureMain()
-    }
-    
-    private func uploadData() {
-        presenter?.getAllNews(completion: { news, networkError in
-            guard  networkError == nil else {
-                return
-            }
-            if let news = news {
-                print("News count all: \(news.count)")
-                self.newsData = news
-                print("news -- ", self.newsData.count)
-                self.configureNewsItems()
-            }
-        })
-        
-        presenter?.getAllWishes(completion: { wishes, NetworkError in
-            guard NetworkError == nil else {
-                return
-            }
-            if let wishes = wishes {
-                print("Wishes count all: \(wishes.count)")
-                self.wishesData = wishes
-                print("wishes -- ", self.wishesData.count)
-                self.configureWishesItems()
-            }
-        })
     }
     
     @objc private func errorLoadData() {
         let alert = UIAlertController(title: "Error", message: "Can't load data, try again..", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel)
+        alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func configureNewsItems() {
-        var mapArray: [NewsViewModel] = []
-        var resultArray: [NewsViewModel] = []
-        self.newsData.forEach { if $0.publishEnabled == true {mapArray.append(.init(news: $0))}}
-        let sortedArray = mapArray.sorted{ $0.estimatedHours < $1.estimatedHours }
-        for index in 0..<sortedArray.count where index < self.countNews {
-            resultArray.append(sortedArray[index])
-        }
-        newsItems = resultArray                       // присваиваем отсортированный массив новостей
-    }
-    
-    private func configureWishesItems() {
-        var mapArray: [WishesViewModel] = []
-        var resultArray: [WishesViewModel] = []
-        wishesData.forEach { if $0.status == "OPEN" || $0.status == "IN_PROGRESS" {mapArray.append(.init(wishes: $0))}}
-        let sortedArray = mapArray.sorted{  $0.indexOfColor < $1.indexOfColor  }
-        for index in 0..<sortedArray.count where index < self.countWishes {
-            resultArray.append(sortedArray[index])
-        }
-        wishesItems = resultArray                    // присваиваем отсортированный массив просьб
     }
     
     private func configureMain() {
@@ -154,16 +110,15 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
         
         self.tableview.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: #selector(swipeGesture), for: .valueChanged)
-//
+
         self.tableview.rowHeight = UITableView.automaticDimension
         setConstraints()
         self.title = "NAV_BAR"  //Временнный тайтл
     }
     
-    @objc private func swipeGesture() {                              // обновление даннных страницы
+    @objc func swipeGesture() {                              // обновление даннных страницы
         self.countNews = 3
         self.countWishes = 6
-        uploadData()
         self.refreshControl.endRefreshing()
     }
     
@@ -263,7 +218,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
         footer.pressDownButton = { [unowned self] type in
             switch type {
             case .news:
-                let difference = self.newsData.count - self.countNews
+                 let difference = self.newsData.count - self.countNews
                 switch difference {
                 case 0...3:
                     self.countNews += difference
@@ -271,7 +226,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
                     self.countNews += 3
                 }
             case .requests:
-                let difference = wishesData.count - self.countWishes
+                let difference = self.wishesData.count - self.countWishes
                 switch difference {
                 case 0...6:
                     self.countWishes += difference
@@ -310,6 +265,13 @@ extension MainScreenViewController {
 
 //MARK: -
 extension MainScreenViewController: MainScreenPresenterOutput {
-
+    func updatedNews() {
+        self.tableview.reloadData()
+    }
+    
+    func createdNews() {
+        return
+    }
+    
 }
     
