@@ -29,8 +29,8 @@ class WishesViewModel {
     
     init(wishes: Wishes) {
         taskDescription = wishes.title
-        patientName = patiences[wishes.patientId].1
-        executorName = executors[wishes.executorId].1
+        patientName = patiences[wishes.patientId].1                               //исправить после подключения списка пациентов
+        executorName = executors[wishes.executorId].1                             //исправить после подключения списка исполнителей
         plannedDate = convertDateFormater(date: wishes.planExecuteDate).0
         plannedTime = convertDateFormater(date: wishes.planExecuteDate).1
         data = createDate(date: wishes.planExecuteDate)
