@@ -218,6 +218,8 @@ class EditNewsViewController: UIViewController {
     }
     
     private func setEditNewsTextField() {
+        let categoryID = presenter?.news?.newsCategoryId
+        self.categoryNewsId = categoryID
         categoryTextField.text = presenter?.news?.categoryName
         titleTextField.text = presenter?.news?.title
         dateTextField.text = presenter?.news?.publishDate.toString()
