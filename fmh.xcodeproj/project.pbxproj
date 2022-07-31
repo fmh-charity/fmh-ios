@@ -11,6 +11,8 @@
 		0C059F0E2857D2A2002D497A /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */; };
 		0CA72B2C28590FF1002F2EDC /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA72B2B28590FF1002F2EDC /* FilterViewController.swift */; };
 		0CC8BCF1285A549B0007CE65 /* DTOTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8BCF0285A549B0007CE65 /* DTOTask.swift */; };
+		0CF7EE4F2896BA1600684B19 /* DropDownButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF7EE4E2896BA1600684B19 /* DropDownButtonsView.swift */; };
+		0CF7EE512896BA2400684B19 /* TaskModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF7EE502896BA2400684B19 /* TaskModelData.swift */; };
 		19064D84281FC86C006D8768 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D83281FC86C006D8768 /* LoginView.swift */; };
 		19064D88282049AE006D8768 /* LoginTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D87282049AE006D8768 /* LoginTextfield.swift */; };
 		19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19064D89282066E3006D8768 /* PasswordTextField.swift */; };
@@ -105,6 +107,8 @@
 		0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
 		0CA72B2B28590FF1002F2EDC /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		0CC8BCF0285A549B0007CE65 /* DTOTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTask.swift; sourceTree = "<group>"; };
+		0CF7EE4E2896BA1600684B19 /* DropDownButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownButtonsView.swift; sourceTree = "<group>"; };
+		0CF7EE502896BA2400684B19 /* TaskModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModelData.swift; sourceTree = "<group>"; };
 		19064D83281FC86C006D8768 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		19064D87282049AE006D8768 /* LoginTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextfield.swift; sourceTree = "<group>"; };
 		19064D89282066E3006D8768 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -359,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				19562A232847EF8E00C8A704 /* CommentModelData.swift */,
+				0CF7EE502896BA2400684B19 /* TaskModelData.swift */,
 				2038EC62285BC66200183588 /* DateHelper.swift */,
 			);
 			path = Models;
@@ -393,6 +398,7 @@
 				19562A2F2847EF8E00C8A704 /* AddCommentTableViewCell.swift */,
 				0C059F092857D27C002D497A /* BackgroundBlurFilterView.swift */,
 				0C059F0D2857D2A2002D497A /* BottomButtonsView.swift */,
+				0CF7EE4E2896BA1600684B19 /* DropDownButtonsView.swift */,
 				19562A322847EF8E00C8A704 /* CommentsView.swift */,
 				19562A2C2847EF8E00C8A704 /* CommentTableCell.swift */,
 				2048AAE428494E6E00E9AB57 /* CreateTaskView.swift */,
@@ -724,6 +730,7 @@
 				19562A402847EF8E00C8A704 /* TableViewScreen.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
 				19562A422847EF8E00C8A704 /* TopToolbarView.swift in Sources */,
+				0CF7EE512896BA2400684B19 /* TaskModelData.swift in Sources */,
 				19562A442847EF8E00C8A704 /* CommentsView.swift in Sources */,
 				19562A462847EF8E00C8A704 /* OrangeView.swift in Sources */,
 				19450CE4283EBC9C001506B8 /* TemplateProtocols.swift in Sources */,
@@ -735,6 +742,7 @@
 				195629C128451CE300C8A704 /* ExampleViewController.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
 				19562A3F2847EF8E00C8A704 /* MainTaskTitle.swift in Sources */,
+				0CF7EE4F2896BA1600684B19 /* DropDownButtonsView.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
 				19450CE2283EBC8B001506B8 /* TemplatePresenter.swift in Sources */,
 				19562A432847EF8E00C8A704 /* TaskCollectionViewCell.swift in Sources */,
