@@ -10,8 +10,6 @@ import Foundation
 typealias URLParameters = Dictionary<String, String>
 typealias HTTPHeaders = Dictionary<String, String>
 
-// TODO: Переделать в Enum
-
 struct APIResource<Value> where Value: Decodable {
 
     typealias ResponseType = Value

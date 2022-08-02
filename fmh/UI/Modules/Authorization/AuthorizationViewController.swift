@@ -36,13 +36,11 @@ class AuthorizationViewController: UIViewController, AuthorizationViewController
     override func loadView() {
         super.loadView()
         self.view = LoginView(frame: self.view.bounds)
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Авторизация"
-
         commonInit()
         setupNotificationKeyboard()
     }
@@ -157,30 +155,8 @@ extension AuthorizationViewController: UITextFieldDelegate {
     
 }
 
-
 // MARK: - AuthorizationPresenterOutput
 extension AuthorizationViewController: AuthorizationPresenterOutput {
 
 }
 
-// MARK: - SwiftUI Representable
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct AuthorizationViewControllerRepresentable: UIViewControllerRepresentable {
-    
-    func makeUIViewController(context: Context) -> some UIViewController {
-        return AuthorizationViewController()
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
-    }
-}
-
-struct AuthorizationViewController_Preview: PreviewProvider {
-    static var previews: some View {
-        AuthorizationViewControllerRepresentable()
-    }
-}
-#endif

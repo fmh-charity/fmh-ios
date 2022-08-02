@@ -11,7 +11,6 @@
 ///         |                                                  |                                                  |
 ///  LoginViewController                                  ?                                                 ?
 
-import Foundation
 import UIKit
 
 final class AutorozationCoordinatror: CoordinatorProtocol {

@@ -68,24 +68,10 @@ class LoginView: UIView {
     
     // MARK: - Private functions
     private func commonInit () {
-        setBackground()
+        if let image = UIImage(named: "BackGround") {
+            self.backgroundColor  = UIColor(patternImage: image)
+        }
         setLayout()
-    }
-    
-    private func setBackground () {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "BackGround")
-        imageView.contentMode = .scaleToFill
-        self.addSubview(imageView)
-        self.sendSubviewToBack(imageView)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
     }
     
     private func setLayout() {
@@ -136,27 +122,3 @@ class LoginView: UIView {
     }
 
 }
-
-
-// MARK: - SwiftUI Representable
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct ViewRepresentable: UIViewRepresentable {
-    
-    func makeUIView(context: Context) -> some UIView {
-        return LoginView()
-    }
-    
-    func updateUIView(_ uiViewController: UIViewType, context: Context) {
-        
-    }
-}
-
-struct View_Preview: PreviewProvider {
-    static var previews: some View {
-        ViewRepresentable()
-            //.frame(width: 290, height: 170, alignment: .center)
-    }
-}
-#endif

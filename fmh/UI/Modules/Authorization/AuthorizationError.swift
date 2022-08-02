@@ -15,14 +15,15 @@ enum AuthorizationError: Error {
     case loginPasswordInvalid
     
     case unauthorized
-    case requestError (APIError)
+    case requestError (NetworkError)
     case requestTimedOut
     case notConnectToServer
     case forbidden
 }
 
+// MARK: - AuthorizationError
 extension AuthorizationError: LocalizedError {
-    // TODO: Добавить расшифровку ошибок на русском. (AuthError) Возможно перенести в APIError
+    // TODO: Добавить расшифровку ошибок на русском. (AuthError) Возможно перенести в NetworkError
     public var errorDescription: String? {
         switch self {
         case .loginFieldEmpty:
