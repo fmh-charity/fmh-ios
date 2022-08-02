@@ -73,6 +73,43 @@
 		19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BD1A61281D6AC300ED793A /* PListParser.swift */; };
 		19BD1A64281D703A00ED793A /* NetworkService.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A63281D703A00ED793A /* NetworkService.plist */; };
 		19BD1A69281DB6F700ED793A /* ResponseStatusCodes in Resources */ = {isa = PBXBuildFile; fileRef = 19BD1A68281DB6F700ED793A /* ResponseStatusCodes */; };
+		19C3C1652899A9DD00FF3BFF /* CommentModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1442899A9DD00FF3BFF /* CommentModelData.swift */; };
+		19C3C1662899A9DD00FF3BFF /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1452899A9DD00FF3BFF /* DateHelper.swift */; };
+		19C3C1672899A9DD00FF3BFF /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1472899A9DD00FF3BFF /* CustomStackView.swift */; };
+		19C3C1682899A9DD00FF3BFF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1482899A9DD00FF3BFF /* CustomTextField.swift */; };
+		19C3C1692899A9DD00FF3BFF /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1492899A9DD00FF3BFF /* TextLabel.swift */; };
+		19C3C16A2899A9DD00FF3BFF /* CollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C14A2899A9DD00FF3BFF /* CollectionLayout.swift */; };
+		19C3C16B2899A9DD00FF3BFF /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C14C2899A9DD00FF3BFF /* EditTaskViewController.swift */; };
+		19C3C16C2899A9DD00FF3BFF /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C14D2899A9DD00FF3BFF /* CreateTaskViewController.swift */; };
+		19C3C16D2899A9DD00FF3BFF /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C14E2899A9DD00FF3BFF /* TaskViewController.swift */; };
+		19C3C16E2899A9DD00FF3BFF /* CreateNewCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C14F2899A9DD00FF3BFF /* CreateNewCommentViewController.swift */; };
+		19C3C16F2899A9DD00FF3BFF /* TaskFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1502899A9DD00FF3BFF /* TaskFullScreenViewController.swift */; };
+		19C3C1702899A9DD00FF3BFF /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1512899A9DD00FF3BFF /* FilterViewController.swift */; };
+		19C3C1712899A9DD00FF3BFF /* CommentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1532899A9DD00FF3BFF /* CommentTableCell.swift */; };
+		19C3C1722899A9DD00FF3BFF /* MainTaskTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1542899A9DD00FF3BFF /* MainTaskTitle.swift */; };
+		19C3C1732899A9DD00FF3BFF /* FilterVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1552899A9DD00FF3BFF /* FilterVIew.swift */; };
+		19C3C1742899A9DD00FF3BFF /* TableViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1562899A9DD00FF3BFF /* TableViewScreen.swift */; };
+		19C3C1752899A9DD00FF3BFF /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1572899A9DD00FF3BFF /* CreateTaskView.swift */; };
+		19C3C1762899A9DD00FF3BFF /* AddCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1582899A9DD00FF3BFF /* AddCommentTableViewCell.swift */; };
+		19C3C1772899A9DD00FF3BFF /* TopToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1592899A9DD00FF3BFF /* TopToolbarView.swift */; };
+		19C3C1782899A9DD00FF3BFF /* TaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C15A2899A9DD00FF3BFF /* TaskCollectionViewCell.swift */; };
+		19C3C1792899A9DD00FF3BFF /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C15B2899A9DD00FF3BFF /* BottomButtonsView.swift */; };
+		19C3C17A2899A9DD00FF3BFF /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C15C2899A9DD00FF3BFF /* CommentsView.swift */; };
+		19C3C17B2899A9DD00FF3BFF /* BackgroundBlurFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C15D2899A9DD00FF3BFF /* BackgroundBlurFilterView.swift */; };
+		19C3C17C2899A9DD00FF3BFF /* CreatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C15E2899A9DD00FF3BFF /* CreatorView.swift */; };
+		19C3C17D2899A9DD00FF3BFF /* OrangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C15F2899A9DD00FF3BFF /* OrangeView.swift */; };
+		19C3C17E2899A9DD00FF3BFF /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1602899A9DD00FF3BFF /* DescriptionView.swift */; };
+		19C3C17F2899A9DD00FF3BFF /* CreateEditCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1612899A9DD00FF3BFF /* CreateEditCommentView.swift */; };
+		19C3C1802899A9DD00FF3BFF /* DropDownButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1622899A9DD00FF3BFF /* DropDownButtonsView.swift */; };
+		19C3C1812899A9DD00FF3BFF /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1632899A9DD00FF3BFF /* EditTaskView.swift */; };
+		19C3C1832899A9FA00FF3BFF /* DTOTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1822899A9FA00FF3BFF /* DTOTask.swift */; };
+		19C3C1852899AA0F00FF3BFF /* ApiResourceTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1842899AA0F00FF3BFF /* ApiResourceTasks.swift */; };
+		19C3C1872899AA1F00FF3BFF /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1862899AA1F00FF3BFF /* TaskRepository.swift */; };
+		19C3C1892899AA3400FF3BFF /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1882899AA3400FF3BFF /* TaskInteractor.swift */; };
+		19C3C18B2899ABEF00FF3BFF /* TaskModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C18A2899ABEF00FF3BFF /* TaskModelData.swift */; };
+		19C3C18D2899AE1A00FF3BFF /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C18C2899AE1A00FF3BFF /* Tasks.swift */; };
+		19C3C18F2899AF1800FF3BFF /* TaskProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C18E2899AF1800FF3BFF /* TaskProtocols.swift */; };
+		19C3C1912899AF2500FF3BFF /* TaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3C1902899AF2500FF3BFF /* TaskPresenter.swift */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
 		19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51C280DECD0005000EB /* SceneDelegate.swift */; };
 		19C7A524280DECD3005000EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A523280DECD3005000EB /* Assets.xcassets */; };
@@ -158,6 +195,43 @@
 		19BD1A61281D6AC300ED793A /* PListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListParser.swift; sourceTree = "<group>"; };
 		19BD1A63281D703A00ED793A /* NetworkService.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NetworkService.plist; sourceTree = "<group>"; };
 		19BD1A68281DB6F700ED793A /* ResponseStatusCodes */ = {isa = PBXFileReference; lastKnownFileType = text; path = ResponseStatusCodes; sourceTree = "<group>"; };
+		19C3C1442899A9DD00FF3BFF /* CommentModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModelData.swift; sourceTree = "<group>"; };
+		19C3C1452899A9DD00FF3BFF /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		19C3C1472899A9DD00FF3BFF /* CustomStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
+		19C3C1482899A9DD00FF3BFF /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		19C3C1492899A9DD00FF3BFF /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		19C3C14A2899A9DD00FF3BFF /* CollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionLayout.swift; sourceTree = "<group>"; };
+		19C3C14C2899A9DD00FF3BFF /* EditTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
+		19C3C14D2899A9DD00FF3BFF /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
+		19C3C14E2899A9DD00FF3BFF /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		19C3C14F2899A9DD00FF3BFF /* CreateNewCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewCommentViewController.swift; sourceTree = "<group>"; };
+		19C3C1502899A9DD00FF3BFF /* TaskFullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFullScreenViewController.swift; sourceTree = "<group>"; };
+		19C3C1512899A9DD00FF3BFF /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		19C3C1532899A9DD00FF3BFF /* CommentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableCell.swift; sourceTree = "<group>"; };
+		19C3C1542899A9DD00FF3BFF /* MainTaskTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTaskTitle.swift; sourceTree = "<group>"; };
+		19C3C1552899A9DD00FF3BFF /* FilterVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVIew.swift; sourceTree = "<group>"; };
+		19C3C1562899A9DD00FF3BFF /* TableViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewScreen.swift; sourceTree = "<group>"; };
+		19C3C1572899A9DD00FF3BFF /* CreateTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
+		19C3C1582899A9DD00FF3BFF /* AddCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentTableViewCell.swift; sourceTree = "<group>"; };
+		19C3C1592899A9DD00FF3BFF /* TopToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopToolbarView.swift; sourceTree = "<group>"; };
+		19C3C15A2899A9DD00FF3BFF /* TaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCollectionViewCell.swift; sourceTree = "<group>"; };
+		19C3C15B2899A9DD00FF3BFF /* BottomButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
+		19C3C15C2899A9DD00FF3BFF /* CommentsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		19C3C15D2899A9DD00FF3BFF /* BackgroundBlurFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundBlurFilterView.swift; sourceTree = "<group>"; };
+		19C3C15E2899A9DD00FF3BFF /* CreatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatorView.swift; sourceTree = "<group>"; };
+		19C3C15F2899A9DD00FF3BFF /* OrangeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrangeView.swift; sourceTree = "<group>"; };
+		19C3C1602899A9DD00FF3BFF /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		19C3C1612899A9DD00FF3BFF /* CreateEditCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEditCommentView.swift; sourceTree = "<group>"; };
+		19C3C1622899A9DD00FF3BFF /* DropDownButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownButtonsView.swift; sourceTree = "<group>"; };
+		19C3C1632899A9DD00FF3BFF /* EditTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
+		19C3C1822899A9FA00FF3BFF /* DTOTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOTask.swift; sourceTree = "<group>"; };
+		19C3C1842899AA0F00FF3BFF /* ApiResourceTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResourceTasks.swift; sourceTree = "<group>"; };
+		19C3C1862899AA1F00FF3BFF /* TaskRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		19C3C1882899AA3400FF3BFF /* TaskInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInteractor.swift; sourceTree = "<group>"; };
+		19C3C18A2899ABEF00FF3BFF /* TaskModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModelData.swift; sourceTree = "<group>"; };
+		19C3C18C2899AE1A00FF3BFF /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		19C3C18E2899AF1800FF3BFF /* TaskProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProtocols.swift; sourceTree = "<group>"; };
+		19C3C1902899AF2500FF3BFF /* TaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPresenter.swift; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C7A51A280DECD0005000EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19C7A51C280DECD0005000EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +277,7 @@
 		191EAA71281BD200007B1397 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				19C3C1822899A9FA00FF3BFF /* DTOTask.swift */,
 				191EAA72281BD256007B1397 /* DTOCredentials.swift */,
 				191EAA74281BD26A007B1397 /* DTOTokenData.swift */,
 				191EAA76281BD281007B1397 /* DTOUserInfo.swift */,
@@ -215,6 +290,7 @@
 		191EAA7E281C33A2007B1397 /* APIResources */ = {
 			isa = PBXGroup;
 			children = (
+				19C3C1842899AA0F00FF3BFF /* ApiResourceTasks.swift */,
 				191EAA7F281C3518007B1397 /* APIResourceAuth.swift */,
 				19562A74284A67DB00C8A704 /* APIResourceNews.swift */,
 			);
@@ -225,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				19243DE1282677BA00A43CA8 /* AuthRepository.swift */,
+				19C3C1862899AA1F00FF3BFF /* TaskRepository.swift */,
 				19562A72284A677C00C8A704 /* NewsRepository.swift */,
 			);
 			path = Repository;
@@ -402,6 +479,78 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
+		19C3C1412899A9DD00FF3BFF /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				19C3C1422899A9DD00FF3BFF /* Models */,
+				19C3C1462899A9DD00FF3BFF /* CustomItems */,
+				19C3C14B2899A9DD00FF3BFF /* ViewControllers */,
+				19C3C1522899A9DD00FF3BFF /* Views */,
+			);
+			name = Tasks;
+			path = Authorization/Tasks;
+			sourceTree = "<group>";
+		};
+		19C3C1422899A9DD00FF3BFF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19C3C18A2899ABEF00FF3BFF /* TaskModelData.swift */,
+				19C3C1442899A9DD00FF3BFF /* CommentModelData.swift */,
+				19C3C1452899A9DD00FF3BFF /* DateHelper.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		19C3C1462899A9DD00FF3BFF /* CustomItems */ = {
+			isa = PBXGroup;
+			children = (
+				19C3C1472899A9DD00FF3BFF /* CustomStackView.swift */,
+				19C3C1482899A9DD00FF3BFF /* CustomTextField.swift */,
+				19C3C1492899A9DD00FF3BFF /* TextLabel.swift */,
+				19C3C14A2899A9DD00FF3BFF /* CollectionLayout.swift */,
+			);
+			path = CustomItems;
+			sourceTree = "<group>";
+		};
+		19C3C14B2899A9DD00FF3BFF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				19C3C14C2899A9DD00FF3BFF /* EditTaskViewController.swift */,
+				19C3C14D2899A9DD00FF3BFF /* CreateTaskViewController.swift */,
+				19C3C14E2899A9DD00FF3BFF /* TaskViewController.swift */,
+				19C3C14F2899A9DD00FF3BFF /* CreateNewCommentViewController.swift */,
+				19C3C1502899A9DD00FF3BFF /* TaskFullScreenViewController.swift */,
+				19C3C1512899A9DD00FF3BFF /* FilterViewController.swift */,
+				19C3C18E2899AF1800FF3BFF /* TaskProtocols.swift */,
+				19C3C1902899AF2500FF3BFF /* TaskPresenter.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		19C3C1522899A9DD00FF3BFF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19C3C1532899A9DD00FF3BFF /* CommentTableCell.swift */,
+				19C3C1542899A9DD00FF3BFF /* MainTaskTitle.swift */,
+				19C3C1552899A9DD00FF3BFF /* FilterVIew.swift */,
+				19C3C1562899A9DD00FF3BFF /* TableViewScreen.swift */,
+				19C3C1572899A9DD00FF3BFF /* CreateTaskView.swift */,
+				19C3C1582899A9DD00FF3BFF /* AddCommentTableViewCell.swift */,
+				19C3C1592899A9DD00FF3BFF /* TopToolbarView.swift */,
+				19C3C15A2899A9DD00FF3BFF /* TaskCollectionViewCell.swift */,
+				19C3C15B2899A9DD00FF3BFF /* BottomButtonsView.swift */,
+				19C3C15C2899A9DD00FF3BFF /* CommentsView.swift */,
+				19C3C15D2899A9DD00FF3BFF /* BackgroundBlurFilterView.swift */,
+				19C3C15E2899A9DD00FF3BFF /* CreatorView.swift */,
+				19C3C15F2899A9DD00FF3BFF /* OrangeView.swift */,
+				19C3C1602899A9DD00FF3BFF /* DescriptionView.swift */,
+				19C3C1612899A9DD00FF3BFF /* CreateEditCommentView.swift */,
+				19C3C1622899A9DD00FF3BFF /* DropDownButtonsView.swift */,
+				19C3C1632899A9DD00FF3BFF /* EditTaskView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		19C7A50E280DECD0005000EB = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +610,7 @@
 		19C7A534280DED64005000EB /* DomainLayer */ = {
 			isa = PBXGroup;
 			children = (
+				19C3C1882899AA3400FF3BFF /* TaskInteractor.swift */,
 				194220B328310AAE00A42F72 /* AuthInteractor.swift */,
 				19562A78284B33F200C8A704 /* NewsInteractor.swift */,
 				19ECC0AD284C9FCE00DD695C /* Models */,
@@ -483,6 +633,7 @@
 			children = (
 				199B4ADA287C9FCB005AE1CD /* MainScreen */,
 				199B4AC7287879F2005AE1CD /* LoadingScreen */,
+				19C3C1412899A9DD00FF3BFF /* Tasks */,
 				19243E182829BAC500A43CA8 /* Authorization */,
 				19F509D9282FF72A0082FB98 /* General */,
 				19F91BC5283D483A00AB6C6B /* OurMission */,
@@ -515,6 +666,7 @@
 			children = (
 				19ECC0AE284C9FE900DD695C /* News.swift */,
 				19ECC0B0284CA4B000DD695C /* UserInfo.swift */,
+				19C3C18C2899AE1A00FF3BFF /* Tasks.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -649,7 +801,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C3C1802899A9DD00FF3BFF /* DropDownButtonsView.swift in Sources */,
+				19C3C1812899A9DD00FF3BFF /* EditTaskView.swift in Sources */,
 				19EE350C2830616D00DBD2E8 /* GeneralProtocols.swift in Sources */,
+				19C3C17E2899A9DD00FF3BFF /* DescriptionView.swift in Sources */,
 				191EAA6C281BBE4C007B1397 /* NetworkError.swift in Sources */,
 				191EAA70281BC69B007B1397 /* HTTPMethod.swift in Sources */,
 				195629B72845007600C8A704 /* UIViewController + setMenuButton.swift in Sources */,
@@ -657,6 +812,7 @@
 				19A7001A286C9D4E00A97C78 /* OurMissionDataArray.swift in Sources */,
 				19064D8A282066E3006D8768 /* PasswordTextField.swift in Sources */,
 				191EAA73281BD256007B1397 /* DTOCredentials.swift in Sources */,
+				19C3C1832899A9FA00FF3BFF /* DTOTask.swift in Sources */,
 				191EAA80281C3518007B1397 /* APIResourceAuth.swift in Sources */,
 				199B4AF5287C9FCB005AE1CD /* MainScreenPresenter.swift in Sources */,
 				19A7001B286C9D4E00A97C78 /* OurMissionViewController.swift in Sources */,
@@ -664,54 +820,85 @@
 				19243E372829C8B400A43CA8 /* AppSession.swift in Sources */,
 				19F509DD282FF9930082FB98 /* ModuleFactory.swift in Sources */,
 				19EE65C32821BD060095C2EE /* AuthorizationError.swift in Sources */,
+				19C3C1692899A9DD00FF3BFF /* TextLabel.swift in Sources */,
 				199B4AD7287879F2005AE1CD /* LoadingViewController.swift in Sources */,
+				19C3C1792899A9DD00FF3BFF /* BottomButtonsView.swift in Sources */,
+				19C3C16B2899A9DD00FF3BFF /* EditTaskViewController.swift in Sources */,
 				199B4AD4287879F2005AE1CD /* LoadingScreenModel.swift in Sources */,
 				19DB6F7E282C3CED00686A9C /* UIColor+.swift in Sources */,
+				19C3C18D2899AE1A00FF3BFF /* Tasks.swift in Sources */,
+				19C3C1712899A9DD00FF3BFF /* CommentTableCell.swift in Sources */,
 				199B4AD6287879F2005AE1CD /* ViewInputDelegate.swift in Sources */,
 				199C09D82841120900ADFE3A /* PresentableProtocol.swift in Sources */,
 				1942B7DE2835758C005C3732 /* GeneralMenuItemCell.swift in Sources */,
 				19A7001E286C9D4E00A97C78 /* OurMissionProtocols.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19BD1A62281D6AC300ED793A /* PListParser.swift in Sources */,
+				19C3C16A2899A9DD00FF3BFF /* CollectionLayout.swift in Sources */,
 				19A7001C286C9D4E00A97C78 /* OurMissionCell.swift in Sources */,
 				199B4AF0287C9FCB005AE1CD /* NewsCell.swift in Sources */,
+				19C3C18F2899AF1800FF3BFF /* TaskProtocols.swift in Sources */,
+				19C3C16D2899A9DD00FF3BFF /* TaskViewController.swift in Sources */,
 				199B4AF9287C9FCB005AE1CD /* MainScreenViewController+View.swift in Sources */,
+				19C3C1772899A9DD00FF3BFF /* TopToolbarView.swift in Sources */,
+				19C3C1872899AA1F00FF3BFF /* TaskRepository.swift in Sources */,
 				19562A77284A6A8900C8A704 /* DTONews.swift in Sources */,
+				19C3C1912899AF2500FF3BFF /* TaskPresenter.swift in Sources */,
 				19243E232829BC8D00A43CA8 /* AuthorizationViewController.swift in Sources */,
+				19C3C1762899A9DD00FF3BFF /* AddCommentTableViewCell.swift in Sources */,
 				199B4AFB287C9FCB005AE1CD /* MainScreenProtocol.swift in Sources */,
 				199B4AD5287879F2005AE1CD /* ViewOutputDelegate.swift in Sources */,
+				19C3C18B2899ABEF00FF3BFF /* TaskModelData.swift in Sources */,
 				19ECC0B1284CA4B000DD695C /* UserInfo.swift in Sources */,
 				199C09D6284108B000ADFE3A /* BaseViewProtocol.swift in Sources */,
 				19562A73284A677C00C8A704 /* NewsRepository.swift in Sources */,
+				19C3C1742899A9DD00FF3BFF /* TableViewScreen.swift in Sources */,
 				199B4AEF287C9FCB005AE1CD /* WishesCell.swift in Sources */,
 				19243DEC28293F7E00A43CA8 /* Service.swift in Sources */,
+				19C3C1672899A9DD00FF3BFF /* CustomStackView.swift in Sources */,
 				1968410A2837F735008F294F /* AutorozationCoordinatror.swift in Sources */,
+				19C3C17B2899A9DD00FF3BFF /* BackgroundBlurFilterView.swift in Sources */,
 				19F509E628300C110082FB98 /* AppCoordinator.swift in Sources */,
+				19C3C1722899A9DD00FF3BFF /* MainTaskTitle.swift in Sources */,
+				19C3C17D2899A9DD00FF3BFF /* OrangeView.swift in Sources */,
 				19064D84281FC86C006D8768 /* LoginView.swift in Sources */,
 				1913255B28253B69003499BA /* KeyChain.swift in Sources */,
+				19C3C1702899A9DD00FF3BFF /* FilterViewController.swift in Sources */,
+				19C3C1752899A9DD00FF3BFF /* CreateTaskView.swift in Sources */,
 				19243E292829BEB400A43CA8 /* AuthorizationProtocols.swift in Sources */,
+				19C3C16E2899A9DD00FF3BFF /* CreateNewCommentViewController.swift in Sources */,
 				193CF8792858F3A70061A69E /* UICollectionReusableView+identifier.swift in Sources */,
+				19C3C17A2899A9DD00FF3BFF /* CommentsView.swift in Sources */,
 				199B4AD8287879F2005AE1CD /* SpinningCircleView.swift in Sources */,
 				19450CDD283EAE58001506B8 /* GeneralViewController.swift in Sources */,
 				199B4AD3287879F2005AE1CD /* LoadingScreenPresenter.swift in Sources */,
 				199B4AF7287C9FCB005AE1CD /* UIFont.swift in Sources */,
 				19243E1F2829BBEB00A43CA8 /* AuthorizationPresenter.swift in Sources */,
 				19ECC0AF284C9FE900DD695C /* News.swift in Sources */,
+				19C3C16C2899A9DD00FF3BFF /* CreateTaskViewController.swift in Sources */,
 				199B4AF6287C9FCB005AE1CD /* UIStackView.swift in Sources */,
 				199B4AEE287C9FCB005AE1CD /* WishesViewModel.swift in Sources */,
 				19243DE2282677BA00A43CA8 /* AuthRepository.swift in Sources */,
+				19C3C17C2899A9DD00FF3BFF /* CreatorView.swift in Sources */,
 				199B4AF2287C9FCB005AE1CD /* MainScreenViewController.swift in Sources */,
 				19562A79284B33F200C8A704 /* NewsInteractor.swift in Sources */,
+				19C3C1892899AA3400FF3BFF /* TaskInteractor.swift in Sources */,
 				191EAA75281BD26A007B1397 /* DTOTokenData.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				191EAA82281C3B48007B1397 /* DTORefreshToken.swift in Sources */,
+				19C3C1732899A9DD00FF3BFF /* FilterVIew.swift in Sources */,
 				199B4AF8287C9FCB005AE1CD /* UILabel.swift in Sources */,
+				19C3C17F2899A9DD00FF3BFF /* CreateEditCommentView.swift in Sources */,
 				19F509DF282FFA160082FB98 /* ModuleFactoryProtocol.swift in Sources */,
 				1968410E2839240E008F294F /* SideMenuViewController.swift in Sources */,
+				19C3C1652899A9DD00FF3BFF /* CommentModelData.swift in Sources */,
 				19EE350E2830617D00DBD2E8 /* GeneralPresenter.swift in Sources */,
+				19C3C16F2899A9DD00FF3BFF /* TaskFullScreenViewController.swift in Sources */,
 				193260F0285488B50043136F /* UIViewController+revealViewController.swift in Sources */,
+				19C3C1782899A9DD00FF3BFF /* TaskCollectionViewCell.swift in Sources */,
 				194220B428310AAE00A42F72 /* AuthInteractor.swift in Sources */,
 				19243DEE282946B400A43CA8 /* Network.swift in Sources */,
+				19C3C1852899AA0F00FF3BFF /* ApiResourceTasks.swift in Sources */,
 				191EAA7D281C310E007B1397 /* Encodable+encode.swift in Sources */,
 				19562A75284A67DB00C8A704 /* APIResourceNews.swift in Sources */,
 				191EAA77281BD281007B1397 /* DTOUserInfo.swift in Sources */,
@@ -722,7 +909,9 @@
 				191EAA79281C01A9007B1397 /* APIResource.swift in Sources */,
 				199B4AD9287879F2005AE1CD /* Layer.swift in Sources */,
 				19A7001D286C9D4E00A97C78 /* OurMissionPresenter.swift in Sources */,
+				19C3C1662899A9DD00FF3BFF /* DateHelper.swift in Sources */,
 				19F509E2283003B20082FB98 /* CoordinatorProtocol.swift in Sources */,
+				19C3C1682899A9DD00FF3BFF /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

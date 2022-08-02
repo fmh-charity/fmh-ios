@@ -73,6 +73,16 @@ extension ModuleFactory: GeneralModuleFactoryProtocol {
 //        return viewController
 //    }
     
+    func makeTaskViewController() -> TaskViewControllerProtocol {
+        let viewController = TaskViewController()
+        let repository = TaskRepository()
+        let interactor = TaskInteractor(repository: repository)
+        let presenter = TaskPresenter(interactor: interactor, output: viewController)
+        viewController.presenter = presenter
+        
+        return viewController
+    }
+    
     func makeOurMissionViewController() -> OurMissionViewControllerProtocol {
         let viewController = OurMissionViewController()
         let presenter = OurMissionPresenter(output: viewController)
