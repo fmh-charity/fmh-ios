@@ -22,7 +22,7 @@ class Network: Service {
     private(set) var session: URLSession = {
         let config = URLSessionConfiguration.default
         config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-//        config.timeoutIntervalForRequest = 60.0
+        config.timeoutIntervalForRequest = 60.0
         config.urlCache = .none
         
         return URLSession(configuration: config, delegate: .none, delegateQueue: .none)

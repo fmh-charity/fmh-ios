@@ -27,7 +27,7 @@ extension UIViewController {
         let view = UIView(frame: .init(x: 0, y: 0, width: 144, height: 44))
 
         let imageLogo = UIImageView(frame: .init(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height-4))
-        imageLogo.image = UIImage(named: "Logo")
+        imageLogo.image = UIImage(named: "logo")
         imageLogo.contentMode = .scaleAspectFit
 
         view.addSubview(imageLogo)
