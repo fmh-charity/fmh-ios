@@ -29,6 +29,10 @@ final class TaskViewController: UIViewController, TaskViewControllerProtocol {
         collectionViewLayout()
         view.backgroundColor = .white
         
+        setNavigationBarMenuButton()
+        setNavigationBarLogo()
+        setNavigationBarRightButtons()
+        
         presenter?.getAllTasks()
     }
     

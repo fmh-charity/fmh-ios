@@ -39,11 +39,14 @@ extension GeneralCoordinator {
         
         /// Set efault ViewController in GeneralViewController.contextViewController
         //TODO: Убрать когда добавится экран "Главная"
-        let defaultViewController = UIViewController()
-        defaultViewController.setNavigationBarMenuButton()
-        defaultViewController.setNavigationBarLogo()
-        defaultViewController.setNavigationBarRightButtons()
-        navigationController.viewControllers = [defaultViewController.toPresent]
+//        let defaultViewController = UIViewController()
+//        defaultViewController.setNavigationBarMenuButton()
+//        defaultViewController.setNavigationBarLogo()
+//        defaultViewController.setNavigationBarRightButtons()
+//        navigationController.viewControllers = [defaultViewController.toPresent]
+        
+        let mainiewController = self.moduleFactory.makeMainScreenViewController()
+        navigationController.viewControllers = [mainiewController.toPresent]
         
         viewController.didSelectMenu = { [unowned self] menu in
             switch menu {

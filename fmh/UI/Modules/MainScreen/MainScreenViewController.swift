@@ -48,6 +48,9 @@ final class MainScreenViewController: UIViewController, MainScreenViewController
     
         configureMain()
         
+        setNavigationBarMenuButton()
+        setNavigationBarLogo()
+        setNavigationBarRightButtons()
     }
     
     private func configureNewsItems() {
