@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				195629A42843DA6400C8A704 /* Common */,
-				19EB70AC292D307100DB8F21 /* Coordinator */,
+				19EB70B1292E83AE00DB8F21 /* Coordinator */,
 				19C7A537280DED81005000EB /* Screens */,
 			);
 			path = UI;
@@ -142,7 +142,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		19EB70AC292D307100DB8F21 /* Coordinator */ = {
+		19EB70B1292E83AE00DB8F21 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 			);
