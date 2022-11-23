@@ -17,6 +17,7 @@
 		19C7A531280DED3B005000EB /* Guidelines in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A530280DED3B005000EB /* Guidelines */; };
 		19EB70AE292E820800DB8F21 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70AD292E820800DB8F21 /* README.md */; };
 		19EB70B0292E821700DB8F21 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70AF292E821700DB8F21 /* LICENSE */; };
+		19EB70B3292E841900DB8F21 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70B2292E841900DB8F21 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		19C7A530280DED3B005000EB /* Guidelines */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guidelines; sourceTree = "<group>"; };
 		19EB70AD292E820800DB8F21 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		19EB70AF292E821700DB8F21 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		19EB70B2292E841900DB8F21 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		19C7A519280DECD0005000EB /* fmh */ = {
 			isa = PBXGroup;
 			children = (
+				19EB70B2292E841900DB8F21 /* Info.plist */,
 				19C7A538280DED98005000EB /* Application */,
 				19C7A533280DED59005000EB /* API */,
 				19C7A535280DED75005000EB /* UI */,
@@ -209,6 +212,7 @@
 			files = (
 				19C7A527280DECD3005000EB /* LaunchScreen.storyboard in Resources */,
 				195629A12842A63C00C8A704 /* Contributors in Resources */,
+				19EB70B3292E841900DB8F21 /* Info.plist in Resources */,
 				19EB70B0292E821700DB8F21 /* LICENSE in Resources */,
 				19C7A524280DECD3005000EB /* Assets.xcassets in Resources */,
 				19EB70AE292E820800DB8F21 /* README.md in Resources */,
