@@ -17,7 +17,27 @@
 		19C7A531280DED3B005000EB /* Guidelines in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A530280DED3B005000EB /* Guidelines */; };
 		19EB70AE292E820800DB8F21 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70AD292E820800DB8F21 /* README.md */; };
 		19EB70B0292E821700DB8F21 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70AF292E821700DB8F21 /* LICENSE */; };
-		19EB70B3292E841900DB8F21 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70B2292E841900DB8F21 /* Info.plist */; };
+		19EB70B5292E850C00DB8F21 /* AppSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70B4292E850C00DB8F21 /* AppSettings.plist */; };
+		19EB70BA292E8B6C00DB8F21 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70B9292E8B6C00DB8F21 /* Helper.swift */; };
+		19EB70BD292E8BB200DB8F21 /* Helper.Core.Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70BC292E8BB200DB8F21 /* Helper.Core.Plist.swift */; };
+		19EB70BF292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70BE292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift */; };
+		19EB70C1292E8EC400DB8F21 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70C0292E8EC400DB8F21 /* BaseCoordinator.swift */; };
+		19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70C2292E9A5400DB8F21 /* AuthCoordinator.swift */; };
+		19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70C4292EADC800DB8F21 /* AppCoordinator.swift */; };
+		19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70C6292FDA8900DB8F21 /* GeneralCoordinator.swift */; };
+		19EB70CE2932389000DB8F21 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70CD2932389000DB8F21 /* Router.swift */; };
+		19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70DB29324A0A00DB8F21 /* ScreenFactory.swift */; };
+		19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70DD29324B9300DB8F21 /* ScreenFactory+Auth.swift */; };
+		19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70DF293250BB00DB8F21 /* ScreenFactory+General.swift */; };
+		19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70E129328ECF00DB8F21 /* BaseViewController.swift */; };
+		19EB70E72932944300DB8F21 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70E62932944300DB8F21 /* ApiClient.swift */; };
+		19EB70E92932991E00DB8F21 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70E82932991E00DB8F21 /* LoadingCoordinator.swift */; };
+		19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70EA29329E6300DB8F21 /* ScreenFactory+Loading.swift */; };
+		19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70F12932A35500DB8F21 /* LoadingViewController.swift */; };
+		19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00D62932B8E0000F6A4A /* LoadingViewController+Data.swift */; };
+		19FC00DB29335D29000F6A4A /* ApiURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00DA29335D29000F6A4A /* ApiURLProtocol.swift */; };
+		19FC00DD29337227000F6A4A /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00DC29337227000F6A4A /* URLSessionProtocol.swift */; };
+		19FC00DF29365E87000F6A4A /* CombainTet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00DE29365E87000F6A4A /* CombainTet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +52,28 @@
 		19C7A530280DED3B005000EB /* Guidelines */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guidelines; sourceTree = "<group>"; };
 		19EB70AD292E820800DB8F21 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		19EB70AF292E821700DB8F21 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		19EB70B2292E841900DB8F21 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19EB70B2292E841900DB8F21 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = fmh/Application/Info.plist; sourceTree = SOURCE_ROOT; };
+		19EB70B4292E850C00DB8F21 /* AppSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppSettings.plist; sourceTree = "<group>"; };
+		19EB70B9292E8B6C00DB8F21 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		19EB70BC292E8BB200DB8F21 /* Helper.Core.Plist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.Core.Plist.swift; sourceTree = "<group>"; };
+		19EB70BE292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.Core.KeyChain.swift; sourceTree = "<group>"; };
+		19EB70C0292E8EC400DB8F21 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		19EB70C2292E9A5400DB8F21 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		19EB70C4292EADC800DB8F21 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		19EB70C6292FDA8900DB8F21 /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
+		19EB70CD2932389000DB8F21 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		19EB70DB29324A0A00DB8F21 /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
+		19EB70DD29324B9300DB8F21 /* ScreenFactory+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+Auth.swift"; sourceTree = "<group>"; };
+		19EB70DF293250BB00DB8F21 /* ScreenFactory+General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+General.swift"; sourceTree = "<group>"; };
+		19EB70E129328ECF00DB8F21 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		19EB70E62932944300DB8F21 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		19EB70E82932991E00DB8F21 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
+		19EB70EA29329E6300DB8F21 /* ScreenFactory+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+Loading.swift"; sourceTree = "<group>"; };
+		19EB70F12932A35500DB8F21 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		19FC00D62932B8E0000F6A4A /* LoadingViewController+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingViewController+Data.swift"; sourceTree = "<group>"; };
+		19FC00DA29335D29000F6A4A /* ApiURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiURLProtocol.swift; sourceTree = "<group>"; };
+		19FC00DC29337227000F6A4A /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		19FC00DE29365E87000F6A4A /* CombainTet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombainTet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +90,10 @@
 		191EAA6A281BBC50007B1397 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				19FC00DC29337227000F6A4A /* URLSessionProtocol.swift */,
+				19EB70E62932944300DB8F21 /* ApiClient.swift */,
+				19FC00DA29335D29000F6A4A /* ApiURLProtocol.swift */,
+				19FC00DE29365E87000F6A4A /* CombainTet.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -63,6 +108,8 @@
 		195629A42843DA6400C8A704 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				19EB70CC293236EB00DB8F21 /* Base */,
+				19EB70E3293291EA00DB8F21 /* Extensions */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -92,7 +139,7 @@
 		19C7A519280DECD0005000EB /* fmh */ = {
 			isa = PBXGroup;
 			children = (
-				19EB70B2292E841900DB8F21 /* Info.plist */,
+				19EB70B8292E8B0000DB8F21 /* Helper */,
 				19C7A538280DED98005000EB /* Application */,
 				19C7A533280DED59005000EB /* API */,
 				19C7A535280DED75005000EB /* UI */,
@@ -106,6 +153,7 @@
 			children = (
 				191EAA6A281BBC50007B1397 /* Service */,
 				191EAA71281BD200007B1397 /* DTO */,
+				19EB70B7292E8A0200DB8F21 /* Repository */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -114,7 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				195629A42843DA6400C8A704 /* Common */,
-				19EB70B1292E83AE00DB8F21 /* Coordinator */,
+				19EB70B1292E83AE00DB8F21 /* Coordinators */,
+				19EB70D8293249C700DB8F21 /* ScreenFactory */,
 				19C7A537280DED81005000EB /* Screens */,
 			);
 			path = UI;
@@ -123,6 +172,7 @@
 		19C7A537280DED81005000EB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				19EB70EE2932A2AB00DB8F21 /* Loading */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -130,8 +180,12 @@
 		19C7A538280DED98005000EB /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				19EB70B4292E850C00DB8F21 /* AppSettings.plist */,
+				19EB70B2292E841900DB8F21 /* Info.plist */,
 				19C7A51A280DECD0005000EB /* AppDelegate.swift */,
 				19C7A51C280DECD0005000EB /* SceneDelegate.swift */,
+				19EB70CD2932389000DB8F21 /* Router.swift */,
+				19EB70C4292EADC800DB8F21 /* AppCoordinator.swift */,
 				19C7A525280DECD3005000EB /* LaunchScreen.storyboard */,
 			);
 			path = Application;
@@ -145,11 +199,75 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		19EB70B1292E83AE00DB8F21 /* Coordinator */ = {
+		19EB70B1292E83AE00DB8F21 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				19EB70E82932991E00DB8F21 /* LoadingCoordinator.swift */,
+				19EB70C2292E9A5400DB8F21 /* AuthCoordinator.swift */,
+				19EB70C6292FDA8900DB8F21 /* GeneralCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		19EB70B7292E8A0200DB8F21 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Coordinator;
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		19EB70B8292E8B0000DB8F21 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				19EB70B9292E8B6C00DB8F21 /* Helper.swift */,
+				19EB70BB292E8B8E00DB8F21 /* Core */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		19EB70BB292E8B8E00DB8F21 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				19EB70BC292E8BB200DB8F21 /* Helper.Core.Plist.swift */,
+				19EB70BE292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		19EB70CC293236EB00DB8F21 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				19EB70C0292E8EC400DB8F21 /* BaseCoordinator.swift */,
+				19EB70E129328ECF00DB8F21 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		19EB70D8293249C700DB8F21 /* ScreenFactory */ = {
+			isa = PBXGroup;
+			children = (
+				19EB70DB29324A0A00DB8F21 /* ScreenFactory.swift */,
+				19EB70EA29329E6300DB8F21 /* ScreenFactory+Loading.swift */,
+				19EB70DD29324B9300DB8F21 /* ScreenFactory+Auth.swift */,
+				19EB70DF293250BB00DB8F21 /* ScreenFactory+General.swift */,
+			);
+			path = ScreenFactory;
+			sourceTree = "<group>";
+		};
+		19EB70E3293291EA00DB8F21 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		19EB70EE2932A2AB00DB8F21 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				19EB70F12932A35500DB8F21 /* LoadingViewController.swift */,
+				19FC00D62932B8E0000F6A4A /* LoadingViewController+Data.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +329,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				19C7A527280DECD3005000EB /* LaunchScreen.storyboard in Resources */,
+				19EB70B5292E850C00DB8F21 /* AppSettings.plist in Resources */,
 				195629A12842A63C00C8A704 /* Contributors in Resources */,
-				19EB70B3292E841900DB8F21 /* Info.plist in Resources */,
 				19EB70B0292E821700DB8F21 /* LICENSE in Resources */,
 				19C7A524280DECD3005000EB /* Assets.xcassets in Resources */,
 				19EB70AE292E820800DB8F21 /* README.md in Resources */,
@@ -229,8 +347,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19EB70BF292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift in Sources */,
+				19EB70C1292E8EC400DB8F21 /* BaseCoordinator.swift in Sources */,
+				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
+				19FC00DD29337227000F6A4A /* URLSessionProtocol.swift in Sources */,
+				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
+				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
+				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
+				19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */,
+				19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */,
+				19FC00DF29365E87000F6A4A /* CombainTet.swift in Sources */,
+				19EB70CE2932389000DB8F21 /* Router.swift in Sources */,
+				19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */,
+				19FC00DB29335D29000F6A4A /* ApiURLProtocol.swift in Sources */,
+				19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
+				19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */,
+				19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */,
+				19EB70E92932991E00DB8F21 /* LoadingCoordinator.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
+				19EB70BA292E8B6C00DB8F21 /* Helper.swift in Sources */,
+				19EB70BD292E8BB200DB8F21 /* Helper.Core.Plist.swift in Sources */,
+				19EB70E72932944300DB8F21 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +509,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A3C42PATAF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = fmh/Info.plist;
+				INFOPLIST_FILE = fmh/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -399,7 +537,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A3C42PATAF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = fmh/Info.plist;
+				INFOPLIST_FILE = fmh/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
