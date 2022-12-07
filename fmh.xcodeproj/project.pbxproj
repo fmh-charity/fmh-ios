@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190F775D293CF9910088A863 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F775C293CF9910088A863 /* Helpers.swift */; };
+		190F775F293F9C4F0088A863 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F775E293F9C4F0088A863 /* APIService.swift */; };
+		190F776329410C650088A863 /* APIClient_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776229410C650088A863 /* APIClient_.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1994BA22285F7EEF0019AB4A /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1994BA21285F7EEF0019AB4A /* Sources */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
@@ -30,17 +33,17 @@
 		19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70DD29324B9300DB8F21 /* ScreenFactory+Auth.swift */; };
 		19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70DF293250BB00DB8F21 /* ScreenFactory+General.swift */; };
 		19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70E129328ECF00DB8F21 /* BaseViewController.swift */; };
-		19EB70E72932944300DB8F21 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70E62932944300DB8F21 /* ApiClient.swift */; };
 		19EB70E92932991E00DB8F21 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70E82932991E00DB8F21 /* LoadingCoordinator.swift */; };
 		19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70EA29329E6300DB8F21 /* ScreenFactory+Loading.swift */; };
 		19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70F12932A35500DB8F21 /* LoadingViewController.swift */; };
 		19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00D62932B8E0000F6A4A /* LoadingViewController+Data.swift */; };
-		19FC00DB29335D29000F6A4A /* ApiURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00DA29335D29000F6A4A /* ApiURLProtocol.swift */; };
-		19FC00DD29337227000F6A4A /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00DC29337227000F6A4A /* URLSessionProtocol.swift */; };
-		19FC00DF29365E87000F6A4A /* CombainTet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00DE29365E87000F6A4A /* CombainTet.swift */; };
+		19FC00E129386341000F6A4A /* URLRequest+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00E029386341000F6A4A /* URLRequest+init.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		190F775C293CF9910088A863 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		190F775E293F9C4F0088A863 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		190F776229410C650088A863 /* APIClient_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient_.swift; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,14 +69,11 @@
 		19EB70DD29324B9300DB8F21 /* ScreenFactory+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+Auth.swift"; sourceTree = "<group>"; };
 		19EB70DF293250BB00DB8F21 /* ScreenFactory+General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+General.swift"; sourceTree = "<group>"; };
 		19EB70E129328ECF00DB8F21 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		19EB70E62932944300DB8F21 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		19EB70E82932991E00DB8F21 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
 		19EB70EA29329E6300DB8F21 /* ScreenFactory+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+Loading.swift"; sourceTree = "<group>"; };
 		19EB70F12932A35500DB8F21 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		19FC00D62932B8E0000F6A4A /* LoadingViewController+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingViewController+Data.swift"; sourceTree = "<group>"; };
-		19FC00DA29335D29000F6A4A /* ApiURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiURLProtocol.swift; sourceTree = "<group>"; };
-		19FC00DC29337227000F6A4A /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
-		19FC00DE29365E87000F6A4A /* CombainTet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombainTet.swift; sourceTree = "<group>"; };
+		19FC00E029386341000F6A4A /* URLRequest+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,10 +90,10 @@
 		191EAA6A281BBC50007B1397 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				19FC00DC29337227000F6A4A /* URLSessionProtocol.swift */,
-				19EB70E62932944300DB8F21 /* ApiClient.swift */,
-				19FC00DA29335D29000F6A4A /* ApiURLProtocol.swift */,
-				19FC00DE29365E87000F6A4A /* CombainTet.swift */,
+				190F775E293F9C4F0088A863 /* APIService.swift */,
+				19FC00E029386341000F6A4A /* URLRequest+init.swift */,
+				190F775C293CF9910088A863 /* Helpers.swift */,
+				190F776229410C650088A863 /* APIClient_.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -350,25 +350,25 @@
 				19EB70BF292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift in Sources */,
 				19EB70C1292E8EC400DB8F21 /* BaseCoordinator.swift in Sources */,
 				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
-				19FC00DD29337227000F6A4A /* URLSessionProtocol.swift in Sources */,
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
 				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
 				19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */,
 				19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */,
-				19FC00DF29365E87000F6A4A /* CombainTet.swift in Sources */,
+				19FC00E129386341000F6A4A /* URLRequest+init.swift in Sources */,
 				19EB70CE2932389000DB8F21 /* Router.swift in Sources */,
 				19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */,
-				19FC00DB29335D29000F6A4A /* ApiURLProtocol.swift in Sources */,
+				190F775D293CF9910088A863 /* Helpers.swift in Sources */,
 				19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */,
+				190F776329410C650088A863 /* APIClient_.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */,
 				19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */,
 				19EB70E92932991E00DB8F21 /* LoadingCoordinator.swift in Sources */,
+				190F775F293F9C4F0088A863 /* APIService.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				19EB70BA292E8B6C00DB8F21 /* Helper.swift in Sources */,
 				19EB70BD292E8BB200DB8F21 /* Helper.Core.Plist.swift in Sources */,
-				19EB70E72932944300DB8F21 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
