@@ -42,46 +42,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         func sceneWillEnterForeground(_ scene: UIScene) { }
         func sceneDidEnterBackground(_ scene: UIScene) { }
         
-        //
-        
-        let url = URL(string: "https://test.vhospice.org/api/fmh/authentication/userInfo")!
-        let request = URLRequest(url: url)
-        //        Networker.shared.fetch(request: request) { data, response, error in
-        //            print(response)
-        //        }
-        let token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2dpbjEiLCJqdGkiOiIxIiwiZXhwIjoxNjcwNTIxMzE3fQ.luX0XqmYK6cIEFA-N4B5IcXfwhYwXQqRNd8hE_r57f6EURhrDElUSXfXSW3_NW7BtLPkv-uIApQ2jQhZs2_wgQ"
-        Helper.Core.KeyChain.set(value: token, forKey: "accessToken")
-        
-        //        ApiClient.shared.getData(request: request) { data, response, error in
-        //            print("data: \(data) : response: \(response) : error: \(error)")
-        //        }
-        
-        //        ApiClient.shared.fetchData(request: request, isCached: true) { data, dataType in
-        //            print("data: \(data.jsonObject() as? [String:Any]) : dataType: \(dataType)")
-        //        } onCompletion: { request, response, error in
-        //            print("request: \(request) : response: \(response) : error: \(error)")
-        //        }
-        
-        //        APIClient.shared.fetchData(request: request) { data, response, error in
-        //            print("data: \(data) : response: \(response) : error: \(error)")
-        //        }
-        
-       
-//        api = APIClient(urlSession: session)
-//        api.fetchData(request: request) { data, response, error in
-//            print("data: \(data) : response: \(response) : error: \(error)")
+  
+        APIClient.shared.urlSession.configuration.urlCache = URLCache.shared
+//        APIClient.shared.login(login: "login1", password: "password1") { error in
+//            guard let error = error else {
+//                print("ok")
+//                print(APIClient.shared.userProfile?.lastName)
+//                return
+//            }
+//
+//            print("Error: \(error.localizedDescription)")
 //        }
-        
-          
-        if var request = try? URLRequest(method: .GET, path: "/api/fmh/authentication/userInfo") {
-//            request.httpBody = try? ["login": "login1", "password": "password1"].data()
-            APIClient.shared.fetchData(request: request, isCached: false) { data, dataType in
-                print("data: \(data.jsonObject() as? [String:Any]) : dataType: \(dataType)")
-            } onCompletion: { request, response, error in
-                print("request: \(request) : response: \(response) : error: \(error)")
-            }
+//        Helper.Core.KeyChain.del(key: DTOJWT.CodingKeys.accessToken.rawValue)
+        APIClient.shared.updateUserProfile() { error, hh  in
+            print("error: \(error)")
         }
-        
     }
     
 }

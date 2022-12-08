@@ -17,18 +17,24 @@ typealias HTTPHeaders = [String : String]
 
 extension URLRequest {
     
-    init(method: HTTPMethod = .GET, path: String, query: HTTPQuery? = nil, headers: HTTPHeaders? = nil, body: HTTPBody? = nil) throws {
+    init(_ method: HTTPMethod = .GET, path: String, query: HTTPQuery? = nil, headers: HTTPHeaders? = nil, body: HTTPBody? = nil) throws {
         
         let baseUrl = Helper.Core.Plist.getValueDictionary(forResource: "AppSettings", forKey: "API_host")
         guard let baseURL = baseUrl as? String, var urlComponents = URLComponents(string: baseURL) else {
-            throw NSError(domain: "URLRequest.Init", code: 1001)
+            let _error = NSError(domain: "URLRequest.URLComponents.init", code: 1001, userInfo: [
+                NSLocalizedDescriptionKey : "URLComponents not initialize: baseUrl=\(String(describing: baseUrl))"
+            ])
+            throw _error
         }
         
         urlComponents.path = path
         urlComponents.queryItems = query?.map { URLQueryItem(name: $0.key, value: $0.value) }
         
         guard let url = urlComponents.url else {
-            throw NSError(domain: "URLRequest.Init", code: 1002)
+            let _error = NSError(domain: "URLRequest.URLComponents.url", code: 1002, userInfo: [
+                NSLocalizedDescriptionKey : "URLComponents.url not initialize."
+            ])
+            throw _error
         }
         
         var request = URLRequest(url: url)

@@ -23,14 +23,16 @@ final class AppCoordinator: BaseCoordinator {
         performLoadingFlow()
     }
 
+    private func selectFlow() {
+        
+    }
+    
 }
 
 // MARK:- Private methods
 private extension AppCoordinator {
     
-    private func selectFlow() {
-        
-    }
+    enum Flow { case loading, auth, general } // ????
     
     func performLoadingFlow() {
         let coordinator = LoadingCoordinator(router: router, factory: factory)

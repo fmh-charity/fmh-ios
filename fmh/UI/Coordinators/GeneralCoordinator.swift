@@ -20,10 +20,12 @@ final class GeneralCoordinator: BaseCoordinator {
     override func start() {
         
     }
-
+    
 }
 
 // MARK: - Navigation flows
 fileprivate extension GeneralCoordinator {
-//onComplitionViewController: ((_ params: String) -> ())?
+    
+    enum Flow { case general } // <- Возможно данные передавать еще ...
+    
 }

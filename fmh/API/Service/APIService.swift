@@ -31,7 +31,7 @@ protocol APIServiceProtocol {
 
 class APIService {
     
-    private let urlSession: URLSession
+    let urlSession: URLSession
     
     init(urlSession: URLSession) {
         self.urlSession = urlSession
@@ -40,15 +40,27 @@ class APIService {
     //MARK: Private methods [ Raw ] -
     
     /// URLSession.dataTask [Raw]
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func dataTask(with request: URLRequest, retry: Bool = true, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         urlSession.dataTask(with: request) { data, response, error in
+            
+            // Need loger ...
+            
+            if let urlStr = response?.url, let codeStr = (response as? HTTPURLResponse)?.statusCode {
+                print("[ APIService: URL: \(urlStr) : code: \(codeStr) ]")
+            }
+            if let token = request.allHTTPHeaderFields?["Authorization"] {
+                print("[ APIService: token: \(token)]")
+            }
+            
             guard error == nil, let response = response as? HTTPURLResponse else {
                 return completionHandler(nil, response, error)
             }
-            if (200..<300).contains(response.statusCode), let data = data {
+            if (200..<299).contains(response.statusCode), let data = data {
                 return completionHandler(data, response, nil)
             }
-            let _error = NSError(domain: "URLResponse", code: response.statusCode)
+            let _error = NSError(domain: "APIService.HTTPURLResponse", code: response.statusCode, userInfo: [
+                NSLocalizedDescriptionKey : "Answer is not equal code to 200...299. Code=\(response.statusCode)"
+            ])
             return completionHandler(nil, response, _error)
         }
         .resume()
@@ -72,7 +84,7 @@ extension APIService: APIServiceProtocol {
             onReciveData(_cachedData, .cached)
         }
         
-        dataTask(with: request) { data, response, error in
+        self.dataTask(with: request) { data, response, error in
             
             if let data = data, let response = response {
                 
@@ -95,11 +107,11 @@ extension APIService: APIServiceProtocol {
     }
     
     func fetchData(request: URLRequest, onCompletion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        dataTask(with: request, completionHandler: onCompletion)
+        self.dataTask(with: request, completionHandler: onCompletion)
     }
     
     func fetchData(request: URLRequest, onCompletion: @escaping (Result<Data, Error>) -> Void) {
-        dataTask(with: request) { data, response, error in
+        self.dataTask(with: request) { data, response, error in
             if let error = error {
                 return onCompletion(.failure(error))
             }

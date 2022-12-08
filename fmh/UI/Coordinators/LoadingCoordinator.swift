@@ -26,6 +26,8 @@ final class LoadingCoordinator: BaseCoordinator {
 // MARK:- Private methods
 private extension LoadingCoordinator {
     
+    enum Flow { case loading } // <- Возможно данные передавать еще ...
+    
     func performLoadingScreenFlow() {
         let viewController = factory.makeLoadingViewController()
         viewController.onCompletion = onCompletion

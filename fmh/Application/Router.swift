@@ -13,23 +13,12 @@ typealias CompletionBlock = () -> Void
 //MARK: - Routable
 protocol Routable: Presentable {
     
-    func present(_ screen: Presentable?)
     func present(_ screen: Presentable?, animated: Bool)
-    
-    func push(_ screen: Presentable?)
-    func push(_ screen: Presentable?, animated: Bool)
     func push(_ screen: Presentable?, animated: Bool, completion: CompletionBlock?)
-    
-    func pop()
     func pop(animated: Bool)
-    
-    func dismiss()
     func dismiss(animated: Bool, completion: CompletionBlock?)
-    
-    func setRoot(_ screen: Presentable?)
     func setRoot(_ screen: Presentable?, hideBar: Bool)
     func setWindowRoot(_ screen: Presentable?)
-    
     func popToRoot(animated: Bool)
     
 }
@@ -79,21 +68,9 @@ private extension Router {
 //MARK: - Routable
 extension Router: Routable {
     
-    func present(_ screen: Presentable?) {
-        present(screen, animated: true)
-    }
-    
     func present(_ screen: Presentable?, animated: Bool) {
         guard let controller = screen?.toPresent else { return }
         navigationController?.present(controller, animated: animated, completion: nil)
-    }
-    
-    func push(_ screen: Presentable?)  {
-        push(screen, animated: true)
-    }
-    
-    func push(_ screen: Presentable?, animated: Bool)  {
-        push(screen, animated: animated, completion: nil)
     }
     
     func push(_ screen: Presentable?, animated: Bool, completion: CompletionBlock?) {
@@ -108,26 +85,14 @@ extension Router: Routable {
         navigationController?.pushViewController(controller, animated: animated)
     }
     
-    func pop()  {
-        pop(animated: true)
-    }
-    
     func pop(animated: Bool)  {
         if let controller = navigationController?.popViewController(animated: animated) {
             runCompletion(for: controller)
         }
     }
-    
-    func dismiss() {
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     func dismiss(animated: Bool, completion: CompletionBlock?) {
         navigationController?.dismiss(animated: animated, completion: completion)
-    }
-    
-    func setRoot(_ screen: Presentable?) {
-        setRoot(screen, hideBar: false)
     }
     
     func setRoot(_ screen: Presentable?, hideBar: Bool) {
