@@ -49,10 +49,6 @@ extension URLRequest {
         
         headers?.forEach { request.addValue($0, forHTTPHeaderField: $1) }
         
-        if let token = TokenManager.get() {
-            request.setValue("\(token)", forHTTPHeaderField: "Authorization")
-        }
-        
         self = request
         
     }

@@ -18,7 +18,7 @@
 		190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77792944D74A0088A863 /* BaseRepository.swift */; };
 		190F777D2944DB220088A863 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F777C2944DB220088A863 /* NetworkService.swift */; };
 		190F77812945129A0088A863 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77802945129A0088A863 /* APIService.swift */; };
-		190F7783294513620088A863 /* APIService+UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7782294513620088A863 /* APIService+UserProfile.swift */; };
+		190F7783294513620088A863 /* APIClient+UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7782294513620088A863 /* APIClient+UserProfile.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1994BA22285F7EEF0019AB4A /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1994BA21285F7EEF0019AB4A /* Sources */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
@@ -61,7 +61,7 @@
 		190F77792944D74A0088A863 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		190F777C2944DB220088A863 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		190F77802945129A0088A863 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		190F7782294513620088A863 /* APIService+UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+UserProfile.swift"; sourceTree = "<group>"; };
+		190F7782294513620088A863 /* APIClient+UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+UserProfile.swift"; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,12 +124,19 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		190F778529452E9A0088A863 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				190F776229410C650088A863 /* APIClient.swift */,
+				190F7782294513620088A863 /* APIClient+UserProfile.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
 		191EAA6A281BBC50007B1397 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				190F77802945129A0088A863 /* APIService.swift */,
-				190F7782294513620088A863 /* APIService+UserProfile.swift */,
-				190F776229410C650088A863 /* APIClient.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -192,6 +199,7 @@
 			children = (
 				190F7764294129620088A863 /* Extensions */,
 				191EAA6A281BBC50007B1397 /* Service */,
+				190F778529452E9A0088A863 /* Client */,
 				191EAA71281BD200007B1397 /* DTO */,
 				19EB70B7292E8A0200DB8F21 /* Repository */,
 			);
@@ -401,7 +409,7 @@
 				190F776A294129A70088A863 /* Encodable+.swift in Sources */,
 				19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */,
 				19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */,
-				190F7783294513620088A863 /* APIService+UserProfile.swift in Sources */,
+				190F7783294513620088A863 /* APIClient+UserProfile.swift in Sources */,
 				190F77662941296F0088A863 /* Data+.swift in Sources */,
 				19FC00E129386341000F6A4A /* URLRequest+init.swift in Sources */,
 				190F776E29413A400088A863 /* DTOJWT.swift in Sources */,

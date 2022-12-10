@@ -38,20 +38,23 @@ class APIService: NetworkService {
     var didCaseInterruption: ((_ userInfo: [String : Any]?) -> Void)?
     
     /// [Raw]. Default  retry if response = 401
-    private func fetch(with request: URLRequest?, retry: Bool = true, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    private func fetch(with request: URLRequest?, retry: Bool, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
 
         super.fetchRaw(with: request) { data, response, error in
             
             if (response as? HTTPURLResponse)?.statusCode == 401, retry {
                 self.refreshedTokens() { [weak self] error in
                     if let error = error {
-                        self?.didCaseInterruption?(nil)
-                        return completionHandler(data, response, error)
+                        completionHandler(data, response, error)
+                        self?.didCaseInterruption?(["error":error])
+                        return
                     }
                     self?.fetch(with: request, retry: false, completionHandler: completionHandler)
+                    return
                 }
             } else {
-                return completionHandler(data, response, error)
+                completionHandler(data, response, error)
+                return
             }
             
         }
@@ -91,7 +94,7 @@ extension APIService: APIServiceProtocol {
             onReciveData(_cachedData, .cached)
         }
         
-        self.fetch(with: request) { data, response, error in
+        self.fetch(with: request, retry: true) { data, response, error in
     
             if let data = data, let response = response {
                 
@@ -114,11 +117,11 @@ extension APIService: APIServiceProtocol {
     }
     
     func fetch(request: URLRequest?, onCompletion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        self.fetch(with: request, completionHandler: onCompletion)
+        self.fetch(with: request, retry: true, completionHandler: onCompletion)
     }
     
     func fetch(request: URLRequest?, onCompletion: @escaping (Result<Data, Error>) -> Void) {
-        self.fetch(with: request) { data, response, error in
+        self.fetch(with: request, retry: true) { data, response, error in
             
             if let data = data {
                 return onCompletion(.success(data))

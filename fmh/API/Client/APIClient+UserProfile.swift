@@ -1,5 +1,5 @@
 //
-//  APIService+UserProfile.swift
+//  APIClient+UserProfile.swift
 //  fmh
 //
 //  Created: 10.12.2022
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension APIService {
+extension APIClient {
     
     class UserProfile {
         let isAdmin: Bool
@@ -28,7 +28,7 @@ extension APIService {
     
 }
 
-extension APIService {
+extension APIClient {
     
     var dateUpdatedTokens: Date? {
         return UserDefaults.standard.object(forKey: "dateUpdatedTokens") as? Date // <- Возможно в др. место потом

@@ -56,7 +56,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        let d = Plist.loadPropertyList(forResource: "Test")
         
-//        TokenManager.del(key: DTOJWT.CodingKeys.accessToken.rawValue)
+//        TokenManager.del(.accessToken)
+//        TokenManager.clear()
+//        APIClient.shared.login(login: "login1", password: "password1")
+        
         APIClient.shared.updateUserProfile() { uinf, error  in
             print("error: \(error)")
             print(APIClient.shared.userProfile?.firstName)

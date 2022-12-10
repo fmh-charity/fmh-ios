@@ -27,6 +27,10 @@ class NetworkService {
             return completionHandler(nil, nil, _error)
         }
         
+        if let token = TokenManager.get() {
+            request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        }
+        
         urlSession.dataTask(with: request) { data, response, error in
             
             // Need loger ...
