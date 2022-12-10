@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		190F775F293F9C4F0088A863 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F775E293F9C4F0088A863 /* APIService.swift */; };
-		190F776329410C650088A863 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776229410C650088A863 /* APIClient.swift */; };
+		190F776329410C650088A863 /* APIClient_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776229410C650088A863 /* APIClient_.swift */; };
 		190F77662941296F0088A863 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77652941296F0088A863 /* Data+.swift */; };
 		190F77682941298B0088A863 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77672941298B0088A863 /* Dictionary+.swift */; };
 		190F776A294129A70088A863 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7769294129A70088A863 /* Encodable+.swift */; };
-		190F776C29412D140088A863 /* APIClient+UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776B29412D140088A863 /* APIClient+UserProfile.swift */; };
 		190F776E29413A400088A863 /* DTOJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776D29413A400088A863 /* DTOJWT.swift */; };
 		190F7770294243CB0088A863 /* DTOUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776F294243CB0088A863 /* DTOUserInfo.swift */; };
+		190F77722943781F0088A863 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77712943781F0088A863 /* AuthRepository.swift */; };
+		190F7774294476520088A863 /* Helper.Core.TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7773294476520088A863 /* Helper.Core.TokenManager.swift */; };
+		190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77792944D74A0088A863 /* BaseRepository.swift */; };
+		190F777D2944DB220088A863 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F777C2944DB220088A863 /* NetworkService.swift */; };
+		190F77812945129A0088A863 /* APIService2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77802945129A0088A863 /* APIService2.swift */; };
+		190F7783294513620088A863 /* APIService+UserProfile_.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7782294513620088A863 /* APIService+UserProfile_.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1994BA22285F7EEF0019AB4A /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1994BA21285F7EEF0019AB4A /* Sources */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
@@ -46,14 +50,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		190F775E293F9C4F0088A863 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		190F776229410C650088A863 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		190F776229410C650088A863 /* APIClient_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient_.swift; sourceTree = "<group>"; };
 		190F77652941296F0088A863 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		190F77672941298B0088A863 /* Dictionary+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+.swift"; sourceTree = "<group>"; };
 		190F7769294129A70088A863 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
-		190F776B29412D140088A863 /* APIClient+UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+UserProfile.swift"; sourceTree = "<group>"; };
 		190F776D29413A400088A863 /* DTOJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOJWT.swift; sourceTree = "<group>"; };
 		190F776F294243CB0088A863 /* DTOUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOUserInfo.swift; sourceTree = "<group>"; };
+		190F77712943781F0088A863 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		190F7773294476520088A863 /* Helper.Core.TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.Core.TokenManager.swift; sourceTree = "<group>"; };
+		190F77792944D74A0088A863 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
+		190F777C2944DB220088A863 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		190F77802945129A0088A863 /* APIService2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService2.swift; sourceTree = "<group>"; };
+		190F7782294513620088A863 /* APIService+UserProfile_.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+UserProfile_.swift"; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,13 +115,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		190F777B2944DB090088A863 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				19FC00E029386341000F6A4A /* URLRequest+init.swift */,
+				190F777C2944DB220088A863 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		191EAA6A281BBC50007B1397 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				190F775E293F9C4F0088A863 /* APIService.swift */,
-				190F776229410C650088A863 /* APIClient.swift */,
-				19FC00E029386341000F6A4A /* URLRequest+init.swift */,
-				190F776B29412D140088A863 /* APIClient+UserProfile.swift */,
+				190F77802945129A0088A863 /* APIService2.swift */,
+				190F7782294513620088A863 /* APIService+UserProfile_.swift */,
+				190F776229410C650088A863 /* APIClient_.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -163,6 +179,7 @@
 			children = (
 				19EB70B8292E8B0000DB8F21 /* Helper */,
 				19C7A538280DED98005000EB /* Application */,
+				190F777B2944DB090088A863 /* Network */,
 				19C7A533280DED59005000EB /* API */,
 				19C7A535280DED75005000EB /* UI */,
 				19C7A539280DF263005000EB /* Resources */,
@@ -235,6 +252,8 @@
 		19EB70B7292E8A0200DB8F21 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				190F77792944D74A0088A863 /* BaseRepository.swift */,
+				190F77712943781F0088A863 /* AuthRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -253,6 +272,7 @@
 			children = (
 				19EB70BC292E8BB200DB8F21 /* Helper.Core.Plist.swift */,
 				19EB70BE292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift */,
+				190F7773294476520088A863 /* Helper.Core.TokenManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -372,6 +392,7 @@
 			files = (
 				19EB70BF292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift in Sources */,
 				19EB70C1292E8EC400DB8F21 /* BaseCoordinator.swift in Sources */,
+				190F7774294476520088A863 /* Helper.Core.TokenManager.swift in Sources */,
 				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
@@ -380,21 +401,24 @@
 				190F776A294129A70088A863 /* Encodable+.swift in Sources */,
 				19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */,
 				19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */,
+				190F7783294513620088A863 /* APIService+UserProfile_.swift in Sources */,
 				190F77662941296F0088A863 /* Data+.swift in Sources */,
 				19FC00E129386341000F6A4A /* URLRequest+init.swift in Sources */,
 				190F776E29413A400088A863 /* DTOJWT.swift in Sources */,
 				19EB70CE2932389000DB8F21 /* Router.swift in Sources */,
 				19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */,
 				19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */,
-				190F776329410C650088A863 /* APIClient.swift in Sources */,
+				190F776329410C650088A863 /* APIClient_.swift in Sources */,
+				190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */,
 				19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */,
+				190F77812945129A0088A863 /* APIService2.swift in Sources */,
 				19EB70E92932991E00DB8F21 /* LoadingCoordinator.swift in Sources */,
-				190F775F293F9C4F0088A863 /* APIService.swift in Sources */,
 				190F7770294243CB0088A863 /* DTOUserInfo.swift in Sources */,
-				190F776C29412D140088A863 /* APIClient+UserProfile.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
+				190F77722943781F0088A863 /* AuthRepository.swift in Sources */,
+				190F777D2944DB220088A863 /* NetworkService.swift in Sources */,
 				19EB70BA292E8B6C00DB8F21 /* Helper.swift in Sources */,
 				19EB70BD292E8BB200DB8F21 /* Helper.Core.Plist.swift in Sources */,
 			);

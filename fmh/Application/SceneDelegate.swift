@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         func sceneDidEnterBackground(_ scene: UIScene) { }
         
   
-        APIClient.shared.urlSession.configuration.urlCache = URLCache.shared
+       
 //        APIClient.shared.login(login: "login1", password: "password1") { error in
 //            guard let error = error else {
 //                print("ok")
@@ -53,9 +53,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //
 //            print("Error: \(error.localizedDescription)")
 //        }
-//        Helper.Core.KeyChain.del(key: DTOJWT.CodingKeys.accessToken.rawValue)
-        APIClient.shared.updateUserProfile() { error, hh  in
+        
+//        let d = Plist.loadPropertyList(forResource: "Test")
+        
+//        TokenManager.del(key: DTOJWT.CodingKeys.accessToken.rawValue)
+        APIClient.shared.updateUserProfile() { uinf, error  in
             print("error: \(error)")
+            print(APIClient.shared.userProfile?.firstName)
         }
     }
     

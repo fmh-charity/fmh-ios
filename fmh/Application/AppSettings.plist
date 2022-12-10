@@ -2,9 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>host</key>
-	<string>https://fmh.vhospice.org</string>
-	<key>API_host</key>
-	<string>https://test.vhospice.org</string>
+	<key>Common</key>
+	<dict/>
+	<key>UserProfile</key>
+	<dict>
+		<key>id</key>
+		<string></string>
+		<key>token</key>
+		<string></string>
+	</dict>
+	<key>API</key>
+	<dict>
+		<key>host</key>
+		<string>https://test.vhospice.org</string>
+		<key>host_</key>
+		<string>https://fmh.vhospice.org</string>
+	</dict>
 </dict>
 </plist>

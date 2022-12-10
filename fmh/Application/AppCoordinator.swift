@@ -12,7 +12,11 @@ final class AppCoordinator: BaseCoordinator {
     fileprivate let factory: ScreenFactory
     fileprivate let router: Routable
     
-//    var apiClient: 
+    private lazy var apiClient: APIClientProtocol = {
+        let apiClient =  APIClient.shared // <- Наверное надо создать класс ...
+        apiClient.urlSession.configuration.urlCache = URLCache.shared
+        return apiClient
+    }()
     
     init(router: Routable, factory: ScreenFactory) {
         self.router  = router
@@ -21,12 +25,25 @@ final class AppCoordinator: BaseCoordinator {
     
     override func start() {
         performLoadingFlow()
-    }
-
-    private func selectFlow() {
-        
+        setInterruption()
     }
     
+    // В случае ошибки какой в API - перекидываем на ввод логина
+    private func setInterruption() {
+        apiClient.didCaseInterruption = { [weak self] _ in
+            self?.childCoordinators = []
+            self?.performAuthFlow()
+        }
+    }
+    
+    private func selectFlow() {
+        
+//        performLoadingFlow()
+//        performAuthFlow()
+//        performGeneralFlow()
+        
+    }
+
 }
 
 // MARK:- Private methods
@@ -35,7 +52,7 @@ private extension AppCoordinator {
     enum Flow { case loading, auth, general } // ????
     
     func performLoadingFlow() {
-        let coordinator = LoadingCoordinator(router: router, factory: factory)
+        let coordinator = LoadingCoordinator(router: router, factory: factory, apiClient: apiClient)
         coordinator.onCompletion = { [weak self, weak coordinator] in
             self?.childRemove(coordinator)
             self?.selectFlow()
@@ -45,7 +62,7 @@ private extension AppCoordinator {
     }
     
     func performAuthFlow() {
-        let coordinator = AuthCoordinator(router: router, factory: factory)
+        let coordinator = AuthCoordinator(router: router, factory: factory, apiClient: apiClient)
         coordinator.onCompletion = { [weak self, weak coordinator] in
             self?.childRemove(coordinator)
             self?.selectFlow()
@@ -55,7 +72,7 @@ private extension AppCoordinator {
     }
     
     func performGeneralFlow() {
-        let coordinator = GeneralCoordinator(router: router, factory: factory)
+        let coordinator = GeneralCoordinator(router: router, factory: factory, apiClient: apiClient)
         coordinator.onCompletion = { [weak self, weak coordinator] in
             self?.childRemove(coordinator)
             self?.selectFlow()

@@ -12,9 +12,12 @@ final class AuthCoordinator: BaseCoordinator {
     fileprivate let factory: AuthScreenFactoryProtocol
     fileprivate let router: Routable
     
-    init(router: Routable, factory: AuthScreenFactoryProtocol) {
+    private var apiClient: APIClientProtocol
+    
+    init(router: Routable, factory: AuthScreenFactoryProtocol, apiClient: APIClientProtocol) {
         self.router  = router
         self.factory = factory
+        self.apiClient = apiClient
     }
     
     override func start() {

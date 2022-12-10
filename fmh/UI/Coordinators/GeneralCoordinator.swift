@@ -12,9 +12,12 @@ final class GeneralCoordinator: BaseCoordinator {
     fileprivate let factory: GeneralScreenFactoryProtocol
     fileprivate let router: Routable
     
-    init(router: Routable, factory: GeneralScreenFactoryProtocol) {
+    private var apiClient: APIClientProtocol
+    
+    init(router: Routable, factory: GeneralScreenFactoryProtocol, apiClient: APIClientProtocol) {
         self.router  = router
         self.factory = factory
+        self.apiClient = apiClient
     }
     
     override func start() {

@@ -17,10 +17,12 @@ typealias HTTPHeaders = [String : String]
 
 extension URLRequest {
     
+    /// Make request with API urls and token
     init(_ method: HTTPMethod = .GET, path: String, query: HTTPQuery? = nil, headers: HTTPHeaders? = nil, body: HTTPBody? = nil) throws {
         
-        let baseUrl = Helper.Core.Plist.getValueDictionary(forResource: "AppSettings", forKey: "API_host")
-        guard let baseURL = baseUrl as? String, var urlComponents = URLComponents(string: baseURL) else {
+        let baseUrl = Plist.getSettingsValue(keyPath: "API.host") as? String
+        
+        guard let baseURL = baseUrl, var urlComponents = URLComponents(string: baseURL) else {
             let _error = NSError(domain: "URLRequest.URLComponents.init", code: 1001, userInfo: [
                 NSLocalizedDescriptionKey : "URLComponents not initialize: baseUrl=\(String(describing: baseUrl))"
             ])
@@ -46,6 +48,10 @@ extension URLRequest {
         }
         
         headers?.forEach { request.addValue($0, forHTTPHeaderField: $1) }
+        
+        if let token = TokenManager.get() {
+            request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        }
         
         self = request
         

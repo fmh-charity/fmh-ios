@@ -12,9 +12,12 @@ final class LoadingCoordinator: BaseCoordinator {
     fileprivate let factory: LoadingScreenFactoryProtocol
     fileprivate let router: Routable
     
-    init(router: Routable, factory: LoadingScreenFactoryProtocol) {
+    private var apiClient: APIClientProtocol
+    
+    init(router: Routable, factory: LoadingScreenFactoryProtocol, apiClient: APIClientProtocol) {
         self.router  = router
         self.factory = factory
+        self.apiClient = apiClient
     }
     
     override func start() {

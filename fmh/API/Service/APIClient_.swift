@@ -7,10 +7,9 @@
 
 import Foundation
 
-protocol APIClientProtocol {
+protocol APIClientProtocol: APIServiceProtocol {
     var userProfile: APIClient.UserProfile? { get }
-    var didCaseInterruption: (() -> Void)? { get set }
-    
+
     func login(login: String, password: String, onComplition: ((Error?) -> Void)?)
     func logout()
     func updateUserProfile(onComplition: ((APIClient.UserProfile?, Error?) -> Void)?)
@@ -21,55 +20,13 @@ final class APIClient: APIService {
     
     static var shared = APIClient(urlSession: URLSession.shared)
     
-    private var accessToken: String? {
-        Helper.Core.KeyChain.get(forKey: DTOJWT.CodingKeys.accessToken.rawValue)
+    // ЕСЛИ ОСТАВЛЯЕМ [ shared ] - ТО ПРИВАТНЫЙ ОСТАВЛЯЕМ init() !!!
+    private override init(urlSession: URLSession) {
+        super.init(urlSession: urlSession)
     }
     
     var userProfile: UserProfile?
-    var didCaseInterruption: (() -> Void)?
-    
-    // Raw ...
-    override func dataTask(with request: URLRequest?, retry: Bool = true, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        guard var request = request else {
-            let _error = NSError(domain: "APIClient", code: 1000, userInfo: [
-                NSLocalizedDescriptionKey : "URLRequest equal nil"
-            ])
-            return completionHandler(nil, nil, _error)
-        }
-        if let token = accessToken { request.setValue("\(token)", forHTTPHeaderField: "Authorization") }
-//        super.dataTask(with: request, completionHandler: completionHandler)
-        super.dataTask(with: request) { data, response, error in
-            if (response as? HTTPURLResponse)?.statusCode == 401, retry {
-                self.refreshedTokens() { [weak self] error in
-                    if let error = error {
-                        self?.didCaseInterruption?()
-                        return completionHandler(data, response, error)
-                    }
-                    self?.dataTask(with: request, retry: false, completionHandler: completionHandler)
-                }
-            } else {
-                return completionHandler(data, response, error)
-            }
-        }
-    }
 
-    private func refreshedTokens(onComplition: ((Error?) -> Void)? = nil) {
-        var request = try? URLRequest(.POST, path: "/api/fmh/authentication/refresh")
-        let refreshToken = Helper.Core.KeyChain.get(forKey: DTOJWT.CodingKeys.refreshToken.rawValue)
-        request?.httpBody = try? ["refreshToken": refreshToken].data()
-        self.dataTask(with: request) { data, _, error in
-            if let tokens: DTOJWT = try? data?.decode() {
-                Helper.Core.KeyChain.set(value: tokens.accessToken, forKey: DTOJWT.CodingKeys.accessToken.rawValue)
-                Helper.Core.KeyChain.set(value: tokens.refreshToken, forKey: DTOJWT.CodingKeys.refreshToken.rawValue)
-                onComplition?(nil)
-                return
-            }
-            onComplition?(error)
-            return
-        }
-        self.urlSession.configuration.urlCache?.removeAllCachedResponses()
-    }
-    
 }
 
 
@@ -77,13 +34,13 @@ final class APIClient: APIService {
 extension APIClient: APIClientProtocol {
     
     func login(login: String, password: String, onComplition: ((Error?) -> Void)? = nil) {
+        
         var request = try? URLRequest(.POST, path: "/api/fmh/authentication/login")
         request?.httpBody = try? ["login": login, "password": password].data()
-        self.dataTask(with: request) { [weak self] data, _, error in
+        
+        super.fetchRaw(with: request) { [weak self] data, _, error in
             if let tokens: DTOJWT = try? data?.decode() {
-                // ДОБАВИТЬ ДАТУ ЗАЛОГИНИВАНИЯ in def or plist
-                Helper.Core.KeyChain.set(value: tokens.accessToken, forKey: DTOJWT.CodingKeys.accessToken.rawValue)
-                Helper.Core.KeyChain.set(value: tokens.refreshToken, forKey: DTOJWT.CodingKeys.refreshToken.rawValue)
+                TokenManager.update(access: tokens.accessToken, refresh: tokens.refreshToken)
                 self?.updateUserProfile() { ui, error in
                     if let error = error {
                         onComplition?(error)
@@ -102,14 +59,13 @@ extension APIClient: APIClientProtocol {
     
     func logout() {
         self.userProfile = nil
-        Helper.Core.KeyChain.del(key: DTOJWT.CodingKeys.accessToken.rawValue)
-        Helper.Core.KeyChain.del(key: DTOJWT.CodingKeys.refreshToken.rawValue)
+        TokenManager.clear()
         self.urlSession.configuration.urlCache?.removeAllCachedResponses()
     }
     
     func updateUserProfile(onComplition: ((UserProfile?, Error?) -> Void)? = nil) {
         let request = try? URLRequest(.GET, path: "/api/fmh/authentication/userInfo")
-        self.dataTask(with: request) { [weak self] data, _, error in
+        self.fetch(request: request) { [weak self] data, _, error in
             if let data = data {
                 do {
                     let userInfo: DTOUserInfo = try data.decode()
