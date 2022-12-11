@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 protocol BaseViewControllerProtocol: Presentable {
-    var onCompletion : CompletionBlock? { get set }
+    var onCompletion : (() -> Void)? { get set }
 }
 
 
 //MARK: - BaseViewController
 class BaseViewController: UIViewController, BaseViewControllerProtocol {
-    var onCompletion: CompletionBlock?
+    var onCompletion: (() -> Void)?
 }
 
 //MARK: - alerts ...

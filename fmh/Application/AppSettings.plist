@@ -7,9 +7,9 @@
 	<key>UserProfile</key>
 	<dict>
 		<key>id</key>
-		<string></string>
+		<string>тут только константы в файле можно</string>
 		<key>token</key>
-		<string></string>
+		<string>хотел писать сюда токен для отладки, но писать в Boundle нелбзя - только в директорию док. а ее тут не увидешь</string>
 	</dict>
 	<key>API</key>
 	<dict>

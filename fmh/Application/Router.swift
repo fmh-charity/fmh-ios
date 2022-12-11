@@ -7,20 +7,17 @@
 
 import UIKit
 
-typealias RouterCompletions = [UIViewController : CompletionBlock]
-typealias CompletionBlock = () -> Void
-
 //MARK: - Routable
 protocol Routable: Presentable {
     
-    func present(_ screen: Presentable?, animated: Bool)
-    func push(_ screen: Presentable?, animated: Bool, completion: CompletionBlock?)
-    func pop(animated: Bool)
-    func dismiss(animated: Bool, completion: CompletionBlock?)
-    func setRoot(_ screen: Presentable?, hideBar: Bool)
     func setWindowRoot(_ screen: Presentable?)
+    func setRoot(_ screen: Presentable?, hideBar: Bool)
+    func push(_ screen: Presentable?, animated: Bool)
+    func present(_ screen: Presentable?, animated: Bool)
+    func pop(animated: Bool)
     func popToRoot(animated: Bool)
-    
+    func dismiss(animated: Bool, completion: (() -> Void)?)
+
 }
 
 //MARK: - Presentable
@@ -33,66 +30,32 @@ extension Presentable where Self: UIViewController {
 }
 
 
-//MARK: - Router
+//MARK: - Class
 final class Router: NSObject {
 
-//    typealias HandlersClosure = ([String: Any]?) -> ()
-//    private var handlers = [String : HandlersClosure]()
+    //TODO: ВОЗМОЖНО ПОТОМ КОНТРОЛЬ И ЛОГИРОВАНИЕ ПЕРЕХОДОВ ...
     
     fileprivate weak var window: UIWindow?
     fileprivate weak var navigationController: UINavigationController?
-    fileprivate var completions: RouterCompletions
     
     init(window: UIWindow?, navigationController: UINavigationController?) {
         self.window = window
         self.navigationController = navigationController
-        completions = [:]
     }
     
     var toPresent: UIViewController? {
         return navigationController
     }
+    
 }
 
-// MARK: - Private methods
-private extension Router {
-    
-    func runCompletion(for controller: UIViewController) {
-        guard let completion = completions[controller] else { return }
-        completion()
-        completions.removeValue(forKey: controller)
-    }
-    
-}
 
 //MARK: - Routable
 extension Router: Routable {
     
-    func present(_ screen: Presentable?, animated: Bool) {
+    func setWindowRoot(_ screen: Presentable?) {
         guard let controller = screen?.toPresent else { return }
-        navigationController?.present(controller, animated: animated, completion: nil)
-    }
-    
-    func push(_ screen: Presentable?, animated: Bool, completion: CompletionBlock?) {
-        guard
-            let controller = screen?.toPresent,
-            !(controller is UINavigationController)
-            else { assertionFailure("Deprecated push UINavigationController."); return }
-        
-        if let completion = completion {
-            completions[controller] = completion
-        }
-        navigationController?.pushViewController(controller, animated: animated)
-    }
-    
-    func pop(animated: Bool)  {
-        if let controller = navigationController?.popViewController(animated: animated) {
-            runCompletion(for: controller)
-        }
-    }
-
-    func dismiss(animated: Bool, completion: CompletionBlock?) {
-        navigationController?.dismiss(animated: animated, completion: completion)
+        window?.rootViewController = controller
     }
     
     func setRoot(_ screen: Presentable?, hideBar: Bool) {
@@ -101,17 +64,30 @@ extension Router: Routable {
         navigationController?.isNavigationBarHidden = hideBar
     }
     
-    func setWindowRoot(_ screen: Presentable?) {
-        guard let controller = screen?.toPresent else { return }
-        window?.rootViewController = controller
+    func push(_ screen: Presentable?, animated: Bool) {
+        guard
+            let controller = screen?.toPresent, !(controller is UINavigationController) else {
+            assertionFailure("Deprecated push UINavigationController.")
+            return
+        }
+        navigationController?.pushViewController(controller, animated: animated)
     }
     
-    func popToRoot(animated: Bool) {
-        if let controllers = navigationController?.popToRootViewController(animated: animated) {
-            controllers.forEach { controller in
-                runCompletion(for: controller)
-            }
-        }
+    func present(_ screen: Presentable?, animated: Bool) {
+        guard let controller = screen?.toPresent else { return }
+        navigationController?.present(controller, animated: animated, completion: nil)
     }
- 
+    
+    func pop(animated: Bool)  {
+         navigationController?.popViewController(animated: animated)
+    }
+
+    func popToRoot(animated: Bool) {
+        navigationController?.popToRootViewController(animated: animated)
+    }
+    
+    func dismiss(animated: Bool, completion: (() -> Void)?) {
+        navigationController?.dismiss(animated: animated, completion: completion)
+    }
+
 }

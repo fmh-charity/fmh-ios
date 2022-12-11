@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		190F776329410C650088A863 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776229410C650088A863 /* APIClient.swift */; };
-		190F77662941296F0088A863 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77652941296F0088A863 /* Data+.swift */; };
-		190F77682941298B0088A863 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77672941298B0088A863 /* Dictionary+.swift */; };
-		190F776A294129A70088A863 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7769294129A70088A863 /* Encodable+.swift */; };
+		190F77662941296F0088A863 /* API.Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77652941296F0088A863 /* API.Data+.swift */; };
+		190F77682941298B0088A863 /* API.Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77672941298B0088A863 /* API.Dictionary+.swift */; };
+		190F776A294129A70088A863 /* API.Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7769294129A70088A863 /* API.Encodable+.swift */; };
 		190F776E29413A400088A863 /* DTOJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776D29413A400088A863 /* DTOJWT.swift */; };
 		190F7770294243CB0088A863 /* DTOUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776F294243CB0088A863 /* DTOUserInfo.swift */; };
 		190F77722943781F0088A863 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77712943781F0088A863 /* AuthRepository.swift */; };
@@ -20,6 +20,10 @@
 		190F77812945129A0088A863 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77802945129A0088A863 /* APIService.swift */; };
 		190F7783294513620088A863 /* APIClient+UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7782294513620088A863 /* APIClient+UserProfile.swift */; };
 		190F7787294538DB0088A863 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7786294538DB0088A863 /* Router.swift */; };
+		190F77892945D49F0088A863 /* UI.UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77882945D49F0088A863 /* UI.UIColor+.swift */; };
+		190F778C2945D4F50088A863 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F778B2945D4F50088A863 /* Data+.swift */; };
+		190F778E2945F14B0088A863 /* UI.UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F778D2945F14B0088A863 /* UI.UIView+.swift */; };
+		190F77902945FE5E0088A863 /* UI.UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F778F2945FE5E0088A863 /* UI.UIColor+hex.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1994BA22285F7EEF0019AB4A /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1994BA21285F7EEF0019AB4A /* Sources */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
@@ -51,9 +55,9 @@
 
 /* Begin PBXFileReference section */
 		190F776229410C650088A863 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		190F77652941296F0088A863 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
-		190F77672941298B0088A863 /* Dictionary+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+.swift"; sourceTree = "<group>"; };
-		190F7769294129A70088A863 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		190F77652941296F0088A863 /* API.Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API.Data+.swift"; sourceTree = "<group>"; };
+		190F77672941298B0088A863 /* API.Dictionary+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API.Dictionary+.swift"; sourceTree = "<group>"; };
+		190F7769294129A70088A863 /* API.Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API.Encodable+.swift"; sourceTree = "<group>"; };
 		190F776D29413A400088A863 /* DTOJWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOJWT.swift; sourceTree = "<group>"; };
 		190F776F294243CB0088A863 /* DTOUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOUserInfo.swift; sourceTree = "<group>"; };
 		190F77712943781F0088A863 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -63,6 +67,10 @@
 		190F77802945129A0088A863 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		190F7782294513620088A863 /* APIClient+UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+UserProfile.swift"; sourceTree = "<group>"; };
 		190F7786294538DB0088A863 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		190F77882945D49F0088A863 /* UI.UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UIColor+.swift"; sourceTree = "<group>"; };
+		190F778B2945D4F50088A863 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		190F778D2945F14B0088A863 /* UI.UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UIView+.swift"; sourceTree = "<group>"; };
+		190F778F2945FE5E0088A863 /* UI.UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UIColor+hex.swift"; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,9 +116,9 @@
 		190F7764294129620088A863 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				190F77652941296F0088A863 /* Data+.swift */,
-				190F77672941298B0088A863 /* Dictionary+.swift */,
-				190F7769294129A70088A863 /* Encodable+.swift */,
+				190F77652941296F0088A863 /* API.Data+.swift */,
+				190F77672941298B0088A863 /* API.Dictionary+.swift */,
+				190F7769294129A70088A863 /* API.Encodable+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -131,6 +139,14 @@
 				190F7782294513620088A863 /* APIClient+UserProfile.swift */,
 			);
 			path = Client;
+			sourceTree = "<group>";
+		};
+		190F778A2945D4DD0088A863 /* Common Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				190F778B2945D4F50088A863 /* Data+.swift */,
+			);
+			path = "Common Extensions";
 			sourceTree = "<group>";
 		};
 		191EAA6A281BBC50007B1397 /* Service */ = {
@@ -184,6 +200,7 @@
 		19C7A519280DECD0005000EB /* fmh */ = {
 			isa = PBXGroup;
 			children = (
+				190F778A2945D4DD0088A863 /* Common Extensions */,
 				19EB70B8292E8B0000DB8F21 /* Helper */,
 				19C7A538280DED98005000EB /* Application */,
 				190F777B2944DB090088A863 /* Network */,
@@ -220,7 +237,7 @@
 		19C7A537280DED81005000EB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				19EB70EE2932A2AB00DB8F21 /* Loading */,
+				19EB70EE2932A2AB00DB8F21 /* Loading (MVC) */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -308,17 +325,20 @@
 		19EB70E3293291EA00DB8F21 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				190F77882945D49F0088A863 /* UI.UIColor+.swift */,
+				190F778D2945F14B0088A863 /* UI.UIView+.swift */,
+				190F778F2945FE5E0088A863 /* UI.UIColor+hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		19EB70EE2932A2AB00DB8F21 /* Loading */ = {
+		19EB70EE2932A2AB00DB8F21 /* Loading (MVC) */ = {
 			isa = PBXGroup;
 			children = (
 				19EB70F12932A35500DB8F21 /* LoadingViewController.swift */,
 				19FC00D62932B8E0000F6A4A /* LoadingViewController+Data.swift */,
 			);
-			path = Loading;
+			path = "Loading (MVC)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,20 +425,24 @@
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
 				190F7787294538DB0088A863 /* Router.swift in Sources */,
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
-				190F77682941298B0088A863 /* Dictionary+.swift in Sources */,
+				190F77682941298B0088A863 /* API.Dictionary+.swift in Sources */,
 				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
-				190F776A294129A70088A863 /* Encodable+.swift in Sources */,
+				190F778C2945D4F50088A863 /* Data+.swift in Sources */,
+				190F776A294129A70088A863 /* API.Encodable+.swift in Sources */,
 				19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */,
 				19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */,
 				190F7783294513620088A863 /* APIClient+UserProfile.swift in Sources */,
-				190F77662941296F0088A863 /* Data+.swift in Sources */,
+				190F77662941296F0088A863 /* API.Data+.swift in Sources */,
 				19FC00E129386341000F6A4A /* URLRequest+init.swift in Sources */,
 				190F776E29413A400088A863 /* DTOJWT.swift in Sources */,
+				190F77892945D49F0088A863 /* UI.UIColor+.swift in Sources */,
 				19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */,
 				19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */,
+				190F77902945FE5E0088A863 /* UI.UIColor+hex.swift in Sources */,
 				190F776329410C650088A863 /* APIClient.swift in Sources */,
 				190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
+				190F778E2945F14B0088A863 /* UI.UIView+.swift in Sources */,
 				19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */,
 				19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */,
 				190F77812945129A0088A863 /* APIService.swift in Sources */,

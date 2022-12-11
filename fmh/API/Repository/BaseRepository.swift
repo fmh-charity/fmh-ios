@@ -16,7 +16,7 @@ final class BaseRepository {
     
     private let apiClient: APIServiceProtocol //< - ??
     
-    init(apiClient: APIServiceProtocol = APIClient.shared) { // <- ?
+    init(apiClient: APIServiceProtocol) { // <- ?
         self.apiClient = apiClient
     }
     
