@@ -19,6 +19,7 @@
 		190F777D2944DB220088A863 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F777C2944DB220088A863 /* NetworkService.swift */; };
 		190F77812945129A0088A863 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77802945129A0088A863 /* APIService.swift */; };
 		190F7783294513620088A863 /* APIClient+UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7782294513620088A863 /* APIClient+UserProfile.swift */; };
+		190F7787294538DB0088A863 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F7786294538DB0088A863 /* Router.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1994BA22285F7EEF0019AB4A /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1994BA21285F7EEF0019AB4A /* Sources */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
@@ -37,7 +38,6 @@
 		19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70C2292E9A5400DB8F21 /* AuthCoordinator.swift */; };
 		19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70C4292EADC800DB8F21 /* AppCoordinator.swift */; };
 		19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70C6292FDA8900DB8F21 /* GeneralCoordinator.swift */; };
-		19EB70CE2932389000DB8F21 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70CD2932389000DB8F21 /* Router.swift */; };
 		19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70DB29324A0A00DB8F21 /* ScreenFactory.swift */; };
 		19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70DD29324B9300DB8F21 /* ScreenFactory+Auth.swift */; };
 		19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70DF293250BB00DB8F21 /* ScreenFactory+General.swift */; };
@@ -62,6 +62,7 @@
 		190F777C2944DB220088A863 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		190F77802945129A0088A863 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		190F7782294513620088A863 /* APIClient+UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+UserProfile.swift"; sourceTree = "<group>"; };
+		190F7786294538DB0088A863 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +83,6 @@
 		19EB70C2292E9A5400DB8F21 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		19EB70C4292EADC800DB8F21 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		19EB70C6292FDA8900DB8F21 /* GeneralCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCoordinator.swift; sourceTree = "<group>"; };
-		19EB70CD2932389000DB8F21 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		19EB70DB29324A0A00DB8F21 /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
 		19EB70DD29324B9300DB8F21 /* ScreenFactory+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+Auth.swift"; sourceTree = "<group>"; };
 		19EB70DF293250BB00DB8F21 /* ScreenFactory+General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+General.swift"; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				19EB70B2292E841900DB8F21 /* Info.plist */,
 				19C7A51A280DECD0005000EB /* AppDelegate.swift */,
 				19C7A51C280DECD0005000EB /* SceneDelegate.swift */,
-				19EB70CD2932389000DB8F21 /* Router.swift */,
+				190F7786294538DB0088A863 /* Router.swift */,
 				19EB70C4292EADC800DB8F21 /* AppCoordinator.swift */,
 				19C7A525280DECD3005000EB /* LaunchScreen.storyboard */,
 			);
@@ -403,6 +403,7 @@
 				190F7774294476520088A863 /* Helper.Core.TokenManager.swift in Sources */,
 				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
+				190F7787294538DB0088A863 /* Router.swift in Sources */,
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
 				190F77682941298B0088A863 /* Dictionary+.swift in Sources */,
 				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
@@ -413,7 +414,6 @@
 				190F77662941296F0088A863 /* Data+.swift in Sources */,
 				19FC00E129386341000F6A4A /* URLRequest+init.swift in Sources */,
 				190F776E29413A400088A863 /* DTOJWT.swift in Sources */,
-				19EB70CE2932389000DB8F21 /* Router.swift in Sources */,
 				19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */,
 				19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */,
 				190F776329410C650088A863 /* APIClient.swift in Sources */,

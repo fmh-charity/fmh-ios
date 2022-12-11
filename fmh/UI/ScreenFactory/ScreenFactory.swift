@@ -10,15 +10,11 @@ import UIKit
 
 final class ScreenFactory {
     
-    /*
     let apiClient: APIClientProtocol
     
     init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient
     }
-    */
-    
-    init() { }
     
 }
 

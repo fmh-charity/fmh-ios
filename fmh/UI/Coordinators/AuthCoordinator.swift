@@ -7,49 +7,40 @@
 
 import Foundation
 
+protocol AuthCoordinatorProtocol: AnyObject {
+
+}
+
+
 final class AuthCoordinator: BaseCoordinator {
     
-    fileprivate let factory: AuthScreenFactoryProtocol
-    fileprivate let router: Routable
+    weak var parentCoordinator: AppCoordinatorProtocol?
     
-    private var apiClient: APIClientProtocol
+    private let factory: AuthScreenFactoryProtocol
     
-    init(router: Routable, factory: AuthScreenFactoryProtocol, apiClient: APIClientProtocol) {
-        self.router  = router
+    init(router: Routable, factory: AuthScreenFactoryProtocol) {
         self.factory = factory
-        self.apiClient = apiClient
+        super.init(router: router)
     }
     
     override func start() {
+        DispatchQueue.main.async { [weak self] in
+            self?.router.setWindowRoot(TestVC())
+        }
         
     }
     
 }
 
-// MARK: - Navigation flows
-fileprivate extension AuthCoordinator {
+// MARK: AuthCoordinatorProtocol -
+extension AuthCoordinator: AuthCoordinatorProtocol {
     
-    enum Flow { case login } // <- Возможно данные передавать еще ...
-    
-    func performLoginScreenFlow() {
-        let viewController = TempVC()
-        viewController.onCompletion = onCompletion
-        /*
-        viewController.needExecute = { [weak self] params in
-            if let flow = params["flow"] as? Flow {
-                switch flow {
-                default: break
-                }
-            }
-        }
-         */
-        router.setWindowRoot(viewController)
-    }
-    
-    // ...
     
 }
 
 
 import UIKit
-class TempVC: BaseViewController { }
+
+class TestVC: BaseViewController {
+    
+}

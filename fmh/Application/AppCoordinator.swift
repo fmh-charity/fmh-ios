@@ -7,33 +7,33 @@
 
 import Foundation
 
+protocol AppCoordinatorProtocol: AnyObject {
+    
+    func performLoadingFlow()
+    func performAuthFlow()
+    func performGeneralFlow()
+    
+}
+
+
 final class AppCoordinator: BaseCoordinator {
     
-    fileprivate let factory: ScreenFactory
-    fileprivate let router: Routable
+    private lazy var factory: ScreenFactory = ScreenFactory(apiClient: apiClient)
     
     private lazy var apiClient: APIClientProtocol = {
-        let apiClient =  APIClient.shared // <- Наверное надо создать класс ...
-        apiClient.urlSession.configuration.urlCache = URLCache.shared
-        return apiClient
-    }()
-    
-    init(router: Routable, factory: ScreenFactory) {
-        self.router  = router
-        self.factory = factory
-    }
-    
-    override func start() {
-        performLoadingFlow()
-        setInterruption()
-    }
-    
-    // В случае ошибки какой в API - перекидываем на ввод логина
-    private func setInterruption() {
-        apiClient.didCaseInterruption = { [weak self] _ in
+        let apiClient =  APIClient(urlSession: self.session)
+        apiClient.urlSession.configuration.urlCache = self.cache
+        
+        // В случае ошибки какой в API - перекидываем на ввод логина
+        apiClient.didCaseInterruption = { [weak self] userInfo in
             self?.childCoordinators = []
             self?.performAuthFlow()
         }
+        return apiClient
+    }()
+    
+    override func start() {
+        performLoadingFlow()
     }
     
     private func selectFlow() {
@@ -46,23 +46,24 @@ final class AppCoordinator: BaseCoordinator {
 
 }
 
-// MARK:- Private methods
-private extension AppCoordinator {
-    
-    enum Flow { case loading, auth, general } // ????
-    
+// MARK: AppCoordinatorProtocol -
+extension AppCoordinator: AppCoordinatorProtocol {
+
     func performLoadingFlow() {
-        let coordinator = LoadingCoordinator(router: router, factory: factory, apiClient: apiClient)
+        let coordinator = LoadingCoordinator(router: router, factory: factory)
+        coordinator.parentCoordinator = self
+        coordinator.apiClient = apiClient
         coordinator.onCompletion = { [weak self, weak coordinator] in
             self?.childRemove(coordinator)
-            self?.selectFlow()
+            self?.performAuthFlow()
         }
         childAppend(coordinator)
         coordinator.start()
     }
     
     func performAuthFlow() {
-        let coordinator = AuthCoordinator(router: router, factory: factory, apiClient: apiClient)
+        let coordinator = AuthCoordinator(router: router, factory: factory)
+        coordinator.parentCoordinator = self
         coordinator.onCompletion = { [weak self, weak coordinator] in
             self?.childRemove(coordinator)
             self?.selectFlow()
@@ -72,13 +73,34 @@ private extension AppCoordinator {
     }
     
     func performGeneralFlow() {
-        let coordinator = GeneralCoordinator(router: router, factory: factory, apiClient: apiClient)
+        let coordinator = GeneralCoordinator(router: router, factory: factory)
+        coordinator.parentCoordinator = self
         coordinator.onCompletion = { [weak self, weak coordinator] in
             self?.childRemove(coordinator)
             self?.selectFlow()
         }
         childAppend(coordinator)
         coordinator.start()
+    }
+    
+}
+
+
+//MARK: - Cache
+fileprivate extension AppCoordinator {
+    
+     var cache: URLCache {
+        let memoryCapacity = 1024 * 1024 * 4
+        let diskCapacity = 1024 * 1024 * 20
+        let cache = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "ApiClient_Cached")
+        return cache
+    }
+    
+    var session: URLSession {
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .reloadIgnoringCacheData // .reloadRevalidatingCacheData
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
+        return session
     }
     
 }

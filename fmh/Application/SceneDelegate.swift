@@ -60,10 +60,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        TokenManager.clear()
 //        APIClient.shared.login(login: "login1", password: "password1")
         
-        APIClient.shared.updateUserProfile() { uinf, error  in
-            print("error: \(error)")
-            print(APIClient.shared.userProfile?.firstName)
-        }
+//        APIClient.shared.updateUserProfile() { uinf, error  in
+//            print("error: \(error)")
+//            print(APIClient.shared.userProfile?.firstName)
+//        }
     }
     
 }
@@ -74,9 +74,7 @@ private extension SceneDelegate {
     
     func makeCoordinator() -> Coordinatable {
         let router = Router(window: window, navigationController: navigationController)
-//        let apiClient = APIClient(urlSession: URLSession.shared)
-        let factory = ScreenFactory() //ScreenFactory(apiClient: apiClient)
-        let coordinator = AppCoordinator(router: router, factory: factory)
+        let coordinator = AppCoordinator(router: router)
         
         return coordinator
     }

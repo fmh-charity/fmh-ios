@@ -22,7 +22,7 @@ final class APIClient: APIService {
     static var shared = APIClient(urlSession: URLSession.shared)
     
     // ЕСЛИ ОСТАВЛЯЕМ [ shared ] - ТО ПРИВАТНЫЙ ОСТАВЛЯЕМ init() !!!
-    private override init(urlSession: URLSession) {
+    override init(urlSession: URLSession) {
         super.init(urlSession: urlSession)
     }
     
@@ -89,20 +89,3 @@ extension APIClient: APIClientProtocol {
     }
     
 }
-
-/*
- private lazy var cache: URLCache = {
- let memoryCapacity = 1024 * 1024 * 4
- let diskCapacity = 1024 * 1024 * 20
- let cache = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "ApiClient_Cached")
- return cache
- }()
- 
- private lazy var session: URLSession = {
- let configuration = URLSessionConfiguration.default
- configuration.requestCachePolicy = .reloadIgnoringCacheData // .reloadRevalidatingCacheData
- configuration.urlCache = cache
- let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
- return session
- }()
- */

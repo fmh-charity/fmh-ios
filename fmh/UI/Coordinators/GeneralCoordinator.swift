@@ -7,17 +7,20 @@
 
 import Foundation
 
+protocol GeneralCoordinatorProtocol: AnyObject {
+    
+}
+
+
 final class GeneralCoordinator: BaseCoordinator {
     
-    fileprivate let factory: GeneralScreenFactoryProtocol
-    fileprivate let router: Routable
+    weak var parentCoordinator: AppCoordinatorProtocol?
     
-    private var apiClient: APIClientProtocol
+    private let factory: GeneralScreenFactoryProtocol
     
-    init(router: Routable, factory: GeneralScreenFactoryProtocol, apiClient: APIClientProtocol) {
-        self.router  = router
+    init(router: Routable, factory: GeneralScreenFactoryProtocol) {
         self.factory = factory
-        self.apiClient = apiClient
+        super.init(router: router)
     }
     
     override func start() {
@@ -26,9 +29,9 @@ final class GeneralCoordinator: BaseCoordinator {
     
 }
 
-// MARK: - Navigation flows
-fileprivate extension GeneralCoordinator {
+// MARK: GeneralCoordinatorProtocol -
+extension GeneralCoordinator {
     
-    enum Flow { case general } // <- Возможно данные передавать еще ...
+    enum Flow { case general } // ??? <- Возможно данные передавать еще ...
     
 }

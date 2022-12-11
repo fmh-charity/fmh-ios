@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoadingViewControllerProtocol: BaseViewControllerProtocol {
-//    var onInfo: CompletionBlock? { get set }
+//    var coordinator: LoadingCoordinatorProtocol? { get set }
 }
 
 
@@ -21,7 +21,7 @@ final class LoadingViewController: BaseViewController, LoadingViewControllerProt
     
     private var countShows: Int = 0 {
         didSet {
-            if loadingServiceComplition ?? false && countShows > 0 {
+            if loadingServiceComplition ?? false && countShows > 0 { // <- 5 sec
                 self.deleteTimer()
                 self.onCompletion?()
             }

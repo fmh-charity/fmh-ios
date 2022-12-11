@@ -7,17 +7,24 @@
 
 import Foundation
 
+protocol LoadingCoordinatorProtocol: AnyObject {
+    
+    func performLoadingScreenFlow()
+    
+}
+
+
 final class LoadingCoordinator: BaseCoordinator {
     
-    fileprivate let factory: LoadingScreenFactoryProtocol
-    fileprivate let router: Routable
+    weak var parentCoordinator: AppCoordinatorProtocol?
     
-    private var apiClient: APIClientProtocol
+    private let factory: LoadingScreenFactoryProtocol
     
-    init(router: Routable, factory: LoadingScreenFactoryProtocol, apiClient: APIClientProtocol) {
-        self.router  = router
+    var apiClient: APIClientProtocol?
+    
+    init(router: Routable, factory: LoadingScreenFactoryProtocol) {
         self.factory = factory
-        self.apiClient = apiClient
+        super.init(router: router)
     }
     
     override func start() {
@@ -26,17 +33,22 @@ final class LoadingCoordinator: BaseCoordinator {
     
 }
 
-// MARK:- Private methods
-private extension LoadingCoordinator {
-    
-    enum Flow { case loading } // <- Возможно данные передавать еще ...
-    
+// MARK: LoadingCoordinatorProtocol -
+extension LoadingCoordinator: LoadingCoordinatorProtocol {
+
     func performLoadingScreenFlow() {
         let viewController = factory.makeLoadingViewController()
         viewController.onCompletion = onCompletion
         router.setWindowRoot(viewController)
+    
+        //TODO: Если много нужно сервисов опрашивать во время загрузки добавляем очереди/группы
         
-        (viewController as? LoadingViewController)?.loadingServiceComplition = true
+        // Проверяем авторизацию + обновляем информацию о пользователе.
+    
+        apiClient?.updateUserProfile { [weak viewController] userProfile, error in
+            (viewController as? LoadingViewController)?.loadingServiceComplition = true
+        }
+        
     }
     
 }

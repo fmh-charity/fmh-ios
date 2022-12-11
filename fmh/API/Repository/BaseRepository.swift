@@ -25,4 +25,10 @@ final class BaseRepository {
 //MARK: - BaseRepositoryProtocol
 extension BaseRepository: BaseRepositoryProtocol {
     
+    func test() {
+        DispatchQueue.main.async {
+            
+        }
+    }
+    
 }

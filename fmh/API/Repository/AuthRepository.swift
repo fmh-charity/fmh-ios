@@ -34,7 +34,11 @@ extension AuthRepository: AuthRepositoryProtocol {
     }
     
     func login(login: String, password: String, onComplition: ((Error?) -> Void)?) {
-        apiClient.login(login: login, password: password, onComplition: onComplition)
+        apiClient.login(login: login, password: password) { error in
+            DispatchQueue.main.async {
+                onComplition?(error)
+            }
+        }
     }
 
     func logout() {
