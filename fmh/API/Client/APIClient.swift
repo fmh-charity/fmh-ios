@@ -10,6 +10,7 @@ import Foundation
 protocol APIClientProtocol: APIServiceProtocol {
     var userProfile: APIClient.UserProfile? { get }
 
+    func isAuthorized() -> Bool
     func login(login: String, password: String, onComplition: ((Error?) -> Void)?)
     func logout()
     func updateUserProfile(onComplition: ((APIClient.UserProfile?, Error?) -> Void)?)
@@ -34,10 +35,16 @@ final class APIClient: APIService {
 //MARK: - APIClientProtocol
 extension APIClient: APIClientProtocol {
     
+    func isAuthorized() -> Bool {
+        !TokenManager.isEmpty()
+    }
+    
     func login(login: String, password: String, onComplition: ((Error?) -> Void)? = nil) {
         
         var request = try? URLRequest(.POST, path: "/api/fmh/authentication/login")
         request?.httpBody = try? ["login": login, "password": password].data()
+        
+        TokenManager.clear()
         
         super.fetchRaw(with: request) { [weak self] data, _, error in
             if let tokens: DTOJWT = try? data?.decode() {

@@ -24,10 +24,7 @@ final class AuthCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        DispatchQueue.main.async { [weak self] in
-            self?.router.setWindowRoot(TestVC())
-        }
-        
+        performLoginScreenFlow()
     }
     
 }
@@ -35,12 +32,11 @@ final class AuthCoordinator: BaseCoordinator {
 // MARK: AuthCoordinatorProtocol -
 extension AuthCoordinator: AuthCoordinatorProtocol {
     
+    func performLoginScreenFlow() {
+        let viewController = factory.makeLoginViewController()
+        viewController.onCompletion = onCompletion
+        router.setRoot(viewController, hideBar: false)
+    }
     
 }
 
-
-import UIKit
-
-class TestVC: BaseViewController {
-    
-}

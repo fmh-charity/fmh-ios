@@ -19,6 +19,11 @@ extension Helper.Core {
             case refreshToken = "refreshToken"
         }
         
+        static func isEmpty() -> Bool {
+            (Helper.Core.KeyChain.get(forKey: Keys.accessToken.rawValue) == nil) &&
+            (Helper.Core.KeyChain.get(forKey: Keys.refreshToken.rawValue) == nil)
+        }
+        
         static func get(_ key: Keys = .accessToken) -> String? {
             Helper.Core.KeyChain.get(forKey: key.rawValue)
         }

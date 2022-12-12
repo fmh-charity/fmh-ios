@@ -35,12 +35,12 @@ final class Router: NSObject {
 
     //TODO: ВОЗМОЖНО ПОТОМ КОНТРОЛЬ И ЛОГИРОВАНИЕ ПЕРЕХОДОВ ...
     
-    fileprivate weak var window: UIWindow?
-    fileprivate weak var navigationController: UINavigationController?
+    fileprivate var window: UIWindow?
+    fileprivate let navigationController: UINavigationController
     
-    init(window: UIWindow?, navigationController: UINavigationController?) {
+    init(window: UIWindow?) {
         self.window = window
-        self.navigationController = navigationController
+        self.navigationController = BaseNavigationController()
     }
     
     var toPresent: UIViewController? {
@@ -60,8 +60,9 @@ extension Router: Routable {
     
     func setRoot(_ screen: Presentable?, hideBar: Bool) {
         guard let controller = screen?.toPresent else { return }
-        navigationController?.setViewControllers([controller], animated: false)
-        navigationController?.isNavigationBarHidden = hideBar
+        navigationController.setViewControllers([controller], animated: false)
+        navigationController.isNavigationBarHidden = hideBar
+        window?.rootViewController = navigationController
     }
     
     func push(_ screen: Presentable?, animated: Bool) {
@@ -70,24 +71,24 @@ extension Router: Routable {
             assertionFailure("Deprecated push UINavigationController.")
             return
         }
-        navigationController?.pushViewController(controller, animated: animated)
+        navigationController.pushViewController(controller, animated: animated)
     }
     
     func present(_ screen: Presentable?, animated: Bool) {
         guard let controller = screen?.toPresent else { return }
-        navigationController?.present(controller, animated: animated, completion: nil)
+        navigationController.present(controller, animated: animated, completion: nil)
     }
     
     func pop(animated: Bool)  {
-         navigationController?.popViewController(animated: animated)
+         navigationController.popViewController(animated: animated)
     }
 
     func popToRoot(animated: Bool) {
-        navigationController?.popToRootViewController(animated: animated)
+        navigationController.popToRootViewController(animated: animated)
     }
     
     func dismiss(animated: Bool, completion: (() -> Void)?) {
-        navigationController?.dismiss(animated: animated, completion: completion)
+        navigationController.dismiss(animated: animated, completion: completion)
     }
 
 }

@@ -37,11 +37,7 @@ final class AppCoordinator: BaseCoordinator {
     }
     
     private func selectFlow() {
-        
-//        performLoadingFlow()
-//        performAuthFlow()
-//        performGeneralFlow()
-        
+        apiClient.isAuthorized() ? performGeneralFlow() : performAuthFlow()
     }
 
 }
@@ -55,7 +51,7 @@ extension AppCoordinator: AppCoordinatorProtocol {
         coordinator.apiClient = apiClient
         coordinator.onCompletion = { [weak self, weak coordinator] in
             self?.childRemove(coordinator)
-            self?.performAuthFlow()
+            self?.selectFlow()
         }
         childAppend(coordinator)
         coordinator.start()

@@ -43,12 +43,15 @@ extension LoadingCoordinator: LoadingCoordinatorProtocol {
     
         //TODO: Если много нужно сервисов опрашивать во время загрузки добавляем очереди/группы
         
-        // Проверяем авторизацию + обновляем информацию о пользователе.
-    
-        apiClient?.updateUserProfile { [weak viewController] userProfile, error in
+        // Если пользователь ранее логинился то обновляем инфу.
+        if apiClient?.isAuthorized() == true {
+            apiClient?.updateUserProfile { [weak viewController] userProfile, error in
+                (viewController as? LoadingViewController)?.loadingServiceComplition = true
+            }
+        } else {
             (viewController as? LoadingViewController)?.loadingServiceComplition = true
         }
-        
+  
     }
     
 }

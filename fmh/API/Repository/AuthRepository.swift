@@ -19,7 +19,7 @@ final class AuthRepository {
     
     private let apiClient: APIClientProtocol
     
-    init(apiClient: APIClientProtocol = APIClient.shared) { // <- ?
+    init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient
     }
     
