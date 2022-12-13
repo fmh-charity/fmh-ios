@@ -8,7 +8,13 @@
 import Foundation
 
 protocol GeneralCoordinatorProtocol: AnyObject {
-    
+    func perfomFlowByMenu(_ menu: SideMenu)
+    func perfomDetailScreenFlow(_ screen: GeneralCoordinator.DetailsScreen, type: GeneralCoordinator.PresentType, animated: Bool, completion: (() -> ())?)
+}
+extension GeneralCoordinatorProtocol {
+    func perfomDetailScreenFlow(_ screen: GeneralCoordinator.DetailsScreen, type: GeneralCoordinator.PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+        perfomDetailScreenFlow(screen, type: type, animated: animated, completion: completion)
+    }
 }
 
 
@@ -26,22 +32,55 @@ final class GeneralCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        performSideMenuNavigationFlow()
+        performSideMenuNavigationControllerFlow()
+    }
+    
+    //TODO: - НАДО ХРАНИТЬ КОНТРОЛЛЕРЫ КАК В ТАБ БАРАХ!?
+    private var menuViewControllers: [SideMenu : Presentable] = [
+        :
+    ]
+    
+    private func performSideMenuNavigationControllerFlow() {
+        let naviganionController: SideMenuNavigationControllerProtocol = SideMenuNavigationController(menuViewControllers: menuViewControllers)
+        naviganionController.isNavigationBarHidden = false
+        naviganionController.setUserPofile(apiClient?.userProfile)
+        naviganionController.onCompletion = onCompletion
+        router.setNavigationController(naviganionController)
     }
     
 }
 
 // MARK: GeneralCoordinatorProtocol -
-extension GeneralCoordinator {
+extension GeneralCoordinator: GeneralCoordinatorProtocol {
     
-    enum Flow { case general } // ??? <- Возможно данные передавать еще ...
+    func perfomFlowByMenu(_ menu: SideMenu) {
+        (router.getNavigationController() as? SideMenuNavigationControllerProtocol)?.setViewController(menu: menu)
+    }
     
-    func performSideMenuNavigationFlow() {
-        let naviganionController: SideMenuNavigationControllerProtocol = SideMenuNavigationController(menuViewControllers: [:])
-        naviganionController.isNavigationBarHidden = false
-        naviganionController.setUserPofile(apiClient?.userProfile)
-        naviganionController.onCompletion = onCompletion
-        router.setNavigationController(naviganionController)
+    enum PresentType { case push, present }
+    func perfomDetailScreenFlow(_ screen: DetailsScreen, type: PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+        switch type {
+        case .push:
+            router.push(screen.vc, animated: true)
+        case .present:
+            router.present(screen.vc, animated: animated, completion: completion)
+        }
+    }
+    
+    
+    //TODO: или через замыкания регистрировать!
+    
+    // ... childs screens
+    enum DetailsScreen {
+        
+        case child(model: String) // ??? <- Возможно данные передавать еще ...
+        
+        var vc: Presentable {
+            switch self {
+            case .child(let model): return LoadingViewController() // factory
+            }
+        }
+        
     }
     
 }

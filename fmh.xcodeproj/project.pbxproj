@@ -37,6 +37,7 @@
 		190F77AB2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77AA2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift */; };
 		190F77AD2948EA650088A863 /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77AC2948EA650088A863 /* SideMenuHeader.swift */; };
 		190F77AF2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77AE2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift */; };
+		190F77B12949299B0088A863 /* SideMenuFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77B02949299B0088A863 /* SideMenuFooter.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1994BA22285F7EEF0019AB4A /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1994BA21285F7EEF0019AB4A /* Sources */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
@@ -97,6 +98,7 @@
 		190F77AA2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UINavigationItem+rightButtons.swift"; sourceTree = "<group>"; };
 		190F77AC2948EA650088A863 /* SideMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeader.swift; sourceTree = "<group>"; };
 		190F77AE2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UIBarButtonItem+init.swift"; sourceTree = "<group>"; };
+		190F77B02949299B0088A863 /* SideMenuFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuFooter.swift; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +204,7 @@
 				190F779E294650780088A863 /* SideMenuTableViewCell.swift */,
 				190F77A629466BA90088A863 /* SideMenuNavigationController.swift */,
 				190F77AC2948EA650088A863 /* SideMenuHeader.swift */,
+				190F77B02949299B0088A863 /* SideMenuFooter.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				190F77902945FE5E0088A863 /* UI.UIColor+hex.swift in Sources */,
 				190F776329410C650088A863 /* APIClient.swift in Sources */,
 				190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */,
+				190F77B12949299B0088A863 /* SideMenuFooter.swift in Sources */,
 				190F7795294624630088A863 /* LoginViewController.swift in Sources */,
 				190F77AF2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,

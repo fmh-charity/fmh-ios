@@ -19,7 +19,7 @@ final class SideMenuNavigationController: BaseNavigationController {
     //    weak var coordinator: GeneralCoordinatorProtocol?
     
     //TODO: - НАДО ХРАНИТЬ КОНТРОЛЛЕРЫ КАК В ТАБАХ? (не перезагружая каждый раз)
-    private var menuViewControllers: [SideMenu : BaseViewControllerProtocol]
+    private var menuViewControllers: [SideMenu : Presentable]
     
     private lazy var sideMenuController: SideMenuViewController = {
         let sideMenuController = SideMenuViewController()
@@ -37,7 +37,7 @@ final class SideMenuNavigationController: BaseNavigationController {
         }
     }
     
-    init(menuViewControllers: [SideMenu : BaseViewControllerProtocol]) {
+    init(menuViewControllers: [SideMenu : Presentable]) {
         self.menuViewControllers = menuViewControllers
         super.init()
         configure()
@@ -146,8 +146,8 @@ final class SideMenuNavigationController: BaseNavigationController {
     
     
     //MARK: - Configure child view controllers
-    private func setViewController(viewController: UIViewController) {
-        setViewControllers([viewController], animated: false)
+    private func setViewController(viewController: UIViewController, animated: Bool = false) {
+        setViewControllers([viewController], animated: animated) //TODO: <- Нужна кастомная анимация появления, а не выезд !
         
         // All child views add menu button!
         let menuBtn = UIBarButtonItem(type: .menu, target: self, action: #selector(revealSideMenu))
@@ -185,20 +185,15 @@ extension SideMenuNavigationController: SideMenuNavigationControllerProtocol {
 //MARK: - SideMenuViewControllerDelegate
 extension SideMenuNavigationController: SideMenuViewControllerDelegate {
     
-    func didSelect(indexPath: IndexPath) {
+    func didSelect(itemMenu: SideMenu) {
         setSideMenuState(isShow: false)
-        if indexPath.section == 0 {
-            let itemMenu = SideMenu.allCases[indexPath.row]
-            setViewController(menu: itemMenu)
+
+        if itemMenu == .logOut {
+            self.logout()
+            return
         }
         
-        if indexPath.section == 1 {
-            switch SideMenu.AdditionalMenu.allCases[indexPath.row] {
-            case .user: break
-            case .logOut: self.logout(); return
-            }
-        }
-        
+        setViewController(menu: itemMenu)
     }
     
     private func logout() {

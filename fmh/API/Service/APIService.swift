@@ -39,9 +39,7 @@ class APIService: NetworkService {
     
     /// [Raw]. Default  retry if response = 401
     private func fetch(with request: URLRequest?, retry: Bool, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-
         super.fetchRaw(with: request) { data, response, error in
-            
             if (response as? HTTPURLResponse)?.statusCode == 401, retry {
                 self.refreshedTokens() { [weak self] error in
                     if let error = error {
@@ -56,9 +54,7 @@ class APIService: NetworkService {
                 completionHandler(data, response, error)
                 return
             }
-            
         }
-        
     }
     
     /// Refreshed token in store

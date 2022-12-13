@@ -10,14 +10,13 @@ import UIKit
 
 
 protocol SideMenuViewControllerDelegate: AnyObject {
-    func didSelect(indexPath: IndexPath)
+    func didSelect(itemMenu: SideMenu)
 }
 
 
 class SideMenuViewController: UIViewController {
     
-    var itemsMenu: [SideMenu] = [.home, .news]
-    var itemsAdditionalMenu: [SideMenu.AdditionalMenu] = [.user, .logOut]
+    var itemsMenu: [SideMenu] = [.home, .news, .user, .logOut]
     
     weak var delegate: SideMenuViewControllerDelegate?
     
@@ -33,7 +32,7 @@ class SideMenuViewController: UIViewController {
     
     var shortUserName: String? = nil {
         didSet {
-            let indexPathUser = IndexPath(row: 0, section: 1)
+            let indexPathUser = IndexPath(row: SideMenu.user.rawValue, section: 0)
             self.tableView.reloadRows(at: [indexPathUser], with: .none)
         }
     }
@@ -97,82 +96,48 @@ extension SideMenuViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section != 0 { return nil }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SideMenuHeader.identifier)
         guard let header = header as? SideMenuHeader else { return nil }
         return header
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? itemsMenu.count : itemsAdditionalMenu.count
+        itemsMenu.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuTableViewCell.identifier, for: indexPath)
         guard let cell = cell as? SideMenuTableViewCell else { fatalError("Cell doesn't exist") }
   
-        if indexPath.section == 0 {
-            let itemMenu = itemsMenu[indexPath.row]
-            
-            // Без выделения ячейки
-            if isHighlightedCellOff {
-                cell.selectionStyle = .none
-            } else {
-                if [].contains(itemMenu) { cell.selectionStyle = .none }
-            }
-            
-            cell.configure(
-                image: itemMenu.image,
-                title: itemMenu.title
-            )
+        let itemMenu = itemsMenu[indexPath.row]
+        
+        // Без выделения ячейки
+        if isHighlightedCellOff {
+            cell.selectionStyle = .none
+        } else {
+            if [.user].contains(itemMenu) { cell.selectionStyle = .none }
         }
         
-        if indexPath.section == 1 {
-            let itemMenu = itemsAdditionalMenu[indexPath.row]
-            
-            // Без выделения ячейки
-            if isHighlightedCellOff {
-                cell.selectionStyle = .none
-            } else {
-                if [.logOut].contains(itemMenu) { cell.selectionStyle = .none }
-            }
-  
-            if itemMenu == .user {
-                cell.configure(
-                    image: itemMenu.image,
-                    title: shortUserName ?? itemMenu.title
-                )
-            } else {
-                cell.configure(
-                    image: itemMenu.image,
-                    title: itemMenu.title
-                )
-            }
-        }
+        cell.configure(
+            image: itemMenu.image,
+            title: itemMenu.title
+        )
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Не кликабелины (отключенные) ...
-        let nonSelectsMenu: [SideMenu] = []
-        let nonSelectsAdditionalMenu: [SideMenu.AdditionalMenu] = [.user]
+        let nonSelectsMenu: [SideMenu] = [.user]
 
-        if indexPath.section == 0 {
-            let itemMenu = itemsMenu[indexPath.row]
-            guard !nonSelectsMenu.contains(itemMenu) else { return }
-        }
+        let itemMenu = itemsMenu[indexPath.row]
+        guard !nonSelectsMenu.contains(itemMenu) else { return }
 
-        if indexPath.section == 1 {
-            let itemMenu = itemsAdditionalMenu[indexPath.row]
-            guard !nonSelectsAdditionalMenu.contains(itemMenu) else { return }
-        }
-
-        self.delegate?.didSelect(indexPath: indexPath)
+        self.delegate?.didSelect(itemMenu: itemMenu)
     }
     
 }

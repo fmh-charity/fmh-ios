@@ -10,11 +10,12 @@ import UIKit
 //MARK: - Routable
 protocol Routable: Presentable {
     
-    func setNavigationController(_ navigationController: UINavigationController?)
+    func getNavigationController() -> UINavigationController
+    func setNavigationController(_ navigationController: UINavigationController)
     func setWindowRoot(_ screen: Presentable?)
     func setRoot(_ screen: Presentable?, hideBar: Bool)
     func push(_ screen: Presentable?, animated: Bool)
-    func present(_ screen: Presentable?, animated: Bool)
+    func present(_ screen: Presentable?, animated: Bool, completion: (() -> Void)?)
     func pop(animated: Bool)
     func popToRoot(animated: Bool)
     func dismiss(animated: Bool, completion: (() -> Void)?)
@@ -54,8 +55,11 @@ final class Router: NSObject {
 //MARK: - Routable
 extension Router: Routable {
     
-    func setNavigationController(_ navigationController: UINavigationController?) {
-        guard let navigationController = navigationController else { return }
+    func getNavigationController() -> UINavigationController {
+        self.navigationController
+    }
+
+    func setNavigationController(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         window?.rootViewController = navigationController
     }
@@ -81,9 +85,9 @@ extension Router: Routable {
         navigationController.pushViewController(controller, animated: animated)
     }
     
-    func present(_ screen: Presentable?, animated: Bool) {
+    func present(_ screen: Presentable?, animated: Bool, completion: (() -> Void)?) {
         guard let controller = screen?.toPresent else { return }
-        navigationController.present(controller, animated: animated, completion: nil)
+        navigationController.present(controller, animated: animated, completion: completion)
     }
     
     func pop(animated: Bool)  {

@@ -46,10 +46,14 @@ extension LoadingCoordinator: LoadingCoordinatorProtocol {
         // Если пользователь ранее логинился то обновляем инфу.
         if apiClient?.isAuthorized() == true {
             apiClient?.updateUserProfile { [weak viewController] userProfile, error in
-                (viewController as? LoadingViewController)?.loadingServiceComplition = true
+                DispatchQueue.main.async {
+                    (viewController as? LoadingViewController)?.loadingServiceComplition = true
+                }
             }
         } else {
-            (viewController as? LoadingViewController)?.loadingServiceComplition = true
+            DispatchQueue.main.async {
+                (viewController as? LoadingViewController)?.loadingServiceComplition = true
+            }
         }
   
     }

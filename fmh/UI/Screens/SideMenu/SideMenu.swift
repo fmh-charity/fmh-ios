@@ -11,6 +11,7 @@ import UIKit
 enum SideMenu: Int, CaseIterable {
 
     case home = 0, ourMission, news, claim, patients, chambers, wishes
+    case user, logOut
     
     var title: String {
         switch self {
@@ -21,6 +22,9 @@ enum SideMenu: Int, CaseIterable {
         case .patients: return "Пациенты"
         case .chambers: return "Палаты"
         case .wishes: return "Просьбы"
+            
+        case .user: return "Пользователь"
+        case .logOut: return "Выйти"
         }
     }
     
@@ -40,41 +44,17 @@ enum SideMenu: Int, CaseIterable {
             return UIImage(systemName: "bed.double")
         case .wishes:
             return UIImage(systemName: "checkmark")
+            
+        case .user:
+            return UIImage(systemName: "person")
+        case .logOut:
+            return UIImage(systemName: "arrowshape.turn.up.right")
         }
+    
     }
     
     var kind: String {
         return String(describing: self)
     }
 
-}
-
-//MARK: - Additional menu
-extension SideMenu {
-    
-    enum AdditionalMenu: Int, CaseIterable {
-        case user = 0, logOut
-        
-        var title: String {
-            switch self {
-            case .user: return "Пользователь"
-            case .logOut: return "Выйти"
-            }
-        }
-        
-        var image: UIImage? {
-            switch self {
-            case .user:
-                return UIImage(systemName: "person")
-            case .logOut:
-                return UIImage(systemName: "arrowshape.turn.up.right")
-            }
-        }
-        
-        var kind: String {
-            return String(describing: self)
-        }
-        
-    }
-    
 }
