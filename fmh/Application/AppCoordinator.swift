@@ -71,7 +71,9 @@ extension AppCoordinator: AppCoordinatorProtocol {
     func performGeneralFlow() {
         let coordinator = GeneralCoordinator(router: router, factory: factory)
         coordinator.parentCoordinator = self
+        coordinator.apiClient = apiClient
         coordinator.onCompletion = { [weak self, weak coordinator] in
+            self?.apiClient.logout()
             self?.childRemove(coordinator)
             self?.selectFlow()
         }

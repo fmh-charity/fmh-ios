@@ -19,10 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             self.window = window
             window.makeKeyAndVisible()
-//            self.coordinator.start()
-            
-            let vc = SideMenuNavigationController(menuViewControllers: [:])
-            window.rootViewController = vc
+            self.coordinator.start()
         }
         
         func sceneDidDisconnect(_ scene: UIScene) { }

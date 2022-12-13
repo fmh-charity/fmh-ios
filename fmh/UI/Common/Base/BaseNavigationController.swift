@@ -11,6 +11,8 @@ import UIKit
 
 class BaseNavigationController: UINavigationController {
     
+    var onCompletion: (() -> Void)?
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         configure()

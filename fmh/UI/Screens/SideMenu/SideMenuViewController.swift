@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-protocol SideMenuViewControllerDelegate {
+protocol SideMenuViewControllerDelegate: AnyObject {
     func didSelect(indexPath: IndexPath)
 }
 
@@ -19,10 +19,13 @@ class SideMenuViewController: UIViewController {
     var itemsMenu: [SideMenu] = [.home, .news]
     var itemsAdditionalMenu: [SideMenu.AdditionalMenu] = [.user, .logOut]
     
-    var delegate: SideMenuViewControllerDelegate?
+    weak var delegate: SideMenuViewControllerDelegate?
+    
+    var isHighlightedCellOff: Bool = true
     
     var defaultHighlightedCell: Int = 0 {
         didSet {
+            guard !isHighlightedCellOff else { return }
             let defaultRow = IndexPath(row: self.defaultHighlightedCell, section: 0)
             self.tableView.selectRow(at: defaultRow, animated: true, scrollPosition: .none)
         }
@@ -43,6 +46,11 @@ class SideMenuViewController: UIViewController {
         tableView.bounces = false
         tableView.estimatedSectionHeaderHeight = 0
         
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        
+        tableView.register(SideMenuHeader.self, forHeaderFooterViewReuseIdentifier: SideMenuHeader.identifier)
         tableView.register(SideMenuTableViewCell.self, forCellReuseIdentifier: SideMenuTableViewCell.identifier)
         
         return tableView
@@ -85,11 +93,14 @@ extension SideMenuViewController: UITableViewDelegate {
 extension SideMenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        section == 0 ? 0 : 0
+        section == 0 ? 60 : 10
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        section == 0 ? nil : nil
+        if section != 0 { return nil }
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SideMenuHeader.identifier)
+        guard let header = header as? SideMenuHeader else { return nil }
+        return header
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -106,8 +117,13 @@ extension SideMenuViewController: UITableViewDataSource {
   
         if indexPath.section == 0 {
             let itemMenu = itemsMenu[indexPath.row]
+            
             // Без выделения ячейки
-            if [].contains(itemMenu) { cell.selectionStyle = .none }
+            if isHighlightedCellOff {
+                cell.selectionStyle = .none
+            } else {
+                if [].contains(itemMenu) { cell.selectionStyle = .none }
+            }
             
             cell.configure(
                 image: itemMenu.image,
@@ -117,9 +133,14 @@ extension SideMenuViewController: UITableViewDataSource {
         
         if indexPath.section == 1 {
             let itemMenu = itemsAdditionalMenu[indexPath.row]
-            // Без выделения ячейки
-            if [].contains(itemMenu) { cell.selectionStyle = .none }
             
+            // Без выделения ячейки
+            if isHighlightedCellOff {
+                cell.selectionStyle = .none
+            } else {
+                if [.logOut].contains(itemMenu) { cell.selectionStyle = .none }
+            }
+  
             if itemMenu == .user {
                 cell.configure(
                     image: itemMenu.image,

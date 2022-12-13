@@ -33,6 +33,10 @@
 		190F77A1294655FF0088A863 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A0294655FF0088A863 /* SideMenu.swift */; };
 		190F77A529466B5C0088A863 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A429466B5C0088A863 /* BaseNavigationController.swift */; };
 		190F77A729466BA90088A863 /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A629466BA90088A863 /* SideMenuNavigationController.swift */; };
+		190F77A92948D64C0088A863 /* UI.UIButton+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A82948D64B0088A863 /* UI.UIButton+init.swift */; };
+		190F77AB2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77AA2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift */; };
+		190F77AD2948EA650088A863 /* SideMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77AC2948EA650088A863 /* SideMenuHeader.swift */; };
+		190F77AF2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77AE2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1994BA22285F7EEF0019AB4A /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1994BA21285F7EEF0019AB4A /* Sources */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
@@ -89,6 +93,10 @@
 		190F77A0294655FF0088A863 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		190F77A429466B5C0088A863 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		190F77A629466BA90088A863 /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationController.swift; sourceTree = "<group>"; };
+		190F77A82948D64B0088A863 /* UI.UIButton+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UIButton+init.swift"; sourceTree = "<group>"; };
+		190F77AA2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UINavigationItem+rightButtons.swift"; sourceTree = "<group>"; };
+		190F77AC2948EA650088A863 /* SideMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuHeader.swift; sourceTree = "<group>"; };
+		190F77AE2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UIBarButtonItem+init.swift"; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +201,7 @@
 				190F779B294644830088A863 /* SideMenuViewController.swift */,
 				190F779E294650780088A863 /* SideMenuTableViewCell.swift */,
 				190F77A629466BA90088A863 /* SideMenuNavigationController.swift */,
+				190F77AC2948EA650088A863 /* SideMenuHeader.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -379,6 +388,9 @@
 				190F77882945D49F0088A863 /* UI.UIColor+.swift */,
 				190F778D2945F14B0088A863 /* UI.UIView+.swift */,
 				190F778F2945FE5E0088A863 /* UI.UIColor+hex.swift */,
+				190F77A82948D64B0088A863 /* UI.UIButton+init.swift */,
+				190F77AA2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift */,
+				190F77AE2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -477,6 +489,7 @@
 				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
 				190F7787294538DB0088A863 /* Router.swift in Sources */,
+				190F77AD2948EA650088A863 /* SideMenuHeader.swift in Sources */,
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
 				190F77682941298B0088A863 /* API.Dictionary+.swift in Sources */,
 				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
@@ -497,8 +510,10 @@
 				190F776329410C650088A863 /* APIClient.swift in Sources */,
 				190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */,
 				190F7795294624630088A863 /* LoginViewController.swift in Sources */,
+				190F77AF2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				190F779C294644830088A863 /* SideMenuViewController.swift in Sources */,
+				190F77AB2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift in Sources */,
 				190F778E2945F14B0088A863 /* UI.UIView+.swift in Sources */,
 				19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */,
 				19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */,
@@ -509,6 +524,7 @@
 				190F77A529466B5C0088A863 /* BaseNavigationController.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				190F77722943781F0088A863 /* AuthRepository.swift in Sources */,
+				190F77A92948D64C0088A863 /* UI.UIButton+init.swift in Sources */,
 				190F777D2944DB220088A863 /* NetworkService.swift in Sources */,
 				19EB70BA292E8B6C00DB8F21 /* Helper.swift in Sources */,
 				190F779F294650780088A863 /* SideMenuTableViewCell.swift in Sources */,

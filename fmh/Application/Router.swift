@@ -10,6 +10,7 @@ import UIKit
 //MARK: - Routable
 protocol Routable: Presentable {
     
+    func setNavigationController(_ navigationController: UINavigationController?)
     func setWindowRoot(_ screen: Presentable?)
     func setRoot(_ screen: Presentable?, hideBar: Bool)
     func push(_ screen: Presentable?, animated: Bool)
@@ -22,11 +23,11 @@ protocol Routable: Presentable {
 
 //MARK: - Presentable
 protocol Presentable: AnyObject {
-    var toPresent: UIViewController? { get }
+    var toPresent: UIViewController { get }
 }
 
 extension Presentable where Self: UIViewController {
-    var toPresent: UIViewController? { return self }
+    var toPresent: UIViewController { return self }
 }
 
 
@@ -36,14 +37,14 @@ final class Router: NSObject {
     //TODO: ВОЗМОЖНО ПОТОМ КОНТРОЛЬ И ЛОГИРОВАНИЕ ПЕРЕХОДОВ ...
     
     fileprivate var window: UIWindow?
-    fileprivate let navigationController: UINavigationController
+    fileprivate var navigationController: UINavigationController
     
     init(window: UIWindow?) {
         self.window = window
         self.navigationController = BaseNavigationController()
     }
     
-    var toPresent: UIViewController? {
+    var toPresent: UIViewController {
         return navigationController
     }
     
@@ -52,6 +53,12 @@ final class Router: NSObject {
 
 //MARK: - Routable
 extension Router: Routable {
+    
+    func setNavigationController(_ navigationController: UINavigationController?) {
+        guard let navigationController = navigationController else { return }
+        self.navigationController = navigationController
+        window?.rootViewController = navigationController
+    }
     
     func setWindowRoot(_ screen: Presentable?) {
         guard let controller = screen?.toPresent else { return }

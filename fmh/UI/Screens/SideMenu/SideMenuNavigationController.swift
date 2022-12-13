@@ -8,28 +8,24 @@
 import Foundation
 import UIKit
 
+protocol SideMenuNavigationControllerProtocol: BaseNavigationController {
+    func setUserPofile(_ userProfile: APIClient.UserProfile?)
+    func setViewController(menu: SideMenu)
+}
 
-class SideMenuNavigationController: BaseNavigationController {
+
+final class SideMenuNavigationController: BaseNavigationController {
     
     //    weak var coordinator: GeneralCoordinatorProtocol?
     
     //TODO: - НАДО ХРАНИТЬ КОНТРОЛЛЕРЫ КАК В ТАБАХ? (не перезагружая каждый раз)
     private var menuViewControllers: [SideMenu : BaseViewControllerProtocol]
     
-    var userProfile: APIClient.UserProfile? {
-        didSet {
-            if let profile = userProfile {
-                let f: String = profile.lastName
-                let i = String(profile.firstName.first ?? " ")
-                let o = String(profile.middleName.first ?? " ")
-                sideMenuController.shortUserName = "\(f) \(i).\(o)."
-            }
-        }
-    }
-    
-    let sideMenuController: SideMenuViewController = {
+    private lazy var sideMenuController: SideMenuViewController = {
         let sideMenuController = SideMenuViewController()
         sideMenuController.view.translatesAutoresizingMaskIntoConstraints = false
+        sideMenuController.delegate = self
+        sideMenuController.isHighlightedCellOff = true
         return sideMenuController
     }()
     
@@ -56,12 +52,13 @@ class SideMenuNavigationController: BaseNavigationController {
         configureLayuotSideMenuController()
         
         let testVC = UIViewController()
+        testVC.title = "TestVC"
         testVC.view.backgroundColor = .orange
         
-        setViewController(testVC)
+        setViewController(viewController: testVC)
         
     }
-    
+
     
     //MARK: - StatusBarStyle
     override var childForStatusBarHidden: UIViewController? {
@@ -149,11 +146,11 @@ class SideMenuNavigationController: BaseNavigationController {
     
     
     //MARK: - Configure child view controllers
-    private func setViewController(_ viewController: UIViewController) {
+    private func setViewController(viewController: UIViewController) {
         setViewControllers([viewController], animated: false)
         
         // All child views add menu button!
-        let menuBtn = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: #selector(revealSideMenu))
+        let menuBtn = UIBarButtonItem(type: .menu, target: self, action: #selector(revealSideMenu))
         viewController.navigationItem.leftBarButtonItem = menuBtn
     }
     
@@ -163,3 +160,57 @@ class SideMenuNavigationController: BaseNavigationController {
     
 }
 
+
+//MARK: - SideMenuNavigationControllerProtocol
+extension SideMenuNavigationController: SideMenuNavigationControllerProtocol {
+    
+    func setUserPofile(_ userProfile: APIClient.UserProfile?) {
+        if let profile = userProfile {
+            let f: String = profile.lastName
+            let i = String(profile.firstName.first ?? " ")
+            let o = String(profile.middleName.first ?? " ")
+            sideMenuController.shortUserName = "\(f) \(i).\(o)."
+        }
+    }
+    
+    func setViewController(menu: SideMenu) {
+        guard let vc = menuViewControllers[menu] else { return }
+        sideMenuController.defaultHighlightedCell = menu.rawValue
+        setViewController(viewController: vc.toPresent)
+    }
+    
+}
+
+
+//MARK: - SideMenuViewControllerDelegate
+extension SideMenuNavigationController: SideMenuViewControllerDelegate {
+    
+    func didSelect(indexPath: IndexPath) {
+        setSideMenuState(isShow: false)
+        if indexPath.section == 0 {
+            let itemMenu = SideMenu.allCases[indexPath.row]
+            setViewController(menu: itemMenu)
+        }
+        
+        if indexPath.section == 1 {
+            switch SideMenu.AdditionalMenu.allCases[indexPath.row] {
+            case .user: break
+            case .logOut: self.logout(); return
+            }
+        }
+        
+    }
+    
+    private func logout() {
+        
+        //TODO: ЗАПИЛИТЬ КАСТОМНЫЙ ПОПАП !!!
+        
+        let message = "Вы действительно хотите выйти!"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Выйти", style: .cancel) {[weak self] _ in self?.onCompletion?() })
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+}
