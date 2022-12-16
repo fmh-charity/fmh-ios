@@ -11,6 +11,7 @@ import UIKit
 protocol Routable: Presentable {
     
     func getNavigationController() -> UINavigationController
+    func setDefaultNavigationController()
     func setNavigationController(_ navigationController: UINavigationController)
     func setWindowRoot(_ screen: Presentable?)
     func setRoot(_ screen: Presentable?, hideBar: Bool)
@@ -59,6 +60,10 @@ extension Router: Routable {
         self.navigationController
     }
 
+    func setDefaultNavigationController() {
+        self.navigationController = BaseNavigationController()
+    }
+    
     func setNavigationController(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         window?.rootViewController = navigationController

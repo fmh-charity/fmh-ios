@@ -11,22 +11,41 @@ import UIKit
 
 protocol SideMenuViewControllerDelegate: AnyObject {
     func didSelect(itemMenu: SideMenu)
+    func logoutTap()
 }
 
 
 class SideMenuViewController: UIViewController {
     
-    var itemsMenu: [SideMenu] = [.home, .news, .user, .logOut]
-    
+    var itemsMenu: [SideMenu] = [] { // <- Устанавливается где используем контроллер (SideMenuNavigationController)
+        didSet {
+            updeteData()
+        }
+    }
     weak var delegate: SideMenuViewControllerDelegate?
     
-    var isHighlightedCellOff: Bool = true
+    var isHighlightedCellOff: Bool = false
     
-    var defaultHighlightedCell: Int = 0 {
+    var defaultHighlightedMenu: SideMenu = .home {
         didSet {
             guard !isHighlightedCellOff else { return }
-            let defaultRow = IndexPath(row: self.defaultHighlightedCell, section: 0)
+            guard let id = itemsMenu.enumerated().first(where: { $0.element.kind == defaultHighlightedMenu.kind })?.offset else { return }
+            let defaultRow = IndexPath(row: id, section: 0)
             self.tableView.selectRow(at: defaultRow, animated: true, scrollPosition: .none)
+        }
+    }
+    
+    var profileUser: APIClient.UserProfile? {
+        didSet {
+            guard let profileUser else { return }
+            //            let f: String = profileUser.lastName
+            //            let i = String(profileUser.firstName.first ?? " ")
+            //            let o = String(profileUser.middleName.first ?? " ")
+            self.bottomView.model = .init(.init(profileId: "ID: \(profileUser.id)",
+                                                profileImg: UIImage(systemName: "person"),
+                                                profileTitle: "\(profileUser.lastName) \(profileUser.firstName)",
+                                                profileSubTitle: profileUser.isAdmin ? "Aдминистратор" : "")
+            )
         }
     }
     
@@ -49,10 +68,25 @@ class SideMenuViewController: UIViewController {
             tableView.sectionHeaderTopPadding = 0
         }
         
-        tableView.register(SideMenuHeader.self, forHeaderFooterViewReuseIdentifier: SideMenuHeader.identifier)
         tableView.register(SideMenuTableViewCell.self, forCellReuseIdentifier: SideMenuTableViewCell.identifier)
         
         return tableView
+    }()
+    
+    private lazy var topView: SideMenuTopView = {
+        let view = SideMenuTopView()
+        return view
+    }()
+    
+    private lazy var bottomView: SideMenuBottomView = {
+        let view = SideMenuBottomView()
+        view.logoutDidTap = { [weak self] in
+            self?.delegate?.logoutTap()
+        }
+        view.profileDidTap = { [weak self] in
+            // Show profile view
+        }
+        return view
     }()
     
     override func viewDidLoad() {
@@ -61,22 +95,35 @@ class SideMenuViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         configure()
+        updeteData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        defaultHighlightedCell = 0
     }
     
     private func configure() {
-        self.view.addSubview(tableView)
+        self.view.addSubviews([topView, tableView, bottomView])
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            tableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+            topView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0),
+            topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topView.heightAnchor.constraint(equalToConstant: 80),
+            
+            tableView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            
+            bottomView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
+            bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0),
         ])
+    }
+    
+    private func updeteData() {
         self.tableView.reloadData()
+        
     }
     
 }
@@ -91,16 +138,6 @@ extension SideMenuViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension SideMenuViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        section == 0 ? 60 : 10
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: SideMenuHeader.identifier)
-        guard let header = header as? SideMenuHeader else { return nil }
-        return header
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
@@ -112,7 +149,7 @@ extension SideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuTableViewCell.identifier, for: indexPath)
         guard let cell = cell as? SideMenuTableViewCell else { fatalError("Cell doesn't exist") }
-  
+        
         let itemMenu = itemsMenu[indexPath.row]
         
         // Без выделения ячейки
@@ -122,10 +159,7 @@ extension SideMenuViewController: UITableViewDataSource {
             if [.user].contains(itemMenu) { cell.selectionStyle = .none }
         }
         
-        cell.configure(
-            image: itemMenu.image,
-            title: itemMenu.title
-        )
+        cell.model = .init(img: itemMenu.image, title: itemMenu.title)
         
         return cell
     }
@@ -133,10 +167,10 @@ extension SideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Не кликабелины (отключенные) ...
         let nonSelectsMenu: [SideMenu] = [.user]
-
+        
         let itemMenu = itemsMenu[indexPath.row]
         guard !nonSelectsMenu.contains(itemMenu) else { return }
-
+        
         self.delegate?.didSelect(itemMenu: itemMenu)
     }
     

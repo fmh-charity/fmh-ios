@@ -35,6 +35,7 @@ extension AuthCoordinator: AuthCoordinatorProtocol {
     func performLoginScreenFlow() {
         let viewController = factory.makeLoginViewController()
         viewController.onCompletion = onCompletion
+        router.setDefaultNavigationController()
         router.setRoot(viewController, hideBar: false)
     }
     

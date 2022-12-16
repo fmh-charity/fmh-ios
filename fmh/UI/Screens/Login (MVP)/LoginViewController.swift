@@ -18,6 +18,9 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
     
     var presenter: LoginPresenterProtocol?
     
+    private let heightTF: CGFloat = 40.0
+    private let heightButtons: CGFloat = 40.0
+    
     private lazy var loginTF: LoginTextField = {
         let view = LoginTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -38,39 +41,63 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .accentColor
-        button.layer.cornerRadius = 5.0
+        button.layer.cornerRadius = heightButtons/2
         button.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         return button
     }()
     
-    lazy private var stackTF: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [loginTF, passwordTF])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 15.0
-        return stack
+    private lazy var forgotPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Забыли пароль?", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(forgotAction), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var registrationButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Зарегистрироваться", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .accentColor
+        button.layer.cornerRadius = heightButtons/2
+        button.addTarget(self, action: #selector(registrationAction), for: .touchUpInside)
+        return button
     }()
     
     private var wraperFormTFCenterYConstraint: NSLayoutConstraint?
     private lazy var wraperForm: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stackTF)
-        view.addSubview(loginButton)
+
+        view.addSubviews([loginTF, passwordTF, forgotPasswordButton, loginButton, registrationButton])
         NSLayoutConstraint.activate([
-            loginTF.heightAnchor.constraint(equalToConstant: 40.0),
+            loginTF.heightAnchor.constraint(equalToConstant: heightTF),
+            loginTF.topAnchor.constraint(equalTo: view.topAnchor),
+            loginTF.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loginTF.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
             passwordTF.heightAnchor.constraint(equalTo: loginTF.heightAnchor),
+            passwordTF.topAnchor.constraint(equalTo: loginTF.bottomAnchor, constant: 16),
+            passwordTF.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            passwordTF.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            stackTF.topAnchor.constraint(equalTo: view.topAnchor),
-            stackTF.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackTF.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            forgotPasswordButton.heightAnchor.constraint(equalToConstant: 24),
+            forgotPasswordButton.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 8),
+//            forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            forgotPasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            loginButton.topAnchor.constraint(equalTo: stackTF.bottomAnchor, constant: 30.0),
-            loginButton.widthAnchor.constraint(equalTo: stackTF.widthAnchor, multiplier: 0.7),
-            loginButton.heightAnchor.constraint(equalTo: passwordTF.heightAnchor),
-            loginButton.centerXAnchor.constraint(equalTo: stackTF.centerXAnchor),
-            loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            loginButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 16),
+            loginButton.widthAnchor.constraint(equalTo: passwordTF.widthAnchor, multiplier: 1.0),
+            loginButton.heightAnchor.constraint(equalToConstant: heightButtons),
+            loginButton.centerXAnchor.constraint(equalTo: passwordTF.centerXAnchor),
+            
+            registrationButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 16),
+            registrationButton.widthAnchor.constraint(equalTo: loginButton.widthAnchor),
+            registrationButton.heightAnchor.constraint(equalTo: loginButton.heightAnchor),
+            registrationButton.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor),
+            registrationButton.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         return view
     }()
@@ -97,7 +124,7 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Авторизация"
+        title = "Аутентификация" // "Авторизация"
         configure()
     }
     
@@ -147,6 +174,14 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
             self.wraperFormTFCenterYConstraint?.constant = 0
             self.view.layoutIfNeeded()
         }
+    }
+    
+    @objc private func registrationAction() {
+        
+    }
+    
+    @objc private func forgotAction() {
+
     }
     
     @objc private func loginAction() {

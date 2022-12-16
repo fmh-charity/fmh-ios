@@ -42,7 +42,7 @@ class LoginTextField: UITextField {
         autocorrectionType = .no
         keyboardType = .default
         returnKeyType = .next
-        placeholder = "userName@mail.ru"
+        placeholder = "Логин"
         
         leftView = leftImageView
         leftViewMode = .always

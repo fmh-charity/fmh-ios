@@ -36,12 +36,15 @@ final class GeneralCoordinator: BaseCoordinator {
     }
     
     //TODO: - НАДО ХРАНИТЬ КОНТРОЛЛЕРЫ КАК В ТАБ БАРАХ!?
-    private var menuViewControllers: [SideMenu : Presentable] = [
-        :
+    private var menuControllers: [(SideMenu, Presentable)] = [ // <- Tuples чтоб передать очередность в меню!
+        ( .home, TestVC() ),
+        ( .wishes, TestVC() ),
+        ( .news, TestVC() ),
+        ( .chambers, TestVC() )
     ]
     
     private func performSideMenuNavigationControllerFlow() {
-        let naviganionController: SideMenuNavigationControllerProtocol = SideMenuNavigationController(menuViewControllers: menuViewControllers)
+        let naviganionController: SideMenuNavigationControllerProtocol = SideMenuNavigationController(menuControllers: menuControllers)
         naviganionController.isNavigationBarHidden = false
         naviganionController.setUserPofile(apiClient?.userProfile)
         naviganionController.onCompletion = onCompletion
@@ -81,6 +84,17 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
             }
         }
         
+    }
+    
+}
+
+
+class TestVC: BaseViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .orange
+        title = "TestVC"
     }
     
 }

@@ -13,6 +13,14 @@ class SideMenuTableViewCell: UITableViewCell {
     
     class var identifier: String { return String(describing: self) }
 
+    var model: Model? {
+        didSet {
+            guard let model else { return }
+            self.imgView.image = model.img
+            self.titleLabel.text = model.title
+        }
+    }
+    
     private lazy var imgView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,10 +40,38 @@ class SideMenuTableViewCell: UITableViewCell {
     }()
     
     private lazy var selectedBackgroundViewCell: UIView = {
-        let selectionColorView = UIView()
-        selectionColorView.backgroundColor = .init(red: 1/255, green: 151/255, blue: 149/255, alpha: 1.0)
-        return selectionColorView
+        let view = UIView()
+        view.backgroundColor = .init(red: 1/255, green: 151/255, blue: 149/255, alpha: 1.0)
+        return view
     }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        setLayouts()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setLayouts() {
+        self.selectedBackgroundView = selectedBackgroundViewCell
+        
+        contentView.addSubviews([imgView, titleLabel])
+        NSLayoutConstraint.activate999([ // Приоритет нужен чтоб убрать предупреждения (особеность фраймворка)
+            imgView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            imgView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            imgView.widthAnchor.constraint(equalToConstant: 22),
+            imgView.heightAnchor.constraint(equalToConstant: 22),
+
+            titleLabel.leadingAnchor.constraint(equalTo: imgView.trailingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+    }
     
     override func prepareForReuse() {
         imgView.image = nil
@@ -43,38 +79,9 @@ class SideMenuTableViewCell: UITableViewCell {
         selectionStyle = .default
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .clear
-        contentView.backgroundColor = .clear
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(image: UIImage?, title: String) {
-        self.selectedBackgroundView = selectedBackgroundViewCell
-        self.imgView.image = image
-        self.titleLabel.text = title
-        
-        if image != nil {
-            addSubview(imgView)
-            NSLayoutConstraint.activate([
-                imgView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-                imgView.centerYAnchor.constraint(equalTo: centerYAnchor),
-                imgView.widthAnchor.constraint(equalToConstant: 22),
-                imgView.heightAnchor.constraint(equalTo: imgView.widthAnchor)
-            ])
-        }
-        
-        addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: (image != nil) ? imgView.trailingAnchor : leadingAnchor, constant: 10)
-        ])
+    struct Model {
+        let img: UIImage?
+        let title: String
     }
     
 }

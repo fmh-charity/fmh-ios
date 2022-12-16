@@ -51,7 +51,7 @@ final class LoadingViewController: BaseViewController, LoadingViewControllerProt
     private func createTimer() {
         guard timer == nil else { return }
         
-        let timer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        let timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         RunLoop.current.add(timer, forMode: .common)
         timer.tolerance = 0.1
         
