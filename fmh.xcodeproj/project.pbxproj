@@ -30,7 +30,7 @@
 		190F779A2946266A0088A863 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77992946266A0088A863 /* LoginTextField.swift */; };
 		190F779C294644830088A863 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F779B294644830088A863 /* SideMenuViewController.swift */; };
 		190F779F294650780088A863 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F779E294650780088A863 /* SideMenuTableViewCell.swift */; };
-		190F77A1294655FF0088A863 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A0294655FF0088A863 /* SideMenu.swift */; };
+		190F77A1294655FF0088A863 /* SideMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A0294655FF0088A863 /* SideMenuItems.swift */; };
 		190F77A529466B5C0088A863 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A429466B5C0088A863 /* BaseNavigationController.swift */; };
 		190F77A729466BA90088A863 /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A629466BA90088A863 /* SideMenuNavigationController.swift */; };
 		190F77A92948D64C0088A863 /* UI.UIButton+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77A82948D64B0088A863 /* UI.UIButton+init.swift */; };
@@ -42,6 +42,8 @@
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1959B3B0294D12060052BB15 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1959B3AF294D12060052BB15 /* RegistrationViewController.swift */; };
 		1959B3B2294D12200052BB15 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1959B3B1294D12200052BB15 /* RegistrationPresenter.swift */; };
+		1959B3B5294DCDAE0052BB15 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1959B3B4294DCDAD0052BB15 /* ForgotPasswordViewController.swift */; };
+		1959B3BA294E5BFA0052BB15 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1959B3B9294E5BFA0052BB15 /* ProfileViewController.swift */; };
 		1994BA22285F7EEF0019AB4A /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 1994BA21285F7EEF0019AB4A /* Sources */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
 		19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51C280DECD0005000EB /* SceneDelegate.swift */; };
@@ -94,7 +96,7 @@
 		190F77992946266A0088A863 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		190F779B294644830088A863 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		190F779E294650780088A863 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
-		190F77A0294655FF0088A863 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		190F77A0294655FF0088A863 /* SideMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItems.swift; sourceTree = "<group>"; };
 		190F77A429466B5C0088A863 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		190F77A629466BA90088A863 /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationController.swift; sourceTree = "<group>"; };
 		190F77A82948D64B0088A863 /* UI.UIButton+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI.UIButton+init.swift"; sourceTree = "<group>"; };
@@ -106,6 +108,8 @@
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1959B3AF294D12060052BB15 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		1959B3B1294D12200052BB15 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		1959B3B4294DCDAD0052BB15 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		1959B3B9294E5BFA0052BB15 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C7A51A280DECD0005000EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,7 +209,7 @@
 		190F779D294644890088A863 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				190F77A0294655FF0088A863 /* SideMenu.swift */,
+				190F77A0294655FF0088A863 /* SideMenuItems.swift */,
 				190F779B294644830088A863 /* SideMenuViewController.swift */,
 				190F779E294650780088A863 /* SideMenuTableViewCell.swift */,
 				190F77A629466BA90088A863 /* SideMenuNavigationController.swift */,
@@ -244,10 +248,26 @@
 		1959B3AE294D11E90052BB15 /* Registration (MVP) */ = {
 			isa = PBXGroup;
 			children = (
-				1959B3AF294D12060052BB15 /* RegistrationViewController.swift */,
 				1959B3B1294D12200052BB15 /* RegistrationPresenter.swift */,
+				1959B3AF294D12060052BB15 /* RegistrationViewController.swift */,
 			);
 			path = "Registration (MVP)";
+			sourceTree = "<group>";
+		};
+		1959B3B3294DCD990052BB15 /* ForgotPassword (MVC) */ = {
+			isa = PBXGroup;
+			children = (
+				1959B3B4294DCDAD0052BB15 /* ForgotPasswordViewController.swift */,
+			);
+			path = "ForgotPassword (MVC)";
+			sourceTree = "<group>";
+		};
+		1959B3B8294E5BE40052BB15 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1959B3B9294E5BFA0052BB15 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		19C7A50E280DECD0005000EB = {
@@ -312,8 +332,10 @@
 		19C7A537280DED81005000EB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				1959B3AE294D11E90052BB15 /* Registration (MVP) */,
 				190F779D294644890088A863 /* SideMenu */,
+				1959B3B8294E5BE40052BB15 /* Profile */,
+				1959B3B3294DCD990052BB15 /* ForgotPassword (MVC) */,
+				1959B3AE294D11E90052BB15 /* Registration (MVP) */,
 				190F779129460CF20088A863 /* Login (MVP) */,
 				19EB70EE2932A2AB00DB8F21 /* Loading (MVC) */,
 			);
@@ -504,9 +526,10 @@
 				19EB70BF292E8C4F00DB8F21 /* Helper.Core.KeyChain.swift in Sources */,
 				19EB70C1292E8EC400DB8F21 /* BaseCoordinator.swift in Sources */,
 				190F7774294476520088A863 /* Helper.Core.TokenManager.swift in Sources */,
-				190F77A1294655FF0088A863 /* SideMenu.swift in Sources */,
+				190F77A1294655FF0088A863 /* SideMenuItems.swift in Sources */,
 				190F77B5294A43B90088A863 /* SideMenuBottomView.swift in Sources */,
 				190F779A2946266A0088A863 /* LoginTextField.swift in Sources */,
+				1959B3BA294E5BFA0052BB15 /* ProfileViewController.swift in Sources */,
 				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
 				190F7787294538DB0088A863 /* Router.swift in Sources */,
@@ -548,6 +571,7 @@
 				190F77A529466B5C0088A863 /* BaseNavigationController.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				190F77722943781F0088A863 /* AuthRepository.swift in Sources */,
+				1959B3B5294DCDAE0052BB15 /* ForgotPasswordViewController.swift in Sources */,
 				190F77A92948D64C0088A863 /* UI.UIButton+init.swift in Sources */,
 				190F777D2944DB220088A863 /* NetworkService.swift in Sources */,
 				19EB70BA292E8B6C00DB8F21 /* Helper.swift in Sources */,

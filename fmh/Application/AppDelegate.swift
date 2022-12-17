@@ -26,5 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
 
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Если галка "Сохранить пароль" не стояла при вводе логина/пароля то стираем данные пользователя
+        if UserDefaults.standard.bool(forKey: "safeAccount") == false {
+            Helper.Core.TokenManager.clear()
+        }
+    }
+    
 }
 

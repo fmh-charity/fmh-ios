@@ -10,28 +10,40 @@ import UIKit
 
 
 protocol SideMenuViewControllerDelegate: AnyObject {
-    func didSelect(itemMenu: SideMenu)
-    func logoutTap()
+    func didSelect(itemMenu: SideMenuItems)
 }
 
 
 class SideMenuViewController: UIViewController {
     
-    var itemsMenu: [SideMenu] = [] { // <- Устанавливается где используем контроллер (SideMenuNavigationController)
-        didSet {
-            updeteData()
-        }
-    }
     weak var delegate: SideMenuViewControllerDelegate?
+    
+    enum Section: Int { case general = 0, secondary, settings }
+    
+    // В зависимости кто авторизован отображаем пункты меню или просто деактивируем !!!
+
+    // TODO: Содержимое бокового меню
+    private lazy var sections: [Section : [SideMenuItems]] = {
+        [
+            .general : [.home, .news, .claim, .wishes, .chambers, .patients],
+            .secondary : [.documents, .scheduleDuty, .staff, .ourMission],
+            .settings : [.instructions, .aboutHospis, .aboutApp]
+        ]
+    }() { didSet { updeteData() } } // <- На всякий малоли из вне изменять.
     
     var isHighlightedCellOff: Bool = false
     
-    var defaultHighlightedMenu: SideMenu = .home {
+    // Выделение пункта меню
+    var defaultHighlightedMenu: SideMenuItems = .home {
         didSet {
             guard !isHighlightedCellOff else { return }
-            guard let id = itemsMenu.enumerated().first(where: { $0.element.kind == defaultHighlightedMenu.kind })?.offset else { return }
-            let defaultRow = IndexPath(row: id, section: 0)
-            self.tableView.selectRow(at: defaultRow, animated: true, scrollPosition: .none)
+            sections.enumerated().forEach { id, element in
+                let id = element.value.enumerated().first(where: { $0.element.kind == defaultHighlightedMenu.kind })?.offset
+                if let id = id {
+                    let defaultRow = IndexPath(row: id, section: element.key.rawValue)
+                    self.tableView.selectRow(at: defaultRow, animated: true, scrollPosition: .none)
+                }
+            }
         }
     }
     
@@ -46,13 +58,6 @@ class SideMenuViewController: UIViewController {
                                                 profileTitle: "\(profileUser.lastName) \(profileUser.firstName)",
                                                 profileSubTitle: profileUser.isAdmin ? "Aдминистратор" : "")
             )
-        }
-    }
-    
-    var shortUserName: String? = nil {
-        didSet {
-            let indexPathUser = IndexPath(row: SideMenu.user.rawValue, section: 0)
-            self.tableView.reloadRows(at: [indexPathUser], with: .none)
         }
     }
     
@@ -81,10 +86,10 @@ class SideMenuViewController: UIViewController {
     private lazy var bottomView: SideMenuBottomView = {
         let view = SideMenuBottomView()
         view.logoutDidTap = { [weak self] in
-            self?.delegate?.logoutTap()
+            self?.delegate?.didSelect(itemMenu: .logout)
         }
         view.profileDidTap = { [weak self] in
-            // Show profile view
+            self?.delegate?.didSelect(itemMenu: .profile)
         }
         return view
     }()
@@ -105,7 +110,7 @@ class SideMenuViewController: UIViewController {
     private func configure() {
         self.view.addSubviews([topView, tableView, bottomView])
         NSLayoutConstraint.activate([
-            topView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0),
+            topView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: -44),
             topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             topView.heightAnchor.constraint(equalToConstant: 80),
@@ -139,39 +144,39 @@ extension SideMenuViewController: UITableViewDelegate {
 extension SideMenuViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        itemsMenu.count
+        guard let section = Section(rawValue: section) else { return 0 }
+        return sections[section]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuTableViewCell.identifier, for: indexPath)
         guard let cell = cell as? SideMenuTableViewCell else { fatalError("Cell doesn't exist") }
         
-        let itemMenu = itemsMenu[indexPath.row]
-        
-        // Без выделения ячейки
-        if isHighlightedCellOff {
-            cell.selectionStyle = .none
-        } else {
-            if [.user].contains(itemMenu) { cell.selectionStyle = .none }
+        if let section = Section(rawValue: indexPath.section), let itemMenu = sections[section]?[indexPath.row] {
+            // Без выделения ячейки
+            if isHighlightedCellOff {
+                cell.selectionStyle = .none
+            } else {
+                if [].contains(itemMenu) { cell.selectionStyle = .none }
+            }
+            cell.model = .init(img: itemMenu.image, title: itemMenu.title)
         }
-        
-        cell.model = .init(img: itemMenu.image, title: itemMenu.title)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Не кликабелины (отключенные) ...
-        let nonSelectsMenu: [SideMenu] = [.user]
+        let nonSelectsMenu: [SideMenuItems] = []
         
-        let itemMenu = itemsMenu[indexPath.row]
-        guard !nonSelectsMenu.contains(itemMenu) else { return }
-        
-        self.delegate?.didSelect(itemMenu: itemMenu)
+        if let section = Section(rawValue: indexPath.section), let itemMenu = sections[section]?[indexPath.row] {
+            guard !nonSelectsMenu.contains(itemMenu) else { return }
+            self.delegate?.didSelect(itemMenu: itemMenu)
+        }
     }
     
 }

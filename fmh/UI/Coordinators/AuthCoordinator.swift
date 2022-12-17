@@ -9,6 +9,8 @@ import Foundation
 
 protocol AuthCoordinatorProtocol: AnyObject {
     func performLoginScreenFlow()
+    func performRegistrationScreenFlow()
+    func performForgotPasswordScreenFlow()
 }
 
 
@@ -35,8 +37,21 @@ extension AuthCoordinator: AuthCoordinatorProtocol {
     func performLoginScreenFlow() {
         let viewController = factory.makeLoginViewController()
         viewController.onCompletion = onCompletion
+        viewController.coordinator = self
         router.setDefaultNavigationController()
         router.setRoot(viewController, hideBar: false)
+    }
+    
+    func performRegistrationScreenFlow() {
+        let viewController = factory.makeRegistrationViewController()
+        viewController.onCompletion = onCompletion
+        router.push(viewController, animated: true)
+    }
+    
+    func performForgotPasswordScreenFlow() {
+        let viewController = factory.makeForgotPasswordViewController()
+        viewController.onCompletion = onCompletion
+        router.push(viewController, animated: true)
     }
     
 }

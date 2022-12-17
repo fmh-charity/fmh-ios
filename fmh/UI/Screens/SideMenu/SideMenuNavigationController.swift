@@ -9,17 +9,16 @@ import Foundation
 import UIKit
 
 protocol SideMenuNavigationControllerProtocol: BaseNavigationController {
+    var coordinator: GeneralCoordinatorProtocol? { get set }
+    
     func setUserPofile(_ userProfile: APIClient.UserProfile?)
-    func setViewController(menu: SideMenu)
+    func setRootViewController(viewController: UIViewController, menu: SideMenuItems)
 }
 
 
 final class SideMenuNavigationController: BaseNavigationController {
     
-    //    weak var coordinator: GeneralCoordinatorProtocol?
-    
-    //TODO: - НАДО ХРАНИТЬ КОНТРОЛЛЕРЫ КАК В ТАБАХ? (не перезагружая каждый раз)
-    private var menuControllers: [SideMenu : Presentable]
+    weak var coordinator: GeneralCoordinatorProtocol?
     
     private lazy var sideMenuController: SideMenuViewController = {
         let sideMenuController = SideMenuViewController()
@@ -37,10 +36,8 @@ final class SideMenuNavigationController: BaseNavigationController {
         }
     }
     
-    init(menuControllers: [(SideMenu, Presentable)]) {
-        self.menuControllers = menuControllers.reduce(into: [:]) { $0[$1.0] = $1.1 }
+    override init() {
         super.init()
-        sideMenuController.itemsMenu = menuControllers.map { $0.0 }
         configure()
     }
     
@@ -56,13 +53,6 @@ final class SideMenuNavigationController: BaseNavigationController {
     private func configure() {
         view.backgroundColor = .clear // <- Возможно глывный бекгроунд ?!
         configureLayuotSideMenuController()
-        
-        let testVC = UIViewController()
-        testVC.title = "TestVC"
-        testVC.view.backgroundColor = .orange
-        
-        setViewController(viewController: testVC)
-        
     }
 
     
@@ -124,14 +114,14 @@ final class SideMenuNavigationController: BaseNavigationController {
             self.isSideMenuExpanded = true
             animateSideMenu(true)
             // Animate Shadow (Fade In)
-            UIView.animate(withDuration: 0.5) { [unowned self] in
+            UIView.animate(withDuration: 0.4) { [unowned self] in
                 view.insertSubview(self.shadowView, belowSubview: self.sideMenuController.view)
                 self.shadowView.alpha = 0.5
             }
         } else {
             animateSideMenu(false)
             // Animate Shadow (Fade Out)
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.4) {
                 self.shadowView.alpha = 0.0
             } completion: { [unowned self] _ in
                 self.shadowView.removeFromSuperview()
@@ -174,10 +164,9 @@ extension SideMenuNavigationController: SideMenuNavigationControllerProtocol {
         sideMenuController.profileUser = userProfile
     }
     
-    func setViewController(menu: SideMenu) {
-        guard let vc = menuControllers[menu] else { return }
+    func setRootViewController(viewController: UIViewController, menu: SideMenuItems) {
         sideMenuController.defaultHighlightedMenu = menu
-        setViewController(viewController: vc.toPresent)
+        self.setViewController(viewController: viewController)
     }
     
 }
@@ -186,14 +175,12 @@ extension SideMenuNavigationController: SideMenuNavigationControllerProtocol {
 //MARK: - SideMenuViewControllerDelegate
 extension SideMenuNavigationController: SideMenuViewControllerDelegate {
     
-    func logoutTap() {
-        logout()
-    }
-    
-    func didSelect(itemMenu: SideMenu) {
+    func didSelect(itemMenu: SideMenuItems) {
+        
+        if itemMenu == .logout { logout(); return } //<- Не сворачивая меню
+        
         setSideMenuState(isShow: false)
-
-        setViewController(menu: itemMenu)
+        coordinator?.perfomFlowByMenu(itemMenu)
     }
     
     private func logout() {

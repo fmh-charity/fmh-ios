@@ -8,12 +8,16 @@
 import Foundation
 
 protocol GeneralCoordinatorProtocol: AnyObject {
-    func perfomFlowByMenu(_ menu: SideMenu)
-    func perfomDetailScreenFlow(_ screen: GeneralCoordinator.DetailsScreen, type: GeneralCoordinator.PresentType, animated: Bool, completion: (() -> ())?)
+    /// Переход для экранов в SideMenu
+    func perfomFlowByMenu(_ menu: SideMenuItems)
+    /// Переход для всех экранов Screens
+    func perfomScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType, animated: Bool, completion: (() -> ())?)
+
 }
 extension GeneralCoordinatorProtocol {
-    func perfomDetailScreenFlow(_ screen: GeneralCoordinator.DetailsScreen, type: GeneralCoordinator.PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
-        perfomDetailScreenFlow(screen, type: type, animated: animated, completion: completion)
+    /// Переход для всех экранов Screens
+    func perfomScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+        perfomScreenFlow(screen, type: type, animated: animated, completion: completion)
     }
 }
 
@@ -22,7 +26,7 @@ final class GeneralCoordinator: BaseCoordinator {
     
     weak var parentCoordinator: AppCoordinatorProtocol?
     
-    private let factory: GeneralScreenFactoryProtocol
+    let factory: GeneralScreenFactoryProtocol
     
     var apiClient: APIClientProtocol?
     
@@ -33,19 +37,25 @@ final class GeneralCoordinator: BaseCoordinator {
     
     override func start() {
         performSideMenuNavigationControllerFlow()
+        perfomFlowByMenu(.home) //<- По умолчанию
     }
     
-    //TODO: - НАДО ХРАНИТЬ КОНТРОЛЛЕРЫ КАК В ТАБ БАРАХ!?
-    private var menuControllers: [(SideMenu, Presentable)] = [ // <- Tuples чтоб передать очередность в меню!
-        ( .home, TestVC() ),
-        ( .wishes, TestVC() ),
-        ( .news, TestVC() ),
-        ( .chambers, TestVC() )
-    ]
+    //TODO: - ХРАНИМЫЕ КОНТРОЛЛЕРЫ КАК В ТАБ БАРАХ!?
+    private lazy var menuControllers: [SideMenuItems : Presentable] = {
+        [
+            .home     : TestVC() ,
+            .news     : TestVC() ,
+            .claim    : TestVC() ,
+            .wishes   : TestVC() ,
+            .chambers : TestVC() ,
+            .patients : TestVC()
+        ]
+    }()
     
     private func performSideMenuNavigationControllerFlow() {
-        let naviganionController: SideMenuNavigationControllerProtocol = SideMenuNavigationController(menuControllers: menuControllers)
+        let naviganionController: SideMenuNavigationControllerProtocol = SideMenuNavigationController()
         naviganionController.isNavigationBarHidden = false
+        naviganionController.coordinator = self
         naviganionController.setUserPofile(apiClient?.userProfile)
         naviganionController.onCompletion = onCompletion
         router.setNavigationController(naviganionController)
@@ -56,37 +66,63 @@ final class GeneralCoordinator: BaseCoordinator {
 // MARK: GeneralCoordinatorProtocol -
 extension GeneralCoordinator: GeneralCoordinatorProtocol {
     
-    func perfomFlowByMenu(_ menu: SideMenu) {
-        (router.getNavigationController() as? SideMenuNavigationControllerProtocol)?.setViewController(menu: menu)
+    /// Переход для экранов в SideMenu
+    func perfomFlowByMenu(_ menu: SideMenuItems) {
+        
+        let menuNavController = (router.getNavigationController() as? SideMenuNavigationControllerProtocol)
+        guard let menuNavController = menuNavController else { return }
+        
+        // Если контроллер хранится.
+        if let vc = menuControllers[menu] {
+            menuNavController.setRootViewController(viewController: vc.toPresent, menu: menu)
+            return
+        }
+        
+        // Если не хранится, перебираем и отображаем.
+        switch menu {
+        case .documents:
+            let controller = TestVC2()
+            menuNavController.setRootViewController(viewController: controller, menu: menu)
+            
+            // ... тут добавляем менюшные экраны + кликабельные элементы (SideMenuItems)
+            
+        case .profile: perfomScreenFlow(.profile, type: .present)
+            
+        default: break
+        }
+        
     }
-    
+
     enum PresentType { case push, present }
-    func perfomDetailScreenFlow(_ screen: DetailsScreen, type: PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+    /// Переход для всех экранов Screens
+    func perfomScreenFlow(_ screenType: Screens, type: PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+        
+        var screen: Presentable?
+        
+        switch screenType {
+        case .child(_): screen = LoadingViewController()
+        case .profile: screen = factory.makeProfileViewController()
+            
+            // ... тут добавляем дочернии экраны
+            
+        default: break
+        }
+        
         switch type {
-        case .push:
-            router.push(screen.vc, animated: true)
-        case .present:
-            router.present(screen.vc, animated: animated, completion: completion)
+        case .push: router.push(screen, animated: true)
+        case .present: router.present(screen, animated: animated, completion: completion)
         }
     }
     
-    
-    //TODO: или через замыкания регистрировать!
-    
-    // ... childs screens
-    enum DetailsScreen {
-        
+    // Экраны которые не храним в "menuControllers". (каждый раз создаются)
+    enum Screens {
         case child(model: String) // ??? <- Возможно данные передавать еще ...
         
-        var vc: Presentable {
-            switch self {
-            case .child(let model): return LoadingViewController() // factory
-            }
-        }
-        
+        case profile
     }
     
 }
+
 
 
 class TestVC: BaseViewController {
@@ -94,6 +130,16 @@ class TestVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
+        title = "TestVC"
+    }
+    
+}
+
+class TestVC2: BaseViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .yellow
         title = "TestVC"
     }
     

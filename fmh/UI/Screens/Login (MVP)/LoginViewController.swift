@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol LoginViewControllerProtocol: BaseViewControllerProtocol {
-    
+    var coordinator: AuthCoordinatorProtocol? { get set }
 }
 
 final class LoginViewController: BaseViewController, LoginViewControllerProtocol {
@@ -17,6 +17,8 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
     //TODO: Возможно в MVC сделать (Если контроллер не сильно большой будет)
     
     var presenter: LoginPresenterProtocol?
+    
+    weak var coordinator: AuthCoordinatorProtocol?
     
     private let heightTF: CGFloat = 40.0
     private let heightButtons: CGFloat = 40.0
@@ -51,8 +53,48 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Забыли пароль?", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.addTarget(self, action: #selector(forgotAction), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var safePassfordLbl: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textAlignment = .left
+        label.numberOfLines = 1
+        label.text = "Сохранить пароль"
+        return label
+    }()
+    
+    private lazy var safePassfordSwitch: UISwitch = {
+        let _switch = UISwitch()
+        _switch.translatesAutoresizingMaskIntoConstraints = false
+        _switch.onTintColor = .accentColor
+        _switch.setOn(true, animated: false)
+        _switch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        return _switch
+    }()
+    
+    private lazy var safePassfordWrapper: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        
+        view.addSubviews([safePassfordLbl, safePassfordSwitch])
+        NSLayoutConstraint.activate([
+            safePassfordLbl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            safePassfordLbl.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            safePassfordSwitch.leadingAnchor.constraint(equalTo: safePassfordLbl.trailingAnchor),
+            safePassfordSwitch.topAnchor.constraint(equalTo: view.topAnchor),
+            safePassfordSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            safePassfordSwitch.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        
+        return view
     }()
     
     private lazy var registrationButton: UIButton = {
@@ -71,7 +113,7 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
 
-        view.addSubviews([loginTF, passwordTF, forgotPasswordButton, loginButton, registrationButton])
+        view.addSubviews([loginTF, passwordTF, forgotPasswordButton, safePassfordWrapper, loginButton, registrationButton])
         NSLayoutConstraint.activate([
             loginTF.heightAnchor.constraint(equalToConstant: heightTF),
             loginTF.topAnchor.constraint(equalTo: view.topAnchor),
@@ -85,10 +127,13 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
             
             forgotPasswordButton.heightAnchor.constraint(equalToConstant: 24),
             forgotPasswordButton.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 8),
-//            forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             forgotPasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            loginButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 16),
+            safePassfordWrapper.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 8),
+            safePassfordWrapper.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            safePassfordWrapper.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            loginButton.topAnchor.constraint(equalTo: safePassfordSwitch.bottomAnchor, constant: 32),
             loginButton.widthAnchor.constraint(equalTo: passwordTF.widthAnchor, multiplier: 1.0),
             loginButton.heightAnchor.constraint(equalToConstant: heightButtons),
             loginButton.centerXAnchor.constraint(equalTo: passwordTF.centerXAnchor),
@@ -177,11 +222,11 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
     }
     
     @objc private func registrationAction() {
-        
+        coordinator?.performRegistrationScreenFlow()
     }
     
     @objc private func forgotAction() {
-
+        coordinator?.performForgotPasswordScreenFlow()
     }
     
     @objc private func loginAction() {
@@ -201,6 +246,7 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
                 }
                 
                 if isOk {
+                    UserDefaults.standard.set(self?.safePassfordSwitch.isOn, forKey: "safeAccount")
                     self?.onCompletion?()
                 }
             }

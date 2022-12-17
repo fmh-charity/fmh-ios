@@ -16,6 +16,12 @@ protocol BaseViewControllerProtocol: Presentable {
 //MARK: - BaseViewController
 class BaseViewController: UIViewController, BaseViewControllerProtocol {
     var onCompletion: (() -> Void)?
+    
+    // По умолчание на всех экранах.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
 }
 
 //MARK: - alerts ...

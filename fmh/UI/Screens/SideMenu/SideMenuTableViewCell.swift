@@ -16,7 +16,8 @@ class SideMenuTableViewCell: UITableViewCell {
     var model: Model? {
         didSet {
             guard let model else { return }
-            self.imgView.image = model.img
+//            self.imgView.image = model.img?.withRenderingMode(.alwaysTemplate)
+            self.imgView.image = model.img?.withTintColor(.white, renderingMode: .alwaysTemplate)
             self.titleLabel.text = model.title
         }
     }

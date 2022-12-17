@@ -29,6 +29,9 @@ final class LoadingViewController: BaseViewController, LoadingViewControllerProt
                 self.deleteTimer()
                 self.onCompletion?()
             }
+            if countShows > 3 {
+                //TODO: Добавить выод ошибки если долго грузимся !!
+            }
         }
     }
     
