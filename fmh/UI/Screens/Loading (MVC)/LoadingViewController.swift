@@ -8,14 +8,18 @@
 import Foundation
 import UIKit
 
-protocol LoadingViewControllerProtocol: BaseViewControllerProtocol { }
+protocol LoadingViewControllerProtocol: BaseViewControllerProtocol {
+    func loadingServiceComplition(error: Error?)
+}
 
 
-final class LoadingViewController: BaseViewController, LoadingViewControllerProtocol {
+final class LoadingViewController: BaseViewController {
     
-    // Когда все сервисы завершились. (прилетает от координатора)
-    var loadingServiceComplition: Bool?
+    var onCompletionWithError: (() -> Void)?
     
+    // Когда все сервисы завершились без ошибок.
+    private var isLoadingServiceComplitionOk: Bool = false
+
     private var timer: Timer?
     
     private lazy var content: Content = {
@@ -25,12 +29,13 @@ final class LoadingViewController: BaseViewController, LoadingViewControllerProt
     
     private var countShows: Int = 0 {
         didSet {
-            if loadingServiceComplition ?? false && countShows > 0 {
+            if isLoadingServiceComplitionOk && countShows > 0 {
                 self.deleteTimer()
                 self.onCompletion?()
             }
-            if countShows > 3 {
-                //TODO: Добавить выод ошибки если долго грузимся !!
+            if countShows > 6 { // Если больше 60 сек
+                let errorStr = "При загрузке приложения произошла ошибка.\nПопробуйте перезагрузить приложение!"
+                self.showAlert(title: "Ошибка", message: errorStr)
             }
         }
     }
@@ -53,7 +58,7 @@ final class LoadingViewController: BaseViewController, LoadingViewControllerProt
     
     private func createTimer() {
         guard timer == nil else { return }
-        
+        // 10 сек нужно ...
         let timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         RunLoop.current.add(timer, forMode: .common)
         timer.tolerance = 0.1
@@ -188,6 +193,17 @@ fileprivate extension LoadingViewController {
             var discription: String
         }
         
+    }
+    
+}
+
+
+extension LoadingViewController: LoadingViewControllerProtocol {
+    
+    func loadingServiceComplition(error: Error?) {
+        guard let _ = error else { self.isLoadingServiceComplitionOk = true; return }
+        let errorStr = "При загрузке приложения произошла ошибка.\nПопробуйте перезагрузить приложение!"
+        self.showAlert(title: "Ошибка", message: errorStr)
     }
     
 }
