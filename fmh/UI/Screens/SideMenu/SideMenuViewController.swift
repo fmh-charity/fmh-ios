@@ -25,9 +25,9 @@ class SideMenuViewController: UIViewController {
     // TODO: Содержимое бокового меню
     private lazy var sections: [Section : [SideMenuItems]] = {
         [
-            .general : [.home, .news, .claim, .wishes, .chambers, .patients],
-            .secondary : [.documents, .scheduleDuty, .staff, .ourMission],
-            .settings : [.instructions, .aboutHospis, .aboutApp]
+            .general : [.home], // [.home, .news, .claim, .wishes, .chambers, .patients],
+            .secondary : [], //[.documents, .scheduleDuty, .staff, .ourMission],
+            .settings : [], //[.instructions, .aboutHospis, .aboutApp]
         ]
     }() { didSet { updeteData() } } // <- На всякий малоли из вне изменять.
     
@@ -135,9 +135,16 @@ class SideMenuViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 extension SideMenuViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let section = Section(rawValue: section), section != .general else { return 0 }
+        return 16
+    }
+    
 }
 
 // MARK: - UITableViewDataSource

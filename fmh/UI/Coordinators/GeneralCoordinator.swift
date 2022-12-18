@@ -44,11 +44,6 @@ final class GeneralCoordinator: BaseCoordinator {
     private lazy var menuControllers: [SideMenuItems : Presentable] = {
         [
             .home     : TestVC() ,
-            .news     : TestVC() ,
-            .claim    : TestVC() ,
-            .wishes   : TestVC() ,
-            .chambers : TestVC() ,
-            .patients : TestVC()
         ]
     }()
     
@@ -100,7 +95,6 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
         var screen: Presentable?
         
         switch screenType {
-        case .child(_): screen = LoadingViewController()
         case .profile: screen = factory.makeProfileViewController()
             
             // ... тут добавляем дочернии экраны
