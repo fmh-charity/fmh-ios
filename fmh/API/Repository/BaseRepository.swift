@@ -25,10 +25,12 @@ final class BaseRepository {
 //MARK: - BaseRepositoryProtocol
 extension BaseRepository: BaseRepositoryProtocol {
     
-    func test() {
-        DispatchQueue.main.async {
-            
+    func test(completion: @escaping (String?, Error?) -> ()) {
+        guard var request = try? URLRequest(path: "/api/...") else { return }
+        apiClient.fetchData(request: request) { dec, re, er in
+            completion(dec, er)
         }
+        
     }
     
 }
