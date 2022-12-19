@@ -32,5 +32,14 @@ extension BaseViewController {
         alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
+
+    func showDeleteAlert(title: String, message: String, onConfirm: @escaping () -> ()) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { (_) in
+            onConfirm()
+        }))
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        self.present(alert, animated: true)
+    }
     
 }

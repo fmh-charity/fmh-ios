@@ -7,6 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CCB9A312950613600FDCD77 /* DTONews + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A2E2950613500FDCD77 /* DTONews + extension.swift */; };
+		0CCB9A322950613600FDCD77 /* NewsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A2F2950613500FDCD77 /* NewsConstants.swift */; };
+		0CCB9A332950613600FDCD77 /* NewsExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A302950613600FDCD77 /* NewsExtentions.swift */; };
+		0CCB9A352950615D00FDCD77 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A342950615D00FDCD77 /* NewsCollectionViewCell.swift */; };
+		0CCB9A39295061E400FDCD77 /* UIModuleNewsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A37295061E300FDCD77 /* UIModuleNewsListPresenter.swift */; };
+		0CCB9A3A295061E400FDCD77 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A38295061E400FDCD77 /* NewsListViewController.swift */; };
+		0CCB9A3D295062BA00FDCD77 /* DTONews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A3B295062BA00FDCD77 /* DTONews.swift */; };
+		0CCB9A3E295062BA00FDCD77 /* DTONewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A3C295062BA00FDCD77 /* DTONewsList.swift */; };
+		0CCB9A42295064DF00FDCD77 /* FiltersNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A40295064DF00FDCD77 /* FiltersNews.swift */; };
+		0CCB9A43295064DF00FDCD77 /* UIModuleFilterNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A41295064DF00FDCD77 /* UIModuleFilterNewsViewController.swift */; };
+		0CCB9A462950689500FDCD77 /* FMHUIRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A452950689500FDCD77 /* FMHUIRefreshControl.swift */; };
+		0CCB9A492950698300FDCD77 /* UIElementsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A472950698300FDCD77 /* UIElementsButton.swift */; };
+		0CCB9A4A2950698300FDCD77 /* UIElementsControllPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A482950698300FDCD77 /* UIElementsControllPanel.swift */; };
+		0CCB9A4C295069A000FDCD77 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A4B295069A000FDCD77 /* ActivityIndicatorCell.swift */; };
+		0CCB9A4E29506C1900FDCD77 /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A4D29506C1900FDCD77 /* NewsRepository.swift */; };
+		0CCB9A502950915500FDCD77 /* APIResourceNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A4F2950915500FDCD77 /* APIResourceNews.swift */; };
+		0CCB9A522950920800FDCD77 /* DetailsNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A512950920800FDCD77 /* DetailsNewsCollectionViewCell.swift */; };
+		0CCB9A592950922100FDCD77 /* UIModuleAddNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A542950922100FDCD77 /* UIModuleAddNewsPresenter.swift */; };
+		0CCB9A5A2950922100FDCD77 /* UIModuleAddNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A552950922100FDCD77 /* UIModuleAddNewsViewController.swift */; };
+		0CCB9A5B2950922100FDCD77 /* UIModuleNewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A572950922100FDCD77 /* UIModuleNewsDetailsViewController.swift */; };
+		0CCB9A5C2950922100FDCD77 /* UIModuleNewsDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A582950922100FDCD77 /* UIModuleNewsDetailsPresenter.swift */; };
+		0CCB9A602950945D00FDCD77 /* UIModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A5E2950945D00FDCD77 /* UIModuleFactoryProtocol.swift */; };
+		0CCB9A612950945D00FDCD77 /* UIModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A5F2950945D00FDCD77 /* UIModuleFactory.swift */; };
 		190F776329410C650088A863 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F776229410C650088A863 /* APIClient.swift */; };
 		190F77662941296F0088A863 /* API.Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77652941296F0088A863 /* API.Data+.swift */; };
 		190F77682941298B0088A863 /* API.Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77672941298B0088A863 /* API.Dictionary+.swift */; };
@@ -73,6 +96,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CCB9A2E2950613500FDCD77 /* DTONews + extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DTONews + extension.swift"; sourceTree = "<group>"; };
+		0CCB9A2F2950613500FDCD77 /* NewsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsConstants.swift; sourceTree = "<group>"; };
+		0CCB9A302950613600FDCD77 /* NewsExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsExtentions.swift; sourceTree = "<group>"; };
+		0CCB9A342950615D00FDCD77 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CCB9A37295061E300FDCD77 /* UIModuleNewsListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIModuleNewsListPresenter.swift; sourceTree = "<group>"; };
+		0CCB9A38295061E400FDCD77 /* NewsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		0CCB9A3B295062BA00FDCD77 /* DTONews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTONews.swift; sourceTree = "<group>"; };
+		0CCB9A3C295062BA00FDCD77 /* DTONewsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTONewsList.swift; sourceTree = "<group>"; };
+		0CCB9A40295064DF00FDCD77 /* FiltersNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersNews.swift; sourceTree = "<group>"; };
+		0CCB9A41295064DF00FDCD77 /* UIModuleFilterNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIModuleFilterNewsViewController.swift; sourceTree = "<group>"; };
+		0CCB9A452950689500FDCD77 /* FMHUIRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMHUIRefreshControl.swift; sourceTree = "<group>"; };
+		0CCB9A472950698300FDCD77 /* UIElementsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsButton.swift; sourceTree = "<group>"; };
+		0CCB9A482950698300FDCD77 /* UIElementsControllPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsControllPanel.swift; sourceTree = "<group>"; };
+		0CCB9A4B295069A000FDCD77 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
+		0CCB9A4D29506C1900FDCD77 /* NewsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
+		0CCB9A4F2950915500FDCD77 /* APIResourceNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResourceNews.swift; sourceTree = "<group>"; };
+		0CCB9A512950920800FDCD77 /* DetailsNewsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsNewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CCB9A542950922100FDCD77 /* UIModuleAddNewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIModuleAddNewsPresenter.swift; sourceTree = "<group>"; };
+		0CCB9A552950922100FDCD77 /* UIModuleAddNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIModuleAddNewsViewController.swift; sourceTree = "<group>"; };
+		0CCB9A572950922100FDCD77 /* UIModuleNewsDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIModuleNewsDetailsViewController.swift; sourceTree = "<group>"; };
+		0CCB9A582950922100FDCD77 /* UIModuleNewsDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIModuleNewsDetailsPresenter.swift; sourceTree = "<group>"; };
+		0CCB9A5E2950945D00FDCD77 /* UIModuleFactoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIModuleFactoryProtocol.swift; sourceTree = "<group>"; };
+		0CCB9A5F2950945D00FDCD77 /* UIModuleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIModuleFactory.swift; sourceTree = "<group>"; };
 		190F776229410C650088A863 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		190F77652941296F0088A863 /* API.Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API.Data+.swift"; sourceTree = "<group>"; };
 		190F77672941298B0088A863 /* API.Dictionary+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API.Dictionary+.swift"; sourceTree = "<group>"; };
@@ -151,6 +197,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CCB9A2B295060BB00FDCD77 /* News (MVP) */ = {
+			isa = PBXGroup;
+			children = (
+				0CCB9A2F2950613500FDCD77 /* NewsConstants.swift */,
+				0CCB9A302950613600FDCD77 /* NewsExtentions.swift */,
+				0CCB9A2E2950613500FDCD77 /* DTONews + extension.swift */,
+				0CCB9A532950922100FDCD77 /* NewsCreateAndEdit */,
+				0CCB9A562950922100FDCD77 /* NewsDetails */,
+				0CCB9A3F295064DF00FDCD77 /* NewsFilter (MVC) */,
+				0CCB9A362950619A00FDCD77 /* NewsDetails (MVP) */,
+				0CCB9A2D295060F500FDCD77 /* NewsList (MVP) */,
+				0CCB9A2C295060ED00FDCD77 /* Cells */,
+			);
+			path = "News (MVP)";
+			sourceTree = "<group>";
+		};
+		0CCB9A2C295060ED00FDCD77 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0CCB9A4B295069A000FDCD77 /* ActivityIndicatorCell.swift */,
+				0CCB9A512950920800FDCD77 /* DetailsNewsCollectionViewCell.swift */,
+				0CCB9A342950615D00FDCD77 /* NewsCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0CCB9A2D295060F500FDCD77 /* NewsList (MVP) */ = {
+			isa = PBXGroup;
+			children = (
+				0CCB9A37295061E300FDCD77 /* UIModuleNewsListPresenter.swift */,
+				0CCB9A38295061E400FDCD77 /* NewsListViewController.swift */,
+			);
+			path = "NewsList (MVP)";
+			sourceTree = "<group>";
+		};
+		0CCB9A362950619A00FDCD77 /* NewsDetails (MVP) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "NewsDetails (MVP)";
+			sourceTree = "<group>";
+		};
+		0CCB9A3F295064DF00FDCD77 /* NewsFilter (MVC) */ = {
+			isa = PBXGroup;
+			children = (
+				0CCB9A40295064DF00FDCD77 /* FiltersNews.swift */,
+				0CCB9A41295064DF00FDCD77 /* UIModuleFilterNewsViewController.swift */,
+			);
+			path = "NewsFilter (MVC)";
+			sourceTree = "<group>";
+		};
+		0CCB9A442950689500FDCD77 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				0CCB9A472950698300FDCD77 /* UIElementsButton.swift */,
+				0CCB9A482950698300FDCD77 /* UIElementsControllPanel.swift */,
+				0CCB9A452950689500FDCD77 /* FMHUIRefreshControl.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		0CCB9A532950922100FDCD77 /* NewsCreateAndEdit */ = {
+			isa = PBXGroup;
+			children = (
+				0CCB9A542950922100FDCD77 /* UIModuleAddNewsPresenter.swift */,
+				0CCB9A552950922100FDCD77 /* UIModuleAddNewsViewController.swift */,
+			);
+			path = NewsCreateAndEdit;
+			sourceTree = "<group>";
+		};
+		0CCB9A562950922100FDCD77 /* NewsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0CCB9A572950922100FDCD77 /* UIModuleNewsDetailsViewController.swift */,
+				0CCB9A582950922100FDCD77 /* UIModuleNewsDetailsPresenter.swift */,
+			);
+			path = NewsDetails;
+			sourceTree = "<group>";
+		};
+		0CCB9A5D2950945D00FDCD77 /* TestModuleFactory */ = {
+			isa = PBXGroup;
+			children = (
+				0CCB9A5E2950945D00FDCD77 /* UIModuleFactoryProtocol.swift */,
+				0CCB9A5F2950945D00FDCD77 /* UIModuleFactory.swift */,
+			);
+			path = TestModuleFactory;
+			sourceTree = "<group>";
+		};
 		190F7764294129620088A863 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +364,8 @@
 		191EAA71281BD200007B1397 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				0CCB9A3B295062BA00FDCD77 /* DTONews.swift */,
+				0CCB9A3C295062BA00FDCD77 /* DTONewsList.swift */,
 				190F776D29413A400088A863 /* DTOJWT.swift */,
 				190F776F294243CB0088A863 /* DTOUserInfo.swift */,
 			);
@@ -309,6 +445,7 @@
 		19C7A533280DED59005000EB /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0CCB9A4F2950915500FDCD77 /* APIResourceNews.swift */,
 				190F7764294129620088A863 /* Extensions */,
 				191EAA6A281BBC50007B1397 /* Service */,
 				190F778529452E9A0088A863 /* Client */,
@@ -321,6 +458,7 @@
 		19C7A535280DED75005000EB /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0CCB9A442950689500FDCD77 /* Elements */,
 				195629A42843DA6400C8A704 /* Common */,
 				19EB70B1292E83AE00DB8F21 /* Coordinators */,
 				19EB70D8293249C700DB8F21 /* ScreenFactory */,
@@ -332,6 +470,7 @@
 		19C7A537280DED81005000EB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0CCB9A2B295060BB00FDCD77 /* News (MVP) */,
 				190F779D294644890088A863 /* SideMenu */,
 				1959B3B8294E5BE40052BB15 /* Profile */,
 				1959B3B3294DCD990052BB15 /* ForgotPassword (MVC) */,
@@ -377,6 +516,7 @@
 		19EB70B7292E8A0200DB8F21 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				0CCB9A4D29506C1900FDCD77 /* NewsRepository.swift */,
 				190F77792944D74A0088A863 /* BaseRepository.swift */,
 				190F77712943781F0088A863 /* AuthRepository.swift */,
 			);
@@ -415,6 +555,7 @@
 		19EB70D8293249C700DB8F21 /* ScreenFactory */ = {
 			isa = PBXGroup;
 			children = (
+				0CCB9A5D2950945D00FDCD77 /* TestModuleFactory */,
 				19EB70DB29324A0A00DB8F21 /* ScreenFactory.swift */,
 				19EB70EA29329E6300DB8F21 /* ScreenFactory+Loading.swift */,
 				19EB70DD29324B9300DB8F21 /* ScreenFactory+Auth.swift */,
@@ -527,40 +668,58 @@
 				19EB70C1292E8EC400DB8F21 /* BaseCoordinator.swift in Sources */,
 				190F7774294476520088A863 /* Helper.Core.TokenManager.swift in Sources */,
 				190F77A1294655FF0088A863 /* SideMenuItems.swift in Sources */,
+				0CCB9A322950613600FDCD77 /* NewsConstants.swift in Sources */,
+				0CCB9A332950613600FDCD77 /* NewsExtentions.swift in Sources */,
 				190F77B5294A43B90088A863 /* SideMenuBottomView.swift in Sources */,
+				0CCB9A43295064DF00FDCD77 /* UIModuleFilterNewsViewController.swift in Sources */,
 				190F779A2946266A0088A863 /* LoginTextField.swift in Sources */,
 				1959B3BA294E5BFA0052BB15 /* ProfileViewController.swift in Sources */,
 				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
+				0CCB9A312950613600FDCD77 /* DTONews + extension.swift in Sources */,
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
 				190F7787294538DB0088A863 /* Router.swift in Sources */,
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
+				0CCB9A522950920800FDCD77 /* DetailsNewsCollectionViewCell.swift in Sources */,
 				190F77682941298B0088A863 /* API.Dictionary+.swift in Sources */,
+				0CCB9A4A2950698300FDCD77 /* UIElementsControllPanel.swift in Sources */,
 				190F77B7294B9EB60088A863 /* NSLayoutConstraint+.swift in Sources */,
+				0CCB9A4E29506C1900FDCD77 /* NewsRepository.swift in Sources */,
 				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
+				0CCB9A39295061E400FDCD77 /* UIModuleNewsListPresenter.swift in Sources */,
+				0CCB9A502950915500FDCD77 /* APIResourceNews.swift in Sources */,
 				190F778C2945D4F50088A863 /* Data+.swift in Sources */,
 				190F776A294129A70088A863 /* API.Encodable+.swift in Sources */,
+				0CCB9A5A2950922100FDCD77 /* UIModuleAddNewsViewController.swift in Sources */,
 				19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */,
 				190F77932946242B0088A863 /* LoginPresenter.swift in Sources */,
 				190F77B3294A43A80088A863 /* SideMenuTopView.swift in Sources */,
 				190F77A729466BA90088A863 /* SideMenuNavigationController.swift in Sources */,
 				19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */,
 				190F7783294513620088A863 /* APIClient+UserProfile.swift in Sources */,
+				0CCB9A5B2950922100FDCD77 /* UIModuleNewsDetailsViewController.swift in Sources */,
 				190F77662941296F0088A863 /* API.Data+.swift in Sources */,
 				19FC00E129386341000F6A4A /* URLRequest+init.swift in Sources */,
+				0CCB9A352950615D00FDCD77 /* NewsCollectionViewCell.swift in Sources */,
 				190F776E29413A400088A863 /* DTOJWT.swift in Sources */,
 				190F77892945D49F0088A863 /* UI.UIColor+.swift in Sources */,
+				0CCB9A3E295062BA00FDCD77 /* DTONewsList.swift in Sources */,
 				19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */,
 				19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */,
+				0CCB9A4C295069A000FDCD77 /* ActivityIndicatorCell.swift in Sources */,
+				0CCB9A602950945D00FDCD77 /* UIModuleFactoryProtocol.swift in Sources */,
 				190F77902945FE5E0088A863 /* UI.UIColor+hex.swift in Sources */,
 				190F776329410C650088A863 /* APIClient.swift in Sources */,
 				190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */,
+				0CCB9A492950698300FDCD77 /* UIElementsButton.swift in Sources */,
 				190F7795294624630088A863 /* LoginViewController.swift in Sources */,
 				190F77AF2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				1959B3B2294D12200052BB15 /* RegistrationPresenter.swift in Sources */,
 				190F779C294644830088A863 /* SideMenuViewController.swift in Sources */,
 				190F77AB2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift in Sources */,
+				0CCB9A5C2950922100FDCD77 /* UIModuleNewsDetailsPresenter.swift in Sources */,
 				190F778E2945F14B0088A863 /* UI.UIView+.swift in Sources */,
+				0CCB9A592950922100FDCD77 /* UIModuleAddNewsPresenter.swift in Sources */,
 				19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */,
 				19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */,
 				190F77812945129A0088A863 /* APIService.swift in Sources */,
@@ -569,12 +728,17 @@
 				190F77982946261F0088A863 /* PasswordTextField.swift in Sources */,
 				1959B3B0294D12060052BB15 /* RegistrationViewController.swift in Sources */,
 				190F77A529466B5C0088A863 /* BaseNavigationController.swift in Sources */,
+				0CCB9A3A295061E400FDCD77 /* NewsListViewController.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				190F77722943781F0088A863 /* AuthRepository.swift in Sources */,
 				1959B3B5294DCDAE0052BB15 /* ForgotPasswordViewController.swift in Sources */,
+				0CCB9A462950689500FDCD77 /* FMHUIRefreshControl.swift in Sources */,
+				0CCB9A612950945D00FDCD77 /* UIModuleFactory.swift in Sources */,
+				0CCB9A42295064DF00FDCD77 /* FiltersNews.swift in Sources */,
 				190F77A92948D64C0088A863 /* UI.UIButton+init.swift in Sources */,
 				190F777D2944DB220088A863 /* NetworkService.swift in Sources */,
 				19EB70BA292E8B6C00DB8F21 /* Helper.swift in Sources */,
+				0CCB9A3D295062BA00FDCD77 /* DTONews.swift in Sources */,
 				190F779F294650780088A863 /* SideMenuTableViewCell.swift in Sources */,
 				19EB70BD292E8BB200DB8F21 /* Helper.Core.Plist.swift in Sources */,
 			);
