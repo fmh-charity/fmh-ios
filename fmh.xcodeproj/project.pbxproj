@@ -375,6 +375,7 @@
 		195629A42843DA6400C8A704 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				19919570294FAFA700689099 /* Diffable */,
 				19EB70E3293291EA00DB8F21 /* Extensions */,
 				19EB70CC293236EB00DB8F21 /* Base */,
 			);
@@ -404,6 +405,13 @@
 				1959B3B9294E5BFA0052BB15 /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		19919570294FAFA700689099 /* Diffable */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Diffable;
 			sourceTree = "<group>";
 		};
 		19C7A50E280DECD0005000EB = {

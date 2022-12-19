@@ -26,6 +26,8 @@ protocol APIServiceProtocol {
     
     func fetch(request: URLRequest?, onCompletion: @escaping (Data?, URLResponse?, Error?) -> Void)
     func fetch(request: URLRequest?, onCompletion: @escaping (Result<Data, Error>) -> Void)
+    
+    func fetch<T>(request: URLRequest?, onCompletion: @escaping (T?, URLResponse?, Error?) -> Void)
 
 }
 
@@ -127,6 +129,23 @@ extension APIService: APIServiceProtocol {
                 return onCompletion(.failure(error))
             }
             
+        }
+    }
+    
+    func fetch<T: Decodable>(request: URLRequest?, onCompletion: @escaping (T?, URLResponse?, Error?) -> Void) {
+        self.fetch(with: request, retry: true) { data, response, error in
+            guard error == nil else { return onCompletion(nil, response, error) }
+            if let data = data {
+                do{
+                    let decodeData = try JSONDecoder().decode(T.self, from: data)
+                    DispatchQueue.main.async { onCompletion(decodeData, response, error) }
+                    return
+                } catch {
+                    DispatchQueue.main.async { onCompletion(nil, response, error) }
+                    return
+                }
+            }
+            return onCompletion(nil, response, error)
         }
     }
     
