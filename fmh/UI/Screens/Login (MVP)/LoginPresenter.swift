@@ -53,7 +53,7 @@ extension LoginPresenter: LoginPresenterProtocol {
                 case -1004 :
                     return completion(false, "Не удалось установить соединение с сервером.")
                 default:
-                    return completion(false, error.localizedDescription)
+                    return completion(false, "Не удалось установить соединение с сервером.")
                 }
             }
             
