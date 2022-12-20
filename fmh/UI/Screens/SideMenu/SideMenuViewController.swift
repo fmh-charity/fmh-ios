@@ -25,7 +25,7 @@ class SideMenuViewController: UIViewController {
     // TODO: Содержимое бокового меню
     private lazy var sections: [Section : [SideMenuItems]] = {
         [
-            .general : [.home], // [.home, .news, .claim, .wishes, .chambers, .patients],
+            .general : [.home, .news], // [.home, .news, .claim, .wishes, .chambers, .patients],
             .secondary : [], //[.documents, .scheduleDuty, .staff, .ourMission],
             .settings : [], //[.instructions, .aboutHospis, .aboutApp]
         ]

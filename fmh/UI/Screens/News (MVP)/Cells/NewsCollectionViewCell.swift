@@ -193,7 +193,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
         self.layer.borderWidth = 1
     }
     
-    func configure(model: APIDTONews) {
+    func configure(model: DTONews) {
         imageCategory.image = model.categoryImg
         labelTitle.text = model.title
         labelDescription.text = model.description

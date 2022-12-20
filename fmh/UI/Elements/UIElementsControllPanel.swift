@@ -16,7 +16,7 @@ class UIElementsControllPanel: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.font = UIFont(.SFUIDisplay, size: 16)
+        label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .black
         return label
     }()

@@ -44,6 +44,7 @@ final class GeneralCoordinator: BaseCoordinator {
     private lazy var menuControllers: [SideMenuItems : Presentable] = {
         [
             .home     : TestVC() ,
+            .news     : factory.makeNewsListViewController(coordinator: self)
         ]
     }()
     
@@ -98,6 +99,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
         case .profile: screen = factory.makeProfileViewController()
             
             // ... тут добавляем дочернии экраны
+        case .newsDetails: screen = factory.makeNewsDetailsViewController()
             
         default: break
         }
@@ -111,7 +113,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
     // Экраны которые не храним в "menuControllers". (каждый раз создаются)
     enum Screens {
         case child(model: String) // ??? <- Возможно данные передавать еще ...
-        
+        case newsDetails
         case profile
     }
     

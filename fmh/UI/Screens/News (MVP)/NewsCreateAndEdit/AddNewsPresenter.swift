@@ -1,5 +1,5 @@
 //
-//  UIModuleAddNewsPresenter.swift
+//  AddNewsPresenter.swift
 //  fmh
 //
 //  Created: 16.07.2022
@@ -7,42 +7,42 @@
 
 import Foundation
 
-// MARK: - UIModuleAddNewsPresenterProtocol
-protocol UIModuleAddNewsPresenterProtocol: AnyObject {
-    var news: APIDTONews? { get set }
-    var userInfo: APIURLSessionService.UserInfo? { get }
+// MARK: - AddNewsPresenterProtocol
+protocol AddNewsPresenterProtocol: AnyObject {
+    var news: DTONews? { get set }
+    var userInfo: APIClient.UserProfile? { get }
     func getNews(id: Int)
-    func createNews(news: APIDTONews)
+    func createNews(news: DTONews)
 }
 
-// MARK: - UIModuleAddNewsPresenterDelegate
-protocol UIModuleAddNewsPresenterDelegate: AnyObject {
-//    var presenter: UIModuleAddNewsPresenterProtocol? { get set }
+// MARK: - AddNewsPresenterDelegate
+protocol AddNewsPresenterDelegate: AnyObject {
+//    var presenter: AddNewsPresenterProtocol? { get set }
     func updatedNews()
     func createdNews()
 }
 
 
-final class UIModuleAddNewsPresenter {
+final class AddNewsPresenter {
 
-    weak private var view: UIModuleAddNewsPresenterDelegate?
+    weak private var view: AddNewsPresenterDelegate?
     private let repository: APIRepositoryNewsProtocol
 
-    var userInfo: APIURLSessionService.UserInfo?
-    
-    var news: APIDTONews? {
+    var userInfo: APIClient.UserProfile?
+
+    var news: DTONews? {
         didSet {
             view?.updatedNews()
         }
     }
-    
-    var createNews: APIDTONews? {
+
+    var createNews: DTONews? {
         didSet {
             view?.createdNews()
         }
     }
-    
-    init(repository: APIRepositoryNewsProtocol, view: UIModuleAddNewsPresenterDelegate, userInfo: APIURLSessionService.UserInfo?) {
+
+    init(repository: APIRepositoryNewsProtocol, view: AddNewsPresenterDelegate, userInfo: APIClient.UserProfile?) {
         self.repository = repository
         self.view = view
         self.userInfo = userInfo
@@ -50,19 +50,19 @@ final class UIModuleAddNewsPresenter {
 }
 
 // MARK: - EditNewsPresenterInput
-extension UIModuleAddNewsPresenter: UIModuleAddNewsPresenterProtocol {
-    
-    func createNews(news: APIDTONews) {
+extension AddNewsPresenter: AddNewsPresenterProtocol {
+
+    func createNews(news: DTONews) {
         repository.createNews(news: news) { news, apiError in
             guard apiError == nil else { return }
-            
+
             if let news = news {
                 print("Create news: \(news)")
                     self.createNews = news
             }
         }
     }
-    
+
 
     func getNews(id: Int) {
         repository.getNews(id: id) { news, apiError in
@@ -73,10 +73,10 @@ extension UIModuleAddNewsPresenter: UIModuleAddNewsPresenterProtocol {
                     self.news = news
               //  }
             }
-            
+
         }
     }
-    
-    
+
+
 
 }

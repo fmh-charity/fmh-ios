@@ -7,8 +7,8 @@
 
 import UIKit
 
-class NewsListViewController: BaseViewController {
-    
+class NewsListViewController: BaseViewController{
+
     var presenter: NewsListPresenterProtocol?
     private var filter = FilterNews()
     private var page = 0
@@ -59,7 +59,7 @@ class NewsListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackGround(name: "BackGround")
+        setBackGround(name: "bacground.main")
         settingsLayouts()
         newsCollectionView.refreshControl = newsPullRefresh
     }
@@ -69,8 +69,6 @@ class NewsListViewController: BaseViewController {
         getNews()
     }
     
- 
-    // set background
     fileprivate func setBackGround(name: String) {
         if let image = UIImage(named: name) {
             self.view.backgroundColor  = UIColor(patternImage: image)
@@ -117,7 +115,7 @@ class NewsListViewController: BaseViewController {
     }
     
     @objc func buttonFilterAction() {
-        presenter?.tapOnfilters()
+        presenter?.tapOnFilters()
     }
     
 }

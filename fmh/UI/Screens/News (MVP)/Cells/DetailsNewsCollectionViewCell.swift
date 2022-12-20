@@ -161,7 +161,7 @@ final class DetailsNewsCollectionViewCell: UICollectionViewCell {
         delegate?.editDetailsNewsCollectionViewCellDelegate(self, didClickEditButton: index)
     }
 
-    func configure(model: APIDTONews) {
+    func configure(model: DTONews) {
         imageCategory.image = model.categoryImg
         labelTitle.text = model.title
         labelDescription.text = model.description

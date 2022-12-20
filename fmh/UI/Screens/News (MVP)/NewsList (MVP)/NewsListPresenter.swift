@@ -12,7 +12,7 @@ protocol NewsListPresenterProtocol {
     var pages: Int { get }
     var isAdmin: Bool { get }
     func tapOnDetails()
-    func tapOnfilters()
+    func tapOnFilters()
     func getAllNews(filter: FilterNews?, page: Int?)
 }
 
@@ -20,11 +20,11 @@ protocol NewsListPresenterDelegate: AnyObject {
     func updatedNews()
 }
 
-final class UIModuleNewsListPresenter {
+final class NewsListPresenter {
 
     weak private var view: NewsListPresenterDelegate?
     private let repository: APIRepositoryNewsProtocol
-    var router: UICoordinatorGeneralTransitions
+    weak var coordinator: GeneralCoordinatorProtocol?
     var isAdmin: Bool
 
     var pages: Int = 0
@@ -35,22 +35,24 @@ final class UIModuleNewsListPresenter {
         }
     }
     
-    init(repository: APIRepositoryNewsProtocol, view: NewsListPresenterDelegate, router: UICoordinatorGeneralTransitions, isAdmin: Bool) {
-        self.router = router
+    init(repository: APIRepositoryNewsProtocol, view: NewsListPresenterDelegate, isAdmin: Bool) {
+
         self.repository = repository
         self.view = view
         self.isAdmin = isAdmin
     }
 }
 
-extension UIModuleNewsListPresenter: NewsListPresenterProtocol {
+extension NewsListPresenter: NewsListPresenterProtocol {
 
     func tapOnDetails() {
-        router.goToViewcontrollerByPath("/news/details")
+        coordinator?.perfomScreenFlow(.newsDetails, type: .push)
+
+        //router.goToViewcontrollerByPath("/news/details")
     }
     
-    func tapOnfilters() {
-        router.goToViewcontrollerByPath("/news/filter", arguments: ["delegateFilterNews" : view as Any])
+    func tapOnFilters() {
+        //router.goToViewcontrollerByPath("/news/filter", arguments: ["delegateFilterNews" : view as Any])
         print(#function)
     }
 

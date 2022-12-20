@@ -1,5 +1,5 @@
 //
-//  UIModuleNewsDetailsPresenter.swift
+//  NewsDetailsPresenter.swift
 //  fmh
 //
 //  Created: 12.06.2022
@@ -7,9 +7,9 @@
 
 import Foundation
 
-// MARK: - UIModuleNewsDetailsPresenterProtocol
-protocol UIModuleNewsDetailsPresenterProtocol: AnyObject {
-    var news: [APIDTONews] { get set }
+// MARK: - NewsDetailsPresenterProtocol
+protocol NewsDetailsPresenterProtocol: AnyObject {
+    var news: [DTONews] { get set }
     var pages: Int { get }
     func tapOnFilter()
     func tapOnAddNews()
@@ -18,49 +18,48 @@ protocol UIModuleNewsDetailsPresenterProtocol: AnyObject {
     func deleteNews(id: Int, index: Int)
 }
 
-// MARK: - UIModuleNewsDetailsPresenterDelegate
-protocol UIModuleNewsDetailsPresenterDelegate: AnyObject {
-    
+// MARK: - NewsDetailsPresenterDelegate
+protocol NewsDetailsPresenterDelegate: AnyObject {
+
     func updatedNews()
 }
 
-final class UIModuleNewsDetailsPresenter {
+final class NewsDetailsPresenter {
 
-    weak private var view: UIModuleNewsDetailsPresenterDelegate?
-    
+    weak private var view: NewsDetailsPresenterDelegate?
+
     private let repository: APIRepositoryNewsProtocol
-    private let router: UICoordinatorGeneralTransitions
+
     var pages: Int = 0
 
-    var news: [APIDTONews] = [] {
+    var news: [DTONews] = [] {
         didSet {
             view?.updatedNews()
         }
     }
-    
-    init(repository: APIRepositoryNewsProtocol, view: UIModuleNewsDetailsPresenterDelegate, router: UICoordinatorGeneralTransitions) {
+
+    init(repository: APIRepositoryNewsProtocol, view: NewsDetailsPresenterDelegate) {
         self.repository = repository
-        self.router = router
         self.view = view
     }
-    
+
 }
 
 // MARK: - DetailsNewsPresenterInput
-extension UIModuleNewsDetailsPresenter: UIModuleNewsDetailsPresenterProtocol {
+extension NewsDetailsPresenter: NewsDetailsPresenterProtocol {
     func tapOnAddNews() {
-        router.goToViewcontrollerByPath("/news/addNews")
+       // router.goToViewcontrollerByPath("/news/addNews")
     }
-    
+
     func tapOnEditNews(newsId: Int, status: String) {
-        print(newsId, status)
-        router.goToViewcontrollerByPath("/news/addNews", arguments: ["newsId" : newsId, "destinationName": status])
+
+        //router.goToViewcontrollerByPath("/news/addNews", arguments: ["newsId" : newsId, "destinationName": status])
     }
-    
+
     func tapOnFilter() {
-        router.goToViewcontrollerByPath("/news/filter", arguments: ["delegateFilterNews" : view as Any])
+//        router.goToViewcontrollerByPath("/news/filter", arguments: ["delegateFilterNews" : view as Any])
     }
-    
+
     func getAllNews(filter: FilterNews?, page: Int?) {
         repository.getAllNews(
             publishDate: filter?.sorted,
@@ -77,10 +76,10 @@ extension UIModuleNewsDetailsPresenter: UIModuleNewsDetailsPresenterProtocol {
             }
         }
     }
-    
-   
+
+
     func deleteNews(id: Int, index: Int) {
-        
+
         repository.delNews(id: id) { success, apiError in
             if success {
                 print("delete done id \(id)")

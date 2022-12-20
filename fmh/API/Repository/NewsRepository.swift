@@ -47,70 +47,92 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
         publishDateFrom: Date? = nil,
         publishDateTo: Date? = nil,
         completion: @escaping (DTONewsList?, Error?) -> ()) {
-            let resource = APIResourceNews.getAllNews(publishDate: publishDate, elements: elements, pages: pages, newsCategoryId: newsCategoryId, publishDateFrom: publishDateFrom, publishDateTo: publishDateTo)
-            apiClient.fetch(request: <#T##URLRequest?#>) { data, _, error in
-                guard error == nil else { return completion(nil, error) }
-                if let decodeData = data {
+//            let resource = APIResourceNews.getAllNews(publishDate: publishDate, elements: elements, pages: pages, newsCategoryId: newsCategoryId, publishDateFrom: publishDateFrom, publishDateTo: publishDateTo)
+            var parametrs: HTTPQuery = [:]
 
-                    return completion(decodeData, error)
-                }
-                return completion(nil, error)
-            }
-            service.fetchData(resource) { decodeData, _, error in
-            guard error == nil else { return completion(nil, error) }
-            if let decodeData = decodeData {
+            if let publishDate = publishDate { parametrs["publishDate"] = String(publishDate) }
+            if let elements = elements { parametrs["elements"] = String(elements) }
+            if let pages = pages { parametrs["pages"] = String(pages) }
+            if let newsCategoryId = newsCategoryId { parametrs["newsCategoryId"] = String(newsCategoryId) }
+            if let publishDateFrom = publishDateFrom { parametrs["publishDateFrom"] = publishDateFrom.toString() }
+            if let publishDateTo = publishDateTo { parametrs["publishDateTo"] = publishDateTo.toString() }
+
+            guard let request = try? URLRequest(path: "/api/fmh/news", query: parametrs) else { return }
+            
+            apiClient.fetchData(request: request) { decodeData, _, error in
+//                guard error == nil else { return completion(nil, error) }
+//                if let decodeData: DTONewsList = decodeData {
+//                    return completion(decodeData, error)
+//                }
                 return completion(decodeData, error)
             }
-            return completion(nil, error)
-        }
     }
     
     /// Создание новой новости
     func createNews(news: DTONews, completion: @escaping (DTONews?, Error?) -> ()) {
-        let resource = APIResourceNews.createNews(news: news)
-        service.fetchData(resource) { decodeData, _, error in
+//        let resource = APIResourceNews.createNews(news: news)
+
+        guard let request = try? URLRequest( .POST, path: "/api/fmh/news", body: JSONEncoder().encode(news)) else { return }
+        apiClient.fetchData(request: request) { decodeData, _, error in
             guard error == nil else { return completion(nil, error) }
-            if let decodeData = decodeData {
+            if let decodeData: DTONews = decodeData {
                 return completion(decodeData, error)
             }
             return completion(nil, error)
         }
     }
-    
+
     /// Обновляет информацию по новости
     func updateNews(news: DTONews, completion: @escaping (DTONews?, Error?) -> ()) {
-        let resource = APIResourceNews.updateNews(news: news)
-        service.fetchData(resource) { decodeData, _, error in
+
+        guard let request = try? URLRequest( .PUT, path: "/api/fmh/news", body: JSONEncoder().encode(news)) else { return }
+        apiClient.fetchData(request: request) { decodeData, _, error in
             guard error == nil else { return completion(nil, error) }
-            if let decodeData = decodeData {
+            if let decodeData: DTONews = decodeData {
                 return completion(decodeData, error)
             }
             return completion(nil, error)
         }
     }
-    
+
     /// Возвращает полную информацию по новости
     func getNews(id: Int, completion: @escaping (DTONews?, Error?) -> ()) {
-        let resource = APIResourceNews.getNews(id: id)
-        service.fetchData(resource) { decodeData, _, error in
+
+        var parametrs: HTTPQuery = [:]
+        parametrs["id"] = String(id)
+
+        guard let request = try? URLRequest( .GET, path: "/api/fmh/news", query: parametrs) else { return }
+        apiClient.fetchData(request: request) { decodeData, _, error in
             guard error == nil else { return completion(nil, error) }
-            if let decodeData = decodeData {
+            if let decodeData: DTONews = decodeData {
                 return completion(decodeData, error)
             }
             return completion(nil, error)
         }
     }
-    
+
     /// Удаление новости
     func delNews(id: Int, completion: @escaping (Bool, Error?) -> ()) {
-        let resource = APIResourceNews.delNews(id: id)
-        service.fetchData(resource) { _, response, error in
+
+        var parametrs: HTTPQuery = [:]
+        parametrs["id"] = String(id)
+
+        guard let request = try? URLRequest( .DELETE, path: "/api/fmh/news", query: parametrs) else { return }
+        apiClient.fetch(request: request) { _, response, error in
             if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 return completion(true, error)
             }
             guard error == nil else { return completion(false, error) }
             return completion(false, error)
         }
+//        let resource = APIResourceNews.delNews(id: id)
+//        service.fetchData(resource) { _, response, error in
+//            if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+//                return completion(true, error)
+//            }
+//            guard error == nil else { return completion(false, error) }
+//            return completion(false, error)
+//        }
     }
     
 }
