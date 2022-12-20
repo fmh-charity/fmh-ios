@@ -15,8 +15,6 @@ protocol LoadingViewControllerProtocol: BaseViewControllerProtocol {
 
 final class LoadingViewController: BaseViewController {
     
-    var onCompletionWithError: (() -> Void)?
-    
     // Когда все сервисы завершились без ошибок.
     private var isLoadingServiceComplitionOk: Bool = false
 
@@ -36,6 +34,7 @@ final class LoadingViewController: BaseViewController {
             if countShows > 6 { // Если больше 60 сек
                 let errorStr = "При загрузке приложения произошла ошибка.\nПопробуйте перезагрузить приложение!"
                 self.showAlert(title: "Ошибка", message: errorStr)
+                self.deleteTimer()
             }
         }
     }
@@ -204,6 +203,7 @@ extension LoadingViewController: LoadingViewControllerProtocol {
         guard let _ = error else { self.isLoadingServiceComplitionOk = true; return }
         let errorStr = "При загрузке приложения произошла ошибка.\nПопробуйте перезагрузить приложение!"
         self.showAlert(title: "Ошибка", message: errorStr)
+        self.deleteTimer()
     }
     
 }
