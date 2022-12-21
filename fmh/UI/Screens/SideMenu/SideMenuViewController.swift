@@ -26,7 +26,7 @@ class SideMenuViewController: UIViewController {
     private lazy var sections: [Section : [SideMenuItems]] = {
         [
             .general : [.home], // [.home, .news, .claim, .wishes, .chambers, .patients],
-            .secondary : [], //[.documents, .scheduleDuty, .staff, .ourMission],
+            .secondary : [.ourMission], //[.documents, .scheduleDuty, .staff, .ourMission],
             .settings : [], //[.instructions, .aboutHospis, .aboutApp]
         ]
     }() { didSet { updeteData() } } // <- На всякий малоли из вне изменять.

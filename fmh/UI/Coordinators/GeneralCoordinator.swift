@@ -82,6 +82,10 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
             // ... тут добавляем менюшные экраны + кликабельные элементы (SideMenuItems)
             
         case .profile: perfomScreenFlow(.profile, type: .present)
+        
+        case .ourMission:
+            let controller = factory.makeOurMissionViewController()
+            menuNavController.setRootViewController(viewController: controller, menu: menu)
             
         default: break
         }
@@ -96,6 +100,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
         
         switch screenType {
         case .profile: screen = factory.makeProfileViewController()
+        case .ourMission: screen = factory.makeOurMissionViewController()
             
             // ... тут добавляем дочернии экраны
             
@@ -113,6 +118,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
         case child(model: String) // ??? <- Возможно данные передавать еще ...
         
         case profile
+        case ourMission
     }
     
 }

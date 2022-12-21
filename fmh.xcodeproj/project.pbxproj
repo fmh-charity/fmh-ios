@@ -68,6 +68,10 @@
 		19EB70E92932991E00DB8F21 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70E82932991E00DB8F21 /* LoadingCoordinator.swift */; };
 		19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70EA29329E6300DB8F21 /* ScreenFactory+Loading.swift */; };
 		19EB70F22932A35500DB8F21 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB70F12932A35500DB8F21 /* LoadingViewController.swift */; };
+		19F91EB629536B9600B1194A /* OurMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91EB029536B9600B1194A /* OurMissionViewController.swift */; };
+		19F91EB729536B9600B1194A /* OurMissionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91EB129536B9600B1194A /* OurMissionPresenter.swift */; };
+		19F91EB829536B9600B1194A /* OurMissionDataArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91EB329536B9600B1194A /* OurMissionDataArray.swift */; };
+		19F91EB929536B9600B1194A /* OurMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F91EB529536B9600B1194A /* OurMissionCell.swift */; };
 		19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00D62932B8E0000F6A4A /* LoadingViewController+Data.swift */; };
 		19FC00E129386341000F6A4A /* URLRequest+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FC00E029386341000F6A4A /* URLRequest+init.swift */; };
 /* End PBXBuildFile section */
@@ -136,6 +140,10 @@
 		19EB70E82932991E00DB8F21 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
 		19EB70EA29329E6300DB8F21 /* ScreenFactory+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScreenFactory+Loading.swift"; sourceTree = "<group>"; };
 		19EB70F12932A35500DB8F21 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		19F91EB029536B9600B1194A /* OurMissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurMissionViewController.swift; sourceTree = "<group>"; };
+		19F91EB129536B9600B1194A /* OurMissionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurMissionPresenter.swift; sourceTree = "<group>"; };
+		19F91EB329536B9600B1194A /* OurMissionDataArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurMissionDataArray.swift; sourceTree = "<group>"; };
+		19F91EB529536B9600B1194A /* OurMissionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurMissionCell.swift; sourceTree = "<group>"; };
 		19FC00D62932B8E0000F6A4A /* LoadingViewController+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingViewController+Data.swift"; sourceTree = "<group>"; };
 		19FC00E029386341000F6A4A /* URLRequest+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -340,6 +348,7 @@
 		19C7A537280DED81005000EB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				19F91EAF29536B9600B1194A /* OurMission (MVP) */,
 				190F779D294644890088A863 /* SideMenu */,
 				1959B3B8294E5BE40052BB15 /* Profile */,
 				1959B3B3294DCD990052BB15 /* ForgotPassword (MVC) */,
@@ -454,6 +463,17 @@
 			path = "Loading (MVC)";
 			sourceTree = "<group>";
 		};
+		19F91EAF29536B9600B1194A /* OurMission (MVP) */ = {
+			isa = PBXGroup;
+			children = (
+				19F91EB029536B9600B1194A /* OurMissionViewController.swift */,
+				19F91EB129536B9600B1194A /* OurMissionPresenter.swift */,
+				19F91EB529536B9600B1194A /* OurMissionCell.swift */,
+				19F91EB329536B9600B1194A /* OurMissionDataArray.swift */,
+			);
+			path = "OurMission (MVP)";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -541,10 +561,12 @@
 				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
 				190F7787294538DB0088A863 /* Router.swift in Sources */,
+				19F91EB829536B9600B1194A /* OurMissionDataArray.swift in Sources */,
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
 				190F77682941298B0088A863 /* API.Dictionary+.swift in Sources */,
 				190F77B7294B9EB60088A863 /* NSLayoutConstraint+.swift in Sources */,
 				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
+				19F91EB629536B9600B1194A /* OurMissionViewController.swift in Sources */,
 				190F778C2945D4F50088A863 /* Data+.swift in Sources */,
 				190F776A294129A70088A863 /* API.Encodable+.swift in Sources */,
 				19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */,
@@ -564,6 +586,7 @@
 				190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */,
 				190F7795294624630088A863 /* LoginViewController.swift in Sources */,
 				190F77AF2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift in Sources */,
+				19F91EB929536B9600B1194A /* OurMissionCell.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				1959B3B2294D12200052BB15 /* RegistrationPresenter.swift in Sources */,
 				190F779C294644830088A863 /* SideMenuViewController.swift in Sources */,
@@ -578,6 +601,7 @@
 				1959B3B0294D12060052BB15 /* RegistrationViewController.swift in Sources */,
 				190F77A529466B5C0088A863 /* BaseNavigationController.swift in Sources */,
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
+				19F91EB729536B9600B1194A /* OurMissionPresenter.swift in Sources */,
 				190F77722943781F0088A863 /* AuthRepository.swift in Sources */,
 				1959B3B5294DCDAE0052BB15 /* ForgotPasswordViewController.swift in Sources */,
 				190F77A92948D64C0088A863 /* UI.UIButton+init.swift in Sources */,
