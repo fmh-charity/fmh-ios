@@ -47,8 +47,6 @@ extension NewsListPresenter: NewsListPresenterProtocol {
 
     func tapOnDetails() {
         coordinator?.perfomScreenFlow(.newsDetails, type: .push)
-
-        //router.goToViewcontrollerByPath("/news/details")
     }
     
     func tapOnFilters() {

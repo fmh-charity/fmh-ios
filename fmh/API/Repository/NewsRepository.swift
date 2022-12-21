@@ -47,7 +47,7 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
         publishDateFrom: Date? = nil,
         publishDateTo: Date? = nil,
         completion: @escaping (DTONewsList?, Error?) -> ()) {
-//            let resource = APIResourceNews.getAllNews(publishDate: publishDate, elements: elements, pages: pages, newsCategoryId: newsCategoryId, publishDateFrom: publishDateFrom, publishDateTo: publishDateTo)
+
             var parametrs: HTTPQuery = [:]
 
             if let publishDate = publishDate { parametrs["publishDate"] = String(publishDate) }
@@ -60,25 +60,18 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
             guard let request = try? URLRequest(path: "/api/fmh/news", query: parametrs) else { return }
             
             apiClient.fetchData(request: request) { decodeData, _, error in
-//                guard error == nil else { return completion(nil, error) }
-//                if let decodeData: DTONewsList = decodeData {
-//                    return completion(decodeData, error)
-//                }
+
                 return completion(decodeData, error)
             }
     }
     
     /// Создание новой новости
     func createNews(news: DTONews, completion: @escaping (DTONews?, Error?) -> ()) {
-//        let resource = APIResourceNews.createNews(news: news)
 
         guard let request = try? URLRequest( .POST, path: "/api/fmh/news", body: JSONEncoder().encode(news)) else { return }
         apiClient.fetchData(request: request) { decodeData, _, error in
-            guard error == nil else { return completion(nil, error) }
-            if let decodeData: DTONews = decodeData {
-                return completion(decodeData, error)
-            }
-            return completion(nil, error)
+
+            return completion(decodeData, error)
         }
     }
 
@@ -87,11 +80,8 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
 
         guard let request = try? URLRequest( .PUT, path: "/api/fmh/news", body: JSONEncoder().encode(news)) else { return }
         apiClient.fetchData(request: request) { decodeData, _, error in
-            guard error == nil else { return completion(nil, error) }
-            if let decodeData: DTONews = decodeData {
-                return completion(decodeData, error)
-            }
-            return completion(nil, error)
+
+            return completion(decodeData, error)
         }
     }
 
@@ -101,13 +91,10 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
         var parametrs: HTTPQuery = [:]
         parametrs["id"] = String(id)
 
-        guard let request = try? URLRequest( .GET, path: "/api/fmh/news", query: parametrs) else { return }
+        guard let request = try? URLRequest( .GET, path: "/api/fmh/news/", query: parametrs) else { return }
         apiClient.fetchData(request: request) { decodeData, _, error in
-            guard error == nil else { return completion(nil, error) }
-            if let decodeData: DTONews = decodeData {
-                return completion(decodeData, error)
-            }
-            return completion(nil, error)
+
+            return completion(decodeData, error)
         }
     }
 
@@ -117,7 +104,7 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
         var parametrs: HTTPQuery = [:]
         parametrs["id"] = String(id)
 
-        guard let request = try? URLRequest( .DELETE, path: "/api/fmh/news", query: parametrs) else { return }
+        guard let request = try? URLRequest( .DELETE, path: "/api/fmh/news/", query: parametrs) else { return }
         apiClient.fetch(request: request) { _, response, error in
             if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 return completion(true, error)
@@ -125,14 +112,6 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
             guard error == nil else { return completion(false, error) }
             return completion(false, error)
         }
-//        let resource = APIResourceNews.delNews(id: id)
-//        service.fetchData(resource) { _, response, error in
-//            if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-//                return completion(true, error)
-//            }
-//            guard error == nil else { return completion(false, error) }
-//            return completion(false, error)
-//        }
     }
     
 }
