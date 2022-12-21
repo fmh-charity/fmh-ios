@@ -21,13 +21,15 @@ extension UIButton {
 //MARK: - Prepared buttons ...
 extension UIButton {
     
-    convenience init(type: _ButtonType, target: Any?, action: Selector, color: UIColor? = nil) {
+    convenience init(type: _ButtonType, target: Any?, action: Selector, color: UIColor? = nil, isEnabled: Bool = true, isHidden: Bool = false) {
         var img = type.img
         if let color {
             img  = img?.withTintColor(color, renderingMode: .alwaysTemplate)
         }
         self.init(image: type.img, target: target, action: action)
         if let color { self.tintColor = color }
+        self.isEnabled = isEnabled
+        self.isHidden = isHidden
     }
     
     enum _ButtonType {

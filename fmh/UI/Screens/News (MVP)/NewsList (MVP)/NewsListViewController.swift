@@ -14,7 +14,7 @@ class NewsListViewController: BaseViewController{
     private var page = 0
     
     private lazy var newsPullRefresh: UIRefreshControl = {
-        let refreshControl = FMHUIRefreshControl()
+        let refreshControl = RefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
@@ -38,13 +38,13 @@ class NewsListViewController: BaseViewController{
         return collection
     }()
     
-    private lazy var controlPanel: UIElementsControllPanel = {
+    private lazy var controlPanel: ControllPanel = {
         let colorTint = UIColor(red: 0.439, green: 0.439, blue: 0.439, alpha: 1)
-        let view = UIElementsControllPanel(title: "Новости", buttons: [
-            .info(target: self, action: #selector(buttonInfoAction), color: colorTint, isEnabled: true),
-            .sorting(target: self, action: #selector(buttonSortAction),color: colorTint, isEnabled: true),
-            .settings(target: self, action: #selector(buttonFilterAction), color: colorTint, isEnabled: true),
-            .edit(target: self, action: #selector(buttonDetailsAction), color: colorTint, isHidden: !(presenter?.isAdmin ?? false))
+        let view = ControllPanel(title: "Новости", buttons: [
+            .init(type: .info, target: self, action: #selector(buttonInfoAction), color: colorTint),
+            .init(type: .sorting, target: self, action: #selector(buttonSortAction), color: colorTint),
+            .init(type: .settings, target: self, action: #selector(buttonFilterAction), color: colorTint),
+            .init(type: .edit, target: self, action: #selector(buttonDetailsAction), color: colorTint, isHidden: !(presenter?.isAdmin ?? false))
         ])
         return view
     }()
@@ -87,7 +87,7 @@ class NewsListViewController: BaseViewController{
             controlPanel.topAnchor.constraint(equalTo: marginsView.topAnchor),
             controlPanel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             controlPanel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            controlPanel.heightAnchor.constraint(equalToConstant: 55)
+            controlPanel.heightAnchor.constraint(equalToConstant: 44)
         ])
         /// add collectionView
         self.view.addSubview(newsCollectionView)

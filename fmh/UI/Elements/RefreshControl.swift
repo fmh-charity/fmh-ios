@@ -1,5 +1,5 @@
 //
-//  FMHUIRefreshControl.swift
+//  RefreshControl.swift
 //  fmh
 //
 //  Created: 02.09.2022
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FMHUIRefreshControl: UIRefreshControl {
+class RefreshControl: UIRefreshControl {
     
     override init () {
         super.init()

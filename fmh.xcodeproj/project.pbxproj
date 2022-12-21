@@ -17,9 +17,8 @@
 		0CCB9A3E295062BA00FDCD77 /* DTONewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A3C295062BA00FDCD77 /* DTONewsList.swift */; };
 		0CCB9A42295064DF00FDCD77 /* FiltersNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A40295064DF00FDCD77 /* FiltersNews.swift */; };
 		0CCB9A43295064DF00FDCD77 /* FilterNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A41295064DF00FDCD77 /* FilterNewsViewController.swift */; };
-		0CCB9A462950689500FDCD77 /* FMHUIRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A452950689500FDCD77 /* FMHUIRefreshControl.swift */; };
-		0CCB9A492950698300FDCD77 /* UIElementsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A472950698300FDCD77 /* UIElementsButton.swift */; };
-		0CCB9A4A2950698300FDCD77 /* UIElementsControllPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A482950698300FDCD77 /* UIElementsControllPanel.swift */; };
+		0CCB9A462950689500FDCD77 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A452950689500FDCD77 /* RefreshControl.swift */; };
+		0CCB9A4A2950698300FDCD77 /* ControllPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A482950698300FDCD77 /* ControllPanel.swift */; };
 		0CCB9A4C295069A000FDCD77 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A4B295069A000FDCD77 /* ActivityIndicatorCell.swift */; };
 		0CCB9A4E29506C1900FDCD77 /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A4D29506C1900FDCD77 /* NewsRepository.swift */; };
 		0CCB9A522950920800FDCD77 /* DetailsNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A512950920800FDCD77 /* DetailsNewsCollectionViewCell.swift */; };
@@ -104,9 +103,8 @@
 		0CCB9A3C295062BA00FDCD77 /* DTONewsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTONewsList.swift; sourceTree = "<group>"; };
 		0CCB9A40295064DF00FDCD77 /* FiltersNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersNews.swift; sourceTree = "<group>"; };
 		0CCB9A41295064DF00FDCD77 /* FilterNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterNewsViewController.swift; sourceTree = "<group>"; };
-		0CCB9A452950689500FDCD77 /* FMHUIRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMHUIRefreshControl.swift; sourceTree = "<group>"; };
-		0CCB9A472950698300FDCD77 /* UIElementsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsButton.swift; sourceTree = "<group>"; };
-		0CCB9A482950698300FDCD77 /* UIElementsControllPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIElementsControllPanel.swift; sourceTree = "<group>"; };
+		0CCB9A452950689500FDCD77 /* RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
+		0CCB9A482950698300FDCD77 /* ControllPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllPanel.swift; sourceTree = "<group>"; };
 		0CCB9A4B295069A000FDCD77 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 		0CCB9A4D29506C1900FDCD77 /* NewsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
 		0CCB9A512950920800FDCD77 /* DetailsNewsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsNewsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -239,9 +237,8 @@
 		0CCB9A442950689500FDCD77 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				0CCB9A472950698300FDCD77 /* UIElementsButton.swift */,
-				0CCB9A482950698300FDCD77 /* UIElementsControllPanel.swift */,
-				0CCB9A452950689500FDCD77 /* FMHUIRefreshControl.swift */,
+				0CCB9A482950698300FDCD77 /* ControllPanel.swift */,
+				0CCB9A452950689500FDCD77 /* RefreshControl.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -667,7 +664,7 @@
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
 				0CCB9A522950920800FDCD77 /* DetailsNewsCollectionViewCell.swift in Sources */,
 				190F77682941298B0088A863 /* API.Dictionary+.swift in Sources */,
-				0CCB9A4A2950698300FDCD77 /* UIElementsControllPanel.swift in Sources */,
+				0CCB9A4A2950698300FDCD77 /* ControllPanel.swift in Sources */,
 				190F77B7294B9EB60088A863 /* NSLayoutConstraint+.swift in Sources */,
 				0CCB9A4E29506C1900FDCD77 /* NewsRepository.swift in Sources */,
 				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
@@ -694,7 +691,6 @@
 				190F77902945FE5E0088A863 /* UI.UIColor+hex.swift in Sources */,
 				190F776329410C650088A863 /* APIClient.swift in Sources */,
 				190F777A2944D74A0088A863 /* BaseRepository.swift in Sources */,
-				0CCB9A492950698300FDCD77 /* UIElementsButton.swift in Sources */,
 				190F7795294624630088A863 /* LoginViewController.swift in Sources */,
 				190F77AF2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
@@ -716,7 +712,7 @@
 				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				190F77722943781F0088A863 /* AuthRepository.swift in Sources */,
 				1959B3B5294DCDAE0052BB15 /* ForgotPasswordViewController.swift in Sources */,
-				0CCB9A462950689500FDCD77 /* FMHUIRefreshControl.swift in Sources */,
+				0CCB9A462950689500FDCD77 /* RefreshControl.swift in Sources */,
 				0CCB9A42295064DF00FDCD77 /* FiltersNews.swift in Sources */,
 				190F77A92948D64C0088A863 /* UI.UIButton+init.swift in Sources */,
 				190F777D2944DB220088A863 /* NetworkService.swift in Sources */,

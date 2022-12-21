@@ -14,7 +14,7 @@ class NewsDetailsViewController: BaseViewController {
     private var page = 0
 
     private lazy var newsPullRefresh: UIRefreshControl = {
-        let refreshControl = FMHUIRefreshControl()
+        let refreshControl = RefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
@@ -39,12 +39,12 @@ class NewsDetailsViewController: BaseViewController {
         return view
     }()
 
-    private lazy var controlPanel: UIElementsControllPanel = {
+    private lazy var controlPanel: ControllPanel = {
         let colorTint = UIColor(red: 0.439, green: 0.439, blue: 0.439, alpha: 1)
-        let view = UIElementsControllPanel(title: "Панель управления новостями", buttons: [
-            .sorting(target: self, action: #selector(buttonSortedNewsAction),color: colorTint, isEnabled: true),
-            .settings(target: self, action: #selector(buttonFilterNewsAction), color: colorTint, isEnabled: true),
-            .plus(target: self, action: #selector(buttonAddNewsAction), color: colorTint, isEnabled: true)
+        let view = ControllPanel(title: "Панель управления новостями", buttons: [
+            .init(type: .sorting, target: self, action: #selector(buttonSortedNewsAction), color: colorTint),
+            .init(type: .settings, target: self, action: #selector(buttonFilterNewsAction), color: colorTint),
+            .init(type: .plus, target: self, action: #selector(buttonAddNewsAction), color: colorTint)
         ])
         return view
     }()
@@ -89,7 +89,7 @@ class NewsDetailsViewController: BaseViewController {
             controlPanel.topAnchor.constraint(equalTo: marginsView.topAnchor),
             controlPanel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             controlPanel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            controlPanel.heightAnchor.constraint(equalToConstant: 55)
+            controlPanel.heightAnchor.constraint(equalToConstant: 44)
         ])
 
         /// add collectionView
