@@ -348,8 +348,8 @@
 		19C7A537280DED81005000EB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				19F91EAF29536B9600B1194A /* OurMission (MVP) */,
 				190F779D294644890088A863 /* SideMenu */,
+				19F91EAF29536B9600B1194A /* OurMission (MVP) */,
 				1959B3B8294E5BE40052BB15 /* Profile */,
 				1959B3B3294DCD990052BB15 /* ForgotPassword (MVC) */,
 				1959B3AE294D11E90052BB15 /* Registration (MVP) */,
