@@ -50,7 +50,7 @@ extension NewsListPresenter: NewsListPresenterProtocol {
     }
     
     func tapOnFilters() {
-        //router.goToViewcontrollerByPath("/news/filter", arguments: ["delegateFilterNews" : view as Any])
+        coordinator?.perfomScreenFlow(.filterNews, type: .present)
         print(#function)
     }
 

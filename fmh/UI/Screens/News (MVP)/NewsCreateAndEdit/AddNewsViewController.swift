@@ -167,6 +167,7 @@ class AddNewsViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+            // TODO: - вынести в отдельный метод или в презентер
         if destinationName == "editNews" {
             titleNavigation = "Редактирование новости"
             guard let id = idNews else { return }
@@ -175,6 +176,7 @@ class AddNewsViewController: BaseViewController {
             titleNavigation = "Создание новости"
             idNews = 100
         }
+
         title = titleNavigation
         setBackGround(name: "bacground.main")
         setTextView()

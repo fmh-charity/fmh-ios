@@ -99,7 +99,9 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
         case .profile: screen = factory.makeProfileViewController()
             
             // ... тут добавляем дочернии экраны
-        case .newsDetails: screen = factory.makeNewsDetailsViewController()
+        case .newsDetails: screen = factory.makeNewsDetailsViewController(coordinator: self)
+        case .filterNews: screen = factory.makeFilterNewsViewController()
+        case .addNews(let newsId, let transmitter): screen = factory.makeAddNewsViewController(newsId: newsId, transmission: transmitter)
             
         default: break
         }
@@ -114,6 +116,8 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
     enum Screens {
         case child(model: String) // ??? <- Возможно данные передавать еще ...
         case newsDetails
+        case filterNews
+        case addNews(idNews: Int? = nil, transmitter: String? = nil)
         case profile
     }
     

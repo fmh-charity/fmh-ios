@@ -12,9 +12,9 @@ protocol GeneralScreenFactoryProtocol {
     
     func makeNewsListViewController(coordinator: GeneralCoordinatorProtocol) -> BaseViewControllerProtocol
 
-    func makeNewsDetailsViewController() -> BaseViewControllerProtocol
+    func makeNewsDetailsViewController(coordinator: GeneralCoordinatorProtocol) -> BaseViewControllerProtocol
     func makeFilterNewsViewController() -> BaseViewControllerProtocol
-    func makeAddNewsViewController() -> BaseViewControllerProtocol
+    func makeAddNewsViewController(newsId: Int?, transmission: String?) -> BaseViewControllerProtocol
 }
 
 
@@ -32,10 +32,11 @@ extension ScreenFactory: GeneralScreenFactoryProtocol {
         return viewController
     }
 
-    func makeNewsDetailsViewController() -> BaseViewControllerProtocol {
+    func makeNewsDetailsViewController(coordinator: GeneralCoordinatorProtocol) -> BaseViewControllerProtocol {
         let viewController = NewsDetailsViewController()
         let repository = APIRepositoryNews(apiClient: apiClient)
         let presenter = NewsDetailsPresenter(repository: repository, view: viewController)
+        presenter.coordinator = coordinator
         viewController.presenter = presenter
         return viewController
     }
@@ -45,11 +46,13 @@ extension ScreenFactory: GeneralScreenFactoryProtocol {
         return viewController
     }
 
-    func makeAddNewsViewController() -> BaseViewControllerProtocol {
+    func makeAddNewsViewController(newsId: Int?, transmission: String?) -> BaseViewControllerProtocol {
         let viewController = AddNewsViewController()
         let repository = APIRepositoryNews(apiClient: apiClient)
         let userInfo = apiClient.userProfile
         let presenter = AddNewsPresenter(repository: repository, view: viewController, userInfo: userInfo)
+        viewController.idNews = newsId
+        viewController.destinationName = transmission
         viewController.presenter = presenter
         return viewController
     }

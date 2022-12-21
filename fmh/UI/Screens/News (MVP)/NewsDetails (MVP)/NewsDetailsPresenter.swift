@@ -27,7 +27,7 @@ protocol NewsDetailsPresenterDelegate: AnyObject {
 final class NewsDetailsPresenter {
 
     weak private var view: NewsDetailsPresenterDelegate?
-
+    weak var coordinator: GeneralCoordinatorProtocol?
     private let repository: APIRepositoryNewsProtocol
 
     var pages: Int = 0
@@ -48,16 +48,16 @@ final class NewsDetailsPresenter {
 // MARK: - DetailsNewsPresenterInput
 extension NewsDetailsPresenter: NewsDetailsPresenterProtocol {
     func tapOnAddNews() {
-       // router.goToViewcontrollerByPath("/news/addNews")
+        coordinator?.perfomScreenFlow(.addNews(), type: .push)
     }
 
     func tapOnEditNews(newsId: Int, status: String) {
-
+        coordinator?.perfomScreenFlow(.addNews(idNews: newsId, transmitter: status), type: .push)
         //router.goToViewcontrollerByPath("/news/addNews", arguments: ["newsId" : newsId, "destinationName": status])
     }
 
     func tapOnFilter() {
-//        router.goToViewcontrollerByPath("/news/filter", arguments: ["delegateFilterNews" : view as Any])
+        coordinator?.perfomScreenFlow(.filterNews, type: .present)
     }
 
     func getAllNews(filter: FilterNews?, page: Int?) {
