@@ -142,6 +142,7 @@ class FilterNewsViewController: BaseViewController {
         button.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
         return button
     }()
+//MARK: - Buuton Action
 
     @objc func saveAction () {
         print("Save filter news")
@@ -157,6 +158,7 @@ class FilterNewsViewController: BaseViewController {
         self.view.endEditing(true)
         self.dismiss(animated: true)
     }
+//MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,6 +168,8 @@ class FilterNewsViewController: BaseViewController {
         setView()
 
     }
+
+//MARK: - Private Methods
 
     private func setCategoryPicker() {
         pickerCategory.delegate = self
@@ -226,6 +230,7 @@ class FilterNewsViewController: BaseViewController {
 }
 
 //MARK: - Picker datasource
+
 extension FilterNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

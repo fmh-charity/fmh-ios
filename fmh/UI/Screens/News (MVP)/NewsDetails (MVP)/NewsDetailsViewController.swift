@@ -10,8 +10,8 @@ import UIKit
 class NewsDetailsViewController: BaseViewController {
 
     var presenter: NewsDetailsPresenterProtocol?
-    private var filter = FilterNews()
-    private var page = 0
+    //private var filter = FilterNews()
+    //private var page = 0
 
     private lazy var newsPullRefresh: UIRefreshControl = {
         let refreshControl = RefreshControl()
@@ -113,7 +113,7 @@ class NewsDetailsViewController: BaseViewController {
 
     @objc func buttonSortedNewsAction() {
 
-        filter.sorted.toggle()
+        presenter?.filter.sorted.toggle()
         getNews()
     }
 
@@ -124,9 +124,9 @@ class NewsDetailsViewController: BaseViewController {
 
 private extension NewsDetailsViewController {
     func getNews() {
-        page = 0
+        presenter?.curentPage = 0
         presenter?.news.removeAll()
-        presenter?.getAllNews(filter: filter, page: page)
+        presenter?.getAllNews(page: presenter?.curentPage)
     }
 }
 
@@ -142,7 +142,7 @@ extension NewsDetailsViewController: UICollectionViewDataSource{
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if presenter?.pages ?? 0 > page && indexPath.row == (presenter?.news.count ?? 0) - 1 && presenter?.pages != 1 {
+        if presenter?.totalPages ?? 0 > presenter?.curentPage ?? 0 && indexPath.row == (presenter?.news.count ?? 0) - 1 && presenter?.totalPages != 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityIndicatorCell", for: indexPath) as! ActivityIndicatorCell
             cell.activityIndicator.startAnimating()
             return cell
@@ -159,9 +159,9 @@ extension NewsDetailsViewController: UICollectionViewDataSource{
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if presenter?.pages ?? 0 > page && indexPath.row == (presenter?.news.count ?? 0) - 1 && presenter?.pages != 1 {
-            page += 1
-            presenter?.getAllNews(filter: filter, page: page)
+        if presenter?.totalPages ?? 0 > presenter?.curentPage ?? 0 && indexPath.row == (presenter?.news.count ?? 0) - 1 && presenter?.totalPages != 1 {
+            presenter?.curentPage += 1
+            presenter?.getAllNews(page: presenter?.curentPage)
             print(presenter?.news.count)
         }
     }
@@ -213,7 +213,8 @@ extension NewsDetailsViewController: UICollectionViewDelegate {
     }
 }
 
-//MARK: - action for ButtonCell
+//MARK: - Action for ButtonCell
+
 extension NewsDetailsViewController: DetailsNewsCollectionViewCellDelegate {
     func editDetailsNewsCollectionViewCellDelegate(_ detailsCell: UICollectionViewCell, didClickEditButton index: Int) {
 
@@ -240,13 +241,13 @@ extension NewsDetailsViewController: NewsDetailsPresenterDelegate {
 }
 //MARK: - FilterNewsDelegate
 
-extension NewsDetailsViewController: FilterNewsDelegate {
-    func filtering(filter: FilterNews?) {
-        guard let filter = filter else { return }
-        self.filter = filter
-        getNews()
-    }
-}
+//extension NewsDetailsViewController: FilterNewsDelegate {
+//    func filtering(filter: FilterNews?) {
+//        guard let filter = filter else { return }
+//        self.filter = filter
+//        getNews()
+//    }
+//}
 
 
 

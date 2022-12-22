@@ -100,7 +100,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
             
             // ... тут добавляем дочернии экраны
         case .newsDetails: screen = factory.makeNewsDetailsViewController(coordinator: self)
-        case .filterNews: screen = factory.makeFilterNewsViewController()
+        case .filterNews(let delegate): screen = factory.makeFilterNewsViewController(delegate: delegate)
         case .addNews(let newsId, let transmitter): screen = factory.makeAddNewsViewController(newsId: newsId, transmission: transmitter)
             
         default: break
@@ -116,7 +116,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
     enum Screens {
         case child(model: String) // ??? <- Возможно данные передавать еще ...
         case newsDetails
-        case filterNews
+        case filterNews(delegate: AnyObject)
         case addNews(idNews: Int? = nil, transmitter: String? = nil)
         case profile
     }

@@ -8,17 +8,21 @@
 import Foundation
 
 // MARK: - NewsDetailsPresenterProtocol
+
 protocol NewsDetailsPresenterProtocol: AnyObject {
     var news: [DTONews] { get set }
-    var pages: Int { get }
+    var totalPages: Int { get }
+    var curentPage: Int { get set }
+    var filter: FilterNews { get set }
     func tapOnFilter()
     func tapOnAddNews()
     func tapOnEditNews(newsId: Int, status: String)
-    func getAllNews(filter: FilterNews?, page: Int?)
+    func getAllNews(page: Int?)
     func deleteNews(id: Int, index: Int)
 }
 
 // MARK: - NewsDetailsPresenterDelegate
+
 protocol NewsDetailsPresenterDelegate: AnyObject {
 
     func updatedNews()
@@ -30,22 +34,24 @@ final class NewsDetailsPresenter {
     weak var coordinator: GeneralCoordinatorProtocol?
     private let repository: APIRepositoryNewsProtocol
 
-    var pages: Int = 0
+    var totalPages = 0
+    var curentPage = 0
 
     var news: [DTONews] = [] {
         didSet {
             view?.updatedNews()
         }
     }
+    var filter = FilterNews()
 
     init(repository: APIRepositoryNewsProtocol, view: NewsDetailsPresenterDelegate) {
         self.repository = repository
         self.view = view
     }
-
 }
 
 // MARK: - DetailsNewsPresenterInput
+
 extension NewsDetailsPresenter: NewsDetailsPresenterProtocol {
     func tapOnAddNews() {
         coordinator?.perfomScreenFlow(.addNews(), type: .push)
@@ -53,33 +59,30 @@ extension NewsDetailsPresenter: NewsDetailsPresenterProtocol {
 
     func tapOnEditNews(newsId: Int, status: String) {
         coordinator?.perfomScreenFlow(.addNews(idNews: newsId, transmitter: status), type: .push)
-        //router.goToViewcontrollerByPath("/news/addNews", arguments: ["newsId" : newsId, "destinationName": status])
     }
 
     func tapOnFilter() {
-        coordinator?.perfomScreenFlow(.filterNews, type: .present)
+        coordinator?.perfomScreenFlow(.filterNews(delegate: self), type: .present)
     }
 
-    func getAllNews(filter: FilterNews?, page: Int?) {
+    func getAllNews(page: Int?) {
         repository.getAllNews(
-            publishDate: filter?.sorted,
-            elements: 12,
+            publishDate: filter.sorted,
+            elements: 13,
             pages: page,
-            newsCategoryId: filter?.newsCategoryId,
-            publishDateFrom: filter?.publishDateFrom,
-            publishDateTo: filter?.publishDateTo
+            newsCategoryId: filter.newsCategoryId,
+            publishDateFrom: filter.publishDateFrom,
+            publishDateTo: filter.publishDateTo
         ) { news, error in
             guard error == nil else { return }
             if let news = news {
                 self.news.append(contentsOf: news.elements)
-                self.pages = news.pages
+                self.totalPages = news.pages
             }
         }
     }
 
-
     func deleteNews(id: Int, index: Int) {
-
         repository.delNews(id: id) { success, apiError in
             if success {
                 print("delete done id \(id)")
@@ -89,3 +92,15 @@ extension NewsDetailsPresenter: NewsDetailsPresenterProtocol {
         }
     }
 }
+
+extension NewsDetailsPresenter: FilterNewsDelegate {
+    func filtering(filter: FilterNews?) {
+        //totalPages = 0
+        curentPage = 0
+        guard let filter = filter else { return }
+        self.filter = filter
+        news.removeAll()
+        getAllNews(page: curentPage)
+    }
+}
+

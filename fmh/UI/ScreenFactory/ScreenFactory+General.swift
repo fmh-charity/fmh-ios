@@ -13,7 +13,7 @@ protocol GeneralScreenFactoryProtocol {
     func makeNewsListViewController(coordinator: GeneralCoordinatorProtocol) -> BaseViewControllerProtocol
 
     func makeNewsDetailsViewController(coordinator: GeneralCoordinatorProtocol) -> BaseViewControllerProtocol
-    func makeFilterNewsViewController() -> BaseViewControllerProtocol
+    func makeFilterNewsViewController(delegate: AnyObject) -> BaseViewControllerProtocol
     func makeAddNewsViewController(newsId: Int?, transmission: String?) -> BaseViewControllerProtocol
 }
 
@@ -41,8 +41,9 @@ extension ScreenFactory: GeneralScreenFactoryProtocol {
         return viewController
     }
 
-    func makeFilterNewsViewController() -> BaseViewControllerProtocol {
+    func makeFilterNewsViewController(delegate: AnyObject) -> BaseViewControllerProtocol {
         let viewController = FilterNewsViewController()
+        viewController.delegate = delegate as? FilterNewsDelegate
         return viewController
     }
 

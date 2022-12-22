@@ -10,8 +10,6 @@ import UIKit
 class NewsListViewController: BaseViewController{
 
     var presenter: NewsListPresenterProtocol?
-    private var filter = FilterNews()
-    private var page = 0
     
     private lazy var newsPullRefresh: UIRefreshControl = {
         let refreshControl = RefreshControl()
@@ -99,7 +97,7 @@ class NewsListViewController: BaseViewController{
         ])
     }
     
-    //MARK: - Actions for buttonHeader
+    //MARK: - Actions for Button Header
     @objc func buttonInfoAction(sender: UIButton) {
         self.showAlert(title: "Информация", message: "На этом экране вы можете увидеть все новости")
     }
@@ -109,7 +107,7 @@ class NewsListViewController: BaseViewController{
     }
     
     @objc func buttonSortAction() {
-        filter.sorted.toggle()
+        presenter?.filter.sorted.toggle()
         getNews()
 
     }
@@ -123,9 +121,9 @@ class NewsListViewController: BaseViewController{
 private extension NewsListViewController {
     
     func getNews() {
-        page = 0
+        presenter?.curentPage = 0
         presenter?.news.removeAll()
-        presenter?.getAllNews(filter: filter, page: page)
+        presenter?.getAllNews(page: presenter?.curentPage)
     }
 }
 
@@ -142,7 +140,7 @@ extension NewsListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if presenter?.pages ?? 0 > page && indexPath.row == (presenter?.news.count ?? 0) - 1 && presenter?.pages != 1{
+        if presenter?.totalPages ?? 0 > presenter?.curentPage ?? 0 && indexPath.row == (presenter?.news.count ?? 0) - 1 && presenter?.totalPages != 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityIndicatorCell", for: indexPath) as! ActivityIndicatorCell
             cell.activityIndicator.startAnimating()
             return cell
@@ -158,9 +156,9 @@ extension NewsListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if presenter?.pages ?? 0 > page && indexPath.row == (presenter?.news.count ?? 0) - 1 && presenter?.pages != 1 {
-            page += 1
-            presenter?.getAllNews(filter: filter, page: page)
+        if presenter?.totalPages ?? 0 > presenter?.curentPage ?? 0 && indexPath.row == (presenter?.news.count ?? 0) - 1 && presenter?.totalPages != 1 {
+            presenter?.curentPage += 1
+            presenter?.getAllNews(page: presenter?.curentPage)
         }
     }
 }
@@ -220,13 +218,13 @@ extension NewsListViewController: NewsListPresenterDelegate {
 }
 
 //MARK: - FilterNewsDelegate
-extension NewsListViewController: FilterNewsDelegate {
-    func filtering(filter: FilterNews?) {
-        guard let filter = filter else { return }
-        self.filter = filter
-        getNews()
-    }
-}
+//extension NewsListViewController: FilterNewsDelegate {
+//    func filtering(filter: FilterNews?) {
+//        guard let filter = filter else { return }
+//        self.filter = filter
+//        getNews()
+//    }
+//}
 
 
 
