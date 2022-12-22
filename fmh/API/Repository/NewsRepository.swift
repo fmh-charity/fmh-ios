@@ -30,8 +30,6 @@ class APIRepositoryNews {
     init(apiClient: APIServiceProtocol) {
         self.apiClient = apiClient
     }
-    
-    
 }
 
 
@@ -88,10 +86,7 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
     /// Возвращает полную информацию по новости
     func getNews(id: Int, completion: @escaping (DTONews?, Error?) -> ()) {
 
-        var parametrs: HTTPQuery = [:]
-        parametrs["id"] = String(id)
-
-        guard let request = try? URLRequest( .GET, path: "/api/fmh/news/", query: parametrs) else { return }
+        guard let request = try? URLRequest( .GET, path: "/api/fmh/news/\(id)") else { return }
         apiClient.fetchData(request: request) { decodeData, _, error in
 
             return completion(decodeData, error)
@@ -101,16 +96,19 @@ extension APIRepositoryNews: APIRepositoryNewsProtocol {
     /// Удаление новости
     func delNews(id: Int, completion: @escaping (Bool, Error?) -> ()) {
 
-        var parametrs: HTTPQuery = [:]
-        parametrs["id"] = String(id)
-
-        guard let request = try? URLRequest( .DELETE, path: "/api/fmh/news/", query: parametrs) else { return }
+        guard let request = try? URLRequest( .DELETE, path: "/api/fmh/news/\(id)") else { return }
         apiClient.fetch(request: request) { _, response, error in
             if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                return completion(true, error)
+                DispatchQueue.main.async {
+                    completion(true, error)
+                }
+                return
             }
             guard error == nil else { return completion(false, error) }
-            return completion(false, error)
+            DispatchQueue.main.async {
+                completion(false, error)
+            }
+            return
         }
     }
     
