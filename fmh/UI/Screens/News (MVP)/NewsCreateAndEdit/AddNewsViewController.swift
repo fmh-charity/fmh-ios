@@ -112,7 +112,7 @@ class AddNewsViewController: BaseViewController {
         dateFormate.timeStyle = .none
         dateFormate.dateFormat = "dd.MM.yyyy"
         dateTextField.text = dateFormate.string(from: sender.date)
-        self.view.endEditing(true)
+        //self.view.endEditing(true)
     }
 
     @objc func setTime(sender: UIDatePicker) {
@@ -356,7 +356,6 @@ extension AddNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryTextField.text = categoryValues[row]
         categoryNewsId = row + 1
-        print("categoryNewsId \(categoryNewsId)")
         self.view.endEditing(true)
     }
 }
@@ -371,7 +370,7 @@ extension AddNewsViewController: UITextViewDelegate {
             textView.text = ""
             textView.textColor = .black
         }
-        textView.becomeFirstResponder() //Optional
+        textView.becomeFirstResponder()
     }
 
     func textViewDidEndEditing(_ textView: UITextView)
@@ -406,13 +405,18 @@ extension AddNewsViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch DatePublish(rawValue: textField.tag) {
         case .date:
-            setDate(sender: datePicker)
             datePicker.minimumDate = Date()
+            setDate(sender: datePicker)
             dateTextField.backgroundColor = .accentColor.withAlphaComponent(0.1)
             timeTextField.backgroundColor = .white
         case .time:
+            if datePicker.date.toString() == datePicker.minimumDate?.toString(){
+                timePicker.minimumDate = Date()
+            } else {
+                timePicker.minimumDate = .none
+            }
             setTime(sender: timePicker)
-            timePicker.minimumDate = Date()
+
             timeTextField.backgroundColor = .accentColor.withAlphaComponent(0.1)
             dateTextField.backgroundColor = .white
         case .none:
