@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CC597AA2955C672004F9448 /* NewsCustomClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC597A92955C672004F9448 /* NewsCustomClasses.swift */; };
 		0CCB9A312950613600FDCD77 /* DTONews + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A2E2950613500FDCD77 /* DTONews + extension.swift */; };
 		0CCB9A322950613600FDCD77 /* NewsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A2F2950613500FDCD77 /* NewsConstants.swift */; };
 		0CCB9A332950613600FDCD77 /* NewsExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB9A302950613600FDCD77 /* NewsExtentions.swift */; };
@@ -93,6 +94,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CC597A92955C672004F9448 /* NewsCustomClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCustomClasses.swift; sourceTree = "<group>"; };
 		0CCB9A2E2950613500FDCD77 /* DTONews + extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DTONews + extension.swift"; sourceTree = "<group>"; };
 		0CCB9A2F2950613500FDCD77 /* NewsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsConstants.swift; sourceTree = "<group>"; };
 		0CCB9A302950613600FDCD77 /* NewsExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsExtentions.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				0CCB9A3F295064DF00FDCD77 /* NewsFilter (MVC) */,
 				0CCB9A2D295060F500FDCD77 /* NewsList (MVP) */,
 				0CCB9A2C295060ED00FDCD77 /* Cells */,
+				0CC597A92955C672004F9448 /* NewsCustomClasses.swift */,
 			);
 			path = "News (MVP)";
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				190F7795294624630088A863 /* LoginViewController.swift in Sources */,
 				190F77AF2948F0EE0088A863 /* UI.UIBarButtonItem+init.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
+				0CC597AA2955C672004F9448 /* NewsCustomClasses.swift in Sources */,
 				1959B3B2294D12200052BB15 /* RegistrationPresenter.swift in Sources */,
 				190F779C294644830088A863 /* SideMenuViewController.swift in Sources */,
 				190F77AB2948E02A0088A863 /* UI.UINavigationItem+rightButtons.swift in Sources */,

@@ -31,7 +31,7 @@ class FilterNewsViewController: BaseViewController {
 
     private lazy var titleView: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 22)
         label.textColor = .accentColor
         label.textAlignment = .center
         label.text = "Фильтровать новости"
@@ -51,10 +51,10 @@ class FilterNewsViewController: BaseViewController {
     private var dateStackView = UIStackView()
     private var layoutView = UIView()
 
-    private lazy var categoryTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var categoryTextField: NoPasteUITextField = {
+        let textField = NoPasteUITextField()
         textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.font = UIFont.systemFont(ofSize: 18)
         textField.placeholder = "Все категории    ▼"
         textField.layer.borderWidth = 1
         textField.layer.borderColor = NewsConstants.Collor.borderTF.cgColor
@@ -62,89 +62,12 @@ class FilterNewsViewController: BaseViewController {
         return textField
     }()
 
-    private lazy var dateTextFieldFrom: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Дата публикации"
-        textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 16)
-        textField.layer.borderColor = NewsConstants.Collor.borderTF.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
-        //textField.tag = DatePublish.dateFrom.rawValue
-        let datePicker =  UIDatePicker()
-        if #available(iOS 14.0, *) {
-            datePicker.preferredDatePickerStyle = .inline
-        } else {
-            if #available(iOS 13.4, *) {
-                datePicker.preferredDatePickerStyle = .wheels
-                datePicker.backgroundColor = .accentColor
-                datePicker.setValue(UIColor.white, forKey: "textColor")
-            } else {
-                datePicker.backgroundColor = .accentColor
-                datePicker.setValue(UIColor.white, forKey: "textColor")
-            }
-        }
+    private var datePickerFrom = UIDatePicker()
+    private var datePickerTo = UIDatePicker()
 
+    private lazy var dateTextFieldFrom = NoPasteUITextField()
+    private lazy var dateTextFieldTo = NoPasteUITextField()
 
-        datePicker.datePickerMode = .date
-        datePicker.tag = DatePublish.dateFrom.rawValue
-        textField.inputView = datePicker
-
-        datePicker.locale = Locale(identifier: "ru_RU")
-
-        datePicker.addTarget(self, action: #selector(setDate), for: .valueChanged)
-        return textField
-    }()
-
-    private lazy var dateTextFieldTo: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Дата публикации"
-        textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 16)
-        textField.layer.borderColor = NewsConstants.Collor.borderTF.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
-        //textField.tag = DatePublish.dateTo.rawValue
-        let datePicker =  UIDatePicker()
-
-        if #available(iOS 14.0, *) {
-            datePicker.preferredDatePickerStyle = .inline
-        } else {
-            if #available(iOS 13.4, *) {
-                datePicker.preferredDatePickerStyle = .wheels
-                datePicker.backgroundColor = .accentColor
-                datePicker.setValue(UIColor.white, forKey: "textColor")
-            } else {
-                datePicker.backgroundColor = .accentColor
-                datePicker.setValue(UIColor.white, forKey: "textColor")
-            }
-        }
-
-        textField.inputView = datePicker
-        datePicker.datePickerMode = .date
-        datePicker.tag = DatePublish.dateTo.rawValue
-
-        datePicker.locale = Locale(identifier: "ru_RU")
-
-        datePicker.addTarget(self, action: #selector(setDate), for: .valueChanged)
-        return textField
-    }()
-
-    @objc func setDate(sender: UIDatePicker) {
-        let dateFormate = DateFormatter()
-        dateFormate.dateStyle = .medium
-        dateFormate.timeStyle = .none
-        dateFormate.dateFormat = "dd.MM.yyyy"
-        switch DatePublish(rawValue: sender.tag) {
-        case .dateFrom:
-            dateTextFieldFrom.text = dateFormate.string(from: sender.date)
-        case .dateTo:
-            dateTextFieldTo.text = dateFormate.string(from: sender.date)
-        case .none:
-            return
-        }
-        self.view.endEditing(true)
-    }
 
     private lazy var saveButton: UIButton = {
         let button = UIButton()
@@ -168,7 +91,7 @@ class FilterNewsViewController: BaseViewController {
     }()
 //MARK: - Buuton Action
 
-    @objc func saveAction () {
+    @objc private func saveAction () {
         print("Save filter news")
         fromDatePublish = getDate(stringDate: dateTextFieldFrom.text)
         toDatePublish = getDate(stringDate: dateTextFieldTo.text)
@@ -178,7 +101,7 @@ class FilterNewsViewController: BaseViewController {
         self.dismiss(animated: true)
     }
 
-    @objc func cancelAction () {
+    @objc private func cancelAction () {
         self.view.endEditing(true)
         self.dismiss(animated: true)
     }
@@ -186,6 +109,11 @@ class FilterNewsViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDatePicker(datePicker: datePickerTo, tag: .dateTo, selectorAction: #selector(setDate))
+        setDatePicker(datePicker: datePickerFrom, tag: .dateFrom, selectorAction: #selector(setDate))
+
+        setTextField(textField: dateTextFieldTo, inputView: datePickerTo)
+        setTextField(textField: dateTextFieldFrom, inputView: datePickerFrom)
 
         setBackGround(name: "bacground.main")
         setCategoryPicker()
@@ -195,16 +123,60 @@ class FilterNewsViewController: BaseViewController {
 
 //MARK: - Private Methods
 
+    @objc private func setDate(sender: UIDatePicker) {
+        
+        let dateFormate = DateFormatter()
+        dateFormate.dateStyle = .medium
+        dateFormate.timeStyle = .none
+        dateFormate.dateFormat = "dd.MM.yyyy"
+        switch DatePublish(rawValue: sender.tag) {
+        case .dateFrom:
+            dateTextFieldFrom.text = dateFormate.string(from: sender.date)
+        case .dateTo:
+            datePickerFrom.maximumDate = datePickerTo.date
+            dateTextFieldTo.text = dateFormate.string(from: sender.date)
+        case .none:
+            return
+        }
+
+    }
+
     private func setCategoryPicker() {
         pickerCategory.delegate = self
         pickerCategory.dataSource = self
-        pickerCategory.selectRow(4, inComponent: 0, animated: true)
+        pickerCategory.selectRow(0, inComponent: 0, animated: true)
         categoryTextField.inputView = pickerCategory
     }
 
-    private func setDatePicker(datePicker: UIDatePicker) -> UIDatePicker {
-        
-        return datePicker
+    private func setDatePicker(datePicker: UIDatePicker, tag: DatePublish, selectorAction: Selector ) {
+
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+            datePicker.backgroundColor = .accentColor
+            datePicker.setValue(UIColor.white, forKey: "textColor")
+        } else {
+            datePicker.backgroundColor = .accentColor
+            datePicker.setValue(UIColor.white, forKey: "textColor")
+        }
+
+        datePicker.datePickerMode = .date
+        datePicker.tag = tag.rawValue
+
+        datePicker.locale = Locale(identifier: "ru_RU")
+
+        datePicker.addTarget(self, action: selectorAction, for: .valueChanged)
+    }
+
+    private func setTextField(textField: UITextField, inputView: UIDatePicker) {
+        textField.delegate = self
+        textField.tag = inputView.tag
+        textField.placeholder = "Дата публикации"
+        textField.textAlignment = .center
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.layer.borderColor = NewsConstants.Collor.borderTF.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 5
+        textField.inputView = inputView
     }
 
     private func getDate(stringDate: String?) -> Date? {
@@ -276,5 +248,27 @@ extension FilterNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryTextField.text = categoryValues[row]
         categoryId = row
+    }
+
+}
+//MARK: - UITextFieldDelegate
+
+extension FilterNewsViewController: UITextFieldDelegate {
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch DatePublish(rawValue: textField.tag) {
+        case .dateFrom:
+            setDate(sender: datePickerFrom)
+            dateTextFieldFrom.backgroundColor = .accentColor.withAlphaComponent(0.1)
+            dateTextFieldTo.backgroundColor = .white
+        case .dateTo:
+            setDate(sender: datePickerTo)
+            datePickerTo.minimumDate = datePickerFrom.date
+            dateTextFieldTo.backgroundColor = .accentColor.withAlphaComponent(0.1)
+            dateTextFieldFrom.backgroundColor = .white
+        case .none:
+            return true
+        }
+        return true
     }
 }
