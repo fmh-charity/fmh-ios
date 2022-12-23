@@ -7,9 +7,12 @@
 
 import UIKit
 
+//MARK: - Delegate Protocol
+
 protocol FilterNewsDelegate: AnyObject {
     func filtering(filter: FilterNews?)
 }
+
 
 class FilterNewsViewController: BaseViewController {
 
@@ -39,7 +42,8 @@ class FilterNewsViewController: BaseViewController {
 
     private lazy var pickerCategory: UIPickerView = {
         let picker = UIPickerView()
-        picker.backgroundColor = .green
+        picker.backgroundColor = .accentColor
+        picker.setValue(UIColor.white, forKey: "textColor")
         return picker
     }()
 
@@ -68,14 +72,25 @@ class FilterNewsViewController: BaseViewController {
         textField.layer.cornerRadius = 5
         //textField.tag = DatePublish.dateFrom.rawValue
         let datePicker =  UIDatePicker()
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
+        if #available(iOS 14.0, *) {
+            datePicker.preferredDatePickerStyle = .inline
         } else {
-            // Fallback on earlier versions
+            if #available(iOS 13.4, *) {
+                datePicker.preferredDatePickerStyle = .wheels
+                datePicker.backgroundColor = .accentColor
+                datePicker.setValue(UIColor.white, forKey: "textColor")
+            } else {
+                datePicker.backgroundColor = .accentColor
+                datePicker.setValue(UIColor.white, forKey: "textColor")
+            }
         }
+
+
         datePicker.datePickerMode = .date
         datePicker.tag = DatePublish.dateFrom.rawValue
         textField.inputView = datePicker
+
+        datePicker.locale = Locale(identifier: "ru_RU")
 
         datePicker.addTarget(self, action: #selector(setDate), for: .valueChanged)
         return textField
@@ -91,16 +106,25 @@ class FilterNewsViewController: BaseViewController {
         textField.layer.cornerRadius = 5
         //textField.tag = DatePublish.dateTo.rawValue
         let datePicker =  UIDatePicker()
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
+
+        if #available(iOS 14.0, *) {
+            datePicker.preferredDatePickerStyle = .inline
         } else {
-            // Fallback on earlier versions
+            if #available(iOS 13.4, *) {
+                datePicker.preferredDatePickerStyle = .wheels
+                datePicker.backgroundColor = .accentColor
+                datePicker.setValue(UIColor.white, forKey: "textColor")
+            } else {
+                datePicker.backgroundColor = .accentColor
+                datePicker.setValue(UIColor.white, forKey: "textColor")
+            }
         }
 
-        datePicker.datePickerMode = .date
-        datePicker.locale = Locale(identifier: "ru_RU")
-        datePicker.tag = DatePublish.dateTo.rawValue
         textField.inputView = datePicker
+        datePicker.datePickerMode = .date
+        datePicker.tag = DatePublish.dateTo.rawValue
+
+        datePicker.locale = Locale(identifier: "ru_RU")
 
         datePicker.addTarget(self, action: #selector(setDate), for: .valueChanged)
         return textField
@@ -176,6 +200,11 @@ class FilterNewsViewController: BaseViewController {
         pickerCategory.dataSource = self
         pickerCategory.selectRow(4, inComponent: 0, animated: true)
         categoryTextField.inputView = pickerCategory
+    }
+
+    private func setDatePicker(datePicker: UIDatePicker) -> UIDatePicker {
+        
+        return datePicker
     }
 
     private func getDate(stringDate: String?) -> Date? {
