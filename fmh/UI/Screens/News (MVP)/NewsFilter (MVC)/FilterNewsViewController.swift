@@ -148,7 +148,7 @@ class FilterNewsViewController: BaseViewController {
         categoryTextField.inputView = pickerCategory
     }
 
-    private func setDatePicker(datePicker: UIDatePicker, tag: DatePublish, selectorAction: Selector ) {
+    private func setDatePicker(datePicker: UIDatePicker, tag: DatePublish, selectorAction: Selector) {
 
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels

@@ -17,7 +17,7 @@ protocol AddNewsPresenterProtocol: AnyObject {
 
 // MARK: - AddNewsPresenterDelegate
 protocol AddNewsPresenterDelegate: AnyObject {
-//    var presenter: AddNewsPresenterProtocol? { get set }
+
     func updatedNews()
     func createdNews()
 }

@@ -10,9 +10,7 @@ import UIKit
 class NewsDetailsViewController: BaseViewController {
 
     var presenter: NewsDetailsPresenterProtocol?
-    //private var filter = FilterNews()
-    //private var page = 0
-
+   
     private lazy var newsPullRefresh: UIRefreshControl = {
         let refreshControl = RefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)

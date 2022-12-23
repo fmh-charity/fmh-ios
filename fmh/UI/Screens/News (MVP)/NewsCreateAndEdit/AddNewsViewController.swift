@@ -8,9 +8,15 @@
 import UIKit
 
 class AddNewsViewController: BaseViewController {
+
+    //MARK: - Properties
+
     var idNews: Int?
     var destinationName: String?
     var presenter: AddNewsPresenterProtocol?
+
+    //MARK: - Private properties
+
     private var categoryValues = ["Объявление", "День рождения", "Зарплата", "Профсоюз", "Праздник", "Массаж", "Благодарность", "Нужна помощь"]
     private var categoryNewsId: Int?
     private var pickerCategory = UIPickerView()
@@ -22,6 +28,11 @@ class AddNewsViewController: BaseViewController {
     private var switchStackView = UIStackView()
     private var layoutView = UIView()
 
+    private enum DatePublish: Int {
+        case time
+        case date
+    }
+
     private var switchLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
@@ -30,9 +41,9 @@ class AddNewsViewController: BaseViewController {
     }()
 
     private var categoryTextField: UITextField = {
-        let textField = UITextField()
+        let textField = NoPasteUITextField()
         textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.font = UIFont.systemFont(ofSize: 18)
         textField.placeholder = "Категория    ▼"
         textField.layer.borderWidth = 1
         textField.layer.borderColor = NewsConstants.Collor.borderTF.cgColor
@@ -57,69 +68,11 @@ class AddNewsViewController: BaseViewController {
         switcher.addTarget(self, action: #selector(setActiveNews), for: .valueChanged)
         return switcher
     }()
+    private var datePicker = UIDatePicker()
+    private var timePicker = UIDatePicker()
 
-    private lazy var dateTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Дата публикации"
-        textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 16)
-        textField.layer.borderColor = NewsConstants.Collor.borderTF.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
-        let datePicker =  UIDatePicker()
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
-        } else {
-            // Fallback on earlier versions
-        }
-        datePicker.datePickerMode = .date
-        textField.inputView = datePicker
-
-        datePicker.addTarget(self, action: #selector(setDate), for: .valueChanged)
-        return textField
-    }()
-
-    @objc func setDate(sender: UIDatePicker) {
-        let dateFormate = DateFormatter()
-        dateFormate.dateStyle = .medium
-        dateFormate.timeStyle = .none
-        dateFormate.dateFormat = "dd.MM.yyyy"
-        dateTextField.text = dateFormate.string(from: sender.date)
-        self.view.endEditing(true)
-    }
-
-    private lazy var timeTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Время публикации"
-        textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 16)
-        textField.layer.borderColor = NewsConstants.Collor.borderTF.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
-
-        let datePicker =  UIDatePicker()
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
-        } else {
-            // Fallback on earlier versions
-        }
-
-        datePicker.datePickerMode = .time
-        datePicker.locale = Locale(identifier: "ru_RU")
-
-        textField.inputView = datePicker
-
-        datePicker.addTarget(self, action: #selector(setTime), for: .valueChanged)
-        return textField
-    }()
-    @objc func setTime(sender: UIDatePicker) {
-        let dateFormate = DateFormatter()
-        dateFormate.dateStyle = .none
-        dateFormate.timeStyle = .short
-        dateFormate.dateFormat = "HH:mm"
-        timeTextField.text = dateFormate.string(from: sender.date)
-        self.view.endEditing(true)
-    }
+    private lazy var dateTextField = NoPasteUITextField()
+    private lazy var timeTextField = NoPasteUITextField()
 
     private var descriptionTextView: UITextView = {
         let textView = UITextView()
@@ -138,6 +91,7 @@ class AddNewsViewController: BaseViewController {
         button.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         return button
     }()
+
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
@@ -149,6 +103,26 @@ class AddNewsViewController: BaseViewController {
         button.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
         return button
     }()
+
+//MARK: - Action
+
+    @objc func setDate(sender: UIDatePicker) {
+        let dateFormate = DateFormatter()
+        dateFormate.dateStyle = .medium
+        dateFormate.timeStyle = .none
+        dateFormate.dateFormat = "dd.MM.yyyy"
+        dateTextField.text = dateFormate.string(from: sender.date)
+        self.view.endEditing(true)
+    }
+
+    @objc func setTime(sender: UIDatePicker) {
+        let dateFormate = DateFormatter()
+        dateFormate.dateStyle = .none
+        dateFormate.timeStyle = .short
+        dateFormate.dateFormat = "HH:mm"
+        timeTextField.text = dateFormate.string(from: sender.date)
+        self.view.endEditing(true)
+    }
 
     @objc func saveAction () {
         print(#function)
@@ -179,6 +153,13 @@ class AddNewsViewController: BaseViewController {
 
         title = titleNavigation
         setBackGround(name: "bacground.main")
+
+        setDatePicker(datePicker: datePicker, tag: .date, selectorAction: #selector(setDate), mode: .date)
+        setDatePicker(datePicker: timePicker, tag: .time, selectorAction: #selector(setTime), mode: .time)
+
+        setTextField(textField: dateTextField, inputView: datePicker, placeHolder: "Дата публикации")
+        setTextField(textField: timeTextField, inputView: timePicker, placeHolder: "Время публикации")
+
         setTextView()
         setCategoryPicker()
         setView()
@@ -186,6 +167,39 @@ class AddNewsViewController: BaseViewController {
         setEnabelButtonSave()
         switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
 
+    }
+
+//MARK: - Private Methods
+
+    private func setDatePicker(datePicker: UIDatePicker, tag: DatePublish, selectorAction: Selector, mode: UIDatePicker.Mode) {
+
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+            datePicker.backgroundColor = .accentColor
+            datePicker.setValue(UIColor.white, forKey: "textColor")
+        } else {
+            datePicker.backgroundColor = .accentColor
+            datePicker.setValue(UIColor.white, forKey: "textColor")
+        }
+
+        datePicker.datePickerMode = mode
+        datePicker.tag = tag.rawValue
+
+        datePicker.locale = Locale(identifier: "ru_RU")
+
+        datePicker.addTarget(self, action: selectorAction, for: .valueChanged)
+    }
+
+    private func setTextField(textField: UITextField, inputView: UIDatePicker, placeHolder: String) {
+        textField.delegate = self
+        textField.tag = inputView.tag
+        textField.placeholder = placeHolder
+        textField.textAlignment = .center
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.layer.borderColor = NewsConstants.Collor.borderTF.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 5
+        textField.inputView = inputView
     }
 
     @objc func setActiveNews (newSwitch: UISwitch) {
@@ -266,6 +280,8 @@ class AddNewsViewController: BaseViewController {
     private func setCategoryPicker() {
         pickerCategory.delegate = self
         pickerCategory.dataSource = self
+        pickerCategory.backgroundColor = .accentColor
+        pickerCategory.setValue(UIColor.white, forKey: "textColor")
         categoryTextField.inputView = pickerCategory
     }
 
@@ -302,7 +318,7 @@ class AddNewsViewController: BaseViewController {
         dateStackView = UIStackView(frame: CGRect(origin: .zero, size: CGSize(width: layoutView.bounds.width, height: 60)))
         dateStackView.axis = .horizontal
         dateStackView.distribution = .fillEqually
-        dateStackView.spacing = 50
+        dateStackView.spacing = 40
         dateStackView.addArrangedSubview(dateTextField)
         dateStackView.addArrangedSubview(timeTextField)
 
@@ -323,13 +339,13 @@ class AddNewsViewController: BaseViewController {
 }
 
 //MARK: - Picker datasource
+
 extension AddNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print("numberOfRowsInComponent \(categoryValues.count)")
         return categoryValues.count
     }
 
@@ -346,6 +362,7 @@ extension AddNewsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 }
 
 //MARK: - extension for textView
+
 extension AddNewsViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView)
     {
@@ -379,6 +396,28 @@ extension AddNewsViewController: AddNewsPresenterDelegate {
         setEditNewsTextField()
         switchLabel.text = switcher.isOn ? "Активна" : "Не активна"
         setEnabelButtonSave()
+    }
+}
 
+//MARK: - UITextFieldDelegate
+
+extension AddNewsViewController: UITextFieldDelegate {
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch DatePublish(rawValue: textField.tag) {
+        case .date:
+            setDate(sender: datePicker)
+            datePicker.minimumDate = Date()
+            dateTextField.backgroundColor = .accentColor.withAlphaComponent(0.1)
+            timeTextField.backgroundColor = .white
+        case .time:
+            setTime(sender: timePicker)
+            timePicker.minimumDate = Date()
+            timeTextField.backgroundColor = .accentColor.withAlphaComponent(0.1)
+            dateTextField.backgroundColor = .white
+        case .none:
+            return true
+        }
+        return true
     }
 }
