@@ -145,6 +145,12 @@ extension SideMenuViewController: UITableViewDelegate {
         return 16
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .accentColor
+        return view
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
