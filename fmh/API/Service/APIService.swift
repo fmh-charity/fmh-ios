@@ -46,7 +46,9 @@ class APIService: NetworkService {
                 self.refreshedTokens() { [weak self] error in
                     if let error = error {
                         completionHandler(data, response, error)
-                        self?.didCaseInterruption?(["error":error])
+                        DispatchQueue.main.async {
+                            self?.didCaseInterruption?(["error":error])
+                        }
                         return
                     }
                     self?.fetch(with: request, retry: false, completionHandler: completionHandler)

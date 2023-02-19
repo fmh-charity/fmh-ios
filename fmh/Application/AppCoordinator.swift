@@ -97,6 +97,7 @@ fileprivate extension AppCoordinator {
     var session: URLSession {
         let configuration = URLSessionConfiguration.default
         configuration.requestCachePolicy = .reloadIgnoringCacheData // .reloadRevalidatingCacheData
+        configuration.httpAdditionalHeaders = ["Content-Type" : "application/json"]
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
         return session
     }

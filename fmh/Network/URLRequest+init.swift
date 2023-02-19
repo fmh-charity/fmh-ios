@@ -43,10 +43,6 @@ extension URLRequest {
         request.httpMethod = method.rawValue
         request.httpBody = body
         
-        ["application/json" : "Content-Type"].forEach {
-            request.addValue($0, forHTTPHeaderField: $1)
-        }
-        
         headers?.forEach { request.addValue($0, forHTTPHeaderField: $1) }
         
         self = request

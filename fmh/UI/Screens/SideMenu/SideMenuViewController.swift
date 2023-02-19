@@ -50,9 +50,6 @@ class SideMenuViewController: UIViewController {
     var profileUser: APIClient.UserProfile? {
         didSet {
             guard let profileUser else { return }
-            //            let f: String = profileUser.lastName
-            //            let i = String(profileUser.firstName.first ?? " ")
-            //            let o = String(profileUser.middleName.first ?? " ")
             self.bottomView.model = .init(.init(profileId: "ID: \(profileUser.id)",
                                                 profileImg: UIImage(systemName: "person"),
                                                 profileTitle: "\(profileUser.lastName) \(profileUser.firstName)",
