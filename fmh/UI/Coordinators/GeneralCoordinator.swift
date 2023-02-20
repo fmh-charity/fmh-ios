@@ -48,12 +48,12 @@ final class GeneralCoordinator: BaseCoordinator {
     }()
     
     private func performSideMenuNavigationControllerFlow() {
-        let naviganionController: SideMenuNavigationControllerProtocol = SideMenuNavigationController()
-        naviganionController.isNavigationBarHidden = false
-        naviganionController.coordinator = self
-        naviganionController.setUserPofile(apiClient?.userProfile)
-        naviganionController.onCompletion = onCompletion
-        router.setNavigationController(naviganionController)
+        let navigationController: SideMenuNavigationControllerProtocol = SideMenuNavigationController()
+        navigationController.isNavigationBarHidden = false
+        navigationController.coordinator = self
+        navigationController.setUserProfile(apiClient?.userProfile)
+        navigationController.onCompletion = onCompletion
+        router.setNavigationController(navigationController)
     }
     
 }
@@ -115,7 +115,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
     
     // Экраны которые не храним в "menuControllers". (каждый раз создаются)
     enum Screens {
-        case child(model: String) // ??? <- Возможно данные передавать еще ...
+        case child([String:Any]) // ??? <- Возможно данные передавать еще ...
         
         case profile
         case ourMission

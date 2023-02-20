@@ -11,7 +11,7 @@ import UIKit
 protocol SideMenuNavigationControllerProtocol: BaseNavigationController {
     var coordinator: GeneralCoordinatorProtocol? { get set }
     
-    func setUserPofile(_ userProfile: APIClient.UserProfile?)
+    func setUserProfile(_ userProfile: APIClient.UserProfile?)
     func setRootViewController(viewController: UIViewController, menu: SideMenuItems)
 }
 
@@ -160,7 +160,7 @@ final class SideMenuNavigationController: BaseNavigationController {
 //MARK: - SideMenuNavigationControllerProtocol
 extension SideMenuNavigationController: SideMenuNavigationControllerProtocol {
     
-    func setUserPofile(_ userProfile: APIClient.UserProfile?) {
+    func setUserProfile(_ userProfile: APIClient.UserProfile?) {
         sideMenuController.profileUser = userProfile
     }
     
