@@ -24,8 +24,6 @@ class BaseNavigationController: UINavigationController {
     
     private func configure() {
         
-        self.delegate = self
-        
         let app = UINavigationBarAppearance()
         app.titleTextAttributes = [.foregroundColor: UIColor.white]
         app.backgroundColor = .accentColor
@@ -34,7 +32,6 @@ class BaseNavigationController: UINavigationController {
         self.navigationBar.compactAppearance = app
         self.navigationBar.standardAppearance = app
         self.navigationBar.scrollEdgeAppearance = app
-        
     }
     
     override var childForStatusBarHidden: UIViewController? {
@@ -44,16 +41,4 @@ class BaseNavigationController: UINavigationController {
     override var childForStatusBarStyle: UIViewController? {
         topViewController
     }
-    
-}
-
-
-//MARK: - UINavigationControllerDelegate
-extension BaseNavigationController: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        let backBtn = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
-        viewController.navigationItem.backBarButtonItem = backBtn
-    }
-    
 }

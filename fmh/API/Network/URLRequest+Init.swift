@@ -1,5 +1,5 @@
 //
-//  URLRequest.swift
+//  URLRequest+Init.swift
 //  fmh
 //
 //  Created: 01.12.2022
@@ -12,7 +12,7 @@ enum HTTPMethod: String {
 }
 
 typealias HTTPQuery = [String : String?]
-typealias HTTPBody = Data // [String : Any]
+typealias HTTPBody = Data
 typealias HTTPHeaders = [String : String]
 
 extension URLRequest {
@@ -46,7 +46,5 @@ extension URLRequest {
         headers?.forEach { request.addValue($0, forHTTPHeaderField: $1) }
         
         self = request
-        
     }
-    
 }

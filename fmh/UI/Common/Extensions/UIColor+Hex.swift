@@ -1,5 +1,5 @@
 //
-//  UI.UIColor+hex.swift
+//  UIColor+Hex.swift
 //  fmh
 //
 //  Created: 11.12.2022

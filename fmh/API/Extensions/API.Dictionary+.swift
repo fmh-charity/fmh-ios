@@ -12,7 +12,6 @@ extension Dictionary where Key == String, Value == Any? {
     func data(_ options: JSONSerialization.WritingOptions = []) throws -> Data {
         return try JSONSerialization.data(withJSONObject: self, options: options)
     }
-
 }
 
 extension Dictionary where Key == String, Value == String? {
@@ -21,5 +20,4 @@ extension Dictionary where Key == String, Value == String? {
         guard !self.isEmpty else { return nil }
         return self.map { URLQueryItem(name: $0.key, value: $0.value) }
     }
-    
 }

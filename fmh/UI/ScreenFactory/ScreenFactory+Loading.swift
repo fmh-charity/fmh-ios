@@ -12,13 +12,12 @@ protocol LoadingScreenFactoryProtocol {
     func makeLoadingViewController() -> LoadingViewControllerProtocol
 }
 
-
 //MARK: - LoadingScreenFactoryProtocol
+
 extension ScreenFactory: LoadingScreenFactoryProtocol {
     
     func makeLoadingViewController() -> LoadingViewControllerProtocol {
         let viewController = LoadingViewController()
         return viewController
     }
-    
 }

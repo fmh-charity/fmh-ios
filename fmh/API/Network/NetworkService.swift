@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-//MARK: - Class
 class NetworkService {
     
     let urlSession: URLSession
@@ -17,8 +15,7 @@ class NetworkService {
         self.urlSession = urlSession
     }
     
-    /// [Raw]
-    func fetchRaw(with request: URLRequest?, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func dataTask(with request: URLRequest?, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         
         guard var request = request else {
             let _error = NSError(domain: "NetworkService", code: 1000, userInfo: [
@@ -33,14 +30,8 @@ class NetworkService {
         
         urlSession.dataTask(with: request) { data, response, error in
             
-            // Need loger ...
-            if let urlStr = response?.url, let codeStr = (response as? HTTPURLResponse)?.statusCode {
-                print("[ NetworkService.URL: \(urlStr), code: \(codeStr) ]")
-            }
-            if let token = request.allHTTPHeaderFields?["Authorization"] {
-                print("[ token: \(token) ]")
-            }
-            
+            Logger.print(request.cURL(pretty: false))
+
             guard error == nil, let response = response as? HTTPURLResponse else {
                 return completionHandler(nil, response, error)
             }
@@ -57,5 +48,4 @@ class NetworkService {
         }
         .resume()
     }
-    
 }

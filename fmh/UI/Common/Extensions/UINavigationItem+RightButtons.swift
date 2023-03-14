@@ -1,5 +1,5 @@
 //
-//  UI.UINavigationItem+rightButtons.swift
+//  UI.UINavigationItem+RightButtons.swift
 //  fmh
 //
 //  Created: 13.12.2022

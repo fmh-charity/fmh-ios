@@ -8,13 +8,10 @@
 import Foundation
 
 protocol AppCoordinatorProtocol: AnyObject {
-    
     func performLoadingFlow()
     func performAuthFlow()
     func performGeneralFlow()
-    
 }
-
 
 final class AppCoordinator: BaseCoordinator {
     
@@ -39,10 +36,10 @@ final class AppCoordinator: BaseCoordinator {
     private func selectFlow() {
         apiClient.isAuthorized() ? performGeneralFlow() : performAuthFlow()
     }
-
 }
 
 // MARK: AppCoordinatorProtocol -
+
 extension AppCoordinator: AppCoordinatorProtocol {
 
     func performLoadingFlow() {
@@ -80,11 +77,10 @@ extension AppCoordinator: AppCoordinatorProtocol {
         childAppend(coordinator)
         coordinator.start()
     }
-    
 }
 
-
 //MARK: - Cache
+
 fileprivate extension AppCoordinator {
     
      var cache: URLCache {
@@ -101,5 +97,4 @@ fileprivate extension AppCoordinator {
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
         return session
     }
-    
 }

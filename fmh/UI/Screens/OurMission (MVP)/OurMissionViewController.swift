@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol OurMissionViewControllerProtocol: BaseViewController {
-    
-}
-
-final class OurMissionViewController: BaseViewController, OurMissionViewControllerProtocol {
+final class OurMissionViewController: BaseViewController {
     
     var presenter: OurMissionPresenterProtocol?
     
@@ -90,7 +86,9 @@ final class OurMissionViewController: BaseViewController, OurMissionViewControll
 }
 
 // MARK: - DataSource
+
 extension OurMissionViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter?.dataArray.count ?? 0
     }

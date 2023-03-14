@@ -15,7 +15,6 @@ protocol OurMissionPresenterDelegate: AnyObject {
     
 }
 
-
 final class OurMissionPresenter {
 
     weak private var view: OurMissionPresenterDelegate?

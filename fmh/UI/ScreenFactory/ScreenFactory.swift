@@ -15,10 +15,10 @@ final class ScreenFactory {
     init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient
     }
-    
 }
 
-//MARK: - 
+//MARK: -
+
 extension ScreenFactory {
     
 }

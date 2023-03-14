@@ -13,7 +13,6 @@ protocol AuthCoordinatorProtocol: AnyObject {
     func performForgotPasswordScreenFlow()
 }
 
-
 final class AuthCoordinator: BaseCoordinator {
     
     weak var parentCoordinator: AppCoordinatorProtocol?
@@ -28,10 +27,10 @@ final class AuthCoordinator: BaseCoordinator {
     override func start() {
         performLoginScreenFlow()
     }
-    
 }
 
 // MARK: AuthCoordinatorProtocol -
+
 extension AuthCoordinator: AuthCoordinatorProtocol {
     
     func performLoginScreenFlow() {
@@ -53,6 +52,4 @@ extension AuthCoordinator: AuthCoordinatorProtocol {
         viewController.onCompletion = onCompletion
         router.push(viewController, animated: true)
     }
-    
 }
-

@@ -8,8 +8,8 @@
 import UIKit
 
 //MARK: - Routable
+
 protocol Routable: Presentable {
-    
     func getNavigationController() -> UINavigationController
     func setDefaultNavigationController()
     func setNavigationController(_ navigationController: UINavigationController)
@@ -20,10 +20,10 @@ protocol Routable: Presentable {
     func pop(animated: Bool)
     func popToRoot(animated: Bool)
     func dismiss(animated: Bool, completion: (() -> Void)?)
-
 }
 
 //MARK: - Presentable
+
 protocol Presentable: AnyObject {
     var toPresent: UIViewController { get }
 }
@@ -32,8 +32,8 @@ extension Presentable where Self: UIViewController {
     var toPresent: UIViewController { return self }
 }
 
-
 //MARK: - Class
+
 final class Router: NSObject {
 
     //TODO: ВОЗМОЖНО ПОТОМ КОНТРОЛЬ И ЛОГИРОВАНИЕ ПЕРЕХОДОВ ...
@@ -49,11 +49,10 @@ final class Router: NSObject {
     var toPresent: UIViewController {
         return navigationController
     }
-    
 }
 
-
 //MARK: - Routable
+
 extension Router: Routable {
     
     func getNavigationController() -> UINavigationController {
@@ -106,5 +105,4 @@ extension Router: Routable {
     func dismiss(animated: Bool, completion: (() -> Void)?) {
         navigationController.dismiss(animated: animated, completion: completion)
     }
-
 }

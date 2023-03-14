@@ -32,6 +32,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Helper.Core.TokenManager.clear()
         }
     }
-    
 }
-

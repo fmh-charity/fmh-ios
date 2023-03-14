@@ -29,7 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         func sceneDidEnterBackground(_ scene: UIScene) { }
         
     }
-    
 }
 
 
@@ -39,8 +38,6 @@ private extension SceneDelegate {
     func makeCoordinator() -> Coordinatable {
         let router = Router(window: window)
         let coordinator = AppCoordinator(router: router)
-        
         return coordinator
     }
-    
 }

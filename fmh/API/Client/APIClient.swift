@@ -11,13 +11,13 @@ protocol APIClientProtocol: APIServiceProtocol {
     var userProfile: APIClient.UserProfile? { get }
 
     func isAuthorized() -> Bool
-    func login(login: String, password: String, onComplition: ((Error?) -> Void)?)
+    func login(login: String, password: String, onCompletion: ((Error?) -> Void)?)
     func logout()
-    func updateUserProfile(onComplition: ((APIClient.UserProfile?, Error?) -> Void)?)
+    func updateUserProfile(onCompletion: ((APIClient.UserProfile?, Error?) -> Void)?)
 }
 
+//MARK: - Class
 
-//MARK: Class -
 final class APIClient: APIService {
     
     static var shared = APIClient(urlSession: URLSession.shared)
@@ -27,39 +27,39 @@ final class APIClient: APIService {
         super.init(urlSession: urlSession)
     }
     
-    var userProfile: UserProfile?
-
+    private(set) var userProfile: UserProfile?
 }
 
 
 //MARK: - APIClientProtocol
+
 extension APIClient: APIClientProtocol {
     
     func isAuthorized() -> Bool {
         !TokenManager.isEmpty()
     }
     
-    func login(login: String, password: String, onComplition: ((Error?) -> Void)? = nil) {
+    func login(login: String, password: String, onCompletion: ((Error?) -> Void)? = nil) {
         
         var request = try? URLRequest(.POST, path: "/api/fmh/authentication/login")
         request?.httpBody = try? ["login": login, "password": password].data()
         
         TokenManager.clear()
         
-        super.fetchRaw(with: request) { [weak self] data, _, error in
+        super.dataTask(with: request) { [weak self] data, _, error in
             if let tokens: DTOJWT = try? data?.decode() {
                 TokenManager.update(access: tokens.accessToken, refresh: tokens.refreshToken)
                 self?.updateUserProfile() { ui, error in
                     if let error = error {
-                        onComplition?(error)
+                        onCompletion?(error)
                         return
                     }
-                    onComplition?(nil)
+                    onCompletion?(nil)
                     return
                 }
                 return
             }
-            onComplition?(error)
+            onCompletion?(error)
             return
         }
         self.urlSession.configuration.urlCache?.removeAllCachedResponses()
@@ -71,28 +71,24 @@ extension APIClient: APIClientProtocol {
         self.urlSession.configuration.urlCache?.removeAllCachedResponses()
     }
     
-    func updateUserProfile(onComplition: ((UserProfile?, Error?) -> Void)? = nil) {
+    func updateUserProfile(onCompletion: ((UserProfile?, Error?) -> Void)? = nil) {
+        
         let request = try? URLRequest(.GET, path: "/api/fmh/authentication/userInfo")
-        self.fetch(request: request) { [weak self] data, _, error in
-            if let data = data {
-                do {
-                    let userInfo: DTOUserInfo = try data.decode()
-                    let _userProfile = UserProfile(isAdmin: userInfo.admin,
-                                                   id: userInfo.id,
-                                                   lastName: userInfo.lastName,
-                                                   firstName: userInfo.firstName,
-                                                   middleName: userInfo.middleName)
-                    self?.userProfile = _userProfile
-                    onComplition?(_userProfile, nil)
-                    return
-                } catch {
-                    onComplition?(nil, error)
-                    return
-                }
+        
+        self.fetchData(request: request) { [weak self] decodeData, response, error in
+            
+            if let userInfo: DTOUserInfo = decodeData {
+                let _userProfile = UserProfile(isAdmin: userInfo.admin,
+                                               id: userInfo.id,
+                                               lastName: userInfo.lastName,
+                                               firstName: userInfo.firstName,
+                                               middleName: userInfo.middleName)
+                self?.userProfile = _userProfile
+                onCompletion?(_userProfile, nil)
+                return
             }
-            onComplition?(nil, error)
-            return
+            
+            onCompletion?(nil, error)
         }
     }
-    
 }

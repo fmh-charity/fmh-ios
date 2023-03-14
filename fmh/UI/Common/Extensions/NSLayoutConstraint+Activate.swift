@@ -1,5 +1,5 @@
 //
-//  NSLayoutConstraint+.swift
+//  NSLayoutConstraint+Activate.swift
 //  fmh
 //
 //  Created: 15.12.2022

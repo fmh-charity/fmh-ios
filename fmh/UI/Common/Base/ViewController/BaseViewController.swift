@@ -12,9 +12,10 @@ protocol BaseViewControllerProtocol: Presentable {
     var onCompletion : (() -> Void)? { get set }
 }
 
-
 //MARK: - BaseViewController
+
 class BaseViewController: UIViewController, BaseViewControllerProtocol {
+    
     var onCompletion: (() -> Void)?
     
     private(set) var args: [String:Any] = [:]
@@ -32,16 +33,4 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
-    
-}
-
-//MARK: - alerts ...
-extension BaseViewController {
-    
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
 }

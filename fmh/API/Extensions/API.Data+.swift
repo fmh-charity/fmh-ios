@@ -16,5 +16,4 @@ extension Data {
     func decode<T: Decodable>(_ decoder: JSONDecoder = JSONDecoder()) throws -> T {
         return try decoder.decode(T.self, from: self)
     }
-    
 }

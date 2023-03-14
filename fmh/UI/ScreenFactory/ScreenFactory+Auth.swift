@@ -13,14 +13,13 @@ protocol AuthScreenFactoryProtocol {
     func makeForgotPasswordViewController() -> ForgotPasswordViewControllerProtocol
 }
 
-
 //MARK: - AuthScreenFactoryProtocol
+
 extension ScreenFactory: AuthScreenFactoryProtocol {
 
     func makeLoginViewController() -> LoginViewControllerProtocol {
-        let repository = AuthRepository(apiClient: apiClient)
         let viewController = LoginViewController()
-        let presenter = LoginPresenter(repository: repository, with: viewController)
+        let presenter = LoginPresenter(apiClient: apiClient, with: viewController)
         viewController.presenter = presenter
         return viewController
     }
@@ -36,5 +35,4 @@ extension ScreenFactory: AuthScreenFactoryProtocol {
         let viewController = ForgotPasswordViewController()
         return viewController
     }
-    
 }

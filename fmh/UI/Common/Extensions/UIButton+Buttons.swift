@@ -1,5 +1,5 @@
 //
-//  UI.UIButton+init.swift
+//  UIButton+Buttons.swift
 //  fmh
 //
 //  Created: 13.12.2022
@@ -19,6 +19,7 @@ extension UIButton {
 
 
 //MARK: - Prepared buttons ...
+
 extension UIButton {
     
     convenience init(type: _ButtonType, target: Any?, action: Selector, color: UIColor? = nil) {

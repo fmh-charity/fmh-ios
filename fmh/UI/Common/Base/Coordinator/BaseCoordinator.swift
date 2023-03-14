@@ -10,14 +10,13 @@ import Foundation
 protocol Coordinatable : AnyObject {
     var childCoordinators: [Coordinatable] { get set }
     var router: Routable { get }
-    
     var onCompletion: (() -> Void)? { get set }
     
     func start()
 }
 
-
 //MARK: - BaseCoordinator
+
 class BaseCoordinator: Coordinatable {
     
     var childCoordinators = [Coordinatable]()
@@ -33,10 +32,7 @@ class BaseCoordinator: Coordinatable {
         fatalError("CoordinatorBase: Need override in heir coordinator.")
     }
     
-}
-
-
-extension BaseCoordinator {
+    // MARK: - logic
     
     func childAppend(_ child: Coordinatable) {
         for element in childCoordinators {
@@ -48,5 +44,4 @@ extension BaseCoordinator {
     func childRemove(_ child: Coordinatable?) {
         childCoordinators = childCoordinators.filter { $0 !== child }
     }
-    
 }

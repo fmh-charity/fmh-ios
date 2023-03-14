@@ -11,7 +11,6 @@ protocol BaseRepositoryProtocol {
 
 }
 
-
 final class BaseRepository {
     
     private let apiClient: APIServiceProtocol //< - ??
@@ -19,18 +18,17 @@ final class BaseRepository {
     init(apiClient: APIServiceProtocol) { // <- ?
         self.apiClient = apiClient
     }
-    
 }
 
 //MARK: - BaseRepositoryProtocol
+
 extension BaseRepository: BaseRepositoryProtocol {
     
     func test(completion: @escaping (String?, Error?) -> ()) {
-        guard var request = try? URLRequest(path: "/api/...") else { return }
+        guard let request = try? URLRequest(path: "/api/...") else { return }
         apiClient.fetchData(request: request) { dec, re, er in
             completion(dec, er)
         }
         
     }
-    
 }

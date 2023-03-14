@@ -12,15 +12,14 @@ protocol GeneralCoordinatorProtocol: AnyObject {
     func perfomFlowByMenu(_ menu: SideMenuItems)
     /// Переход для всех экранов Screens
     func perfomScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType, animated: Bool, completion: (() -> ())?)
-
 }
+
 extension GeneralCoordinatorProtocol {
     /// Переход для всех экранов Screens
     func perfomScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
         perfomScreenFlow(screen, type: type, animated: animated, completion: completion)
     }
 }
-
 
 final class GeneralCoordinator: BaseCoordinator {
     
@@ -55,10 +54,10 @@ final class GeneralCoordinator: BaseCoordinator {
         navigationController.onCompletion = onCompletion
         router.setNavigationController(navigationController)
     }
-    
 }
 
 // MARK: GeneralCoordinatorProtocol -
+
 extension GeneralCoordinator: GeneralCoordinatorProtocol {
     
     /// Переход для экранов в SideMenu
@@ -85,11 +84,10 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
         
         case .ourMission:
             let controller = factory.makeOurMissionViewController()
-            menuNavController.setRootViewController(viewController: controller, menu: menu)
+            menuNavController.setRootViewController(viewController: controller.toPresent, menu: menu)
             
         default: break
         }
-        
     }
 
     enum PresentType { case push, present }
@@ -120,7 +118,6 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
         case profile
         case ourMission
     }
-    
 }
 
 
@@ -132,7 +129,6 @@ class TestVC: BaseViewController {
         view.backgroundColor = .orange
         title = "TestVC"
     }
-    
 }
 
 class TestVC2: BaseViewController {
@@ -142,5 +138,4 @@ class TestVC2: BaseViewController {
         view.backgroundColor = .yellow
         title = "TestVC"
     }
-    
 }

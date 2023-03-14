@@ -25,7 +25,6 @@ extension APIClient {
         }
         
     }
-    
 }
 
 extension APIClient {
@@ -33,5 +32,4 @@ extension APIClient {
     var dateUpdatedTokens: Date? {
         return UserDefaults.standard.object(forKey: "dateUpdatedTokens") as? Date // <- Возможно в др. место потом
     }
-    
 }

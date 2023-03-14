@@ -1,5 +1,5 @@
 //
-//  Encodable+.swift
+//  API.Encodable+Data.swift
 //  fmh
 //
 //  Created: 07.12.2022

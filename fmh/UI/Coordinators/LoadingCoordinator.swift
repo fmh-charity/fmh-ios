@@ -8,11 +8,8 @@
 import Foundation
 
 protocol LoadingCoordinatorProtocol: AnyObject {
-    
     func performLoadingScreenFlow()
-    
 }
-
 
 final class LoadingCoordinator: BaseCoordinator {
     
@@ -30,10 +27,10 @@ final class LoadingCoordinator: BaseCoordinator {
     override func start() {
         performLoadingScreenFlow()
     }
-    
 }
 
 // MARK: LoadingCoordinatorProtocol -
+
 extension LoadingCoordinator: LoadingCoordinatorProtocol {
 
     func performLoadingScreenFlow() {
@@ -55,7 +52,5 @@ extension LoadingCoordinator: LoadingCoordinatorProtocol {
                 viewController?.loadingServiceComplition(error: nil)
             }
         }
-  
     }
-    
 }
