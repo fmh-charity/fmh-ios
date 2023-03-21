@@ -13,7 +13,7 @@ protocol AuthScreenFactoryProtocol {
     func makeForgotPasswordViewController() -> ForgotPasswordViewControllerProtocol
 }
 
-//MARK: - AuthScreenFactoryProtocol
+// MARK: - AuthScreenFactoryProtocol
 
 extension ScreenFactory: AuthScreenFactoryProtocol {
 

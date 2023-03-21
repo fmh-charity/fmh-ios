@@ -13,27 +13,26 @@ protocol SideMenuViewControllerDelegate: AnyObject {
     func didSelect(itemMenu: SideMenuItems)
 }
 
+// MARK: - SideMenuViewController
 
 class SideMenuViewController: UIViewController {
     
-    weak var delegate: SideMenuViewControllerDelegate?
-    
     enum Section: Int { case general = 0, secondary, settings }
     
-    // В зависимости кто авторизован отображаем пункты меню или просто деактивируем !!!
+    weak var delegate: SideMenuViewControllerDelegate?
 
-    // TODO: Содержимое бокового меню
+    // TODO:  В зависимости кто авторизован отображаем пункты меню или просто деактивируем !!!
+
     private lazy var sections: [Section : [SideMenuItems]] = {
         [
             .general : [.home], // [.home, .news, .claim, .wishes, .chambers, .patients],
             .secondary : [.ourMission], //[.documents, .scheduleDuty, .staff, .ourMission],
             .settings : [], //[.instructions, .aboutHospis, .aboutApp]
         ]
-    }() { didSet { updeteData() } } // <- На всякий малоли из вне изменять.
+    }() { didSet { updateData() } } // <- На всякий малоли из вне изменять.
     
     var isHighlightedCellOff: Bool = false
     
-    // Выделение пункта меню
     var defaultHighlightedMenu: SideMenuItems = .home {
         didSet {
             guard !isHighlightedCellOff else { return }
@@ -57,6 +56,8 @@ class SideMenuViewController: UIViewController {
             )
         }
     }
+    
+    // MARK: - UI
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -91,18 +92,22 @@ class SideMenuViewController: UIViewController {
         return view
     }()
     
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .accentColor
         self.tableView.delegate = self
         self.tableView.dataSource = self
         configure()
-        updeteData()
+        updateData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    // MARK: - Setup UI
     
     private func configure() {
         self.view.addSubviews([topView, tableView, bottomView])
@@ -123,14 +128,15 @@ class SideMenuViewController: UIViewController {
         ])
     }
     
-    private func updeteData() {
-        self.tableView.reloadData()
-        
-    }
+    // MARK: - Logic
     
+    private func updateData() {
+        self.tableView.reloadData()
+    }
 }
 
 // MARK: - UITableViewDelegate
+
 extension SideMenuViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -147,10 +153,10 @@ extension SideMenuViewController: UITableViewDelegate {
         view.backgroundColor = .accentColor
         return view
     }
-    
 }
 
 // MARK: - UITableViewDataSource
+
 extension SideMenuViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -167,7 +173,6 @@ extension SideMenuViewController: UITableViewDataSource {
         guard let cell = cell as? SideMenuTableViewCell else { fatalError("Cell doesn't exist") }
         
         if let section = Section(rawValue: indexPath.section), let itemMenu = sections[section]?[indexPath.row] {
-            // Без выделения ячейки
             if isHighlightedCellOff {
                 cell.selectionStyle = .none
             } else {
@@ -180,7 +185,6 @@ extension SideMenuViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Не кликабелины (отключенные) ...
         let nonSelectsMenu: [SideMenuItems] = []
         
         if let section = Section(rawValue: indexPath.section), let itemMenu = sections[section]?[indexPath.row] {
@@ -188,6 +192,5 @@ extension SideMenuViewController: UITableViewDataSource {
             self.delegate?.didSelect(itemMenu: itemMenu)
         }
     }
-    
 }
 

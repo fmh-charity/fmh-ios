@@ -11,7 +11,9 @@ protocol LoadingCoordinatorProtocol: AnyObject {
     func performLoadingScreenFlow()
 }
 
-final class LoadingCoordinator: BaseCoordinator {
+// MARK: - LoadingCoordinator
+
+final class LoadingCoordinator: Coordinator {
     
     weak var parentCoordinator: AppCoordinatorProtocol?
     
@@ -29,7 +31,7 @@ final class LoadingCoordinator: BaseCoordinator {
     }
 }
 
-// MARK: LoadingCoordinatorProtocol -
+// MARK: - LoadingCoordinatorProtocol
 
 extension LoadingCoordinator: LoadingCoordinatorProtocol {
 
@@ -38,7 +40,7 @@ extension LoadingCoordinator: LoadingCoordinatorProtocol {
         viewController.onCompletion = onCompletion
         router.setWindowRoot(viewController)
     
-        //TODO: Если много нужно сервисов опрашивать во время загрузки добавляем очереди/группы
+        // TODO: Если много нужно сервисов опрашивать во время загрузки добавляем очереди/группы
         
         // Если пользователь ранее логинился то обновляем инфу.
         if apiClient?.isAuthorized() == true {

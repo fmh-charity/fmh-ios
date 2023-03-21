@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol ProfileViewControllerProtocol: BaseViewControllerProtocol {
+protocol ProfileViewControllerProtocol: ViewControllerProtocol {
     
 }
 
 
-final class ProfileViewController: BaseViewController, ProfileViewControllerProtocol {
+final class ProfileViewController: ViewController, ProfileViewControllerProtocol {
     
     
     override func viewDidLoad() {

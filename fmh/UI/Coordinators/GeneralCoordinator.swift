@@ -9,19 +9,21 @@ import Foundation
 
 protocol GeneralCoordinatorProtocol: AnyObject {
     /// Переход для экранов в SideMenu
-    func perfomFlowByMenu(_ menu: SideMenuItems)
+    func performFlowByMenu(_ menu: SideMenuItems)
     /// Переход для всех экранов Screens
-    func perfomScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType, animated: Bool, completion: (() -> ())?)
+    func performScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType, animated: Bool, completion: (() -> ())?)
 }
 
 extension GeneralCoordinatorProtocol {
     /// Переход для всех экранов Screens
-    func perfomScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
-        perfomScreenFlow(screen, type: type, animated: animated, completion: completion)
+    func performScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+        performScreenFlow(screen, type: type, animated: animated, completion: completion)
     }
 }
 
-final class GeneralCoordinator: BaseCoordinator {
+// MARK: - GeneralCoordinator
+
+final class GeneralCoordinator: Coordinator {
     
     weak var parentCoordinator: AppCoordinatorProtocol?
     
@@ -36,10 +38,10 @@ final class GeneralCoordinator: BaseCoordinator {
     
     override func start() {
         performSideMenuNavigationControllerFlow()
-        perfomFlowByMenu(.home) //<- По умолчанию
+        performFlowByMenu(.home) //<- По умолчанию
     }
     
-    //TODO: - ХРАНИМЫЕ КОНТРОЛЛЕРЫ КАК В ТАБ БАРАХ!?
+    // TODO: - ХРАНИМЫЕ КОНТРОЛЛЕРЫ КАК В ТАБ БАРАХ!?
     private lazy var menuControllers: [SideMenuItems : Presentable] = {
         [
             .home     : TestVC() ,
@@ -56,12 +58,12 @@ final class GeneralCoordinator: BaseCoordinator {
     }
 }
 
-// MARK: GeneralCoordinatorProtocol -
+// MARK: - GeneralCoordinatorProtocol
 
 extension GeneralCoordinator: GeneralCoordinatorProtocol {
     
     /// Переход для экранов в SideMenu
-    func perfomFlowByMenu(_ menu: SideMenuItems) {
+    func performFlowByMenu(_ menu: SideMenuItems) {
         
         let menuNavController = (router.getNavigationController() as? SideMenuNavigationControllerProtocol)
         guard let menuNavController = menuNavController else { return }
@@ -80,7 +82,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
             
             // ... тут добавляем менюшные экраны + кликабельные элементы (SideMenuItems)
             
-        case .profile: perfomScreenFlow(.profile, type: .present)
+        case .profile: performScreenFlow(.profile, type: .present)
         
         case .ourMission:
             let controller = factory.makeOurMissionViewController()
@@ -92,7 +94,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
 
     enum PresentType { case push, present }
     /// Переход для всех экранов Screens
-    func perfomScreenFlow(_ screenType: Screens, type: PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+    func performScreenFlow(_ screenType: Screens, type: PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
         
         var screen: Presentable?
         
@@ -122,7 +124,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
 
 
 
-class TestVC: BaseViewController {
+class TestVC: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +133,7 @@ class TestVC: BaseViewController {
     }
 }
 
-class TestVC2: BaseViewController {
+class TestVC2: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

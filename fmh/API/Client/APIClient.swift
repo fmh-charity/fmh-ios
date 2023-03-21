@@ -16,13 +16,14 @@ protocol APIClientProtocol: APIServiceProtocol {
     func updateUserProfile(onCompletion: ((APIClient.UserProfile?, Error?) -> Void)?)
 }
 
-//MARK: - Class
+// MARK: - Class
 
 final class APIClient: APIService {
     
     static var shared = APIClient(urlSession: URLSession.shared)
     
-    // ЕСЛИ ОСТАВЛЯЕМ [ shared ] - ТО ПРИВАТНЫЙ ОСТАВЛЯЕМ init() !!!
+    // TODO: ЕСЛИ ОСТАВЛЯЕМ [ shared ] - ТО ПРИВАТНЫЙ ОСТАВЛЯЕМ init() !!!
+    
     override init(urlSession: URLSession) {
         super.init(urlSession: urlSession)
     }
@@ -31,7 +32,7 @@ final class APIClient: APIService {
 }
 
 
-//MARK: - APIClientProtocol
+// MARK: - APIClientProtocol
 
 extension APIClient: APIClientProtocol {
     

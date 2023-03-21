@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 
-
 final class SideMenuTopView: UIView {
+    
+    // MARK: - UI
     
     private lazy var imgView: UIImageView = {
         let imgView = UIImageView()
@@ -27,6 +28,8 @@ final class SideMenuTopView: UIView {
         return imgView
     }()
     
+    // MARK: - LifeCycle
+    
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +39,8 @@ final class SideMenuTopView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Setup UI
     
     private func configure() {
         backgroundColor = .clear
@@ -55,5 +60,4 @@ final class SideMenuTopView: UIView {
 //            divider.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -9),
         ])
     }
-    
 }

@@ -20,7 +20,7 @@ final class BaseRepository {
     }
 }
 
-//MARK: - BaseRepositoryProtocol
+// MARK: - BaseRepositoryProtocol
 
 extension BaseRepository: BaseRepositoryProtocol {
     

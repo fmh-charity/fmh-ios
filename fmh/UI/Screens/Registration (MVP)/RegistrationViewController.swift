@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol RegistrationViewControllerProtocol: BaseViewControllerProtocol {
+protocol RegistrationViewControllerProtocol: ViewControllerProtocol {
     
 }
 
 
-final class RegistrationViewController: BaseViewController, RegistrationViewControllerProtocol {
+final class RegistrationViewController: ViewController, RegistrationViewControllerProtocol {
     
     var presenter: RegistrationPresenterProtocol?
     
@@ -36,7 +36,7 @@ final class RegistrationViewController: BaseViewController, RegistrationViewCont
 }
 
 
-//MARK: - RegistrationPresenterDelegate
+// MARK: - RegistrationPresenterDelegate
 extension RegistrationViewController: RegistrationPresenterDelegate {
     
 }

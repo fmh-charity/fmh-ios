@@ -8,11 +8,10 @@
 import Foundation
 
 protocol LoadingScreenFactoryProtocol {
-    /// Make  LoadingViewController
     func makeLoadingViewController() -> LoadingViewControllerProtocol
 }
 
-//MARK: - LoadingScreenFactoryProtocol
+// MARK: - LoadingScreenFactoryProtocol
 
 extension ScreenFactory: LoadingScreenFactoryProtocol {
     

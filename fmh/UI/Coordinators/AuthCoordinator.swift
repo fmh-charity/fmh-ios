@@ -13,7 +13,9 @@ protocol AuthCoordinatorProtocol: AnyObject {
     func performForgotPasswordScreenFlow()
 }
 
-final class AuthCoordinator: BaseCoordinator {
+// MARK: - AuthCoordinator
+
+final class AuthCoordinator: Coordinator {
     
     weak var parentCoordinator: AppCoordinatorProtocol?
     
@@ -29,7 +31,7 @@ final class AuthCoordinator: BaseCoordinator {
     }
 }
 
-// MARK: AuthCoordinatorProtocol -
+// MARK: - AuthCoordinatorProtocol
 
 extension AuthCoordinator: AuthCoordinatorProtocol {
     

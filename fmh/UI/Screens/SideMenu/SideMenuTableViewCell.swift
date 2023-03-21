@@ -16,11 +16,12 @@ class SideMenuTableViewCell: UITableViewCell {
     var model: Model? {
         didSet {
             guard let model else { return }
-//            self.imgView.image = model.img?.withRenderingMode(.alwaysTemplate)
             self.imgView.image = model.img?.withTintColor(.white, renderingMode: .alwaysTemplate)
             self.titleLabel.text = model.title
         }
     }
+    
+    // MARK: - UI
     
     private lazy var imgView: UIImageView = {
         let imageView = UIImageView()
@@ -46,6 +47,8 @@ class SideMenuTableViewCell: UITableViewCell {
         return view
     }()
     
+    // MARK: - LifeCycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -56,6 +59,8 @@ class SideMenuTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Setup UI
     
     func setLayouts() {
         self.selectedBackgroundView = selectedBackgroundViewCell
@@ -80,10 +85,10 @@ class SideMenuTableViewCell: UITableViewCell {
         selectionStyle = .default
     }
     
+    // MARK: - Model
+    
     struct Model {
         let img: UIImage?
         let title: String
     }
-    
 }
-

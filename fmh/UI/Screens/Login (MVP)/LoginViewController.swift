@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol LoginViewControllerProtocol: BaseViewControllerProtocol {
+protocol LoginViewControllerProtocol: ViewControllerProtocol {
     var coordinator: AuthCoordinatorProtocol? { get set }
 }
 
-final class LoginViewController: BaseViewController, LoginViewControllerProtocol {
+final class LoginViewController: ViewController, LoginViewControllerProtocol {
     
-    //TODO: Возможно в MVC сделать (Если контроллер не сильно большой будет)
+    // TODO: Возможно в MVC сделать (Если контроллер не сильно большой будет)
     
     var presenter: LoginPresenterProtocol?
     
@@ -147,7 +147,7 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
         return view
     }()
     
-    //TODO: Сделать общим элементом кастомным с цветом
+    // TODO: Сделать общим элементом кастомным с цветом
     private lazy var activityIndicator : UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.color = .accentColor
@@ -177,7 +177,7 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
         .lightContent
     }
     
-    //MARK: - Configure ViewController
+    // MARK: - Configure ViewController
     private func configure() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -202,7 +202,7 @@ final class LoginViewController: BaseViewController, LoginViewControllerProtocol
     }
 
     
-    //MARK: - Actions
+    // MARK: - Actions
     @objc private func keyboardShow(notification: NSNotification) {
         if let keyboardFrame = notification.userInfo?["UIKeyboardFrameBeginUserInfoKey"] as? CGRect {
             self.view.layoutIfNeeded()

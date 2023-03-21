@@ -29,7 +29,7 @@ final class LoginPresenter {
 }
 
 
-//MARK: - LoginPresenterProtocol
+// MARK: - LoginPresenterProtocol
 extension LoginPresenter: LoginPresenterProtocol {
     
     func login(login: String, password: String, completion: @escaping (Bool, String?) -> Void ) {

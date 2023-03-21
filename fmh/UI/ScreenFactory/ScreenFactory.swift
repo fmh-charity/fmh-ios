@@ -16,9 +16,3 @@ final class ScreenFactory {
         self.apiClient = apiClient
     }
 }
-
-//MARK: -
-
-extension ScreenFactory {
-    
-}

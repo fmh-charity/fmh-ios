@@ -27,7 +27,7 @@ final class RegistrationPresenter {
 }
 
 
-//MARK: - RegistrationPresenterProtocol
+// MARK: - RegistrationPresenterProtocol
 extension RegistrationPresenter: RegistrationPresenterProtocol {
     
 }

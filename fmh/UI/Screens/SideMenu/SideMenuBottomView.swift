@@ -26,15 +26,7 @@ final class SideMenuBottomView: UIView {
     var logoutDidTap: (() -> Void)?
     var profileDidTap: (() -> Void)?
     
-    init() {
-        super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
-        setLayouts()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - UI
     
     private lazy var appVersionLabel: UILabel = {
         let label = UILabel()
@@ -173,6 +165,20 @@ final class SideMenuBottomView: UIView {
         return stack
     }()
     
+    // MARK: - LifeCycle
+    
+    init() {
+        super.init(frame: .zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        setLayouts()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Setup UI
+    
     private func setLayouts() {
         backgroundColor = .clear
 
@@ -184,11 +190,14 @@ final class SideMenuBottomView: UIView {
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
             
         ])
-        
     }
+    
+    // MARK: - Actions
     
     @objc private func logoutButtonTap() { logoutDidTap?() }
     @objc private func profileTap() { profileDidTap?() }
+    
+    // MARK: - Model
     
     struct Model {
         let profileId: String
@@ -196,36 +205,4 @@ final class SideMenuBottomView: UIView {
         let profileTitle: String
         let profileSubTitle: String
     }
-    
 }
-
-
-/*
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct SideMenuBottomViewRepresentable: UIViewRepresentable {
-    typealias UIViewType = SideMenuBottomProfileCardView
-    
-    func makeUIView(context: Context) -> UIViewType {
-        let view = SideMenuBottomProfileCardView()
-        let img = UIImage(systemName: "person")
-        view.model = .init(profileImg: img, profileTitle: "Иванов Иван", profileSubTitle: "Администратор")
-        view.backgroundColor = .init(hex: "#01A19F")
-        return view
-    }
-
-    func updateUIView(_ uiView: SideMenuBottomProfileCardView, context: Context) { }
-}
-
-struct BackgroundViewContainer_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SideMenuBottomViewRepresentable().colorScheme(.light)
-        }.previewLayout(.fixed(width: 280, height: 150))
-            
-    }
-}
-
-#endif
-*/

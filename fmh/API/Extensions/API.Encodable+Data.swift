@@ -12,5 +12,4 @@ extension Encodable {
     func data(_ encoder: JSONEncoder = JSONEncoder()) throws -> Data {
         return try encoder.encode(self)
     }
-    
 }

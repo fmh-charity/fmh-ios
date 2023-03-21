@@ -7,9 +7,11 @@
 
 import UIKit
 
-final class OurMissionViewController: BaseViewController {
+final class OurMissionViewController: ViewController {
     
     var presenter: OurMissionPresenterProtocol?
+    
+    // MARK: - UI
     
     private let taglineView: UIView = {
         let view = UIView()
@@ -42,6 +44,8 @@ final class OurMissionViewController: BaseViewController {
         return view
     }()
     
+    // MARK: - LifeCycle
+    
     override func loadView() {
         super.loadView()
         setupUI()
@@ -56,7 +60,8 @@ final class OurMissionViewController: BaseViewController {
         customTableView.delegate = self
     }
     
-    // MARK: - Constraints
+    // MARK: - Setup UI
+    
     private func setupUI() {
         view.addSubview(taglineView)
         taglineView.addSubview(taglineLabel)
@@ -111,7 +116,8 @@ extension OurMissionViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//MARK: - UIModuleOurMissionPresenterDelegate
+// MARK: - UIModuleOurMissionPresenterDelegate
+
 extension OurMissionViewController: OurMissionPresenterDelegate {
     
 }

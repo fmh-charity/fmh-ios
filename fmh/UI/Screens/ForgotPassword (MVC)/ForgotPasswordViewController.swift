@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol ForgotPasswordViewControllerProtocol: BaseViewControllerProtocol {
+protocol ForgotPasswordViewControllerProtocol: ViewControllerProtocol {
     
 }
 
 
-final class ForgotPasswordViewController: BaseViewController, ForgotPasswordViewControllerProtocol {
+final class ForgotPasswordViewController: ViewController, ForgotPasswordViewControllerProtocol {
     
     
     override func viewDidLoad() {

@@ -9,15 +9,14 @@ import Foundation
 
 protocol GeneralScreenFactoryProtocol {
     func makeProfileViewController() -> ProfileViewControllerProtocol
-    func makeOurMissionViewController() -> BaseViewControllerProtocol
+    func makeOurMissionViewController() -> ViewControllerProtocol
 }
 
-//MARK: - GeneralScreenFactoryProtocol
+// MARK: - GeneralScreenFactoryProtocol
 
 extension ScreenFactory: GeneralScreenFactoryProtocol {
     
-    /// Make OurMission viewController
-    func makeOurMissionViewController() -> BaseViewControllerProtocol {
+    func makeOurMissionViewController() -> ViewControllerProtocol {
         let viewController = OurMissionViewController()
         let presenter = OurMissionPresenter(view: viewController)
         viewController.presenter = presenter

@@ -8,25 +8,18 @@
 import Foundation
 import UIKit
 
-protocol SideMenuNavigationControllerProtocol: BaseNavigationController {
+protocol SideMenuNavigationControllerProtocol: NavigationController {
     var coordinator: GeneralCoordinatorProtocol? { get set }
     
     func setUserProfile(_ userProfile: APIClient.UserProfile?)
     func setRootViewController(viewController: UIViewController, menu: SideMenuItems)
 }
 
+// MARK: - SideMenuNavigationController
 
-final class SideMenuNavigationController: BaseNavigationController {
+final class SideMenuNavigationController: NavigationController {
     
     weak var coordinator: GeneralCoordinatorProtocol?
-    
-    private lazy var sideMenuController: SideMenuViewController = {
-        let sideMenuController = SideMenuViewController()
-        sideMenuController.view.translatesAutoresizingMaskIntoConstraints = false
-        sideMenuController.delegate = self
-        sideMenuController.isHighlightedCellOff = false
-        return sideMenuController
-    }()
     
     private var sideMenuRevealWidth: CGFloat = UIScreen.main.bounds.width * 0.7
     private var sideMenuTrailingConstraint: NSLayoutConstraint?
@@ -36,9 +29,31 @@ final class SideMenuNavigationController: BaseNavigationController {
         }
     }
     
+    // MARK: - UI
+    
+    private lazy var sideMenuController: SideMenuViewController = {
+        let sideMenuController = SideMenuViewController()
+        sideMenuController.view.translatesAutoresizingMaskIntoConstraints = false
+        sideMenuController.delegate = self
+        sideMenuController.isHighlightedCellOff = false
+        return sideMenuController
+    }()
+    
+    private lazy var shadowView: UIView = {
+        let view = UIView(frame: self.view.bounds)
+        view.backgroundColor = .black
+        view.alpha = 0.0
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(shadowTap))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        view.addGestureRecognizer(tapGestureRecognizer)
+        return view
+    }()
+    
+    // MARK: - LifeCycle
+    
     override init() {
         super.init()
-        configure()
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,14 +64,7 @@ final class SideMenuNavigationController: BaseNavigationController {
         super.viewDidLoad()
         sideMenuController.defaultHighlightedMenu = .home
     }
-    
-    private func configure() {
-        view.backgroundColor = .clear // <- Возможно глывный бекгроунд ?!
-        configureLayuotSideMenuController()
-    }
 
-    
-    //MARK: - StatusBarStyle
     override var childForStatusBarHidden: UIViewController? {
         isSideMenuExpanded ? nil : topViewController
     }
@@ -64,8 +72,7 @@ final class SideMenuNavigationController: BaseNavigationController {
     override var prefersStatusBarHidden: Bool {
         true
     }
-    
-    /// use child status bar style. def=false
+
     var isChildForStatusBarStyle: Bool = false {
         didSet{
             setNeedsStatusBarAppearanceUpdate()
@@ -79,9 +86,14 @@ final class SideMenuNavigationController: BaseNavigationController {
         .lightContent
     }
 
+    private func commonInit() {
+        view.backgroundColor = .clear // <- Возможно глывный бекгроунд ?!
+        configureLayoutSideMenuController()
+    }
     
-    //MARK: - Configure side menu
-    private func configureLayuotSideMenuController() {
+    // MARK: - Setup UI
+    
+    private func configureLayoutSideMenuController() {
         addChild(sideMenuController)
         view.insertSubview(sideMenuController.view, aboveSubview: view)
         sideMenuController.didMove(toParent: self)
@@ -95,32 +107,24 @@ final class SideMenuNavigationController: BaseNavigationController {
         sideMenuTrailingConstraint?.isActive = true
     }
     
-    private lazy var shadowView: UIView = {
-        let view = UIView(frame: self.view.bounds)
-        view.backgroundColor = .black
-        view.alpha = 0.0
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(shadowTap))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        view.addGestureRecognizer(tapGestureRecognizer)
-        return view
-    }()
+    // MARK: - Actions
     
     @objc private func shadowTap() {
         setSideMenuState(isShow: false)
     }
     
+    // MARK: - Logic animate
+    
     private func setSideMenuState(isShow: Bool) {
         if isShow {
             self.isSideMenuExpanded = true
             animateSideMenu(true)
-            // Animate Shadow (Fade In)
             UIView.animate(withDuration: 0.4) { [unowned self] in
                 view.insertSubview(self.shadowView, belowSubview: self.sideMenuController.view)
                 self.shadowView.alpha = 0.5
             }
         } else {
             animateSideMenu(false)
-            // Animate Shadow (Fade Out)
             UIView.animate(withDuration: 0.4) {
                 self.shadowView.alpha = 0.0
             } completion: { [unowned self] _ in
@@ -140,12 +144,10 @@ final class SideMenuNavigationController: BaseNavigationController {
         })
     }
     
+    // MARK: - Configure child view controllers
     
-    //MARK: - Configure child view controllers
     private func setViewController(viewController: UIViewController, animated: Bool = false) {
-        setViewControllers([viewController], animated: animated) //TODO: <- Нужна кастомная анимация появления, а не выезд !
-        
-        // All child views add menu button!
+        setViewControllers([viewController], animated: animated) // TODO: <- Нужна кастомная анимация появления, а не выезд !
         let menuBtn = UIBarButtonItem(type: .menu, target: self, action: #selector(revealSideMenu))
         viewController.navigationItem.leftBarButtonItem = menuBtn
     }
@@ -153,11 +155,11 @@ final class SideMenuNavigationController: BaseNavigationController {
     @objc private func revealSideMenu() {
         setSideMenuState(isShow: !isSideMenuExpanded)
     }
-    
 }
 
 
-//MARK: - SideMenuNavigationControllerProtocol
+// MARK: - SideMenuNavigationControllerProtocol
+
 extension SideMenuNavigationController: SideMenuNavigationControllerProtocol {
     
     func setUserProfile(_ userProfile: APIClient.UserProfile?) {
@@ -168,31 +170,28 @@ extension SideMenuNavigationController: SideMenuNavigationControllerProtocol {
         sideMenuController.defaultHighlightedMenu = menu
         self.setViewController(viewController: viewController)
     }
-    
 }
 
 
-//MARK: - SideMenuViewControllerDelegate
+// MARK: - SideMenuViewControllerDelegate
+
 extension SideMenuNavigationController: SideMenuViewControllerDelegate {
     
     func didSelect(itemMenu: SideMenuItems) {
-        
-        if itemMenu == .logout { logout(); return } //<- Не сворачивая меню
+        if itemMenu == .logout { logout(); return } // <- Не сворачивая меню
         
         setSideMenuState(isShow: false)
-        coordinator?.perfomFlowByMenu(itemMenu)
+        coordinator?.performFlowByMenu(itemMenu)
     }
     
     private func logout() {
         
-        //TODO: ЗАПИЛИТЬ КАСТОМНЫЙ ПОПАП !!!
+        // TODO: ЗАПИЛИТЬ КАСТОМНЫЙ ПОПАП !!!
         
         let message = "Вы действительно хотите выйти!"
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Выйти", style: .cancel) {[weak self] _ in self?.onCompletion?() })
         alert.addAction(UIAlertAction(title: "Закрыть", style: .default))
         self.present(alert, animated: true, completion: nil)
-        
     }
-    
 }

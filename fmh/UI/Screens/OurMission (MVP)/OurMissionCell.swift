@@ -11,6 +11,8 @@ class OurMissionCell: UITableViewCell {
 
     class var identifier: String { return String(describing: self) }
     
+    // MARK: - UI
+    
     private let cellView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +41,7 @@ class OurMissionCell: UITableViewCell {
         view.layer.cornerRadius = 5
         return view
     }()
+    
     private let taglineLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +60,7 @@ class OurMissionCell: UITableViewCell {
         label.lineBreakMode = .byWordWrapping
         return label
     }()
+    
     private let arrowView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +69,7 @@ class OurMissionCell: UITableViewCell {
         view.tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.54)
         return view
     }()
+    
     private let leafView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +85,7 @@ class OurMissionCell: UITableViewCell {
     }
     
     // MARK: - Configure
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         taglineView.backgroundColor = nil
@@ -98,11 +104,8 @@ class OurMissionCell: UITableViewCell {
         setupUI()
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     // MARK: - Setup UI
+    
     private func setupUI() {
         self.backgroundColor = UIColor.clear
         self.selectionStyle = .none
@@ -151,6 +154,7 @@ class OurMissionCell: UITableViewCell {
     }
 
     // MARK: - Actions
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

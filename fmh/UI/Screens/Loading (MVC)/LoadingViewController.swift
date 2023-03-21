@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol LoadingViewControllerProtocol: BaseViewControllerProtocol {
+protocol LoadingViewControllerProtocol: ViewControllerProtocol {
     func loadingServiceComplition(error: Error?)
 }
 
 
-final class LoadingViewController: BaseViewController {
+final class LoadingViewController: ViewController {
     
     // Когда все сервисы завершились без ошибок.
     private var isLoadingServiceComplitionOk: Bool = false
@@ -93,7 +93,7 @@ final class LoadingViewController: BaseViewController {
 }
 
 
-//MARK: UI - Content
+// MARK: UI - Content
 
 fileprivate extension LoadingViewController {
     

@@ -39,11 +39,11 @@ enum RoleModel {
 //        }
         
     }
-    
 }
 
 
 // MARK: - Роли пользователей
+
 extension RoleModel {
     
     enum Role: String {
@@ -54,10 +54,10 @@ extension RoleModel {
         case patient                = "Пациент"
         case guest                  = "Гость"
     }
-    
 }
 
 // MARK: - Точки доступа
+
 extension RoleModel {
     
     enum Access: String {
@@ -79,5 +79,4 @@ extension RoleModel {
         // Доступы основные ...
         
     }
-    
 }

@@ -33,6 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 // MARK: - Private methods
+
 private extension SceneDelegate {
     
     func makeCoordinator() -> Coordinatable {
