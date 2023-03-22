@@ -30,6 +30,7 @@ class PasswordTextField: UITextField {
     }
     
     // MARK: - Private functions
+    
     private func commonInit () {
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 0.5
@@ -51,7 +52,6 @@ class PasswordTextField: UITextField {
         rightViewMode = .always
         
         rightButtonView.addTarget(self, action: #selector(toggleSecure), for: .touchUpInside)
-        
     }
     
     private var isSecure: Bool = true {
@@ -89,6 +89,7 @@ class PasswordTextField: UITextField {
     }()
     
     // MARK: - override functions
+    
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.leftViewRect(forBounds: bounds)
         return rect.inset(by: .init(top: 0, left: bounds.height/2, bottom: 0, right: 0))
@@ -109,5 +110,4 @@ class PasswordTextField: UITextField {
         let rect = super.editingRect(forBounds: bounds)
         return rect.inset(by: .init(top: 0, left: bounds.height/2, bottom: 0, right: 0))
     }
-    
 }

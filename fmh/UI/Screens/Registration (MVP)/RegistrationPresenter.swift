@@ -15,7 +15,6 @@ protocol RegistrationPresenterDelegate: AnyObject {
     
 }
 
-
 final class RegistrationPresenter {
     
     weak private var view: RegistrationPresenterDelegate?
@@ -23,7 +22,6 @@ final class RegistrationPresenter {
     init(with view: RegistrationPresenterDelegate) {
         self.view = view
     }
-    
 }
 
 

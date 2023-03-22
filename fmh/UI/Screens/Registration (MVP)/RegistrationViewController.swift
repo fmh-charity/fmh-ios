@@ -12,7 +12,6 @@ protocol RegistrationViewControllerProtocol: ViewControllerProtocol {
     
 }
 
-
 final class RegistrationViewController: ViewController, RegistrationViewControllerProtocol {
     
     var presenter: RegistrationPresenterProtocol?
@@ -32,7 +31,6 @@ final class RegistrationViewController: ViewController, RegistrationViewControll
     private func configure() {
         
     }
-    
 }
 
 

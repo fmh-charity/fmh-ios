@@ -9,14 +9,13 @@ import Foundation
 import UIKit
 
 protocol LoadingViewControllerProtocol: ViewControllerProtocol {
-    func loadingServiceComplition(error: Error?)
+    func loadingServiceCompletion(error: Error?)
 }
-
 
 final class LoadingViewController: ViewController {
     
     // Когда все сервисы завершились без ошибок.
-    private var isLoadingServiceComplitionOk: Bool = false
+    private var isLoadingServiceCompletionOk: Bool = false
 
     private var timer: Timer?
     
@@ -27,7 +26,7 @@ final class LoadingViewController: ViewController {
     
     private var countShows: Int = 0 {
         didSet {
-            if isLoadingServiceComplitionOk && countShows > 0 {
+            if isLoadingServiceCompletionOk && countShows > 0 {
                 self.deleteTimer()
                 self.onCompletion?()
             }
@@ -89,9 +88,7 @@ final class LoadingViewController: ViewController {
         guard let model = model else { return }
         content.model = .init(color: model.accentColor, imgNme: model.imgName, discription: model.description)
     }
-    
 }
-
 
 // MARK: UI - Content
 
@@ -193,17 +190,16 @@ fileprivate extension LoadingViewController {
         }
         
     }
-    
 }
 
+// MARK: - LoadingViewControllerProtocol
 
 extension LoadingViewController: LoadingViewControllerProtocol {
     
-    func loadingServiceComplition(error: Error?) {
-        guard let _ = error else { self.isLoadingServiceComplitionOk = true; return }
+    func loadingServiceCompletion(error: Error?) {
+        guard let _ = error else { self.isLoadingServiceCompletionOk = true; return }
         let errorStr = "При загрузке приложения произошла ошибка.\nПопробуйте перезагрузить приложение!"
         self.showAlert(title: "Ошибка", message: errorStr)
         self.deleteTimer()
     }
-    
 }

@@ -86,5 +86,4 @@ extension LoadingViewController {
                accentColor: .init(hex: "#FFF0E7")),
         ]
     }
-    
 }

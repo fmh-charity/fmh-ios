@@ -148,6 +148,7 @@ final class LoginViewController: ViewController, LoginViewControllerProtocol {
     }()
     
     // TODO: Сделать общим элементом кастомным с цветом
+    
     private lazy var activityIndicator : UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.color = .accentColor
@@ -178,6 +179,7 @@ final class LoginViewController: ViewController, LoginViewControllerProtocol {
     }
     
     // MARK: - Configure ViewController
+    
     private func configure() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -288,7 +290,6 @@ final class LoginViewController: ViewController, LoginViewControllerProtocol {
         
         return false
     }
-    
 }
 
 
@@ -300,7 +301,6 @@ extension LoginViewController: UITextFieldDelegate {
         if textField == passwordTF { loginAction() }
         return true
     }
-    
 }
 
 

@@ -31,6 +31,7 @@ class LoginTextField: UITextField {
     }
     
     // MARK: - Private functions
+    
     private func commonInit () {
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 0.5
@@ -50,6 +51,7 @@ class LoginTextField: UITextField {
     }
     
     // MARK: - Elements
+    
     lazy private var leftImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = .lightGray
@@ -60,6 +62,7 @@ class LoginTextField: UITextField {
     }()
     
     // MARK: - override functions
+    
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         let rect = super.leftViewRect(forBounds: bounds)
         return rect.inset(by: .init(top: 0, left: bounds.height/2, bottom: 0, right: 0))
@@ -74,5 +77,4 @@ class LoginTextField: UITextField {
         let rect = super.editingRect(forBounds: bounds)
         return rect.inset(by: .init(top: 0, left: bounds.height/2, bottom: 0, right: 0))
     }
-    
 }
