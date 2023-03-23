@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GeneralScreenFactoryProtocol {
-    func makeProfileViewController() -> ProfileViewControllerProtocol
+    func makeProfileViewController() -> ViewControllerProtocol
     func makeOurMissionViewController() -> ViewControllerProtocol
 }
 
@@ -23,7 +23,7 @@ extension ScreenFactory: GeneralScreenFactoryProtocol {
         return viewController
     }
     
-    func makeProfileViewController() -> ProfileViewControllerProtocol {
+    func makeProfileViewController() -> ViewControllerProtocol {
         let controller = ProfileViewController()
         return controller
     }

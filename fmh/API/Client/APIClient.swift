@@ -9,7 +9,7 @@ import Foundation
 
 protocol APIClientProtocol: APIServiceProtocol {
     var userProfile: APIClient.UserProfile? { get }
-
+    
     func isAuthorized() -> Bool
     func login(login: String, password: String, onCompletion: ((Error?) -> Void)?)
     func logout()
@@ -76,7 +76,7 @@ extension APIClient: APIClientProtocol {
         
         let request = try? URLRequest(.GET, path: "/api/fmh/authentication/userInfo")
         
-        self.fetchData(request: request) { [weak self] decodeData, response, error in
+        self.fetch(with: request) { [weak self] decodeData, response, error in
             
             if let userInfo: DTOUserInfo = decodeData {
                 let _userProfile = UserProfile(isAdmin: userInfo.admin,

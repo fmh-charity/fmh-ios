@@ -24,7 +24,7 @@ final class AppCoordinator: Coordinator {
         apiClient.urlSession.configuration.urlCache = self.cache
         
         // В случае ошибки какой в API - перекидываем на ввод логина
-        apiClient.didCaseInterruption = { [weak self] userInfo in
+        apiClient.didRefreshedTokensInterruption = { [weak self] userInfo in
             self?.childCoordinators = []
             self?.performAuthFlow()
         }
