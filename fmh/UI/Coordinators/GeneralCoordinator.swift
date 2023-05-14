@@ -8,16 +8,13 @@
 import Foundation
 
 protocol GeneralCoordinatorProtocol: AnyObject {
-    /// Переход для экранов в SideMenu
-    func performFlowByMenu(_ menu: SideMenuItems)
-    /// Переход для всех экранов Screens
-    func performScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType, animated: Bool, completion: (() -> ())?)
+    func performFlow(with menu: SideMenuItems)
+    func performFlow(with screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType, animated: Bool, completion: (() -> ())?)
 }
 
 extension GeneralCoordinatorProtocol {
-    /// Переход для всех экранов Screens
-    func performScreenFlow(_ screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
-        performScreenFlow(screen, type: type, animated: animated, completion: completion)
+    func performFlow(with screen: GeneralCoordinator.Screens, type: GeneralCoordinator.PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+        performFlow(with: screen, type: type, animated: animated, completion: completion)
     }
 }
 
@@ -37,24 +34,25 @@ final class GeneralCoordinator: Coordinator {
     }
     
     override func start() {
-        performSideMenuNavigationControllerFlow()
-        performFlowByMenu(.home) //<- По умолчанию
+        performSideMenuControllerFlow()
+        performFlow(with: .home) //<- По умолчанию
     }
     
-    // TODO: - ХРАНИМЫЕ КОНТРОЛЛЕРЫ КАК В ТАБ БАРАХ!?
+    // TODO: - ХРАНИМЫЕ КОНТРОЛЛЕРЫ !!!
+    
     private lazy var menuControllers: [SideMenuItems : Presentable] = {
         [
             .home     : TestVC() ,
         ]
     }()
     
-    private func performSideMenuNavigationControllerFlow() {
-        let navigationController: SideMenuNavigationControllerProtocol = SideMenuNavigationController()
-        navigationController.isNavigationBarHidden = false
-        navigationController.coordinator = self
-        navigationController.setUserProfile(apiClient?.userProfile)
-        navigationController.onCompletion = onCompletion
-        router.setNavigationController(navigationController)
+    private func performSideMenuControllerFlow() {
+        let sideMenuController: SideMenuControllerProtocol = factory.makeSideMenuController()
+        sideMenuController.coordinator = self
+        sideMenuController.setUserProfile(apiClient?.userProfile)
+        sideMenuController.onCompletion = onCompletion
+        router.setWindowRoot(sideMenuController)
+        router.setNavigationController(sideMenuController.contentController)
     }
 }
 
@@ -62,67 +60,76 @@ final class GeneralCoordinator: Coordinator {
 
 extension GeneralCoordinator: GeneralCoordinatorProtocol {
     
-    /// Переход для экранов в SideMenu
-    func performFlowByMenu(_ menu: SideMenuItems) {
+    func performFlow(with menu: SideMenuItems) {
         
-        let menuNavController = (router.getNavigationController() as? SideMenuNavigationControllerProtocol)
-        guard let menuNavController = menuNavController else { return }
+        let menuController = (router.getRootViewController() as? SideMenuControllerProtocol)
+        guard let menuController = menuController else { return }
         
-        // Если контроллер хранится.
         if let vc = menuControllers[menu] {
-            menuNavController.setRootViewController(viewController: vc.toPresent, menu: menu)
+            menuController.setRootViewController(viewController: vc.toPresent, menu: menu)
             return
         }
         
-        // Если не хранится, перебираем и отображаем.
         switch menu {
         case .documents:
             let controller = TestVC2()
-            menuNavController.setRootViewController(viewController: controller, menu: menu)
+            menuController.setRootViewController(viewController: controller, menu: menu)
             
-            // ... тут добавляем менюшные экраны + кликабельные элементы (SideMenuItems)
+        case .profile:
+            performFlow(with: .profile, type: .present)
             
-        case .profile: performScreenFlow(.profile, type: .present)
-        
         case .ourMission:
-            let controller = factory.makeOurMissionViewController()
-            menuNavController.setRootViewController(viewController: controller.toPresent, menu: menu)
+            performFlow(with: .ourMission, type: .root)
+            
+            // ...
+            
+            рассмотреть все варианты переходов: меню, элементы меню (без выделения???!!!), и дочерние экраны
+            
+            РАССМОТРЕТЬ ВОЗМОЖНОСТЬ ДОБАВЛЯТЬ КООРДИНАТОР/РОУТЕР ДЛЯ КАЖДОГО ЭКРАНА ??? НАПР -НОВОСТИ-
             
         default: break
         }
     }
-
-    enum PresentType { case push, present }
-    /// Переход для всех экранов Screens
-    func performScreenFlow(_ screenType: Screens, type: PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
+    
+    enum PresentType { case push, present, root }
+    
+    func performFlow(with screenType: Screens, type: PresentType = .push, animated: Bool = true, completion: (() -> ())? = nil) {
         
-        var screen: Presentable?
-        
-        switch screenType {
-        case .profile: screen = factory.makeProfileViewController()
-        case .ourMission: screen = factory.makeOurMissionViewController()
-            
-            // ... тут добавляем дочернии экраны
-            
-        default: break
-        }
+        let screen = screenType.makeController(factory: factory)
         
         switch type {
         case .push: router.push(screen, animated: true)
         case .present: router.present(screen, animated: animated, completion: completion)
+        case .root:
+            let menuController = (router.getRootViewController() as? SideMenuControllerProtocol)
+            if let viewController = screen?.toPresent, let menuController {
+                menuController.setRootViewController(viewController: viewController, menu: .none)
+            }
         }
-    }
-    
-    // Экраны которые не храним в "menuControllers". (каждый раз создаются)
-    enum Screens {
-        case child([String:Any]) // ??? <- Возможно данные передавать еще ...
-        
-        case profile
-        case ourMission
     }
 }
 
+// MARK: - Screens
 
+extension GeneralCoordinator {
+    
+    enum Screens {
+        case child([String:Any]) // ??? <- Возможно данные передавать еще ...
+        
+        case profile, ourMission
+        
+        func makeController(factory: GeneralScreenFactoryProtocol) -> Presentable? {
+            switch self {
+            case .profile:      return factory.makeProfileViewController()
+            case .ourMission:   return factory.makeOurMissionViewController()
+                
+                // ...
+                
+            default:            return nil
+            }
+        }
+    }
+}
 
 class TestVC: ViewController {
     

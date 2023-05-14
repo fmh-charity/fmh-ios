@@ -40,7 +40,7 @@ extension AuthCoordinator: AuthCoordinatorProtocol {
         viewController.onCompletion = onCompletion
         viewController.coordinator = self
         router.setDefaultNavigationController()
-        router.setRoot(viewController, hideBar: false)
+        router.setRoot(viewController, hideBar: false, animated: false)
     }
     
     func performRegistrationScreenFlow() {

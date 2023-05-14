@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    fileprivate lazy var coordinator: Coordinatable = makeCoordinator()
+    private lazy var coordinator: Coordinatable = makeCoordinator()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -30,13 +30,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-
 // MARK: - Private methods
 
 private extension SceneDelegate {
     
     func makeCoordinator() -> Coordinatable {
-        let router = Router(window: window)
+        let router = Router(window: window, navigationController: NavigationController())
         let coordinator = AppCoordinator(router: router)
         return coordinator
     }

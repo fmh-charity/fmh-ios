@@ -10,7 +10,7 @@ import Foundation
 protocol AuthScreenFactoryProtocol {
     func makeLoginViewController() -> LoginViewControllerProtocol
     func makeRegistrationViewController() -> RegistrationViewControllerProtocol
-    func makeForgotPasswordViewController() -> ViewControllerProtocol
+    func makeForgotPasswordViewController() -> ForgotPasswordViewControllerProtocol
 }
 
 // MARK: - AuthScreenFactoryProtocol
@@ -31,7 +31,7 @@ extension ScreenFactory: AuthScreenFactoryProtocol {
         return viewController
     }
     
-    func makeForgotPasswordViewController() -> ViewControllerProtocol {
+    func makeForgotPasswordViewController() -> ForgotPasswordViewControllerProtocol {
         let viewController = ForgotPasswordViewController()
         return viewController
     }

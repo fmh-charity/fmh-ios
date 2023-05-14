@@ -7,21 +7,6 @@
 
 import UIKit
 
-// MARK: - Routable
-
-protocol Routable: Presentable {
-    func getNavigationController() -> UINavigationController
-    func setDefaultNavigationController()
-    func setNavigationController(_ navigationController: UINavigationController)
-    func setWindowRoot(_ screen: Presentable?)
-    func setRoot(_ screen: Presentable?, hideBar: Bool)
-    func push(_ screen: Presentable?, animated: Bool)
-    func present(_ screen: Presentable?, animated: Bool, completion: (() -> Void)?)
-    func pop(animated: Bool)
-    func popToRoot(animated: Bool)
-    func dismiss(animated: Bool, completion: (() -> Void)?)
-}
-
 // MARK: - Presentable
 
 protocol Presentable: AnyObject {
@@ -32,22 +17,32 @@ extension Presentable where Self: UIViewController {
     var toPresent: UIViewController { return self }
 }
 
+// MARK: - Routable
+
+protocol Routable {
+    func getNavigationController() -> UINavigationController?
+    func getRootViewController() -> UIViewController?
+    func setDefaultNavigationController()
+    func setNavigationController(_ navigationController: UINavigationController)
+    func setWindowRoot(_ screen: Presentable?)
+    func setRoot(_ screen: Presentable?, hideBar: Bool, animated: Bool)
+    func push(_ screen: Presentable?, animated: Bool)
+    func present(_ screen: Presentable?, animated: Bool, completion: (() -> Void)?)
+    func pop(animated: Bool)
+    func popToRoot(animated: Bool)
+    func dismiss(animated: Bool, completion: (() -> Void)?)
+}
+
 // MARK: - Class
 
 final class Router: NSObject {
 
-    // TODO: ВОЗМОЖНО ПОТОМ КОНТРОЛЬ И ЛОГИРОВАНИЕ ПЕРЕХОДОВ ...
+    private var window: UIWindow?
+    private var navigationController: UINavigationController?
     
-    fileprivate var window: UIWindow?
-    fileprivate var navigationController: UINavigationController
-    
-    init(window: UIWindow?) {
+    init(window: UIWindow?, navigationController: UINavigationController?) {
         self.window = window
-        self.navigationController = NavigationController()
-    }
-    
-    var toPresent: UIViewController {
-        return navigationController
+        self.navigationController = navigationController
     }
 }
 
@@ -55,29 +50,37 @@ final class Router: NSObject {
 
 extension Router: Routable {
     
-    func getNavigationController() -> UINavigationController {
+    func getNavigationController() -> UINavigationController? {
         self.navigationController
     }
 
+    func getRootViewController() -> UIViewController? {
+        self.window?.rootViewController
+    }
+    
     func setDefaultNavigationController() {
         self.navigationController = NavigationController()
     }
     
     func setNavigationController(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+    
+    func setWindowRoot(_ navigationController: UINavigationController?) {
+        self.navigationController = navigationController
         window?.rootViewController = navigationController
     }
     
     func setWindowRoot(_ screen: Presentable?) {
         guard let controller = screen?.toPresent else { return }
+        self.navigationController = nil
         window?.rootViewController = controller
     }
     
-    func setRoot(_ screen: Presentable?, hideBar: Bool) {
+    func setRoot(_ screen: Presentable?, hideBar: Bool, animated: Bool) {
         guard let controller = screen?.toPresent else { return }
-        navigationController.setViewControllers([controller], animated: false)
-        navigationController.isNavigationBarHidden = hideBar
-        window?.rootViewController = navigationController
+        navigationController?.setViewControllers([controller], animated: animated)
+        navigationController?.isNavigationBarHidden = hideBar
     }
     
     func push(_ screen: Presentable?, animated: Bool) {
@@ -86,23 +89,23 @@ extension Router: Routable {
             assertionFailure("Deprecated push UINavigationController.")
             return
         }
-        navigationController.pushViewController(controller, animated: animated)
+        navigationController?.pushViewController(controller, animated: animated)
     }
     
     func present(_ screen: Presentable?, animated: Bool, completion: (() -> Void)?) {
         guard let controller = screen?.toPresent else { return }
-        navigationController.present(controller, animated: animated, completion: completion)
+        navigationController?.present(controller, animated: animated, completion: completion)
     }
     
     func pop(animated: Bool)  {
-         navigationController.popViewController(animated: animated)
+         navigationController?.popViewController(animated: animated)
     }
 
     func popToRoot(animated: Bool) {
-        navigationController.popToRootViewController(animated: animated)
+        navigationController?.popToRootViewController(animated: animated)
     }
     
     func dismiss(animated: Bool, completion: (() -> Void)?) {
-        navigationController.dismiss(animated: animated, completion: completion)
+        navigationController?.dismiss(animated: animated, completion: completion)
     }
 }

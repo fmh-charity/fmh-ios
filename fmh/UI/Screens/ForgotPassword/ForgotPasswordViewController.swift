@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  ForgotPasswordViewController.swift
 //  fmh
 //
 //  Created: 17.12.2022
@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol ProfileViewControllerProtocol: ViewController {
+protocol ForgotPasswordViewControllerProtocol: ViewController {
     
 }
 
-final class ProfileViewController: ViewController, ProfileViewControllerProtocol {
+final class ForgotPasswordViewController: ViewController, ForgotPasswordViewControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Профайл"
+        title = "Восстановление пароля"
         configure()
     }
     

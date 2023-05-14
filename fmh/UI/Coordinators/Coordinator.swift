@@ -11,7 +11,6 @@ protocol Coordinatable : AnyObject {
     var childCoordinators: [Coordinatable] { get set }
     var router: Routable { get }
     var onCompletion: (() -> Void)? { get set }
-    
     func start()
 }
 
