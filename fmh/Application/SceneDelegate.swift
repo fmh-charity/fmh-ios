@@ -35,8 +35,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 private extension SceneDelegate {
     
     func makeCoordinator() -> Coordinatable {
+        let apiService = APIService(urlSession: makeSession())
+        let tokenProvider = TokenProvider()
+        let apiClient = APIClient(service: apiService, tokenProvider: tokenProvider)
+        
         let router = Router(window: window, navigationController: NavigationController())
-        let coordinator = AppCoordinator(router: router)
+        let coordinator = AppCoordinator(router: router, apiClient: apiClient)
         return coordinator
+    }
+    
+    func makeCache() -> URLCache {
+        let memoryCapacity = 1024 * 1024 * 4
+        let diskCapacity = 1024 * 1024 * 20
+        let cache = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "ApiClient_Cached")
+        return cache
+    }
+    
+    func makeSession() -> URLSession {
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .reloadIgnoringCacheData // .reloadRevalidatingCacheData
+        configuration.httpAdditionalHeaders = ["Content-Type" : "application/json"]
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
+        return session
     }
 }

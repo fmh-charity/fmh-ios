@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         if UserDefaults.standard.bool(forKey: "safeAccount") == false {
-            Helper.Core.TokenManager.clear()
+            TokenProvider.clearTokens()
         }
     }
 }

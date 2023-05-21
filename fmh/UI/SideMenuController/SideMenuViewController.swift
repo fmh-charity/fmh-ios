@@ -39,11 +39,12 @@ final class SideMenuViewController: UIViewController {
         }
     }
     
-    var profileUser: APIClient.UserProfile? {
+    var topViewModel: SideMenuTopView.Model? {
         didSet {
-            guard let profileUser else { return }
-            topView.model = .init(title: "\(profileUser.lastName) \(profileUser.firstName)",
-                                  subtitle:  profileUser.isAdmin ? "Aдминистратор" : "")
+            guard let topViewModel else {
+                return
+            }
+            topView.model = topViewModel
         }
     }
     

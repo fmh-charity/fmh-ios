@@ -70,12 +70,12 @@ final class LoginViewController: ViewController, LoginViewControllerProtocol {
     }()
     
     private lazy var safePassfordSwitch: UISwitch = {
-        let _switch = UISwitch()
-        _switch.translatesAutoresizingMaskIntoConstraints = false
-        _switch.onTintColor = .accentColor
-        _switch.setOn(true, animated: false)
-        _switch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-        return _switch
+        let view = UISwitch()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.onTintColor = .accentColor
+        view.setOn(true, animated: false)
+        view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        return view
     }()
     
     private lazy var safePassfordWrapper: UIView = {

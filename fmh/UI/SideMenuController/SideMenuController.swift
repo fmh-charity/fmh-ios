@@ -11,7 +11,6 @@ protocol SideMenuControllerProtocol: ViewController {
     var coordinator: GeneralCoordinatorProtocol? { get set }
     var contentController: UINavigationController { get }
     
-    func setUserProfile(_ userProfile: APIClient.UserProfile?)
     func setRootViewController(viewController: UIViewController, menu: SideMenuItems)
 }
 
@@ -20,6 +19,8 @@ final class SideMenuController: ViewController, SideMenuControllerProtocol {
     weak var coordinator: GeneralCoordinatorProtocol?
     
     let contentController: UINavigationController
+    
+    private let presenter: SideMenuPresenterProtocol
     
     private var menuRevealWidth: CGFloat = UIScreen.main.bounds.width * 0.75
     private var draggingIsEnabled: Bool = false
@@ -54,8 +55,9 @@ final class SideMenuController: ViewController, SideMenuControllerProtocol {
     
     // MARK: - LifeCycle
     
-    init(contentController: UINavigationController) {
+    init(contentController: UINavigationController, presenter: SideMenuPresenterProtocol) {
         self.contentController = contentController
+        self.presenter = presenter
         super.init()
         commonInit()
     }
@@ -98,6 +100,8 @@ final class SideMenuController: ViewController, SideMenuControllerProtocol {
         configureLayoutContentController()
         configureLayoutMenuController()
         
+        setTopViewContent()
+        
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         panGestureRecognizer.delegate = self
         view.addGestureRecognizer(panGestureRecognizer)
@@ -126,6 +130,12 @@ final class SideMenuController: ViewController, SideMenuControllerProtocol {
     
     // MARK: - Private methods, Animate sideMenu
 
+    private func setTopViewContent() {
+        presenter.fetchUserInfo { [weak self] model in
+            self?.menuController.topViewModel = model
+        }
+    }
+    
     private func setSideMenuState(isShow: Bool) {
         if isShow {
             self.isMenuExpanded = true
@@ -172,10 +182,6 @@ final class SideMenuController: ViewController, SideMenuControllerProtocol {
     }
     
     // MARK: - SideMenuControllerProtocol
-    
-    func setUserProfile(_ userProfile: APIClient.UserProfile?) {
-        menuController.profileUser = userProfile
-    }
     
     func setRootViewController(viewController: UIViewController, menu: SideMenuItems) {
         menuController.defaultHighlightedMenu = menu

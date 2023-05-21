@@ -49,7 +49,6 @@ final class GeneralCoordinator: Coordinator {
     private func performSideMenuControllerFlow() {
         let sideMenuController: SideMenuControllerProtocol = factory.makeSideMenuController()
         sideMenuController.coordinator = self
-        sideMenuController.setUserProfile(apiClient?.userProfile)
         sideMenuController.onCompletion = onCompletion
         router.setWindowRoot(sideMenuController)
         router.setNavigationController(sideMenuController.contentController)
@@ -83,9 +82,9 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
             
             // ...
             
-            рассмотреть все варианты переходов: меню, элементы меню (без выделения???!!!), и дочерние экраны
+            //рассмотреть все варианты переходов: меню, элементы меню (без выделения???!!!), и дочерние экраны
             
-            РАССМОТРЕТЬ ВОЗМОЖНОСТЬ ДОБАВЛЯТЬ КООРДИНАТОР/РОУТЕР ДЛЯ КАЖДОГО ЭКРАНА ??? НАПР -НОВОСТИ-
+            //РАССМОТРЕТЬ ВОЗМОЖНОСТЬ ДОБАВЛЯТЬ КООРДИНАТОР/РОУТЕР ДЛЯ КАЖДОГО ЭКРАНА ??? НАПР -НОВОСТИ-
             
         default: break
         }

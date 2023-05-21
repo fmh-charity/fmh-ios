@@ -9,8 +9,8 @@ import Foundation
 
 extension Data {
     
-    func jsonObject() -> Any? {
-        return (try? JSONSerialization.jsonObject(with: self, options: []))
+    func jsonObject() throws -> Any? {
+        return try JSONSerialization.jsonObject(with: self, options: [])
     }
     
     func decode<T: Decodable>(_ decoder: JSONDecoder = JSONDecoder()) throws -> T {

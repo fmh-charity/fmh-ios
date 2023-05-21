@@ -34,24 +34,29 @@ final class LoadingCoordinator: Coordinator {
 // MARK: - LoadingCoordinatorProtocol
 
 extension LoadingCoordinator: LoadingCoordinatorProtocol {
-
+    
     func performLoadingScreenFlow() {
         let viewController = factory.makeLoadingViewController()
         viewController.onCompletion = onCompletion
         router.setWindowRoot(viewController)
-    
+        
         // TODO: Если много нужно сервисов опрашивать во время загрузки добавляем очереди/группы
         
         // Если пользователь ранее логинился то обновляем инфу.
-        if apiClient?.isAuthorized() == true {
-            apiClient?.updateUserProfile { [weak viewController] _, error in
-                DispatchQueue.main.async {
-                    viewController?.loadingServiceCompletion(error: error)
+        
+        Task(priority: .background) { [weak viewController] in
+            
+            if await apiClient?.checkAuthentication() ?? false {
+                
+                // fetch user info ... ???
+                
+                DispatchQueue.main.async { [weak viewController] in
+                    viewController?.loadingServiceCompletion(error: nil)
                 }
-            }
-        } else {
-            DispatchQueue.main.async { [weak viewController] in
-                viewController?.loadingServiceCompletion(error: nil)
+            } else {
+                DispatchQueue.main.async { [weak viewController] in
+                    viewController?.loadingServiceCompletion(error: nil)
+                }
             }
         }
     }

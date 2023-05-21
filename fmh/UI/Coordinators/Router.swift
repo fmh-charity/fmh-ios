@@ -60,6 +60,7 @@ extension Router: Routable {
     
     func setDefaultNavigationController() {
         self.navigationController = NavigationController()
+        window?.rootViewController = navigationController
     }
     
     func setNavigationController(_ navigationController: UINavigationController) {

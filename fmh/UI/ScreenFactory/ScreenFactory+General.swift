@@ -19,7 +19,8 @@ extension ScreenFactory: GeneralScreenFactoryProtocol {
     
     func makeSideMenuController() -> SideMenuControllerProtocol {
         let navigationController = NavigationController()
-        let controller = SideMenuController(contentController: navigationController)
+        let presenter = SideMenuPresenter(apiClient: apiClient)
+        let controller = SideMenuController(contentController: navigationController, presenter: presenter)
         return controller
     }
     
