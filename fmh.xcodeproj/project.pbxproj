@@ -46,6 +46,22 @@
 		194DC5CC2A1A858B002D56BB /* EndpointProtocolError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5CB2A1A858B002D56BB /* EndpointProtocolError.swift */; };
 		194DC5D02A1BD5DD002D56BB /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5CF2A1BD5DD002D56BB /* RouterProtocol.swift */; };
 		194DC5D22A1BD651002D56BB /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5D12A1BD651002D56BB /* Presentable.swift */; };
+		194DC5F52A1CDF14002D56BB /* DIFCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E12A1CDF14002D56BB /* DIFCollectionViewDataSource.swift */; };
+		194DC5F62A1CDF14002D56BB /* DIFCollectionReusableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E32A1CDF14002D56BB /* DIFCollectionReusableViewModel.swift */; };
+		194DC5F72A1CDF14002D56BB /* DIFCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E42A1CDF14002D56BB /* DIFCollectionViewCellModel.swift */; };
+		194DC5F82A1CDF14002D56BB /* DIFCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E52A1CDF14002D56BB /* DIFCollectionViewController.swift */; };
+		194DC5F92A1CDF14002D56BB /* DIFCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E72A1CDF14002D56BB /* DIFCollectionView.swift */; };
+		194DC5FA2A1CDF14002D56BB /* DIFCollectionViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E82A1CDF14002D56BB /* DIFCollectionViewReusableView.swift */; };
+		194DC5FB2A1CDF14002D56BB /* DIFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E92A1CDF14002D56BB /* DIFCollectionViewCell.swift */; };
+		194DC5FC2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5EB2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift */; };
+		194DC5FD2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5EC2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift */; };
+		194DC5FE2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5ED2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift */; };
+		194DC5FF2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5EE2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift */; };
+		194DC6002A1CDF14002D56BB /* DIFCollectionReusableViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5EF2A1CDF14002D56BB /* DIFCollectionReusableViewModelProtocol.swift */; };
+		194DC6012A1CDF14002D56BB /* DIFActionableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5F12A1CDF14002D56BB /* DIFActionableItem.swift */; };
+		194DC6022A1CDF14002D56BB /* DIFActionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5F22A1CDF14002D56BB /* DIFActionable.swift */; };
+		194DC6032A1CDF14002D56BB /* DIFSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5F32A1CDF14002D56BB /* DIFSection.swift */; };
+		194DC6042A1CDF14002D56BB /* DIFItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5F42A1CDF14002D56BB /* DIFItem.swift */; };
 		19506AAC2A0953BB00D13912 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19506AAB2A0953BB00D13912 /* SideMenuController.swift */; };
 		195629A12842A63C00C8A704 /* Contributors in Resources */ = {isa = PBXBuildFile; fileRef = 195629A02842A63C00C8A704 /* Contributors */; };
 		1959B3B0294D12060052BB15 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1959B3AF294D12060052BB15 /* RegistrationViewController.swift */; };
@@ -128,6 +144,22 @@
 		194DC5CB2A1A858B002D56BB /* EndpointProtocolError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocolError.swift; sourceTree = "<group>"; };
 		194DC5CF2A1BD5DD002D56BB /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		194DC5D12A1BD651002D56BB /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		194DC5E12A1CDF14002D56BB /* DIFCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		194DC5E32A1CDF14002D56BB /* DIFCollectionReusableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionReusableViewModel.swift; sourceTree = "<group>"; };
+		194DC5E42A1CDF14002D56BB /* DIFCollectionViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCellModel.swift; sourceTree = "<group>"; };
+		194DC5E52A1CDF14002D56BB /* DIFCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewController.swift; sourceTree = "<group>"; };
+		194DC5E72A1CDF14002D56BB /* DIFCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionView.swift; sourceTree = "<group>"; };
+		194DC5E82A1CDF14002D56BB /* DIFCollectionViewReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewReusableView.swift; sourceTree = "<group>"; };
+		194DC5E92A1CDF14002D56BB /* DIFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCell.swift; sourceTree = "<group>"; };
+		194DC5EB2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCellProtocol.swift; sourceTree = "<group>"; };
+		194DC5EC2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewReusableViewProtocol.swift; sourceTree = "<group>"; };
+		194DC5ED2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCellModelSupplementable.swift; sourceTree = "<group>"; };
+		194DC5EE2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCellModelProtocol.swift; sourceTree = "<group>"; };
+		194DC5EF2A1CDF14002D56BB /* DIFCollectionReusableViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionReusableViewModelProtocol.swift; sourceTree = "<group>"; };
+		194DC5F12A1CDF14002D56BB /* DIFActionableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFActionableItem.swift; sourceTree = "<group>"; };
+		194DC5F22A1CDF14002D56BB /* DIFActionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFActionable.swift; sourceTree = "<group>"; };
+		194DC5F32A1CDF14002D56BB /* DIFSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFSection.swift; sourceTree = "<group>"; };
+		194DC5F42A1CDF14002D56BB /* DIFItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFItem.swift; sourceTree = "<group>"; };
 		19506AAB2A0953BB00D13912 /* SideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1959B3AF294D12060052BB15 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +313,69 @@
 				190F7786294538DB0088A863 /* Router.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		194DC5DF2A1CDF14002D56BB /* DIFfable */ = {
+			isa = PBXGroup;
+			children = (
+				194DC5F02A1CDF14002D56BB /* Common */,
+				194DC5E02A1CDF14002D56BB /* CollectionView */,
+			);
+			path = DIFfable;
+			sourceTree = "<group>";
+		};
+		194DC5E02A1CDF14002D56BB /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				194DC5E52A1CDF14002D56BB /* DIFCollectionViewController.swift */,
+				194DC5E12A1CDF14002D56BB /* DIFCollectionViewDataSource.swift */,
+				194DC5E22A1CDF14002D56BB /* Models */,
+				194DC5E62A1CDF14002D56BB /* Views */,
+				194DC5EA2A1CDF14002D56BB /* Protocols */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		194DC5E22A1CDF14002D56BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				194DC5E42A1CDF14002D56BB /* DIFCollectionViewCellModel.swift */,
+				194DC5E32A1CDF14002D56BB /* DIFCollectionReusableViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		194DC5E62A1CDF14002D56BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				194DC5E72A1CDF14002D56BB /* DIFCollectionView.swift */,
+				194DC5E82A1CDF14002D56BB /* DIFCollectionViewReusableView.swift */,
+				194DC5E92A1CDF14002D56BB /* DIFCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		194DC5EA2A1CDF14002D56BB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				194DC5EB2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift */,
+				194DC5EC2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift */,
+				194DC5ED2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift */,
+				194DC5EE2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift */,
+				194DC5EF2A1CDF14002D56BB /* DIFCollectionReusableViewModelProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		194DC5F02A1CDF14002D56BB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				194DC5F42A1CDF14002D56BB /* DIFItem.swift */,
+				194DC5F22A1CDF14002D56BB /* DIFActionable.swift */,
+				194DC5F12A1CDF14002D56BB /* DIFActionableItem.swift */,
+				194DC5F32A1CDF14002D56BB /* DIFSection.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		19506AAD2A0C41F100D13912 /* Helper */ = {
@@ -485,6 +580,7 @@
 		19EB70B8292E8B0000DB8F21 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				194DC5DF2A1CDF14002D56BB /* DIFfable */,
 				19506AAD2A0C41F100D13912 /* Helper */,
 				19D2AFB229CA42D200736AC8 /* Extensions */,
 				19506AB12A0C42A300D13912 /* BaseControllers */,
@@ -613,8 +709,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				19EB70BF292E8C4F00DB8F21 /* KeyChainManager.swift in Sources */,
+				194DC5F82A1CDF14002D56BB /* DIFCollectionViewController.swift in Sources */,
 				19EB70C1292E8EC400DB8F21 /* Coordinator.swift in Sources */,
+				194DC5FA2A1CDF14002D56BB /* DIFCollectionViewReusableView.swift in Sources */,
 				194DC5BC2A1A003D002D56BB /* SideMenuPresenter.swift in Sources */,
+				194DC5F62A1CDF14002D56BB /* DIFCollectionReusableViewModel.swift in Sources */,
 				190F77A1294655FF0088A863 /* SideMenuItems.swift in Sources */,
 				19506AAC2A0953BB00D13912 /* SideMenuController.swift in Sources */,
 				190F779A2946266A0088A863 /* LoginTextField.swift in Sources */,
@@ -622,23 +721,27 @@
 				19EB70E0293250BB00DB8F21 /* ScreenFactory+General.swift in Sources */,
 				19EB70EB29329E6300DB8F21 /* ScreenFactory+Loading.swift in Sources */,
 				194DC5CA2A1A5C04002D56BB /* Endpoint.swift in Sources */,
+				194DC5F92A1CDF14002D56BB /* DIFCollectionView.swift in Sources */,
 				190F7787294538DB0088A863 /* Router.swift in Sources */,
 				19F91EB829536B9600B1194A /* OurMissionDataArray.swift in Sources */,
 				19EB70DE29324B9300DB8F21 /* ScreenFactory+Auth.swift in Sources */,
 				190F77682941298B0088A863 /* Dictionary+.swift in Sources */,
 				194DC5CC2A1A858B002D56BB /* EndpointProtocolError.swift in Sources */,
 				190F77B7294B9EB60088A863 /* NSLayoutConstraint+Activate.swift in Sources */,
+				194DC6002A1CDF14002D56BB /* DIFCollectionReusableViewModelProtocol.swift in Sources */,
 				19EB70E229328ECF00DB8F21 /* BaseViewController.swift in Sources */,
 				19F91EB629536B9600B1194A /* OurMissionViewController.swift in Sources */,
 				194DC5962A141446002D56BB /* APIClient.swift in Sources */,
 				194DC57A2A118631002D56BB /* TokenProvider.swift in Sources */,
 				19E2532629C10E0900F2A14C /* URLRequest+cURL.swift in Sources */,
+				194DC5F52A1CDF14002D56BB /* DIFCollectionViewDataSource.swift in Sources */,
 				190F776A294129A70088A863 /* Encodable+.swift in Sources */,
 				19FC00D72932B8E0000F6A4A /* LoadingViewController+Data.swift in Sources */,
 				190F77932946242B0088A863 /* LoginPresenter.swift in Sources */,
 				190F77B3294A43A80088A863 /* SideMenuTopView.swift in Sources */,
 				19EB70C3292E9A5400DB8F21 /* AuthCoordinator.swift in Sources */,
 				194DC5D02A1BD5DD002D56BB /* RouterProtocol.swift in Sources */,
+				194DC5FF2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift in Sources */,
 				190F77662941296F0088A863 /* Data+.swift in Sources */,
 				194DC57C2A118711002D56BB /* TokenProviderError.swift in Sources */,
 				190F776E29413A400088A863 /* DTOJWT.swift in Sources */,
@@ -649,26 +752,35 @@
 				19EB70DC29324A0A00DB8F21 /* ScreenFactory.swift in Sources */,
 				190F77902945FE5E0088A863 /* UIColor+Hex.swift in Sources */,
 				194DC5BA2A193264002D56BB /* APIServiceError.swift in Sources */,
+				194DC6012A1CDF14002D56BB /* DIFActionableItem.swift in Sources */,
+				194DC6042A1CDF14002D56BB /* DIFItem.swift in Sources */,
 				194DC5942A14143D002D56BB /* APIClientProtocol.swift in Sources */,
 				190F7795294624630088A863 /* LoginViewController.swift in Sources */,
 				194DC5922A141437002D56BB /* APIClientError.swift in Sources */,
 				190F77AF2948F0EE0088A863 /* UIBarButtonItem+Init.swift in Sources */,
+				194DC5FC2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift in Sources */,
 				19D2AFB429CA430900736AC8 /* Dictionary+Subscript.swift in Sources */,
 				19F91EB929536B9600B1194A /* OurMissionCell.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
+				194DC6022A1CDF14002D56BB /* DIFActionable.swift in Sources */,
 				1959B3B2294D12200052BB15 /* RegistrationPresenter.swift in Sources */,
 				194DC58F2A1412F3002D56BB /* TokenProviderProtocol.swift in Sources */,
+				194DC5FD2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift in Sources */,
 				190F779C294644830088A863 /* SideMenuViewController.swift in Sources */,
 				190F77AB2948E02A0088A863 /* UINavigationItem+RightButtons.swift in Sources */,
 				190F778E2945F14B0088A863 /* UIView+AddSubviews.swift in Sources */,
+				194DC5FE2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift in Sources */,
 				19EB70C7292FDA8900DB8F21 /* GeneralCoordinator.swift in Sources */,
+				194DC5F72A1CDF14002D56BB /* DIFCollectionViewCellModel.swift in Sources */,
 				19EB70C5292EADC800DB8F21 /* AppCoordinator.swift in Sources */,
 				19EB70E92932991E00DB8F21 /* LoadingCoordinator.swift in Sources */,
 				190F7770294243CB0088A863 /* DTOUserInfo.swift in Sources */,
 				194DC5D22A1BD651002D56BB /* Presentable.swift in Sources */,
+				194DC5FB2A1CDF14002D56BB /* DIFCollectionViewCell.swift in Sources */,
 				190F77982946261F0088A863 /* PasswordTextField.swift in Sources */,
 				19F1E76C29A2A9CF00FDAB97 /* RoleModel.swift in Sources */,
 				1959B3B0294D12060052BB15 /* RegistrationViewController.swift in Sources */,
+				194DC6032A1CDF14002D56BB /* DIFSection.swift in Sources */,
 				190F77A529466B5C0088A863 /* BaseNavigationController.swift in Sources */,
 				19CBC55D29DC94FA008C3FE9 /* UIViewController+Alerts.swift in Sources */,
 				194DC5C62A1A5AF9002D56BB /* HTTPMethod.swift in Sources */,
