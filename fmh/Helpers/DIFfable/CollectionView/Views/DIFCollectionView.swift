@@ -1,30 +1,35 @@
+//
+//  DIFCollectionView.swift
+//  fmh
+//
+//  Created: 23.05.2023
+//
 
 import UIKit
 
 @available(iOS 13.0, tvOS 13.0, *)
-open class DIFCollectionView: UICollectionView {
+class DIFCollectionView: UICollectionView {
     
-    public typealias DIFDataSource = DIFCollectionViewDataSource
-    public typealias DIFDataSourceSnapshot = DIFCollectionViewDataSource.Snapshot
+    typealias DIFDataSource = DIFCollectionViewDataSource
+    typealias DIFDataSourceSnapshot = DIFCollectionViewDataSource.Snapshot
     
-    open var diffDataSource: DIFDataSource?
+    var diffDataSource: DIFDataSource?
     
-    public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         commonInit()
     }
     
-    required public init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
     
-    open func commonInit() {
+    func commonInit() {
         backgroundColor = .clear
         delaysContentTouches = false
         
         diffDataSource = .init(collectionView: self)
         self.dataSource = diffDataSource
     }
-    
 }

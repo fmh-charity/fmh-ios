@@ -1,25 +1,31 @@
+//
+//  DIFCollectionViewController.swift
+//  fmh
+//
+//  Created: 23.05.2023
+//
 
 import UIKit
 
 @available(iOS 13.0, tvOS 13.0, *)
-open class DIFCollectionViewController: UICollectionViewController {
+class DIFCollectionViewController: UICollectionViewController {
     
-    public typealias DIFDataSource = DIFCollectionViewDataSource
-    public typealias DIFDataSourceSnapshot = DIFCollectionViewDataSource.Snapshot
+    typealias DIFDataSource = DIFCollectionViewDataSource
+    typealias DIFDataSourceSnapshot = DIFCollectionViewDataSource.Snapshot
     
-    public var diffDataSource: DIFDataSource?
+    var diffDataSource: DIFDataSource?
     
-    public init() {
+    init() {
         super.init(collectionViewLayout: UICollectionViewLayout())
         commonInit()
     }
     
-    required public init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
     
-    open func commonInit() {
+    func commonInit() {
         collectionView.delaysContentTouches = false
         collectionView.backgroundColor = .clear
         collectionView.collectionViewLayout = configureLayouts() ?? UICollectionViewLayout()
@@ -28,14 +34,13 @@ open class DIFCollectionViewController: UICollectionViewController {
         collectionView.dataSource = diffDataSource
     }
     
-    open func configureLayouts() -> UICollectionViewLayout? {
+    func configureLayouts() -> UICollectionViewLayout? {
         /* Override in child */
         nil
     }
     
-    open var content: [DIFSection] {
+    var content: [DIFSection] {
         /* Override in child */
         []
     }
-    
 }

@@ -1,18 +1,23 @@
+//
+//  DIFSection.swift
+//  fmh
+//
+//  Created: 23.05.2023
+//
 
 import Foundation
 
-open class DIFSection: DIFItem {
+class DIFSection: DIFItem {
     
-    open var header: DIFItem?
-    open var footer: DIFItem?
-    open var items: [DIFItem]
+    var header: DIFItem?
+    var footer: DIFItem?
+    var items: [DIFItem]
     
-    public init(id: String, header: DIFItem? = nil, footer: DIFItem? = nil, items: [DIFItem] = []) {
+    init(id: String, header: DIFItem? = nil, footer: DIFItem? = nil, items: [DIFItem] = []) {
         self.header = header
         self.footer = footer
         self.items = items
         
         super.init(id: id)
     }
-    
 }
