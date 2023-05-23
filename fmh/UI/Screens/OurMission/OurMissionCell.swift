@@ -7,6 +7,151 @@
 
 import UIKit
 
+final class OurMissionCellDIFModel: DIFCollectionViewCellModel<OurMissionCell_> {
+    let title: String
+    let descriptions: String
+    
+    init(collectionView: UICollectionView, taglineLabel: String, descriptions: String) {
+        self.title = taglineLabel
+        self.descriptions = descriptions
+        super.init(collectionView, id: taglineLabel)
+    }
+}
+
+final class OurMissionCell_: DIFCollectionViewCell {
+    
+    // MARK: - Set data
+    
+    override var model: DIFItem? {
+        didSet {
+            guard let model = model as? OurMissionCellDIFModel else {
+                return
+            }
+            
+            titleLabel.text = model.title
+            descriptionLabel.text = model.descriptions
+        }
+    }
+    
+    // MARK: - Private
+    
+    private var layoutCellExpanded: NSLayoutConstraint?
+    private var layoutCellCollapsed: NSLayoutConstraint?
+    private var layoutCellHeight: NSLayoutConstraint?
+    
+    // MARK: - UI
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
+    
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
+    
+    // MARK: - Common init
+    
+    override func commonInit() {
+        super.commonInit()
+        
+        clipsToBounds = true
+        
+        contentView.addSubviews(titleLabel, descriptionLabel) {[
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            descriptionLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            descriptionLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor)
+        ]}
+        
+//        layoutCellHeight = contentView.heightAnchor.constraint(equalToConstant: 50)
+//        layoutCellHeight?.isActive = true
+        
+        layoutCellExpanded = contentView.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor)
+        layoutCellExpanded?.isActive = true
+        
+        layoutCellCollapsed = contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor)
+        layoutCellCollapsed?.isActive = false
+    }
+    
+    // MARK: -
+    
+    override var isSelected: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.4) {
+                self.layoutCellCollapsed?.isActive = self.isSelected ? true : false
+                self.layoutCellExpanded?.isActive = self.isSelected ? false : true
+                self.invalidateIntrinsicContentSize()
+                self.superview?.layoutIfNeeded()
+                
+            }
+
+        }
+    }
+}
+
+final class OurMissionCellDIFModel2: DIFCollectionViewCellModel<OurMissionCell_2> {
+    let taglineLabel: String
+    
+    init(collectionView: UICollectionView, taglineLabel: String) {
+        self.taglineLabel = taglineLabel
+        super.init(collectionView, id: taglineLabel)
+    }
+}
+
+final class OurMissionCell_2: DIFCollectionViewCell {
+    
+    // MARK: - Set data
+    
+    override var model: DIFItem? {
+        didSet {
+            guard let model = model as? OurMissionCellDIFModel2 else {
+                return
+            }
+            
+            taglineLabel.text = model.taglineLabel
+        }
+    }
+    
+    // MARK: - UI
+    
+    private let taglineLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textColor = .blue
+        return label
+    }()
+    
+    // MARK: - Common init
+    
+    override func commonInit() {
+        super.commonInit()
+        
+        contentView.addSubviews(taglineLabel) {[
+            taglineLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            taglineLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            taglineLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            taglineLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ]}
+    }
+    
+}
+
 class OurMissionCell: UITableViewCell {
 
     class var identifier: String { return String(describing: self) }

@@ -7,8 +7,77 @@
 
 import UIKit
 
-protocol OurMissionViewControllerProtocol: BaseViewController {
+protocol OurMissionViewControllerProtocol: Presentable {
     
+}
+
+final class OurMissionViewController_: DIFCollectionViewController, OurMissionViewControllerProtocol {
+    
+    private func prepareCellModel(title: String) -> DIFItem {
+        let description = "kjdgkjdgksjdg sjkjdhksjhd skjdhgksjdh kjshd\n shdjkhgskjdhgs djhskdjhgskjdhgs kjdhgksj"
+        let item = OurMissionCellDIFModel(collectionView: collectionView, taglineLabel: title, descriptions: description)
+        item.didTap = { item, index in
+            print("\(item) \(index)")
+        }
+        return item
+    }
+    
+    private func prepareCellModel2(title: String) -> DIFItem {
+        let item = OurMissionCellDIFModel2(collectionView: collectionView, taglineLabel: title)
+        item.didTap = { item, index in
+            print("\(item) \(index)")
+        }
+        return item
+    }
+    
+    private var section: DIFSection {
+        
+        var items = (0...10).map { prepareCellModel(title: "Item - \($0)") }
+        let items2 = (0...10).map { prepareCellModel2(title: "Item2 - \($0)") }
+        items.append(contentsOf: items2)
+        
+        return DIFSection(id: "Section-0", items: items)
+    }
+    
+    override var content: [DIFSection] {
+        [section]
+    }
+    
+    // MARK: - Common init
+    
+    override func commonInit() {
+        super.commonInit()
+        collectionView.allowsMultipleSelection = true
+    }
+    
+    // MARK: - Layout setup
+    
+    override func configureLayouts() -> UICollectionViewLayout? {
+        let layout = UICollectionViewCompositionalLayout { section, layoutEnvironment in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+            
+            var group =  NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+//            if #available(iOS 16.0, *) {
+//                group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+//            } else {
+//                group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+//            }
+  
+            let section = NSCollectionLayoutSection(group: group)
+            
+            return section
+        }
+        return layout
+    }
+    
+    //
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didSelectItemAt: \(indexPath)")
+    }
 }
 
 final class OurMissionViewController: BaseViewController, OurMissionViewControllerProtocol {

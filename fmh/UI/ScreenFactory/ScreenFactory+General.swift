@@ -25,9 +25,11 @@ extension ScreenFactory: GeneralScreenFactoryProtocol {
     }
     
     func makeOurMissionViewController() -> OurMissionViewControllerProtocol {
-        let viewController = OurMissionViewController()
-        let presenter = OurMissionPresenter(view: viewController)
-        viewController.presenter = presenter
+        let viewController = OurMissionViewController_()
+        
+//        let viewController = OurMissionViewController()
+//        let presenter = OurMissionPresenter(view: viewController)
+//        viewController.presenter = presenter
         return viewController
     }
     
