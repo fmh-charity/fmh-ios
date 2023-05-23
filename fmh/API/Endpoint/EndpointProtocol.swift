@@ -28,7 +28,7 @@ protocol EndpointProtocol {
 extension EndpointProtocol {
     
     var host: String? {
-        Plist.getSettingsValue(keyPath: "API.host") as? String
+        PlistManager.getSettingsValue(keyPath: "API.host") as? String
     }
 }
 

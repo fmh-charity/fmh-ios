@@ -48,7 +48,7 @@ extension APIService: APIServiceProtocol {
         let response = try await urlSession.data(for: request)
         
         let logItems: [Any?] = [(response.1 as? HTTPURLResponse)?.statusCode, request.cURL(pretty: true)]
-        Logger.debug(logItems.compactMap { $0 })
+        AppLogger.debug(logItems.compactMap { $0 })
         
         return try await interceptor(with: response)
     }
@@ -58,7 +58,7 @@ extension APIService: APIServiceProtocol {
         let response = try await urlSession.data(from: url)
         
         let logItems: [Any?] = [(response.1 as? HTTPURLResponse)?.statusCode, url]
-        Logger.debug(logItems.compactMap { $0 })
+        AppLogger.debug(logItems.compactMap { $0 })
         
         return try await interceptor(with: response)
     }

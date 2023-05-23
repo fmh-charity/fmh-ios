@@ -21,7 +21,7 @@ final class AuthCoordinator: Coordinator {
     
     private let factory: AuthScreenFactoryProtocol
     
-    init(router: Routable, factory: AuthScreenFactoryProtocol) {
+    init(router: RouterProtocol, factory: AuthScreenFactoryProtocol) {
         self.factory = factory
         super.init(router: router)
     }
@@ -39,7 +39,7 @@ extension AuthCoordinator: AuthCoordinatorProtocol {
         let viewController = factory.makeLoginViewController()
         viewController.onCompletion = onCompletion
         viewController.coordinator = self
-        router.setDefaultNavigationController()
+        router.setWindowRootNavigationController()
         router.setRoot(viewController, hideBar: false, animated: false)
     }
     

@@ -7,40 +7,42 @@
 
 import Foundation
 
-protocol Coordinatable : AnyObject {
-    var childCoordinators: [Coordinatable] { get set }
-    var router: Routable { get }
+protocol CoordinatorProtocol : AnyObject {
+    var childCoordinators: [CoordinatorProtocol] { get set }
+    var router: RouterProtocol { get }
     var onCompletion: (() -> Void)? { get set }
     func start()
 }
 
 // MARK: - Coordinator
 
-class Coordinator: Coordinatable {
+class Coordinator: CoordinatorProtocol {
     
-    var childCoordinators = [Coordinatable]()
-    var router: Routable
-    
+    var childCoordinators = [CoordinatorProtocol]()
+    var router: RouterProtocol
     var onCompletion: (() -> Void)?
     
-    init(router: Routable) {
+    init(router: RouterProtocol) {
         self.router = router
     }
     
     func start() {
         fatalError("CoordinatorBase: Need override in heir coordinator.")
     }
+}
+
+// MARK: - Logic
+
+extension Coordinator {
     
-    // MARK: logic
-    
-    func childAppend(_ child: Coordinatable) {
+    func childAppend(_ child: CoordinatorProtocol) {
         for element in childCoordinators {
             if element === child { return }
         }
         childCoordinators.append(child)
     }
     
-    func childRemove(_ child: Coordinatable?) {
+    func childRemove(_ child: CoordinatorProtocol?) {
         childCoordinators = childCoordinators.filter { $0 !== child }
     }
 }

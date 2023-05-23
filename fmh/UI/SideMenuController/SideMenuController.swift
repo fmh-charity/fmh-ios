@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol SideMenuControllerProtocol: ViewController {
+protocol SideMenuControllerProtocol: BaseViewController {
     var coordinator: GeneralCoordinatorProtocol? { get set }
     var contentController: UINavigationController { get }
     
     func setRootViewController(viewController: UIViewController, menu: SideMenuItems)
 }
 
-final class SideMenuController: ViewController, SideMenuControllerProtocol {
+final class SideMenuController: BaseViewController, SideMenuControllerProtocol {
 
     weak var coordinator: GeneralCoordinatorProtocol?
     

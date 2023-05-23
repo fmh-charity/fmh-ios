@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol OurMissionViewControllerProtocol: ViewController {
+protocol OurMissionViewControllerProtocol: BaseViewController {
     
 }
 
-final class OurMissionViewController: ViewController, OurMissionViewControllerProtocol {
+final class OurMissionViewController: BaseViewController, OurMissionViewControllerProtocol {
     
     var presenter: OurMissionPresenterProtocol?
     

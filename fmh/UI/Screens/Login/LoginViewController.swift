@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-protocol LoginViewControllerProtocol: ViewController {
+protocol LoginViewControllerProtocol: BaseViewController {
     var coordinator: AuthCoordinatorProtocol? { get set }
 }
 
-final class LoginViewController: ViewController, LoginViewControllerProtocol {
+final class LoginViewController: BaseViewController, LoginViewControllerProtocol {
     
     // TODO: Возможно в MVC сделать (Если контроллер не сильно большой будет)
     

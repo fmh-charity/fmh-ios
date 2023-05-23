@@ -21,7 +21,7 @@ final class LoadingCoordinator: Coordinator {
     
     var apiClient: APIClientProtocol?
     
-    init(router: Routable, factory: LoadingScreenFactoryProtocol) {
+    init(router: RouterProtocol, factory: LoadingScreenFactoryProtocol) {
         self.factory = factory
         super.init(router: router)
     }
@@ -38,7 +38,7 @@ extension LoadingCoordinator: LoadingCoordinatorProtocol {
     func performLoadingScreenFlow() {
         let viewController = factory.makeLoadingViewController()
         viewController.onCompletion = onCompletion
-        router.setWindowRoot(viewController)
+        router.setWindowRootController(with: viewController)
         
         // TODO: Если много нужно сервисов опрашивать во время загрузки добавляем очереди/группы
         

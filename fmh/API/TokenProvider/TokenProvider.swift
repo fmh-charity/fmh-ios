@@ -18,35 +18,28 @@ actor TokenProvider {
     
     private var accessToken: Token? {
         get {
-            Helper.Core.KeyChain.get(forKey: Keys.accessToken.rawValue)
+            KeyChainManager.get(forKey: Keys.accessToken.rawValue)
         }
         set {
             guard let newValue else {
-                Helper.Core.KeyChain.del(key: Keys.accessToken.rawValue)
+                KeyChainManager.del(key: Keys.accessToken.rawValue)
                 return
             }
-            Helper.Core.KeyChain.set(value: newValue, forKey: Keys.accessToken.rawValue)
+            KeyChainManager.set(value: newValue, forKey: Keys.accessToken.rawValue)
         }
     }
     
     private var refreshToken: Token? {
         get {
-            Helper.Core.KeyChain.get(forKey: Keys.refreshToken.rawValue)
+            KeyChainManager.get(forKey: Keys.refreshToken.rawValue)
         }
         set {
             guard let newValue else {
-                Helper.Core.KeyChain.del(key: Keys.refreshToken.rawValue)
+                KeyChainManager.del(key: Keys.refreshToken.rawValue)
                 return
             }
-            Helper.Core.KeyChain.set(value: newValue, forKey: Keys.refreshToken.rawValue)
+            KeyChainManager.set(value: newValue, forKey: Keys.refreshToken.rawValue)
         }
-    }
-    
-    // MARK: - Helper
-    
-    static func clearTokens() {
-        Helper.Core.KeyChain.del(key: Keys.accessToken.rawValue)
-        Helper.Core.KeyChain.del(key: Keys.refreshToken.rawValue)
     }
 }
 
@@ -75,5 +68,15 @@ extension TokenProvider: TokenProviderProtocol {
     func setTokens(accessToken: String?, refreshToken: String?) async {
         self.accessToken = accessToken
         self.refreshToken = refreshToken
+    }
+}
+
+// MARK: - Helper
+
+extension TokenProvider {
+    
+    static func clearTokens() {
+        KeyChainManager.del(key: Keys.accessToken.rawValue)
+        KeyChainManager.del(key: Keys.refreshToken.rawValue)
     }
 }

@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol ProfileViewControllerProtocol: ViewController {
+protocol ProfileViewControllerProtocol: BaseViewController {
     
 }
 
-final class ProfileViewController: ViewController, ProfileViewControllerProtocol {
+final class ProfileViewController: BaseViewController, ProfileViewControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()

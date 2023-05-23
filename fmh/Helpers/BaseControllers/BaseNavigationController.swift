@@ -1,5 +1,5 @@
 //
-//  NavigationController.swift
+//  BaseNavigationController.swift
 //  fmh
 //
 //  Created: 11.12.2022
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NavigationController: UINavigationController {
+class BaseNavigationController: UINavigationController {
     
     var onCompletion: (() -> Void)?
     

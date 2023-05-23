@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-protocol LoadingViewControllerProtocol: ViewController {
+protocol LoadingViewControllerProtocol: BaseViewController {
     func loadingServiceCompletion(error: Error?)
 }
 
-final class LoadingViewController: ViewController {
+final class LoadingViewController: BaseViewController {
     
     // Когда все сервисы завершились без ошибок.
     private var isLoadingServiceCompletionOk: Bool = false

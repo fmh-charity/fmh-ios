@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    private lazy var coordinator: Coordinatable = makeCoordinator()
+    private lazy var coordinator: CoordinatorProtocol = makeCoordinator()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -34,13 +34,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 private extension SceneDelegate {
     
-    func makeCoordinator() -> Coordinatable {
+    func makeCoordinator() -> CoordinatorProtocol {
         let apiService = APIService(urlSession: makeSession())
         let tokenProvider = TokenProvider()
         let apiClient = APIClient(service: apiService, tokenProvider: tokenProvider)
         
-        let router = Router(window: window, navigationController: NavigationController())
-        let coordinator = AppCoordinator(router: router, apiClient: apiClient)
+        let router = Router(window: window, navigationController: BaseNavigationController())
+        let screenFactory = ScreenFactory(apiClient: apiClient)
+        let coordinator = AppCoordinator(router: router, apiClient: apiClient, factory: screenFactory)
         return coordinator
     }
     

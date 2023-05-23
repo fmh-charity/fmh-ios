@@ -28,7 +28,7 @@ final class GeneralCoordinator: Coordinator {
     
     var apiClient: APIClientProtocol?
     
-    init(router: Routable, factory: GeneralScreenFactoryProtocol) {
+    init(router: RouterProtocol, factory: GeneralScreenFactoryProtocol) {
         self.factory = factory
         super.init(router: router)
     }
@@ -50,8 +50,7 @@ final class GeneralCoordinator: Coordinator {
         let sideMenuController: SideMenuControllerProtocol = factory.makeSideMenuController()
         sideMenuController.coordinator = self
         sideMenuController.onCompletion = onCompletion
-        router.setWindowRoot(sideMenuController)
-        router.setNavigationController(sideMenuController.contentController)
+        router.setWindowRootController(with: sideMenuController)
     }
 }
 
@@ -61,7 +60,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
     
     func performFlow(with menu: SideMenuItems) {
         
-        let menuController = (router.getRootViewController() as? SideMenuControllerProtocol)
+        let menuController = (router.getWindowRootController() as? SideMenuControllerProtocol)
         guard let menuController = menuController else { return }
         
         if let vc = menuControllers[menu] {
@@ -100,7 +99,7 @@ extension GeneralCoordinator: GeneralCoordinatorProtocol {
         case .push: router.push(screen, animated: true)
         case .present: router.present(screen, animated: animated, completion: completion)
         case .root:
-            let menuController = (router.getRootViewController() as? SideMenuControllerProtocol)
+            let menuController = (router.getWindowRootController() as? SideMenuControllerProtocol)
             if let viewController = screen?.toPresent, let menuController {
                 menuController.setRootViewController(viewController: viewController, menu: .none)
             }
@@ -130,7 +129,7 @@ extension GeneralCoordinator {
     }
 }
 
-class TestVC: ViewController {
+class TestVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,7 +138,7 @@ class TestVC: ViewController {
     }
 }
 
-class TestVC2: ViewController {
+class TestVC2: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol RegistrationViewControllerProtocol: ViewController {
+protocol RegistrationViewControllerProtocol: BaseViewController {
     
 }
 
-final class RegistrationViewController: ViewController, RegistrationViewControllerProtocol {
+final class RegistrationViewController: BaseViewController, RegistrationViewControllerProtocol {
     
     var presenter: RegistrationPresenterProtocol?
     

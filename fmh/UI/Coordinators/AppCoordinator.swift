@@ -17,23 +17,12 @@ protocol AppCoordinatorProtocol: AnyObject {
 
 final class AppCoordinator: Coordinator {
     
-    private lazy var factory: ScreenFactory = ScreenFactory(apiClient: apiClient)
-    
+    private let factory: ScreenFactory
     private let apiClient: APIClientProtocol
-    //    = {
-    //        let apiClient =  APIClient(service: <#T##APIService#>, tokenProvider: <#T##TokenProviderProtocol#>)
-    //        apiClient.urlSession.configuration.urlCache = self.cache
-    //
-    //        // В случае ошибки какой в API - перекидываем на ввод логина
-    //        apiClient.didRefreshedTokensInterruption = { [weak self] userInfo in
-    //            self?.childCoordinators = []
-    //            self?.performAuthFlow()
-    //        }
-    //        return apiClient
-    //    }()
-    
-    init(router: Routable, apiClient: APIClientProtocol) {
+
+    init(router: RouterProtocol, apiClient: APIClientProtocol, factory: ScreenFactory) {
         self.apiClient = apiClient
+        self.factory = factory
         super.init(router: router)
     }
     

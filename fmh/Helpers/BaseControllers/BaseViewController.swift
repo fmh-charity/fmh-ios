@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BaseViewController.swift
 //  fmh
 //
 //  Created: 26.11.2022
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, Presentable {
+class BaseViewController: UIViewController, Presentable {
     
     var onCompletion: (() -> Void)?
     
