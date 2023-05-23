@@ -10,6 +10,8 @@ import UIKit
 @available(iOS 13.0, tvOS 13.0, *)
 class DIFCollectionViewCell: UICollectionViewCell, DIFCollectionViewCellProtocol {
     
+    static let didTapGestureRecognizerName = "DidTapGestureRecognizer"
+    
     var indexPath: IndexPath?
     
     var model: DIFItem? {
@@ -31,7 +33,8 @@ class DIFCollectionViewCell: UICollectionViewCell, DIFCollectionViewCellProtocol
     
     private func setupGestureRecognizers() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
-        tapGesture.delaysTouchesBegan = false
+        tapGesture.name = DIFCollectionViewCell.didTapGestureRecognizerName
+        tapGesture.cancelsTouchesInView = false
         addGestureRecognizer(tapGesture)
     }
     
