@@ -3,7 +3,7 @@ import UIKit
 
 @available(iOS 13.0, tvOS 13.0, *)
 open class DIFCollectionViewCell: UICollectionViewCell, DIFCollectionViewCellProtocol {
-    
+
     public var indexPath: IndexPath?
     
     open var model: DIFItem? {
