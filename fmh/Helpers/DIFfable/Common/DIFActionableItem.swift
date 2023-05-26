@@ -1,13 +1,18 @@
+//
+//  DIFActionableItemL.swift
+//  fmh
+//
+//  Created: 23.05.2023
+//
 
 import Foundation
 
-open class DIFActionableItem: DIFItem, DIFActionable {
+class DIFActionableItem: DIFItem, DIFActionable {
     
-    public var didTap: DidTap?
+    var didTap: DidTap?
     
-    public init(id: String, action: DidTap? = nil) {
+    init(id: String, action: DidTap? = nil) {
         self.didTap = action
         super.init(id: id)
     }
-    
 }

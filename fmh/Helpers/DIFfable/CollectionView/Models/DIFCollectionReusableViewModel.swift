@@ -1,14 +1,20 @@
+//
+//  DIFCollectionReusableViewModel.swift
+//  fmh
+//
+//  Created: 23.05.2023
+//
 
 import UIKit
 
 @available(iOS 13.0, tvOS 13.0, *)
-open class DIFCollectionReusableViewModel<T: DIFCollectionReusableViewProtocol>: DIFActionableItem, DIFCollectionReusableViewModelProtocol {
+class DIFCollectionReusableViewModel<T: DIFCollectionReusableViewProtocol>: DIFActionableItem, DIFCollectionReusableViewModelProtocol {
     
-    public var elementKind: String
+    var elementKind: String
     
-    public var reuseIdentifier: String { String(describing: T.self) }
+    var reuseIdentifier: String { String(describing: T.self) }
     
-    public init(_ collectionView: UICollectionView, id: String, forSupplementaryViewOfKind ofKind: String? = nil) {
+    init(_ collectionView: UICollectionView, id: String, forSupplementaryViewOfKind ofKind: String? = nil) {
         
         self.elementKind = ofKind ?? String(describing: T.self)
         
@@ -17,7 +23,7 @@ open class DIFCollectionReusableViewModel<T: DIFCollectionReusableViewProtocol>:
         collectionView.register(T.self, forSupplementaryViewOfKind: self.elementKind, withReuseIdentifier: reuseIdentifier)
     }
     
-    public func getView(_ collectionView: UICollectionView, for indexPath: IndexPath) -> UICollectionReusableView {
+    func getView(_ collectionView: UICollectionView, for indexPath: IndexPath) -> UICollectionReusableView {
        
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: self.elementKind, withReuseIdentifier: reuseIdentifier, for: indexPath)
         
@@ -26,5 +32,4 @@ open class DIFCollectionReusableViewModel<T: DIFCollectionReusableViewProtocol>:
         
         return view
     }
-    
 }

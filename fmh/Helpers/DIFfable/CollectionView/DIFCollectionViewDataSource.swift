@@ -1,12 +1,18 @@
+//
+//  DIFCollectionViewDataSource.swift
+//  fmh
+//
+//  Created: 23.05.2023
+//
 
 import UIKit
 
 @available(iOS 13.0, tvOS 13.0, *)
-open class DIFCollectionViewDataSource: UICollectionViewDiffableDataSource<DIFItem, DIFItem> {
+class DIFCollectionViewDataSource: UICollectionViewDiffableDataSource<DIFItem, DIFItem> {
     
-    public typealias Snapshot = NSDiffableDataSourceSnapshot<DIFItem, DIFItem>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<DIFItem, DIFItem>
     
-    public init(collectionView: UICollectionView, sections: [DIFSection] = []) {
+    init(collectionView: UICollectionView, sections: [DIFSection] = []) {
         
         super.init(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
             
@@ -23,7 +29,7 @@ open class DIFCollectionViewDataSource: UICollectionViewDiffableDataSource<DIFIt
         apply(sections: sections)
     }
     
-    open func apply(sections: [DIFSection], animatingDifferences: Bool = false, completion: (() -> Void)? = nil) {
+    func apply(sections: [DIFSection], animatingDifferences: Bool = false, completion: (() -> Void)? = nil) {
         
         var snapshot = Snapshot()
         
@@ -36,7 +42,7 @@ open class DIFCollectionViewDataSource: UICollectionViewDiffableDataSource<DIFIt
         self.apply(snapshot, animatingDifferences: animatingDifferences, completion: completion)
     }
     
-    open func supplementary(collectionView: UICollectionView, elementKind: String, indexPath: IndexPath) -> UICollectionReusableView? {
+    func supplementary(collectionView: UICollectionView, elementKind: String, indexPath: IndexPath) -> UICollectionReusableView? {
         
         guard let section = self.snapshot().sectionIdentifiers[indexPath.section] as? DIFSection
         else { return nil }
@@ -66,5 +72,4 @@ open class DIFCollectionViewDataSource: UICollectionViewDiffableDataSource<DIFIt
         
         return nil
     }
-    
 }
