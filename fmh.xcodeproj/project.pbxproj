@@ -29,6 +29,7 @@
 		190F77AF2948F0EE0088A863 /* UIBarButtonItem+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77AE2948F0EE0088A863 /* UIBarButtonItem+Init.swift */; };
 		190F77B3294A43A80088A863 /* SideMenuTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77B2294A43A70088A863 /* SideMenuTopView.swift */; };
 		190F77B7294B9EB60088A863 /* NSLayoutConstraint+Activate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F77B6294B9EB60088A863 /* NSLayoutConstraint+Activate.swift */; };
+		192CC5B52A27CCBA00B19B55 /* DIFConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192CC5B42A27CCBA00B19B55 /* DIFConfigurable.swift */; };
 		194DC57A2A118631002D56BB /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5792A118631002D56BB /* TokenProvider.swift */; };
 		194DC57C2A118711002D56BB /* TokenProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC57B2A118711002D56BB /* TokenProviderError.swift */; };
 		194DC58F2A1412F3002D56BB /* TokenProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC58E2A1412F3002D56BB /* TokenProviderProtocol.swift */; };
@@ -52,8 +53,6 @@
 		194DC5F82A1CDF14002D56BB /* DIFCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E52A1CDF14002D56BB /* DIFCollectionViewController.swift */; };
 		194DC5F92A1CDF14002D56BB /* DIFCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E72A1CDF14002D56BB /* DIFCollectionView.swift */; };
 		194DC5FA2A1CDF14002D56BB /* DIFCollectionViewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E82A1CDF14002D56BB /* DIFCollectionViewReusableView.swift */; };
-		194DC5FB2A1CDF14002D56BB /* DIFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5E92A1CDF14002D56BB /* DIFCollectionViewCell.swift */; };
-		194DC5FC2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5EB2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift */; };
 		194DC5FD2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5EC2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift */; };
 		194DC5FE2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5ED2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift */; };
 		194DC5FF2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DC5EE2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift */; };
@@ -127,6 +126,7 @@
 		190F77AE2948F0EE0088A863 /* UIBarButtonItem+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Init.swift"; sourceTree = "<group>"; };
 		190F77B2294A43A70088A863 /* SideMenuTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTopView.swift; sourceTree = "<group>"; };
 		190F77B6294B9EB60088A863 /* NSLayoutConstraint+Activate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Activate.swift"; sourceTree = "<group>"; };
+		192CC5B42A27CCBA00B19B55 /* DIFConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIFConfigurable.swift; sourceTree = "<group>"; };
 		194DC5792A118631002D56BB /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		194DC57B2A118711002D56BB /* TokenProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProviderError.swift; sourceTree = "<group>"; };
 		194DC58E2A1412F3002D56BB /* TokenProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProviderProtocol.swift; sourceTree = "<group>"; };
@@ -150,8 +150,6 @@
 		194DC5E52A1CDF14002D56BB /* DIFCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewController.swift; sourceTree = "<group>"; };
 		194DC5E72A1CDF14002D56BB /* DIFCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionView.swift; sourceTree = "<group>"; };
 		194DC5E82A1CDF14002D56BB /* DIFCollectionViewReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewReusableView.swift; sourceTree = "<group>"; };
-		194DC5E92A1CDF14002D56BB /* DIFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCell.swift; sourceTree = "<group>"; };
-		194DC5EB2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCellProtocol.swift; sourceTree = "<group>"; };
 		194DC5EC2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewReusableViewProtocol.swift; sourceTree = "<group>"; };
 		194DC5ED2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCellModelSupplementable.swift; sourceTree = "<group>"; };
 		194DC5EE2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DIFCollectionViewCellModelProtocol.swift; sourceTree = "<group>"; };
@@ -327,6 +325,7 @@
 		194DC5E02A1CDF14002D56BB /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				194DC5E72A1CDF14002D56BB /* DIFCollectionView.swift */,
 				194DC5E52A1CDF14002D56BB /* DIFCollectionViewController.swift */,
 				194DC5E12A1CDF14002D56BB /* DIFCollectionViewDataSource.swift */,
 				194DC5E22A1CDF14002D56BB /* Models */,
@@ -348,9 +347,7 @@
 		194DC5E62A1CDF14002D56BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				194DC5E72A1CDF14002D56BB /* DIFCollectionView.swift */,
 				194DC5E82A1CDF14002D56BB /* DIFCollectionViewReusableView.swift */,
-				194DC5E92A1CDF14002D56BB /* DIFCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,11 +355,10 @@
 		194DC5EA2A1CDF14002D56BB /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				194DC5EB2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift */,
-				194DC5EC2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift */,
-				194DC5ED2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift */,
 				194DC5EE2A1CDF14002D56BB /* DIFCollectionViewCellModelProtocol.swift */,
 				194DC5EF2A1CDF14002D56BB /* DIFCollectionReusableViewModelProtocol.swift */,
+				194DC5ED2A1CDF14002D56BB /* DIFCollectionViewCellModelSupplementable.swift */,
+				194DC5EC2A1CDF14002D56BB /* DIFCollectionViewReusableViewProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -372,6 +368,7 @@
 			children = (
 				194DC5F42A1CDF14002D56BB /* DIFItem.swift */,
 				194DC5F22A1CDF14002D56BB /* DIFActionable.swift */,
+				192CC5B42A27CCBA00B19B55 /* DIFConfigurable.swift */,
 				194DC5F12A1CDF14002D56BB /* DIFActionableItem.swift */,
 				194DC5F32A1CDF14002D56BB /* DIFSection.swift */,
 			);
@@ -714,6 +711,7 @@
 				194DC5FA2A1CDF14002D56BB /* DIFCollectionViewReusableView.swift in Sources */,
 				194DC5BC2A1A003D002D56BB /* SideMenuPresenter.swift in Sources */,
 				194DC5F62A1CDF14002D56BB /* DIFCollectionReusableViewModel.swift in Sources */,
+				192CC5B52A27CCBA00B19B55 /* DIFConfigurable.swift in Sources */,
 				190F77A1294655FF0088A863 /* SideMenuItems.swift in Sources */,
 				19506AAC2A0953BB00D13912 /* SideMenuController.swift in Sources */,
 				190F779A2946266A0088A863 /* LoginTextField.swift in Sources */,
@@ -758,7 +756,6 @@
 				190F7795294624630088A863 /* LoginViewController.swift in Sources */,
 				194DC5922A141437002D56BB /* APIClientError.swift in Sources */,
 				190F77AF2948F0EE0088A863 /* UIBarButtonItem+Init.swift in Sources */,
-				194DC5FC2A1CDF14002D56BB /* DIFCollectionViewCellProtocol.swift in Sources */,
 				19D2AFB429CA430900736AC8 /* Dictionary+Subscript.swift in Sources */,
 				19F91EB929536B9600B1194A /* OurMissionCell.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
@@ -776,7 +773,6 @@
 				19EB70E92932991E00DB8F21 /* LoadingCoordinator.swift in Sources */,
 				190F7770294243CB0088A863 /* DTOUserInfo.swift in Sources */,
 				194DC5D22A1BD651002D56BB /* Presentable.swift in Sources */,
-				194DC5FB2A1CDF14002D56BB /* DIFCollectionViewCell.swift in Sources */,
 				190F77982946261F0088A863 /* PasswordTextField.swift in Sources */,
 				19F1E76C29A2A9CF00FDAB97 /* RoleModel.swift in Sources */,
 				1959B3B0294D12060052BB15 /* RegistrationViewController.swift in Sources */,

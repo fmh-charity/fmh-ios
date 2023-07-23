@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// УДАЛИТЬ !!!
 @available(iOS 13.0, tvOS 13.0, *)
 class DIFCollectionReusableView: UICollectionReusableView, DIFCollectionReusableViewProtocol {
     
@@ -33,7 +33,7 @@ class DIFCollectionReusableView: UICollectionReusableView, DIFCollectionReusable
     
     private func setupGestureRecognizers() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
-        tapGesture.name = DIFCollectionViewCell.didTapGestureRecognizerName
+        tapGesture.name = DIFCollectionReusableView.didTapGestureRecognizerName
         tapGesture.cancelsTouchesInView = false
         addGestureRecognizer(tapGesture)
     }

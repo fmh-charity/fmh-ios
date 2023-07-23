@@ -7,34 +7,7 @@
 
 import UIKit
 
-final class OurMissionCellDIFModel: DIFCollectionViewCellModel<OurMissionCell> {
-    let title: String
-    let descriptions: String
-    let taglineColor: UIColor?
-    
-    init(collectionView: UICollectionView, taglineLabel: String, descriptions: String, taglineColor: UIColor?) {
-        self.title = taglineLabel
-        self.descriptions = descriptions
-        self.taglineColor = taglineColor
-        super.init(collectionView, id: taglineLabel)
-    }
-}
-
-final class OurMissionCell: DIFCollectionViewCell {
-    
-    // MARK: - Set data
-    
-    override var model: DIFItem? {
-        didSet {
-            guard let model = model as? OurMissionCellDIFModel else {
-                return
-            }
-            
-            taglineLabel.text = model.title
-            descriptionLabel.text = model.descriptions
-            taglineLabel.backgroundColor = model.taglineColor
-        }
-    }
+final class OurMissionCell: UICollectionViewCell {
     
     // MARK: - Private
     
@@ -73,6 +46,17 @@ final class OurMissionCell: DIFCollectionViewCell {
         return view
     }()
 
+    // MARK: - Lifecycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override var isSelected: Bool {
         didSet {
             animateCell(isHidden: !isSelected)
@@ -81,22 +65,21 @@ final class OurMissionCell: DIFCollectionViewCell {
     
     // MARK: - Common init
     
-    override func commonInit() {
-        super.commonInit()
+    func commonInit() {
+        clipsToBounds = true
+        contentView.backgroundColor = .white
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor(red: 0.846, green: 0.846, blue: 0.846, alpha: 1).cgColor
+        contentView.layer.cornerRadius = 8
+        
         setupUI()
     }
 
     // MARK: - Setup UI
 
     private func setupUI() {
-        clipsToBounds = true
-        contentView.backgroundColor = .white
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor(red: 0.846, green: 0.846, blue: 0.846, alpha: 1).cgColor
-        contentView.layer.cornerRadius = 8
 
         contentView.addSubviews(leafView, arrowView, taglineLabel, descriptionLabel) {[
-
             leafView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             leafView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
             leafView.widthAnchor.constraint(equalToConstant: 31),
@@ -133,5 +116,27 @@ final class OurMissionCell: DIFCollectionViewCell {
             self.superview?.layoutIfNeeded()
             self.arrowView.transform = isHidden ? .identity : upDown
         }
+    }
+    
+    // MARK: - Model
+    
+    struct Model {
+        let title: String
+        let descriptions: String
+        let taglineColor: UIColor?
+        
+        init(title: String, descriptions: String, taglineColor: UIColor?) {
+            self.title = title
+            self.descriptions = descriptions
+            self.taglineColor = taglineColor
+        }
+    }
+}
+
+extension OurMissionCell: DIFConfigurable {
+    func configure(with model: Model) {
+        taglineLabel.text = model.title
+        descriptionLabel.text = model.descriptions
+        taglineLabel.backgroundColor = model.taglineColor
     }
 }

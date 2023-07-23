@@ -45,11 +45,13 @@ final class OurMissionViewController: DIFCollectionViewController, OurMissionVie
         let tagline = ourMissionModel.tagline
         let description = ourMissionModel.more
         let taglineColor = ourMissionModel.color
-        let item = OurMissionCellDIFModel(collectionView: collectionView, taglineLabel: tagline, descriptions: description, taglineColor: taglineColor)
-        item.didTap = { item, index in
-            print("\(item) \(index)")
-        }
-        return item
+        
+        let difModel = DIFCollectionViewCellModel<OurMissionCell>(collectionView, id: tagline)
+        difModel.model = .init(title: tagline, descriptions: description, taglineColor: taglineColor)
+//        difModel.didTap = { item, index in
+//            print("\(item) \(index)")
+//        }
+        return difModel
     }
 
     // MARK: - Layout setup

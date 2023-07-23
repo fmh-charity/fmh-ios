@@ -7,6 +7,8 @@
 
 import Foundation
 
+// УДАЛИТЬ !!!
+
 class DIFActionableItem: DIFItem, DIFActionable {
     
     var didTap: DidTap?
