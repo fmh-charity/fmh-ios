@@ -17,11 +17,8 @@
 		19094C652A7FBF7D000979A3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C642A7FBF7D000979A3 /* AppCoordinator.swift */; };
 		19094C672A7FC3C7000979A3 /* AppAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C662A7FC3C7000979A3 /* AppAssemblyProtocol.swift */; };
 		19094C702A7FD779000979A3 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C6F2A7FD779000979A3 /* Data+.swift */; };
-		193079E92A765A45000569E6 /* NetworkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193079E82A765A45000569E6 /* NetworkingProvider.swift */; };
-		193079EF2A767229000569E6 /* AnalyticsTrackingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193079EE2A767229000569E6 /* AnalyticsTrackingProvider.swift */; };
-		193079F72A798D0E000569E6 /* RoutingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193079F62A798D0E000569E6 /* RoutingProvider.swift */; };
+		19094C772A8002FB000979A3 /* AppCoordinator+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C762A8002FB000979A3 /* AppCoordinator+.swift */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
-		19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51C280DECD0005000EB /* SceneDelegate.swift */; };
 		19C7A524280DECD3005000EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A523280DECD3005000EB /* Assets.xcassets */; };
 		19C7A527280DECD3005000EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A525280DECD3005000EB /* LaunchScreen.storyboard */; };
 		19EB70B5292E850C00DB8F21 /* AppSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70B4292E850C00DB8F21 /* AppSettings.plist */; };
@@ -56,17 +53,14 @@
 		19094C662A7FC3C7000979A3 /* AppAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssemblyProtocol.swift; sourceTree = "<group>"; };
 		19094C6A2A7FCF6B000979A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19094C6F2A7FD779000979A3 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		19094C762A8002FB000979A3 /* AppCoordinator+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppCoordinator+.swift"; sourceTree = "<group>"; };
 		192190632A753FFA0009835C /* Doc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Doc.md; sourceTree = "<group>"; };
 		192190A12A75602C0009835C /* ModularityDoc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ModularityDoc.md; sourceTree = "<group>"; };
-		193079E82A765A45000569E6 /* NetworkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProvider.swift; sourceTree = "<group>"; };
-		193079EE2A767229000569E6 /* AnalyticsTrackingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackingProvider.swift; sourceTree = "<group>"; };
-		193079F62A798D0E000569E6 /* RoutingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingProvider.swift; sourceTree = "<group>"; };
 		19307A7D2A7DA29D000569E6 /* Doc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Doc.md; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
 		1994BA21285F7EEF0019AB4A /* Sources */ = {isa = PBXFileReference; lastKnownFileType = text; path = Sources; sourceTree = "<group>"; };
 		19C7A517280DECD0005000EB /* fmh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fmh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C7A51A280DECD0005000EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		19C7A51C280DECD0005000EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		19C7A523280DECD3005000EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19C7A526280DECD3005000EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19C7A52E280DED24005000EB /* ProjectDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjectDiscription; sourceTree = "<group>"; };
@@ -94,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				19094C642A7FBF7D000979A3 /* AppCoordinator.swift */,
+				19094C762A8002FB000979A3 /* AppCoordinator+.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -102,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				19094C6E2A7FD76D000979A3 /* Extensions */,
-				193079E72A75D016000569E6 /* Providers */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -182,32 +176,6 @@
 			path = "Feature integrations";
 			sourceTree = "<group>";
 		};
-		193079E72A75D016000569E6 /* Providers */ = {
-			isa = PBXGroup;
-			children = (
-				193079F52A798D00000569E6 /* Routing */,
-				193079ED2A76721B000569E6 /* AnalyticsTracking */,
-				193079EA2A766698000569E6 /* Networking */,
-			);
-			path = Providers;
-			sourceTree = "<group>";
-		};
-		193079EA2A766698000569E6 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				193079E82A765A45000569E6 /* NetworkingProvider.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		193079ED2A76721B000569E6 /* AnalyticsTracking */ = {
-			isa = PBXGroup;
-			children = (
-				193079EE2A767229000569E6 /* AnalyticsTrackingProvider.swift */,
-			);
-			path = AnalyticsTracking;
-			sourceTree = "<group>";
-		};
 		193079F02A76742B000569E6 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,14 +184,6 @@
 				19094C4B2A7F8BA0000979A3 /* AppAssembly.swift */,
 			);
 			path = Assembly;
-			sourceTree = "<group>";
-		};
-		193079F52A798D00000569E6 /* Routing */ = {
-			isa = PBXGroup;
-			children = (
-				193079F62A798D0E000569E6 /* RoutingProvider.swift */,
-			);
-			path = Routing;
 			sourceTree = "<group>";
 		};
 		19C7A50E280DECD0005000EB = {
@@ -262,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				19C7A51A280DECD0005000EB /* AppDelegate.swift */,
-				19C7A51C280DECD0005000EB /* SceneDelegate.swift */,
 				19C7A525280DECD3005000EB /* LaunchScreen.storyboard */,
 				19094C562A7F98EA000979A3 /* Coordinator */,
 				193079F02A76742B000569E6 /* Assembly */,
@@ -367,11 +326,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19094C772A8002FB000979A3 /* AppCoordinator+.swift in Sources */,
 				19094C4C2A7F8BA0000979A3 /* AppAssembly.swift in Sources */,
 				19094C5E2A7FBCB1000979A3 /* LoadingAssembly.swift in Sources */,
-				193079F72A798D0E000569E6 /* RoutingProvider.swift in Sources */,
-				193079EF2A767229000569E6 /* AnalyticsTrackingProvider.swift in Sources */,
-				193079E92A765A45000569E6 /* NetworkingProvider.swift in Sources */,
 				19094C632A7FBDA0000979A3 /* LoadingDependencies.swift in Sources */,
 				19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */,
 				19094C582A7F9919000979A3 /* LoadingCoordinator.swift in Sources */,
@@ -380,7 +337,6 @@
 				19094C612A7FBD6E000979A3 /* LoadingAssemblyProtocol.swift in Sources */,
 				19F1E76C29A2A9CF00FDAB97 /* RoleModel.swift in Sources */,
 				19094C702A7FD779000979A3 /* Data+.swift in Sources */,
-				19C7A51D280DECD0005000EB /* SceneDelegate.swift in Sources */,
 				19094C532A7F8FC4000979A3 /* AppDependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -503,7 +459,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

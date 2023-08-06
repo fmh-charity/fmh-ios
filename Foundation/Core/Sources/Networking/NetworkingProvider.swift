@@ -1,20 +1,12 @@
-//
-//  NetworkingProvider.swift
-//  fmh
-//
-//  Created: 30.07.2023
-//
-
 import Foundation
-import Core
 
-final class NetworkingProvider {
+public final class NetworkingProvider {
 
     private let host: String
     private let urlSession: URLSession
     private let analyticsTracking: AnalyticsTracking
 
-    init(host: String, urlSession: URLSession, analyticsTracking: AnalyticsTracking) {
+    public init(host: String, urlSession: URLSession, analyticsTracking: AnalyticsTracking) {
         self.host = host
         self.urlSession = urlSession
         self.analyticsTracking = analyticsTracking
@@ -25,7 +17,7 @@ final class NetworkingProvider {
 
 extension NetworkingProvider: Networking {
 
-    func perform(for endpoint: Core.Endpoint) async throws -> (Data, URLResponse) {
+    public func perform(for endpoint: Endpoint) async throws -> (Data, URLResponse) {
         let urlRequest = try endpoint.makeURLRequest(host: host)
 
         let response = try await urlSession.data(for: urlRequest)
@@ -44,7 +36,7 @@ extension NetworkingProvider: Networking {
 
 // MARK: - FMHCore.Endpoint generate URLRequest
 
-private extension Core.Endpoint {
+private extension Endpoint {
 
     func makeURLRequest(host: String) throws -> URLRequest {
 
@@ -78,6 +70,7 @@ private extension Core.Endpoint {
 // MARK: - NetworkingProviderError
 
 private enum NetworkingProviderError: Error, LocalizedError {
+    
     case invalidHost(_ host: String)
     case invalidUrl
     case responseError(_ code: Int, _ description: String)
@@ -119,5 +112,14 @@ private extension NetworkingProvider {
         }
 
         throw NetworkingProviderError.responseError(urlResponse.statusCode, description)
+    }
+}
+
+// MARK: - Extension Data
+
+private extension Data {
+    
+    func jsonObject() throws -> Any? {
+        return try JSONSerialization.jsonObject(with: self, options: [])
     }
 }
