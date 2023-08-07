@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Core
 
 protocol LoadingPresenterProtocol: AnyObject {
     func viewDidLoad()

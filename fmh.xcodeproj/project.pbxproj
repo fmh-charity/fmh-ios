@@ -124,12 +124,12 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
-		19094C6D2A7FD0B7000979A3 /* BisnesLogic */ = {
+		19094C6D2A7FD0B7000979A3 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
 				19F1E76F29A2CC0600FDAB97 /* RoleModel */,
 			);
-			path = BisnesLogic;
+			path = BusinessLogic;
 			sourceTree = "<group>";
 		};
 		19094C6E2A7FD76D000979A3 /* Extensions */ = {
@@ -223,7 +223,7 @@
 			children = (
 				19094C592A7FB2E0000979A3 /* Common */,
 				193079E62A75CFCC000569E6 /* Feature integrations */,
-				19094C6D2A7FD0B7000979A3 /* BisnesLogic */,
+				19094C6D2A7FD0B7000979A3 /* BusinessLogic */,
 				19C7A538280DED98005000EB /* Presentation */,
 				19C7A539280DF263005000EB /* Resources */,
 			);

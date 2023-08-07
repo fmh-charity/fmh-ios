@@ -5,19 +5,7 @@
 //  Created: 02.08.2023
 //
 
-import Core
 import UIKit
-
-public struct FeatureDependencies {
-
-    var readyToComplete: (() -> Void)?
-    
-    public init(readyToComplete: (() -> Void)? = nil) {
-        self.readyToComplete = readyToComplete
-    }
-}
-
-// MARK: - Public module
 
 public struct Feature {
 

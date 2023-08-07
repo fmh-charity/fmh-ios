@@ -11,13 +11,11 @@ let package = Package(
             name: "FeatureLoading",
             targets: ["FeatureLoading"]),
     ],
-    dependencies: [
-        .package(name: "Core", path: "../../Foundation/Core")
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "FeatureLoading",
-            dependencies: ["Core"],
+            dependencies: [],
             path: "Sources",
             resources: [
                 .process("Resources")
