@@ -1,3 +1,1 @@
-# FeatureLoading
-
-A description of this package.
+# Загрузочная страница

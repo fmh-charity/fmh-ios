@@ -9,9 +9,9 @@ import Foundation
 
 public struct FeatureDependencies {
 
-    var readyToComplete: (() -> Void)?
+    public var onCompletion: (() -> Void)?
     
-    public init(readyToComplete: (() -> Void)? = nil) {
-        self.readyToComplete = readyToComplete
+    public init(onCompletion: (() -> Void)? = nil) {
+        self.onCompletion = onCompletion
     }
 }

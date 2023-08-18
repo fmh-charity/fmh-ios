@@ -2,10 +2,18 @@ import XCTest
 @testable import FeatureLoading
 
 final class FeatureLoadingTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual("Hello, World!", "Hello, World!")
+    
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+    }
+
+    override func tearDownWithError() throws {
+        try super.tearDownWithError()
+    }
+
+    // MARK: - Test cases
+    
+    func testFeatureLoading() {
+        XCTAssertTrue(true)
     }
 }

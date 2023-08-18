@@ -11,7 +11,6 @@
 		19ACF6B52A814B1100C52B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19ACF6B42A814B1100C52B05 /* Assets.xcassets */; };
 		19ACF6B82A814B1100C52B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19ACF6B62A814B1100C52B05 /* LaunchScreen.storyboard */; };
 		19ACF6C42A814C6100C52B05 /* FeatureLoading in Frameworks */ = {isa = PBXBuildFile; productRef = 19ACF6C32A814C6100C52B05 /* FeatureLoading */; };
-		19ACF6C62A814C6500C52B05 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 19ACF6C52A814C6500C52B05 /* Core */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +20,6 @@
 		19ACF6B72A814B1100C52B05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19ACF6B92A814B1100C52B05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19ACF6C02A814BFD00C52B05 /* FeatureLoading */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FeatureLoading; path = ..; sourceTree = "<group>"; };
-		19ACF6C12A814C2E00C52B05 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = ../../../Foundation/Core; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +28,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				19ACF6C42A814C6100C52B05 /* FeatureLoading in Frameworks */,
-				19ACF6C62A814C6500C52B05 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				19ACF6C02A814BFD00C52B05 /* FeatureLoading */,
-				19ACF6C12A814C2E00C52B05 /* Core */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -100,7 +96,6 @@
 			name = Example;
 			packageProductDependencies = (
 				19ACF6C32A814C6100C52B05 /* FeatureLoading */,
-				19ACF6C52A814C6500C52B05 /* Core */,
 			);
 			productName = Example;
 			productReference = 19ACF6A82A814B0D00C52B05 /* Example.app */;
@@ -377,10 +372,6 @@
 		19ACF6C32A814C6100C52B05 /* FeatureLoading */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureLoading;
-		};
-		19ACF6C52A814C6500C52B05 /* Core */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Core;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
