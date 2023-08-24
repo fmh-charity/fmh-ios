@@ -55,6 +55,7 @@
 		19A290902A8FCA1F00D7CCD1 /* Coordinating */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Coordinating; sourceTree = "<group>"; };
 		19A290952A8FF93400D7CCD1 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		19A290962A8FFDA600D7CCD1 /* HowToUse */ = {isa = PBXFileReference; lastKnownFileType = text; path = HowToUse; sourceTree = "<group>"; };
+		19A290992A90136300D7CCD1 /* Authorization */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Authorization; sourceTree = "<group>"; };
 		19ACF6C92A82C84100C52B05 /* AppDelegateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateManager.swift; sourceTree = "<group>"; };
 		19ACF6CB2A82C93F00C52B05 /* AppDelegateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateService.swift; sourceTree = "<group>"; };
 		19ACF6D02A83623000C52B05 /* AppDelegateConfigureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateConfigureService.swift; sourceTree = "<group>"; };
@@ -142,6 +143,7 @@
 		192190052A7518B20009835C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				19A290992A90136300D7CCD1 /* Authorization */,
 				192190632A753FFA0009835C /* Doc.md */,
 				19A290962A8FFDA600D7CCD1 /* HowToUse */,
 				19A2908F2A8FBACE00D7CCD1 /* Features */,

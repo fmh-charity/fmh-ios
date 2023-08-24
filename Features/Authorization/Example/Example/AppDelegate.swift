@@ -6,18 +6,16 @@
 //
 
 import UIKit
-import FeatureLoading
+import Authorization
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    lazy var featureAssembly: FeatureAssemblyProtocol = {
-        FeatureAssembly(dependencies:
-                .init(onCompletion: {
-                    print("onCompletion")
-                })
+    lazy var authorizationAssembly: AuthorizationAssemblyProtocol = {
+        AuthorizationAssembly(dependencies:
+                .init()
         )
     }()
     
@@ -26,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let vc = featureAssembly.loadingViewController
-        window?.rootViewController = vc
+        let vc = authorizationAssembly.authorizationViewController
+        let nc = UINavigationController(rootViewController: vc)
+        window?.rootViewController = nc
         
         return true
     }
