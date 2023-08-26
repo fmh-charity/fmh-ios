@@ -1,13 +1,9 @@
 
 import UIKit
 
-private enum Default {
-    public static let titleColor: UIColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-    public static let titleFont: UIFont = .systemFont(ofSize: 16.0)
-    public static let highlightedScale: CGFloat = 0.98
-}
+// TODO: Возможно когда-то добавить поддержку UIButton.Configuration (IOS15+) !
 
-public class Button: UIButton, ViewCornersAvailable {
+public class Button: UIButton, ViewCornersAvailable, ViewBordersAvailable, ViewShadowAvailable {
     
     // MARK: Static
     
@@ -47,44 +43,68 @@ public class Button: UIButton, ViewCornersAvailable {
         return .init(width: size.width, height: size.height)
     }
     
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        setCapsuleStyle(style.isCapsule ?? false)
+        if let shadows = style.shadows, !shadows.isEmpty {
+            self.layer.shadowPath = cgPathWithRoundingCorners
+        }
+    }
+    
     // MARK: - Private
     
     private func updateStyle() {
         
-        // MARK:
-        self.backgroundColor = style.backgroundColor
-        
+        // MARK: Set background color if used normal state
+        if let color = style.backgroundColors.first(where: { $0.state == .normal})?.color {
+            self.backgroundColor = color
+        }
+
         // MARK: Set corners
         if let corners = style.corners {
             self.corners = corners
         }
         
-        // MARK: Set backgroundImage
-        style.stateStyles?.forEach {
-            if let backgroundImage = $0.backgroundImage {
-                setBackgroundImage(backgroundImage, for: $0.state)
-            }
+        // MARK: Set borders
+        if let borders = style.borders?.first(where: { $0.state == .normal})?.borders {
+            self.borders = borders
         }
-        
+
+        // MARK: Set shadow
+        if let shadow = style.shadows?.first(where: { $0.state == .normal})?.shadow {
+            self.shadow = shadow
+        }
+ 
         updateTitle()
         
         invalidateIntrinsicContentSize()
     }
     
     private func updateTitle() {
-        style.stateStyles?.forEach {
-            if let titleStyle = $0.titleStyle {
-                setTitleAttributedString(title: title, color: titleStyle.color, font: titleStyle.font, state: $0.state)
+        style.titleStyles.forEach {
+            if Button.statesAvailable.contains($0.state) {
+                setTitleAttributedString(title: title, color: $0.color, font: $0.font, state: $0.state)
             }
         }
     }
     
-    private func setTitleAttributedString(title: String?, color: UIColor? = nil, font: UIFont? = nil, state: UIControl.State) {
-        let titleAttributedString = NSAttributedString(string: title ?? "", attributes: [
-            .foregroundColor: color ?? Default.titleColor,
-            .font: font ?? Default.titleFont
-        ])
+    private func setTitleAttributedString(title: String?, color: UIColor?, font: UIFont?, state: UIControl.State) {
+        var titleAttributes: [NSAttributedString.Key : Any] = [:]
+        if let color { titleAttributes[.foregroundColor] = color }
+        if let font { titleAttributes[.font] = font }
+        let titleAttributedString = NSAttributedString(string: title ?? "", attributes: titleAttributes)
         setAttributedTitle(titleAttributedString, for: state)
+    }
+    
+    private func setCapsuleStyle(_ isActivate: Bool) {
+        if isActivate {
+            self.layer.maskedCorners = .allCornerMask
+            self.layer.cornerRadius = self.bounds.height / 2.0
+        } else {
+            self.layer.maskedCorners = style.corners?.corners ?? .allCornerMask
+            self.layer.cornerRadius = style.corners?.radius ?? 0.0
+        }
+        self.layer.masksToBounds = (self.layer.cornerRadius > 0) && (self.shadow == nil)
     }
 }
 
@@ -94,16 +114,98 @@ extension Button {
     
     public override var isHighlighted: Bool {
         didSet {
-            let scale = isHighlighted ? (style.highlightedScale ?? Default.highlightedScale) : 1.0
             UIView.animate(
                 withDuration: 0.05,
                 delay: 0,
                 options: [.allowUserInteraction, .beginFromCurrentState]
             ) {
-                self.transform = .init(scaleX: scale, y: scale)
+                // highlightedScale
+                if let scale = self.style.highlightedScale {
+                    let scale = self.isHighlighted ? scale : 1.0
+                    self.transform = .init(scaleX: scale, y: scale)
+                }
+                // highlightedOpacity
+                if let opacity = self.style.highlightedOpacity {
+                    self.layer.opacity = self.isHighlighted ? opacity : 1.0
+                }
+                // backgroundColor
+                let state: UIControl.State = self.isHighlighted ? .highlighted : .normal
+                if let color = self.style.backgroundColors.first(where: { $0.state == state})?.color {
+                    self.backgroundColor = color
+                }
+                // borders
+                if let borders = self.style.borders?.first(where: { $0.state == state})?.borders {
+                    self.borders = borders
+                }
+                // shadows
+                if let shadow = self.style.shadows?.first(where: { $0.state == state})?.shadow {
+                    self.shadow = shadow
+                }
             }
         }
     }
+    
+    public override var isEnabled: Bool {
+        didSet {
+            // backgroundColors
+            let state: UIControl.State = isEnabled ? .normal : .disabled
+            if let color = style.backgroundColors.first(where: { $0.state == state})?.color {
+                self.backgroundColor = color
+            }
+            // borders
+            if let borders = style.borders?.first(where: { $0.state == state})?.borders {
+                self.borders = borders
+            }
+            // shadows
+            if let shadow = self.style.shadows?.first(where: { $0.state == state})?.shadow {
+                self.shadow = shadow
+            }
+        }
+    }
+}
+
+// MARK: - utils for shadow
+
+private extension Button {
+    
+    var cgPathWithRoundingCorners: CGPath {
+         get {
+            UIBezierPath(
+                 roundedRect: self.bounds,
+                 byRoundingCorners: self.layer.maskedCorners.rectCorners,
+                 cornerRadii: CGSize(width: self.layer.cornerRadius, height: self.layer.cornerRadius)
+             ).cgPath
+         }
+     }
+}
+
+private extension CACornerMask {
+    
+    var rectCorners: UIRectCorner {
+        get {
+            var rectCorners = UIRectCorner()
+            if self.contains(.layerMinXMinYCorner) {
+                rectCorners.insert(.topLeft)
+            }
+            
+            if self.contains(.layerMaxXMinYCorner) {
+                rectCorners.insert(.topRight)
+            }
+            
+            if self.contains(.layerMinXMaxYCorner) {
+                rectCorners.insert(.bottomLeft)
+            }
+            
+            if self.contains(.layerMaxXMaxYCorner) {
+                rectCorners.insert(.bottomRight)
+            }
+            return rectCorners
+        }
+    }
+    
+    static let allCornerMask: CACornerMask = [
+        .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner
+    ]
 }
 
 // MARK: - Unavailable
@@ -112,10 +214,4 @@ extension Button {
     
     @available(*, unavailable, message: "Use title value")
     public override func setTitle(_ title: String?, for state: UIControl.State) { }
-    
-    //    @available(*, unavailable, message: "Use Style")
-    //    public override func setTitleShadowColor(_ color: UIColor?, for state: UIControl.State) { }
-    //
-    //    @available(*, unavailable, message: "Use Style")
-    //    public override func setBackgroundImage(_ image: UIImage?, for state: UIControl.State) { }
 }

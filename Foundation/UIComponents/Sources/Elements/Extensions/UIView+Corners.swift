@@ -35,6 +35,7 @@ extension ViewCornersAvailable where Self: UIView {
             let corners = Corners()
             self.layer.maskedCorners = newValue?.corners ?? corners.corners
             self.layer.cornerRadius = newValue?.radius ?? corners.radius
+            self.layer.masksToBounds = self.layer.cornerRadius > 0.0
         }
     }
 }

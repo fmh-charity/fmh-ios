@@ -41,50 +41,12 @@ extension ViewShadowAvailable where Self: UIView {
             )
         }
         set {
-            let corners = (self as? ViewCornersAvailable)?.corners
-            self.layer.shadowPath = corners != nil ? cgPathShadow : nil
             let shadowDefault = UIView.Shadow()
             self.layer.shadowColor = newValue?.cgColor ?? shadowDefault.cgColor
             self.layer.shadowOffset = newValue?.offSet ?? shadowDefault.offSet
             self.layer.shadowOpacity = newValue?.opacity ?? shadowDefault.opacity
             self.layer.shadowRadius = newValue?.radius ?? shadowDefault.radius
-        }
-    }
-    
-   private var cgPathShadow: CGPath {
-        get {
-            return UIBezierPath(
-                roundedRect: self.bounds,
-                byRoundingCorners: self.layer.maskedCorners.rectCorners,
-                cornerRadii: CGSize(width: self.layer.cornerRadius, height: self.layer.cornerRadius)
-            ).cgPath
-        }
-    }
-}
-
-// MARK: - utils
-
-private extension CACornerMask {
-    
-    var rectCorners: UIRectCorner {
-        get {
-            var rectCorners = UIRectCorner()
-            if self.contains(.layerMinXMinYCorner) {
-                rectCorners.insert(.topLeft)
-            }
-            
-            if self.contains(.layerMaxXMinYCorner) {
-                rectCorners.insert(.topRight)
-            }
-            
-            if self.contains(.layerMinXMaxYCorner) {
-                rectCorners.insert(.bottomLeft)
-            }
-            
-            if self.contains(.layerMaxXMaxYCorner) {
-                rectCorners.insert(.bottomRight)
-            }
-            return rectCorners
+            self.layer.masksToBounds = false
         }
     }
 }

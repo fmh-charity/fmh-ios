@@ -1,8 +1,13 @@
 
 import UIKit
 
+// TODO: Сделать разные под размер экрана!
+
+// MARK: - General Fonts
+
 public enum Font {
-    static let `default` =  UIFont.systemFont(ofSize: 14)
+    
+    static let `default`: UIFont = .interRegular(17.0) ?? .systemFont(ofSize: 17.0)
 }
 
 // MARK: - Titles
@@ -10,15 +15,15 @@ public enum Font {
 public extension Font {
     
     enum title {
-        
+       
     }
 }
 
-// MARK: - Buttons
+// MARK: - Controls
 
 public extension Font {
     
     enum button {
-        static let `default` =  UIFont.systemFont(ofSize: 18) // TODO: <- Для кнопок надо поразмерно тоже!!!
+        
     }
 }

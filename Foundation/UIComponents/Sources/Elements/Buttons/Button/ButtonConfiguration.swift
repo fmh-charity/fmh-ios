@@ -16,3 +16,27 @@ public struct ButtonConfiguration {
         self.style = style
     }
 }
+
+public extension ButtonConfiguration {
+    
+    /*
+     Example конфигурация.
+     Со всеми параметрами, для удобства конфигурирования других.
+     */
+    static func `default`(_ size: ButtonSize = .default) -> ButtonConfiguration {
+        .init(
+            title: "ButtonConfiguration.default",
+            style: .init(
+                size: CGSize(width: .zero, height: size.rawValue),
+                isCapsule: false,
+                highlightedScale: 0.98,
+                highlightedOpacity: 0.8,
+                backgroundColors: [.init(state: .normal, color: .systemBlue)],
+                titleStyles: [.init(state: .normal, color: .white, font: .boldSystemFont(ofSize: 18))],
+                corners: nil,
+                borders: nil,
+                shadows: nil
+            )
+        )
+    }
+}
