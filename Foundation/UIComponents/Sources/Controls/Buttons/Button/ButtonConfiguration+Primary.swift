@@ -4,21 +4,22 @@ import UIKit
 // TODO: Сделать разные под размер экрана!
 
 private extension UIFont {
-    static let defaultButtonFont: UIFont = .interBold(20.0) ?? .boldSystemFont(ofSize: 20.0)
-    static let smallButtonFont: UIFont = .interBold(13.0) ?? .boldSystemFont(ofSize: 13.0)
-    static let mediumButtonFont: UIFont = .interBold(17.0) ?? .boldSystemFont(ofSize: 17.0)
-    static let largeButtonFont: UIFont = .interBold(24.0) ?? .boldSystemFont(ofSize: 24.0)
+    static let defaultButtonFont: UIFont = .interBold(ofSize: 20.0) ?? .boldSystemFont(ofSize: 20.0)
+    static let smallButtonFont: UIFont = .interBold(ofSize: 13.0) ?? .boldSystemFont(ofSize: 13.0)
+    static let mediumButtonFont: UIFont = .interBold(ofSize: 17.0) ?? .boldSystemFont(ofSize: 17.0)
+    static let largeButtonFont: UIFont = .interBold(ofSize: 24.0) ?? .boldSystemFont(ofSize: 24.0)
 }
 
 // MARK: ButtonConfiguration + Primary
 
-public extension ButtonConfiguration {
+extension ButtonConfiguration {
     
-    struct primary {
+    public struct primary {
         
         public static let `default`: ButtonConfiguration = {
             .init(
                 title: "primary.default [\(CGSize.defaultSizeButton.height)]",
+                state: .normal,
                 style: .init(
                     size: .defaultSizeButton,
                     highlightedScale: 0.98,

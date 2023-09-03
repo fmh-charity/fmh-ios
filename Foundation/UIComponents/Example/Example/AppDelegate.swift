@@ -18,11 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let vc = ButtonsViewController()
+        let vc = ViewController()
         let nc = UINavigationController(rootViewController: vc)
         window?.rootViewController = nc
         
         return true
     }
 }
-

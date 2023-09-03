@@ -13,13 +13,12 @@ let package = Package(
             targets: ["Authorization"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(name: "UIComponents", path: "../../Foundation/UIComponents")
     ],
     targets: [
         .target(
             name: "Authorization",
-            dependencies: [],
+            dependencies: ["UIComponents"],
             path: "Sources",
             resources: [
                 .process("Resources")

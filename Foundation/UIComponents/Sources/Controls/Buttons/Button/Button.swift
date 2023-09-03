@@ -3,29 +3,26 @@ import UIKit
 
 // TODO: Возможно когда-то добавить поддержку UIButton.Configuration (IOS15+) !
 
-public class Button: UIButton, ViewCornersAvailable, ViewBordersAvailable, ViewShadowAvailable {
-    
-    // MARK: Static
-    
-    public static let statesAvailable: [UIControl.State] = {
-        [.normal, .disabled, .highlighted]
-    }()
+public final class Button: UIButton, ViewCornersAvailable, ViewBordersAvailable, ViewShadowAvailable {
     
     // MARK: Public
     
-    public var style: ButtonStyle {
+    public var title: String? = nil {
+        didSet { updateTitle(with: .normal) }
+    }
+    
+    public var style: ButtonConfiguration.Style {
         didSet { updateStyle() }
     }
     
-    public var title: String? = nil {
-        didSet {
-            updateTitle()
-        }
+    public var controlState: ControlState {
+        didSet { updateStyle(with: controlState) }
     }
     
     // MARK: - Life cycle
     
     public init(configuration: ButtonConfiguration = .default()) {
+        self.controlState = configuration.state ?? .normal
         self.style = configuration.style
         self.title = configuration.title
         super.init(frame: .zero)
@@ -55,45 +52,48 @@ public class Button: UIButton, ViewCornersAvailable, ViewBordersAvailable, ViewS
     
     private func updateStyle() {
         
-        // MARK: Set background color if used normal state
-        if let color = style.backgroundColors.first(where: { $0.state == .normal})?.color {
-            self.backgroundColor = color
-        }
-
         // MARK: Set corners
         if let corners = style.corners {
             self.corners = corners
         }
         
-        // MARK: Set borders
-        if let borders = style.borders?.first(where: { $0.state == .normal})?.borders {
-            self.borders = borders
-        }
-
-        // MARK: Set shadow
-        if let shadow = style.shadows?.first(where: { $0.state == .normal})?.shadow {
-            self.shadow = shadow
-        }
- 
-        updateTitle()
+        updateStyle(with: controlState)
         
         invalidateIntrinsicContentSize()
     }
     
-    private func updateTitle() {
-        style.titleStyles.forEach {
-            if Button.statesAvailable.contains($0.state) {
-                setTitleAttributedString(title: title, color: $0.color, font: $0.font, state: $0.state)
-            }
+    private func updateStyle(with state: ControlState) {
+        
+        // backgroundColor
+        if let color = self.style.backgroundColors.first(where: { $0.state == state})?.color {
+            self.backgroundColor = color
+        }
+        
+        // borders
+        if let borders = self.style.borders?.first(where: { $0.state == state})?.borders {
+            self.borders = borders
+        }
+        
+        // shadows
+        if let shadow = self.style.shadows?.first(where: { $0.state == state})?.shadow {
+            self.shadow = shadow
+        }
+        
+        updateTitle(with: state)
+    }
+    
+    private func updateTitle(with state: ControlState) {
+        if let title = self.style.titleStyles.first(where: { $0.state == state}) {
+            setTitleAttributedString(title: self.title, color: title.color, font: title.font, state: state)
         }
     }
     
-    private func setTitleAttributedString(title: String?, color: UIColor?, font: UIFont?, state: UIControl.State) {
+    private func setTitleAttributedString(title: String?, color: UIColor?, font: UIFont?, state: ControlState) {
         var titleAttributes: [NSAttributedString.Key : Any] = [:]
         if let color { titleAttributes[.foregroundColor] = color }
         if let font { titleAttributes[.font] = font }
         let titleAttributedString = NSAttributedString(string: title ?? "", attributes: titleAttributes)
-        setAttributedTitle(titleAttributedString, for: state)
+        setAttributedTitle(titleAttributedString, for: state.convertToUIControlState)
     }
     
     private func setCapsuleStyle(_ isActivate: Bool) {
@@ -128,38 +128,14 @@ extension Button {
                 if let opacity = self.style.highlightedOpacity {
                     self.layer.opacity = self.isHighlighted ? opacity : 1.0
                 }
-                // backgroundColor
-                let state: UIControl.State = self.isHighlighted ? .highlighted : .normal
-                if let color = self.style.backgroundColors.first(where: { $0.state == state})?.color {
-                    self.backgroundColor = color
-                }
-                // borders
-                if let borders = self.style.borders?.first(where: { $0.state == state})?.borders {
-                    self.borders = borders
-                }
-                // shadows
-                if let shadow = self.style.shadows?.first(where: { $0.state == state})?.shadow {
-                    self.shadow = shadow
-                }
+                self.controlState = self.isHighlighted ? .highlighted : .normal
             }
         }
     }
     
     public override var isEnabled: Bool {
         didSet {
-            // backgroundColors
-            let state: UIControl.State = isEnabled ? .normal : .disabled
-            if let color = style.backgroundColors.first(where: { $0.state == state})?.color {
-                self.backgroundColor = color
-            }
-            // borders
-            if let borders = style.borders?.first(where: { $0.state == state})?.borders {
-                self.borders = borders
-            }
-            // shadows
-            if let shadow = self.style.shadows?.first(where: { $0.state == state})?.shadow {
-                self.shadow = shadow
-            }
+            self.controlState = isEnabled ? .normal : .disabled
         }
     }
 }
@@ -169,14 +145,14 @@ extension Button {
 private extension Button {
     
     var cgPathWithRoundingCorners: CGPath {
-         get {
+        get {
             UIBezierPath(
-                 roundedRect: self.bounds,
-                 byRoundingCorners: self.layer.maskedCorners.rectCorners,
-                 cornerRadii: CGSize(width: self.layer.cornerRadius, height: self.layer.cornerRadius)
-             ).cgPath
-         }
-     }
+                roundedRect: self.bounds,
+                byRoundingCorners: self.layer.maskedCorners.rectCorners,
+                cornerRadii: CGSize(width: self.layer.cornerRadius, height: self.layer.cornerRadius)
+            ).cgPath
+        }
+    }
 }
 
 private extension CACornerMask {
@@ -202,10 +178,6 @@ private extension CACornerMask {
             return rectCorners
         }
     }
-    
-    static let allCornerMask: CACornerMask = [
-        .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner
-    ]
 }
 
 // MARK: - Unavailable

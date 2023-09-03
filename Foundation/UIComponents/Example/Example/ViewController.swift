@@ -2,7 +2,7 @@
 import UIKit
 import UIComponents
 
-final class ButtonsViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // UI
     
@@ -26,7 +26,7 @@ final class ButtonsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "UIComponents.Button"
+        title = "UIComponents"
         setupUI()
     }
     
@@ -47,46 +47,28 @@ final class ButtonsViewController: UIViewController {
             stack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stack.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -64)
         ])
-        addButtonsInStack(stack)
+        
+        // MARK:
+        let buttonsButton = Button(configuration: .default())
+        buttonsButton.title = "Buttons".uppercased()
+        buttonsButton.addTarget(self, action: #selector(buttonsButtonAction), for: .touchUpInside)
+        stack.addArrangedSubview(buttonsButton)
+        
+        let textFieldsButton = Button(configuration: .default())
+        textFieldsButton.title = "TextFields".uppercased()
+        textFieldsButton.addTarget(self, action: #selector(textFieldsButtonAction), for: .touchUpInside)
+        stack.addArrangedSubview(textFieldsButton)
     }
     
+    // MARK: - Actions
     
-}
-
-// MARK: - Buttons
-
-private extension ButtonsViewController {
+    @objc private func buttonsButtonAction() {
+        let viewController = ButtonsViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
     
-    func addButtonsInStack(_ stack: UIStackView) {
-        
-        // MARK: Default buttons
-        let defaultLabel = UILabel()
-        defaultLabel.text = "Default buttons"
-        defaultLabel.textAlignment = .center
-        stack.addArrangedSubview(defaultLabel)
-        let defaultButton = Button(configuration: .default())
-        defaultButton.isEnabled = false
-        stack.addArrangedSubview(defaultButton)
-        stack.addArrangedSubview(Button(configuration: .default()))
-        
-        // MARK: Primary buttons
-        let primaryLabel = UILabel()
-        primaryLabel.text = "Primary buttons"
-        primaryLabel.textAlignment = .center
-        stack.addArrangedSubview(primaryLabel)
-        let primaryButtonDisabled = Button(configuration: .primary.default)
-        primaryButtonDisabled.isEnabled = false
-        stack.addArrangedSubview(primaryButtonDisabled)
-        stack.addArrangedSubview(Button(configuration: .primary.default))
-        
-        // MARK: Secondary buttons
-        let secondaryLabel = UILabel()
-        secondaryLabel.text = "Secondary buttons"
-        secondaryLabel.textAlignment = .center
-        stack.addArrangedSubview(secondaryLabel)
-        let secondaryButtonDisabled = Button(configuration: .secondary.default)
-        secondaryButtonDisabled.isEnabled = false
-        stack.addArrangedSubview(secondaryButtonDisabled)
-        stack.addArrangedSubview(Button(configuration: .secondary.default))
+    @objc private func textFieldsButtonAction() {
+        let viewController = TextFieldsViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

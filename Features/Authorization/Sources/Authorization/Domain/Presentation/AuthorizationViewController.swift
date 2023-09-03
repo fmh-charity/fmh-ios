@@ -1,20 +1,61 @@
-//
-//  AuthorizationViewController.swift
-//  
-//
-//  Created by Константин Туголуков on 19.08.2023.
-//
 
 import UIKit
+import UIComponents
+
+private extension CGFloat {
+    static let navigationExtensionViewHeight: CGFloat = 6.0
+}
 
 final class AuthorizationViewController: UIViewController {
     
     // Dependencies
     private let presenter: AuthorizationPresenterProtocol
     
+    // Private
     private var blockCredentialsCenterYConstraint: NSLayoutConstraint?
     
-    // MARK: Life cycle
+    // MARK: - UI
+    
+    private lazy var navigationExtensionView: UIView = {
+        $0.backgroundColor = UIComponents.Color.accent
+        $0.heightAnchor.constraint(equalToConstant: .navigationExtensionViewHeight).isActive = true
+        return $0
+    }(UIView())
+    
+    private lazy var logo: UIImageView = {
+        $0.image = UIImage(named: "Logo", in: .module, with: .none)
+        $0.contentMode = .scaleAspectFit
+        let height = navigationController?.navigationBar.frame.height ?? 44.0
+        $0.heightAnchor.constraint(equalToConstant: height).isActive = true
+        return $0
+    }(UIImageView())
+    
+    private lazy var blockInfo: UIView = {
+        BlockInfoView(
+            greetings: "Добро пожаловать",
+            greetingsDescription: "Войдите или зарегистрируйтесь"
+        )
+    }()
+    
+    private lazy var blockCredentials: UIView = {
+        BlockCredentialsView(
+            greetings: "Добро пожаловать",
+            greetingsDescription: "Войдите или зарегистрируйтесь"
+        )
+    }()
+    
+    private lazy var blockButtons: UIView = {
+        let button = BlockButtonsView()
+        button.didTapLoginButton = { }
+        button.didTapRegisterButton = { } // В данной версии приложения недоступно. Алерт!
+        return button
+    }()
+    
+    private lazy var topContentView: UIView = UIView()
+    private lazy var bottomContentView: UIView = UIView()
+    
+    // MARK: - Life cycle
+    
     init(presenter: AuthorizationPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -26,63 +67,44 @@ final class AuthorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         configure()
+        setupUI()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Configure
     
-    func configure() {
+    private func configure() {
+        view.backgroundColor = UIComponents.Color.background
+        addObserverNotification()
+        navigationBarConfigure()
         addTapGestureForKeyboardHide()
-        NotificationCenter.default.addObserver(self, selector: #selector(handlerNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handlerNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-//        navigationController?.navigationBar.backgroundColor = .brown
-        view.backgroundColor = UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1)
-        
-        navigationItem.titleView = logo
     }
     
-    // MARK: - UI
+    private func navigationBarConfigure() {
+        navigationItem.titleView = logo
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = UIComponents.Color.accent
+        navigationItem.standardAppearance = appearance
+        navigationItem.compactAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        if #available(iOS 15.0, *) {
+            navigationItem.compactScrollEdgeAppearance = appearance
+        }
+    }
     
-    private lazy var logo: UIImageView = {
-        $0.image = UIImage(named: "Logo", in: .module, with: .none)
-        $0.contentMode = .scaleAspectFit
-        $0.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        return $0
-    }(UIImageView())
-    
-    private lazy var blockInfo: UIView = {
-        BlockInfo(
-            greetings: "Добро пожаловать",
-            greetingsDescription: "Войдите или зарегистрируйтесь"
-        )
-    }()
-    
-    private lazy var blockCredentials: UIView = {
-        BlockCredentials(
-            greetings: "Добро пожаловать",
-            greetingsDescription: "Войдите или зарегистрируйтесь"
-        )
-    }()
-    
-    private lazy var blockButtons: UIView = {
-        BlockButtons(
-            greetings: "Добро пожаловать",
-            greetingsDescription: "Войдите или зарегистрируйтесь"
-        )
-    }()
-    
-    private lazy var wrapperBlockInfo: UIView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.addSubview(blockInfo)
-        NSLayoutConstraint.activate([
-            blockInfo.centerYAnchor.constraint(equalTo: $0.centerYAnchor, constant: 0),
-            blockInfo.leadingAnchor.constraint(equalTo: $0.leadingAnchor, constant: 0),
-            blockInfo.trailingAnchor.constraint(equalTo: $0.trailingAnchor, constant: 0),
-        ])
-        return $0
-    }(UIView())
+    private func addObserverNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handlerKeyboardNotification),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handlerKeyboardNotification),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 }
 
 // MARK: - Setup UI
@@ -90,58 +112,97 @@ final class AuthorizationViewController: UIViewController {
 private extension AuthorizationViewController {
     
     func setupUI() {
-        view.addSubview(wrapperBlockInfo)
-        view.addSubview(blockCredentials)
-        view.addSubview(blockButtons)
-        NSLayoutConstraint.activate([
-            wrapperBlockInfo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            wrapperBlockInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            wrapperBlockInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            
-            blockCredentials.topAnchor.constraint(equalTo: wrapperBlockInfo.bottomAnchor),
-            blockCredentials.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            blockCredentials.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-
-            blockButtons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            blockButtons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            blockButtons.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -36),
-        ])
-        blockCredentialsCenterYConstraint = blockCredentials.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        let offset = 20.0
+        
+        // MARK: navigationExtensionView
+        view.addSubviews(navigationExtensionView) {[
+            navigationExtensionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navigationExtensionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navigationExtensionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ]}
+        
+        // MARK: TopContentView
+        view.addSubviews(topContentView, blockInfo) {[
+            topContentView.topAnchor.constraint(equalTo: navigationExtensionView.bottomAnchor),
+            topContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            blockInfo.centerYAnchor.constraint(equalTo: topContentView.centerYAnchor),
+            blockInfo.leadingAnchor.constraint(equalTo: topContentView.leadingAnchor),
+            blockInfo.trailingAnchor.constraint(equalTo: topContentView.trailingAnchor)
+        ]}
+        
+        // MARK: blockCredentials
+        view.addSubviews(blockCredentials) {[
+            blockCredentials.topAnchor.constraint(equalTo: topContentView.bottomAnchor),
+            blockCredentials.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset),
+            blockCredentials.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -offset)
+        ]}
+        blockCredentialsCenterYConstraint = blockCredentials.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: .navigationExtensionViewHeight)
         blockCredentialsCenterYConstraint?.isActive = true
+        
+        // MARK: BottomContentView
+        bottomContentView.addSubview(blockButtons)
+        view.addSubviews(bottomContentView) {[
+            bottomContentView.topAnchor.constraint(equalTo: blockCredentials.bottomAnchor),
+            bottomContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomContentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            blockButtons.bottomAnchor.constraint(equalTo: bottomContentView.bottomAnchor, constant: -(.safeAreaInsets.bottom + 32)),
+            blockButtons.leadingAnchor.constraint(equalTo: bottomContentView.leadingAnchor, constant: offset),
+            blockButtons.trailingAnchor.constraint(equalTo: bottomContentView.trailingAnchor, constant: -offset)
+        ]}
     }
 }
 
-// MARK: - Actions
+// MARK: - handlerKeyboardNotification
 
 private extension AuthorizationViewController {
     
-    @objc private func handlerNotification(_ notification: NSNotification) {
+    @objc private func handlerKeyboardNotification(_ notification: NSNotification) {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
             return
         }
-        var keyboardHeight = 0.0
+        var bias: CGFloat = -.navigationExtensionViewHeight
         if notification.name == UIResponder.keyboardWillShowNotification {
-            let usedHeight = keyboardFrame.height + blockCredentials.frame.height/2
-            let neededOffset = usedHeight - view.frame.height/2
-            if
-                usedHeight >= view.frame.height/2,
-                neededOffset > 0
-            {
-                keyboardHeight = neededOffset
-            }
+            let usedHeight = bottomContentView.frame.height
+            let keyboardHeight = keyboardFrame.height
+            if keyboardHeight >= usedHeight {
+                bias = (keyboardHeight - usedHeight) + 32.0 // 32.0 - От клавиатуры до нижнего края блока полей ввода.
+            } else { return }
         }
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.4 ) {
-            self.blockCredentialsCenterYConstraint?.constant = -keyboardHeight
+            self.blockCredentialsCenterYConstraint?.constant = -bias
             self.view.layoutIfNeeded()
         }
     }
 }
 
-
-
 // MARK: - AuthorizationPresenterDelegate
 
 extension AuthorizationViewController: AuthorizationPresenterDelegate {
     
+}
+
+// MARK: - Helpers
+
+private extension CGFloat {
+    
+    static let safeAreaInsets: UIEdgeInsets = {
+        let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        return scene?.windows.first?.safeAreaInsets ?? .zero
+    }()
+}
+
+private extension UIViewController {
+    
+    func addTapGestureForKeyboardHide() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewEndEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func viewEndEditing() {
+        view.endEditing(true)
+    }
 }

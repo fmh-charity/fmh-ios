@@ -7,6 +7,7 @@
 
 import UIKit
 import Authorization
+import UIComponents
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let vc = authorizationAssembly.authorizationViewController
         let nc = UINavigationController(rootViewController: vc)
+        
         window?.rootViewController = nc
         
         return true

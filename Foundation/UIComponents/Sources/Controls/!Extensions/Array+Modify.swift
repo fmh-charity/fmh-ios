@@ -1,7 +1,7 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     
     mutating func modify(_ body: (inout Element) throws -> Void) rethrows {
         var index = self.startIndex
