@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1975DBAC2AAF46670029621B /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DBAB2AAF46670029621B /* TokenProvider.swift */; };
 		19A290BE2A90163400D7CCD1 /* Authorization in Frameworks */ = {isa = PBXBuildFile; productRef = 19A290BD2A90163400D7CCD1 /* Authorization */; };
-		19A290C12A934B3E00D7CCD1 /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 19A290C02A934B3E00D7CCD1 /* UIComponents */; };
 		19ACF6AC2A814B0D00C52B05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ACF6AB2A814B0D00C52B05 /* AppDelegate.swift */; };
 		19ACF6B52A814B1100C52B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19ACF6B42A814B1100C52B05 /* Assets.xcassets */; };
 		19ACF6B82A814B1100C52B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19ACF6B62A814B1100C52B05 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1975DBAB2AAF46670029621B /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		19A290BC2A90162800D7CCD1 /* Authorization */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Authorization; path = ..; sourceTree = "<group>"; };
-		19A290BF2A934B2B00D7CCD1 /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIComponents; path = ../../../Foundation/UIComponents; sourceTree = "<group>"; };
 		19ACF6A82A814B0D00C52B05 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19ACF6AB2A814B0D00C52B05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19ACF6B42A814B1100C52B05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -29,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19A290C12A934B3E00D7CCD1 /* UIComponents in Frameworks */,
 				19A290BE2A90163400D7CCD1 /* Authorization in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				19ACF6AB2A814B0D00C52B05 /* AppDelegate.swift */,
+				1975DBAB2AAF46670029621B /* TokenProvider.swift */,
 				19ACF6B42A814B1100C52B05 /* Assets.xcassets */,
 				19ACF6B62A814B1100C52B05 /* LaunchScreen.storyboard */,
 				19ACF6B92A814B1100C52B05 /* Info.plist */,
@@ -70,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				19A290BC2A90162800D7CCD1 /* Authorization */,
-				19A290BF2A934B2B00D7CCD1 /* UIComponents */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -100,7 +99,6 @@
 			name = Example;
 			packageProductDependencies = (
 				19A290BD2A90163400D7CCD1 /* Authorization */,
-				19A290C02A934B3E00D7CCD1 /* UIComponents */,
 			);
 			productName = Example;
 			productReference = 19ACF6A82A814B0D00C52B05 /* Example.app */;
@@ -156,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1975DBAC2AAF46670029621B /* TokenProvider.swift in Sources */,
 				19ACF6AC2A814B0D00C52B05 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,10 +376,6 @@
 		19A290BD2A90163400D7CCD1 /* Authorization */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authorization;
-		};
-		19A290C02A934B3E00D7CCD1 /* UIComponents */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UIComponents;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

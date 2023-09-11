@@ -65,9 +65,13 @@ extension RouterProvider: RouterProtocol {
         window?.rootViewController = viewController
     }
     
+    public func rootNavigationController(_ navigationController: UINavigationController?) {
+        window?.rootViewController = navigationController ?? self.navigationController
+    }
+    
     // MARK: ViewController
     
-    public func setViewControllers(_ viewControllers: [UIViewController], animated: Bool, isNavigationBarHidden: Bool = false, onCompletion: (() -> Void)? = nil) {
+    public func setViewControllers(_ viewControllers: [UIViewController], animated: Bool = false, isNavigationBarHidden: Bool = false, onCompletion: (() -> Void)? = nil) {
         navigationController.viewControllers.forEach { executeCompletion(for: $0) }
         navigationController.setViewControllers(viewControllers, animated: animated)
         if let onCompletion {

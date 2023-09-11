@@ -2,7 +2,7 @@
 import UIKit
 import UIComponents
 
-public final class TextFieldPassword: TextFieldWithState {
+public final class TextFieldPassword: TextFieldSmart {
     
     // MARK: - UI
     
@@ -16,7 +16,7 @@ public final class TextFieldPassword: TextFieldWithState {
     
     // MARK: - Life cycle
     
-    public override init(configuration: TextFieldWithStateConfiguration) {
+    public override init(configuration: TextFieldSmartConfiguration) {
         super.init(configuration: configuration)
         configure()
     }

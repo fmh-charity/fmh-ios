@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19961E7E2A9AB21B004C8079 /* TextFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19961E7D2A9AB21B004C8079 /* TextFieldsViewController.swift */; };
+		1975DBA82AA654E40029621B /* TextFieldSmartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DBA72AA654E40029621B /* TextFieldSmartViewController.swift */; };
+		1975DBAA2AABB1580029621B /* TextFieldBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DBA92AABB1570029621B /* TextFieldBasicViewController.swift */; };
 		19961E802A9AB283004C8079 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19961E7F2A9AB283004C8079 /* ViewController.swift */; };
 		19A290C72A950C4500D7CCD1 /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A290C62A950C4500D7CCD1 /* ButtonsViewController.swift */; };
 		19A290C92A95389300D7CCD1 /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 19A290C82A95389300D7CCD1 /* UIComponents */; };
@@ -17,7 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		19961E7D2A9AB21B004C8079 /* TextFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsViewController.swift; sourceTree = "<group>"; };
+		1975DBA72AA654E40029621B /* TextFieldSmartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSmartViewController.swift; sourceTree = "<group>"; };
+		1975DBA92AABB1570029621B /* TextFieldBasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldBasicViewController.swift; sourceTree = "<group>"; };
 		19961E7F2A9AB283004C8079 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		19A290BF2A934B2B00D7CCD1 /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIComponents; path = ../../../Foundation/UIComponents; sourceTree = "<group>"; };
 		19A290C62A950C4500D7CCD1 /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +66,8 @@
 				19ACF6AB2A814B0D00C52B05 /* AppDelegate.swift */,
 				19961E7F2A9AB283004C8079 /* ViewController.swift */,
 				19A290C62A950C4500D7CCD1 /* ButtonsViewController.swift */,
-				19961E7D2A9AB21B004C8079 /* TextFieldsViewController.swift */,
+				1975DBA92AABB1570029621B /* TextFieldBasicViewController.swift */,
+				1975DBA72AA654E40029621B /* TextFieldSmartViewController.swift */,
 				19ACF6B42A814B1100C52B05 /* Assets.xcassets */,
 				19ACF6B62A814B1100C52B05 /* LaunchScreen.storyboard */,
 				19ACF6B92A814B1100C52B05 /* Info.plist */,
@@ -160,8 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19961E7E2A9AB21B004C8079 /* TextFieldsViewController.swift in Sources */,
 				19A290C72A950C4500D7CCD1 /* ButtonsViewController.swift in Sources */,
+				1975DBA82AA654E40029621B /* TextFieldSmartViewController.swift in Sources */,
+				1975DBAA2AABB1580029621B /* TextFieldBasicViewController.swift in Sources */,
 				19961E802A9AB283004C8079 /* ViewController.swift in Sources */,
 				19ACF6AC2A814B0D00C52B05 /* AppDelegate.swift in Sources */,
 			);

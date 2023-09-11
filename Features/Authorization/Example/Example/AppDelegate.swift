@@ -7,16 +7,24 @@
 
 import UIKit
 import Authorization
-import UIComponents
+import Networking
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    lazy var authorizationAssembly: AuthorizationAssemblyProtocol = {
-        AuthorizationAssembly(dependencies:
-                .init()
+    lazy var authorizationAssembly: AuthenticationAssemblyProtocol = {
+        
+        let network = NetworkingProvider(host: "https://test.vhospice.org", urlSession: .shared)
+        let tokenProvider = TokenProvider()
+        
+        return AuthenticationAssembly(dependencies:
+                .init(
+                    onCompletion: { print("OK") },
+                    network: network,
+                    tokenProvider: tokenProvider
+                )
         )
     }()
     
@@ -25,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let vc = authorizationAssembly.authorizationViewController
+        let vc = authorizationAssembly.authenticationViewController
         let nc = UINavigationController(rootViewController: vc)
         
         window?.rootViewController = nc
@@ -33,4 +41,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

@@ -7,18 +7,18 @@ let package = Package(
     name: "Authorization",
     platforms: [.iOS(.v13)],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "Authorization",
             targets: ["Authorization"]),
     ],
     dependencies: [
-        .package(name: "UIComponents", path: "../../Foundation/UIComponents")
+        .package(name: "UIComponents", path: "../../Foundation/UIComponents"),
+        .package(name: "Networking", path: "../../Foundation/Networking")
     ],
     targets: [
         .target(
             name: "Authorization",
-            dependencies: ["UIComponents"],
+            dependencies: ["UIComponents", "Networking"],
             path: "Sources",
             resources: [
                 .process("Resources")
@@ -26,6 +26,6 @@ let package = Package(
         ),
         .testTarget(
             name: "AuthorizationTests",
-            dependencies: ["Authorization"]),
+            dependencies: ["Authorization", "Networking"]),
     ]
 )

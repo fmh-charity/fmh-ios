@@ -6,13 +6,15 @@ import PackageDescription
 // MARK: Зависимости этого Package
 private let packageDependencies: [Package.Dependency] = [
     .package(name: "Coordinating", path: "../../Foundation/Coordinating"),
-    .package(name: "FeatureLoading", path: "../FeatureLoading")
+    .package(name: "FeatureLoading", path: "../FeatureLoading"),
+    .package(name: "Authorization", path: "../Authorization")
 ]
 
 // MARK: Зависимости таргета Features
 private let targetFeaturesDependencies: [Target.Dependency] = [
     "Coordinating",
-    "FeatureLoading"
+    "FeatureLoading",
+    "Authorization"
 ]
 
 // MARK: - Package Features

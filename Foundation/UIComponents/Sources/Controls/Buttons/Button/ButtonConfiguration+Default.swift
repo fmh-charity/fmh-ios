@@ -1,27 +1,34 @@
 
 import UIKit
 
+// MARK: ButtonConfiguration + `default`
+
 extension ButtonConfiguration {
     
     /*
-     Example конфигурация.
-     Со всеми параметрами, для удобства конфигурирования других.
+     Конфигурация по умолчанию.
      */
-    public static func `default`(_ size: ControlSize = .default) -> ButtonConfiguration {
+    public static func `default`(_ size: ControlSize? = .large) -> ButtonConfiguration {
         .init(
-            title: "ButtonConfiguration.default",
-            state: .normal,
-            style: .init(
-                size: CGSize(width: .zero, height: size.rawValue),
-                isCapsule: false,
-                highlightedScale: 0.98,
-                highlightedOpacity: 0.8,
-                backgroundColors: [.init(state: .normal, color: .systemBlue)],
-                titleStyles: [.init(state: .normal, color: .white, font: .boldSystemFont(ofSize: 17))],
-                corners: nil,
-                borders: nil,
-                shadows: nil
-            )
+            size: size?.rawValue,
+            highlightedScale: 0.98,
+            highlightedOpacity: 0.8,
+            styles: [
+                .normal: .init(
+                    backgroundColor: .systemBlue,
+                    titleStyle: .init(color: .white, font: .title)
+                ),
+                .disabled: .init(
+                    backgroundColor: .systemBlue,
+                    titleStyle: .init(color: .white, font: .title)
+                )
+            ]
         )
     }
+}
+
+// TODO: Сделать разные под размер кнопок!
+
+private extension UIFont {
+    static let title: UIFont = .interBold(ofSize: 20.0) ?? .boldSystemFont(ofSize: 20.0)
 }

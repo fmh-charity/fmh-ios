@@ -14,6 +14,7 @@
 		19094C652A7FBF7D000979A3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C642A7FBF7D000979A3 /* AppCoordinator.swift */; };
 		19094C672A7FC3C7000979A3 /* AppAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C662A7FC3C7000979A3 /* AppAssemblyProtocol.swift */; };
 		19094C702A7FD779000979A3 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C6F2A7FD779000979A3 /* Data+.swift */; };
+		1975DBAE2AAF55570029621B /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DBAD2AAF55570029621B /* TokenProvider.swift */; };
 		19A290922A8FF1A200D7CCD1 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = 19A290912A8FF1A200D7CCD1 /* Features */; };
 		19ACF6CA2A82C84100C52B05 /* AppDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ACF6C92A82C84100C52B05 /* AppDelegateManager.swift */; };
 		19ACF6CC2A82C93F00C52B05 /* AppDelegateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ACF6CB2A82C93F00C52B05 /* AppDelegateService.swift */; };
@@ -51,6 +52,7 @@
 		192190632A753FFA0009835C /* Doc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Doc.md; sourceTree = "<group>"; };
 		19307A7D2A7DA29D000569E6 /* Doc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Doc.md; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
+		1975DBAD2AAF55570029621B /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
 		19A2908F2A8FBACE00D7CCD1 /* Features */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Features; sourceTree = "<group>"; };
 		19A290902A8FCA1F00D7CCD1 /* Coordinating */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Coordinating; sourceTree = "<group>"; };
 		19A290952A8FF93400D7CCD1 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
@@ -143,10 +145,10 @@
 		192190052A7518B20009835C /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				19A290992A90136300D7CCD1 /* Authorization */,
 				192190632A753FFA0009835C /* Doc.md */,
 				19A290962A8FFDA600D7CCD1 /* HowToUse */,
 				19A2908F2A8FBACE00D7CCD1 /* Features */,
+				19A290992A90136300D7CCD1 /* Authorization */,
 				19094C1E2A7E3639000979A3 /* FeatureLoading */,
 			);
 			path = Features;
@@ -171,6 +173,14 @@
 				19094C4B2A7F8BA0000979A3 /* AppAssembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		1975DBAF2AAF6FA10029621B /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				1975DBAD2AAF55570029621B /* TokenProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		19ACF6C72A82C7A000C52B05 /* AppDelegateManager */ = {
@@ -227,6 +237,7 @@
 		19C7A538280DED98005000EB /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				1975DBAF2AAF6FA10029621B /* Providers */,
 				19ACF6C72A82C7A000C52B05 /* AppDelegateManager */,
 				19C7A51A280DECD0005000EB /* AppDelegate.swift */,
 				19094C642A7FBF7D000979A3 /* AppCoordinator.swift */,
@@ -333,6 +344,7 @@
 				19ACF6CC2A82C93F00C52B05 /* AppDelegateService.swift in Sources */,
 				19094C652A7FBF7D000979A3 /* AppCoordinator.swift in Sources */,
 				19094C702A7FD779000979A3 /* Data+.swift in Sources */,
+				1975DBAE2AAF55570029621B /* TokenProvider.swift in Sources */,
 				19094C532A7F8FC4000979A3 /* AppDependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

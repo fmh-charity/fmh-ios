@@ -48,16 +48,23 @@ final class ViewController: UIViewController {
             stack.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -64)
         ])
         
-        // MARK:
+        // MARK: Button
         let buttonsButton = Button(configuration: .default())
-        buttonsButton.title = "Buttons".uppercased()
+        buttonsButton.title = "Button"
         buttonsButton.addTarget(self, action: #selector(buttonsButtonAction), for: .touchUpInside)
         stack.addArrangedSubview(buttonsButton)
         
-        let textFieldsButton = Button(configuration: .default())
-        textFieldsButton.title = "TextFields".uppercased()
-        textFieldsButton.addTarget(self, action: #selector(textFieldsButtonAction), for: .touchUpInside)
-        stack.addArrangedSubview(textFieldsButton)
+        // MARK: textFieldsBase
+        let textFieldsBase = Button(configuration: .default())
+        textFieldsBase.title = "textFieldsBase"
+        textFieldsBase.addTarget(self, action: #selector(textFieldsBaseAction), for: .touchUpInside)
+        stack.addArrangedSubview(textFieldsBase)
+        
+        // MARK: textFieldsSmart
+        let textFieldsSmart = Button(configuration: .default())
+        textFieldsSmart.title = "textFieldsSmart"
+        textFieldsSmart.addTarget(self, action: #selector(textFieldsSmartAction), for: .touchUpInside)
+        stack.addArrangedSubview(textFieldsSmart)
     }
     
     // MARK: - Actions
@@ -67,8 +74,13 @@ final class ViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @objc private func textFieldsButtonAction() {
-        let viewController = TextFieldsViewController()
+    @objc private func textFieldsBaseAction() {
+        let viewController = TextFieldBasicViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func textFieldsSmartAction() {
+        let viewController = TextFieldSmartViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -23,8 +23,12 @@ final class AppAssembly: AppAssemblyProtocol {
     
     // MARK: Сборки Feature модулей.
     lazy var featuresAssembly: FeaturesAssemblyProtocol = {
-        FeaturesAssembly(dependencies: .init(
-            router: dependencies.router
-        ))
+        FeaturesAssembly(dependencies:
+                .init(
+                    router: dependencies.router,
+                    network: dependencies.network,
+                    tokenProvider: dependencies.tokenProvider
+                )
+        )
     }()
 }

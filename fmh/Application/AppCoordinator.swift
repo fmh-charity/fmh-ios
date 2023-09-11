@@ -75,6 +75,16 @@ private extension AppCoordinator {
         childCoordinatorAppend(coordinator)
         coordinator.onCompletion = { [weak self, weak coordinator] in
             self?.childCoordinatorRemove(coordinator)
+            self?.performAuthenticationFlow()
+        }
+        coordinator.startFlow()
+    }
+    
+    func performAuthenticationFlow() {
+        let coordinator = appAssembly.featuresAssembly.authorizationCoordinator
+        childCoordinatorAppend(coordinator)
+        coordinator.onCompletion = { [weak self, weak coordinator] in
+            self?.childCoordinatorRemove(coordinator)
             self?.defineFlow()
         }
         coordinator.startFlow()

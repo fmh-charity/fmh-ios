@@ -1,61 +1,64 @@
 
 import UIKit
 
-// MARK: Конфигурация Button
+// MARK: Конфигурация для Button
 
 public struct ButtonConfiguration {
     
-    public var title: String?
-    public var state: ControlState?
-    public var style: ButtonConfiguration.Style
+    public var size: CGFloat?
+    public var isCapsule: Bool?
+    public var corners: UIView.Corners?
+    public var highlightedScale: CGFloat?
+    public var highlightedOpacity: Float?
+    public var styles: [UIControl.State: ButtonConfiguration.Style]?
     
     public init(
-        title: String? = nil,
-        state: ControlState? = nil,
-        style: ButtonConfiguration.Style
+        size: CGFloat? = nil,
+        isCapsule: Bool? = nil,
+        corners: UIView.Corners? = nil,
+        highlightedScale: CGFloat? = nil,
+        highlightedOpacity: Float? = nil,
+        styles: [UIControl.State : ButtonConfiguration.Style]? = nil
     ) {
-        self.title = title
-        self.state = state
-        self.style = style
+        self.size = size
+        self.isCapsule = isCapsule
+        self.corners = corners
+        self.highlightedScale = highlightedScale
+        self.highlightedOpacity = highlightedOpacity
+        self.styles = styles
     }
 }
 
-// MARK: Стиль Button
+// MARK: Стиль для Button
 
 extension ButtonConfiguration {
     
     public struct Style {
         
-        public var size: CGSize?
-        public var isCapsule: Bool?
-        public var highlightedScale: CGFloat?
-        public var highlightedOpacity: Float?
-        public var backgroundColors: [ControlState.Color]
-        public var titleStyles: [ControlState.Text]
-        public var corners: UIView.Corners?
-        public var borders: [ControlState.Borders]?
-        public var shadows: [ControlState.Shadow]?
+        public var backgroundColor: UIColor?
+        public var borders: UIView.Borders?
+        public var shadows: UIView.Shadow?
+        public var titleStyle: TextStyle?
         
         public init(
-            size: CGSize? = nil,
-            isCapsule: Bool? = nil,
-            highlightedScale: CGFloat? = nil,
-            highlightedOpacity: Float? = nil,
-            backgroundColors: [ControlState.Color] = [],
-            titleStyles: [ControlState.Text] = [],
-            corners: UIView.Corners? = nil,
-            borders: [ControlState.Borders]? = nil,
-            shadows: [ControlState.Shadow]? = nil
+            backgroundColor: UIColor? = nil,
+            borders: UIView.Borders? = nil,
+            shadows: UIView.Shadow? = nil,
+            titleStyle: TextStyle? = nil
         ) {
-            self.size = size
-            self.isCapsule = isCapsule
-            self.highlightedScale = highlightedScale
-            self.highlightedOpacity = highlightedOpacity
-            self.backgroundColors = backgroundColors
-            self.titleStyles = titleStyles
-            self.corners = corners
+            self.backgroundColor = backgroundColor
             self.borders = borders
             self.shadows = shadows
+            self.titleStyle = titleStyle
+        }
+        
+        public struct TextStyle {
+            var color: UIColor
+            var font: UIFont
+            init(color: UIColor, font: UIFont) {
+                self.color = color
+                self.font = font
+            }
         }
     }
 }

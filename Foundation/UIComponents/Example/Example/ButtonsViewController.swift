@@ -64,29 +64,38 @@ private extension ButtonsViewController {
         defaultLabel.text = "Default buttons"
         defaultLabel.textAlignment = .center
         stack.addArrangedSubview(defaultLabel)
+        let defaultButtonDisabled = Button(configuration: .default())
+        defaultButtonDisabled.setState(.disabled)
+        defaultButtonDisabled.title =  defaultLabel.text
+        stack.addArrangedSubview(defaultButtonDisabled)
         let defaultButton = Button(configuration: .default())
-        defaultButton.isEnabled = false
+        defaultButton.title =  defaultLabel.text
         stack.addArrangedSubview(defaultButton)
-        stack.addArrangedSubview(Button(configuration: .default()))
         
         // MARK: Primary buttons
         let primaryLabel = UILabel()
         primaryLabel.text = "Primary buttons"
         primaryLabel.textAlignment = .center
         stack.addArrangedSubview(primaryLabel)
-        let primaryButtonDisabled = Button(configuration: .primary.default)
-        primaryButtonDisabled.isEnabled = false
+        let primaryButtonDisabled = Button(configuration: .primary())
+        primaryButtonDisabled.setState(.disabled)
+        primaryButtonDisabled.title =  primaryLabel.text
         stack.addArrangedSubview(primaryButtonDisabled)
-        stack.addArrangedSubview(Button(configuration: .primary.default))
+        let primaryButton = Button(configuration: .primary())
+        primaryButton.title =  primaryLabel.text
+        stack.addArrangedSubview(primaryButton)
         
         // MARK: Secondary buttons
         let secondaryLabel = UILabel()
         secondaryLabel.text = "Secondary buttons"
         secondaryLabel.textAlignment = .center
         stack.addArrangedSubview(secondaryLabel)
-        let secondaryButtonDisabled = Button(configuration: .secondary.default)
-        secondaryButtonDisabled.isEnabled = false
+        let secondaryButtonDisabled = Button(configuration: .secondary())
+        secondaryButtonDisabled.title = secondaryLabel.text
+        secondaryButtonDisabled.setState(.disabled)
         stack.addArrangedSubview(secondaryButtonDisabled)
-        stack.addArrangedSubview(Button(configuration: .secondary.default))
+        let secondaryButton = Button(configuration: .secondary())
+        secondaryButton.title = secondaryLabel.text
+        stack.addArrangedSubview(secondaryButton)
     }
 }
