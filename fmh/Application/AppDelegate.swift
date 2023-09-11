@@ -7,6 +7,7 @@
 
 import UIKit
 import Coordinating
+import Networking
 
 @main
 class AppDelegate: AppDelegateManager {
@@ -41,11 +42,14 @@ private extension AppDelegate {
     /// Зависимости приложения.
     var dependencies: AppDependencies {
         
-        // Root router
         let rootRouter = RouterProvider(window: window, navigationController: UINavigationController())
+        let network = NetworkingProvider(host: "https://test.vhospice.org", urlSession: .shared)
+        let tokenProvider = TokenProvider()
         
         return AppDependencies(
-            router: rootRouter
+            router: rootRouter,
+            network: network,
+            tokenProvider: tokenProvider
         )
     }
 }

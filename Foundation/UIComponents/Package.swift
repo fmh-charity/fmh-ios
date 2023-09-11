@@ -22,7 +22,11 @@ let package = Package(
         .target(
             name: "UIComponents",
             dependencies: [],
-            path: "Sources"
+            path: "Sources",
+            resources: [
+//                .process("Resources/Fonts/Inter/Inter-VariableFont_slnt,wght.ttf"),
+                .process("Resources")
+            ]
         )
     ]
 )

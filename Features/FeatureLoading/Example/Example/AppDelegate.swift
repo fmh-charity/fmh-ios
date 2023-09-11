@@ -7,7 +7,6 @@
 
 import UIKit
 import FeatureLoading
-import Core
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

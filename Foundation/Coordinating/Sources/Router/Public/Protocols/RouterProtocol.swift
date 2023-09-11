@@ -12,6 +12,7 @@ public protocol RouterProtocol {
     // MARK: UIWindow
     
     func rootViewController(_ viewController: UIViewController?)
+    func rootNavigationController(_ navigationController: UINavigationController?)
     
     // MARK: ViewController
     
@@ -31,3 +32,13 @@ public protocol RouterProtocol {
     
     // ...
 }
+
+// MARK: -
+
+public extension RouterProtocol {
+    
+    func setViewControllers(_ viewControllers: [UIViewController], animated: Bool = false) {
+        setViewControllers(viewControllers, animated: animated, isNavigationBarHidden: false, onCompletion: nil)
+    }
+}
+ 

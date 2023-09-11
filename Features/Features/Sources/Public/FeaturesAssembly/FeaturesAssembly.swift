@@ -16,10 +16,22 @@ public final class FeaturesAssembly: FeaturesAssemblyProtocol {
     // MARK: - FeaturesAssemblyProtocol
     
     // MARK: Загрузочная страница.
-    public  lazy var loadingCoordinator: CoordinatorProtocol = {
+    public lazy var loadingCoordinator: CoordinatorProtocol = {
         LoadingCoordinator(
             router: self.dependencies.router,
             dependencies: .init()
+        )
+    }()
+    
+    // MARK: Страница Аутентификация пользователя.
+    public lazy var authorizationCoordinator: CoordinatorProtocol = {
+        AuthorizationCoordinator(
+            router: self.dependencies.router,
+            dependencies: .init(
+                onCompletion: nil,
+                network: dependencies.network,
+                tokenProvider: dependencies.tokenProvider
+            )
         )
     }()
 }
