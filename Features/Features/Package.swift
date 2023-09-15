@@ -7,14 +7,20 @@ import PackageDescription
 private let packageDependencies: [Package.Dependency] = [
     .package(name: "Coordinating", path: "../../Foundation/Coordinating"),
     .package(name: "FeatureLoading", path: "../FeatureLoading"),
-    .package(name: "Authorization", path: "../Authorization")
+    .package(name: "Authorization", path: "../Authorization"),
+    .package(name: "TabBarController", path: "../TabBarController"),
+    .package(name: "TabBarWithMenuController", path: "../TabBarWithMenuController"),
+    .package(name: "Home", path: "../Home")
 ]
 
 // MARK: Зависимости таргета Features
 private let targetFeaturesDependencies: [Target.Dependency] = [
     "Coordinating",
     "FeatureLoading",
-    "Authorization"
+    "Authorization",
+    "TabBarController",
+    "TabBarWithMenuController",
+    "Home"
 ]
 
 // MARK: - Package Features
@@ -32,6 +38,9 @@ let package = Package(
         .target(
             name: "Features",
             dependencies: targetFeaturesDependencies,
-            path: "Sources")
+            path: "Sources",
+            resources: [
+                .process("Resources")
+            ]),
     ]
 )

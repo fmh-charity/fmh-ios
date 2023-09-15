@@ -28,7 +28,7 @@ final class AuthenticationPresenter {
 // MARK: - AuthenticationPresenterProtocol
 
 extension AuthenticationPresenter: AuthenticationPresenterProtocol {
-
+    
     func login(login: String, password: String, completion: @escaping (AuthenticationError) -> Void) {
         
         if login.isEmpty {
@@ -42,9 +42,7 @@ extension AuthenticationPresenter: AuthenticationPresenterProtocol {
         guard !login.isEmpty, !password.isEmpty else { return }
         authenticationService.login(login: login, password: password) { [weak self] error in
             if let error {
-                DispatchQueue.main.async {
-                    completion(.requestError(error))
-                }
+                completion(.requestError(error))
             } else {
                 self?.onCompletion?()
             }
