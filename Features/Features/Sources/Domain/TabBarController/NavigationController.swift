@@ -13,6 +13,9 @@ final class NavigationController: UINavigationController {
     }
     
     func commonInit() {
+        navigationBar.prefersLargeTitles = true
+        // Мне не понравилось красить бар в цвет.
+        /*
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.backgroundColor = UIColor(hex: "#01A5A3")
@@ -24,5 +27,6 @@ final class NavigationController: UINavigationController {
         if #available(iOS 15.0, *) {
             navigationBar.compactScrollEdgeAppearance = navBarAppearance
         }
+         */
     }
 }

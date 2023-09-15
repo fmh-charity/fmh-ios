@@ -71,6 +71,7 @@
 		19C7A52E280DED24005000EB /* ProjectDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjectDiscription; sourceTree = "<group>"; };
 		19C7A530280DED3B005000EB /* Guidelines */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guidelines; sourceTree = "<group>"; };
 		19CFB1F32AB391110067E4AC /* Home */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Home; sourceTree = "<group>"; };
+		19CFB1F42AB4CEF30067E4AC /* More */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = More; sourceTree = "<group>"; };
 		19EB70AD292E820800DB8F21 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		19EB70AF292E821700DB8F21 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		19EB70B4292E850C00DB8F21 /* AppSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppSettings.plist; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		192190052A7518B20009835C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				19CFB1F42AB4CEF30067E4AC /* More */,
 				192190632A753FFA0009835C /* Doc.md */,
 				19A290962A8FFDA600D7CCD1 /* HowToUse */,
 				19A2908F2A8FBACE00D7CCD1 /* Features */,

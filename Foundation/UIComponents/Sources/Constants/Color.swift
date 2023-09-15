@@ -5,7 +5,7 @@ import UIKit
 
 public struct Color {
     public static let accent = UIColor(red: 0.004, green: 0.647, blue: 0.639, alpha: 1)
-    public static let background = UIColor(red: 0.996, green: 0.996, blue: 0.996, alpha: 1)
+    public static let background = UIColor(hex: "#F4F5F7")
 }
 
 // MARK: - Titles
