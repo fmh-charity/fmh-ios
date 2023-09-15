@@ -22,14 +22,14 @@ extension AuthenticationViewController {
         
         private lazy var loginTextField: TextField = {
             $0.delegate = self
-            $0.text = "medhospis0@gmail.com"
+            $0.text = "volonterhospis@rambler.ru"
             $0.textContentType = .nickname
             return $0
         }(TextField())
         
         private lazy var passwordTextField: TextFieldPassword = {
             $0.delegate = self
-            $0.text = "medhos123"
+            $0.text = "Medhos123"
             $0.textContentType = .password
             return $0
         }(TextFieldPassword(configuration: .default()))

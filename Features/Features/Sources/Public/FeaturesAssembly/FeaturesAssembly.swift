@@ -1,5 +1,5 @@
 
-import Foundation
+import UIKit
 import Coordinating
 
 public final class FeaturesAssembly: FeaturesAssemblyProtocol {
@@ -14,6 +14,31 @@ public final class FeaturesAssembly: FeaturesAssemblyProtocol {
     }
     
     // MARK: - FeaturesAssemblyProtocol
+    
+    // MARK: tabBarControllerCoordinator.
+    public lazy var tabBarControllerCoordinator: CoordinatorProtocol = {
+        let viewControllersAssembly = TabBarControllersAssembly(dependencies: dependencies)
+        return TabBarControllerCoordinator(
+            router: self.dependencies.router,
+            dependencies: .init(
+                onCompletion: nil,
+                viewControllers: viewControllersAssembly.viewControllers
+            ))
+    }()
+    
+    // MARK: tabBarWithMenuControllerCoordinator.
+    public lazy var tabBarWithMenuControllerCoordinator: CoordinatorProtocol = {
+        let configurationMenu = SideMenuConfiguration(dependencies: dependencies)
+        let viewControllersAssembly = TabBarWithMenuControllersAssembly(dependencies: dependencies)
+        return TabBarWithMenuControllerCoordinator(
+            router: self.dependencies.router,
+            dependencies: .init(
+                onCompletion: nil,
+                network: dependencies.network,
+                viewControllers: viewControllersAssembly.viewControllers,
+                sideMenuSectionItems: configurationMenu.sideMenuSectionItems
+            ))
+    }()
     
     // MARK: Загрузочная страница.
     public lazy var loadingCoordinator: CoordinatorProtocol = {

@@ -2,9 +2,6 @@
 import UIKit
 import UIComponents
 
-// TODO: Add toggle
-private let registerButtonEnabled = false
-
 extension AuthenticationViewController {
     
     final class BlockButtonsView: UIView {
@@ -24,6 +21,7 @@ extension AuthenticationViewController {
         
         private lazy var registerButton: Button = {
             $0.title = "Регистрация"
+            $0.isEnabled = false
             $0.addTarget(self, action: #selector(registerButtonAction), for: .touchUpInside)
             return $0
         }(Button(configuration: .secondary()))
@@ -88,10 +86,8 @@ extension AuthenticationViewController {
         
         func setupUI() {
             stackButtons.addArrangedSubview(loginButton)
-            if registerButtonEnabled {
-                stackButtons.addArrangedSubview(separatorView)
-                stackButtons.addArrangedSubview(registerButton)
-            }
+            stackButtons.addArrangedSubview(separatorView)
+            stackButtons.addArrangedSubview(registerButton)
             
             addSubviews(stackButtons) {[
                 stackButtons.topAnchor.constraint(equalTo: topAnchor),
@@ -104,7 +100,7 @@ extension AuthenticationViewController {
         // MARK: - Actions
         
         @objc private func loginButtonAction() { didTapLoginButton?() }
-        @objc private func registerButtonAction() { didTapLoginButton?() }
+        @objc private func registerButtonAction() { didTapRegisterButton?() }
     }
 }
 

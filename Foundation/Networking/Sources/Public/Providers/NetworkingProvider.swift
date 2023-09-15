@@ -19,8 +19,16 @@ extension NetworkingProvider: NetworkProtocol {
     public func perform(for endpoint: Endpoint) async throws -> (Data, URLResponse) {
         let urlRequest = try endpoint.makeURLRequest(host: host)
         let response = try await urlSession.data(for: urlRequest)
-        return try await responseHandler(response)
         // TODO: Добавить логирование!
+        do {
+            let (data, response) = try await responseHandler(response)
+            print("Request: \(urlRequest.url?.absoluteString ?? "")")
+            return (data, response)
+        } catch {
+            print("Error request: \(error)")
+            throw error
+        }
+       
     }
 }
 
@@ -52,6 +60,11 @@ private extension Endpoint {
         }
         
         self.headers?.forEach { request.addValue($0, forHTTPHeaderField: $1) }
+        
+        // TODO: Добавить зависимость для работы с токеном!
+        if let token = UserDefaults.standard.object(forKey: "accessToken") as? String {
+            request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        }
         
         return request
     }

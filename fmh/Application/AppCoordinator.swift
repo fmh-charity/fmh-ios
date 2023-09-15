@@ -46,6 +46,7 @@ final class AppCoordinator: CoordinatorProtocol, DeeplinkProtocol {
     
     private func defineFlow() {
         print("defineFlow")
+        performTabBarWithMenuFlow()
     }
 }
 
@@ -69,6 +70,16 @@ extension AppCoordinator: NavigateFlowProtocol {
 // MARK: - Flows
 
 private extension AppCoordinator {
+    
+    func performTabBarWithMenuFlow() {
+        let coordinator = appAssembly.featuresAssembly.tabBarControllerCoordinator
+        childCoordinatorAppend(coordinator)
+        coordinator.onCompletion = { [weak self, weak coordinator] in
+            self?.childCoordinatorRemove(coordinator)
+            self?.defineFlow()
+        }
+        coordinator.startFlow()
+    }
     
     func performLoadingFlow() {
         let coordinator = appAssembly.featuresAssembly.loadingCoordinator
