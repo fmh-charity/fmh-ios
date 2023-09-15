@@ -15,13 +15,13 @@
 		19094C672A7FC3C7000979A3 /* AppAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C662A7FC3C7000979A3 /* AppAssemblyProtocol.swift */; };
 		19094C702A7FD779000979A3 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19094C6F2A7FD779000979A3 /* Data+.swift */; };
 		1975DBAE2AAF55570029621B /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DBAD2AAF55570029621B /* TokenProvider.swift */; };
-		19A290922A8FF1A200D7CCD1 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = 19A290912A8FF1A200D7CCD1 /* Features */; };
 		19ACF6CA2A82C84100C52B05 /* AppDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ACF6C92A82C84100C52B05 /* AppDelegateManager.swift */; };
 		19ACF6CC2A82C93F00C52B05 /* AppDelegateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ACF6CB2A82C93F00C52B05 /* AppDelegateService.swift */; };
 		19ACF6D12A83623000C52B05 /* AppDelegateConfigureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ACF6D02A83623000C52B05 /* AppDelegateConfigureService.swift */; };
 		19C7A51B280DECD0005000EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7A51A280DECD0005000EB /* AppDelegate.swift */; };
 		19C7A524280DECD3005000EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A523280DECD3005000EB /* Assets.xcassets */; };
 		19C7A527280DECD3005000EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19C7A525280DECD3005000EB /* LaunchScreen.storyboard */; };
+		19CFB1F22AB38C370067E4AC /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = 19CFB1F12AB38C370067E4AC /* Features */; };
 		19EB70B5292E850C00DB8F21 /* AppSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19EB70B4292E850C00DB8F21 /* AppSettings.plist */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +49,9 @@
 		19094C662A7FC3C7000979A3 /* AppAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssemblyProtocol.swift; sourceTree = "<group>"; };
 		19094C6A2A7FCF6B000979A3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19094C6F2A7FD779000979A3 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		191E2BB52AB3013A00E460A7 /* Roles */ = {isa = PBXFileReference; lastKnownFileType = text; path = Roles; sourceTree = "<group>"; };
+		191E2BC12AB3891D00E460A7 /* TabBarController */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TabBarController; sourceTree = "<group>"; };
+		191E2BC22AB3894300E460A7 /* TabBarWithMenuController */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TabBarWithMenuController; sourceTree = "<group>"; };
 		192190632A753FFA0009835C /* Doc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Doc.md; sourceTree = "<group>"; };
 		19307A7D2A7DA29D000569E6 /* Doc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Doc.md; sourceTree = "<group>"; };
 		195629A02842A63C00C8A704 /* Contributors */ = {isa = PBXFileReference; lastKnownFileType = text; path = Contributors; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		19C7A526280DECD3005000EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19C7A52E280DED24005000EB /* ProjectDiscription */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProjectDiscription; sourceTree = "<group>"; };
 		19C7A530280DED3B005000EB /* Guidelines */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guidelines; sourceTree = "<group>"; };
+		19CFB1F32AB391110067E4AC /* Home */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Home; sourceTree = "<group>"; };
 		19EB70AD292E820800DB8F21 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		19EB70AF292E821700DB8F21 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		19EB70B4292E850C00DB8F21 /* AppSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppSettings.plist; sourceTree = "<group>"; };
@@ -77,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19A290922A8FF1A200D7CCD1 /* Features in Frameworks */,
+				19CFB1F22AB38C370067E4AC /* Features in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +154,9 @@
 				19A2908F2A8FBACE00D7CCD1 /* Features */,
 				19A290992A90136300D7CCD1 /* Authorization */,
 				19094C1E2A7E3639000979A3 /* FeatureLoading */,
+				191E2BC22AB3894300E460A7 /* TabBarWithMenuController */,
+				191E2BC12AB3891D00E460A7 /* TabBarController */,
+				19CFB1F32AB391110067E4AC /* Home */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -161,6 +168,7 @@
 				195629A02842A63C00C8A704 /* Contributors */,
 				19C7A530280DED3B005000EB /* Guidelines */,
 				19C7A52E280DED24005000EB /* ProjectDiscription */,
+				191E2BB52AB3013A00E460A7 /* Roles */,
 			);
 			path = Doc;
 			sourceTree = "<group>";
@@ -181,6 +189,13 @@
 				1975DBAD2AAF55570029621B /* TokenProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		1975DBB32AAF90C10029621B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		19ACF6C72A82C7A000C52B05 /* AppDelegateManager */ = {
@@ -237,6 +252,7 @@
 		19C7A538280DED98005000EB /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				1975DBB32AAF90C10029621B /* Common */,
 				1975DBAF2AAF6FA10029621B /* Providers */,
 				19ACF6C72A82C7A000C52B05 /* AppDelegateManager */,
 				19C7A51A280DECD0005000EB /* AppDelegate.swift */,
@@ -275,7 +291,7 @@
 			);
 			name = fmh;
 			packageProductDependencies = (
-				19A290912A8FF1A200D7CCD1 /* Features */,
+				19CFB1F12AB38C370067E4AC /* Features */,
 			);
 			productName = fmh;
 			productReference = 19C7A517280DECD0005000EB /* fmh.app */;
@@ -559,7 +575,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		19A290912A8FF1A200D7CCD1 /* Features */ = {
+		19CFB1F12AB38C370067E4AC /* Features */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Features;
 		};

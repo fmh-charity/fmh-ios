@@ -29,11 +29,15 @@ extension AuthenticationService: AuthenticationServiceProtocol {
         endpoint.body = try? ["login": login, "password": password].data()
         networkService.fetch(endpoint: endpoint) { [weak self] error, decodeData in
             guard let tokens: DTOJWT = decodeData else {
-                completion(error)
+                DispatchQueue.main.async {
+                    completion(error)
+                }
                 return
             }
             self?.tokenProvider.updateTokens(accessToken: tokens.accessToken, refreshToken: tokens.refreshToken)
-            completion(nil)
+            DispatchQueue.main.async {
+                completion(nil)
+            }
         }
     }
 }
