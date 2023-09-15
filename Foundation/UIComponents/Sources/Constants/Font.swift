@@ -7,7 +7,7 @@ import UIKit
 
 public enum Font {
     
-    static let `default`: UIFont = .interRegular(ofSize: 17.0) ?? .systemFont(ofSize: 17.0)
+    public static let `default`: UIFont = .interRegular(ofSize: 17.0) ?? .systemFont(ofSize: 17.0)
 }
 
 // MARK: - Titles

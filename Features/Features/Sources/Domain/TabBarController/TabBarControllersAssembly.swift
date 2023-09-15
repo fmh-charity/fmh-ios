@@ -1,5 +1,6 @@
 import UIKit
 import Home
+import More
 
 protocol TabBarControllersAssemblyProtocol {
     var viewControllers: [UIViewController] { get }
@@ -43,7 +44,7 @@ extension TabBarControllersAssembly: TabBarControllersAssemblyProtocol {
         controllerTab_3.tabBarItem.title = controllerTab_1.title ?? "Пациенты"
         
         // MARK: Tab 4
-        let controllerTab_4 = NavigationController(rootViewController: makeTestViewController(title: "Ещё"))
+        let controllerTab_4 = NavigationController(rootViewController: moreController)
         controllerTab_4.tabBarItem.tag = 4
         controllerTab_4.tabBarItem.image = UIImage(systemName: "line.3.horizontal")
         controllerTab_4.tabBarItem.title = controllerTab_1.title ?? "Ещё"
@@ -60,6 +61,14 @@ private extension TabBarControllersAssembly {
         HomeAssembly(
             dependencies: .init()
         ).homeViewController
+    }
+    
+    var moreController: UIViewController {
+        MoreAssembly(
+            dependencies: .init(
+                network: dependencies.network
+            )
+        ).moreViewController
     }
 }
 

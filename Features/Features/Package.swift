@@ -10,7 +10,8 @@ private let packageDependencies: [Package.Dependency] = [
     .package(name: "Authorization", path: "../Authorization"),
     .package(name: "TabBarController", path: "../TabBarController"),
     .package(name: "TabBarWithMenuController", path: "../TabBarWithMenuController"),
-    .package(name: "Home", path: "../Home")
+    .package(name: "Home", path: "../Home"),
+    .package(name: "More", path: "../More")
 ]
 
 // MARK: Зависимости таргета Features
@@ -20,7 +21,8 @@ private let targetFeaturesDependencies: [Target.Dependency] = [
     "Authorization",
     "TabBarController",
     "TabBarWithMenuController",
-    "Home"
+    "Home",
+    "More"
 ]
 
 // MARK: - Package Features
