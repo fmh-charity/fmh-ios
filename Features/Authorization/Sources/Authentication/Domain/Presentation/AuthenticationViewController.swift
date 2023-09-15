@@ -17,7 +17,7 @@ final class AuthenticationViewController: UIViewController {
     // MARK: - UI
     
     private lazy var navigationExtensionView: UIView = {
-        $0.backgroundColor = UIComponents.Color.accent
+        $0.backgroundColor = .clear // UIComponents.Color.accent
         $0.heightAnchor.constraint(equalToConstant: .navigationExtensionViewHeight).isActive = true
         return $0
     }(UIView())
@@ -87,6 +87,8 @@ final class AuthenticationViewController: UIViewController {
     
     private func navigationBarConfigure() {
         navigationItem.titleView = logo
+        // Мне не понравилось красить бар в цвет.
+        /*
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = UIComponents.Color.accent
@@ -96,6 +98,7 @@ final class AuthenticationViewController: UIViewController {
         if #available(iOS 15.0, *) {
             navigationItem.compactScrollEdgeAppearance = appearance
         }
+         */
     }
     
     private func addObserverNotification() {
